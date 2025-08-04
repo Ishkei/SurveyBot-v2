@@ -1347,16 +1347,19 @@ async def main():
         return
 
     async with async_playwright() as p:
-        browser = await p.firefox.launch(headless=False, slow_mo=10)
+        browser = await p.firefox.launch(headless=True, slow_mo=10)
         context = await browser.new_context(storage_state="auth.json")
         page = await context.new_page()
 
         print("Session loaded. Navigating to surveys...")
         await page.goto("https://www.qmee.com/en-us/surveys", timeout=60000)
+        print(f"Current URL after navigation: {page.url}")
 
         try:
             print("Looking for a survey to start...")
             await page.wait_for_selector('button:has-text("Start earning"), a.survey-card', state='visible', timeout=20000)
+            print("Found survey elements on page")
+            
             start_earning_button = page.get_by_role('button', name='Start earning')
             if await start_earning_button.is_visible():
                 await start_earning_button.click()
@@ -1367,6 +1370,12 @@ async def main():
                 print("Clicked first survey card")
         except Exception as e:
             print(f"Could not auto-start a survey. Please navigate manually. Error: {e}")
+            print("Current page content:")
+            try:
+                page_content = await page.inner_text('body')
+                print(page_content[:500])
+            except:
+                print("Could not get page content")
             input("Press Enter once you are on a survey page.")
 
         failures_on_current_page = 0
