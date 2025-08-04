@@ -1053,6 +1053,247 @@ async def handle_remaining_survey_pages(iframe, page, persona):
         print(f"Error in comprehensive survey handler: {e}")
         return False
 
+async def handle_signup_completion(iframe, page, persona):
+    """
+    Handle the final stages of the signup survey to ensure 100% completion.
+    """
+    try:
+        print("Handling signup completion...")
+        
+        # Get page text to understand what page we're on
+        page_text = await iframe.locator('body').inner_text()
+        page_text_lower = page_text.lower()
+        
+        print(f"Current signup page: {page_text[:100]}...")
+        
+        # Handle different final signup pages
+        if "address" in page_text_lower or "zipcode" in page_text_lower:
+            return await handle_address_page(iframe, page, persona)
+        elif "ethnicity" in page_text_lower or "race" in page_text_lower or "background" in page_text_lower:
+            return await handle_ethnicity_page(iframe, page, persona)
+        elif "consent" in page_text_lower or "agree" in page_text_lower or "permission" in page_text_lower:
+            return await handle_consent_page(iframe, page, persona)
+        elif "thank" in page_text_lower or "complete" in page_text_lower or "finished" in page_text_lower:
+            print("Signup survey appears to be complete!")
+            return True
+        else:
+            # Use the comprehensive handler for any remaining pages
+            return await handle_remaining_survey_pages(iframe, page, persona)
+            
+    except Exception as e:
+        print(f"Error in signup completion: {e}")
+        return await solve_page_with_hybrid_vision_dom(iframe, page)
+
+async def find_and_start_surveys(page):
+    """
+    Find and start the highest paying surveys after signup completion.
+    """
+    try:
+        print("\n" + "="*50)
+        print("SIGNUP COMPLETE - STARTING SURVEYS")
+        print("="*50)
+        
+        # Navigate to surveys page
+        await page.goto("https://www.qmee.com/en-us/surveys", timeout=30000)
+        await asyncio.sleep(3)
+        
+        # Look for available surveys with different selectors
+        survey_selectors = [
+            'a.survey-card',
+            'div[class*="survey"]',
+            '.survey-item',
+            '[class*="survey"]',
+            'div[class*="card"]',
+            'a[href*="survey"]',
+            'button[class*="survey"]'
+        ]
+        
+        surveys = []
+        for selector in survey_selectors:
+            try:
+                survey_cards = page.locator(selector)
+                survey_count = await survey_cards.count()
+                
+                if survey_count > 0:
+                    print(f"Found {survey_count} surveys with selector: {selector}")
+                    
+                    for i in range(survey_count):
+                        try:
+                            survey_element = survey_cards.nth(i)
+                            survey_text = await survey_element.inner_text()
+                            
+                            # Extract reward amount with multiple patterns
+                            import re
+                            reward_patterns = [
+                                r'[\$£€](\d+\.?\d*)',  # $0.50, £1.20, €0.75
+                                r'(\d+\.?\d*)\s*(?:p|pence|cents?)',  # 50p, 1.20p
+                                r'(\d+\.?\d*)\s*(?:dollars?|pounds?|euros?)',  # 0.50 dollars
+                                r'reward[:\s]*[\$£€]?(\d+\.?\d*)',  # reward: $0.50
+                                r'earn[:\s]*[\$£€]?(\d+\.?\d*)',  # earn: $0.50
+                                r'pay[:\s]*[\$£€]?(\d+\.?\d*)'  # pay: $0.50
+                            ]
+                            
+                            reward_amount = 0.10  # Default reward
+                            for pattern in reward_patterns:
+                                reward_match = re.search(pattern, survey_text, re.IGNORECASE)
+                                if reward_match:
+                                    try:
+                                        reward_amount = float(reward_match.group(1))
+                                        break
+                                    except ValueError:
+                                        continue
+                            
+                            # Also check for time estimates to calculate hourly rate
+                            time_patterns = [
+                                r'(\d+)\s*(?:min|minutes?)',
+                                r'(\d+)\s*(?:sec|seconds?)',
+                                r'(\d+)\s*(?:hour|hours?)'
+                            ]
+                            
+                            time_minutes = 5  # Default time
+                            for pattern in time_patterns:
+                                time_match = re.search(pattern, survey_text, re.IGNORECASE)
+                                if time_match:
+                                    try:
+                                        time_value = int(time_match.group(1))
+                                        if 'hour' in pattern:
+                                            time_minutes = time_value * 60
+                                        elif 'min' in pattern:
+                                            time_minutes = time_value
+                                        elif 'sec' in pattern:
+                                            time_minutes = time_value / 60
+                                        break
+                                    except ValueError:
+                                        continue
+                            
+                            # Calculate hourly rate for better prioritization
+                            hourly_rate = (reward_amount / time_minutes) * 60 if time_minutes > 0 else reward_amount
+                            
+                            surveys.append({
+                                'index': i,
+                                'element': survey_element,
+                                'text': survey_text,
+                                'reward': reward_amount,
+                                'time_minutes': time_minutes,
+                                'hourly_rate': hourly_rate,
+                                'selector': selector
+                            })
+                            
+                            print(f"Survey {len(surveys)}: ${reward_amount:.2f} ({time_minutes}min) - {survey_text[:50]}...")
+                            
+                        except Exception as e:
+                            print(f"Error processing survey {i}: {e}")
+                            continue
+                    
+                    if surveys:
+                        break  # Found surveys with this selector
+                        
+            except Exception as e:
+                print(f"Error with selector {selector}: {e}")
+                continue
+        
+        if not surveys:
+            print("No surveys available at the moment.")
+            return False
+        
+        # Sort surveys by hourly rate (highest first), then by reward amount
+        surveys.sort(key=lambda x: (x['hourly_rate'], x['reward']), reverse=True)
+        
+        print(f"\nSorted surveys by hourly rate (highest first):")
+        for i, survey in enumerate(surveys[:5]):  # Show top 5
+            print(f"{i+1}. ${survey['reward']:.2f} ({survey['time_minutes']}min) - ${survey['hourly_rate']:.2f}/hr - {survey['text'][:50]}...")
+        
+        # Start with the highest paying survey
+        if surveys:
+            best_survey = surveys[0]
+            print(f"\nStarting highest paying survey: ${best_survey['reward']:.2f} ({best_survey['time_minutes']}min)")
+            
+            try:
+                await best_survey['element'].click()
+                print("Clicked on highest paying survey")
+                await asyncio.sleep(3)
+                return True
+            except Exception as e:
+                print(f"Error clicking survey: {e}")
+                # Try alternative click method
+                try:
+                    await best_survey['element'].click(force=True)
+                    print("Clicked with force=True")
+                    await asyncio.sleep(3)
+                    return True
+                except Exception as e2:
+                    print(f"Alternative click also failed: {e2}")
+                    return False
+        else:
+            print("No valid surveys found")
+            return False
+            
+    except Exception as e:
+        print(f"Error finding surveys: {e}")
+        return False
+
+async def navigate_to_surveys_after_signup(page):
+    """
+    Navigate to surveys page after signup completion.
+    """
+    try:
+        print("Navigating to surveys page after signup completion...")
+        
+        # Try to find and click on surveys link
+        try:
+            surveys_link = page.locator('a:has-text("Surveys"), a[href*="survey"], button:has-text("Surveys")')
+            if await surveys_link.count() > 0:
+                await surveys_link.first.click()
+                print("Clicked on Surveys link")
+                await asyncio.sleep(3)
+                return True
+        except Exception:
+            pass
+        
+        # If no surveys link found, navigate directly
+        try:
+            await page.goto("https://www.qmee.com/en-us/surveys", timeout=30000)
+            print("Navigated directly to surveys page")
+            await asyncio.sleep(3)
+            return True
+        except Exception as e:
+            print(f"Error navigating to surveys: {e}")
+            return False
+            
+    except Exception as e:
+        print(f"Error in navigate_to_surveys_after_signup: {e}")
+        return False
+
+async def handle_survey_completion_and_continue(page, iframe_locator):
+    """
+    Handle survey completion and continue to next survey.
+    """
+    try:
+        print("🎉 Survey completed successfully! 🎉")
+        
+        # Wait a moment to see if there are any final actions needed
+        await asyncio.sleep(2)
+        
+        # Check for any final buttons (like "Continue to Dashboard", "Get Rewards", etc.)
+        try:
+            final_buttons = page.locator('button:has-text("Continue"), button:has-text("Dashboard"), button:has-text("Rewards"), button:has-text("Finish"), button:has-text("Next Survey")')
+            if await final_buttons.count() > 0:
+                await final_buttons.first.click()
+                print("Clicked final completion button")
+                await asyncio.sleep(3)
+        except Exception:
+            pass
+        
+        # Navigate back to surveys page to find next survey
+        print("Looking for next survey...")
+        await navigate_to_surveys_after_signup(page)
+        return await find_and_start_surveys(page)
+        
+    except Exception as e:
+        print(f"Error handling survey completion: {e}")
+        await navigate_to_surveys_after_signup(page)
+        return await find_and_start_surveys(page)
+
 async def page_router(page):
     print("Routing page...")
     iframe_locator = page.frame_locator('iframe[title="signup-survey"]')
@@ -1061,7 +1302,7 @@ async def page_router(page):
         
         # Check for survey completion first
         if await detect_survey_completion(page, iframe_locator):
-            return await handle_survey_completion(page, iframe_locator)
+            return await handle_survey_completion_and_continue(page, iframe_locator)
         
         # Get page text for better detection
         page_text = await iframe_locator.locator('body').inner_text()
@@ -1092,8 +1333,9 @@ async def page_router(page):
         elif any(keyword in page_text_lower for keyword in ["form", "question", "survey", "input"]):
             return await handle_general_form_page(iframe_locator, page, PERSONA)
         
+        # Handle remaining signup pages
         else:
-            return await handle_remaining_survey_pages(iframe_locator, page, PERSONA)
+            return await handle_signup_completion(iframe_locator, page, PERSONA)
     except Exception as e:
         print(f"Error in page router: {e}")
         return await solve_page_with_hybrid_vision_dom(page, page)
@@ -1129,10 +1371,12 @@ async def main():
 
         failures_on_current_page = 0
         last_url = ""
-        MAX_FAILURES = 20  # Increased to allow for longer surveys
+        MAX_FAILURES = 30  # Increased for complete survey flow
         consecutive_no_progress = 0
-        MAX_NO_PROGRESS = 8  # Increased tolerance
+        MAX_NO_PROGRESS = 10  # Increased tolerance
         pages_processed = 0
+        signup_completed = False
+        surveys_completed = 0
 
         print("\n" + "="*50)
         print("STARTING SURVEY BOT")
@@ -1155,13 +1399,22 @@ async def main():
                 
                 print(f"Current URL: {current_url}")
                 print(f"Pages processed: {pages_processed}, Failures: {failures_on_current_page}, No Progress: {consecutive_no_progress}")
+                print(f"Signup completed: {signup_completed}, Surveys completed: {surveys_completed}")
 
                 # Check for survey completion indicators
                 try:
                     iframe_locator = page.frame_locator('iframe[title="signup-survey"]')
                     if await detect_survey_completion(page, iframe_locator):
-                        await handle_survey_completion(page, iframe_locator)
-                        break
+                        if not signup_completed:
+                            print("🎉 Signup survey completed! Moving to other surveys...")
+                            signup_completed = True
+                            await handle_survey_completion_and_continue(page, iframe_locator)
+                            continue
+                        else:
+                            print("🎉 Survey completed! Looking for next survey...")
+                            surveys_completed += 1
+                            await handle_survey_completion_and_continue(page, iframe_locator)
+                            continue
                 except Exception as e:
                     print(f"Error checking completion: {e}")
                     pass
@@ -1205,10 +1458,17 @@ async def main():
         try:
             iframe_locator = page.frame_locator('iframe[title="signup-survey"]')
             if await detect_survey_completion(page, iframe_locator):
-                await handle_survey_completion(page, iframe_locator)
-                print("🎉 Survey completed successfully! 🎉")
+                if not signup_completed:
+                    print("🎉 Signup survey completed successfully! 🎉")
+                    signup_completed = True
+                    await find_and_start_surveys(page)
+                else:
+                    print("🎉 Survey completed successfully! 🎉")
+                    surveys_completed += 1
+                    await find_and_start_surveys(page)
             else:
                 print(f"Bot has finished its run. Processed {pages_processed} pages.")
+                print(f"Signup completed: {signup_completed}, Surveys completed: {surveys_completed}")
                 print("Survey may be complete or may need manual intervention.")
         except Exception as e:
             print(f"Bot has finished its run. Final check error: {e}")
