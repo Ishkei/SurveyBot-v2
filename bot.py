@@ -685,8 +685,8 @@ async def main():
         print("Session loaded. Navigating to surveys...")
         await page.goto("https://www.qmee.com/en-us/surveys", timeout=60000)
 
+        print("Looking for a survey to start...")
         try:
-            print("Looking for a survey to start...")
             await page.wait_for_selector('button:has-text("Start earning"), a.survey-card', state='visible', timeout=20000)
             start_earning_button = page.get_by_role('button', name='Start earning')
             if await start_earning_button.is_visible():
@@ -697,40 +697,43 @@ async def main():
             print(f"Could not auto-start a survey. Please navigate manually. Error: {e}")
             input("Press Enter once you are on a survey page.")
 
-        failures_on_current_page = 0
-        last_url = ""
-        MAX_FAILURES = 10 
+        consecutive_failures = 0
+        MAX_CONSECUTIVE_FAILURES = 5
+        page_counter = 0
 
-        for i in range(MAX_FAILURES):
-            print(f"\n--- Attempting Page {i+1} ---")
+        while consecutive_failures < MAX_CONSECUTIVE_FAILURES:
+            page_counter += 1
+            print(f"\n--- Attempting Page {page_counter} ---")
+            
             try:
-                await page.wait_for_load_state('domcontentloaded', timeout=5000) 
-                current_url = page.url
-                if current_url == last_url:
-                    failures_on_current_page += 1
-                else:
-                    failures_on_current_page = 0
-                
-                print(f"Current URL: {current_url} (Failures: {failures_on_current_page})")
-
-                if failures_on_current_page >= MAX_FAILURES:
-                    print(f"Circuit breaker triggered! Bot is stuck on {current_url}. Stopping.")
-                    break
-                
-                last_url = current_url
-            except Exception: pass
+                await page.wait_for_load_state('domcontentloaded', timeout=10000)
+                print(f"Current URL: {page.url}")
+            except Exception as e:
+                print(f"Page failed to load: {e}. Assuming it's a transient issue.")
+                await asyncio.sleep(5)
             
             try:
                 await page.wait_for_selector('body button, body input, body a, body label, iframe', timeout=30000)
             except Exception:
                 print("No interactive elements found on main page or iframe. Survey may have ended.")
-                break
+                consecutive_failures += 1
+                print(f"Failure {consecutive_failures}/{MAX_CONSECUTIVE_FAILURES}")
+                await asyncio.sleep(3)
+                continue
             
             success = await page_router(page)
-            if not success:
-                pass 
+            if success:
+                print("Successfully took an action on the page.")
+                consecutive_failures = 0
+            else:
+                print("Failed to take an action on the page.")
+                consecutive_failures += 1
+                print(f"Failure {consecutive_failures}/{MAX_CONSECUTIVE_FAILURES}")
             
             await asyncio.sleep(3)
+
+        if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+            print(f"\nBot failed to make progress for {MAX_CONSECUTIVE_FAILURES} consecutive attempts. Stopping.")
 
         print("\nBot has finished its run.")
         await context.close()
