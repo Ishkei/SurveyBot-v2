@@ -203,17 +203,13 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         Example for filling a zipcode field with ID 5: `{"tool": "fill_textbox", "args": {"element_id": 5, "text_to_fill": "90001"}}`
         If no action is clear, respond with: `{"tool": "no_action", "args": {}}`
         
-        IMPORTANT GUIDELINES: 
+        IMPORTANT: 
         - For radio buttons, prefer clicking the LABEL element (which is visible) rather than the hidden radio input
         - For checkboxes, prefer clicking the LABEL element rather than the hidden checkbox input
         - Only select elements that are clearly visible and interactive
         - If you're unsure about which element to select, choose "no_action" rather than guessing
         - When there are consent questions (Yes/No), always answer "Yes" to proceed with the survey
         - Fill text fields only after answering any consent questions
-        - Look for "Next", "Continue", "Submit", "Confirm" buttons to progress
-        - For multiple choice questions, select the option that best matches the persona's characteristics
-        - If you see a "Thank you" or completion message, respond with "no_action" as the survey is done
-        - Prioritize progress over perfection - choose the most likely correct option if unsure
         """
         prompt = f"""
         {PERSONA_PROMPT}
@@ -476,6 +472,11 @@ async def handle_address_page(iframe, page, persona):
         await asyncio.sleep(2)
         print("Address form completed, waiting for next page...")
         
+        # Wait a bit more to see if there are any additional pages
+        await asyncio.sleep(5)
+        
+
+        
         return True
     except Exception as e:
         print(f"An error occurred while handling Address page: {e}")
@@ -509,69 +510,789 @@ async def handle_ethnicity_page(iframe, page, persona):
         target_ethnicity = ethnicity_mapping.get(ethnicity, "White/Caucasian")
         print(f"Selecting ethnicity: {target_ethnicity}")
         
-        # Look for the ethnicity option and click it
+        # Print all clickable elements and their text for debugging
+        clickable_elements = await iframe.locator('button, div, label, input[type="radio"]').all()
+        print("[Ethnicity Debug] All clickable elements on page:")
+        for idx, elem in enumerate(clickable_elements):
+            try:
+                text = await elem.inner_text()
+                print(f"  [{idx}] {text}")
+            except Exception:
+                continue
+
+        # Try to click the radio button directly
         try:
-            # First, let's debug what ethnicity options are available
-            print("Debugging: Looking for all ethnicity options...")
+            # Get all radio buttons
+            radio_buttons = iframe.locator('input[type="radio"]')
+            radio_count = await radio_buttons.count()
+            print(f"Found {radio_count} radio buttons")
             
-            # Look for all clickable elements that might be ethnicity options
-            all_buttons = iframe.locator('button, label, div[role="button"], div[class*="button"]')
-            button_count = await all_buttons.count()
-            print(f"Found {button_count} potential ethnicity options")
-            
-            for i in range(min(button_count, 20)):  # Check first 20 buttons
+            # Try to find the radio button for our ethnicity
+            for i in range(radio_count):
+                radio = radio_buttons.nth(i)
                 try:
-                    button_text = await all_buttons.nth(i).inner_text()
-                    print(f"Option {i}: '{button_text}'")
-                except:
-                    continue
-            
-            # Try multiple approaches to find the ethnicity option
-            ethnicity_selectors = [
-                f'button:has-text("{target_ethnicity}")',
-                f'label:has-text("{target_ethnicity}")',
-                f'div:has-text("{target_ethnicity}")',
-                f'*:has-text("{target_ethnicity}")',
-                # Also try with partial matches
-                f'button:has-text("White")',
-                f'label:has-text("White")',
-                f'div:has-text("White")',
-                f'*:has-text("White")',
-                f'button:has-text("Caucasian")',
-                f'label:has-text("Caucasian")',
-                f'div:has-text("Caucasian")',
-                f'*:has-text("Caucasian")'
-            ]
-            
-            for selector in ethnicity_selectors:
+                    # Get the associated label
+                    radio_id = await radio.get_attribute('id')
+                    if radio_id:
+                        label = iframe.locator(f'label[for="{radio_id}"]')
+                        if await label.count() > 0:
+                            label_text = await label.first.inner_text()
+                            if target_ethnicity.lower() in label_text.lower():
+                                await radio.click()
+                                print(f"Clicked radio button for {target_ethnicity}")
+                                await asyncio.sleep(2)
+                                
+                                # Try to find and click a next/continue button
+                                next_buttons = iframe.locator('button:has-text("Next"), button:has-text("Continue"), button:has-text("Submit")')
+                                if await next_buttons.count() > 0:
+                                    await next_buttons.first.click()
+                                    print("Clicked next button after ethnicity selection")
+                                    await asyncio.sleep(2)
+                                
+                                return True
+                except Exception as e:
+                    print(f"Failed to check radio button {i}: {e}")
+        except Exception as e:
+            print(f"Failed to find radio buttons: {e}")
+        
+        # If radio button approach fails, try clicking the specific element from debug output
+        # Based on debug output, element [16] is "White/Caucasian"
+        try:
+            for idx, elem in enumerate(clickable_elements):
                 try:
-                    ethnicity_option = iframe.locator(selector)
-                    if await ethnicity_option.count() > 0:
-                        await ethnicity_option.first.click()
-                        print(f"Clicked ethnicity option using selector: {selector}")
-                        
-                        # Wait for any confirmation or next button
+                    text = await elem.inner_text()
+                    # Look for elements that contain exactly "White/Caucasian" or similar
+                    if text.strip() == "White/Caucasian" or text.strip() == target_ethnicity:
+                        print(f"Found exact ethnicity match at element [{idx}]: {text}")
+                        await elem.click()
+                        print(f"Clicked ethnicity element [{idx}] with text: {text}")
                         await asyncio.sleep(2)
                         
-                        # Look for a next/continue button
-                        next_button = iframe.locator('button:has-text("Next"), button:has-text("Continue"), button:has-text("Submit"), button:has-text("Confirm")')
-                        if await next_button.count() > 0:
-                            await next_button.first.click()
+                        # Try to find and click a next/continue button
+                        next_buttons = iframe.locator('button:has-text("Next"), button:has-text("Continue"), button:has-text("Submit")')
+                        if await next_buttons.count() > 0:
+                            await next_buttons.first.click()
                             print("Clicked next button after ethnicity selection")
                             await asyncio.sleep(2)
                         
                         return True
                 except Exception as e:
-                    continue  # Try next selector
-            
-            print(f"Could not find ethnicity option: {target_ethnicity}")
-            return False
+                    print(f"Failed to click element [{idx}]: {e}")
         except Exception as e:
-            print(f"Error selecting ethnicity: {e}")
-            return False
+            print(f"Failed to find ethnicity option: {e}")
+        
+        # If all else fails, try the brute-force approach
+        print(f"Could not find ethnicity option: {target_ethnicity}")
+        print("Falling back to hybrid vision/DOM model...")
+        return await solve_page_with_hybrid_vision_dom(iframe, page)
             
     except Exception as e:
         print(f"An error occurred while handling Ethnicity page: {e}")
+        print("Falling back to hybrid vision/DOM model...")
+        return await solve_page_with_hybrid_vision_dom(iframe, page)
+
+async def handle_children_page(iframe, page, persona):
+    """
+    Handle the children page.
+    """
+    try:
+        print("Detected 'Children' page. Handling children information...")
+        
+        # Get children info from persona
+        has_children = persona.get("about_you", {}).get("has_children", True)
+        print(f"Persona has children: {has_children}")
+        
+        if has_children:
+            # First, let's check what's currently on the page
+            add_child_button = iframe.locator('button:has-text("+ Add Child")')
+            month_inputs = iframe.locator('input[type="number"][placeholder="MM"]')
+            male_labels = iframe.locator('label:has-text("Male")')
+            
+            current_children_count = await month_inputs.count()
+            add_button_visible = await add_child_button.count() > 0
+            male_labels_count = await male_labels.count()
+            
+            print(f"Current state: {current_children_count} children, Add button visible: {add_button_visible}, Male labels: {male_labels_count}")
+            
+            # If we have no children and the add button is visible, add 2 children
+            if current_children_count == 0 and add_button_visible:
+                print("No children detected, adding 2 children...")
+                
+                # Add first child
+                await add_child_button.first.click()
+                print("Added first child")
+                await asyncio.sleep(2)
+                
+                # Update counts after adding
+                current_children_count = await month_inputs.count()
+                male_labels_count = await male_labels.count()
+                print(f"After adding: {current_children_count} children, {male_labels_count} male labels")
+            
+            # If we have too many children, remove extras
+            while current_children_count > 1:
+                remove_buttons = iframe.locator('button:has-text("Remove")')
+                if await remove_buttons.count() > 0:
+                    print(f"Removing extra child (current: {current_children_count})")
+                    await remove_buttons.last.click()
+                    await asyncio.sleep(2)
+                    current_children_count = await month_inputs.count()
+                    print(f"After removal: {current_children_count} children")
+                else:
+                    break
+            
+            # Now fill in details for each child
+            for child_index in range(min(current_children_count, 1)):
+                print(f"Filling details for child {child_index + 1}...")
+                
+                # Fill month and year
+                month_input = month_inputs.nth(child_index)
+                year_input = iframe.locator('input[type="number"][placeholder="YYYY"]').nth(child_index)
+                
+                if await month_input.count() > 0:
+                    month_value = "6" if child_index == 0 else "3"
+                    await month_input.fill(month_value)
+                    print(f"Filled child {child_index + 1} month: {month_value}")
+                    await asyncio.sleep(1)
+                
+                if await year_input.count() > 0:
+                    year_value = "2015" if child_index == 0 else "2018"
+                    await year_input.fill(year_value)
+                    print(f"Filled child {child_index + 1} year: {year_value}")
+                    await asyncio.sleep(1)
+                
+                # Click Male label for this child
+                male_label = male_labels.nth(child_index)
+                if await male_label.count() > 0:
+                    # Get the text content of the label to verify we're clicking the right one
+                    label_text = await male_label.inner_text()
+                    print(f"Clicking Male label for child {child_index + 1}, text: '{label_text}'")
+                    
+                    # Try clicking both the label and the associated input for better reliability
+                    try:
+                        await male_label.click()
+                        print(f"Clicked Male label for child {child_index + 1}")
+                        
+                        # Also try clicking the associated radio button/checkbox if it exists
+                        if child_index == 0:
+                            # For first child, try clicking the first Male input
+                            male_input = iframe.locator('input[type="radio"][value="m"], input[type="checkbox"][value="m"]').first
+                        else:
+                            # For second child, try clicking the second Male input
+                            male_input = iframe.locator('input[type="radio"][value="m"], input[type="checkbox"][value="m"]').nth(1)
+                        
+                        if await male_input.count() > 0:
+                            await male_input.click()
+                            print(f"Also clicked Male input for child {child_index + 1}")
+                        
+                        await asyncio.sleep(1)
+                    except Exception as e:
+                        print(f"Error clicking Male label for child {child_index + 1}: {e}")
+                else:
+                    print(f"Warning: Could not find Male label for child {child_index + 1}")
+            
+            # Now try to click the Confirm button
+            # Try different confirm button patterns
+            confirm_selectors = [
+                f'button:has-text("Confirm ({current_children_count})")',
+                'button:has-text("Confirm (1)")',
+                'button:has-text("Confirm")',
+                'button:has-text("Next")',
+                'button:has-text("Continue")'
+            ]
+            
+            for selector in confirm_selectors:
+                confirm_button = iframe.locator(selector)
+                if await confirm_button.count() > 0:
+                    # Check if button is enabled
+                    is_enabled = await confirm_button.first.is_enabled()
+                    print(f"Found confirm button with selector: {selector}, enabled: {is_enabled}")
+                    
+                    if is_enabled:
+                        await confirm_button.first.click()
+                        print(f"Clicked confirm button using selector: {selector}")
+                        await asyncio.sleep(2)
+                        
+                        # Check if we're still on the same page
+                        page_text_after = await iframe.locator('body').text_content()
+                        if "Children" in page_text_after and "Do you have or are expecting any children" in page_text_after:
+                            print("Warning: Still on children page after clicking confirm button")
+                            # Check for any validation messages
+                            error_count = await iframe.locator('text=*error*').count()
+                            required_count = await iframe.locator('text=*required*').count()
+                            please_count = await iframe.locator('text=*please*').count()
+                            validation_messages = error_count + required_count + please_count
+                            print(f"Validation messages found: {validation_messages}")
+                        else:
+                            print("Successfully moved to next page")
+                        
+                        return True
+                    else:
+                        print(f"Confirm button found but disabled: {selector}")
+                else:
+                    print(f"Confirm button not found with selector: {selector}")
+            
+            print("Could not find any enabled confirm button")
+            return False
+            
+        else:
+            # Select "None/Not Expecting" option
+            none_option = iframe.locator('label:has-text("None/Not Expecting")')
+            if await none_option.count() > 0:
+                await none_option.first.click()
+                print("Selected 'None/Not Expecting' option")
+                await asyncio.sleep(1)
+                
+                # Look for confirm button
+                confirm_button = iframe.locator('button:has-text("Confirm")')
+                if await confirm_button.count() > 0:
+                    await confirm_button.first.click()
+                    print("Clicked 'Confirm' button")
+                    await asyncio.sleep(2)
+                    return True
+                else:
+                    print("Could not find 'Confirm' button for None option")
+                    return False
+            else:
+                print("Could not find 'None/Not Expecting' option")
+                return False
+                
+    except Exception as e:
+        print(f"Error in handle_children_page: {e}")
+        return False
+
+async def handle_children_confirmation_page(iframe, page, persona):
+    """
+    Handle the children confirmation page that appears after adding children.
+    This page typically shows a summary of the children added and asks for confirmation.
+    """
+    try:
+        print("Detected 'Children confirmation' page. Handling confirmation...")
+        
+        # Look for the confirm button with the count of children
+        confirm_selectors = [
+            'button:has-text("Confirm (2)")',
+            'button:has-text("Confirm (3)")',
+            'button:has-text("Confirm")',
+            'button:has-text("Next")',
+            'button:has-text("Continue")',
+            'button:has-text("Submit")'
+        ]
+        
+        for selector in confirm_selectors:
+            try:
+                confirm_button = iframe.locator(selector)
+                if await confirm_button.count() > 0:
+                    await confirm_button.first.click()
+                    print(f"Clicked confirm button using selector: {selector}")
+                    await asyncio.sleep(2)
+                    return True
+            except Exception as e:
+                print(f"Failed with selector {selector}: {e}")
+                continue # This line needs to be indented by 4 spaces relative to 'except
+            
+        # If no confirm button found, try to find any clickable button
+        try:
+            any_button = iframe.locator('button').first
+            if await any_button.count() > 0:
+                button_text = await any_button.inner_text()
+                await any_button.click()
+                print(f"Clicked generic button with text: {button_text}")
+                await asyncio.sleep(2)
+                return True
+        except Exception as e:
+            print(f"Could not find any clickable button: {e}")
+        
+        print("Could not find confirmation button")
+        return False
+        
+    except Exception as e:
+        print(f"Error in handle_children_confirmation_page: {e}")
+        return False
+
+async def handle_job_title_page(iframe, page, persona):
+    """
+    Handle the job title selection page.
+    """
+    try:
+        print("Detected 'Job title' page. Handling job title selection...")
+        
+        # Get job info from persona
+        job_title = persona.get("work", {}).get("job_title", "Manager")
+        print(f"Persona job title: {job_title}")
+        
+        # Map persona job title to survey options
+        job_mapping = {
+            "C-Level": "C-Level (e.g. CEO, CFO), Owner, Partner, President",
+            "Vice President": "Vice President (EVP, SVP, AVP, VP)",
+            "Director": "Director (Group Director, Sr. Director, Director)",
+            "Manager": "Manager (Group Manager, Sr. Manager, Manager, Program Manager)",
+            "Analyst": "Analyst",
+            "Assistant": "Assistant or Associate",
+            "Consultant": "Consultant",
+            "Administrative": "Administrative (Clerical or Support Staff)",
+            "Intern": "Intern",
+            "Volunteer": "Volunteer"
+        }
+        
+        # Default to Manager if job title not found
+        target_job = job_mapping.get(job_title, "Manager (Group Manager, Sr. Manager, Manager, Program Manager)")
+        print(f"Selecting job title: {target_job}")
+        
+        # Try to find and click the job title option
+        try:
+            job_selectors = [
+                f'button:has-text("{target_job}")',
+                f'label:has-text("{target_job}")',
+                f'div:has-text("{target_job}")',
+                # Try partial matches
+                f'button:has-text("Manager")',
+                f'label:has-text("Manager")',
+                f'div:has-text("Manager")',
+                f'button:has-text("Director")',
+                f'label:has-text("Director")',
+                f'div:has-text("Director")'
+            ]
+            
+            for selector in job_selectors:
+                try:
+                    job_option = iframe.locator(selector)
+                    if await job_option.count() > 0:
+                        await job_option.first.click()
+                        print(f"Clicked job title option using selector: {selector}")
+                        await asyncio.sleep(2)
+                        return True
+                except Exception as e:
+                    continue
+            
+            print(f"Could not find job title option: {target_job}")
+            return False
+        except Exception as e:
+            print(f"Error selecting job title: {e}")
+            return False
+            
+    except Exception as e:
+        print(f"An error occurred while handling Job title page: {e}")
+        return False
+
+async def handle_company_employee_range_page(iframe, page, persona):
+    """
+    Handle the company employee range question.
+    """
+    try:
+        print("Detected 'Company employee range' page. Handling employee range selection...")
+        
+        # Get company info from persona
+        company_size = persona.get("work", {}).get("company_size", "101-500")
+        print(f"Persona company size: {company_size}")
+        
+        # Map persona company size to survey options
+        size_mapping = {
+            "1": "1",
+            "2-10": "2-10",
+            "11-50": "11-50",
+            "51-100": "51-100",
+            "101-500": "101-500",
+            "501-1000": "501-1000",
+            "1001-5000": "1001-5000",
+            "5000+": "5000 or more"
+        }
+        
+        target_size = size_mapping.get(company_size, "101-500")
+        print(f"Selecting company size: {target_size}")
+        
+        # Try to find and click the company size option
+        try:
+            size_selectors = [
+                f'button:has-text("{target_size}")',
+                f'label:has-text("{target_size}")',
+                f'div:has-text("{target_size}")',
+                # Try partial matches
+                f'button:has-text("101-500")',
+                f'label:has-text("101-500")',
+                f'div:has-text("101-500")'
+            ]
+            
+            for selector in size_selectors:
+                try:
+                    size_option = iframe.locator(selector)
+                    if await size_option.count() > 0:
+                        await size_option.first.click()
+                        print(f"Clicked company size option using selector: {selector}")
+                        await asyncio.sleep(2)
+                        return True
+                except Exception as e:
+                    continue
+            
+            print(f"Could not find company size option: {target_size}")
+            return False
+        except Exception as e:
+            print(f"Error selecting company size: {e}")
+            return False
+            
+    except Exception as e:
+        print(f"An error occurred while handling Company employee range page: {e}")
+        return False
+
+async def handle_company_industry_page(iframe, page, persona):
+    """
+    Handle the company industry selection page.
+    """
+    try:
+        print("Detected 'Company industry' page. Handling industry selection...")
+        
+        # Get industry info from persona
+        industry = persona.get("work", {}).get("industry", "Information Technology/IT")
+        print(f"Persona industry: {industry}")
+        
+        # Map persona industry to survey options
+        industry_mapping = {
+            "Technology": "Information Technology/IT",
+            "IT": "Information Technology/IT",
+            "Software": "Computer Software",
+            "Hardware": "Computer Hardware",
+            "Internet": "Internet",
+            "Telecommunications": "Telecommunications",
+            "Finance": "Banking/Financial",
+            "Insurance": "Insurance",
+            "Accounting": "Accounting",
+            "Communications": "Communications/Information",
+            "Electronics": "Consumer Electronics",
+            "Reseller": "Computer Reseller (software/hardware)"
+        }
+        
+        target_industry = industry_mapping.get(industry, "Information Technology/IT")
+        print(f"Selecting industry: {target_industry}")
+        
+        # Try to find and click the industry option
+        try:
+            industry_selectors = [
+                f'button:has-text("{target_industry}")',
+                f'label:has-text("{target_industry}")',
+                f'div:has-text("{target_industry}")',
+                # Try partial matches
+                f'button:has-text("Information Technology")',
+                f'label:has-text("Information Technology")',
+                f'div:has-text("Information Technology")',
+                f'button:has-text("Computer Software")',
+                f'label:has-text("Computer Software")',
+                f'div:has-text("Computer Software")'
+            ]
+            
+            for selector in industry_selectors:
+                try:
+                    industry_option = iframe.locator(selector)
+                    if await industry_option.count() > 0:
+                        await industry_option.first.click()
+                        print(f"Clicked industry option using selector: {selector}")
+                        await asyncio.sleep(2)
+                        return True
+                except Exception as e:
+                    continue
+            
+            print(f"Could not find industry option: {target_industry}")
+            return False
+        except Exception as e:
+            print(f"Error selecting industry: {e}")
+            return False
+            
+    except Exception as e:
+        print(f"An error occurred while handling Company industry page: {e}")
+        return False
+
+async def handle_company_revenue_page(iframe, page, persona):
+    """
+    Handle the company revenue range question.
+    """
+    try:
+        print("Detected 'Company revenue range' page. Handling revenue selection...")
+        
+        # Get revenue info from persona
+        revenue = persona.get("work", {}).get("company_revenue", "$1 Million - $4.99 Million")
+        print(f"Persona company revenue: {revenue}")
+        
+        # Map persona revenue to survey options
+        revenue_mapping = {
+            "Under $100,000": "Under $100,000",
+            "$100,000 - $249,999": "$100,000 - $249,999",
+            "$250,000 - $499,999": "$250,000 - $499,999",
+            "$500,000 - $999,999": "$500,000 - $999,999",
+            "$1 Million - $4.99 Million": "$1 Million - $4.99 Million",
+            "$5 Million - $9.99 Million": "$5 Million - $9.99 Million",
+            "$10 Million - $24.99 Million": "$10 Million - $24.99 Million",
+            "$25 Million - $49.99 Million": "$25 Million - $49.99 Million",
+            "$50 Million - $99.99 Million": "$50 Million - $99.99 Million",
+            "$100 Million - $249.99 Million": "$100 Million - $249.99 Million",
+            "$250 Million - $499.99 Million": "$250 Million - $499.99 Million",
+            "$500 Million - $999.99 Million": "$500 Million - $999.99 Million",
+            "$1 Billion+": "$1 Billion or more"
+        }
+        
+        target_revenue = revenue_mapping.get(revenue, "$1 Million - $4.99 Million")
+        print(f"Selecting revenue range: {target_revenue}")
+        
+        # Try to find and click the revenue option
+        try:
+            revenue_selectors = [
+                f'button:has-text("{target_revenue}")',
+                f'label:has-text("{target_revenue}")',
+                f'div:has-text("{target_revenue}")',
+                # Try partial matches
+                f'button:has-text("$1 Million")',
+                f'label:has-text("$1 Million")',
+                f'div:has-text("$1 Million")'
+            ]
+            
+            for selector in revenue_selectors:
+                try:
+                    revenue_option = iframe.locator(selector)
+                    if await revenue_option.count() > 0:
+                        await revenue_option.first.click()
+                        print(f"Clicked revenue option using selector: {selector}")
+                        await asyncio.sleep(2)
+                        
+                        # After clicking revenue, look for and click Next/Continue button
+                        next_selectors = [
+                            'button:has-text("Next")',
+                            'button:has-text("Continue")', 
+                            'button:has-text("Submit")',
+                            'button:has-text("Confirm")',
+                            'button:has-text("Proceed")',
+                            'button:has-text("Save")'
+                        ]
+                        
+                        for next_selector in next_selectors:
+                            try:
+                                next_button = iframe.locator(next_selector)
+                                if await next_button.count() > 0:
+                                    await next_button.first.click()
+                                    print(f"Clicked next button using selector: {next_selector}")
+                                    await asyncio.sleep(2)
+                                    break
+                            except Exception:
+                                continue
+                        
+                        return True
+                except Exception as e:
+                    continue
+            
+            print(f"Could not find revenue option: {target_revenue}")
+            return False
+        except Exception as e:
+            print(f"Error selecting revenue: {e}")
+            return False
+            
+    except Exception as e:
+        print(f"An error occurred while handling Company revenue page: {e}")
+        return False
+
+async def handle_company_department_page(iframe, page, persona):
+    """
+    Handle the company department selection page.
+    """
+    try:
+        print("Detected 'Company department' page. Handling department selection...")
+        
+        # Get job title from persona to determine appropriate department
+        job_title = persona.get("work", {}).get("job_title", "Senior Program Manager")
+        print(f"Persona job title: {job_title}")
+        
+        # Map job title to appropriate department
+        department_mapping = {
+            "Senior Program Manager": "Operations",
+            "Software Engineer": "Information Technology/IT", 
+            "Product Manager": "Marketing",
+            "Sales Manager": "Sales/Business Development",
+            "Accountant": "Finance/Accounting",
+            "HR Manager": "Human Resources",
+            "Legal Counsel": "Legal/Law",
+            "CEO": "Executive Leadership",
+            "Customer Service Rep": "Customer Service/Client Service"
+        }
+        
+        # Default to Operations for technical/management roles
+        target_department = department_mapping.get(job_title, "Operations")
+        print(f"Selecting department: {target_department}")
+        
+        # Try different selectors for the department options
+        department_selectors = [
+            f'label:has-text("{target_department}")',
+            f'div:has-text("{target_department}")',
+            f'[role="button"]:has-text("{target_department}")',
+            f'button:has-text("{target_department}")'
+        ]
+        
+        for selector in department_selectors:
+            try:
+                element = iframe.locator(selector)
+                if await element.count() > 0:
+                    await element.first.click()
+                    print(f"Clicked department option using selector: {selector}")
+                    await asyncio.sleep(2)
+                    return True
+            except Exception as e:
+                print(f"Failed with selector {selector}: {e}")
+                continue
+        
+        print(f"Could not find department option: {target_department}")
+        print("Falling back to hybrid vision/DOM model...")
+        return await solve_page_with_hybrid_vision_dom(iframe, page)
+        
+    except Exception as e:
+        print(f"Error in handle_company_department_page: {e}")
+        return False
+
+async def handle_living_situation_page(iframe, page, persona):
+    """
+    Handle the living situation question.
+    """
+    try:
+        print("Detected 'Living situation' page. Handling living situation selection...")
+        
+        # Get living situation from persona
+        living_situation = persona.get("about_you", {}).get("living_situation", "Homeowner")
+        print(f"Persona living situation: {living_situation}")
+        
+        # Map persona living situation to survey options
+        situation_mapping = {
+            "Renting": "Renting",
+            "Homeowner": "Homeowner",
+            "Other": "Other"
+        }
+        
+        target_situation = situation_mapping.get(living_situation, "Homeowner")
+        print(f"Selecting living situation: {target_situation}")
+        
+        # Try to find and click the living situation option
+        try:
+            situation_selectors = [
+                f'button:has-text("{target_situation}")',
+                f'label:has-text("{target_situation}")',
+                f'div:has-text("{target_situation}")',
+                # Try partial matches
+                f'button:has-text("Homeowner")',
+                f'label:has-text("Homeowner")',
+                f'div:has-text("Homeowner")',
+                f'button:has-text("Renting")',
+                f'label:has-text("Renting")',
+                f'div:has-text("Renting")'
+            ]
+            
+            for selector in situation_selectors:
+                try:
+                    situation_option = iframe.locator(selector)
+                    if await situation_option.count() > 0:
+                        await situation_option.first.click()
+                        print(f"Clicked living situation option using selector: {selector}")
+                        await asyncio.sleep(2)
+                        return True
+                except Exception as e:
+                    continue
+            
+            print(f"Could not find living situation option: {target_situation}")
+            return False
+        except Exception as e:
+            print(f"Error selecting living situation: {e}")
+            return False
+            
+    except Exception as e:
+        print(f"An error occurred while handling Living situation page: {e}")
+        return False
+
+async def handle_smartphone_page(iframe, page, persona):
+    """
+    Handle the smartphone ownership question.
+    """
+    try:
+        print("Detected 'Smartphone' page. Handling smartphone question...")
+        
+        # Get smartphone info from persona
+        has_smartphone = persona.get("about_you", {}).get("has_smartphone", True)
+        smartphone_use = persona.get("about_you", {}).get("smartphone_use", "personal")
+        print(f"Persona has smartphone: {has_smartphone}, use: {smartphone_use}")
+        
+        if has_smartphone:
+            # Map smartphone use to survey options
+            use_mapping = {
+                "business": "Yes, for business",
+                "personal": "Yes, for personal",
+                "both": "Yes, for both"
+            }
+            
+            target_use = use_mapping.get(smartphone_use, "Yes, for personal")
+            print(f"Selecting smartphone use: {target_use}")
+            
+            # Try to find and click the smartphone option
+            try:
+                smartphone_selectors = [
+                    f'button:has-text("{target_use}")',
+                    f'label:has-text("{target_use}")',
+                    f'div:has-text("{target_use}")',
+                    # Try partial matches
+                    f'button:has-text("personal")',
+                    f'label:has-text("personal")',
+                    f'div:has-text("personal")',
+                    f'button:has-text("business")',
+                    f'label:has-text("business")',
+                    f'div:has-text("business")',
+                    f'button:has-text("both")',
+                    f'label:has-text("both")',
+                    f'div:has-text("both")'
+                ]
+                
+                for selector in smartphone_selectors:
+                    try:
+                        smartphone_option = iframe.locator(selector)
+                        if await smartphone_option.count() > 0:
+                            await smartphone_option.first.click()
+                            print(f"Clicked smartphone option using selector: {selector}")
+                            await asyncio.sleep(2)
+                            
+                            # Check if this is the final page (100% completion) and look for Finish button
+                            page_text = await iframe.locator('body').text_content()
+                            if "100%" in page_text or "Finish" in page_text:
+                                print("Detected final page, looking for Finish button...")
+                                finish_selectors = [
+                                    'button:has-text("Finish")',
+                                    'button:has-text("Complete")',
+                                    'button:has-text("Submit")',
+                                    'button:has-text("Done")'
+                                ]
+                                
+                                for finish_selector in finish_selectors:
+                                    try:
+                                        finish_button = iframe.locator(finish_selector)
+                                        if await finish_button.count() > 0:
+                                            await finish_button.first.click()
+                                            print(f"Clicked finish button using selector: {finish_selector}")
+                                            await asyncio.sleep(2)
+                                            return "SURVEY_COMPLETE"
+                                    except Exception as e:
+                                        continue
+                            
+                            return True
+                    except Exception as e:
+                        continue
+                
+                print(f"Could not find smartphone option: {target_use}")
+                return False
+            except Exception as e:
+                print(f"Error selecting smartphone option: {e}")
+                return False
+        else:
+            # Click "I don't own a smartphone"
+            try:
+                no_smartphone_button = iframe.locator('button:has-text("I don\'t own a smartphone"), button:has-text("No smartphone"), button:has-text("No")')
+                if await no_smartphone_button.count() > 0:
+                    await no_smartphone_button.first.click()
+                    print("Clicked 'I don't own a smartphone' button")
+                    await asyncio.sleep(2)
+                    return True
+            except Exception as e:
+                print(f"Could not find no smartphone button: {e}")
+                return False
+            
+    except Exception as e:
+        print(f"An error occurred while handling Smartphone page: {e}")
         return False
 
 async def detect_and_fill_form_fields(iframe, persona):
@@ -630,221 +1351,6 @@ async def detect_and_fill_form_fields(iframe, persona):
     print(f"Detected and filled {len(filled_fields)} fields: {', '.join(filled_fields)}")
     return filled_fields
 
-async def handle_consent_page(iframe, page, persona):
-    """
-    Handle consent/opt-in pages that ask for permission to collect additional data.
-    """
-    try:
-        print("Detected consent/opt-in page. Handling consent...")
-        
-        # Look for consent options - typically "Yes" or "Agree" buttons
-        consent_selectors = [
-            'button:has-text("Yes")',
-            'button:has-text("Agree")', 
-            'button:has-text("I agree")',
-            'button:has-text("Accept")',
-            'button:has-text("Allow")',
-            'label:has-text("Yes")',
-            'label:has-text("Agree")',
-            'input[value="yes"]',
-            'input[value="agree"]'
-        ]
-        
-        for selector in consent_selectors:
-            try:
-                consent_element = iframe.locator(selector)
-                if await consent_element.count() > 0:
-                    await consent_element.first.click()
-                    print(f"Clicked consent option: {selector}")
-                    
-                    # Wait for any next/continue button
-                    await asyncio.sleep(2)
-                    
-                    # Look for a next/continue button
-                    next_button = iframe.locator('button:has-text("Next"), button:has-text("Continue"), button:has-text("Submit"), button:has-text("Confirm")')
-                    if await next_button.count() > 0:
-                        await next_button.first.click()
-                        print("Clicked next button after consent")
-                        await asyncio.sleep(2)
-                    
-                    return True
-            except Exception as e:
-                continue  # Try next selector
-        
-        print("Could not find consent option, using hybrid approach...")
-        return await solve_page_with_hybrid_vision_dom(iframe, page)
-        
-    except Exception as e:
-        print(f"Error handling consent page: {e}")
-        return await solve_page_with_hybrid_vision_dom(iframe, page)
-
-async def handle_general_form_page(iframe, page, persona):
-    """
-    Handle general form pages that may contain various types of questions.
-    """
-    try:
-        print("Detected general form page. Attempting to fill all available fields...")
-        
-        # First, try to detect and fill any form fields
-        filled_fields = await detect_and_fill_form_fields(iframe, persona)
-        
-        # Look for any radio buttons or checkboxes that need selection
-        radio_buttons = iframe.locator('input[type="radio"]')
-        checkbox_buttons = iframe.locator('input[type="checkbox"]')
-        
-        radio_count = await radio_buttons.count()
-        checkbox_count = await checkbox_buttons.count()
-        
-        print(f"Found {radio_count} radio buttons and {checkbox_count} checkboxes")
-        
-        # For radio buttons, try to select appropriate options based on persona
-        if radio_count > 0:
-            await handle_radio_button_selection(iframe, persona)
-        
-        # For checkboxes, try to select appropriate options
-        if checkbox_count > 0:
-            await handle_checkbox_selection(iframe, persona)
-        
-        # Look for a submit/continue button
-        submit_selectors = [
-            'button:has-text("Next")',
-            'button:has-text("Continue")', 
-            'button:has-text("Submit")',
-            'button:has-text("Confirm")',
-            'input[type="submit"]',
-            'button[type="submit"]'
-        ]
-        
-        for selector in submit_selectors:
-            try:
-                submit_button = iframe.locator(selector)
-                if await submit_button.count() > 0:
-                    await submit_button.first.click()
-                    print(f"Clicked submit button: {selector}")
-                    await asyncio.sleep(2)
-                    return True
-            except Exception:
-                continue
-        
-        # If no submit button found, try the hybrid approach
-        print("No submit button found, using hybrid approach...")
-        return await solve_page_with_hybrid_vision_dom(iframe, page)
-        
-    except Exception as e:
-        print(f"Error handling general form page: {e}")
-        return await solve_page_with_hybrid_vision_dom(iframe, page)
-
-async def handle_radio_button_selection(iframe, persona):
-    """
-    Handle radio button selection based on persona data.
-    """
-    try:
-        # Get all radio button labels
-        radio_labels = iframe.locator('label')
-        label_count = await radio_labels.count()
-        
-        print(f"Found {label_count} potential radio button labels")
-        
-        # Common question patterns and their persona mappings
-        question_patterns = {
-            "gender": ["male", "female"],
-            "marital": ["married", "single", "divorced", "widowed"],
-            "employment": ["employed", "unemployed", "student", "retired"],
-            "income": ["income", "salary", "earnings"],
-            "education": ["education", "school", "college", "university"],
-            "technology": ["smartphone", "computer", "internet"],
-            "health": ["health", "medical", "condition"],
-            "shopping": ["shopping", "purchase", "buy"],
-            "travel": ["travel", "vacation", "trip"],
-            "automotive": ["car", "vehicle", "automotive"],
-            "media": ["tv", "movie", "entertainment"],
-            "food": ["food", "drink", "beverage", "alcohol"]
-        }
-        
-        # Get page text to understand the question
-        page_text = await iframe.locator('body').inner_text()
-        page_text_lower = page_text.lower()
-        
-        # Determine what type of question this is
-        question_type = None
-        for pattern, keywords in question_patterns.items():
-            if any(keyword in page_text_lower for keyword in keywords):
-                question_type = pattern
-                break
-        
-        if question_type:
-            print(f"Detected question type: {question_type}")
-            
-            # Get appropriate answer from persona
-            answer = get_radio_answer_from_persona(question_type, persona)
-            if answer:
-                print(f"Looking for radio option: {answer}")
-                
-                # Try to find and click the appropriate radio button
-                for i in range(label_count):
-                    try:
-                        label_text = await radio_labels.nth(i).inner_text()
-                        if answer.lower() in label_text.lower() or label_text.lower() in answer.lower():
-                            await radio_labels.nth(i).click()
-                            print(f"Selected radio option: {label_text}")
-                            return True
-                    except Exception:
-                        continue
-        
-        # If we can't determine the question type, try to select the first available option
-        print("Could not determine question type, selecting first available option...")
-        try:
-            await radio_labels.first.click()
-            print("Selected first available radio option")
-            return True
-        except Exception as e:
-            print(f"Could not select first radio option: {e}")
-            return False
-            
-    except Exception as e:
-        print(f"Error handling radio button selection: {e}")
-        return False
-
-async def handle_checkbox_selection(iframe, persona):
-    """
-    Handle checkbox selection based on persona data.
-    """
-    try:
-        # Get all checkbox labels
-        checkbox_labels = iframe.locator('label')
-        label_count = await checkbox_labels.count()
-        
-        print(f"Found {label_count} potential checkbox labels")
-        
-        # For checkboxes, we typically want to select multiple options
-        # Look for common checkbox question patterns
-        page_text = await iframe.locator('body').inner_text()
-        page_text_lower = page_text.lower()
-        
-        # Common checkbox question patterns
-        if any(keyword in page_text_lower for keyword in ["select all", "choose all", "multiple"]):
-            # Select all checkboxes
-            for i in range(label_count):
-                try:
-                    await checkbox_labels.nth(i).click()
-                    print(f"Selected checkbox {i}")
-                except Exception:
-                    continue
-        else:
-            # Select first few checkboxes (common pattern)
-            for i in range(min(3, label_count)):
-                try:
-                    await checkbox_labels.nth(i).click()
-                    print(f"Selected checkbox {i}")
-                except Exception:
-                    continue
-        
-        return True
-        
-    except Exception as e:
-        print(f"Error handling checkbox selection: {e}")
-        return False
-
 def get_field_value_from_persona(field_key, persona):
     """
     Extract field value from persona data based on field key.
@@ -865,434 +1371,28 @@ def get_field_value_from_persona(field_key, persona):
     
     return field_mapping.get(field_key)
 
-def get_radio_answer_from_persona(question_type, persona):
-    """
-    Get appropriate radio button answer based on question type and persona data.
-    """
-    answer_mapping = {
-        "gender": persona.get("about_you", {}).get("gender", "Male"),
-        "marital": persona.get("home", {}).get("marital_status", "Married"),
-        "employment": persona.get("work", {}).get("employment_status", "Employed full-time"),
-        "income": persona.get("work", {}).get("personal_income_before_taxes", "$150,000 - $199,999"),
-        "education": "Graduated 4 year college/University",  # Default from persona
-        "technology": "Yes, I own a smartphone",  # From persona
-        "health": "Good",  # Default health status
-        "shopping": "Online shopping",  # From persona
-        "travel": "Yes, 2-3 times",  # From persona
-        "automotive": "Yes",  # From persona
-        "media": "Several times a day",  # From persona
-        "food": "1 to 3 drinks per week"  # From persona
-    }
-    
-    return answer_mapping.get(question_type)
-
-async def detect_survey_completion(page, iframe_locator):
-    """
-    Detect if the survey has been completed.
-    """
-    try:
-        # Check main page for completion indicators
-        main_page_text = await page.inner_text('body')
-        if any(keyword in main_page_text.lower() for keyword in ["thank you", "survey complete", "completion", "finished", "100%", "congratulations"]):
-            return True
-        
-        # Check iframe for completion indicators
+async def try_auto_start_survey(page, max_attempts=5):
+    for attempt in range(max_attempts):
         try:
-            iframe_text = await iframe_locator.locator('body').inner_text()
-            if any(keyword in iframe_text.lower() for keyword in ["thank you", "survey complete", "completion", "finished", "100%", "congratulations"]):
+            print(f"[Auto-Start] Attempt {attempt+1} to start a survey...")
+            await page.wait_for_selector('button:has-text("Start earning"), a.survey-card', state='visible', timeout=10000)
+            start_earning_button = page.get_by_role('button', name='Start earning')
+            if await start_earning_button.is_visible():
+                await start_earning_button.click()
+                print("[Auto-Start] Clicked 'Start earning' button.")
                 return True
-        except Exception:
-            pass
-        
-        # Check for completion URLs
-        current_url = page.url
-        if any(keyword in current_url.lower() for keyword in ["complete", "finished", "thank", "success"]):
-            return True
-        
-        return False
-    except Exception as e:
-        print(f"Error detecting survey completion: {e}")
-        return False
-
-async def handle_survey_completion(page, iframe_locator):
-    """
-    Handle the survey completion process.
-    """
-    try:
-        print("🎉 Survey completed successfully! 🎉")
-        
-        # Wait a moment to see if there are any final actions needed
-        await asyncio.sleep(2)
-        
-        # Check for any final buttons (like "Continue to Dashboard", "Get Rewards", etc.)
-        try:
-            final_buttons = page.locator('button:has-text("Continue"), button:has-text("Dashboard"), button:has-text("Rewards"), button:has-text("Finish")')
-            if await final_buttons.count() > 0:
-                await final_buttons.first.click()
-                print("Clicked final completion button")
-        except Exception:
-            pass
-        
-        return True
-    except Exception as e:
-        print(f"Error handling survey completion: {e}")
-        return True  # Still consider it complete even if there's an error
-
-async def handle_remaining_survey_pages(iframe, page, persona):
-    """
-    Handle any remaining survey pages that don't fit into specific categories.
-    This is a comprehensive fallback handler.
-    """
-    try:
-        print("Handling remaining survey page with comprehensive approach...")
-        
-        # Get all interactive elements
-        buttons = await iframe.locator('button').all()
-        inputs = await iframe.locator('input').all()
-        selects = await iframe.locator('select').all()
-        links = await iframe.locator('a').all()
-        labels = await iframe.locator('label').all()
-        
-        all_elements = buttons + inputs + selects + links + labels
-        print(f"Found {len(all_elements)} total interactive elements")
-        
-        # First, try to fill any text inputs
-        for element in inputs:
-            try:
-                input_type = await element.get_attribute('type')
-                if input_type in ['text', 'email', 'password', 'number']:
-                    placeholder = await element.get_attribute('placeholder') or ''
-                    name = await element.get_attribute('name') or ''
-                    
-                    # Determine what to fill based on field characteristics
-                    if any(keyword in (placeholder + name).lower() for keyword in ['name', 'full']):
-                        await element.fill(persona.get('about_you', {}).get('full_name', 'John Doe'))
-                    elif any(keyword in (placeholder + name).lower() for keyword in ['email', 'e-mail']):
-                        await element.fill(persona.get('about_you', {}).get('email', 'test@example.com'))
-                    elif any(keyword in (placeholder + name).lower() for keyword in ['phone', 'mobile']):
-                        await element.fill('555-123-4567')
-                    elif any(keyword in (placeholder + name).lower() for keyword in ['zip', 'postal']):
-                        await element.fill(persona.get('about_you', {}).get('zipcode', '90001'))
-                    elif any(keyword in (placeholder + name).lower() for keyword in ['city']):
-                        await element.fill(persona.get('about_you', {}).get('city', 'Los Angeles'))
-                    elif any(keyword in (placeholder + name).lower() for keyword in ['state']):
-                        await element.fill(persona.get('about_you', {}).get('state', 'California'))
-                    else:
-                        # Generic text field - fill with a reasonable default
-                        await element.fill('Test response')
-                    
-                    print(f"Filled text input: {placeholder or name}")
-            except Exception as e:
-                continue
-        
-        # Handle radio buttons
-        radio_inputs = await iframe.locator('input[type="radio"]').all()
-        if radio_inputs:
-            print(f"Found {len(radio_inputs)} radio buttons")
-            # Select the first radio button in each group
-            selected_groups = set()
-            for radio in radio_inputs:
-                try:
-                    name = await radio.get_attribute('name')
-                    if name and name not in selected_groups:
-                        await radio.click()
-                        selected_groups.add(name)
-                        print(f"Selected radio button in group: {name}")
-                except Exception:
-                    continue
-        
-        # Handle checkboxes
-        checkbox_inputs = await iframe.locator('input[type="checkbox"]').all()
-        if checkbox_inputs:
-            print(f"Found {len(checkbox_inputs)} checkboxes")
-            # Select first few checkboxes
-            for i, checkbox in enumerate(checkbox_inputs[:3]):
-                try:
-                    await checkbox.click()
-                    print(f"Selected checkbox {i+1}")
-                except Exception:
-                    continue
-        
-        # Look for submit/continue buttons
-        submit_selectors = [
-            'button:has-text("Next")',
-            'button:has-text("Continue")', 
-            'button:has-text("Submit")',
-            'button:has-text("Confirm")',
-            'button:has-text("Yes")',
-            'button:has-text("Agree")',
-            'input[type="submit"]',
-            'button[type="submit"]'
-        ]
-        
-        for selector in submit_selectors:
-            try:
-                submit_button = iframe.locator(selector)
-                if await submit_button.count() > 0:
-                    await submit_button.first.click()
-                    print(f"Clicked submit button: {selector}")
-                    await asyncio.sleep(2)
+            else:
+                survey_card = page.locator('a.survey-card').first
+                if await survey_card.is_visible():
+                    await survey_card.click()
+                    print("[Auto-Start] Clicked a survey card.")
                     return True
-            except Exception:
-                continue
-        
-        # If no submit button found, try clicking any visible button
-        try:
-            visible_buttons = iframe.locator('button:visible')
-            if await visible_buttons.count() > 0:
-                await visible_buttons.first.click()
-                print("Clicked first visible button")
-                await asyncio.sleep(2)
-                return True
         except Exception as e:
-            print(f"Could not click any visible button: {e}")
-        
-        return False
-        
-    except Exception as e:
-        print(f"Error in comprehensive survey handler: {e}")
-        return False
-
-async def handle_signup_completion(iframe, page, persona):
-    """
-    Handle the final stages of the signup survey to ensure 100% completion.
-    """
-    try:
-        print("Handling signup completion...")
-        
-        # Get page text to understand what page we're on
-        page_text = await iframe.locator('body').inner_text()
-        page_text_lower = page_text.lower()
-        
-        print(f"Current signup page: {page_text[:100]}...")
-        
-        # Handle different final signup pages
-        if "address" in page_text_lower or "zipcode" in page_text_lower:
-            return await handle_address_page(iframe, page, persona)
-        elif "ethnicity" in page_text_lower or "race" in page_text_lower or "background" in page_text_lower:
-            return await handle_ethnicity_page(iframe, page, persona)
-        elif "consent" in page_text_lower or "agree" in page_text_lower or "permission" in page_text_lower:
-            return await handle_consent_page(iframe, page, persona)
-        elif "thank" in page_text_lower or "complete" in page_text_lower or "finished" in page_text_lower:
-            print("Signup survey appears to be complete!")
-            return True
-        else:
-            # Use the comprehensive handler for any remaining pages
-            return await handle_remaining_survey_pages(iframe, page, persona)
-            
-    except Exception as e:
-        print(f"Error in signup completion: {e}")
-        return await solve_page_with_hybrid_vision_dom(iframe, page)
-
-async def find_and_start_surveys(page):
-    """
-    Find and start the highest paying surveys after signup completion.
-    """
-    try:
-        print("\n" + "="*50)
-        print("SIGNUP COMPLETE - STARTING SURVEYS")
-        print("="*50)
-        
-        # Navigate to surveys page
-        await page.goto("https://www.qmee.com/en-us/surveys", timeout=30000)
-        await asyncio.sleep(3)
-        
-        # Look for available surveys with different selectors
-        survey_selectors = [
-            'a.survey-card',
-            'div[class*="survey"]',
-            '.survey-item',
-            '[class*="survey"]',
-            'div[class*="card"]',
-            'a[href*="survey"]',
-            'button[class*="survey"]'
-        ]
-        
-        surveys = []
-        for selector in survey_selectors:
-            try:
-                survey_cards = page.locator(selector)
-                survey_count = await survey_cards.count()
-                
-                if survey_count > 0:
-                    print(f"Found {survey_count} surveys with selector: {selector}")
-                    
-                    for i in range(survey_count):
-                        try:
-                            survey_element = survey_cards.nth(i)
-                            survey_text = await survey_element.inner_text()
-                            
-                            # Extract reward amount with multiple patterns
-                            import re
-                            reward_patterns = [
-                                r'[\$£€](\d+\.?\d*)',  # $0.50, £1.20, €0.75
-                                r'(\d+\.?\d*)\s*(?:p|pence|cents?)',  # 50p, 1.20p
-                                r'(\d+\.?\d*)\s*(?:dollars?|pounds?|euros?)',  # 0.50 dollars
-                                r'reward[:\s]*[\$£€]?(\d+\.?\d*)',  # reward: $0.50
-                                r'earn[:\s]*[\$£€]?(\d+\.?\d*)',  # earn: $0.50
-                                r'pay[:\s]*[\$£€]?(\d+\.?\d*)'  # pay: $0.50
-                            ]
-                            
-                            reward_amount = 0.10  # Default reward
-                            for pattern in reward_patterns:
-                                reward_match = re.search(pattern, survey_text, re.IGNORECASE)
-                                if reward_match:
-                                    try:
-                                        reward_amount = float(reward_match.group(1))
-                                        break
-                                    except ValueError:
-                                        continue
-                            
-                            # Also check for time estimates to calculate hourly rate
-                            time_patterns = [
-                                r'(\d+)\s*(?:min|minutes?)',
-                                r'(\d+)\s*(?:sec|seconds?)',
-                                r'(\d+)\s*(?:hour|hours?)'
-                            ]
-                            
-                            time_minutes = 5  # Default time
-                            for pattern in time_patterns:
-                                time_match = re.search(pattern, survey_text, re.IGNORECASE)
-                                if time_match:
-                                    try:
-                                        time_value = int(time_match.group(1))
-                                        if 'hour' in pattern:
-                                            time_minutes = time_value * 60
-                                        elif 'min' in pattern:
-                                            time_minutes = time_value
-                                        elif 'sec' in pattern:
-                                            time_minutes = time_value / 60
-                                        break
-                                    except ValueError:
-                                        continue
-                            
-                            # Calculate hourly rate for better prioritization
-                            hourly_rate = (reward_amount / time_minutes) * 60 if time_minutes > 0 else reward_amount
-                            
-                            surveys.append({
-                                'index': i,
-                                'element': survey_element,
-                                'text': survey_text,
-                                'reward': reward_amount,
-                                'time_minutes': time_minutes,
-                                'hourly_rate': hourly_rate,
-                                'selector': selector
-                            })
-                            
-                            print(f"Survey {len(surveys)}: ${reward_amount:.2f} ({time_minutes}min) - {survey_text[:50]}...")
-                            
-                        except Exception as e:
-                            print(f"Error processing survey {i}: {e}")
-                            continue
-                    
-                    if surveys:
-                        break  # Found surveys with this selector
-                        
-            except Exception as e:
-                print(f"Error with selector {selector}: {e}")
-                continue
-        
-        if not surveys:
-            print("No surveys available at the moment.")
-            return False
-        
-        # Sort surveys by hourly rate (highest first), then by reward amount
-        surveys.sort(key=lambda x: (x['hourly_rate'], x['reward']), reverse=True)
-        
-        print(f"\nSorted surveys by hourly rate (highest first):")
-        for i, survey in enumerate(surveys[:5]):  # Show top 5
-            print(f"{i+1}. ${survey['reward']:.2f} ({survey['time_minutes']}min) - ${survey['hourly_rate']:.2f}/hr - {survey['text'][:50]}...")
-        
-        # Start with the highest paying survey
-        if surveys:
-            best_survey = surveys[0]
-            print(f"\nStarting highest paying survey: ${best_survey['reward']:.2f} ({best_survey['time_minutes']}min)")
-            
-            try:
-                await best_survey['element'].click()
-                print("Clicked on highest paying survey")
-                await asyncio.sleep(3)
-                return True
-            except Exception as e:
-                print(f"Error clicking survey: {e}")
-                # Try alternative click method
-                try:
-                    await best_survey['element'].click(force=True)
-                    print("Clicked with force=True")
-                    await asyncio.sleep(3)
-                    return True
-                except Exception as e2:
-                    print(f"Alternative click also failed: {e2}")
-                    return False
-        else:
-            print("No valid surveys found")
-            return False
-            
-    except Exception as e:
-        print(f"Error finding surveys: {e}")
-        return False
-
-async def navigate_to_surveys_after_signup(page):
-    """
-    Navigate to surveys page after signup completion.
-    """
-    try:
-        print("Navigating to surveys page after signup completion...")
-        
-        # Try to find and click on surveys link
-        try:
-            surveys_link = page.locator('a:has-text("Surveys"), a[href*="survey"], button:has-text("Surveys")')
-            if await surveys_link.count() > 0:
-                await surveys_link.first.click()
-                print("Clicked on Surveys link")
-                await asyncio.sleep(3)
-                return True
-        except Exception:
-            pass
-        
-        # If no surveys link found, navigate directly
-        try:
-            await page.goto("https://www.qmee.com/en-us/surveys", timeout=30000)
-            print("Navigated directly to surveys page")
-            await asyncio.sleep(3)
-            return True
-        except Exception as e:
-            print(f"Error navigating to surveys: {e}")
-            return False
-            
-    except Exception as e:
-        print(f"Error in navigate_to_surveys_after_signup: {e}")
-        return False
-
-async def handle_survey_completion_and_continue(page, iframe_locator):
-    """
-    Handle survey completion and continue to next survey.
-    """
-    try:
-        print("🎉 Survey completed successfully! 🎉")
-        
-        # Wait a moment to see if there are any final actions needed
+            print(f"[Auto-Start] Attempt {attempt+1} failed: {e}")
         await asyncio.sleep(2)
-        
-        # Check for any final buttons (like "Continue to Dashboard", "Get Rewards", etc.)
-        try:
-            final_buttons = page.locator('button:has-text("Continue"), button:has-text("Dashboard"), button:has-text("Rewards"), button:has-text("Finish"), button:has-text("Next Survey")')
-            if await final_buttons.count() > 0:
-                await final_buttons.first.click()
-                print("Clicked final completion button")
-                await asyncio.sleep(3)
-        except Exception:
-            pass
-        
-        # Navigate back to surveys page to find next survey
-        print("Looking for next survey...")
-        await navigate_to_surveys_after_signup(page)
-        return await find_and_start_surveys(page)
-        
-    except Exception as e:
-        print(f"Error handling survey completion: {e}")
-        await navigate_to_surveys_after_signup(page)
-        return await find_and_start_surveys(page)
+    print("[Auto-Start] All attempts failed. Please navigate manually and press Enter.")
+    input("Press Enter once you are on a survey page...")
+    return False
 
 async def page_router(page):
     print("Routing page...")
@@ -1300,44 +1400,116 @@ async def page_router(page):
     try:
         await iframe_locator.locator('body').wait_for(timeout=10000)
         
-        # Check for survey completion first
-        if await detect_survey_completion(page, iframe_locator):
-            return await handle_survey_completion_and_continue(page, iframe_locator)
-        
-        # Get page text for better detection
+        # Get page text for detection
         page_text = await iframe_locator.locator('body').inner_text()
         page_text_lower = page_text.lower()
         
-        print(f"Page content preview: {page_text[:200]}...")
+        # Debug: Print first 200 characters of page text
+        print(f"[DEBUG] Page text preview: {page_text[:200]}...")
+        
+        # Debug: Check for children page keywords
+        print(f"[DEBUG] 'children' in text: {'children' in page_text_lower}")
+        print(f"[DEBUG] 'under the age of 18' in text: {'under the age of 18' in page_text_lower}")
+        print(f"[DEBUG] 'expecting' in text: {'expecting' in page_text_lower}")
+        
+        # Check for Children page FIRST (before Date of Birth detection)
+        if "children" in page_text_lower and ("under the age of 18" in page_text_lower or "expecting" in page_text_lower):
+            print("[DEBUG] Detected Children page")
+            return await handle_children_page(iframe_locator, page, PERSONA)
+        
+        # Debug: Check why children page detection might be failing
+        elif "children" in page_text_lower:
+            print(f"[DEBUG] Found 'children' in page text but missing other keywords")
+            print(f"[DEBUG] 'under the age of 18' in text: {'under the age of 18' in page_text_lower}")
+            print(f"[DEBUG] 'expecting' in text: {'expecting' in page_text_lower}")
+            print(f"[DEBUG] Full page text: {page_text}")
+            return await handle_children_page(iframe_locator, page, PERSONA)
         
         # Check for Date of Birth page
-        if (await iframe_locator.get_by_placeholder("MM").is_visible(timeout=2000) and
+        elif (await iframe_locator.get_by_placeholder("MM").is_visible(timeout=2000) and
             await iframe_locator.get_by_placeholder("DD").is_visible(timeout=2000) and
             await iframe_locator.get_by_placeholder("YYYY").is_visible(timeout=2000)):
+            print("[DEBUG] Detected Date of Birth page")
             return await handle_date_of_birth_page(iframe_locator, page, PERSONA)
         
         # Check for Address page (either initial consent page or full address form)
-        elif (await iframe_locator.get_by_placeholder("Zipcode").is_visible(timeout=2000) or
-              "zipcode" in page_text_lower or "address" in page_text_lower):
+        elif (await iframe_locator.get_by_placeholder("Zipcode").is_visible(timeout=2000)):
+            print("[DEBUG] Detected Address page")
             return await handle_address_page(iframe_locator, page, PERSONA)
         
         # Check for Ethnicity page (look for ethnicity-related text)
-        elif any(keyword in page_text_lower for keyword in ["accurate matching", "ethnicity", "race", "background"]):
+        elif ("accurate matching" in page_text_lower or 
+              "ethnicity" in page_text_lower or
+              "white/caucasian" in page_text_lower or
+              "black or african-american" in page_text_lower or
+              "asian american" in page_text_lower):
+            print("[DEBUG] Detected Ethnicity page")
             return await handle_ethnicity_page(iframe_locator, page, PERSONA)
         
-        # Check for consent/opt-in pages
-        elif any(keyword in page_text_lower for keyword in ["consent", "agree", "opt-in", "permission", "allow"]):
-            return await handle_consent_page(iframe_locator, page, PERSONA)
+        # Check for Children confirmation page (after adding children)
+        elif "confirm (2)" in page_text_lower and "children" in page_text_lower:
+            print("[DEBUG] Detected Children confirmation page")
+            return await handle_children_confirmation_page(iframe_locator, page, PERSONA)
         
-        # Check for any remaining form pages that need filling
-        elif any(keyword in page_text_lower for keyword in ["form", "question", "survey", "input"]):
-            return await handle_general_form_page(iframe_locator, page, PERSONA)
+        # Check for Job title page
+        elif "job title" in page_text_lower and "level of responsibility" in page_text_lower:
+            print("[DEBUG] Detected Job title page")
+            return await handle_job_title_page(iframe_locator, page, PERSONA)
         
-        # Handle remaining signup pages
+        # Check for Company employee range page
+        elif "company employee range" in page_text_lower and "employees work at your organization" in page_text_lower:
+            print("[DEBUG] Detected Company employee range page")
+            return await handle_company_employee_range_page(iframe_locator, page, PERSONA)
+        
+        # Check for Company industry page
+        elif "company industry" in page_text_lower and "primary industry" in page_text_lower:
+            print("[DEBUG] Detected Company industry page")
+            return await handle_company_industry_page(iframe_locator, page, PERSONA)
+        
+        # Check for Company revenue range page
+        elif "company revenue range" in page_text_lower and "annual revenue" in page_text_lower:
+            print("[DEBUG] Detected Company revenue range page")
+            return await handle_company_revenue_page(iframe_locator, page, PERSONA)
+        
+        # Check for Company department page
+        elif "company department" in page_text_lower and ("primarily work" in page_text_lower or "department" in page_text_lower):
+            print("[DEBUG] Detected Company department page")
+            return await handle_company_department_page(iframe_locator, page, PERSONA)
+        
+        # Check for Living situation page
+        elif "living situation" in page_text_lower and "current living situation" in page_text_lower:
+            print("[DEBUG] Detected Living situation page")
+            return await handle_living_situation_page(iframe_locator, page, PERSONA)
+        
+        # Check for Smartphone page
+        elif "smart phone" in page_text_lower or "smartphone" in page_text_lower:
+            print("[DEBUG] Detected Smartphone page")
+            return await handle_smartphone_page(iframe_locator, page, PERSONA)
+        
+        # Check for any page with radio buttons or checkboxes that we haven't specifically handled
+        elif await iframe_locator.locator('input[type="radio"], input[type="checkbox"]').count() > 0:
+            print("[DEBUG] Detected page with radio/checkbox inputs, using hybrid vision/DOM model")
+            return await solve_page_with_hybrid_vision_dom(iframe_locator, page)
+        
+        # Check for survey completion indicators (more specific)
+        elif any(completion_indicator in page_text_lower for completion_indicator in [
+            "you have completed the survey", "survey has been completed", "thank you for completing", 
+            "survey submission successful", "your responses have been recorded", "survey complete!",
+            "congratulations! you have finished", "thank you for your participation"
+        ]):
+            print("Survey appears to be complete!")
+            return "SURVEY_COMPLETE"
+        
+        # Check for URL-based completion indicators
+        elif "thank" in page.url.lower() or "complete" in page.url.lower() or "finish" in page.url.lower():
+            print("Survey completion detected via URL change!")
+            return "SURVEY_COMPLETE"
+        
         else:
-            return await handle_signup_completion(iframe_locator, page, PERSONA)
+            print("[DEBUG] No specific page detected, using hybrid vision/DOM model")
+            return await solve_page_with_hybrid_vision_dom(iframe_locator, page)
     except Exception as e:
-        print(f"Error in page router: {e}")
+        print(f"[DEBUG] Exception in page_router: {e}")
         return await solve_page_with_hybrid_vision_dom(page, page)
 
 
@@ -1347,101 +1519,46 @@ async def main():
         return
 
     async with async_playwright() as p:
-        browser = await p.firefox.launch(headless=True, slow_mo=10)
+        browser = await p.firefox.launch(headless=False, slow_mo=10)
         context = await browser.new_context(storage_state="auth.json")
         page = await context.new_page()
 
         print("Session loaded. Navigating to surveys...")
         await page.goto("https://www.qmee.com/en-us/surveys", timeout=60000)
-        print(f"Current URL after navigation: {page.url}")
 
-        try:
-            print("Looking for a survey to start...")
-            await page.wait_for_selector('button:has-text("Start earning"), a.survey-card', state='visible', timeout=20000)
-            print("Found survey elements on page")
-            
-            start_earning_button = page.get_by_role('button', name='Start earning')
-            if await start_earning_button.is_visible():
-                await start_earning_button.click()
-                print("Clicked 'Start earning' button")
-            else:
-                survey_card = await page.locator('a.survey-card').first
-                await survey_card.click()
-                print("Clicked first survey card")
-        except Exception as e:
-            print(f"Could not auto-start a survey. Please navigate manually. Error: {e}")
-            print("Current page content:")
-            try:
-                page_content = await page.inner_text('body')
-                print(page_content[:500])
-            except:
-                print("Could not get page content")
-            input("Press Enter once you are on a survey page.")
+        # Try auto-start, only prompt for manual navigation if it fails
+        auto_start_success = await try_auto_start_survey(page)
+        if not auto_start_success:
+            print("Please manually navigate to a survey and press Enter when ready.")
+            print("The bot will then take over and complete the survey automatically.")
+            input("Press Enter once you are on a survey page...")
 
         failures_on_current_page = 0
         last_url = ""
-        MAX_FAILURES = 30  # Increased for complete survey flow
-        consecutive_no_progress = 0
-        MAX_NO_PROGRESS = 10  # Increased tolerance
-        pages_processed = 0
-        signup_completed = False
-        surveys_completed = 0
+        MAX_FAILURES_PER_PAGE = 30  # Increased from 20 to 30
+        MAX_TOTAL_ATTEMPTS = 50    # But allow more total attempts
+        total_attempts = 0
 
-        print("\n" + "="*50)
-        print("STARTING SURVEY BOT")
-        print("="*50)
-
-        for i in range(MAX_FAILURES):
-            print(f"\n--- Page {i+1} ---")
+        while total_attempts < MAX_TOTAL_ATTEMPTS:
+            total_attempts += 1
+            print(f"\n--- Attempting Page {total_attempts} ---")
             try:
                 await page.wait_for_load_state('domcontentloaded', timeout=5000) 
                 current_url = page.url
-                
-                # Check if we're still on the same URL
                 if current_url == last_url:
                     failures_on_current_page += 1
-                    consecutive_no_progress += 1
                 else:
                     failures_on_current_page = 0
-                    consecutive_no_progress = 0
-                    pages_processed += 1
+                    print(f"URL changed from {last_url} to {current_url}")
                 
-                print(f"Current URL: {current_url}")
-                print(f"Pages processed: {pages_processed}, Failures: {failures_on_current_page}, No Progress: {consecutive_no_progress}")
-                print(f"Signup completed: {signup_completed}, Surveys completed: {surveys_completed}")
+                print(f"Current URL: {current_url} (Failures: {failures_on_current_page})")
 
-                # Check for survey completion indicators
-                try:
-                    iframe_locator = page.frame_locator('iframe[title="signup-survey"]')
-                    if await detect_survey_completion(page, iframe_locator):
-                        if not signup_completed:
-                            print("🎉 Signup survey completed! Moving to other surveys...")
-                            signup_completed = True
-                            await handle_survey_completion_and_continue(page, iframe_locator)
-                            continue
-                        else:
-                            print("🎉 Survey completed! Looking for next survey...")
-                            surveys_completed += 1
-                            await handle_survey_completion_and_continue(page, iframe_locator)
-                            continue
-                except Exception as e:
-                    print(f"Error checking completion: {e}")
-                    pass
-
-                # Circuit breaker for getting stuck
-                if failures_on_current_page >= MAX_FAILURES:
+                if failures_on_current_page >= MAX_FAILURES_PER_PAGE:
                     print(f"Circuit breaker triggered! Bot is stuck on {current_url}. Stopping.")
                     break
                 
-                if consecutive_no_progress >= MAX_NO_PROGRESS:
-                    print(f"Bot has made no progress for {MAX_NO_PROGRESS} attempts. Stopping.")
-                    break
-                
                 last_url = current_url
-            except Exception as e:
-                print(f"Error checking page state: {e}")
-                consecutive_no_progress += 1
-                pass
+            except Exception: pass
             
             try:
                 await page.wait_for_selector('body button, body input, body a, body label, iframe', timeout=30000)
@@ -1449,39 +1566,18 @@ async def main():
                 print("No interactive elements found on main page or iframe. Survey may have ended.")
                 break
             
-            success = await page_router(page)
-            if not success:
-                consecutive_no_progress += 1
-                print(f"No action taken on this page. No progress count: {consecutive_no_progress}")
-            else:
-                consecutive_no_progress = 0
-                print("✅ Successfully processed page")
+            result = await page_router(page)
+            if result == "SURVEY_COMPLETE":
+                print("Survey completed successfully!")
+                break
+            elif result is False:
+                print("Page handler failed, will retry...")
+            elif result is True:
+                print("Page handled successfully, continuing...")
             
             await asyncio.sleep(3)
 
-        # Final check for survey completion
-        print("\n" + "="*50)
-        print("FINAL SURVEY STATUS")
-        print("="*50)
-        
-        try:
-            iframe_locator = page.frame_locator('iframe[title="signup-survey"]')
-            if await detect_survey_completion(page, iframe_locator):
-                if not signup_completed:
-                    print("🎉 Signup survey completed successfully! 🎉")
-                    signup_completed = True
-                    await find_and_start_surveys(page)
-                else:
-                    print("🎉 Survey completed successfully! 🎉")
-                    surveys_completed += 1
-                    await find_and_start_surveys(page)
-            else:
-                print(f"Bot has finished its run. Processed {pages_processed} pages.")
-                print(f"Signup completed: {signup_completed}, Surveys completed: {surveys_completed}")
-                print("Survey may be complete or may need manual intervention.")
-        except Exception as e:
-            print(f"Bot has finished its run. Final check error: {e}")
-
+        print("\nBot has finished its run.")
         await context.close()
         await browser.close()
 

@@ -10,7 +10,11 @@
     "zipcode": "90001",
     "ethnicity": "White / Caucasian",
     "religion": "Agnostic",
-    "hispanic_origin": "No, not of Hispanic, Latino, or Spanish origin"
+    "hispanic_origin": "No, not of Hispanic, Latino, or Spanish origin",
+    "has_children": true,
+    "has_smartphone": true,
+    "smartphone_use": "both",
+    "living_situation": "Homeowner"
   },
   "work": {
     "employment_status": "Employed full-time (35+ hours/week)",
@@ -21,7 +25,10 @@
     "company_department": "IT / Information Systems",
     "job_title": "Senior Program Manager",
     "personal_income_before_taxes": "$150,000 - $199,999",
-    "work_product_purchasing_authority": "Have final say for purchasing decisions"
+    "work_product_purchasing_authority": "Have final say for purchasing decisions",
+    "company_size": "501-1000",
+    "industry": "Information Technology/IT",
+    "company_revenue": "$100 Million - $249.99 Million"
   },
   "technology": {
     "smartphone_ownership": "Yes, I own a smartphone",
@@ -106,7 +113,18 @@
   },
   "home": {
     "marital_status": "Married",
-    "children": "2",
+    "children": "1",
+    "children_details": [
+      {
+        "name": "Child 1",
+        "date_of_birth": "2018-03-15",
+        "gender": "Male",
+        "age": 6
+      },
+      {
+        
+      }
+    ],
     "household_size": "4",
     "living_situation": "Own a single-family home",
     "home_value": "$400,000 - $499,999",
