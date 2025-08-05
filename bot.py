@@ -8,16 +8,20 @@ import google.generativeai as genai
 from playwright.async_api import async_playwright
 
 import actions
+from personality_responses import generate_personality_response
 
 load_dotenv()
 
 # --- CONFIGURATION & PERSONA ---
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "YOUR_GOOGLE_API_KEY")
-if not GOOGLE_API_KEY or GOOGLE_API_KEY == "YOUR_GOOGLE_API_KEY":
-    print("ERROR: GOOGLE_API_KEY not found in .env file. Please set it.")
-    exit()
-genai.configure(api_key=GOOGLE_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash-latest', generation_config={"response_mime_type": "application/json"})
+USE_GEMINI_API = GOOGLE_API_KEY and GOOGLE_API_KEY != "YOUR_GOOGLE_API_KEY"
+
+if USE_GEMINI_API:
+    genai.configure(api_key=GOOGLE_API_KEY)
+    model = genai.GenerativeModel('gemini-1.5-flash-latest', generation_config={"response_mime_type": "application/json"})
+else:
+    print("Warning: GOOGLE_API_KEY not found in .env file. Some features may be limited.")
+    model = None
 
 try:
     with open('persona.json', 'r') as f:
@@ -210,6 +214,7 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         - If you're unsure about which element to select, choose "no_action" rather than guessing
         - When there are consent questions (Yes/No), always answer "Yes" to proceed with the survey
         - Fill text fields only after answering any consent questions
+        - For open-ended questions (why, how, what, tell, describe, explain), use fill_textbox with any placeholder text - the system will generate a personality-driven response
         """
         prompt = f"""
         {PERSONA_PROMPT}
@@ -220,6 +225,30 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         ---
         Analyze the screenshot AND the DOM tree, then choose the tool to use. Respond with only the JSON object.
         """
+        
+        if model is None:
+            print("Warning: Gemini API not available. Using fallback behavior.")
+            # Try to find any clickable element as fallback
+            try:
+                if hasattr(context, 'frame_locator'):
+                    # We're in iframe context
+                    fallback_elements = await context.locator('button, a, input[type="submit"], input[type="button"]').all()
+                else:
+                    # We're in main page context
+                    fallback_elements = await main_page.locator('button, a, input[type="submit"], input[type="button"]').all()
+                
+                if fallback_elements:
+                    first_clickable = fallback_elements[0]
+                    action_text = await first_clickable.inner_text() or await first_clickable.get_attribute('value') or 'Unknown'
+                    print(f"Fallback: Clicking first available element with text: '{action_text}'")
+                    await first_clickable.click()
+                    return True
+                else:
+                    print("No clickable elements found for fallback")
+                    return False
+            except Exception as fallback_e:
+                print(f"Fallback failed: {fallback_e}")
+                return False
         
         response = await model.generate_content_async([prompt, {"mime_type": "image/png", "data": screenshot}])
         
@@ -317,7 +346,36 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                     break
             
             if element_id is not None:
-                await actions.fill_textbox(context, element_id, text_to_fill, element_map)
+                # Check if this is an open-ended question that needs personality-driven response
+                try:
+                    # Get the question context from the DOM tree
+                    question_context = ""
+                    for eid, elem in element_map.items():
+                        if eid == element_id:
+                            # Look for nearby text that might be the question
+                            try:
+                                # Try to find the question text in nearby elements
+                                parent = await elem.evaluate('node => node.parentElement')
+                                if parent:
+                                    question_text = await parent.evaluate('node => node.textContent.trim()')
+                                    if question_text and len(question_text) > 10:
+                                        question_context = question_text
+                                        break
+                            except:
+                                pass
+                    
+                    # If we have a question context, generate personality-driven response
+                    if question_context and any(word in question_context.lower() for word in ['why', 'how', 'what', 'tell', 'describe', 'explain']):
+                        print(f"Detected open-ended question: {question_context}")
+                        personality_response = await generate_personality_response(question_context, PERSONA)
+                        print(f"Generated personality response: {personality_response}")
+                        await actions.fill_textbox(context, element_id, personality_response, element_map)
+                    else:
+                        # Use the original text_to_fill for structured fields
+                        await actions.fill_textbox(context, element_id, text_to_fill, element_map)
+                except Exception as e:
+                    print(f"Error generating personality response, using fallback: {e}")
+                    await actions.fill_textbox(context, element_id, text_to_fill, element_map)
             else:
                 print(f"Error: Could not find element_id for element in map")
                 return False
