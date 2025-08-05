@@ -120,7 +120,7 @@ Respond naturally as {self.persona['about_you']['full_name']} would, keeping it 
         # Survey participation and platform questions
         if any(word in question_lower for word in ['why', 'join', 'participate']):
             if 'qmee' in question_lower:
-                return "I joined Qmee because I'm always looking for ways to earn a little extra money, especially since I work in tech and spend a lot of time online anyway. Plus, I like trying out new apps and services."
+                return "I saw an ad for Qmee and thought it sounded like a good way to earn some extra money in my free time. I work in tech so I'm online a lot anyway, and I like sharing my opinions on products and services."
             else:
                 return "I'm interested in sharing my opinions and experiences, especially about technology and consumer products since that's my background."
         

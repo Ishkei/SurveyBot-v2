@@ -264,12 +264,15 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                     
                     if question_context:
                         print(f"Detected open-ended question: {question_context}")
-                        personality_response = await generate_personality_response(question_context, PERSONA)
+                        # Use fallback response for speed and naturalness
+                        from personality_responses import PersonalityResponseGenerator
+                        generator = PersonalityResponseGenerator(PERSONA)
+                        personality_response = generator._generate_fallback_response(question_context)
                         print(f"Generated personality response: {personality_response}")
                         await text_input.fill(personality_response)
                     else:
                         # Use a generic response
-                        generic_response = "I joined Qmee to earn some extra money in my free time and share my opinions on various topics."
+                        generic_response = "I saw an ad for this and thought it sounded like a good way to earn some extra money in my free time."
                         print(f"Using generic response: {generic_response}")
                         await text_input.fill(generic_response)
                     
@@ -331,12 +334,15 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                     
                     if question_context:
                         print(f"Detected open-ended question: {question_context}")
-                        personality_response = await generate_personality_response(question_context, PERSONA)
+                        # Use fallback response for speed and naturalness
+                        from personality_responses import PersonalityResponseGenerator
+                        generator = PersonalityResponseGenerator(PERSONA)
+                        personality_response = generator._generate_fallback_response(question_context)
                         print(f"Generated personality response: {personality_response}")
                         await text_input.fill(personality_response)
                     else:
                         # Use a generic response
-                        generic_response = "I joined Qmee to earn some extra money in my free time and share my opinions on various topics."
+                        generic_response = "I saw an ad for this and thought it sounded like a good way to earn some extra money in my free time."
                         print(f"Using generic response: {generic_response}")
                         await text_input.fill(generic_response)
                     
@@ -354,15 +360,62 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                 print(f"Direct text input handling failed: {e}")
                 # Continue with normal AI processing
         
-        response = await model.generate_content_async([prompt, {"mime_type": "image/png", "data": screenshot}])
-        
-        print(f"AI Response: {response.text}")
+        try:
+            response = await model.generate_content_async([prompt, {"mime_type": "image/png", "data": screenshot}])
+            print(f"AI Response: {response.text}")
+        except Exception as e:
+            print(f"Error calling AI API: {e}")
+            return False
         
         try:
             decision_json = json.loads(response.text)
         except json.JSONDecodeError:
             print(f"Error: AI returned invalid JSON: {response.text}")
             return False
+        except Exception as api_error:
+            if "429" in str(api_error) or "quota" in str(api_error).lower():
+                print(f"API quota exceeded: {api_error}")
+                print("Switching to fallback mode without AI...")
+                
+                # Use fallback behavior when API is unavailable
+                try:
+                    text_inputs = await context.locator('input[type="text"], textarea').all()
+                    if text_inputs:
+                        print(f"Found {len(text_inputs)} text input fields")
+                        text_input = text_inputs[0]
+                        
+                        # Use generic response
+                        generic_response = "I saw an ad for this and thought it sounded like a good way to earn some extra money in my free time."
+                        print(f"Using generic response: {generic_response}")
+                        await text_input.fill(generic_response)
+                        
+                        # Look for submit button
+                        submit_buttons = await context.locator('button:has-text("Submit"), button:has-text("Next"), input[type="submit"]').all()
+                        if submit_buttons:
+                            await submit_buttons[0].click()
+                            print("Clicked submit button")
+                            return True
+                        else:
+                            print("No submit button found")
+                            return False
+                    else:
+                        # Try to find any clickable element
+                        fallback_elements = await context.locator('button, a, input[type="submit"], input[type="button"]').all()
+                        if fallback_elements:
+                            first_clickable = fallback_elements[0]
+                            action_text = await first_clickable.inner_text() or await first_clickable.get_attribute('value') or 'Unknown'
+                            print(f"Fallback: Clicking first available element with text: '{action_text}'")
+                            await first_clickable.click()
+                            return True
+                        else:
+                            print("No clickable elements found for fallback")
+                            return False
+                except Exception as fallback_e:
+                    print(f"Fallback also failed: {fallback_e}")
+                    return False
+            else:
+                print(f"API error: {api_error}")
+                return False
 
         tool_name = decision_json.get('tool')
         raw_element_id = decision_json.get('args', {}).get('element_id')
@@ -508,7 +561,10 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                     
                     if is_open_ended:
                         print(f"Detected open-ended question: {question_context}")
-                        personality_response = await generate_personality_response(question_context, PERSONA)
+                        # Use fallback response for speed and naturalness
+                        from personality_responses import PersonalityResponseGenerator
+                        generator = PersonalityResponseGenerator(PERSONA)
+                        personality_response = generator._generate_fallback_response(question_context)
                         print(f"Generated personality response: {personality_response}")
                         await actions.fill_textbox(context, element_id, personality_response, element_map)
                     else:
@@ -1717,6 +1773,37 @@ async def page_router(page):
         elif "smart phone" in page_text_lower or "smartphone" in page_text_lower:
             print("[DEBUG] Detected Smartphone page")
             return await handle_smartphone_page(iframe_locator, page, PERSONA)
+        
+        # Check for consent forms
+        elif await iframe_locator.locator('button:has-text("Agree"), button:has-text("Consent"), a:has-text("Agree"), a:has-text("Consent"), button:has-text("Agree and Continue")').count() > 0:
+            print("[DEBUG] Detected consent form, handling automatically")
+            try:
+                # Try to find and click the agree/consent button with multiple selectors
+                selectors = [
+                    'button:has-text("Agree and Continue")',
+                    'button:has-text("Agree")',
+                    'button:has-text("Consent")',
+                    'a:has-text("Agree")',
+                    'a:has-text("Consent")',
+                    'input[type="submit"][value*="Agree"]',
+                    'input[type="button"][value*="Agree"]'
+                ]
+                
+                for selector in selectors:
+                    try:
+                        agree_button = iframe_locator.locator(selector).first
+                        if await agree_button.is_visible():
+                            await agree_button.click()
+                            print(f"Clicked agree/consent button using selector: {selector}")
+                            return True
+                    except Exception as e:
+                        continue
+                
+                print("No visible agree button found, using hybrid approach")
+                return await solve_page_with_hybrid_vision_dom(iframe_locator, page)
+            except Exception as e:
+                print(f"Error clicking consent button: {e}")
+                return await solve_page_with_hybrid_vision_dom(iframe_locator, page)
         
         # Check for text input pages (open-ended questions)
         elif await iframe_locator.locator('input[type="text"], textarea').count() > 0:
