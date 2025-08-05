@@ -1,6 +1,7 @@
 import asyncio
 import os
 import json
+import re
 from datetime import datetime
 
 from dotenv import load_dotenv
@@ -152,11 +153,12 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         # Get all interactive elements directly
         buttons = await context.locator('button').all()
         inputs = await context.locator('input').all()
+        textareas = await context.locator('textarea').all()
         selects = await context.locator('select').all()
         links = await context.locator('a').all()
         labels = await context.locator('label').all()
         
-        all_elements = buttons + inputs + selects + links + labels
+        all_elements = buttons + inputs + textareas + selects + links + labels
         print(f"Found {len(all_elements)} total interactive elements")
         
         # Build a simple DOM tree from these elements
@@ -169,7 +171,15 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                     input_type = await element.get_attribute('type') or 'text'
                     placeholder = await element.get_attribute('placeholder') or ''
                     value = await element.get_attribute('value') or ''
-                    text = f"Input (type: {input_type}, placeholder: {placeholder}, value: {value})"
+                    name = await element.get_attribute('name') or ''
+                    id_attr = await element.get_attribute('id') or ''
+                    text = f"Input (type: {input_type}, placeholder: {placeholder}, value: {value}, name: {name}, id: {id_attr})"
+                elif tag == 'textarea':
+                    placeholder = await element.get_attribute('placeholder') or ''
+                    value = await element.get_attribute('value') or ''
+                    name = await element.get_attribute('name') or ''
+                    id_attr = await element.get_attribute('id') or ''
+                    text = f"Textarea (placeholder: {placeholder}, value: {value}, name: {name}, id: {id_attr})"
                 elif tag == 'button':
                     text = await element.inner_text() or await element.get_attribute('name') or 'Button'
                 elif tag == 'select':
@@ -215,6 +225,8 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         - When there are consent questions (Yes/No), always answer "Yes" to proceed with the survey
         - Fill text fields only after answering any consent questions
         - For open-ended questions (why, how, what, tell, describe, explain), use fill_textbox with any placeholder text - the system will generate a personality-driven response
+        - PRIORITY: If you see a text input field (input type="text" or textarea) and a submit button, ALWAYS fill the text field first, then click the submit button
+        - For text input pages, look for the largest or most prominent text input field to fill
         """
         prompt = f"""
         {PERSONA_PROMPT}
@@ -228,7 +240,53 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         
         if model is None:
             print("Warning: Gemini API not available. Using fallback behavior.")
-            # Try to find any clickable element as fallback
+            
+            # First, check for text input fields and handle them directly
+            try:
+                text_inputs = await context.locator('input[type="text"], textarea').all()
+                if text_inputs:
+                    print(f"Found {len(text_inputs)} text input fields")
+                    # Get the first text input
+                    text_input = text_inputs[0]
+                    
+                    # Try to get question context from the page
+                    page_text = await context.locator('body').inner_text()
+                    question_context = ""
+                    
+                    # Look for question text
+                    if page_text:
+                        lines = page_text.split('\n')
+                        for line in lines:
+                            line_lower = line.lower().strip()
+                            if any(word in line_lower for word in ['why', 'how', 'what', 'tell', 'describe', 'explain', 'join', 'reason']) and len(line.strip()) > 10:
+                                question_context = line.strip()
+                                break
+                    
+                    if question_context:
+                        print(f"Detected open-ended question: {question_context}")
+                        personality_response = await generate_personality_response(question_context, PERSONA)
+                        print(f"Generated personality response: {personality_response}")
+                        await text_input.fill(personality_response)
+                    else:
+                        # Use a generic response
+                        generic_response = "I joined Qmee to earn some extra money in my free time and share my opinions on various topics."
+                        print(f"Using generic response: {generic_response}")
+                        await text_input.fill(generic_response)
+                    
+                    # Look for submit button
+                    submit_buttons = await context.locator('button:has-text("Submit"), button:has-text("Next"), input[type="submit"]').all()
+                    if submit_buttons:
+                        await submit_buttons[0].click()
+                        print("Clicked submit button")
+                        return True
+                    else:
+                        print("No submit button found")
+                        return False
+                        
+            except Exception as e:
+                print(f"Direct text input handling failed: {e}")
+            
+            # If no text inputs, try to find any clickable element as fallback
             try:
                 if hasattr(context, 'frame_locator'):
                     # We're in iframe context
@@ -249,6 +307,52 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
             except Exception as fallback_e:
                 print(f"Fallback failed: {fallback_e}")
                 return False
+        else:
+            # Check if we have text input fields and handle them directly
+            try:
+                text_inputs = await context.locator('input[type="text"], textarea').all()
+                if text_inputs:
+                    print(f"Found {len(text_inputs)} text input fields")
+                    # Get the first text input
+                    text_input = text_inputs[0]
+                    
+                    # Try to get question context from the page
+                    page_text = await context.locator('body').inner_text()
+                    question_context = ""
+                    
+                    # Look for question text
+                    if page_text:
+                        lines = page_text.split('\n')
+                        for line in lines:
+                            line_lower = line.lower().strip()
+                            if any(word in line_lower for word in ['why', 'how', 'what', 'tell', 'describe', 'explain', 'join', 'reason']) and len(line.strip()) > 10:
+                                question_context = line.strip()
+                                break
+                    
+                    if question_context:
+                        print(f"Detected open-ended question: {question_context}")
+                        personality_response = await generate_personality_response(question_context, PERSONA)
+                        print(f"Generated personality response: {personality_response}")
+                        await text_input.fill(personality_response)
+                    else:
+                        # Use a generic response
+                        generic_response = "I joined Qmee to earn some extra money in my free time and share my opinions on various topics."
+                        print(f"Using generic response: {generic_response}")
+                        await text_input.fill(generic_response)
+                    
+                    # Look for submit button
+                    submit_buttons = await context.locator('button:has-text("Submit"), button:has-text("Next"), input[type="submit"]').all()
+                    if submit_buttons:
+                        await submit_buttons[0].click()
+                        print("Clicked submit button")
+                        return True
+                    else:
+                        print("No submit button found")
+                        return False
+                        
+            except Exception as e:
+                print(f"Direct text input handling failed: {e}")
+                # Continue with normal AI processing
         
         response = await model.generate_content_async([prompt, {"mime_type": "image/png", "data": screenshot}])
         
@@ -350,22 +454,59 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                 try:
                     # Get the question context from the DOM tree
                     question_context = ""
-                    for eid, elem in element_map.items():
-                        if eid == element_id:
-                            # Look for nearby text that might be the question
-                            try:
-                                # Try to find the question text in nearby elements
-                                parent = await elem.evaluate('node => node.parentElement')
-                                if parent:
-                                    question_text = await parent.evaluate('node => node.textContent.trim()')
-                                    if question_text and len(question_text) > 10:
-                                        question_context = question_text
-                                        break
-                            except:
-                                pass
                     
-                    # If we have a question context, generate personality-driven response
-                    if question_context and any(word in question_context.lower() for word in ['why', 'how', 'what', 'tell', 'describe', 'explain']):
+                    # First, try to get the question text from the page
+                    try:
+                        # Look for question text in the entire page/iframe
+                        page_text = await context.locator('body').inner_text()
+                        if page_text:
+                            # Look for lines that contain question words
+                            lines = page_text.split('\n')
+                            for line in lines:
+                                line_lower = line.lower().strip()
+                                if any(word in line_lower for word in ['why', 'how', 'what', 'tell', 'describe', 'explain', 'join', 'reason']) and len(line.strip()) > 10:
+                                    question_context = line.strip()
+                                    print(f"Found question context from page text: {question_context}")
+                                    break
+                    except Exception as e:
+                        print(f"Could not get page text: {e}")
+                    
+                    # If no question found in page text, try to find it near the input element
+                    if not question_context:
+                        for eid, elem in element_map.items():
+                            if eid == element_id:
+                                try:
+                                    # Look for nearby text that might be the question
+                                    parent = await elem.evaluate('node => node.parentElement')
+                                    if parent:
+                                        question_text = await parent.evaluate('node => node.textContent.trim()')
+                                        if question_text and len(question_text) > 10:
+                                            question_context = question_text
+                                            break
+                                except:
+                                    pass
+                    
+                    # Check if this looks like an open-ended question
+                    is_open_ended = False
+                    if question_context:
+                        question_lower = question_context.lower()
+                        is_open_ended = any(word in question_lower for word in ['why', 'how', 'what', 'tell', 'describe', 'explain', 'join', 'reason'])
+                    
+                    # Also check if the input field itself suggests an open-ended question
+                    if not is_open_ended:
+                        try:
+                            element_to_fill = element_map.get(element_id)
+                            if element_to_fill:
+                                input_type = await element_to_fill.get_attribute('type')
+                                placeholder = await element_to_fill.get_attribute('placeholder') or ''
+                                # If it's a text input with a descriptive placeholder, treat as open-ended
+                                if input_type in ['text', None] and any(word in placeholder.lower() for word in ['why', 'how', 'what', 'tell', 'describe', 'explain', 'join', 'reason']):
+                                    is_open_ended = True
+                                    question_context = placeholder
+                        except:
+                            pass
+                    
+                    if is_open_ended:
                         print(f"Detected open-ended question: {question_context}")
                         personality_response = await generate_personality_response(question_context, PERSONA)
                         print(f"Generated personality response: {personality_response}")
@@ -1433,18 +1574,51 @@ async def try_auto_start_survey(page, max_attempts=5):
     for attempt in range(max_attempts):
         try:
             print(f"[Auto-Start] Attempt {attempt+1} to start a survey...")
-            await page.wait_for_selector('button:has-text("Start earning"), a.survey-card', state='visible', timeout=10000)
-            start_earning_button = page.get_by_role('button', name='Start earning')
-            if await start_earning_button.is_visible():
-                await start_earning_button.click()
-                print("[Auto-Start] Clicked 'Start earning' button.")
-                return True
-            else:
-                survey_card = page.locator('a.survey-card').first
-                if await survey_card.is_visible():
-                    await survey_card.click()
-                    print("[Auto-Start] Clicked a survey card.")
-                    return True
+            
+            # Wait for survey elements to be visible
+            await page.wait_for_selector('button:has-text("Start"), a[href*="survey"], .survey-card, [data-testid*="survey"]', state='visible', timeout=10000)
+            
+            # Try multiple selectors to find survey elements
+            selectors_to_try = [
+                'button:has-text("Start")',
+                'a[href*="survey"]',
+                '.survey-card',
+                '[data-testid*="survey"]',
+                'button:has-text("Start earning")',  # Keep as fallback
+                'a.survey-card'
+            ]
+            
+            for selector in selectors_to_try:
+                try:
+                    elements = page.locator(selector)
+                    count = await elements.count()
+                    if count > 0:
+                        # Get the first visible element
+                        for i in range(count):
+                            element = elements.nth(i)
+                            if await element.is_visible():
+                                await element.click()
+                                print(f"[Auto-Start] Clicked survey element using selector: {selector}")
+                                return True
+                except Exception as e:
+                    print(f"[Auto-Start] Selector {selector} failed: {e}")
+                    continue
+            
+            # If no specific selectors work, try to find any clickable survey-like element
+            try:
+                # Look for elements with survey-related text or attributes
+                survey_elements = page.locator('button, a').filter(has_text=re.compile(r'start|survey|earn', re.IGNORECASE))
+                count = await survey_elements.count()
+                if count > 0:
+                    for i in range(count):
+                        element = survey_elements.nth(i)
+                        if await element.is_visible():
+                            await element.click()
+                            print("[Auto-Start] Clicked survey element using text-based selector.")
+                            return True
+            except Exception as e:
+                print(f"[Auto-Start] Text-based selector failed: {e}")
+                
         except Exception as e:
             print(f"[Auto-Start] Attempt {attempt+1} failed: {e}")
         await asyncio.sleep(2)
@@ -1543,6 +1717,11 @@ async def page_router(page):
         elif "smart phone" in page_text_lower or "smartphone" in page_text_lower:
             print("[DEBUG] Detected Smartphone page")
             return await handle_smartphone_page(iframe_locator, page, PERSONA)
+        
+        # Check for text input pages (open-ended questions)
+        elif await iframe_locator.locator('input[type="text"], textarea').count() > 0:
+            print("[DEBUG] Detected page with text input, using hybrid vision/DOM model")
+            return await solve_page_with_hybrid_vision_dom(iframe_locator, page)
         
         # Check for any page with radio buttons or checkboxes that we haven't specifically handled
         elif await iframe_locator.locator('input[type="radio"], input[type="checkbox"]').count() > 0:
