@@ -33,6 +33,19 @@
   "technology": {
     "smartphone_ownership": "Yes, I own a smartphone",
     "primary_mobile_carrier": "AT&T",
+    "smartphone_brand": "Apple",
+    "smartphone_model": "iPhone 14 Pro Max",
+    "smartphone_operating_system": "iOS",
+    "smartphone_operating_system_version": "iOS 16.6",
+    "smartphone_screen_size": "6.7 inches",
+    "smartphone_screen_resolution": "2796 x 1290 pixels",
+    "smartphone_screen_technology": "OLED",
+    "smartphone_screen_type": "AMOLED",
+    "smartphone_screen_protection": "Scratch-resistant glass",
+    "smartphone_screen_protection_type": "Shatterproof",
+    "smartphone_screen_protection_type_details": "Shatterproof glass",
+    "smartphone_screen_protection_type_details_details": "Shatterproof glass",
+    "smartphone_screen_protection_type_details_details_details": "Shatterproof glass",
     "owned_electronic_products": ["Smartphone", "Laptop", "Tablet", "Smart TV", "Smart Speaker", "Wireless Router"],
     "early_adopter_of_technology": "Yes, I am usually one of the first to try new technology",
     "primary_home_internet_provider": "Charter/Spectrum",
@@ -125,13 +138,20 @@
         
       }
     ],
-    "household_size": "4",
+    "household_size": "3",
     "living_situation": "Own a single-family home",
     "home_value": "$400,000 - $499,999",
     "household_income": "$150,000 - $199,999",
+    "household_income_range": "$150,000 - $199,999",
     "household_investable_assets": "$100,000 - $249,999",
     "pets_in_household": ["Dog"],
-    "household_decision_responsibilities": ["Financial planning", "Home maintenance", "Technology purchases"]
+    "household_decision_responsibilities": ["Financial planning", "Home maintenance", "Technology purchases"],
+    "household_decision_responsibilities_details": [
+      {
+        "name": "Financial planning",
+        "description": "I am the primary decision maker for financial planning"
+      }
+    ]
   },
   "travel": {
     "flown_in_last_12_months": "Yes, 2-3 times",
