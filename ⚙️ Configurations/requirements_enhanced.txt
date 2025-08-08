@@ -1,0 +1,53 @@
+# Core dependencies
+playwright>=1.40.0
+selenium>=4.15.0
+requests>=2.31.0
+asyncio>=3.4.3
+
+# AI and personality
+google-generativeai>=0.3.0
+openai>=1.3.0
+
+# Enhanced browser automation
+hrequests>=0.1.0
+browserforge>=0.1.0
+fingerprint-generator>=0.1.0
+
+# Web scraping and automation
+scrapy>=2.11.0
+scrapegraphai>=0.1.0
+firecrawl>=0.1.0
+
+# Vision and OCR
+pytesseract>=0.3.10
+Pillow>=10.0.0
+opencv-python>=4.8.0
+
+# Proxy and networking
+aiohttp>=3.9.0
+websockets>=12.0
+
+# Data processing
+pandas>=2.1.0
+numpy>=1.24.0
+
+# Configuration and utilities
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+click>=8.1.0
+
+# Optional: Local AI models
+ollama>=0.1.0
+transformers>=4.35.0
+torch>=2.1.0
+
+# Optional: Advanced features
+pyautogui>=0.9.54
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+flake8>=6.0.0

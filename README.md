@@ -6,6 +6,77 @@
 
 > **Enterprise-grade survey automation with advanced proxy management, AI-powered solving, and anti-detection capabilities.**
 
+## 🎯 Main Files to Run
+
+### **🚀 Quick Start Commands**
+```bash
+# Main entry point (RECOMMENDED)
+python "🎯 Main Files to Run/run_bot.py" --implementation v2ray
+
+# Self-Operating Computer mode
+python "🎯 Main Files to Run/run_soc_bot.py"
+
+# Vision AI mode
+python "🎯 Main Files to Run/run_vision_bot.py"
+
+# Lightweight mode
+python "🎯 Main Files to Run/run_lightweight_bot.py"
+```
+
+### **📁 Project Structure**
+
+```
+SurveyBot/
+├── 🎯 Main Files to Run/
+│   ├── run_bot.py              # 🎯 MAIN ENTRY POINT
+│   ├── run_soc_bot.py          # Self-Operating Computer
+│   ├── run_vision_bot.py       # Vision AI Bot
+│   └── run_lightweight_bot.py  # Lightweight Bot
+│
+├── 📁 Project Structure/
+│   ├── config.py               # Configuration settings
+│   ├── actions.py              # Core interaction actions
+│   ├── personality_responses.py # AI personality system
+│   ├── free_captcha_solver.py  # Captcha solving
+│   ├── bot_implementations/    # All bot implementations
+│   ├── proxy_management/       # Proxy management systems
+│   ├── v2ray/                 # V2Ray binary and configs
+│   └── v2ray_configs/         # V2Ray configurations
+│
+├── ⚙️ Configurations/
+│   ├── requirements.txt        # Main dependencies
+│   ├── requirements_enhanced.txt
+│   ├── requirements_lightweight.txt
+│   ├── requirements_self_operating.txt
+│   ├── configs/               # JSON configurations
+│   ├── env.example            # Environment template
+│   └── sample_v2ray_proxies.json
+│
+├── 🔧 Tools and Scripts/
+│   ├── scripts/               # Utility scripts
+│   ├── setup_*.py            # Setup scripts
+│   ├── test_setup.py         # Testing utilities
+│   └── complete_signup.py    # Account creation
+│
+├── 📚 Documentation/
+│   ├── docs/                 # Detailed guides
+│   ├── *.md                 # Documentation files
+│   └── AI Survey Club data
+│
+├── 📂 Examples & Demos/
+│   ├── examples/             # Code examples
+│   ├── demo_soc_survey_bot.py
+│   └── simple_vision_test.py
+│
+├── 🧪 Tests/
+│   └── test_*.py            # All test files
+│
+└── 🖼️ Assets/
+    ├── screenshots/          # Screenshots
+    ├── *.png                # Images
+    └── *.html               # HTML files
+```
+
 ## 🚀 Quick Start
 
 ### **1. Install Dependencies**
@@ -15,7 +86,7 @@ git clone https://github.com/yourusername/SurveyBot.git
 cd SurveyBot
 
 # Quick setup (RECOMMENDED)
-python setup.py
+python "🔧 Tools and Scripts/setup.py"
 
 # OR Manual setup:
 # Create virtual environment
@@ -23,82 +94,27 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r "⚙️ Configurations/requirements.txt"
 ```
 
 ### **2. Setup V2Ray System**
 ```bash
 # Install V2Ray and configure proxy servers
-python scripts/setup_v2ray.py
+python "🔧 Tools and Scripts/scripts/setup_v2ray.py"
 ```
 
 ### **3. Run the Bot**
 ```bash
 # Run with V2Ray enhanced implementation (RECOMMENDED)
-python run_bot.py --implementation v2ray
+python "🎯 Main Files to Run/run_bot.py" --implementation v2ray
 
 # Run in headless mode
-python run_bot.py --implementation v2ray --headless
+python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --headless
 
 # Test different platforms
-python run_bot.py --implementation v2ray --platform qmee
-python run_bot.py --implementation v2ray --platform earnhaus
+python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --platform qmee
+python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --platform earnhaus
 ```
-
-## 📁 Project Structure
-
-```
-SurveyBot/
-├── 📄 README.md                    # This file
-├── 📄 run_bot.py                   # 🎯 MAIN ENTRY POINT
-├── 📄 requirements.txt              # Python dependencies
-├── 📄 config.py                    # Configuration settings
-├── 📄 actions.py                   # Core interaction actions
-├── 📄 personality_responses.py     # AI personality system
-│
-├── 🤖 bot_implementations/
-│   ├── 📄 survey_bot_v2ray.py     # 🎯 V2Ray Enhanced (RECOMMENDED)
-│   ├── 📄 survey_bot_undetected.py # Undetected Chrome
-│   ├── 📄 survey_bot_selenium.py   # Selenium WebDriver
-│   └── 📄 survey_bot_playwright.py # Playwright
-│
-├── 🔧 proxy_management/
-│   ├── 📄 proxy_manager_v2ray.py  # 🎯 V2Ray Proxy Manager
-│   └── 📄 proxy_manager_basic.py  # Basic proxy manager
-│
-├── 📂 configs/
-│   ├── 📄 v2ray_proxies.json      # 🎯 V2Ray server configurations
-│   ├── 📄 persona.json            # AI personality data
-│   ├── 📄 auth.json               # Authentication data
-│   └── 📄 sample_v2ray_proxies.json
-│
-├── 📂 scripts/
-│   ├── 📄 setup_v2ray.py          # V2Ray installation
-│   ├── 📄 telegram_v2ray_servers.py # Convert Telegram servers
-│   ├── 📄 v2ray_config_converter.py # Configuration converter
-│   ├── 📄 test_implementations.py # Test all components
-│   └── 📄 save_auth.py           # Save authentication
-│
-├── 📂 docs/
-│   ├── 📄 README_V2RAY_ENHANCED.md
-│   ├── 📄 README_ALTERNATIVE_METHODS.md
-│   ├── 📄 GET_FREE_V2RAY_SERVERS.md
-│   └── 📄 SUCCESS_SUMMARY.md
-│
-├── 📂 examples/
-│   └── 📄 quick_start.py          # Quick start example
-│
-└── 📂 v2ray/                      # V2Ray binary and configs
-```
-
-## 🎯 Main Files to Run
-
-| File | Purpose | Command |
-|------|---------|---------|
-| **`run_bot.py`** | 🎯 **MAIN ENTRY POINT** | `python run_bot.py --implementation v2ray` |
-| **`bot_implementations/survey_bot_v2ray.py`** | 🎯 **V2Ray Enhanced Bot** | `python bot_implementations/survey_bot_v2ray.py` |
-| **`proxy_management/proxy_manager_v2ray.py`** | 🎯 **V2Ray Proxy Manager** | `python proxy_management/proxy_manager_v2ray.py` |
-| **`scripts/setup_v2ray.py`** | 🎯 **V2Ray Setup** | `python scripts/setup_v2ray.py` |
 
 ## 🌟 Features
 
@@ -167,22 +183,22 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r "⚙️ Configurations/requirements.txt"
 ```
 
 ### **3. V2Ray Setup**
 ```bash
 # Install V2Ray system
-python scripts/setup_v2ray.py
+python "🔧 Tools and Scripts/scripts/setup_v2ray.py"
 
 # Convert Telegram servers (optional)
-python scripts/telegram_v2ray_servers.py
+python "🔧 Tools and Scripts/scripts/telegram_v2ray_servers.py"
 ```
 
 ### **4. Configuration**
 ```bash
 # Create .env file
-cp configs/sample_v2ray_proxies.json configs/v2ray_proxies.json
+cp "⚙️ Configurations/env.example" .env
 
 # Edit with your API keys
 nano .env
@@ -193,43 +209,43 @@ nano .env
 ### **Basic Usage**
 ```bash
 # Run with V2Ray enhanced bot
-python run_bot.py --implementation v2ray
+python "🎯 Main Files to Run/run_bot.py" --implementation v2ray
 
 # Run in headless mode
-python run_bot.py --implementation v2ray --headless
+python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --headless
 
 # Test proxy manager
-python proxy_management/proxy_manager_v2ray.py
+python "📁 Project Structure/proxy_management/proxy_manager_v2ray.py"
 ```
 
 ### **Advanced Usage**
 ```bash
 # Run with specific platform
-python run_bot.py --implementation v2ray --platform qmee
+python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --platform qmee
 
 # Run with different implementation
-python run_bot.py --implementation undetected
+python "🎯 Main Files to Run/run_bot.py" --implementation undetected
 
 # Test all implementations
-python scripts/test_implementations.py
+python "🔧 Tools and Scripts/scripts/test_implementations.py"
 ```
 
 ### **Configuration Options**
 ```bash
 # Show current configuration
-python run_bot.py --config
+python "🎯 Main Files to Run/run_bot.py" --config
 
 # Test proxies
-python run_bot.py --test-proxies
+python "🎯 Main Files to Run/run_bot.py" --test-proxies
 
 # Setup environment
-python run_bot.py --setup
+python "🎯 Main Files to Run/run_bot.py" --setup
 
 # Test all components
-python test_setup.py
+python "🧪 Tests/test_setup.py"
 
 # Check requirements
-python check_requirements.py
+python "🔧 Tools and Scripts/check_requirements.py"
 ```
 
 ## 🔧 Configuration
@@ -242,7 +258,7 @@ SURVEY_PLATFORM=qmee
 HEADLESS=false
 ```
 
-### **V2Ray Proxy Configuration (configs/v2ray_proxies.json)**
+### **V2Ray Proxy Configuration (⚙️ Configurations/configs/v2ray_proxies.json)**
 ```json
 [
   {
@@ -269,7 +285,7 @@ HEADLESS=false
 | **Performance** | Variable | High (Go-based) |
 | **Reliability** | Low | High (9+ years) |
 | **Community** | Limited | Large (31.7k stars) |
-| **Documentation** | Basic | Extensive |
+| **Documentation** | Extensive | Extensive |
 | **Cost** | Variable | Free |
 
 ## 🎯 Expected Results
@@ -293,13 +309,13 @@ HEADLESS=false
 #### **V2Ray Binary Not Found**
 ```bash
 # Reinstall V2Ray
-python scripts/setup_v2ray.py
+python "🔧 Tools and Scripts/scripts/setup_v2ray.py"
 ```
 
 #### **Proxy Connection Failed**
 ```bash
 # Test proxy configuration
-python proxy_management/proxy_manager_v2ray.py
+python "📁 Project Structure/proxy_management/proxy_manager_v2ray.py"
 
 # Check proxy server status
 curl -x socks5://127.0.0.1:1080 https://httpbin.org/ip
@@ -314,25 +330,100 @@ curl -x socks5://127.0.0.1:1080 https://httpbin.org/ip
 ### **Debug Mode**
 ```bash
 # Run with verbose logging
-python bot_implementations/survey_bot_v2ray.py --debug
+python "📁 Project Structure/bot_implementations/survey_bot_v2ray.py" --debug
 
 # Test all components
-python scripts/test_implementations.py
+python "🔧 Tools and Scripts/scripts/test_implementations.py"
 ```
 
 ## 📚 Documentation
 
 ### **📖 Detailed Guides:**
-- **[Configuration Guide](CONFIGURATION.md)** - Complete setup and configuration
-- **[V2Ray Enhanced Guide](docs/README_V2RAY_ENHANCED.md)** - Complete V2Ray implementation
-- **[Alternative Methods](docs/README_ALTERNATIVE_METHODS.md)** - Other bot implementations
-- **[Free V2Ray Servers](docs/GET_FREE_V2RAY_SERVERS.md)** - Get servers from Telegram
-- **[Success Summary](docs/SUCCESS_SUMMARY.md)** - Performance results
+- **[Configuration Guide](📚 Documentation/CONFIGURATION.md)** - Complete setup and configuration
+- **[V2Ray Enhanced Guide](📚 Documentation/docs/README_V2RAY_ENHANCED.md)** - Complete V2Ray implementation
+- **[Alternative Methods](📚 Documentation/docs/README_ALTERNATIVE_METHODS.md)** - Other bot implementations
+- **[Free V2Ray Servers](📚 Documentation/docs/GET_FREE_V2RAY_SERVERS.md)** - Get servers from Telegram
+- **[Success Summary](📚 Documentation/docs/SUCCESS_SUMMARY.md)** - Performance results
 
 ### **🔧 Scripts:**
-- **[Setup V2Ray](scripts/setup_v2ray.py)** - Install V2Ray system
-- **[Convert Servers](scripts/telegram_v2ray_servers.py)** - Convert Telegram servers
-- **[Test Components](scripts/test_implementations.py)** - Test all implementations
+- **[Setup V2Ray](🔧 Tools and Scripts/scripts/setup_v2ray.py)** - Install V2Ray system
+- **[Convert Servers](🔧 Tools and Scripts/scripts/telegram_v2ray_servers.py)** - Convert Telegram servers
+- **[Test Components](🔧 Tools and Scripts/scripts/test_implementations.py)** - Test all implementations
+
+## 🎉 Acknowledgments
+
+### **Core Technologies & Libraries**
+- **[V2Ray Core](https://github.com/v2fly/v2ray-core)** - Advanced proxy platform and anti-detection system
+- **[Selenium WebDriver](https://selenium-python.readthedocs.io/)** - Web automation framework
+- **[Playwright](https://playwright.dev/)** - Modern browser automation
+- **[Undetected ChromeDriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver)** - Anti-detection browser automation
+- **[Google Gemini AI](https://ai.google.dev/)** - Vision AI for survey solving and content analysis
+
+### **Proxy & Network Resources**
+- **[Telegram V2Ray Groups](https://t.me/v2fly_chat)** - Free V2Ray server configurations
+- **[V2Ray Community](https://github.com/v2fly/v2ray-core)** - 31.7k+ star community
+- **[Free Proxy Lists](https://github.com/TheSpeedX/PROXY-List)** - Public proxy resources
+
+### **Survey Platforms & APIs**
+- **[Qmee](https://www.qmee.com/)** - Primary survey platform integration
+- **[Earnhaus](https://earnhaus.com/)** - Alternative survey platform
+- **[Prolific](https://www.prolific.co/)** - Academic survey platform
+- **[Amazon Mechanical Turk](https://www.mturk.com/)** - Crowdsourcing platform
+
+### **Development Tools & Libraries**
+- **[Python](https://python.org/)** - Core programming language
+- **[Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/)** - Browser automation
+- **[Requests](https://requests.readthedocs.io/)** - HTTP library for API interactions
+- **[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)** - HTML parsing
+- **[Pillow](https://python-pillow.org/)** - Image processing for screenshots
+
+### **Community & Inspiration**
+- **[OpenAI GPT Models](https://openai.com/)** - AI inspiration for personality system
+- **[Discord Bot Community](https://discord.com/developers/docs/)** - Discord integration ideas
+- **[Reddit r/beermoney](https://reddit.com/r/beermoney/)** - Survey earning strategies
+- **[GitHub Open Source Community](https://github.com/)** - Code sharing and collaboration
+
+## 🚀 Soon to be Added
+
+### **📊 Additional Survey Platforms**
+- **[Survey Junkie](https://www.surveyjunkie.com/)** - Popular survey platform
+- **[Pinecone Research](https://pineconeresearch.com/)** - High-paying surveys
+- **[YouGov](https://yougov.com/)** - Political and consumer surveys
+- **[Swagbucks](https://www.swagbucks.com/)** - Rewards platform integration
+- **[InboxDollars](https://www.inboxdollars.com/)** - Cash rewards platform
+- **[MyPoints](https://www.mypoints.com/)** - Points-based rewards
+
+### **💻 Cross-Platform Applications**
+- **[Windows Desktop App](https://github.com/electron/electron)** - Native Windows application
+- **[Linux Desktop App](https://github.com/tauri-apps/tauri)** - Native Linux application  
+- **[macOS Desktop App](https://github.com/electron/electron)** - Native macOS application
+- **[Android Mobile App](https://github.com/react-native/react-native)** - Mobile automation
+- **[iOS Mobile App](https://github.com/react-native/react-native)** - iOS automation (if possible)
+
+### **🤖 Enhanced AI Features**
+- **[GPT-4 Integration](https://openai.com/)** - Advanced language model for survey responses
+- **[Claude AI Integration](https://claude.ai/)** - Alternative AI for complex reasoning
+- **[Local AI Models](https://github.com/ggerganov/llama.cpp)** - Offline AI processing
+- **[Multi-Modal AI](https://github.com/openai/CLIP)** - Advanced image and text understanding
+
+### **🔧 Advanced Features**
+- **[Docker Containerization](https://docker.com/)** - Easy deployment and scaling
+- **[Kubernetes Orchestration](https://kubernetes.io/)** - Multi-instance management
+- **[Web Dashboard](https://github.com/streamlit/streamlit)** - Real-time monitoring interface
+- **[Telegram Bot Integration](https://core.telegram.org/bots/api)** - Remote control via Telegram
+- **[Discord Bot Integration](https://discord.com/developers/docs/)** - Community management
+
+### **📈 Analytics & Monitoring**
+- **[Grafana Dashboards](https://grafana.com/)** - Performance monitoring
+- **[Prometheus Metrics](https://prometheus.io/)** - System metrics collection
+- **[ELK Stack](https://www.elastic.co/)** - Log analysis and visualization
+- **[Real-time Alerts](https://github.com/prometheus/alertmanager)** - Automated notifications
+
+### **🔒 Security Enhancements**
+- **[OAuth2 Integration](https://oauth.net/)** - Secure authentication
+- **[JWT Tokens](https://jwt.io/)** - Stateless authentication
+- **[Rate Limiting](https://github.com/redis/redis)** - API protection
+- **[Encrypted Storage](https://github.com/cryptography/cryptography)** - Secure credential storage
 
 ## 🤝 Contributing
 
@@ -349,12 +440,6 @@ This project is open source. Please use responsibly and in compliance with platf
 ## ⚠️ Disclaimer
 
 This tool is for educational purposes. Users are responsible for complying with platform terms of service and applicable laws. The authors are not responsible for any misuse.
-
-## 🎉 Acknowledgments
-
-- **[V2Ray Core](https://github.com/v2fly/v2ray-core)** - Advanced proxy platform
-- **[Telegram Groups](https://t.me/v2fly_chat)** - Free V2Ray servers
-- **[Google Gemini](https://ai.google.dev/)** - AI-powered survey solving
 
 ---
 
