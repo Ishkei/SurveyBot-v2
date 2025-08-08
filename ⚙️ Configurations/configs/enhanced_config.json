@@ -1,0 +1,92 @@
+{
+  "bot_settings": {
+    "DEBUG_MODE": false,
+    "HEADLESS": true,
+    "TIMEOUT": 30,
+    "RETRY_ATTEMPTS": 3,
+    "DELAY_BETWEEN_ACTIONS": 1.5
+  },
+  
+  "personality_settings": {
+    "style": "discord_casual",
+    "response_length": "concise",
+    "use_emojis": true,
+    "casual_language": true,
+    "technical_terms": true
+  },
+  
+  "enhanced_features": {
+    "USE_HREQUESTS": true,
+    "USE_BROWSERFORGE": false,
+    "USE_FINGERPRINT": true,
+    "USE_VISION_MODEL": false,
+    "USE_OCR": false
+  },
+  
+  "survey_automation": {
+    "auto_detect_questions": true,
+    "smart_response_generation": true,
+    "human_like_delays": true,
+    "error_recovery": true,
+    "completion_detection": true
+  },
+  
+  "element_selectors": {
+    "SURVEY_ELEMENTS": [
+      "input[type='text']",
+      "input[type='email']", 
+      "input[type='radio']",
+      "input[type='checkbox']",
+      "select",
+      "textarea",
+      "button[type='submit']",
+      ".question",
+      ".survey-question",
+      "label"
+    ],
+    "COMPLETION_INDICATORS": [
+      ".survey-complete",
+      ".thank-you",
+      ".completion-message",
+      "h1:has-text('Thank')",
+      "h1:has-text('Complete')"
+    ],
+    "NAVIGATION_BUTTONS": [
+      "button:has-text('Next')",
+      "button:has-text('Continue')", 
+      "button:has-text('Submit')",
+      ".next-button",
+      ".continue-button"
+    ]
+  },
+  
+  "discord_style_responses": {
+    "casual_phrases": [
+      "tbh", "bruh", "lmao", "imo", "ngl", "yeah", "honestly",
+      "that's tricky", "that makes sense", "good point",
+      "i'd probably", "i think", "honestly just"
+    ],
+    "technical_terms": [
+      "automation", "scripting", "web scraping", "browser automation",
+      "selenium", "playwright", "api calls", "element detection",
+      "survey logic", "response generation"
+    ],
+    "enthusiasm_indicators": [
+      "that's solid", "pretty good", "works well", "nice approach",
+      "clean solution", "efficient", "reliable"
+    ]
+  },
+  
+  "proxy_settings": {
+    "USE_PROXY": true,
+    "PROXY_TYPE": "v2ray",
+    "ROTATE_PROXIES": true,
+    "PROXY_TIMEOUT": 30
+  },
+  
+  "api_settings": {
+    "GEMINI_API_KEY": "YOUR_GEMINI_API_KEY",
+    "OPENAI_API_KEY": "YOUR_OPENAI_API_KEY",
+    "USE_FALLBACK_RESPONSES": true
+  }
+}

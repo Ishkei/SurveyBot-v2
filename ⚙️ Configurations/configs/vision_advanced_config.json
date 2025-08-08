@@ -1,0 +1,134 @@
+{
+  "bot_settings": {
+    "DEBUG_MODE": true,
+    "HEADLESS": false,
+    "TIMEOUT": 30,
+    "RETRY_ATTEMPTS": 3,
+    "DELAY_BETWEEN_ACTIONS": 1.5,
+    "SURVEY_URL": "https://example-survey-site.com"
+  },
+  
+  "vision_settings": {
+    "USE_VISION_MODEL": true,
+    "USE_OCR": true,
+    "USE_MOUSE_CONTROL": true,
+    "VISION_MODEL": "gpt-4-vision-preview",
+    "OCR_ENGINE": "pytesseract",
+    "SCREENSHOT_QUALITY": "high"
+  },
+  
+  "personality_settings": {
+    "style": "discord_casual",
+    "response_length": "concise",
+    "use_emojis": true,
+    "casual_language": true,
+    "technical_terms": true
+  },
+  
+  "scrolling_settings": {
+    "SMART_SCROLL": true,
+    "SCROLLBAR_DETECTION": true,
+    "SCROLL_INCREMENT": 300,
+    "CHANGE_DETECTION_THRESHOLD": 10,
+    "MAX_SCROLL_ATTEMPTS": 5
+  },
+  
+  "mouse_settings": {
+    "HUMAN_LIKE_MOVEMENT": true,
+    "BEZIER_CURVE_POINTS": 10,
+    "MOVEMENT_RANDOMNESS": 5,
+    "CLICK_DELAY_MIN": 0.1,
+    "CLICK_DELAY_MAX": 0.3,
+    "TYPING_INTERVAL": 0.1
+  },
+  
+  "element_detection": {
+    "OCR_CONFIDENCE_THRESHOLD": 50,
+    "TEXT_MATCHING_THRESHOLD": 0.8,
+    "ELEMENT_SEARCH_RADIUS": 100,
+    "BUTTON_DETECTION_KEYWORDS": [
+      "next", "continue", "submit", "button", "proceed"
+    ],
+    "QUESTION_DETECTION_KEYWORDS": [
+      "question", "what", "how", "why", "when", "where", "which"
+    ]
+  },
+  
+  "survey_automation": {
+    "VISION_BASED_APPROACH": true,
+    "HYBRID_HTML_VISION": true,
+    "AUTO_DETECT_QUESTIONS": true,
+    "SMART_RESPONSE_GENERATION": true,
+    "HUMAN_LIKE_DELAYS": true,
+    "ERROR_RECOVERY": true,
+    "COMPLETION_DETECTION": true,
+    "ATTENTION_CHECK_HANDLING": true
+  },
+  
+  "completion_indicators": [
+    "thank you",
+    "congratulations", 
+    "survey complete",
+    "completion",
+    "finished",
+    "done",
+    "success",
+    "thank you for participating"
+  ],
+  
+  "attention_check_keywords": [
+    "attention check",
+    "quality check", 
+    "verification",
+    "please select",
+    "which of the following",
+    "select all that apply"
+  ],
+  
+  "discord_style_responses": {
+    "casual_phrases": [
+      "tbh", "bruh", "lmao", "imo", "ngl", "yeah", "honestly",
+      "that's tricky", "that makes sense", "good point",
+      "i'd probably", "i think", "honestly just"
+    ],
+    "technical_terms": [
+      "automation", "scripting", "web scraping", "browser automation",
+      "selenium", "playwright", "api calls", "element detection",
+      "survey logic", "response generation", "vision model", "ocr"
+    ],
+    "enthusiasm_indicators": [
+      "that's solid", "pretty good", "works well", "nice approach",
+      "clean solution", "efficient", "reliable"
+    ]
+  },
+  
+  "api_settings": {
+    "GEMINI_API_KEY": "YOUR_GEMINI_API_KEY",
+    "OPENAI_API_KEY": "YOUR_OPENAI_API_KEY",
+    "GPT4V_API_KEY": "YOUR_GPT4V_API_KEY",
+    "USE_FALLBACK_RESPONSES": true
+  },
+  
+  "proxy_settings": {
+    "USE_PROXY": false,
+    "PROXY_TYPE": "v2ray",
+    "ROTATE_PROXIES": true,
+    "PROXY_TIMEOUT": 30
+  },
+  
+  "error_handling": {
+    "MAX_RETRIES": 3,
+    "RETRY_DELAY": 5,
+    "FALLBACK_TO_HTML": true,
+    "FALLBACK_TO_MANUAL": false,
+    "LOG_ERRORS": true
+  },
+  
+  "performance_optimization": {
+    "SCREENSHOT_CACHE": true,
+    "OCR_CACHE": true,
+    "ELEMENT_CACHE": true,
+    "REDUCE_API_CALLS": true,
+    "BATCH_PROCESSING": true
+  }
+}

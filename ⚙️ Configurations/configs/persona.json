@@ -1,0 +1,38 @@
+{
+  "about_you": {
+    "full_name": "Alex Johnson",
+    "email": "lf7gk70m@tressachbekele.anonaddy.com",
+    "date_of_birth": "1990-05-15",
+    "age": 33,
+    "gender": "Male",
+    "state": "California",
+    "city": "Los Angeles",
+    "country": "United States",
+    "occupation": "Software Developer",
+    "education": "Bachelor's Degree",
+    "income": "50000-75000",
+    "marital_status": "Single",
+    "children": "No",
+    "interests": ["Technology", "Sports", "Travel", "Music"],
+    "hobbies": ["Programming", "Gaming", "Reading", "Hiking"],
+    "political_views": "Moderate",
+    "religion": "None",
+    "ethnicity": "Caucasian",
+    "language": "English",
+    "timezone": "PST"
+  },
+  "survey_preferences": {
+    "preferred_topics": ["Technology", "Consumer Products", "Travel", "Entertainment"],
+    "avoid_topics": ["Politics", "Religion", "Personal Finance"],
+    "response_style": "Honest but positive",
+    "completion_time": "5-15 minutes",
+    "compensation_preference": "Any amount"
+  },
+  "personality_traits": {
+    "openness": "High",
+    "conscientiousness": "High", 
+    "extraversion": "Medium",
+    "agreeableness": "High",
+    "neuroticism": "Low"
+  }
+}
