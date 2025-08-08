@@ -7,6 +7,7 @@
     "gender": "Male",
     "state": "California",
     "city": "Los Angeles",
+    "zipcode": "90210",
     "country": "United States",
     "occupation": "Software Developer",
     "education": "Bachelor's Degree",

@@ -1,0 +1,91 @@
+[
+  {
+    "test_id": "test_login_survey_pattern_0",
+    "survey_url": "https://qmee.com",
+    "test_scenario": "Test Qmee login flow with valid credentials",
+    "expected_actions": [
+      "Navigate to login page",
+      "Enter email: faseofgaming@gmail.com",
+      "Enter password: v8lebwEpictAvO",
+      "Click login button",
+      "Verify successful login"
+    ],
+    "validation_criteria": [
+      "Login successful",
+      "Redirected to dashboard",
+      "No error messages displayed"
+    ],
+    "generated_by": "ai_integration"
+  },
+  {
+    "test_id": "test_login_survey_pattern_1",
+    "survey_url": "https://qmee.com",
+    "test_scenario": "Test Qmee login flow with valid credentials",
+    "expected_actions": [
+      "Navigate to login page",
+      "Enter email: faseofgaming@gmail.com",
+      "Enter password: v8lebwEpictAvO",
+      "Click login button",
+      "Verify successful login"
+    ],
+    "validation_criteria": [
+      "Login successful",
+      "Redirected to dashboard",
+      "No error messages displayed"
+    ],
+    "generated_by": "ai_integration"
+  },
+  {
+    "test_id": "test_login_survey_pattern_2",
+    "survey_url": "https://qmee.com",
+    "test_scenario": "Test Qmee login flow with valid credentials",
+    "expected_actions": [
+      "Navigate to login page",
+      "Enter email: faseofgaming@gmail.com",
+      "Enter password: v8lebwEpictAvO",
+      "Click login button",
+      "Verify successful login"
+    ],
+    "validation_criteria": [
+      "Login successful",
+      "Redirected to dashboard",
+      "No error messages displayed"
+    ],
+    "generated_by": "ai_integration"
+  },
+  {
+    "test_id": "test_demographic_survey_pattern_3",
+    "survey_url": "https://qmee.com",
+    "test_scenario": "Test demographic survey completion",
+    "expected_actions": [
+      "Fill age field with 33",
+      "Select gender as Male",
+      "Enter location as Los Angeles, CA",
+      "Click continue button"
+    ],
+    "validation_criteria": [
+      "All fields filled correctly",
+      "No validation errors",
+      "Successfully moved to next page"
+    ],
+    "generated_by": "ai_integration"
+  },
+  {
+    "test_id": "test_login_survey_pattern_4",
+    "survey_url": "https://qmee.com",
+    "test_scenario": "Test Qmee login flow with valid credentials",
+    "expected_actions": [
+      "Navigate to login page",
+      "Enter email: faseofgaming@gmail.com",
+      "Enter password: v8lebwEpictAvO",
+      "Click login button",
+      "Verify successful login"
+    ],
+    "validation_criteria": [
+      "Login successful",
+      "Redirected to dashboard",
+      "No error messages displayed"
+    ],
+    "generated_by": "ai_integration"
+  }
+]

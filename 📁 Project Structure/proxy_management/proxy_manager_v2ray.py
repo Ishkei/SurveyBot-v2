@@ -37,7 +37,7 @@ class ProxyConfig:
 class V2RayProxyManager:
     """Advanced proxy manager using V2Ray Core"""
     
-    def __init__(self, v2ray_path: str = "v2ray", config_dir: str = "./v2ray_configs"):
+    def __init__(self, v2ray_path: str = "v2ray", config_dir: str = "../v2ray_configs"):
         self.v2ray_path = v2ray_path
         self.config_dir = config_dir
         self.current_proxy = None

@@ -16,7 +16,7 @@ except ImportError:
 model = None
 if USE_GEMINI_API:
     try:
-        api_key = os.getenv('GEMINI_API_KEY')
+        api_key = os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY')
         if api_key:
             genai.configure(api_key=api_key)
             model = genai.GenerativeModel('gemini-pro')
@@ -26,7 +26,27 @@ if USE_GEMINI_API:
         print(f"⚠️ Failed to initialize Gemini: {e}")
 
 class PersonalityResponseGenerator:
-    def __init__(self, personality_file: str = "configs/persona.json"):
+    def __init__(self, personality_file: str = None):
+        if personality_file is None:
+            # Try multiple possible paths for persona.json
+            persona_paths = [
+                "../⚙️ Configurations/configs/persona.json",
+                "../../⚙️ Configurations/configs/persona.json",
+                "../../configs/persona.json",
+                "../configs/persona.json"
+            ]
+            
+            for path in persona_paths:
+                try:
+                    with open(path, 'r') as f:
+                        json.load(f)  # Test if file exists and is valid JSON
+                        personality_file = path
+                        break
+                except (FileNotFoundError, json.JSONDecodeError):
+                    continue
+            
+            if personality_file is None:
+                personality_file = "../⚙️ Configurations/configs/persona.json"  # Default fallback
         self.personality_file = personality_file
         self.personality_data = self._load_personality()
         

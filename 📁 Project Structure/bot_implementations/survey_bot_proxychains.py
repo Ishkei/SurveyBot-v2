@@ -35,24 +35,73 @@ else:
     model = None
 
 try:
-    with open('configs/persona.json', 'r') as f:
-        PERSONA = json.load(f)
+    # Try multiple possible paths for persona.json
+    persona_paths = [
+        '../⚙️ Configurations/configs/persona.json',
+        '../../⚙️ Configurations/configs/persona.json',
+        '../../configs/persona.json',
+        '../configs/persona.json'
+    ]
+    
+    PERSONA = None
+    for path in persona_paths:
+        try:
+            with open(path, 'r') as f:
+                PERSONA = json.load(f)
+                print(f"Loaded persona from: {path}")
+                break
+        except FileNotFoundError:
+            continue
+    
+    if PERSONA is None:
+        print("Warning: No persona.json found. Using default persona.")
+        PERSONA = {
+            "name": "John Doe",
+            "age": 30,
+            "occupation": "Software Engineer",
+            "location": "United States",
+            "interests": ["technology", "gaming", "sports"],
+            "demographics": {
+                "gender": "male",
+                "education": "bachelor's degree",
+                "income": "middle class"
+            }
+        }
+    
     PERSONA_PROMPT = f"""You are an AI assistant representing a person with these details: {json.dumps(PERSONA)}.
 Your primary goal is to answer survey questions accurately based on this persona.
 When presented with multiple choice options, select ONLY the single, specific button or radio option that directly corresponds to the answer.
 You MUST provide the NUMERIC ID (e.g., 15) of the element to click or fill, NOT its text label.
 Avoid clicking on general navigation links. Always prioritize progressing through the survey.
 """
-except FileNotFoundError:
-    print("Error: persona.json not found! Please create it.")
-    exit()
+except Exception as e:
+    print(f"Error loading persona: {e}")
+    print("Using default persona configuration.")
+    PERSONA = {
+        "name": "John Doe",
+        "age": 30,
+        "occupation": "Software Engineer",
+        "location": "United States",
+        "interests": ["technology", "gaming", "sports"],
+        "demographics": {
+            "gender": "male",
+            "education": "bachelor's degree",
+            "income": "middle class"
+        }
+    }
+    PERSONA_PROMPT = f"""You are an AI assistant representing a person with these details: {json.dumps(PERSONA)}.
+Your primary goal is to answer survey questions accurately based on this persona.
+When presented with multiple choice options, select ONLY the single, specific button or radio option that directly corresponds to the answer.
+You MUST provide the NUMERIC ID (e.g., 15) of the element to click or fill, NOT its text label.
+Avoid clicking on general navigation links. Always prioritize progressing through the survey.
+"""
 
 class ProxychainsSurveyBot:
     """Survey bot using proxychains4 for proxy support"""
     
     def __init__(self):
         self.driver = None
-        self.v2ray_manager = V2RayProxyManager(v2ray_path="./v2ray/v2ray")
+        self.v2ray_manager = V2RayProxyManager(v2ray_path="../v2ray/v2ray")
         self.wait = None
         self.current_proxy = None
         self.proxy_rotation_count = 0
@@ -63,9 +112,11 @@ class ProxychainsSurveyBot:
         try:
             # Load V2Ray proxy configurations
             config_files = [
+                "../configs/v2ray_proxies.json",
+                "../../⚙️ Configurations/configs/v2ray_proxies.json",
                 "configs/v2ray_proxies.json",
                 "v2ray_proxies.json",
-                "configs/sample_v2ray_proxies.json"
+                "sample_v2ray_proxies.json"
             ]
             
             config_loaded = False

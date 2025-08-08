@@ -1,0 +1,104 @@
+[
+  {
+    "pattern_id": "login_survey_pattern",
+    "survey_type": "login_flow",
+    "question_patterns": [
+      "email_input",
+      "password_input",
+      "login_button"
+    ],
+    "navigation_flow": [
+      "enter_email",
+      "enter_password",
+      "click_login"
+    ],
+    "response_templates": {
+      "email": "faseofgaming@gmail.com",
+      "password": "v8lebwEpictAvO"
+    },
+    "success_rate": 0.0,
+    "detection_method": "ai_vision_analysis"
+  },
+  {
+    "pattern_id": "login_survey_pattern",
+    "survey_type": "login_flow",
+    "question_patterns": [
+      "email_input",
+      "password_input",
+      "login_button"
+    ],
+    "navigation_flow": [
+      "enter_email",
+      "enter_password",
+      "click_login"
+    ],
+    "response_templates": {
+      "email": "faseofgaming@gmail.com",
+      "password": "v8lebwEpictAvO"
+    },
+    "success_rate": 0.0,
+    "detection_method": "ai_vision_analysis"
+  },
+  {
+    "pattern_id": "login_survey_pattern",
+    "survey_type": "login_flow",
+    "question_patterns": [
+      "email_input",
+      "password_input",
+      "login_button"
+    ],
+    "navigation_flow": [
+      "enter_email",
+      "enter_password",
+      "click_login"
+    ],
+    "response_templates": {
+      "email": "faseofgaming@gmail.com",
+      "password": "v8lebwEpictAvO"
+    },
+    "success_rate": 0.0,
+    "detection_method": "ai_vision_analysis"
+  },
+  {
+    "pattern_id": "demographic_survey_pattern",
+    "survey_type": "demographics",
+    "question_patterns": [
+      "age_input",
+      "gender_selection",
+      "location_input"
+    ],
+    "navigation_flow": [
+      "fill_age",
+      "select_gender",
+      "enter_location",
+      "continue"
+    ],
+    "response_templates": {
+      "age": "33",
+      "gender": "Male",
+      "location": "Los Angeles, CA"
+    },
+    "success_rate": 0.0,
+    "detection_method": "ai_vision_analysis"
+  },
+  {
+    "pattern_id": "login_survey_pattern",
+    "survey_type": "login_flow",
+    "question_patterns": [
+      "email_input",
+      "password_input",
+      "login_button"
+    ],
+    "navigation_flow": [
+      "enter_email",
+      "enter_password",
+      "click_login"
+    ],
+    "response_templates": {
+      "email": "faseofgaming@gmail.com",
+      "password": "v8lebwEpictAvO"
+    },
+    "success_rate": 0.0,
+    "detection_method": "ai_vision_analysis"
+  }
+]

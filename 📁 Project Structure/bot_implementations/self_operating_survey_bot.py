@@ -13,11 +13,18 @@ import os
 from typing import Optional, Dict, Any, List
 from pathlib import Path
 
-# Try to import Self-Operating Computer framework
+# Check if operate command is available
+import subprocess
 try:
-    from self_operating_computer import SelfOperatingComputer
+    # Test if operate command is available
+    result = subprocess.run(['operate', '--help'], capture_output=True, text=True)
+    if result.returncode == 0:
     SOC_AVAILABLE = True
-except ImportError:
+        print("✅ Self-Operating Computer framework available")
+    else:
+        SOC_AVAILABLE = False
+        print("⚠️ Operate command not available")
+except FileNotFoundError:
     SOC_AVAILABLE = False
     print("⚠️ Self-Operating Computer not available. Install: pip install self-operating-computer")
 
@@ -77,19 +84,55 @@ class SelfOperatingSurveyBot:
             return False
             
         try:
-            # Initialize Self-Operating Computer
-            self.soc = SelfOperatingComputer(
-                model=self.vision_model,
-                headless=False,  # Show browser for debugging
-                debug=True
-            )
-            
-            print("✅ Self-Operating Computer setup complete")
+            # Test operate command
+            result = subprocess.run(['operate', '--help'], capture_output=True, text=True)
+            if result.returncode == 0:
+                print("✅ Self-Operating Computer setup complete")
+                
+                # Test screen capture capabilities
+                await self.test_screen_capture()
+                
             return True
+            else:
+                print(f"❌ Operate command test failed")
+                return False
             
         except Exception as e:
             print(f"❌ Self-Operating Computer setup failed: {e}")
             return False
+
+    async def test_screen_capture(self):
+        """Test screen capture capabilities."""
+        try:
+            print("🔍 Testing screen capture capabilities...")
+            
+            # Test with mss
+            try:
+                import mss
+                with mss.mss() as sct:
+                    screenshot = sct.shot()
+                    print("✅ mss screen capture working")
+            except Exception as e:
+                print(f"⚠️ mss screen capture failed: {e}")
+            
+            # Test with PIL
+            try:
+                from PIL import ImageGrab
+                screenshot = ImageGrab.grab()
+                print("✅ PIL screen capture working")
+            except Exception as e:
+                print(f"⚠️ PIL screen capture failed: {e}")
+            
+            # Test with pyautogui
+            try:
+                import pyautogui
+                screenshot = pyautogui.screenshot()
+                print("✅ PyAutoGUI screen capture working")
+            except Exception as e:
+                print(f"⚠️ PyAutoGUI screen capture failed: {e}")
+                
+        except Exception as e:
+            print(f"⚠️ Screen capture test failed: {e}")
 
     async def take_screenshot(self) -> Optional[bytes]:
         """Take screenshot using Self-Operating Computer."""
@@ -307,24 +350,116 @@ class SelfOperatingSurveyBot:
             survey_url = self.config.get('bot_settings', {}).get('SURVEY_URL')
             
             if survey_url:
-                # Navigate to survey site using SOC
-                await self.soc.navigate_to(survey_url)
-                print(f"✅ Navigated to {survey_url}")
-                
-                # Run Self-Operating Computer survey
-                await self.run_self_operating_survey()
+                # Run survey automation using operate command
+                if "qmee.com" in survey_url.lower():
+                    objective = "Navigate to https://qmee.com, sign in with the provided credentials, and complete available surveys naturally. Take your time and be thorough."
+                else:
+                    objective = f"Navigate to {survey_url} and complete the survey naturally"
+                await self.run_operate_objective(objective)
             else:
                 # Run demo task
                 demo_task = "Open a web browser and go to a survey site"
-                await self.run_simple_task(demo_task)
+                await self.run_operate_objective(demo_task)
             
         except Exception as e:
             print(f"❌ Bot execution failed: {e}")
-        finally:
-            if self.soc:
-                await self.soc.cleanup()
+
+    async def run_operate_objective(self, objective: str, model: str = "gpt-4o") -> bool:
+        """
+        Run operate command with given objective.
+        This is the CORRECT way to use Self-Operating Computer framework.
+        """
+        try:
+            print(f"🎯 Running operate with objective: {objective}")
+            print(f"   Model: {model}")
+            
+            # Build operate command with additional options for better compatibility
+            cmd = ["operate"]
+            if model != "gpt-4o":
+                cmd.extend(["-m", model])
+            
+            # Add environment variables for better Wayland compatibility
+            env = os.environ.copy()
+            env.update({
+                'DISPLAY': ':0',
+                'WAYLAND_DISPLAY': 'wayland-0',
+                'XDG_SESSION_TYPE': 'wayland',
+                'PYAUTOGUI_USE_WAYLAND': '1'  # Enable Wayland support for PyAutoGUI
+            })
+            
+            # Run operate command with improved error handling
+            process = subprocess.Popen(
+                cmd,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                env=env
+            )
+            
+            # Send objective to operate
+            stdout, stderr = process.communicate(input=objective + '\n')
+            
+            if process.returncode == 0:
+                print("✅ Operate command completed successfully")
+                print(f"   Output: {stdout[:200]}...")
+                return True
+            else:
+                print(f"❌ Operate command failed: {stderr}")
+                # Try alternative approach if first fails
+                return await self.run_operate_alternative(objective, model)
+                
+        except Exception as e:
+            print(f"❌ Operate command error: {e}")
+            return await self.run_operate_alternative(objective, model)
+
+    async def run_operate_alternative(self, objective: str, model: str = "gpt-4o") -> bool:
+        """
+        Alternative approach when main operate command fails.
+        Uses different models or approaches.
+        """
+        try:
+            print("🔄 Trying alternative approach...")
+            
+            # Try with different model (prioritize working ones)
+            alternative_models = ["gemini-pro-vision", "gpt-4-with-ocr", "claude-3"]
+            
+            for alt_model in alternative_models:
+                if alt_model == model:
+                    continue
+                    
+                print(f"   Trying model: {alt_model}")
+                
+                cmd = ["operate", "-m", alt_model]
+                
+                # Run with timeout
+                try:
+                    process = subprocess.run(
+                        cmd,
+                        input=objective + '\n',
+                        capture_output=True,
+                        text=True,
+                        timeout=60
+                    )
+                    
+                    if process.returncode == 0:
+                        print(f"✅ Alternative approach succeeded with {alt_model}")
+                        print(f"   Output: {process.stdout[:200]}...")
+                        return True
+                    else:
+                        print(f"   Failed with {alt_model}: {process.stderr}")
+                        
+                except subprocess.TimeoutExpired:
+                    print(f"   Timeout with {alt_model}")
+                    continue
+                    
+            print("❌ All alternative approaches failed")
+            return False
+            
+        except Exception as e:
+            print(f"❌ Alternative approach error: {e}")
+            return False
 
     async def cleanup(self):
         """Cleanup resources."""
-        if self.soc:
-            await self.soc.cleanup()
+        print("✅ Bot cleanup completed")

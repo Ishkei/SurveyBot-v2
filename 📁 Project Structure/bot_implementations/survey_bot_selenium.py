@@ -36,17 +36,66 @@ else:
     model = None
 
 try:
-    with open('configs/persona.json', 'r') as f:
-        PERSONA = json.load(f)
+    # Try multiple possible paths for persona.json
+    persona_paths = [
+        '../⚙️ Configurations/configs/persona.json',
+        '../../⚙️ Configurations/configs/persona.json',
+        '../../configs/persona.json',
+        '../configs/persona.json'
+    ]
+    
+    PERSONA = None
+    for path in persona_paths:
+        try:
+            with open(path, 'r') as f:
+                PERSONA = json.load(f)
+                print(f"Loaded persona from: {path}")
+                break
+        except FileNotFoundError:
+            continue
+    
+    if PERSONA is None:
+        print("Warning: No persona.json found. Using default persona.")
+        PERSONA = {
+            "name": "John Doe",
+            "age": 30,
+            "occupation": "Software Engineer",
+            "location": "United States",
+            "interests": ["technology", "gaming", "sports"],
+            "demographics": {
+                "gender": "male",
+                "education": "bachelor's degree",
+                "income": "middle class"
+            }
+        }
+    
     PERSONA_PROMPT = f"""You are an AI assistant representing a person with these details: {json.dumps(PERSONA)}.
 Your primary goal is to answer survey questions accurately based on this persona.
 When presented with multiple choice options, select ONLY the single, specific button or radio option that directly corresponds to the answer.
 You MUST provide the NUMERIC ID (e.g., 15) of the element to click or fill, NOT its text label.
 Avoid clicking on general navigation links. Always prioritize progressing through the survey.
 """
-except FileNotFoundError:
-    print("Error: configs/persona.json not found! Please create it.")
-    exit()
+except Exception as e:
+    print(f"Error loading persona: {e}")
+    print("Using default persona configuration.")
+    PERSONA = {
+        "name": "John Doe",
+        "age": 30,
+        "occupation": "Software Engineer",
+        "location": "United States",
+        "interests": ["technology", "gaming", "sports"],
+        "demographics": {
+            "gender": "male",
+            "education": "bachelor's degree",
+            "income": "middle class"
+        }
+    }
+    PERSONA_PROMPT = f"""You are an AI assistant representing a person with these details: {json.dumps(PERSONA)}.
+Your primary goal is to answer survey questions accurately based on this persona.
+When presented with multiple choice options, select ONLY the single, specific button or radio option that directly corresponds to the answer.
+You MUST provide the NUMERIC ID (e.g., 15) of the element to click or fill, NOT its text label.
+Avoid clicking on general navigation links. Always prioritize progressing through the survey.
+"""
 
 class ProxyRotator:
     """Handles proxy rotation for avoiding IP bans"""

@@ -6,8 +6,13 @@ Based on Blue Parker's vision-based approach from Discord
 
 import asyncio
 import json
+import os
 import sys
 from pathlib import Path
+
+# Import config to load environment variables
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "📁 Project Structure"))
+from config import Config
 
 def load_config(config_path: str = "../⚙️ Configurations/configs/self_operating_config.json"):
     """Load configuration from JSON file."""
@@ -78,11 +83,11 @@ def main():
     
     print(f"📋 Using configuration: {config_path}")
     
-            # Check if config file exists
-        if not Path(config_path).exists():
-            print(f"❌ Configuration file not found: {config_path}")
-            print("💡 Available config files:")
-            config_dir = Path("../⚙️ Configurations/configs")
+    # Check if config file exists
+    if not Path(config_path).exists():
+        print(f"❌ Configuration file not found: {config_path}")
+        print("💡 Available config files:")
+        config_dir = Path("../⚙️ Configurations/configs")
         if config_dir.exists():
             for config_file in config_dir.glob("*.json"):
                 print(f"   - {config_file}")

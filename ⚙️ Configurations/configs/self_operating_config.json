@@ -5,7 +5,7 @@
     "TIMEOUT": 30,
     "RETRY_ATTEMPTS": 3,
     "DELAY_BETWEEN_ACTIONS": 2.0,
-    "SURVEY_URL": "https://www.surveymonkey.com/r/demo-survey"
+    "SURVEY_URL": "https://qmee.com"
   },
   
   "self_operating_computer": {

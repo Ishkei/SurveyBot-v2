@@ -1,0 +1,103 @@
+{
+  "element_maps": {
+    "common": {
+      "buttons": [
+        {
+          "text": "Over $45,000,000 paid to our users",
+          "classes": "Header_headerTag__QwJGV",
+          "type": "button"
+        },
+        {
+          "text": "Play Intro",
+          "classes": "Button_root__dXjQ4 Button_type-primary__PYmxD Button_color-secondary__uleBS Button_size-large__tjtfp MarketingVideo_playIntroButton__H9DhH",
+          "type": "button"
+        },
+        {
+          "text": "Terms & Conditions",
+          "classes": "Button_root__dXjQ4 Button_type-text__GtZfF Button_color-primary__5KrzR Button_size-normal__2_7ai SignUpForm_agreementButton__QLGzC",
+          "type": "button"
+        },
+        {
+          "text": "Sign me up!",
+          "classes": "Button_root__dXjQ4 Button_type-primary__PYmxD Button_color-secondary__uleBS Button_size-large__tjtfp Button_disabled__buK_O Form_submit__ekXTN Form_submitFullWidth___XcPh",
+          "type": "button"
+        },
+        {
+          "text": "Customise Cookies",
+          "classes": "Button_root__dXjQ4 Button_type-tertiary__lskPp Button_color-primary__5KrzR Button_size-normal__2_7ai",
+          "type": "button"
+        },
+        {
+          "text": "Reject All",
+          "classes": "Button_root__dXjQ4 Button_type-secondary__NP_x5 Button_color-primary__5KrzR Button_size-large__tjtfp",
+          "type": "button"
+        },
+        {
+          "text": "Accept All",
+          "classes": "Button_root__dXjQ4 Button_type-primary__PYmxD Button_color-primary__5KrzR Button_size-large__tjtfp",
+          "type": "button"
+        }
+      ],
+      "forms": [
+        {
+          "tag": "form",
+          "placeholder": null,
+          "type": "form_element"
+        },
+        {
+          "tag": "input",
+          "placeholder": "Email",
+          "type": "form_element"
+        },
+        {
+          "tag": "input",
+          "placeholder": "Password",
+          "type": "form_element"
+        },
+        {
+          "tag": "input",
+          "placeholder": null,
+          "type": "form_element"
+        }
+      ],
+      "navigation": [
+        {
+          "text": "Surveys\nCashback\nDeals\nGaming\nBlog\nSearch",
+          "type": "navigation"
+        },
+        {
+          "text": "",
+          "type": "navigation"
+        }
+      ],
+      "survey_cards": []
+    }
+  },
+  "survey_patterns": {
+    "question_types": [],
+    "answer_formats": [],
+    "navigation_patterns": []
+  },
+  "recommendations": {
+    "enhanced_selectors": [],
+    "improved_navigation": [
+      "Use vision-based approach for dynamic content",
+      "Implement fallback selectors for common buttons",
+      "Add random delays between actions",
+      "Rotate user agents and fingerprints"
+    ],
+    "better_responses": [
+      "Use Discord-style personality responses",
+      "Implement context-aware answer generation",
+      "Add survey-specific response templates",
+      "Maintain consistency across similar questions"
+    ],
+    "risk_mitigation": [
+      "Avoid full site scraping to prevent detection",
+      "Use vision models instead of HTML parsing",
+      "Implement human-like interaction patterns",
+      "Rotate IP addresses and user agents",
+      "Add random delays and natural typing patterns"
+    ]
+  }
+}

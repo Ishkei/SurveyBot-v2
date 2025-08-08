@@ -329,7 +329,7 @@ class EnhancedSurveyBot:
     def _load_persona(self):
         """Load AI personality configuration"""
         try:
-            with open('configs/persona.json', 'r') as f:
+            with open('../⚙️ Configurations/configs/persona.json', 'r') as f:
                 self.persona = json.load(f)
             self.persona_prompt = f"""You are an AI assistant representing a person with these details: {json.dumps(self.persona)}.
 Your primary goal is to answer survey questions accurately based on this persona.
@@ -338,7 +338,7 @@ You MUST provide the NUMERIC ID (e.g., 15) of the element to click or fill, NOT 
 Avoid clicking on general navigation links. Always prioritize progressing through the survey.
 """
         except FileNotFoundError:
-            print("Error: persona.json not found! Please create it.")
+            print("Error: ../⚙️ Configurations/configs/persona.json not found! Please create it.")
             exit()
     
     def initialize(self) -> bool:

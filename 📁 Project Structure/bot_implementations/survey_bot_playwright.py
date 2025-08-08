@@ -19,23 +19,72 @@ USE_GEMINI_API = GOOGLE_API_KEY and GOOGLE_API_KEY != "YOUR_GOOGLE_API_KEY"
 
 if USE_GEMINI_API:
     genai.configure(api_key=GOOGLE_API_KEY)
-    model = genai.GenerativeModel('gemini-1.5-flash-latest', generation_config={"response_mime_type": "application/json"})
+    model = genai.GenerativeModel('gemini-1.5-flash-latest')
 else:
     print("Warning: GOOGLE_API_KEY not found in .env file. Some features may be limited.")
     model = None
 
 try:
-    with open('persona.json', 'r') as f:
-        PERSONA = json.load(f)
+    # Try multiple possible paths for persona.json
+    persona_paths = [
+        '../⚙️ Configurations/configs/persona.json',
+        '../../⚙️ Configurations/configs/persona.json',
+        '../../configs/persona.json',
+        '../configs/persona.json'
+    ]
+    
+    PERSONA = None
+    for path in persona_paths:
+        try:
+            with open(path, 'r') as f:
+                PERSONA = json.load(f)
+                print(f"Loaded persona from: {path}")
+                break
+        except FileNotFoundError:
+            continue
+    
+    if PERSONA is None:
+        print("Warning: No persona.json found. Using default persona.")
+        PERSONA = {
+            "name": "John Doe",
+            "age": 30,
+            "occupation": "Software Engineer",
+            "location": "United States",
+            "interests": ["technology", "gaming", "sports"],
+            "demographics": {
+                "gender": "male",
+                "education": "bachelor's degree",
+                "income": "middle class"
+            }
+        }
+    
     PERSONA_PROMPT = f"""You are an AI assistant representing a person with these details: {json.dumps(PERSONA)}.
 Your primary goal is to answer survey questions accurately based on this persona.
 When presented with multiple choice options, select ONLY the single, specific button or radio option that directly corresponds to the answer.
 You MUST provide the NUMERIC ID (e.g., 15) of the element to click or fill, NOT its text label.
 Avoid clicking on general navigation links. Always prioritize progressing through the survey.
 """
-except FileNotFoundError:
-    print("Error: persona.json not found! Please create it.")
-    exit()
+except Exception as e:
+    print(f"Error loading persona: {e}")
+    print("Using default persona configuration.")
+    PERSONA = {
+        "name": "John Doe",
+        "age": 30,
+        "occupation": "Software Engineer",
+        "location": "United States",
+        "interests": ["technology", "gaming", "sports"],
+        "demographics": {
+            "gender": "male",
+            "education": "bachelor's degree",
+            "income": "middle class"
+        }
+    }
+    PERSONA_PROMPT = f"""You are an AI assistant representing a person with these details: {json.dumps(PERSONA)}.
+Your primary goal is to answer survey questions accurately based on this persona.
+When presented with multiple choice options, select ONLY the single, specific button or radio option that directly corresponds to the answer.
+You MUST provide the NUMERIC ID (e.g., 15) of the element to click or fill, NOT its text label.
+Avoid clicking on general navigation links. Always prioritize progressing through the survey.
+"""
 
 # <<< FINAL FIX HERE: Fixed f-string syntax in build_dom_tree >>>
 async def build_dom_tree(element, element_map, indent=""):
@@ -264,10 +313,8 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                     
                     if question_context:
                         print(f"Detected open-ended question: {question_context}")
-                        # Use fallback response for speed and naturalness
-                        from personality_responses import PersonalityResponseGenerator
-                        generator = PersonalityResponseGenerator(PERSONA)
-                        personality_response = generator._generate_fallback_response(question_context)
+                        # Use Discord-style personality response
+                        personality_response = await generate_personality_response(question_context, style="discord_casual")
                         print(f"Generated personality response: {personality_response}")
                         await text_input.fill(personality_response)
                     else:
@@ -334,10 +381,8 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                     
                     if question_context:
                         print(f"Detected open-ended question: {question_context}")
-                        # Use fallback response for speed and naturalness
-                        from personality_responses import PersonalityResponseGenerator
-                        generator = PersonalityResponseGenerator(PERSONA)
-                        personality_response = generator._generate_fallback_response(question_context)
+                        # Use Discord-style personality response
+                        personality_response = await generate_personality_response(question_context, style="discord_casual")
                         print(f"Generated personality response: {personality_response}")
                         await text_input.fill(personality_response)
                     else:
@@ -365,10 +410,30 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
             print(f"AI Response: {response.text}")
         except Exception as e:
             print(f"Error calling AI API: {e}")
-            return False
+            # Fallback: Try to click "Start earning" button directly
+            try:
+                start_earning_button = await context.locator('button:has-text("Start earning")').first.element_handle(timeout=2000)
+                if start_earning_button:
+                    print("AI failed, but found 'Start earning' button. Clicking it directly...")
+                    await start_earning_button.click()
+                    return True
+                else:
+                    print("No 'Start earning' button found in fallback")
+                    return False
+            except Exception as fallback_e:
+                print(f"Fallback click failed: {fallback_e}")
+                return False
         
         try:
-            decision_json = json.loads(response.text)
+            # Clean up the response text to remove markdown formatting
+            cleaned_response = response.text.strip()
+            if cleaned_response.startswith('```json'):
+                cleaned_response = cleaned_response[7:]
+            if cleaned_response.endswith('```'):
+                cleaned_response = cleaned_response[:-3]
+            cleaned_response = cleaned_response.strip()
+            
+            decision_json = json.loads(cleaned_response)
         except json.JSONDecodeError:
             print(f"Error: AI returned invalid JSON: {response.text}")
             return False
@@ -561,10 +626,8 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                     
                     if is_open_ended:
                         print(f"Detected open-ended question: {question_context}")
-                        # Use fallback response for speed and naturalness
-                        from personality_responses import PersonalityResponseGenerator
-                        generator = PersonalityResponseGenerator(PERSONA)
-                        personality_response = generator._generate_fallback_response(question_context)
+                        # Use Discord-style personality response
+                        personality_response = await generate_personality_response(question_context, style="discord_casual")
                         print(f"Generated personality response: {personality_response}")
                         await actions.fill_textbox(context, element_id, personality_response, element_map)
                     else:
@@ -587,6 +650,64 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
 
     except Exception as e:
         print(f"An error occurred in the Hybrid Vision/DOM model: {e}")
+        return False
+
+async def handle_gender_page(iframe, page, persona):
+    """Handle the gender selection page"""
+    print("Detected 'Gender' page. Handling the full sequence...")
+    
+    try:
+        # Get persona gender
+        persona_gender = persona.get('about_you', {}).get('gender', 'Male').lower()
+        print(f"Persona gender: {persona_gender}")
+        
+        # Find and click the appropriate radio button or label
+        if persona_gender == 'male':
+            # Try clicking the Male label first (more reliable)
+            male_label = await iframe.locator('label:has-text("Male")').first.element_handle(timeout=5000)
+            if male_label:
+                await male_label.click()
+                print("Clicked Male label")
+            else:
+                # Fallback to radio button
+                male_radio = await iframe.locator('input[type="radio"][value="b02b_37"]').first.element_handle(timeout=5000)
+                if male_radio:
+                    await male_radio.click()
+                    print("Clicked Male radio button")
+                else:
+                    print("Male radio button not found")
+                    return False
+        else:
+            # Try clicking the Female label first (more reliable)
+            female_label = await iframe.locator('label:has-text("Female")').first.element_handle(timeout=5000)
+            if female_label:
+                await female_label.click()
+                print("Clicked Female label")
+            else:
+                # Fallback to radio button
+                female_radio = await iframe.locator('input[type="radio"][value="b02b_38"]').first.element_handle(timeout=5000)
+                if female_radio:
+                    await female_radio.click()
+                    print("Clicked Female radio button")
+                else:
+                    print("Female radio button not found")
+                    return False
+        
+        # Wait a moment for the selection to register
+        await asyncio.sleep(1)
+        
+        # Look for a submit/next button
+        submit_button = await iframe.locator('button:has-text("Submit"), button:has-text("Next"), input[type="submit"]').first.element_handle(timeout=3000)
+        if submit_button:
+            await submit_button.click()
+            print("Clicked submit button")
+            return True
+        else:
+            print("No submit button found, but gender selection completed")
+            return True
+            
+    except Exception as e:
+        print(f"Error handling gender page: {e}")
         return False
 
 async def handle_date_of_birth_page(iframe, page, persona):
@@ -649,17 +770,51 @@ async def handle_address_page(iframe, page, persona):
         await asyncio.sleep(2)
         
         # Fill in the address fields
-        zipcode = persona['about_you']['zipcode']
+        zipcode = persona['about_you'].get('zipcode', '90210')
         city = persona['about_you']['city']
         state = persona['about_you']['state']
         
-        # Create a street address based on persona data
-        street_address = f"123 Main St, {city}, {state} {zipcode}"
+        print(f"Filling address fields - City: {city}, State: {state}, Zipcode: {zipcode}")
         
-        print(f"Filling address fields with: {street_address}")
-        
-        # Use comprehensive field detection to fill all form fields
-        filled_fields = await detect_and_fill_form_fields(iframe, persona)
+        # Fill each field individually
+        try:
+            # Fill Zipcode
+            zipcode_field = iframe.locator('input[placeholder*="Zipcode"], input[placeholder*="zipcode"], input[name*="zip"], input[id*="zip"]')
+            if await zipcode_field.is_visible(timeout=2000):
+                await zipcode_field.fill(zipcode)
+                print(f"Filled zipcode: {zipcode}")
+            
+            # Fill Street Address
+            address_field = iframe.locator('input[placeholder*="Address"], input[placeholder*="Street"], input[name*="address"], input[id*="address"]')
+            if await address_field.is_visible(timeout=2000):
+                await address_field.fill(f"123 Main Street")
+                print("Filled street address: 123 Main Street")
+            
+            # Fill City
+            city_field = iframe.locator('input[placeholder*="City"], input[name*="city"], input[id*="city"]')
+            if await city_field.is_visible(timeout=2000):
+                await city_field.fill(city)
+                print(f"Filled city: {city}")
+            
+            # Fill State dropdown
+            state_field = iframe.locator('select, input[placeholder*="State"], input[name*="state"], input[id*="state"]')
+            if await state_field.is_visible(timeout=2000):
+                await state_field.click()
+                await asyncio.sleep(1)
+                # Try to select the state
+                try:
+                    state_option = iframe.locator(f'option:has-text("{state}"), [role="option"]:has-text("{state}")')
+                    await state_option.first.click()
+                    print(f"Selected state: {state}")
+                except:
+                    # Type the state name
+                    await state_field.fill(state)
+                    print(f"Typed state: {state}")
+            
+        except Exception as e:
+            print(f"Error filling address fields: {e}")
+            # Fallback to general form detection
+            filled_fields = await detect_and_fill_form_fields(iframe, persona)
         
         # Also handle any specific fields that might not be caught by the general detection
         try:
@@ -697,38 +852,19 @@ async def handle_address_page(iframe, page, persona):
         
         # Look for a submit/continue button
         try:
-            submit_button = iframe.locator('button:has-text("Submit"), button:has-text("Continue"), button:has-text("Next"), input[type="submit"]')
-            if await submit_button.is_visible(timeout=2000):
-                print("Found submit button, clicking...")
-                await submit_button.click()
-                print("Clicked submit button")
-        except Exception as e:
-            print(f"Could not find submit button: {e}")
-        
-        print("Successfully filled all address fields.")
-        
-        # Wait a bit for the form to process and see if we need to submit
-        await asyncio.sleep(3)
-        
-        # Check if there are any submit buttons or if the page has changed
-        try:
             submit_buttons = iframe.locator('button:has-text("Submit"), button:has-text("Continue"), button:has-text("Next"), button:has-text("Confirm"), input[type="submit"]')
             if await submit_buttons.count() > 0:
                 print("Found submit button, clicking...")
                 await submit_buttons.first.click()
                 print("Clicked submit button")
-                await asyncio.sleep(3)
+                await asyncio.sleep(2)
             else:
                 print("No submit button found - form may auto-submit")
         except Exception as e:
-            print(f"No submit button found: {e}")
+            print(f"Could not find submit button: {e}")
         
-        # Wait a bit more for any page transitions
-        await asyncio.sleep(2)
-        print("Address form completed, waiting for next page...")
-        
-        # Wait a bit more to see if there are any additional pages
-        await asyncio.sleep(5)
+        print("Successfully filled all address fields.")
+        return True
         
 
         
@@ -1712,6 +1848,11 @@ async def page_router(page):
             print(f"[DEBUG] 'expecting' in text: {'expecting' in page_text_lower}")
             print(f"[DEBUG] Full page text: {page_text}")
             return await handle_children_page(iframe_locator, page, PERSONA)
+        
+        # Check for Gender page
+        elif "gender" in page_text_lower and ("male" in page_text_lower and "female" in page_text_lower):
+            print("[DEBUG] Detected Gender page")
+            return await handle_gender_page(iframe_locator, page, PERSONA)
         
         # Check for Date of Birth page
         elif (await iframe_locator.get_by_placeholder("MM").is_visible(timeout=2000) and

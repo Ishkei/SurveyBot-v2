@@ -1,0 +1,29 @@
+{
+  "ai_integration": {
+    "enabled": true,
+    "mcp_server": true,
+    "self_improving": true,
+    "real_time_verification": true
+  },
+  "enhanced_selectors": {
+    "email_fields": [
+      "input[type='email']",
+      "input[name='email']",
+      "input[placeholder*='email']"
+    ],
+    "password_fields": [
+      "input[type='password']",
+      "input[name='password']"
+    ],
+    "login_buttons": [
+      "button:has-text('Login')",
+      "button:has-text('Sign In')",
+      "input[type='submit']"
+    ]
+  },
+  "discord_personality": {
+    "enhanced_responses": true,
+    "context_aware": true,
+    "learning_enabled": true
+  }
+}

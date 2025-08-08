@@ -1,0 +1,31 @@
+{
+  "verification_results": [
+    {
+      "test_id": "test_login_survey_pattern_0",
+      "status": "partial_success",
+      "executed_actions": [
+        "password_entered"
+      ],
+      "validation_results": [],
+      "errors": []
+    },
+    {
+      "test_id": "test_login_survey_pattern_1",
+      "status": "partial_success",
+      "executed_actions": [
+        "password_entered"
+      ],
+      "validation_results": [],
+      "errors": []
+    },
+    {
+      "test_id": "test_login_survey_pattern_2",
+      "status": "partial_success",
+      "executed_actions": [
+        "password_entered"
+      ],
+      "validation_results": [],
+      "errors": []
+    }
+  ]
+}

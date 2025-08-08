@@ -179,7 +179,7 @@ class StandardProxyManager:
             return self.get_proxy_dict(self.current_proxy)
         return None
     
-    def save_working_proxies(self, filename: str = "configs/working_standard_proxies.json"):
+    def save_working_proxies(self, filename: str = "../configs/working_standard_proxies.json"):
         """Save working proxies to file"""
         working_proxies = [p for p in self.proxies if p.success_count > 0]
         
@@ -267,7 +267,7 @@ def create_sample_standard_proxies():
         })
     
     try:
-        with open("configs/sample_standard_proxies.json", 'w') as f:
+        with open("../configs/sample_standard_proxies.json", 'w') as f:
             json.dump(proxy_data, f, indent=2)
         print("Created sample standard proxy configurations")
         return True

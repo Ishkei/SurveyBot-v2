@@ -2,7 +2,9 @@ import os
 from typing import Dict, Any
 from dotenv import load_dotenv
 
-load_dotenv()
+# Load .env file from the configurations directory
+env_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "⚙️ Configurations", ".env")
+load_dotenv(env_path)
 
 class Config:
     """Configuration management for survey automation"""
