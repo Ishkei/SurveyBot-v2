@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# This script should be run with the virtual environment activated
+# Run: source ../venv/bin/activate && python3 run_bot.py
 """
 Main runner script for survey automation bot.
 Supports multiple implementations and configurations.
@@ -12,6 +14,7 @@ from typing import Optional
 # Add current directory to path for imports
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "📁 Project Structure"))
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
 from config import Config, create_sample_env
 
@@ -183,16 +186,16 @@ def run_bot(args):
     
     try:
         if args.implementation == "playwright":
-            from bot_implementations.survey_bot_playwright import main as playwright_main
+            from bot_implementations.survey_bot_playwright import main as playwright_main  # type: ignore
             import asyncio
             asyncio.run(playwright_main())
             
         elif args.implementation == "selenium":
-            from bot_implementations.survey_bot_selenium import main as selenium_main
+            from bot_implementations.survey_bot_selenium import main as selenium_main  # type: ignore
             selenium_main()
             
         elif args.implementation == "undetected":
-            from bot_implementations.survey_bot_undetected import main as undetected_main
+            from bot_implementations.survey_bot_undetected import main as undetected_main  # type: ignore
             undetected_main()
             
         elif args.implementation == "v2ray":
@@ -203,15 +206,12 @@ def run_bot(args):
             from bot_implementations.survey_bot_proxychains import ProxychainsSurveyBot
             bot = ProxychainsSurveyBot()
             bot.run()
-            
+
         elif args.implementation == "hybrid":
-            from bot_implementations.survey_bot_hybrid import main as hybrid_main
+            # Import the main function from hybrid bot implementation
+            from bot_implementations.survey_bot_hybrid import main as hybrid_main  # type: ignore
             import asyncio
             asyncio.run(hybrid_main())
-            
-        else:
-            print(f"Unknown implementation: {args.implementation}")
-            return
             
     except ImportError as e:
         print(f"Error importing {args.implementation} implementation: {e}")
@@ -224,6 +224,14 @@ def run_bot(args):
 def check_dependencies():
     """Check if all required dependencies are available"""
     missing_deps = []
+    
+    # Check if we're in a virtual environment
+    if not hasattr(sys, 'real_prefix') and not (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix):
+        print("⚠️  Warning: Not running in a virtual environment")
+        print("Please activate the virtual environment first:")
+        print("  source ../venv/bin/activate")
+        print("Then run this script again.")
+        return False
     
     try:
         import playwright
@@ -241,9 +249,9 @@ def check_dependencies():
         missing_deps.append("undetected-chromedriver")
     
     try:
-        import undetected_chromedriver
+        import dotenv
     except ImportError:
-        missing_deps.append("undetected-chromedriver")
+        missing_deps.append("python-dotenv")
     
     if missing_deps:
         print(f"Missing dependencies: {', '.join(missing_deps)}")
