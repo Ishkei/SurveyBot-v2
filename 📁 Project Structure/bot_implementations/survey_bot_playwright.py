@@ -2046,5 +2046,9 @@ async def main():
         await context.close()
         await browser.close()
 
+# Export list for explicit imports
+__all__ = ["main"]
+
+
 if __name__ == "__main__":
     asyncio.run(main())

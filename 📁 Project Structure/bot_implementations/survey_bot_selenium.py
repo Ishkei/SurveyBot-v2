@@ -679,5 +679,10 @@ def main():
     bot = SeleniumSurveyBot()
     bot.run()
 
+
+# Export list for explicit imports
+__all__ = ["main"]
+
+
 if __name__ == "__main__":
     main()

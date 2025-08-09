@@ -490,3 +490,18 @@ class SurveyBotHybrid:
             self.selenium_driver.quit()
         if hasattr(self, 'browser_forge') and self.browser_forge:
             await self.browser_forge.stop()
+
+
+async def main() -> None:
+    """Main entry point for the hybrid survey bot"""
+    config = Config()
+    bot = SurveyBotHybrid(config)
+    await bot.run()
+
+
+# Export list for explicit imports
+__all__ = ["SurveyBotHybrid", "main"]
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
