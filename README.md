@@ -1,12 +1,13 @@
 # 🤖 SurveyBot - Advanced Survey Automation with V2Ray
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
-[![V2Ray](https://img.shields.io/badge/V2Ray-5.37.0-green.svg)](https://www.v2fly.org/)
+[![V2ra](https://img.shields.io/badge/V2Ray-5.37.0-green.svg)](https://www.v2fly.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > **Enterprise-grade survey automation with advanced proxy management, AI-powered solving, and anti-detection capabilities.**
 
 ## 🎯 Main Files to Run
+run_bot.py
 
 ### **🚀 Quick Start Commands**
 ```bash
@@ -16,7 +17,7 @@ python "🎯 Main Files to Run/run_bot.py" --implementation v2ray
 # Self-Operating Computer mode
 python "🎯 Main Files to Run/run_soc_bot.py"
 
-# Vision AI mode
+# Vision ai mode
 python "🎯 Main Files to Run/run_vision_bot.py"
 
 # Lightweight mode
@@ -30,7 +31,7 @@ SurveyBot/
 ├── 🎯 Main Files to Run/
 │   ├── run_bot.py              # 🎯 MAIN ENTRY POINT
 │   ├── run_soc_bot.py          # Self-Operating Computer
-│   ├── run_vision_bot.py       # Vision AI Bot
+│ ├ ├ Run_vision_bot.py # Vision ai Bot
 │   └── run_lightweight_bot.py  # Lightweight Bot
 │
 ├── 📁 Project Structure/
