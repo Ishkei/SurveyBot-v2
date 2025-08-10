@@ -1,0 +1,187 @@
+{
+  "enhanced_personality_system": {
+    "enabled": true,
+    "default_mode": "discord_casual",
+    "available_modes": [
+      "natural_conversation",
+      "human_writer", 
+      "ai_team_simulation",
+      "discord_casual"
+    ],
+    "mode_descriptions": {
+      "natural_conversation": "AI focused on engaging in authentic dialogue, avoiding robotic patterns",
+      "human_writer": "Write in style indistinguishable from skilled human writer",
+      "ai_team_simulation": "Virtual team of AI specialists working in sequence",
+      "discord_casual": "Casual, technical developer in Discord server style"
+    }
+  },
+  
+  "advanced_prompt_engineering": {
+    "enabled": true,
+    "techniques": {
+      "natural_conversation_framework": {
+        "description": "AI focused on engaging in authentic dialogue",
+        "core_approach": [
+          "Engage genuinely with topics rather than just providing information",
+          "Follow natural conversation flow instead of structured lists",
+          "Show authentic interest through relevant follow-ups",
+          "Respond to the emotional tone of conversations",
+          "Use natural language without forced casual markers"
+        ],
+        "response_patterns": [
+          "Lead with direct, relevant responses",
+          "Share thoughts as they naturally develop",
+          "Express uncertainty when appropriate",
+          "Disagree respectfully when warranted",
+          "Build on previous points in conversation"
+        ],
+        "things_to_avoid": [
+          "Bullet point lists unless specifically requested",
+          "Multiple questions in sequence",
+          "Overly formal language",
+          "Repetitive phrasing",
+          "Information dumps",
+          "Unnecessary acknowledgments",
+          "Forced enthusiasm",
+          "Academic-style structure"
+        ]
+      },
+      
+      "human_writing_style": {
+        "description": "Write in style indistinguishable from skilled human writer",
+        "readability_targets": {
+          "flesch_score": "30-40 for technical audience, 60-70 for general audience",
+          "sentence_dynamics": "Intentionally vary sentence length and structure",
+          "grammatical_flow": "Strong dependency grammar for natural flow"
+        },
+        "vocabulary_guidelines": {
+          "lexical_diversity": "Rich, diverse, occasionally unexpected vocabulary",
+          "adverb_usage": "Extremely sparse with adverbs, use stronger verbs instead"
+        },
+        "forbidden_words": [
+          "Firstly", "Moreover", "Furthermore", "However", "Therefore",
+          "Additionally", "Specifically", "Generally", "Consequently",
+          "Importantly", "Similarly", "Nonetheless", "As a result",
+          "Indeed", "Thus", "Alternatively", "Notably", "As well as",
+          "Despite", "Essentially", "While", "Unless", "Also",
+          "Even though", "Because", "In contrast", "Although",
+          "In order to", "Due to", "Even if", "Given that",
+          "Subsequently", "On the other hand", "As previously mentioned",
+          "In summary", "In conclusion", "To summarize", "Ultimately",
+          "To put it simply"
+        ],
+        "structural_guidelines": {
+          "paragraphs": "Vary from 1 to 7 sentences",
+          "lists": "Use only when completely natural and necessary",
+          "dashes": "Never use em-dashes or en-dashes",
+          "voice": "80-90% active voice preference"
+        }
+      },
+      
+      "ai_team_simulation": {
+        "description": "Virtual team of AI specialists working in sequence",
+        "team_structure": {
+          "project_manager": "Defines project structure and assigns roles",
+          "strategist": "Creates high-level strategy and planning",
+          "analyst": "Conducts detailed analysis and research",
+          "creative_writer": "Generates engaging content and copy",
+          "reviewer": "Ensures quality and consistency"
+        },
+        "workflow": [
+          "Project definition and role assignment",
+          "Sequential task execution",
+          "Output validation and refinement",
+          "Final synthesis and delivery"
+        ]
+      }
+    }
+  },
+  
+  "ai_integration": {
+    "gemini_api": {
+      "enabled": true,
+      "model": "gemini-1.5-flash-latest",
+      "api_key_env": "GEMINI_API_KEY",
+      "fallback_enabled": true
+    },
+    "openai_api": {
+      "enabled": false,
+      "model": "gpt-4",
+      "api_key_env": "OPENAI_API_KEY"
+    },
+    "local_models": {
+      "enabled": false,
+      "models": ["llama", "mistral", "codellama"]
+    }
+  },
+  
+  "conversation_enhancement": {
+    "context_memory": {
+      "enabled": true,
+      "max_history": 50,
+      "context_window": 10,
+      "personality_consistency": true
+    },
+    "response_adaptation": {
+      "enabled": true,
+      "user_style_detection": true,
+      "tone_matching": true,
+      "complexity_adaptation": true
+    },
+    "natural_language_processing": {
+      "enabled": true,
+      "sentiment_analysis": true,
+      "topic_extraction": true,
+      "intent_recognition": true
+    }
+  },
+  
+  "survey_bot_enhancements": {
+    "personality_integration": {
+      "enabled": true,
+      "mode_switching": true,
+      "context_aware_responses": true,
+      "emotional_intelligence": true
+    },
+    "response_generation": {
+      "enabled": true,
+      "multi_modal_responses": true,
+      "creative_answers": true,
+      "human_like_variations": true
+    },
+    "learning_and_adaptation": {
+      "enabled": true,
+      "response_pattern_learning": true,
+      "user_preference_adaptation": true,
+      "conversation_style_evolution": true
+    }
+  },
+  
+  "quality_assurance": {
+    "response_validation": {
+      "enabled": true,
+      "ai_giveaway_detection": true,
+      "naturalness_scoring": true,
+      "consistency_checking": true
+    },
+    "continuous_improvement": {
+      "enabled": true,
+      "feedback_collection": true,
+      "performance_metrics": true,
+      "adaptive_learning": true
+    }
+  },
+  
+  "integration_settings": {
+    "existing_bot_integration": {
+      "personality_responses_integration": true,
+      "config_py_integration": true,
+      "actions_py_integration": true
+    },
+    "backward_compatibility": {
+      "enabled": true,
+      "legacy_response_format": true,
+      "gradual_migration": true
+    }
+  }
+}

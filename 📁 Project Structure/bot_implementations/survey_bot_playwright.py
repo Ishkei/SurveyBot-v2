@@ -11,6 +11,14 @@ from playwright.async_api import async_playwright
 import actions
 from personality_responses import generate_personality_response
 
+# Import typing simulation for human-like text input
+try:
+    from typing_simulation import type_text_naturally, TYPING_PRESETS
+    TYPING_SIMULATION_AVAILABLE = True
+except ImportError:
+    TYPING_SIMULATION_AVAILABLE = False
+    print("Warning: Typing simulation module not available. Using regular text input.")
+
 load_dotenv()
 
 # --- CONFIGURATION & PERSONA ---
@@ -316,7 +324,26 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                         # Use Discord-style personality response
                         personality_response = await generate_personality_response(question_context, style="discord_casual")
                         print(f"Generated personality response: {personality_response}")
-                        await text_input.fill(personality_response)
+                        
+                        # Use human-like typing simulation for open-ended questions
+                        if TYPING_SIMULATION_AVAILABLE:
+                            try:
+                                # Use 'careful_typer' style for open-ended questions to seem more thoughtful
+                                success = await type_text_naturally(
+                                    personality_response, 
+                                    text_input, 
+                                    use_pyautogui=False,
+                                    config=TYPING_PRESETS['careful_typer']
+                                )
+                                if not success:
+                                    # Fallback to regular fill if typing simulation fails
+                                    await text_input.fill(personality_response)
+                            except Exception as e:
+                                print(f"⚠️ Typing simulation failed: {e}, using fallback")
+                                await text_input.fill(personality_response)
+                        else:
+                            # Fallback to regular fill if typing simulation not available
+                            await text_input.fill(personality_response)
                     else:
                         # Use a generic response
                         generic_response = "I saw an ad for this and thought it sounded like a good way to earn some extra money in my free time."
@@ -324,7 +351,7 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                         await text_input.fill(generic_response)
                     
                     # Look for submit button
-                    submit_buttons = await context.locator('button:has-text("Submit"), button:has-text("Next"), input[type="submit"]').all()
+                    submit_buttons = await context.locator('button:has-text("Next"), button:has-text("Submit"), input[type="submit"]').all()
                     if submit_buttons:
                         await submit_buttons[0].click()
                         print("Clicked submit button")
@@ -384,7 +411,26 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                         # Use Discord-style personality response
                         personality_response = await generate_personality_response(question_context, style="discord_casual")
                         print(f"Generated personality response: {personality_response}")
-                        await text_input.fill(personality_response)
+                        
+                        # Use human-like typing simulation for open-ended questions
+                        if TYPING_SIMULATION_AVAILABLE:
+                            try:
+                                # Use 'careful_typer' style for open-ended questions to seem more thoughtful
+                                success = await type_text_naturally(
+                                    personality_response, 
+                                    text_input, 
+                                    use_pyautogui=False,
+                                    config=TYPING_PRESETS['careful_typer']
+                                )
+                                if not success:
+                                    # Fallback to regular fill if typing simulation fails
+                                    await text_input.fill(personality_response)
+                            except Exception as e:
+                                print(f"⚠️ Typing simulation failed: {e}, using fallback")
+                                await text_input.fill(personality_response)
+                        else:
+                            # Fallback to regular fill if typing simulation not available
+                            await text_input.fill(personality_response)
                     else:
                         # Use a generic response
                         generic_response = "I saw an ad for this and thought it sounded like a good way to earn some extra money in my free time."
@@ -392,7 +438,7 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                         await text_input.fill(generic_response)
                     
                     # Look for submit button
-                    submit_buttons = await context.locator('button:has-text("Submit"), button:has-text("Next"), input[type="submit"]').all()
+                    submit_buttons = await context.locator('button:has-text("Next"), button:has-text("Submit"), input[type="submit"]').all()
                     if submit_buttons:
                         await submit_buttons[0].click()
                         print("Clicked submit button")
@@ -629,7 +675,30 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                         # Use Discord-style personality response
                         personality_response = await generate_personality_response(question_context, style="discord_casual")
                         print(f"Generated personality response: {personality_response}")
-                        await actions.fill_textbox(context, element_id, personality_response, element_map)
+                        
+                        # Use human-like typing simulation for open-ended questions
+                        if TYPING_SIMULATION_AVAILABLE:
+                            try:
+                                # Use 'careful_typer' style for open-ended questions to seem more thoughtful
+                                element_to_fill = element_map.get(element_id)
+                                if element_to_fill:
+                                    success = await type_text_naturally(
+                                        personality_response, 
+                                        element_to_fill, 
+                                        use_pyautogui=False,
+                                        config=TYPING_PRESETS['careful_typer']
+                                    )
+                                    if not success:
+                                        # Fallback to regular fill if typing simulation fails
+                                        await actions.fill_textbox(context, element_id, personality_response, element_map)
+                                else:
+                                    await actions.fill_textbox(context, element_id, personality_response, element_map)
+                            except Exception as e:
+                                print(f"⚠️ Typing simulation failed: {e}, using fallback")
+                                await actions.fill_textbox(context, element_id, personality_response, element_map)
+                        else:
+                            # Fallback to regular fill if typing simulation not available
+                            await actions.fill_textbox(context, element_id, personality_response, element_map)
                     else:
                         # Use the original text_to_fill for structured fields
                         await actions.fill_textbox(context, element_id, text_to_fill, element_map)
@@ -1818,8 +1887,90 @@ async def try_auto_start_survey(page, max_attempts=5):
     input("Press Enter once you are on a survey page...")
     return False
 
+async def detect_survey_router(page, iframe_locator):
+    """Detect if we're on a survey router page that redirects to different surveys"""
+    try:
+        page_text = await iframe_locator.locator('body').inner_text()
+        page_text_lower = page_text.lower()
+        
+        # Check for survey router indicators
+        router_indicators = [
+            "we're sorry", "unfortunately", "not eligible", "don't qualify", "not a good match",
+            "survey ended", "no more questions", "thank you for your time", "disqualified",
+            "not suitable", "no longer needed", "survey closed", "quota full", "redirecting",
+            "finding another survey", "looking for surveys", "matching you with surveys"
+        ]
+        
+        if any(indicator in page_text_lower for indicator in router_indicators):
+            print("Survey router detected - this survey has ended or we've been disqualified")
+            return True
+            
+        # Check for redirect buttons or links
+        redirect_selectors = [
+            'button:has-text("Continue")', 'button:has-text("Next")', 'button:has-text("Find More Surveys")',
+            'a:has-text("Continue")', 'a:has-text("Next")', 'a:has-text("Find More Surveys")',
+            'input[value*="Continue"]', 'input[value*="Next"]'
+        ]
+        
+        for selector in redirect_selectors:
+            try:
+                if await iframe_locator.locator(selector).count() > 0:
+                    print(f"Found redirect button: {selector}")
+                    # Click the redirect button to continue to next survey
+                    await iframe_locator.locator(selector).first.click()
+                    print("Clicked redirect button, continuing to next survey...")
+                    await asyncio.sleep(3)  # Wait for redirect
+                    return True
+            except Exception:
+                continue
+                
+        return False
+    except Exception as e:
+        print(f"Error detecting survey router: {e}")
+        return False
+
 async def page_router(page):
     print("Routing page...")
+    
+    # Check if we're on an external survey domain (survey router)
+    current_url = page.url.lower()
+    external_domains = ['sw.cint.com', 'qualtrics.com', 'surveymonkey.com', 'typeform.com', 'google.com/forms']
+    
+    if any(domain in current_url for domain in external_domains):
+        print(f"External survey domain detected: {current_url}")
+        print("This is a survey router redirect. Attempting to continue with external survey...")
+        
+        # Wait for the external survey to load
+        try:
+            await page.wait_for_load_state('domcontentloaded', timeout=15000)
+            await asyncio.sleep(3)  # Give it time to fully load
+            
+            # Look for common survey elements on external domains
+            external_selectors = [
+                'button:has-text("Continue")', 'button:has-text("Next")', 'button:has-text("Start")',
+                'input[type="submit"]', 'input[type="button"]', 'a:has-text("Continue")',
+                'a:has-text("Next")', 'a:has-text("Start")', '.btn', '.button', '[role="button"]'
+            ]
+            
+            for selector in external_selectors:
+                try:
+                    if await page.locator(selector).count() > 0:
+                        print(f"Found external survey element: {selector}")
+                        await page.locator(selector).first.click()
+                        print("Clicked external survey element, continuing...")
+                        return True
+                except Exception:
+                    continue
+            
+            # If no specific elements found, try to use the hybrid approach on the main page
+            print("No specific external survey elements found, using hybrid approach on main page...")
+            return await solve_page_with_hybrid_vision_dom(page, page)
+            
+        except Exception as e:
+            print(f"Error handling external survey domain: {e}")
+            return await solve_page_with_hybrid_vision_dom(page, page)
+    
+    # Check for iframe (Qmee's standard survey format)
     iframe_locator = page.frame_locator('iframe[title="signup-survey"]')
     try:
         await iframe_locator.locator('body').wait_for(timeout=10000)
@@ -1960,10 +2111,19 @@ async def page_router(page):
         elif any(completion_indicator in page_text_lower for completion_indicator in [
             "you have completed the survey", "survey has been completed", "thank you for completing", 
             "survey submission successful", "your responses have been recorded", "survey complete!",
-            "congratulations! you have finished", "thank you for your participation"
+            "congratulations! you have finished", "thank you for your participation", "survey finished",
+            "completion page", "final page", "thank you page", "we're sorry", "unfortunately", 
+            "not eligible", "don't qualify", "not a good match", "survey ended", "no more questions",
+            "thank you for your time", "disqualified", "not suitable", "no longer needed", 
+            "survey closed", "quota full"
         ]):
-            print("Survey appears to be complete!")
+            print("Survey completion detected! Bot has finished successfully.")
             return "SURVEY_COMPLETE"
+        
+        # Check for survey router redirects
+        elif await detect_survey_router(page, iframe_locator):
+            print("Survey router handled, continuing to next survey...")
+            return True
         
         # Check for URL-based completion indicators
         elif "thank" in page.url.lower() or "complete" in page.url.lower() or "finish" in page.url.lower():
@@ -1977,6 +2137,16 @@ async def page_router(page):
         print(f"[DEBUG] Exception in page_router: {e}")
         return await solve_page_with_hybrid_vision_dom(page, page)
 
+async def detect_qmee_redirect(page):
+    """Detect if we've been redirected back to Qmee from an external survey"""
+    try:
+        current_url = page.url.lower()
+        if 'qmee.com' in current_url:
+            print("Redirected back to Qmee detected")
+            return True
+        return False
+    except Exception:
+        return False
 
 async def main():
     if not os.path.exists('auth.json'):
@@ -2003,10 +2173,12 @@ async def main():
         MAX_FAILURES_PER_PAGE = 30  # Increased from 20 to 30
         MAX_TOTAL_ATTEMPTS = 50    # But allow more total attempts
         total_attempts = 0
+        surveys_completed = 0
+        MAX_SURVEYS = 3  # Limit to 3 surveys per session to avoid getting stuck
 
-        while total_attempts < MAX_TOTAL_ATTEMPTS:
+        while total_attempts < MAX_TOTAL_ATTEMPTS and surveys_completed < MAX_SURVEYS:
             total_attempts += 1
-            print(f"\n--- Attempting Page {total_attempts} ---")
+            print(f"\n--- Attempting Page {total_attempts} (Survey {surveys_completed + 1}) ---")
             try:
                 await page.wait_for_load_state('domcontentloaded', timeout=5000) 
                 current_url = page.url
@@ -2018,6 +2190,49 @@ async def main():
                 
                 print(f"Current URL: {current_url} (Failures: {failures_on_current_page})")
 
+                # Check for survey completion indicators in the current page
+                try:
+                    page_text = await page.evaluate('document.body.innerText.toLowerCase()')
+                    if any(completion_indicator in page_text for completion_indicator in [
+                        "you have completed the survey", "survey has been completed", "thank you for completing", 
+                        "survey submission successful", "your responses have been recorded", "survey complete!",
+                        "congratulations! you have finished", "thank you for your participation", "survey finished",
+                        "completion page", "final page", "thank you page", "we're sorry", "unfortunately", 
+                        "not eligible", "don't qualify", "not a good match", "survey ended", "no more questions",
+                        "thank you for your time", "disqualified", "not suitable", "no longer needed", 
+                        "survey closed", "quota full"
+                    ]):
+                        print("Survey completion detected! Bot has finished successfully.")
+                        surveys_completed += 1
+                        print(f"Completed {surveys_completed} survey(s) so far")
+                        
+                        # Check if we should try to find another survey
+                        if surveys_completed < MAX_SURVEYS:
+                            print("Looking for another survey...")
+                            try:
+                                # Navigate back to surveys page to find another one
+                                await page.goto("https://www.qmee.com/en-us/surveys", timeout=30000)
+                                await asyncio.sleep(3)
+                                
+                                # Try to auto-start another survey
+                                auto_start_success = await try_auto_start_survey(page)
+                                if not auto_start_success:
+                                    print("No more surveys available or auto-start failed. Ending session.")
+                                    break
+                                else:
+                                    print("Found another survey, continuing...")
+                                    failures_on_current_page = 0  # Reset for new survey
+                                    continue
+                            except Exception as e:
+                                print(f"Error finding another survey: {e}")
+                                break
+                        else:
+                            print(f"Reached maximum surveys limit ({MAX_SURVEYS}). Ending session.")
+                            break
+                except Exception:
+                    pass
+
+                # Only trigger circuit breaker if we're truly stuck (same URL for many attempts)
                 if failures_on_current_page >= MAX_FAILURES_PER_PAGE:
                     print(f"Circuit breaker triggered! Bot is stuck on {current_url}. Stopping.")
                     break
@@ -2026,19 +2241,75 @@ async def main():
             except Exception: pass
             
             try:
-                await page.wait_for_selector('body button, body input, body a, body label, iframe', timeout=30000)
+                # Wait for interactive elements, but be more flexible with timing
+                await page.wait_for_selector('body button, body input, body a, body label, iframe', timeout=15000)
             except Exception:
                 print("No interactive elements found on main page or iframe. Survey may have ended.")
-                break
+                # Don't break immediately, try to check if we're actually done
+                try:
+                    page_text = await page.evaluate('document.body.innerText.toLowerCase()')
+                    if any(completion_indicator in page_text for completion_indicator in [
+                        "you have completed the survey", "survey has been completed", "thank you for completing", 
+                        "survey submission successful", "your responses have been recorded", "survey complete!",
+                        "congratulations! you have finished", "thank you for your participation"
+                    ]):
+                        print("Survey completion detected! Bot has finished successfully.")
+                        break
+                except Exception:
+                    pass
+                
+                # Check if we're on an external survey domain (survey router)
+                current_url = page.url.lower()
+                external_domains = ['sw.cint.com', 'qualtrics.com', 'surveymonkey.com', 'typeform.com', 'google.com/forms']
+                
+                if any(domain in current_url for domain in external_domains):
+                    print(f"External survey domain detected: {current_url}")
+                    print("This is a survey router redirect. Continuing with external survey...")
+                    # Don't break, let the page router handle it
+                elif await detect_qmee_redirect(page):
+                    print("Redirected back to Qmee from external survey. Continuing...")
+                    # Don't break, let the page router handle it
+                else:
+                    # If we still can't find completion indicators, then break
+                    if total_attempts > 10:  # Give it more attempts before giving up
+                        print("No completion indicators found after multiple attempts. Survey may have ended.")
+                        break
             
             result = await page_router(page)
             if result == "SURVEY_COMPLETE":
                 print("Survey completed successfully!")
-                break
+                surveys_completed += 1
+                print(f"Completed {surveys_completed} survey(s) so far")
+                
+                # Check if we should try to find another survey
+                if surveys_completed < MAX_SURVEYS:
+                    print("Looking for another survey...")
+                    try:
+                        # Navigate back to surveys page to find another one
+                        await page.goto("https://www.qmee.com/en-us/surveys", timeout=30000)
+                        await asyncio.sleep(3)
+                        
+                        # Try to auto-start another survey
+                        auto_start_success = await try_auto_start_survey(page)
+                        if not auto_start_success:
+                            print("No more surveys available or auto-start failed. Ending session.")
+                            break
+                        else:
+                            print("Found another survey, continuing...")
+                            failures_on_current_page = 0  # Reset for new survey
+                            continue
+                    except Exception as e:
+                        print(f"Error finding another survey: {e}")
+                        break
+                else:
+                    print(f"Reached maximum surveys limit ({MAX_SURVEYS}). Ending session.")
+                    break
             elif result is False:
                 print("Page handler failed, will retry...")
+                # Don't increment failures here, let the circuit breaker handle it
             elif result is True:
                 print("Page handled successfully, continuing...")
+                failures_on_current_page = 0  # Reset failures on success
             
             await asyncio.sleep(3)
 

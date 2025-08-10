@@ -1,0 +1,99 @@
+{
+  "typing_simulation": {
+    "enabled": true,
+    "default_style": "average_typer",
+    "open_ended_questions_style": "careful_typer",
+    "structured_fields_style": "fast_typer",
+    
+    "styles": {
+      "fast_typer": {
+        "base_typing_interval": 0.05,
+        "variance_range": 0.02,
+        "pause_probability": 0.1,
+        "pause_duration_range": [0.3, 1.0],
+        "description": "Fast, confident typing - good for structured fields"
+      },
+      "average_typer": {
+        "base_typing_interval": 0.08,
+        "variance_range": 0.04,
+        "pause_probability": 0.15,
+        "pause_duration_range": [0.5, 2.0],
+        "description": "Normal typing speed - balanced approach"
+      },
+      "slow_typer": {
+        "base_typing_interval": 0.12,
+        "variance_range": 0.06,
+        "pause_probability": 0.25,
+        "pause_duration_range": [1.0, 3.0],
+        "description": "Slow, deliberate typing - good for older demographics"
+      },
+      "careful_typer": {
+        "base_typing_interval": 0.1,
+        "variance_range": 0.03,
+        "pause_probability": 0.2,
+        "pause_duration_range": [0.8, 2.5],
+        "description": "Thoughtful typing with pauses - perfect for open-ended questions"
+      },
+      "casual_typer": {
+        "base_typing_interval": 0.07,
+        "variance_range": 0.05,
+        "pause_probability": 0.18,
+        "pause_duration_range": [0.4, 1.8],
+        "description": "Casual, relaxed typing - good for general use"
+      }
+    },
+    
+    "advanced_settings": {
+      "typo_probability": 0.02,
+      "thinking_word_pause_probability": 0.3,
+      "correction_probability": 0.3,
+      "backspace_presses_range": [1, 3],
+      "correction_delay_range": [0.5, 1.0]
+    },
+    
+    "question_type_mapping": {
+      "open_ended": {
+        "style": "careful_typer",
+        "description": "Questions like 'why', 'how', 'what', 'tell', 'describe', 'explain'"
+      },
+      "structured": {
+        "style": "fast_typer", 
+        "description": "Fields like names, addresses, numbers, emails"
+      },
+      "opinion": {
+        "style": "average_typer",
+        "description": "Opinion-based questions requiring thought"
+      },
+      "demographic": {
+        "style": "fast_typer",
+        "description": "Basic demographic information"
+      }
+    },
+    
+    "detection_keywords": {
+      "open_ended": ["why", "how", "what", "tell", "describe", "explain", "join", "reason", "think", "feel", "experience"],
+      "opinion": ["opinion", "think", "feel", "believe", "prefer", "like", "dislike"],
+      "demographic": ["age", "gender", "location", "occupation", "income", "education"]
+    }
+  },
+  
+  "integration_settings": {
+    "use_pyautogui_fallback": true,
+    "fallback_to_regular_fill": true,
+    "log_typing_actions": true,
+    "performance_monitoring": true
+  },
+  
+  "personality_adaptation": {
+    "age_based_typing": {
+      "young": "fast_typer",
+      "middle": "average_typer", 
+      "senior": "slow_typer"
+    },
+    "occupation_based_typing": {
+      "technical": "fast_typer",
+      "creative": "careful_typer",
+      "administrative": "average_typer"
+    }
+  }
+}

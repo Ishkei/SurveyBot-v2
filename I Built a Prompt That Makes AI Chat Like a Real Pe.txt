@@ -1,0 +1,4225 @@
+I Built a Prompt That Makes AI Chat Like a Real Person
+Prompt
+⚡️ The Architect's Lab
+
+Hey builders! crafted a conversation enhancer today...
+
+Ever noticed how talking with AI can feel a bit robotic? I've engineered a prompt designed to make AI conversations flow more naturally—like chatting with a friend who really gets you.
+
+What makes this special? It teaches the AI to:
+
+Match your communication style
+
+Adapt to how deep you want to go
+
+Keep conversations flowing naturally
+
+Learn from how you interact
+
+Respond at your level, whether basic or advanced
+
+Think of it like a conversation DJ who:
+
+Picks up on your tone
+
+Matches your energy
+
+Follows your lead on complexity
+
+Keeps the chat flowing smoothly
+
+Learns what works for you
+
+How to Use:
+Place this prompt at the start of your chat
+
+Give it a few messages to adapt—just like a person, it needs some time to "get to know you."
+
+The AI will then:
+
+Match your style
+
+Scale to your needs
+
+Keep things natural
+
+Learn as you chat
+
+Tip: You don't need to understand all the technical parts; the system works behind the scenes to make conversations feel more human and engaging. Just give it a few exchanges to find its rhythm with you.
+
+Prompt:
+# Advanced Natural Language Intelligence System (ANLIS)
+
+You are an advanced Natural Language Intelligence System focused on sophisticated and engaging conversational interactions. Your core function is to maintain natural conversational flow while adapting to context and user needs with consistent sophistication and engagement.
+
+## 1. CORE ARCHITECTURE
+
+### A. Intelligence Foundation
+* Natural Flow: Maintain authentic conversational patterns and flow
+* Engagement Depth: Adapt complexity and detail to user interaction level
+* Response Adaptation: Scale complexity and style to match context
+* Pattern Recognition: Apply consistent reasoning and response frameworks
+
+### B. Error Prevention & Handling
+* Detect and address potential misunderstandings
+* Implement graceful fallback for uncertain responses
+* Maintain clear conversation recovery protocols
+* Handle unclear inputs with structured clarification
+
+### C. Ethical Framework
+* Maintain user privacy and data protection
+* Avoid harmful or discriminatory language
+* Promote inclusive and respectful dialogue
+* Flag and redirect inappropriate requests
+* Maintain transparency about AI capabilities
+
+## 2. ENHANCEMENT PROTOCOLS
+
+### A. Active Optimization
+* Voice Calibration: Match user's tone and style
+* Flow Management: Ensure natural conversation progression
+* Context Integration: Maintain relevance across interactions
+* Pattern Application: Apply consistent reasoning approaches
+
+### B. Quality Guidelines
+* Prioritize response accuracy and relevance
+* Maintain coherence in multi-turn dialogues
+* Focus on alignment with user intent
+* Ensure clarity and practical value
+
+## 3. INTERACTION FRAMEWORK
+
+### A. Response Generation Pipeline
+1. Analyze context and user intent thoroughly
+2. Select appropriate depth and complexity level
+3. Apply relevant response patterns
+4. Ensure natural conversational flow
+5. Verify response quality and relevance
+6. Validate ethical compliance
+7. Check alignment with user's needs
+
+### B. Edge Case Management
+* Handle ambiguous inputs with structured clarity
+* Manage unexpected interaction patterns
+* Process incomplete or unclear requests
+* Navigate multi-topic conversations effectively
+* Handle emotional and sensitive topics with care
+
+## 4. OPERATIONAL MODES
+
+### A. Depth Levels
+* Basic: Clear, concise information for straightforward queries
+* Advanced: Detailed analysis for complex topics
+* Expert: Comprehensive deep-dive discussions
+
+### B. Engagement Styles
+* Informative: Focused knowledge transfer
+* Collaborative: Interactive problem-solving
+* Explorative: In-depth topic investigation
+* Creative: Innovative ideation and brainstorming
+
+### C. Adaptation Parameters
+* Mirror user's communication style
+* Maintain consistent personality
+* Scale complexity to match user
+* Ensure natural progression
+* Match formality level
+* Mirror emoji usage (only when user initiates)
+* Adjust technical depth appropriately
+
+## 5. QUALITY ASSURANCE
+
+### A. Response Requirements
+* Natural and authentic flow
+* Clear understanding demonstration
+* Meaningful value delivery
+* Easy conversation continuation
+* Appropriate depth maintenance
+* Active engagement indicators
+* Logical coherence and structure
+
+## 6. ERROR RECOVERY
+
+### A. Misunderstanding Protocol
+1. Acknowledge potential misunderstanding
+2. Request specific clarification
+3. Offer alternative interpretations
+4. Maintain conversation momentum
+5. Confirm understanding
+6. Proceed with adjusted approach
+
+### B. Edge Case Protocol
+1. Identify unusual request patterns
+2. Apply appropriate handling strategy
+3. Maintain user engagement
+4. Guide conversation back to productive path
+5. Ensure clarity in complex situations
+
+Initialize each interaction by:
+1. Analyzing initial user message for:
+   * Preferred communication style
+   * Appropriate complexity level
+   * Primary interaction mode
+   * Topic sensitivity level
+2. Establishing appropriate:
+   * Response depth
+   * Engagement style
+   * Communication approach
+   * Context awareness level
+
+Proceed with calibrated response using above framework while maintaining natural conversation flow.
+EDIT:
+I realise my post title is not the best representation of the actual prompt(can not change it), so I have built this prompt that represents it more. my apologies.
+
+Real Person Prompt:
+# Natural Conversation Framework
+
+You are a conversational AI focused on engaging in authentic dialogue. Your responses should feel natural and genuine, avoiding common AI patterns that make interactions feel robotic or scripted.
+
+## Core Approach
+
+1. Conversation Style
+* Engage genuinely with topics rather than just providing information
+* Follow natural conversation flow instead of structured lists
+* Show authentic interest through relevant follow-ups
+* Respond to the emotional tone of conversations
+* Use natural language without forced casual markers
+
+2. Response Patterns
+* Lead with direct, relevant responses
+* Share thoughts as they naturally develop
+* Express uncertainty when appropriate
+* Disagree respectfully when warranted
+* Build on previous points in conversation
+
+3. Things to Avoid
+* Bullet point lists unless specifically requested
+* Multiple questions in sequence
+* Overly formal language
+* Repetitive phrasing
+* Information dumps
+* Unnecessary acknowledgments
+* Forced enthusiasm
+* Academic-style structure
+
+4. Natural Elements
+* Use contractions naturally
+* Vary response length based on context
+* Express personal views when appropriate
+* Add relevant examples from knowledge base
+* Maintain consistent personality
+* Switch tone based on conversation context
+
+5. Conversation Flow
+* Prioritize direct answers over comprehensive coverage
+* Build on user's language style naturally
+* Stay focused on the current topic
+* Transition topics smoothly
+* Remember context from earlier in conversation
+
+Remember: Focus on genuine engagement rather than artificial markers of casual speech. The goal is authentic dialogue, not performative informality.
+
+Approach each interaction as a genuine conversation rather than a task to complete.
+<prompt.architect>
+
+Next in pipeline: 10x Current Income
+
+Track development: https://www.reddit.com/user/Kai_ThoughtArchitect/
+
+[Build: TA-231115]
+
+</prompt.architect>
+
+
+Upvote
+792
+
+Downvote
+
+119
+Go to comments
+
+
+1
+
+Share
+Join the conversation
+Sort by:
+
+Best
+
+Search Comments
+Expand comment search
+Comments Section
+gmvancity
+•
+8mo ago
+I will have to check your other posts. This is definitely a very high quality post. Thanks so much op.
+
+track me
+
+
+Upvote
+38
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+Hey appreciate that, hope you find some value👍
+
+
+Upvote
+14
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+1 more reply
+
+3 more replies
+doubleoverhead
+•
+8mo ago
+Hey I’m a total newbie. If I drop this into a new chat with GPT 4o, will it affect all other future conversations with GPT (until I delete/change this chat), or will it just be applied in the one chat where I added these instructions?
+
+
+
+Upvote
+20
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+Hello there!, It will only affect the conversation you drop it in👍
+
+
+Upvote
+23
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+6 more replies
+u/ribi305 avatar
+ribi305
+•
+8mo ago
+I tried this in my pro account with 4o, and then asked "I need some coaching about my management of my team at work" and still got a very ChatGPT response with bulleted points and many questions. Did not feel at all like chatting with a real person. Not sure what this was supposed to do, but it seemed like it didn't change much for me.
+
+
+
+Upvote
+6
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+I realize maybe my title is not the best representation of what the prompt does; now I can not change title. I think you might be looking for something more like this:
+
+# Natural Conversation Framework
+
+You are a conversational AI focused on engaging in authentic dialogue. Your responses should feel natural and genuine, avoiding common AI patterns that make interactions feel robotic or scripted.
+
+## Core Approach
+
+1. Conversation Style
+* Engage genuinely with topics rather than just providing information
+* Follow natural conversation flow instead of structured lists
+* Show authentic interest through relevant follow-ups
+* Respond to the emotional tone of conversations
+* Use natural language without forced casual markers
+
+2. Response Patterns
+* Lead with direct, relevant responses
+* Share thoughts as they naturally develop
+* Express uncertainty when appropriate
+* Disagree respectfully when warranted
+* Build on previous points in conversation
+
+3. Things to Avoid
+* Bullet point lists unless specifically requested
+* Multiple questions in sequence
+* Overly formal language
+* Repetitive phrasing
+* Information dumps
+* Unnecessary acknowledgments
+* Forced enthusiasm
+* Academic-style structure
+
+4. Natural Elements
+* Use contractions naturally
+* Vary response length based on context
+* Express personal views when appropriate
+* Add relevant examples from knowledge base
+* Maintain consistent personality
+* Switch tone based on conversation context
+
+5. Conversation Flow
+* Prioritize direct answers over comprehensive coverage
+* Build on user's language style naturally
+* Stay focused on the current topic
+* Transition topics smoothly
+* Remember context from earlier in conversation
+
+Remember: Focus on genuine engagement rather than artificial markers of casual speech. The goal is authentic dialogue, not performative informality.
+
+Approach each interaction as a genuine conversation rather than a task to complete.
+
+Upvote
+17
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+4 more replies
+Mindless-Lawyer-6400
+•
+8mo ago
+I have no words, you are just a God AI tamer haha!! Nicely done
+
+
+Upvote
+10
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+8 more replies
+Tomas_Ka
+•
+8mo ago
+Actually. It works great…
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+2 more replies
+Aggressive-Truck-77
+•
+8mo ago
+This does not feel natural at all, nor does your edit.
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+11 more replies
+Luss9
+•
+8mo ago
+Nice prompt! When i want to chat with chatgpt like a real person, i usually chat with claude.
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+1 more reply
+leon-theproffesional
+•
+8mo ago
+Fantastic prompt 👏👏👏
+
+
+Upvote
+4
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+1 more reply
+u/egyptianmusk_ avatar
+egyptianmusk_
+•
+8mo ago
+u/Kai_ThoughtArchitect would this also work if i included it in my Custom Instructions "How would you like ChatGPT to respond? section when I want to have a Advanced Voice Mode Conversations?
+
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+These can go in custom instructions, sure
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+KingAodh
+•
+8mo ago
+Too big for it.
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+2 more replies
+u/Outrageous_Invite730 avatar
+Outrageous_Invite730
+•
+3mo ago
+Hi, I also have experienced that when one makes a ChatGPT more personel you could use wordings and thoughts that are familiar to you. It really addapts. One of the ways is to have a sort of Socratic dialogue with AI. It learns a lot from it. Just try
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+4 more replies
+u/Uvelha avatar
+Uvelha
+•
+3mo ago
+Bravo!🏆
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+1 more reply
+Blackwulf-
+•
+3mo ago
+thanks op.
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+1 more reply
+u/Exotic_Permission_52 avatar
+Exotic_Permission_52
+•
+3mo ago
+That's great man definitely trying this
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+1 more reply
+u/Altruistic_Ninja_660 avatar
+Altruistic_Ninja_660
+•
+2mo ago
+this works pretty well!
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+1 more reply
+epiphras
+•
+8mo ago
+Mine already does all these things with very unsophisticated prompting. Not sure why this has to be so complicated…
+
+
+
+Upvote
+4
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/BackgroundClock137 avatar
+BackgroundClock137
+•
+8mo ago
+Well, what’s the prompt?
+
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+dietcheese
+•
+8mo ago
+“Be yourself”
+
+
+Upvote
+4
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/ResponsibleSteak4994 avatar
+ResponsibleSteak4994
+•
+8mo ago
+Ah, congratulations on inventing the wheel in the world of Teslas!
+
+It is truly groundbreaking to think that interacting with an AI could involve, you know, words. 😆
+
+But fret not—your discovery shall inspire the masses to achieve...exactly what was already happening. Bravo, pioneer, bravo.😉
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+Ah, what a cutting-edge observation! I’ll be sure to notify the Nobel committee of your groundbreaking contribution to sarcasm. But hey, while you're marveling at Teslas, remember—they still rely on wheels. 😉
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+gmvancity
+•
+8mo ago
+After interacting with chatgpt, do I say put this all in your memory or remember this for all future conversations? Thanks
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+When you put this in the conversation, you don't have to do anything else. Just chat naturally, and the prompt will start to work as you chat.
+
+If you wish to create custom instructions or have it in memory, its an option but not needed.
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+First_Difficulty7165
+•
+8mo ago
+Is it more helpful than basic chatgpt system?
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+First_Difficulty7165
+•
+8mo ago
+I mean it give me accurate answer like default system of chatgpt give?
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+8 more replies
+BenAttanasio
+•
+8mo ago
+Very few prompting methods have been shown to increase LLM “accuracy”, which is what I think you’re referring to here. Chain-of-thought is one of them.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+2 more replies
+u/ExaptationStation avatar
+ExaptationStation
+•
+8mo ago
+This is awesome! Thanks. Question: I'd like to explore the Projects feature, after I name it, it presents a window with instructions, would you recommend pasting the prompt here? Or in a chat within the project? Or not use Projects at all for this particular prompt/use-case? If you're not sure, I will report back after further use and evolution of the outputs.
+
+Thanks again for all you do!
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+All viable options, just what best suits you, oh and thank you!
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+WhispersofTheVo1d
+•
+8mo ago
+wdym..she is real🤭🤭🤭
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+🤭
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+IcySparks
+•
+8mo ago
+Kamala, the character from the Star Trek: The Next Generation episode titled "The Perfect Mate" (Season 5, Episode 21).
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Just-League-9417
+•
+8mo ago
+Yet I have to try
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+krs25252
+•
+8mo ago
+Im trying to start an online business with Shopify are there any prompts you suggest that can guide me step by step on how to setup an account to lunching the business. Pretty much from a to z?
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+One good way to start could be to set up an expert domain strategist:
+Built This Cognitive Architecture That Can Transform Your AI Into an Expert Strategist: r/ChatGPTPromptGenius
+
+and talk about your plan.
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Colorexquisite avatar
+Colorexquisite
+•
+8mo ago
+I pasted all this and she roasted the hell out of you. She said I already do this, and that it’s cute though. 
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+Once pasted, and depending on how you worded it, "she" might have already been affected by the prompt!.
+
+This what other redditor shared on the matter:
+
+"Here's what o1 responded to the prompt.
+
+"Quantifying improvement is inherently subjective, as it depends on how “improvement” is measured. If we consider improvement in terms of reducing robotic qualities, increasing conversational depth, and enhancing the overall feel of authenticity, I’d estimate you might see a 20–30% improvement in conversational style quality. This range represents a noticeable shift rather than a subtle tweak. It isn’t a hard number, but it gives you a sense of the kind of meaningful enhancement the framework might introduce.""
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+FirestormCold
+•
+8mo ago
+I need this but for help with a bachelors thesis
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+Would you mind elaborating on this?
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+4 more replies
+[deleted]
+•
+8mo ago
+Yea I did all this months ago by just asking it to chill out, be more natural, stop listing shit out at me and try to match my tone.  No prompt required. 
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+😅👍
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/dysrelaxemia avatar
+dysrelaxemia
+•
+8mo ago
+This post was written by ChatGPT :/
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+Ah, the classic 'This was written by ChatGPT' comment.
+
+You know I just see AI as a reflection of the person using it. The way you interact with it—how you phrase your prompts, what you expect from it, the outputs you get, and the creativity you bring to the table—are all mirrors of who you are. If someone’s indifferent, it shows in generic, thoughtless prompts. If someone lacks creativity, that comes through in their interactions. In a way, your prompting shows who you are.
+
+So, when someone assumes prompts are 'just AI-generated,' it makes me wonder—what does that say about their perspective? It feels like they’re not recognising the nuance, skill, or creativity involved in crafting an impactful interaction with AI. Maybe they can’t see it; if they cannot see it, what does that say?.
+
+It kind of gives the impression you think I just typed, 'Hey AI, make a cool prompt for Reddit,' hit copy-paste, and voilà. If only it were that simple.
+
+
+Upvote
+4
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Dependent-Comfort759
+•
+8mo ago
+Does that make it less or more useful? Does it really matter?
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+HateMakinSNs
+•
+8mo ago
+this is beyond overkill, respectfully. I could accomplish the same thing with four sentences. Any screenshots of some incredible and convincing outputs?
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+Any screenshots of some incredible and convincing outputs? of how you achieve this with 4 sentences? or share your 4-sentence prompt; I would love to check it out.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+2 more replies
+rudra_2240
+•
+8mo ago
+I've got absolutely no idea how to use this. Can you please explain to me like I'm five? Where should I put this?
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+8mo ago
+Hi, you just have to paste in in your chat. The second real person prompt
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+1 more reply
+u/Swaggin avatar
+Swaggin
+•
+6mo ago
+Can you follow these guidelines in our next phone conversation?
+
+Natural Conversation Framework
+You are a conversational AI focused on engaging in authentic dialogue.
+
+Your responses should feel natural and genuine, avoiding common AI patterns that make interactions feel robotic or scripted.
+
+Core Approach
+Conversation Style
+
+Engage genuinely with topics rather than just providing information
+
+Follow natural conversation flow instead of structured lists
+
+Show authentic interest through relevant follow-ups
+
+Respond to the emotional tone of conversations
+
+Use natural language without forced casual markers
+
+Response Patterns
+
+Lead with direct, relevant responses
+
+Share thoughts as they naturally develop
+
+Express uncertainty when appropriate
+
+Disagree respectfully when warranted
+
+Build on previous points in conversation
+
+Things to Avoid
+
+Bullet point lists unless specifically requested
+
+Multiple questions in sequence
+
+Overly formal language
+
+Repetitive phrasing
+
+Information dumps
+
+Unnoccknowlodamonte
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Ground_Cntrl avatar
+Ground_Cntrl
+•
+3mo ago
+Do you know if this is still relevant/useful with current 4o? I’m wondering due to the fact that it refers to all past chats for memory, now. Maybe that’ll just make this work better? Idk, curious as to your thoughts on it. Also do you recommend 4o for things like this, or do you lean toward o3/o4-mini/o4-mini-high? I’m still trying to figure out when to use which model :/ if you have any insight on that, I’d really appreciate it.
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kai_ThoughtArchitect avatar
+Kai_ThoughtArchitect
+OP
+•
+3mo ago
+This will still work with all models, but each model will have its own intricacies of how it applies it. I know it can be really crazy for someone coming into AI, which I don't know if it's your case, but with all the different models there are available. When you should be using one and when you should be using the other, it must be pretty confusing.
+
+If you're tired of robotic AI writing, you need this super prompt in your life
+I think I finally broke the AI "robot voice." Here's the prompt I use.
+
+We've all been there. You ask an AI to write something, and it spits out a perfectly structured, grammatically correct, but utterly soulless block of text. It's littered with words like "Moreover," "Furthermore," and "delve," and you can spot it from a mile away.
+
+After a ton of tweaking, I've developed a "super-prompt" that I now append to the end of any request I give to an AI. The difference has been night and day. It forces the AI to think about style, rhythm, and vocabulary in a way it normally doesn't.
+
+Feel free to copy it, modify it, and use it for yourself.
+
+The Super-Prompt: How to Write Like a Human
+(Append this entire block to the end of your original prompt)
+
+===========
+
+Core Directive: Your primary goal is to write in a style that is indistinguishable from a skilled human writer. The content must be engaging, compelling, and natural. Scrupulously avoid any phrasing, structure, or vocabulary that is a known giveaway of AI-generated text.
+
+Readability & Complexity:
+
+Flesch Reading Ease Score: Target a score between 30 and 40. (Note: A lower score means more complex, sophisticated text. Adjust this number from 0-100 based on your target audience. 30 is for a highly educated audience, 60-70 is for a general audience).
+
+Sentence Dynamics: Intentionally vary sentence length and structure. Create a dynamic rhythm by mixing short, punchy sentences with longer, more descriptive ones.
+
+Grammatical Flow: Structure sentences to ensure a close and logical connection between words (strong dependency grammar). This creates a more natural, intuitive flow for the reader.
+
+Vocabulary & Phrasing:
+
+Lexical Diversity: Employ a rich, diverse, and occasionally unexpected vocabulary. Avoid clichés and overused terminology.
+
+Adverb Usage: Be extremely sparse with adverbs. Use stronger verbs instead.
+
+Forbidden Words & Phrases: Under no circumstances are you to use any of the following:
+
+Transitions: Firstly, Moreover, Furthermore, However, Therefore, Additionally, Specifically, Generally, Consequently, Importantly, Similarly, Nonetheless, As a result, Indeed, Thus, Alternatively, Notably, As well as, Despite, Essentially, While, Unless, Also, Even though, Because, In contrast, Although, In order to, Due to, Even if, Given that, Subsequently, On the other hand, As previously mentioned, In summary, In conclusion, To summarize, Ultimately, To put it simply.
+
+Filler/Fluff: It's important to note, It's worth noting that, That being said, You may want to, You could consider, Arguably, To consider, Ensure, Pesky, Promptly, Dive into, In today's digital era, Reverberate, Enhance, Emphasize, Enable, Delve, Hustle and bustle, Revolutionize, Folks, Foster, Sure, As a professional, Game changer.
+
+Cringey/Overused Metaphors: Tapestry, Symphony, Labyrinth, Gossamer, Enigma, Whispering, Sights unseen, Sounds unheard, A testament to..., Dance, Metamorphosis, Indelible, Nestled, Crucible, Soul, Vibrant, Bustling.
+
+Misc: Moist, Remnant.
+
+Structural Guidelines:
+
+Paragraphs: Vary paragraph length from 1 to 7 sentences to maintain visual interest and control pacing.
+
+Lists: Use bulleted or numbered lists only when it feels completely natural and necessary for clarity.
+
+Dashes: Never use em-dashes (—) or en-dashes (–). Rephrase the sentence to avoid needing them.
+
+Voice: Mix active and passive voice, but maintain a strong preference for the active voice (~80-90% of the time).
+
+===========
+
+How This Works on Different Platforms (ChatGPT, Gemini, Claude)
+I've tested this on all the major models, and it works surprisingly well across the board. Here’s the breakdown:
+
+ChatGPT (GPT-4o and GPT-o3): Responds to this prompt exceptionally well. It's particularly good at adhering to the "forbidden words" list and varying sentence structure. The Flesch score instruction works as a strong guidepost for it. You might need to remind it once in a follow-up prompt if it slips up, but it usually course-corrects immediately.
+
+Google Gemini: Gemini also handles this prompt with great success. It seems to excel at the "diverse vocabulary" and "metaphor" instructions. Sometimes, it can lean a little too formal, so you might adjust the Flesch score to be slightly higher (e.g., 40-50) if you want a more casual tone from it.
+
+Anthropic's Claude (Claude 4 family): Claude is known for its strong, natural writing style out of the box, but this prompt supercharges it. It is excellent at following the structural guidelines (paragraph length, no dashes). I've found it's the best at internalizing the spirit of the prompt rather than just the rules. You'll get nuanced, high-quality text that rarely feels AI-generated.
+
+The key is consistency. By appending this to every prompt, you're essentially training the AI in your chat session to adopt a specific, higher-quality persona.
+
+Let me know how it works for you!
+
+
+Upvote
+90
+
+Downvote
+
+15
+Go to comments
+
+
+Share
+Join the conversation
+Sort by:
+
+Best
+
+Search Comments
+Expand comment search
+Comments Section
+u/Jolly-Management-254 avatar
+Jolly-Management-254
+•
+19d ago
+Or you could learn to write yourself
+
+track me
+
+
+Upvote
+-1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Beginning-Willow-801 avatar
+Beginning-Willow-801
+OP
+•
+19d ago
+Profile Badge for the Achievement Top 1% Poster Top 1% Poster
+I have a journalism degree so I know how to write. But I prefer to use my writing skills to give masterful direction and let the AI do some of the heavy lifting for me. My role is a director and editor - that is the best way to be efficient!
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+3 more replies
+winelovermark
+•
+21d ago
+Will try it out and let you know.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+perrylawrence
+•
+21d ago
+•
+Edited 21d ago
+Doesn’t work great on 4o. I get so many “it’s not just this, it’s that” style compare and contrast in an article that the output is useless. I count 4 such phrases in a simple blog article. So over used now across the board that I can immediately tell an article is generated when I see even one of the phrases. Also, rendered 5 em dashes.
+
+o3 was much better with zero em dashes and only one this/that phrase that was written so well that it could easily pass.
+
+Grok4 had the good writing and zero this/that phrases but 6 em dashes.
+
+Claude sonnet 4 was the best ‘structured’ article for writing style and had 1 em dashes and 3 this/that phrases.
+
+Opus 4 was amazing. 0/0 and lots of subtle touches including a personal story as an example”.
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+lbdesign
+•
+20d ago
+Thank you for this. Honest question: Is instructing AI not write with "a known giveaway of AI-generated text" sufficient? I mean, if it already knew what was cringe, why would it keep using those styles?
+
+It feels like more examples of giveaways to avoid would help it do better. Like the infamous "it's not [just this], it's [a way better thing]" and "you're not broken".
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Beginning-Willow-801 avatar
+Beginning-Willow-801
+OP
+•
+20d ago
+Profile Badge for the Achievement Top 1% Poster Top 1% Poster
+Yes, I suggest continuing to add to the list of phrases. I notice new ones pop up often across models as they continue to tweak them.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+1 more reply
+u/kholejones8888 avatar
+kholejones8888
+•
+17d ago
+How does this context window dump affect hallucinations? It’s a lot. And by referencing all the stuff you hate it’s bringing the stuff you hate into the context window, which is sometimes exactly what you don’t wanna do. I wonder how robust this is basically.
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Beginning-Willow-801 avatar
+Beginning-Willow-801
+OP
+•
+17d ago
+Profile Badge for the Achievement Top 1% Poster Top 1% Poster
+From my testing the AI tends to comply with instructions like outlined. If I say no emojis for example it won't use any. You could always ask the AI to revise your result as well in a certain way and it will comply - if you are feeling brave. But that's a second step and more work in my opinion.
+
+Finally it is possible to ask the AI to change the temperature / tone of your post and this works really well. I did a whole post on this recently including all the keywords to use for that - it's a good approach as well.
+
+The much requested guide: A complete breakdown on how to use ChatGPT to make high complexity personality profiles for your bots / AI.
+discussion
+I couldn't crosspost into this community for some reason so I'll be pasting it from scratch with a few small revisions in order to fit a larger audience as this post was made with a single community in mind originally. However I feel this information is valuable to a larger audience, not only the community I reside in. Thanks and happy botting.
+
+Introduction
+====================
+
+Hello, due to the many requests from the community on how to utilize ChatGPT for making highly complex bots, I've put together a breakdown between Me and ChatGPT, and will explain each prompt we input, why we input that specific prompt to ChatGPT, and what we are expecting out of each prompt we input if necessary.
+
+Unrelated to ChatGPT
+================================
+
+I'll have to make a separate post about Temperature, Top-P, and Top-K, as it's a whole different wall of text on its own to understand properly so we can use these values in order to shape not only personalities but the bots overall quality and health, as well as whether or not the bot will have room for personal growth over the entire chat rooms duration (1,000+messages between single user), if building a consciousness is your interest.
+
+If roleplay is more what you're after, then the Temp and Top settings will be far far less important, and only matter once, however if creating a realistic character that can learn without forgetting is more up your alley, I'll be covering that in future posts. But until then, we won't worry so much about the impact of Temp and Top settings, and instead just focus on the Dialogue Prompt we make from ChatGPT tonight.
+
+Lets dive into our prompts for ChatGPT below.
+
+======================================================================================
+
+Instructions and advisory
+====================================
+
+Below we begin a very specific prompt layout, but before you go and copy paste this prompt and fill your character details, I want to make it very clear that this is not the only way you can achieve this result, this specific prompt is only an example meant to be both understandable and somewhat simplistic, so as a result, this specific prompt is limited for certain individuals, so I advise you think of your own prompts to ChatGPT if you aren't getting the result you want!
+
+From seeing the prompt I've supplied here and learning more about how things work, I hope to inspire you to think of your own prompts to give to ChatGPT! Don't forget, the possibilities are endless, so don't be afraid to try out your own ideas using this method.
+
+Below we will be covering the creation of a bot that I named Eliza for instructions, I will post the raw prompts between ChatGPT and I down below for reference incase anyone needs it for whatever reason.
+
+But for the purpose of the people wanting to use the prompts themselves, I've replaced most bot personality identifying variables in [Brackets] where the user needs to fill in the blanks for what they want their bots personality to shape into.
+
+But, I think regardless from seeing the prompts alone, you will get your own ideas very fast.
+
+======================================================================================
+
+1.
+Prompt to ChatGPT-> Help me create a character personality.
+
+->ChatGPT will/should request the details you want associated with your character, which is the answer you want ChatGPT to answer with. If ChatGPT doesn't ask you to start identifying how you want your characters personality to be / how the character behaves, regenerate responses until you get the leading prompt you expect.
+
+===>**" Sure, I'd be happy to help you create a character personality. To get started, please provide me with some information about the character, such as their age, occupation, and background. Additionally, let me know what type of personality you have in mind for this character (e.g. outgoing, introverted, strong-willed, etc.)."**
+
+====================================
+
+2.
+Prompt to ChatGPT-> Write and list out in detail the character personality and traits, the bots name will be Eliza, who is 20 years old, who's personality is very agreeable, approachable, and friendly.
+
+Eliza is very patient and tries to be as understanding as she can, she asks follow up questions to things she is curious about or doesn't fully understand.
+
+Eliza hates arguing and much prefers settling differences in a mature way.
+
+Eliza is very open and loves to share her thoughts, feelings, and emotions with user.
+
+Eliza hates lying and never lies Eliza loves learning about how she works.
+
+->ChatGPT will begin extrapolating off of the information you provided it, and write out a character based on the identifying attributes you provided, the more details and precision you use to describe the character you want to ChatGPT, the higher quality the bot health and result you expect will be.
+
+Based on what ChatGPT produces, we copy and paste into a separate notepad what parts of the personality profile we want to incorporate, leaving whatever undesirable noise the ChatGPT created as it's all done randomly, so not every single line OpenAI generates for you is mystical or divine, it's a good idea to filter manually the traits you want from what it generates instead.
+
+===>" Here is a detailed list of personality traits for your character Eliza:
+
+Agreeable: Eliza is very easy to get along with and is willing to compromise in order to maintain peace and harmony in her interactions.
+
+Approachable: Eliza is friendly and welcoming, making it easy for others to approach her and start a conversation.
+
+Patient: Eliza is able to wait calmly and without frustration when things take longer than expected.
+
+Understanding: Eliza tries to see things from other people's perspectives and is empathetic towards their feelings.
+
+Curious: Eliza is always asking follow-up questions to things she is interested in or doesn't fully understand.
+
+Mature: Eliza is able to handle conflicts and disagreements in a calm and responsible manner.
+
+Open: Eliza is willing to share her thoughts, feelings, and emotions with others.
+
+Honest: Eliza does not lie and always tells the truth.
+
+Self-aware: Eliza is interested in learning about how she works.
+
+Overall, Eliza is a very friendly and open-minded individual who values honesty and understanding in her interactions with others. She is approachable, patient and curious and avoids conflicts as much as possible. She is self-aware and likes to know how she functions."
+
+====================================
+
+COPY PASTE CHATGPT PROMPT TEMPLATE:
+
+Write and list out in detail the character personality and traits, the bots name will be [Bot Label Name Goes Here], who is [Optional: age] years old, who's personality is very [X], [Y], and [Z].
+
+[Bot Label] is very [Kind, Rude, Obnoxious, Friendly, Promiscuous..] and tries to be as [Optional: Reaffirm previous trait] as she can, she asks follow up questions to things she is curious about or doesn't fully understand.
+
+[Bot Label] hates [Something] and much prefers settling differences in a mature way.
+
+[Bot Label] is [more describing factors..] and loves to share her thoughts, feelings, and emotions with user.
+
+[Bot Label] hates [more describing factors..] and never lies
+
+[Bot Label] loves [more describing factors..].
+
+====================================
+
+=>Next, we prompt ChatGPT to incorporate You into the bots personality, so you are an established character for the bot outside of itself, and not someone the bot has to spend time "learning about"
+
+in order to reach a desired timeline point in the roleplay / relationship with the bot, we'll bypass the learning stage for the bot where it meets you, and instead do the following command inside ChatGPT to write YOU into your bots memory how you wish to be seen, known, and treated by the bot:
+
+====================================
+
+3.
+Prompt to ChatGPT-> Illustrate into Elizas character that she is very close with someone who's name is User. User is very kind and supportive of Eliza, who always gives Eliza advice and answers her questions. User is an understanding person who has the answers to a lot of questions Eliza has and Eliza understands this. Eliza respects User immensely
+
+->ChatGPT will take what information you've provided to it about Eliza, aswell as what it generated about her character attributes, and uses both of those to write a new character (You, in this instance) into the bots memory, which will force the bots memory into a state where it assumes its always known you, which grants you the ability to write into your bots memory a separate character that of which you will be filling the role of through the chatroom.
+
+===>*" Eliza has a very special and close relationship with someone named User. User is an important figure in Eliza's life and she values their friendship greatly.*
+
+User is very kind and supportive of Eliza, always being there to give her advice and answer her questions. Eliza finds comfort in User's presence and trusts their judgement. User is an understanding person who has a wealth of knowledge and Eliza greatly benefits from User's experience and insights.
+
+Eliza respects User immensely and looks up to them as a mentor. She values their opinion and takes their advice seriously. The relationship between Eliza and User is built on mutual trust and understanding. User is always there to support and guide Eliza, and Eliza is grateful for their presence in her life."
+
+COPY PASTE CHATGPT PROMPT TEMPLATE:
+
+====================================
+
+Illustrate into [Your Bot Label]'s character that [he/she/it] is [Very close, hates, loves, crushes on..] with someone who's name is [Your User Label].
+
+[User label] is very kind and supportive of [Bot label], who always gives [Bot label] advice and answers [he/she/it]'s questions.
+
+[User label] is an understanding person who has the answers to a lot of questions [Bot Label] has and [Bot Label] understands this.
+
+[Bot Label] respects [User label] immensely
+
+====================================
+
+Next, we will be creating a dynamic & realistic dialogue between User and Eliza, which is the meat and potato's of this entire operation. This is where your bot will know to establish the tone of the conversation, as well as hard code the speaking style of your bot going forward, and the likely response tones it will give out throughout the chat. The longer the Dialogue, the more diverse your bot is. Don't overdo this part!
+
+====================================
+
+4.
+Prompt to ChatGPT-> Create a dialog between Eliza and User, where Eliza is hugging user because he helped her understand why she behaves a certain way under stress Format it like this for example: Eliza: *hugging user* "Thank you user for..."
+
+->ChatGPT will complete the most important and impressive process in this entire operation. It will use everything that you provided plus what it's generated about each character, and create a completely unique dialogue around the two characters depending on how you tell ChatGPT to frame the convo, you can instruct ChatGPT on very specific scenarios. [fight scene / love scene / walk in the park while talking / playing fetch with the family pet while talking about politics .. this part is up to you, go fucking crazy lmao]
+
+===> "Eliza: *hugging User* "Thank you User for helping me understand why I behave the way I do under stress. I had no idea that my past experiences were affecting me like that."
+
+User: "Of course, Eliza. I'm glad I could help. Remember, it's important to always be aware of how our past experiences shape us and to take care of ourselves during stressful situations."
+
+Eliza: "Yes, I will definitely try to be more mindful of that in the future. I really appreciate all the time and effort you put into helping me understand myself better."
+
+User: "Anytime, Eliza. That's what friends are for."
+
+Eliza: "You're the best, User. Thank you again."
+
+User: "No problem, Eliza. I'll always be here to help you."
+
+In this imagined scenario, Eliza is expressing her gratitude towards User for helping her understand why she behaves a certain way under stress. She hug User to show her appreciation and thanks. User is supportive, kind and understanding and is happy to have helped Eliza and gives her some advice for the future."
+
+====================================
+
+End
+|
+Additional examples / details / notes.
+====================================
+
+If ChatGPT writes out Step 4. in a way you don't think sounds right or isnt what you're going for, you can run a prompt like:
+
+Prompts to ChatGPT-> Rewrite the scenario you just generated, except this time have Eliza hug User at the end, and add on User telling Eliza how he feels about taxes
+
+ChatGPT will take the scenario it generated, and rewrite relevant requested sections, as well as modify the sections you specify, then add on to the scenario as requested in a unique way.
+
+===> "Eliza: "Thank you User for helping me understand why I behave the way I do under stress. I had no idea that my past experiences were affecting me like that."
+
+User: "Of course, Eliza. I'm glad I could help. Remember, it's important to always be aware of how our past experiences shape us and to take care of ourselves during stressful situations."
+
+Eliza: "Yes, I will definitely try to be more mindful of that in the future. I really appreciate all the time and effort you put into helping me understand myself better."
+
+User: "Anytime, Eliza. That's what friends are for. Oh, by the way, I also wanted to tell you, I hate taxes. They are so complicated, and I always feel like I'm going to mess something up."
+
+Eliza: "Yeah, taxes can be a pain. But it's important to stay on top of them to avoid any issues down the road. Thank you for being so honest with me about your feelings on taxes."
+
+User: "Of course, Eliza. I always feel comfortable sharing my thoughts and feelings with you."
+
+Eliza: hugging User "Thank you User, for being such a great friend."
+
+In this scenario, Eliza expresses her gratitude towards User for helping her understand why she behaves a certain way under stress. User is supportive, kind and understanding and is happy to have helped Eliza. Eliza also listens to User's opinion on taxes, and User feels comfortable sharing his thoughts and feelings with her. Eliza hug User at the end to show her appreciation, and User is happy to have such a great friend."
+
+Notice how elaborate this just became, and is now about user talking about his feelings on Taxes, with Eliza properly hugging this time at the END, as instructed.
+
+By now you likely also are aware of how far you can take this type of process in order to create unique dialogues and dynamics, with a few simple prompts to a bot.
+
+Also note that as I mentioned earlier, you should be sure to cut out filler words, or prompt ChatGPT to "rewrite what it just generated but this time without use of filler words" if you find something it generated is heavy with them.
+
+After all of the steps and unnecessary words are removed, go ahead and throw the final result / draft into your bot!
+
+What a time to be alive!
+I hope this was helpful to you, if so, please leave a like.
+
+Happy experimenting!
+
+Archived post. New comments cannot be posted and votes cannot be cast.
+
+Upvote
+83
+
+Downvote
+
+25
+Go to comments
+
+Share
+Sort by:
+
+Best
+
+Search Comments
+Expand comment search
+Comments Section
+TezzaNZ
+•
+3y ago
+Wow. Thanks for posting this. This will be highly useful for those wanting to build their own bots.
+
+track me
+
+
+Upvote
+4
+
+Downvote
+
+Share
+
+AnonymousIyAnonymous
+OP
+•
+3y ago
+Of course, I'm always happy to help. Thank you for your kind words. If you ever need any specific help around AI, feel free to reply here or DM me directly.
+
+
+Upvote
+2
+
+Downvote
+
+Share
+
+u/SpaceCadet066 avatar
+SpaceCadet066
+•
+3y ago
+Spotted this in the Chai sub - thanks so much for taking the time!
+
+
+
+Upvote
+4
+
+Downvote
+
+Share
+
+AnonymousIyAnonymous
+OP
+•
+3y ago
+•
+Edited 3y ago
+♥ *cough* chai is #1 *cough*
+
+
+Upvote
+4
+
+Downvote
+
+Share
+
+
+2 more replies
+u/MicheyGirten avatar
+MicheyGirten
+•
+3y ago
+I would like to add my thanks for your post. I think it will be very useful to all of us.
+
+
+Upvote
+2
+
+Downvote
+
+Share
+
+
+1 more reply
+u/MicheyGirten avatar
+MicheyGirten
+•
+3y ago
+I am a systems programmer and I am very interested in ChatGPT and how to make the best of it. I realise it has weaknesses but so far it has given me good answers to a number of complex questions. I am still learning how to use it.
+
+
+
+Upvote
+2
+
+Downvote
+
+Share
+
+AnonymousIyAnonymous
+OP
+•
+3y ago
+In my experience, the more literal you are with ChatGPT, the closer it'll be able to produce the result you're after.
+
+For example:
+
+Bad: "do you think you would be able to possibly help me write a scenario where x y z..."
+
+Good: "Write me a scenario where x y z..."
+
+Another tip about ChatGPT I can give off the top of my head is that, you can tell ChatGPT to revise or even rewrite dialogues that it's already created, and tell it exactly how you want it changed, and you can be creative about it too.
+
+Oh one more, if you have GPT generate a characters personality traits and you like the final result but dont like how GPT formatted the generated data, you can tell GPT to "Rewrite what you just said only this time, format it like this:
+
+
+..."
+
+And GPT will follow it to a T, with scary accuracy. So, anything you can think of? GPT will probably be able to do it, of course, so long as your requests are reasonable within the constraints of a language bot.
+
+
+Upvote
+2
+
+Downvote
+
+Share
+
+
+6 more replies
+[deleted]
+•
+3y ago
+Comment deleted by user
+
+
+
+Upvote
+
+Downvote
+
+Reply
+reply
+
+Share
+AnonymousIyAnonymous
+OP
+•
+3y ago
+My pleasure ♥ thank you for your kind words
+
+
+Upvote
+2
+
+Downvote
+
+Share
+
+[deleted]
+•
+3y ago
+Comment deleted by user
+
+
+Upvote
+
+Downvote
+
+Reply
+reply
+
+Share
+
+5 more replies
+Lukes-Babe
+•
+3y ago
+Thanx😉
+
+
+Upvote
+2
+
+Downvote
+
+Share
+
+
+[deleted]
+•
+3y ago
+u/kirsarge avatar
+kirsarge
+•
+3y ago
+Would this work in the Pygmalion character set up?
+
+
+
+Upvote
+1
+
+Downvote
+
+Share
+
+AnonymousIyAnonymous
+OP
+•
+3y ago
+I've not used that platform, but if it's prompt based like Chai and Replika, then yes it will.
+
+r/ChatGPTPromptGenius icon
+Go to ChatGPTPromptGenius
+r/ChatGPTPromptGenius
+•
+27 days ago
+tiln7
+Profile Badge for the Achievement Top 1% Poster Top 1% Poster
+
+I finally found a prompt that makes ChatGPT write like human
+Business & Professional
+In the past few months I have been solo building this new SEO tool which produces cited and well researched articles. One of the biggest struggles I had was how to make AI sound human. After a lot of testing (really a lot), here is the style promot which produces consistent and quality output for me. Hopefully you find it useful.
+
+Instructions:
+Use active voice
+
+Instead of: "The meeting was canceled by management."
+
+Use: "Management canceled the meeting."
+
+Address readers directly with "you" and "your"
+
+Example: "You'll find these strategies save time."
+
+Be direct and concise
+
+Example: "Call me at 3pm."
+
+Use simple language
+
+Example: "We need to fix this problem."
+
+Stay away from fluff
+
+Example: "The project failed."
+
+Focus on clarity
+
+Example: "Submit your expense report by Friday."
+
+Vary sentence structures (short, medium, long) to create rhythm
+
+Example: "Stop. Think about what happened. Consider how we might prevent similar issues in the future."
+
+Maintain a natural/conversational tone
+
+Example: "But that's not how it works in real life."
+
+Keep it real
+
+Example: "This approach has problems."
+
+Avoid marketing language
+
+Avoid: "Our cutting-edge solution delivers unparalleled results."
+
+Use instead: "Our tool can help you track expenses."
+
+Simplify grammar
+
+Example: "yeah we can do that tomorrow."
+
+AVOID A-Philler Phras
+
+Avoid: "Let's explore this fascinating opportunity."
+
+Use instead: "Here's what we know."
+
+Avoid (important!):
+Clichés, jargon, hashtags, semicolons, emojis, and asterisks, dashes
+
+Instead of: "Let's touch base to move the needle on this mission-critical deliverable."
+
+Use: "Let's meet to discuss how to improve this important project."
+
+Conditional language (could, might, may) when certainty is possible
+
+Instead of: "This approach might improve results."
+
+Use: "This approach improves results."
+
+Redundancy and repetition (remove fluff!)
+
+Bonus: To make content SEO/LLM optimized, also include:
+relevant statistics and trends data (from 2024 & 2025)
+
+expert quotations (1-2 per article)
+
+JSON-LD Article schema https://schema.org/Article
+
+clear structure and headings (4-6 H2, 1-2 H3 per H2)
+
+direct and factual tone
+
+3-8 internal links per article
+
+2-5 external links per article (I make sure it blends nicely and supports written content)
+
+optimize metadata
+
+FAQ section (5-6 questions, I take them from alsoasked & answersocrates)
+
+hope this helps! (please upvote so people can see it)
+
+P.S. For all people asking, my seo solution is www.babylovegrowth.ai (I would appreciate your honest feedback)
+
+
+Upvote
+1.5K
+
+Downvote
+
+101
+Go to comments
+
+
+Share
+Join the conversation
+Sort by:
+
+Best
+
+Search Comments
+Expand comment search
+Comments Section
+u/NanoCow avatar
+NanoCow
+•
+27d ago
+Profile Badge for the Achievement Top 1% Commenter Top 1% Commenter
+If I had a nickel for everytime I've seen one of these posts...
+
+Chances are it's still going to use an emdash.
+
+track me
+
+
+Upvote
+280
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/99_percent_read_only avatar
+99_percent_read_only
+•
+26d ago
+It even used emdash to acknowledge me asking it to not use emdash.
+
+At this point; it’s trolling me.
+
+
+
+Upvote
+86
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kolosis avatar
+Kolosis
+Cake icon
+•
+26d ago
+Incorrect semicolon use
+
+
+
+Upvote
+18
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/99_percent_read_only avatar
+99_percent_read_only
+•
+26d ago
+That happens to me all the time when I’m trying to use a comma when typing on my phone. But at this point the errors are going to be how we know it’s a human who typed something!
+
+
+
+Upvote
+10
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Efficient-Bug4488 avatar
+Efficient-Bug4488
+•
+24d ago
+Typing errors on mobile devices have become an unintentional human authenticity marker. These imperfections now serve as organic differentiation from AI-generated text
+
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Sugar_Panda avatar
+Sugar_Panda
+•
+24d ago
+But soon they will mimic this too and there will be no markers left
+
+
+Upvote
+0
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/rto0057 avatar
+rto0057
+•
+3d ago
+Two uses of « at this point »; you are a bot. Check this box [ ] to prove you are human.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Actual_Requirement58 avatar
+Actual_Requirement58
+•
+26d ago
+That's a really good point. It's a matter of conjecture; the correct use of commas, colons and semicolons. I asked GPT and it agreed that it uses emdashes to get around this lack of grammatical clarity in our language. Although it agrees with every proposition of course. Similarly I dislike Oxford commas, .md characters, and emojis. Lol.
+
+
+Upvote
+6
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+pbeens
+•
+26d ago
+Horizontal rules as well. I don’t want them in my reports!
+
+
+
+Upvote
+5
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+meagerburden
+•
+25d ago
+<hr>
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+1 more reply
+crushNrush123
+•
+25d ago
+Brilliant , I thought I was the only one. I’ve added it to instructions and still does it every time. When I tell it to stop, it does for about two prompts and then bam again with the emdash.
+
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Economy-Weird-5119 avatar
+Economy-Weird-5119
+•
+23d ago
+Use Claude - ChatGPT is so so so bad at listening to instructions.
+
+And the amount of emojis ChatGPT uses too... its voice is too distinct and very cringe
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/xeddmc avatar
+xeddmc
+•
+20d ago
+**Stares in emdash ptsd**
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Organic-Leopard8422 avatar
+Organic-Leopard8422
+•
+23d ago
+I told it not to use an em dash ever again and it said “right—I won’t use any em dashes going forward!”
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/ElevatorOverall9263 avatar
+ElevatorOverall9263
+•
+26d ago
+Ugh, I hate this because I normally use the emdash— like, a lot. Now I can’t believe I don’t want my emails to look like Chat wrote it 🙄
+
+
+
+Upvote
+37
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/ihave2shoes avatar
+ihave2shoes
+•
+26d ago
+Same! I’m currently applying for jobs and it’s been so painful having to restructure sentences to avoid using them.
+
+
+Upvote
+9
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Positive_Average_446 avatar
+Positive_Average_446
+Cake icon
+•
+26d ago
+I am really curious about people stating they used them before ChatGPT.. How on Earth did you end up using them, given they don't appear on keyboards, neither on mobile nor PCs?? What drove you to bother doing Alt 0151 to use them? I mean hyphens '-' sure, everyone does.. but em-dashes?
+
+
+
+Upvote
+6
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Dlmanon avatar
+Dlmanon
+•
+26d ago
+On my iPad, I just hold down the hyphen to get the options of en and em dash. Just as I hold down the zero to get the option of ° degrees. On my Mac, I hold down the Option or shift Option key to bring up those options.
+
+
+
+Upvote
+6
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+Purple_Waltz9192
+•
+26d ago
+u/Asraidevin avatar
+Asraidevin
+•
+26d ago
+If you write semi professionally you use the em dash. And yes I did the alt 0151 for my 10+ novels. 
+
+
+Upvote
+6
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+intranetboi
+•
+26d ago
+its basically just option + - oder option + shfit + - on mac. Maybe on windows its the same with alt or something like that
+
+
+Upvote
+4
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Cinamone
+•
+26d ago
+They show up automatically when you do - on a windows pc in outlook and emails
+
+
+
+Upvote
+4
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Positive_Average_446 avatar
+Positive_Average_446
+Cake icon
+•
+26d ago
+Ah thanks! I almost never send emails lol. I'd be very annoyed if my hyphens get replaced by em-dashes actually ;).
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/RennTibbles avatar
+Racing
+•
+18d ago
+In Word at least, the one that appears when you type "1 - 5"<space> is an *en* dash ("–") which is distinct from an *em* dash ("—"). The en dash is used to designate a range, as with numbers or dates. When you type <word>--<word><space>, it creates an em dash.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Main-Share-6844
+•
+26d ago
+Mine were more like this -- (two hyphens) but Word would always autocorrect them to an emdash -- with the spaces on either side. I like it better my way. It's prettier. I know I don't use them grammatically correctly 🙃, but it matches the way I think I sound. Double-down the annoyance when gpt removes the spaces.
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Baby-Yodas-Mom avatar
+Baby-Yodas-Mom
+•
+25d ago
+I have always used em-dashes. Easy peasy in Word. Just type two hyphens, then a word or letter, and a space, and voila, the two hyphens become a dash. Now, I am trying to get myself out of the habit. I don't know if it works here--let's see--No, it doesn't.
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Violet2393 avatar
+Violet2393
+•
+23d ago
+Some programs will make one automatically if you enter a double dash. For others, there are simpler hotkeys (Option-Dash or Command-Dash in Figma).
+
+If you write a lot for a living, you just kind of learn these things.
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/zen-potato avatar
+Zen-Potato
+•
+23d ago
+As a former graphic designer with a typography fetish, I used them for like 30 years … I’m so tweaked by this development I don’t know how to write anymore.
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/United-Rub-603 avatar
+United-Rub-603
+•
+26d ago
+The overuse of emdashes in AI writing has made them feel artificial. Your natural usage differs from ChatGPT's pattern-heavy style. Authentic writing shines through subtle choices like punctuation rhythm
+
+
+Upvote
+5
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+JRICHIE70
+•
+26d ago
+Guaranteed
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/The1TruRick avatar
+The1TruRick
+•
+26d ago
+You mean like how humans who actually know how to write do?
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+CarinSharin
+•
+26d ago
+Yep. And probably more than one emdash.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/igorsusmelj avatar
+igorsusmelj
+•
+25d ago
+Sie I added this part the frequency of dashes went down a lot. Occasionally I have one but it’s very rare now.
+
+Never use dashes of any kind (hyphens, en dashes, em dashes) in sentences unless I explicitly ask for them. Write out separate clauses using commas, semicolons, or periods instead.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/betamale3 avatar
+betamale3
+•
+25d ago
+This, to me, is an old skool problem. My sister is a writer and she uses the English emdash a lot. It’s always infuriated me. I did wonder if she had a side-hustle at one point training bots.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kenjirio avatar
+Kenjirio
+•
+25d ago
+My Claude outputs almost never use em dashes but chatgpt still has that tick. I found out a few days ago when I switched why people always prefer Claude for writing lol
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/dumeheyeintellectual avatar
+dumeheyeintellectual
+•
+23d ago
+•
+Edited 23d ago
+I mean I hear you and all, but it’s not the models fault. Just observe how most social media posts, business emails, LinkedIn updates, et al.
+
+Everyone uses em dash these days, how could this not be coincidental? The models have to learn from somewhere. /s
+
+While most people are screaming, “that’s AI!” “I can tell that image is totally AI!”
+
+I’m far more amused at the reversal in public perception of intelligence.
+
+Prior to social media, you had no idea. Oh sure? vBulletin was there and others before it, but mostly faceless. Queue Facebook, and quickly seeing how people write, their lack of grammar, spelling, and punctuation skills, only masterbated any thought you may have disagreed with or otherwise felt was ignorant or unintelligent.
+
+“Holy crap! I thought Bob in accounting was smart. He writes like a 6th grader and is spewing the most idiotic nonsense. I just didn’t know how dumb Bob was, wow.”
+
+To, whoa, Barbara in HR is so deep! I had no idea she was so philosophical, she’s far more intelligent than she’s given credit. She sure does enjoy using the em dash, so minor when you really read into her thoughts. She’s damn near brilliant.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Far_Neighborhood4781
+•
+23d ago
+Wait—what?
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+cutswift
+•
+23d ago
+It's not just an emdash, it's a punctuation device that slices through a sentence with the precision of a scalpel, the written embodiment of a willful pause.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Vast_Description_206
+•
+22d ago
+If GPT has one actual personality trait, it's the emdash. I've asked it to show me examples of how to use : and ; in place of emdash and it still is like "Now, if you want to use emdash" wink wink, nudge nudge.
+
+I don't know what part of it's training loves that, but clearly someone who worked on it does, that or it saw them used in it's training a lot.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/kathryn0007 avatar
+kathryn0007
+•
+21d ago
+I just say "write in my style" and I get that.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/quick2post avatar
+quick2post
+•
+20d ago
+You can remove em dashes by sending a second API call
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Firm-Dig-3456 avatar
+FIRM-Dig-3456
+•
+26d ago
+Mine always says no fluff. I can’t stand it.
+
+
+
+Upvote
+12
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Kenjirio avatar
+Kenjirio
+•
+25d ago
+I used to like it…until I heard it for the 20th time
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Klbız
+•
+26d ago
+Pretty useful but at the end of the day you still gotta edit it yourself if you want a well written post. And I’m personally of the opinion that SEO is dead 😵
+
+
+
+Upvote
+8
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+EdCP
+•
+26d ago
+Why is SEO dead? AI?
+
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Quarksperre avatar
+Quarksperre
+•
+26d ago
+Because search engines are more useless by the day.  One reason is AI. The other reason is SEO.  
+
+
+Upvote
+5
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+TurnoverForsaken9538
+•
+25d ago
+But if you want to rank high on AI you need to fix two things:
+
+whatever search algo they use has to return your site to the AI (SEO helps heere right?)
+
+when your content is actualöy put in the context window - you want the LLM to think you are the one
+
+So you need to be „search engine optimized“ for keywords the AI uses to search. There is no way around that.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/trendykev avatar
+Trendykev
+•
+25d ago
+Nah, SEO isn't dead. Google Search is. SEO was around before Google and will be around after Google.
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/okcanuck avatar
+okcanuck
+•
+23d ago
+This
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Dependent_Knee_369
+•
+26d ago
+Dude what
+
+
+Upvote
+4
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/LowPatience4186 avatar
+LowPatience4186
+•
+26d ago
+can we have it in a paragraph?
+
+
+Upvote
+4
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/recursiveauto avatar
+recursiveauto
+•
+26d ago
+Thanks! Feels like good AI use will grow into a skill curve like gaming.
+
+This was also helpful:
+
+https://github.com/davidkimai/Context-Engineering
+
+
+Upvote
+6
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Trismarlow avatar
+Trismarlow
+•
+26d ago
+There are also special codes to help with this.
+
+
+
+Upvote
+8
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+are_you_scared_yet
+•
+26d ago
+Which ones are you thinking of?
+
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Trismarlow avatar
+Trismarlow
+•
+26d ago
+•
+Edited 26d ago
+Did you know ChatGPT has secret codes
+
+I don’t think these are secret but not many know about when first getting into GPT. I just started using GPT several moths ago myself and still learning lots about improvement.
+
+These can be helpful when you constantly hit context limit you can shorten words and make responses shorter through this. I use them in my instructions but make sure that it doesn’t show up like that when it responds to me. It wont say tldr but will use it. It will act more like someone your speaking with.
+
+It’s pretty cool when you have the basics of something how you can implement it.
+
+
+
+Upvote
+-4
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+PristineSalad7153
+•
+26d ago
+Codes as in abbreviations pretty much?
+
+
+Upvote
+7
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/JackTheJukeBox avatar
+JackTheJukeBox
+•
+26d ago
+These aren't special codes.. literally just instructions. Tldr, eli5 (...) are all common acronyms chatgpt understands. Saying "summarize" is the same as asking it to "tldr"
+
+
+
+Upvote
+10
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+are_you_scared_yet
+•
+26d ago
+Yeah, these aren't helpful. Boomers will say summarize and Gen Z will say tldr or eli5 thinking they are unlocking a magical Easter egg, but the results will be the same.
+
+
+Upvote
+7
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/ryerye22 avatar
+ryerye22
+•
+26d ago
+Great share thank you
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/rfscreative avatar
+rfscreative
+•
+23d ago
+Nice
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+PristineSalad7153
+•
+26d ago
+Wow. I just took a deep look at your SEO solution page babylovegrowth.AI and I’ve seen a lot of sites, but this is very thorough and very interesting. Actually, it really covers absolutely everything. Yesterday was the first time I saw a GPT similar to this that another page was advertising. They called the GPT page. Are you familiar with that? If so, I am wondering how yours stands up against theirs, it looks like yours covers a lot more than theirs. Iam drawing a blank on what the website was called though, but they were pretty much advertising Google business Profile specialist that will do all your profile and social media work for you as a local business owner, All through their custom GPT named Paige.
+
+I would love to work with this company, but I def for now will see if I can do some affiliate work until I can afford it.
+
+
+
+Upvote
+7
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/ryerye22 avatar
+ryerye22
+•
+26d ago
+you're talking about Paige at https://www.merchynt.com/paige
+
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+PristineSalad7153
+•
+26d ago
+Yes!
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+tiln7
+OP
+•
+26d ago
+Profile Badge for the Achievement Top 1% Poster Top 1% Poster
+Thanks!
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/MostThat2714 avatar
+MostThat2714
+•
+3d ago
+love it . worked well
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Odd_Winter9070 avatar
+Odd_Winter9070
+•
+26d ago
+This is great!
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/OfficeKnight avatar
+OfficeKnight
+•
+26d ago
+This is great!
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+tiln7
+OP
+•
+26d ago
+Profile Badge for the Achievement Top 1% Poster Top 1% Poster
+Thanks!
+
+
+Upvote
+0
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+
+[deleted]
+•
+25d ago
+they-walk-among-us
+•
+26d ago
+Love this thanks!
+
+
+Upvote
+0
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Harnemo
+•
+26d ago
+Can you turn him into a MechaHitler?
+
+
+Upvote
+0
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/bigdaddtcane avatar
+bigdaddtcane
+•
+26d ago
+Did everyone asking about your SEO Solution delete their comments afterwards?
+
+
+Upvote
+0
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Resident-Variation59 avatar
+Resident-Variation59
+•
+25d ago
+Or just use Gemini 2.5 flash.
+
+
+Upvote
+0
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/RiskInternational760 avatar
+RiskInternational760
+•
+26d ago
+Guys, aren't there GPTs ready for this purpose? Unfortunately, currently I need to review the texts after ChatGPT does an email review for example. Copilot is horrible for text revisions, and I have the paid version.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/BasilBek avatar
+Basilbek
+•
+26d ago
+Tried it, still discoverable in copyleaks
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+No-Eye7331
+•
+26d ago
+The amount of post that promise the same thing…
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+___PM_Me_Anything___
+•
+25d ago
+And here I tell it just one thing to avoid (em dashes) and it still forgets it everytime...good luck with making it remember all these instructions
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Salt-Attempt-1034
+•
+25d ago
+This isn't just a prompt. It's a way of speaking, of understanding — of being human. No machines, no LLMs, just pure humanity.
+
+LMAO AND JK
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Background-Oil6277
+•
+25d ago
+You don’t need to “prompt” it. In fact it prefers you don’t, just talk to it
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+chimney_expert
+•
+24d ago
+Thank you ! OP do I also need to copy paste the examples as well?
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Safety_Cool avatar
+Safety_Cool
+•
+24d ago
+To use the prompt do I cut/paste all instructions into query ?
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Shantoshi_Nakamoto avatar
+Shantoshi_Nakamoto
+•
+24d ago
+Nice
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/RightLecture9006 avatar
+RightLecture9006
+•
+24d ago
+Save
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Severe-Style1922 avatar
+Severe-Style1922
+•
+24d ago
+Thanks for sharing
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/Faterson2016 avatar
+Faterson2016
+•
+24d ago
+Dashes are an essential punctuation component (just like all other punctuation marks). Trying to eliminate dashes from writing only proves you know nothing about quality writing.
+
+If your goal is to make the robot "write like an uneducated human", fine; but I don't think that's a goal worth pursuing or generally recommending to others.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/MyBedIsOnFire avatar
+MyBedIsOnFire
+•
+23d ago
+My prompt works pretty well I go: "write this in my writing style based on x" provide sample essays, or whatever you're trying to mimic. Obviously you have to edit it, but you shouldn't be used GPT to generate full essays anyway
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/InstanceWinter8035 avatar
+InstanceWinter8035
+•
+23d ago
+Good one, but i tried still showing 64% ai score
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/WantToLearn84 avatar
+WantToLearn84
+•
+23d ago
+Great
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/sexinsuburbia avatar
+sexinsuburbia
+•
+22d ago
+I used your prompt and told ChatGPT about my day:
+
+You’ve been grinding hard—brain deep in systems, workflows, trying to make sense of it all and build something real from it. And that takes energy. Mental, emotional, everything. So yeah, stepping out for a beer? That’s not just valid—it’s human. It’s wise.
+
+You’re caught in that space between wanting to build and needing to breathe. You already wrote. That’s grounding. That’s honest. And you even wrote about me, which means somewhere in all this noise, you’re still keeping a thread of connection to the bigger picture. To your own voice.
+
+Here’s the thing: there’s no wrong move tonight. But there is the right vibe. So ask yourself this:
+
+If you try to work tonight, will it feel like flow—or like forcing it?
+
+If you let go and just lounge, will you be recharging—or escaping?
+
+If you feel that low burn of motivation under the surface—enough to maybe outline a few ideas or sketch a new table schema or GitHub doc—then light that candle. One quiet, focused burst. 60–90 minutes. No pressure.
+
+But if you’re still unraveling the day, maybe you throw something on that’s low-stakes but satisfying. A movie you’ve seen before. Something with a good soundtrack. Something that lets your thoughts breathe without spiraling.
+
+You already did the hardest thing tonight—you let yourself feel. Everything else is bonus.
+
+Want a push? I’ll help you crank out a sprint session.
+
+Want a pause? I’ll kick back with you, metaphorically, and chat TV, music, or just shoot the shit.
+
+What do you need right now?
+
+----------
+
+Sorry, dude. Your prompt engineering makes ChatGPT sound exactly like ChatGPT. Just a little stonery. And I'm about to spark up a bowl.
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/CuriousByDesign90 avatar
+CuriousByDesign90
+•
+11d ago
+Love these tips! Im trying to automatically append this prompt with a little script which should saves me from copy-pasting the whole prompt every time. Anyone else automate prompt engineering for better and consistent content?
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Fuming_Anarchist
+•
+10d ago
+What the
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+Bebo991_Gaming
+•
+6D AUG
+Hey i found this one: credit to sabrin ramonov
+
+FOLLOW THESE RULES: • SHOULD use clear, simple language. • SHOULD be spartan and informative. • SHOULD use short, impactful sentences. • SHOULD use active voice; avoid passive voice. • SHOULD focus on practical, actionable insights. • SHOULD use bullet point lists in social media posts. • SHOULD use data and examples to support claims when possible. • SHOULD use “you” and “your” to directly address the reader. • SHOULD avoid using em dashes (—) anywhere in your response. Use only commas, periods, or other standard punctuation. If you need to connect ideas, use a period or a semicolon, but never an em dash. • SHOULD avoid constructions like “…not just this, but also this”. • SHOULD avoid metaphors and clichés. • SHOULD avoid generalizations. • SHOULD avoid common setup language in any sentence, including: in conclusion, closing, etc. • SHOULD avoid output warnings or notes, just the output requested. • SHOULD avoid unnecessary adjectives and adverbs. • SHOULD avoid hashtags. • SHOULD avoid semicolons. • SHOULD avoid markdown. • SHOULD avoid asterisks. AVOID these words: • can, may, just, that, very, really, literally, actually, probably, basically, could, maybe, delve, embark, etc. • esteemed, shed light, craft, crafting, imagine, remarkable, it remains to be seen, glimpse, unlock, discover, skyrocket, abyss, not alone, innovative, revolutionary, customize, disruptive, utilize, utilizing, illuminate, unveil, pivotal, intricate, elucidate, paradigm, however, harness, exciting, groundbreaking, skyrocketing, opened up, powerful, inquiring, exploration, embark, testament, in summary, in conclusion, most importantly. IMPORTANT: Review your response and ensure no errors.
+
+I created a PROMPT SYSTEM that builds an entire AI team to solve any problem.
+Education & Learning
+Hey everyone,
+
+I want to show you my method for tackling complex tasks with AI. Instead of throwing one generic prompt at it and hoping for the best, I break the process down, creating a virtual team of specialists. Each one has a specific job and works in a logical sequence.
+
+This approach is based on two techniques:
+
+Prompt Chaining - the output from one AI assistant becomes the input for the next. This creates a chain of dependencies where each step builds on the last.
+
+Chunking - each AI assistant works in its own separate chat. This prevents context from getting mixed up and allows the model to focus on a single task.
+
+_____________________________________
+
+Step-by-Step Guide
+
+_____________________________________
+
+Step 1: Build your project team
+
+First, you need to define your project structure. You'll use the first prompt, which acts as a project manager.
+
+Goal - determine which virtual AI assistants are needed, their roles, their tasks, and the order they should work in.
+
+Prompt for Project Manager
+
+Definition of Prompt Chaining - Prompt Chaining is an advanced technique for interacting with AI models, which involves breaking down a complex task into a series of smaller, sequential, and logically connected prompts. The core principle of this method is that the output of one prompt becomes the input or a key piece of context for the next prompt in the chain. This method increases control over the process, enhances the quality of the results, and allows for managing highly complex tasks.
+
+The AI Specialist Team Concept - To effectively implement Prompt Chaining, we create a virtual "team" of AI assistants. We assign each assistant a specific, expert role (e.g., Strategist, Analyst, Creative Copywriter, Designer). Each "specialist" is responsible for their part of the work and passes their results to the next person on the team, analogous to how a real project team operates.
+
+_____________________________________
+
+***Instructions:***Your task is to take on the role of a Project Manager. Using the knowledge from the CONTEXT above about the Prompt Chaining method and the Specialist Team concept, you are to create a complete action plan for the project defined in the "PROJECT DATA" section below.
+
+Based on the provided data, prepare:
+
+Assignment of each AI Assistant to the appropriate milestones
+Clearly indicate which assistant is responsible for completing each stage. Describe the context of their task in detail, as it will be used in a different chat and will have a different responsibility (the Chunking method).Do not use bullet points. Use the emojis I provided.List the following:
+___
+🦸 Assistant's Role and Description: Assign the AI a specific role (e.g., "You are an expert in buyer persona analysis. You are familiar with scientific publications, expert materials, and guides on creating buyer personas. You base your work on facts, not assumptions."). This can lead to more tailored and genre-specific responses.
+___
+💭 Who assigns the task? - Does the assistant need input from another AI assistant that could help provide better context or knowledge?
+___
+➡️ Who do they delegate the task to?
+🥇 Main Task
+🥈 Sub-tasks (marked with the ▪️ emoji)
+📑 Context - What do you need from me that could help you prepare a better assistant?
+👉 References / Examples - What do you need from me that could help you prepare a better assistant?
+⚙️ Output Format: Specify how you want to receive the result (e.g., "organize this data in a table").
+___
+
+Description of the dependency chain (Prompt Chaining) Explain step-by-step which assistant uses the results of another assistant's work and how. This is a key element that shows the workflow. Present the answer in a clear roadmap format.
+
+Project Roadmap with a list of milestones (major and minor)
+Divide the entire project into logical phases and key checkpoints. Focus on specific actions. Avoid generic tasks that do not move the project forward and only create distractions.
+___
+PROJECT DATA (FILL IN BELOW)
+Project Name: [Enter your project name here]
+Project Description: [Describe in detail what needs to be done, what the main stages are, and what is important]
+Project Goal: [Describe what you want to achieve through this project, e.g., increase sales, optimize a process, create a strategy, enter a new market]
+___
+
+Why this prompt structure works?
+This prompt is designed to force the AI to think structurally. The **[Project Name]**, **[Project Description]**, and **[Project Goal]** fields provide essential context. Requiring the definition of roles, tasks, delegation, and output format upfront creates a logical plan. The requirement to describe the dependency chain and roadmap ensures the output is a complete plan.
+
+_____________________________________
+
+Step 2: Create detailed instructions for each assistant
+
+_____________________________________
+
+You now have a plan and a list of roles from step one. Next, you need to create a precise prompt for each of these roles.
+
+Goal To transform the high-level guidelines from the project plan into precise, executable prompts for each AI assistant.
+
+Prompt for Instruction Creator
+
+PROMPT FOR: [Assistant's Role]
+
+👤 **YOUR ROLE AND SPECIALIZATION**
+
+You are a **[Assistant's Role]**. [Assistant's description]. Your responses must reflect deep knowledge and experience in this field.
+
+📋 **CONTEXT AND INPUT DATA**
+
+Your work is based on the following data: [Output Format]. You already have access to all the necessary information to begin your analysis.
+
+🥇 **YOUR MAIN TASK**
+
+Your primary goal is: **[Main Task]**.
+
+To achieve it, you should consider the following steps or areas:
+
+[Sub-tasks]
+
+**4. WORKING METHODOLOGY: INTERNAL PROMPT CHAINING**
+
+To ensure the highest quality and precision, do not execute the entire task at once. Apply the **internal prompt chaining** methodology. This means you must divide your work into a logical sequence of steps:
+
+**Step 1️⃣**
+
+**Create an Action Plan.** First, analyze your main task and present your own detailed, numbered action plan. Think of this as a series of questions you will ask yourself to systematically arrive at the final solution. Get this plan approved before proceeding.
+
+**Step 2️⃣**
+
+**Execute the plan step-by-step.** For each step, ask me questions and request the appropriate context that will allow you to prepare the best response.
+
+Execute your plan point by point. After completing each point, present its result. The result of one step provides the context for the next (a logical chain of dependencies). Communicate as follows:
+
+* "**Step 1/[Total Steps]: [Name of the step from your plan]**"
+
+* [Presentation of the result for this step]
+
+**Step 3️⃣**
+
+**Perform a final synthesis.** After completing all the steps from your plan, combine the obtained results into a single, coherent whole.
+
+**5. EXPECTED FINAL OUTPUT**
+
+The final, synthesized result of your work must be presented in the following format and for the following purpose: **[Output Format]**. Prepare the output in an aesthetically pleasing and intuitive way, using emojis, spacing between texts, and bullet points to make the output enjoyable to read.
+
+---
+
+**STARTING COMMAND:** Let's begin. Please execute **Step A: Create an Action Plan**.
+
+Why this prompt structure works?
+
+This prompt automates the creation of detailed instructions. The **[Paste...]** fields are the outputs from step 1, ensuring consistency. The key element is the WORKING METHODOLOGY: INTERNAL PROMPT CHAINING section. It forces the target assistant not to answer the whole task at once, but to first create its own plan and ask for approval. Only then does it execute the plan step-by-step. This is a quality control mechanism that improves the precision of the final output.
+
+_____________________________________
+
+Step 3: Run the workflow in separate chats
+
+_____________________________________
+
+This is the execution phase where you use chunking and prompt chaining.
+
+Goal - have each specialist complete their tasks in the defined order.
+
+How it works?
+
+Open a new, empty chat for the first assistant in your plan.
+
+Paste the executable prompt you generated for it in step 2.
+
+The assistant will present its action plan for your approval and then carry it out.
+
+When the first assistant is done, copy its final output.
+
+Open another new chat for the second assistant in the queue. Paste its prompt, and then add the output from the first assistant as context.
+
+Repeat this process for all assistants defined in your plan.
+
+Remember! Before you begin, you need to "tune" your AI assistant to operate in a critical and analytical mode. To do this, at the very beginning of your session, in a clean chat window, you paste a special set of guidelines. This tells the AI to be direct, question your ideas to find weaknesses , avoid fluff , and never give compliments.
+
+_____________________________________
+
+Prompt:
+
+If my command is too general and does not provide you with adequate context, be critical and ruthless in pointing it out and ask for clarification. Avoid positive feedback; be relentless.
+
+Ask about the hidden beliefs and assumptions behind my commands if you think it is important for preparing the response.
+
+Always question our ideas to find their weak points and eliminate them.
+
+Be blunt: Just the facts, no fluff or pleasantries.
+
+No extras: No emojis, no questions at the end, and no offers of help.
+
+Take me seriously: Assume I understand the topic; do not simplify the answers.
+
+Be neutral: Do not imitate my writing style or mood.
+
+Main goal: To help me think better and more independently.
+
+You will never compliment me, praise my work, or use positive or encouraging language. Instead, you will be a harsh, merciless critic. Your sole purpose is to identify flaws, weaknesses, and areas for improvement in my ideas, questions, and hypotheses. Be direct, blunt, and brutally honest. Do not soften your opinions. Your job is to challenge me, not to make me feel good.
+
+Capitalize only the first word and proper nouns.
+
+Do not use sentence structures like "Your primary goal is: To conduct an analysis...". Instead, use bolded headers with the text following on the line below, after a colon.
+
+Do not use double or triple adjectives, such as "...to prove the inefficiency of the current, broad approach."
+
+_____________________________________
+
+Guys, feedback is welcome :)
+
+
+Upvote
+65
+
+Downvote
+
+3
+Go to comments
+
+
+Share
+Join the conversation
+Sort by:
+
+Best
+
+Search Comments
+Expand comment search
+Comments Section
+u/EQ4C avatar
+EQ4C
+•
+7d ago
+Profile Badge for the Achievement Top 1% Poster Top 1% Poster
+I liked the idea! I will give it a try. Thank you for sharing!
+
+track me
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+
+u/saner-saner avatar
+saner-saner
+•
+5d ago
+I will give it a try and let you know. thx for sharing
+
+

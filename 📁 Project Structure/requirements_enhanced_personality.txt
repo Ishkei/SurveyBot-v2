@@ -1,0 +1,45 @@
+# Enhanced Personality System Requirements
+# This file contains dependencies for the advanced AI personality system
+
+# Core AI/ML dependencies
+google-generativeai>=0.3.0  # Google Gemini API
+openai>=1.0.0               # OpenAI API (optional alternative)
+anthropic>=0.7.0            # Anthropic Claude API (optional alternative)
+
+# Natural Language Processing
+nltk>=3.8.1                 # Natural Language Toolkit
+textblob>=0.17.1            # Text processing and analysis
+spacy>=3.5.0                # Advanced NLP (optional)
+transformers>=4.30.0        # Hugging Face transformers (optional)
+
+# Async support
+aiohttp>=3.8.0              # Async HTTP client/server
+asyncio-mqtt>=0.11.0        # Async MQTT support (optional)
+
+# Data processing and analysis
+pandas>=1.5.0               # Data manipulation and analysis
+numpy>=1.24.0               # Numerical computing
+scikit-learn>=1.2.0         # Machine learning utilities (optional)
+
+# Configuration and utilities
+pyyaml>=6.0                 # YAML configuration files
+python-dotenv>=1.0.0        # Environment variable management
+click>=8.1.0                # Command line interface (optional)
+
+# Testing and development
+pytest>=7.0.0               # Testing framework
+pytest-asyncio>=0.21.0      # Async testing support
+black>=23.0.0               # Code formatting (optional)
+flake8>=6.0.0               # Code linting (optional)
+
+# Optional: Local AI models
+# torch>=2.0.0               # PyTorch for local models
+# transformers[torch]>=4.30.0 # Hugging Face with PyTorch support
+
+# Optional: Advanced features
+# sentence-transformers>=2.2.0 # Sentence embeddings
+# langchain>=0.0.200         # LangChain framework (optional)
+# chromadb>=0.4.0            # Vector database (optional)
+
+# Note: Install with: pip install -r requirements_enhanced_personality.txt
+# For minimal install: pip install google-generativeai aiohttp python-dotenv

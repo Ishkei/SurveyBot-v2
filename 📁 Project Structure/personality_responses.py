@@ -220,6 +220,20 @@ Generate a natural, conversational response that fits the persona and style. Kee
                     f"mostly {name}, pretty standard name. been using it professionally for a few years now.",
                     f"tbh {name}, easy to remember. been using this name for work and networking, works well."
                 ]
+            elif "join" in question_lower and "qmee" in question_lower:
+                # Specific responses for why someone joined Qmee
+                responses = [
+                    "heard about it from a friend who was making extra money. seemed like a good way to earn some cash in my free time.",
+                    "saw an ad online and thought why not try it. been looking for ways to make some extra money on the side.",
+                    "friend recommended it as a way to earn gift cards. been using it for a few months now, pretty decent.",
+                    "was looking for survey sites to make some extra cash. qmee seemed more reliable than some others i tried.",
+                    "saw people talking about it on reddit. thought it would be a good way to earn some money while watching tv or commuting.",
+                    "needed some extra income and surveys seemed like an easy way to do it. qmee had good reviews so i gave it a shot.",
+                    "was bored and looking for ways to make money from home. surveys are pretty easy and qmee pays quickly.",
+                    "heard it was one of the better survey sites. been using it for a while now, pretty happy with it.",
+                    "wanted to earn some gift cards for christmas shopping. qmee seemed like the best option for that.",
+                    "friend was making money with it and i thought i'd try too. been working out pretty well so far."
+                ]
             else:
                 # Generic but still specific responses (detailed, reduced "imo")
                 responses = [
