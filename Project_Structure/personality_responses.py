@@ -28,12 +28,12 @@ if USE_GEMINI_API:
 class PersonalityResponseGenerator:
     def __init__(self, personality_file: str = None):
         if personality_file is None:
-            # Try multiple possible paths for persona.json
+            # Try to load persona from multiple possible locations
             persona_paths = [
-                "../⚙️ Configurations/configs/persona.json",
-                "../../⚙️ Configurations/configs/persona.json",
-                "../../configs/persona.json",
-                "../configs/persona.json"
+                "../Configurations/configs/persona.json",
+                "../../Configurations/configs/persona.json",
+                "configs/persona.json",
+                "persona.json"
             ]
             
             for path in persona_paths:
@@ -46,7 +46,7 @@ class PersonalityResponseGenerator:
                     continue
             
             if personality_file is None:
-                personality_file = "../⚙️ Configurations/configs/persona.json"  # Default fallback
+                personality_file = "../Configurations/configs/persona.json"  # Default fallback
         self.personality_file = personality_file
         self.personality_data = self._load_personality()
         

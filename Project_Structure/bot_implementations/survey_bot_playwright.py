@@ -35,8 +35,8 @@ else:
 try:
     # Try multiple possible paths for persona.json
     persona_paths = [
-        '../⚙️ Configurations/configs/persona.json',
-        '../../⚙️ Configurations/configs/persona.json',
+        '../Configurations/configs/persona.json',
+        '../../Configurations/configs/persona.json',
         '../../configs/persona.json',
         '../configs/persona.json'
     ]
@@ -174,6 +174,32 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         
         element_map = {}
         
+        # Sawtooth/Sentient early handling (intro/consent screens)
+        try:
+            if await main_page.locator('#next_button, .navigation_button.graphical_next_button').count() > 0:
+                print("[Hybrid] Detected Sawtooth/Sentient 'Next' control on main page - advancing")
+                next_btn = main_page.locator('#next_button, .navigation_button.graphical_next_button').first
+                try:
+                    await next_btn.click()
+                    await asyncio.sleep(1.0)
+                except Exception:
+                    pass
+                try:
+                    mode = await main_page.evaluate(
+                        "() => { if (typeof SSI_SubmitMe === 'function') { SSI_SubmitMe(); return 'ssi'; }"
+                        " else if (document.forms && document.forms.length) { document.forms[0].submit(); return 'form'; }"
+                        " return 'none'; }"
+                    )
+                    print(f"[Hybrid] Submit mode: {mode}")
+                except Exception:
+                    pass
+                try:
+                    await main_page.wait_for_load_state('domcontentloaded', timeout=8000)
+                except Exception:
+                    await asyncio.sleep(1.5)
+        except Exception:
+            pass
+        
         # Always try to get the iframe first
         iframe_locator = main_page.frame_locator('iframe[title="signup-survey"]')
         try:
@@ -203,6 +229,14 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         except Exception as e:
             print(f"Could not find iframe, using main page: {e}")
             body = await main_page.locator('body').element_handle()
+            # Also check Sawtooth within main content again (some render after scripts)
+            try:
+                if await main_page.locator('#next_button, .navigation_button.graphical_next_button').count() > 0:
+                    print("[Hybrid] Sawtooth control present after iframe check - clicking")
+                    await main_page.locator('#next_button, .navigation_button.graphical_next_button').first.click()
+                    await asyncio.sleep(1.0)
+            except Exception:
+                pass
         
         # Try a simpler approach - directly get interactive elements
         print("Building DOM tree with direct element selection...")

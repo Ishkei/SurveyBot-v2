@@ -1,6 +1,7 @@
 import asyncio
 import os
 import json
+import re
 import time
 from datetime import datetime
 from typing import Optional, Dict, Any
@@ -8,18 +9,16 @@ import base64
 
 from dotenv import load_dotenv
 import google.generativeai as genai
-import undetected_chromedriver as uc
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import requests
 from itertools import cycle
+import undetected_chromedriver as uc
 
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from proxy_management.proxy_manager_v2ray import V2RayProxyManager, ProxyConfig
 import actions
 from personality_responses import generate_personality_response
 
@@ -37,12 +36,12 @@ else:
     model = None
 
 try:
-    # Try multiple possible paths for persona.json
+    # Try to load persona from multiple possible locations
     persona_paths = [
-        '../⚙️ Configurations/configs/persona.json',
-        '../../⚙️ Configurations/configs/persona.json',
-        '../../configs/persona.json',
-        '../configs/persona.json'
+        '../Configurations/configs/persona.json',
+        '../../Configurations/configs/persona.json',
+        'configs/persona.json',
+        'persona.json'
     ]
     
     PERSONA = None
@@ -98,59 +97,78 @@ You MUST provide the NUMERIC ID (e.g., 15) of the element to click or fill, NOT 
 Avoid clicking on general navigation links. Always prioritize progressing through the survey.
 """
 
-class V2RayEnhancedSurveyBot:
-    """Enhanced survey bot with V2Ray proxy integration"""
+class ProxyRotator:
+    """Handles proxy rotation for avoiding IP bans"""
+    
+    def __init__(self):
+        self.proxies = []
+        self.proxy_pool = None
+        self.current_proxy = None
+        
+    def load_proxies_from_file(self, filename: str = "proxies.txt"):
+        """Load proxies from a text file"""
+        try:
+            with open(filename, 'r') as f:
+                self.proxies = [line.strip() for line in f if line.strip()]
+            self.proxy_pool = cycle(self.proxies)
+            print(f"Loaded {len(self.proxies)} proxies from {filename}")
+        except FileNotFoundError:
+            print(f"Proxy file {filename} not found. Using free proxy list.")
+            self.load_free_proxies()
+    
+    def load_free_proxies(self):
+        """Load free proxies from online sources"""
+        try:
+            response = requests.get('https://free-proxy-list.net/')
+            if response.status_code == 200:
+                # Simple parsing - in production you'd want more robust parsing
+                lines = response.text.split('\n')
+                for line in lines:
+                    if ':' in line and line.count('.') == 3:
+                        self.proxies.append(line.strip())
+                self.proxy_pool = cycle(self.proxies)
+                print(f"Loaded {len(self.proxies)} free proxies")
+        except Exception as e:
+            print(f"Failed to load free proxies: {e}")
+            # Fallback to some common free proxies
+            self.proxies = [
+                "121.129.127.209:80",
+                "124.41.215.238:45169",
+                "185.93.3.123:8080",
+                "194.182.64.67:3128"
+            ]
+            self.proxy_pool = cycle(self.proxies)
+    
+    def get_next_proxy(self) -> Optional[str]:
+        """Get the next proxy from the pool"""
+        if self.proxy_pool:
+            self.current_proxy = next(self.proxy_pool)
+            return self.current_proxy
+        return None
+
+class SeleniumSurveyBot:
+    """Main bot class using Selenium with undetected-chromedriver for stealth"""
     
     def __init__(self):
         self.driver = None
-        self.v2ray_manager = V2RayProxyManager(v2ray_path="../v2ray/v2ray")
+        self.proxy_rotator = ProxyRotator()
         self.wait = None
-        self.current_proxy = None
-        self.proxy_rotation_count = 0
         
     def initialize_browser(self):
-        """Initialize the undetected Chrome browser with V2Ray proxy"""
+        """Initialize the undetected Chrome browser"""
         try:
-            # Load V2Ray proxy configurations from configs directory
-            config_files = [
-                "../configs/v2ray_proxies.json",
-                "../../⚙️ Configurations/configs/v2ray_proxies.json",
-                "configs/v2ray_proxies.json",
-                "v2ray_proxies.json",
-                "sample_v2ray_proxies.json"
-            ]
+            # Load proxies
+            self.proxy_rotator.load_proxies_from_file()
+            proxy = self.proxy_rotator.get_next_proxy()
             
-            config_loaded = False
-            for config_file in config_files:
-                if self.v2ray_manager.load_configs_from_file(config_file):
-                    config_loaded = True
-                    break
-            
-            if not config_loaded:
-                print("No V2Ray proxy configurations found. Creating sample configurations...")
-                from proxy_management.proxy_manager_v2ray import create_sample_proxies
-                create_sample_proxies()
-                self.v2ray_manager.load_configs_from_file("sample_v2ray_proxies.json")
-            
-            # Get best proxy
-            best_proxy = self.v2ray_manager.get_best_proxy()
-            if not best_proxy:
-                print("No working V2Ray proxies available. Using direct connection.")
-                return self._initialize_browser_direct()
-            
-            # Start V2Ray proxy
-            if self.v2ray_manager.start_proxy(best_proxy, 1080):
-                self.current_proxy = best_proxy
-                print(f"Using V2Ray proxy: {best_proxy.name}")
-            else:
-                print("Failed to start V2Ray proxy. Using direct connection.")
-                return self._initialize_browser_direct()
-            
-            # Configure Chrome options with proxy
+            # Configure Chrome options
             options = uc.ChromeOptions()
             
-            # Add proxy settings
-            options.add_argument('--proxy-server=socks5://127.0.0.1:1080')
+            # Add proxy if available (temporarily disabled for testing)
+            # if proxy:
+            #     proxy_host, proxy_port = proxy.split(':')
+            #     options.add_argument(f'--proxy-server={proxy_host}:{proxy_port}')
+            #     print(f"Using proxy: {proxy}")
             
             # Add stealth options
             options.add_argument('--no-sandbox')
@@ -162,8 +180,8 @@ class V2RayEnhancedSurveyBot:
             # Add user agent
             options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
             
-            # Initialize undetected Chrome with specific binary path
-            self.driver = uc.Chrome(options=options, browser_executable_path="/usr/bin/google-chrome")
+            # Initialize undetected Chrome
+            self.driver = uc.Chrome(options=options)
             
             # Execute stealth script
             self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
@@ -171,76 +189,10 @@ class V2RayEnhancedSurveyBot:
             # Set up wait
             self.wait = WebDriverWait(self.driver, 10)
             
-            print("Browser initialized with V2Ray proxy and stealth capabilities")
+            print("Browser initialized with stealth capabilities (no proxy)")
             return True
-            
-        except Exception as e:
-            print(f"Failed to initialize browser with V2Ray: {e}")
-            print("Falling back to direct connection...")
-            return self._initialize_browser_direct()
-    
-    def _initialize_browser_direct(self):
-        """Initialize browser without proxy (fallback)"""
-        try:
-            # Stop any running V2Ray proxy
-            self.v2ray_manager.stop_proxy()
-            
-            options = uc.ChromeOptions()
-            
-            # Add stealth options
-            options.add_argument('--no-sandbox')
-            options.add_argument('--disable-dev-shm-usage')
-            options.add_argument('--disable-blink-features=AutomationControlled')
-            options.add_argument('--disable-extensions')
-            options.add_argument('--disable-plugins')
-            
-            # Add user agent
-            options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
-            
-            # Initialize undetected Chrome with specific binary path
-            self.driver = uc.Chrome(options=options, browser_executable_path="/usr/bin/google-chrome")
-            
-            # Execute stealth script
-            self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-            
-            # Set up wait
-            self.wait = WebDriverWait(self.driver, 10)
-            
-            print("Browser initialized without proxy (fallback)")
-            return True
-            
         except Exception as e:
             print(f"Failed to initialize browser: {e}")
-            return False
-    
-    def rotate_proxy(self):
-        """Rotate to next V2Ray proxy"""
-        try:
-            # Stop current proxy
-            self.v2ray_manager.stop_proxy()
-            
-            # Get next proxy
-            next_proxy = self.v2ray_manager.rotate_proxy()
-            if not next_proxy:
-                print("No more proxies available for rotation")
-                return False
-            
-            # Start new proxy
-            if self.v2ray_manager.start_proxy(next_proxy, 1080):
-                self.current_proxy = next_proxy
-                self.proxy_rotation_count += 1
-                print(f"Rotated to V2Ray proxy: {next_proxy.name} (rotation #{self.proxy_rotation_count})")
-                
-                # Restart browser with new proxy
-                self.driver.quit()
-                time.sleep(2)
-                return self.initialize_browser()
-            else:
-                print(f"Failed to start proxy: {next_proxy.name}")
-                return False
-                
-        except Exception as e:
-            print(f"Error rotating proxy: {e}")
             return False
     
     def load_session(self):
@@ -270,39 +222,28 @@ class V2RayEnhancedSurveyBot:
             # Apply session data if available
             self.load_session()
             
-            # Attempt login if not already logged in
-            if not self.check_login_status():
-                print("Not logged in, attempting to login...")
-                email = os.getenv("QME_EMAIL")
-                password = os.getenv("QME_PASSWORD")
-                if email and password:
-                    self.login_to_qmee(email, password)
-                else:
-                    print("QME_EMAIL or QME_PASSWORD not found in .env. Please log in manually.")
-                    print("Press Enter to continue after manual login...")
-                    input() # Wait for user input
+            # Handle cookie popup if it appears
+            try:
+                # Wait for cookie popup and accept all cookies
+                cookie_buttons = self.wait.until(EC.presence_of_all_elements_located((By.XPATH, "//button[contains(text(), 'Accept All') or contains(text(), 'Accept')]")))
+                if cookie_buttons:
+                    cookie_buttons[0].click()
+                    print("✅ Accepted cookies")
+                    time.sleep(2)
+            except Exception as e:
+                print(f"⚠️  No cookie popup found or already handled: {e}")
             
             print("Navigated to survey platform")
             return True
         except Exception as e:
             print(f"Failed to navigate to surveys: {e}")
-            # If connection fails, try restarting browser without proxy
-            if "ERR_CONNECTION_CLOSED" in str(e) or "ERR_PROXY_CONNECTION_FAILED" in str(e):
-                print("Connection error detected. Retrying with direct connection...")
-                try:
-                    self.driver.quit()
-                    time.sleep(2)
-                    if self._initialize_browser_direct():
-                        return self.navigate_to_surveys()
-                except Exception as retry_e:
-                    print(f"Retry failed: {retry_e}")
             return False
     
     def find_and_start_survey(self):
         """Find and start a survey"""
         try:
-            # Wait for survey elements to load
-            self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'button, a[href*="survey"], .survey-card')))
+            # Wait for page to load
+            time.sleep(3)
             
             # Try multiple selectors to find survey elements
             selectors = [
@@ -310,23 +251,44 @@ class V2RayEnhancedSurveyBot:
                 'a[href*="survey"]',
                 '.survey-card',
                 '[data-testid*="survey"]',
-                'button:contains("Start earning")'
+                'button:contains("Start earning")',
+                'button:contains("Take Survey")',
+                'button:contains("Begin")',
+                '.survey-item',
+                '[class*="survey"]',
+                'button[class*="start"]'
             ]
             
             for selector in selectors:
                 try:
                     elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
                     if elements:
+                        print(f"Found {len(elements)} potential survey elements")
+                        # Click the first available survey
                         elements[0].click()
-                        print(f"Started survey using selector: {selector}")
+                        print(f"✅ Started survey using selector: {selector}")
+                        time.sleep(3)
                         return True
-                except Exception:
+                except Exception as e:
+                    print(f"Selector {selector} failed: {e}")
                     continue
             
-            print("No survey found automatically")
+            # If no surveys found, try to find any clickable elements
+            try:
+                clickable_elements = self.driver.find_elements(By.XPATH, "//button | //a[contains(@href, 'survey')] | //div[contains(@class, 'survey')]")
+                if clickable_elements:
+                    print(f"Found {len(clickable_elements)} clickable elements")
+                    clickable_elements[0].click()
+                    print("✅ Clicked on first available element")
+                    time.sleep(3)
+                    return True
+            except Exception as e:
+                print(f"Failed to click on elements: {e}")
+            
+            print("❌ No survey found automatically")
             return False
         except Exception as e:
-            print(f"Failed to start survey: {e}")
+            print(f"Error finding survey: {e}")
             return False
     
     def take_screenshot(self):
@@ -493,17 +455,10 @@ class V2RayEnhancedSurveyBot:
             print(f"Error checking completion: {e}")
             return False
     
-    def handle_proxy_failure(self):
-        """Handle proxy failure by rotating to next proxy"""
-        print("Detected proxy failure, rotating to next proxy...")
-        return self.rotate_proxy()
-    
     def run_survey_loop(self):
-        """Main survey completion loop with proxy rotation"""
+        """Main survey completion loop"""
         max_attempts = 50
         attempts = 0
-        consecutive_failures = 0
-        max_consecutive_failures = 3
         
         while attempts < max_attempts:
             attempts += 1
@@ -518,33 +473,14 @@ class V2RayEnhancedSurveyBot:
                 # Solve current page
                 success = self.solve_page_with_vision()
                 
-                if success:
-                    consecutive_failures = 0
-                    print("Page handled successfully, continuing...")
-                else:
-                    consecutive_failures += 1
-                    print(f"Failed to solve page (consecutive failures: {consecutive_failures})")
-                    
-                    # Rotate proxy if too many consecutive failures
-                    if consecutive_failures >= max_consecutive_failures:
-                        print("Too many consecutive failures, rotating proxy...")
-                        if self.handle_proxy_failure():
-                            consecutive_failures = 0
-                        else:
-                            print("Failed to rotate proxy, continuing with current setup...")
+                if not success:
+                    print("Failed to solve page, retrying...")
                 
                 # Wait before next attempt
                 time.sleep(3)
                 
             except Exception as e:
                 print(f"Error in survey loop: {e}")
-                consecutive_failures += 1
-                
-                # Try proxy rotation on error
-                if consecutive_failures >= max_consecutive_failures:
-                    if self.handle_proxy_failure():
-                        consecutive_failures = 0
-                
                 time.sleep(5)
         
         print("Survey loop finished")
@@ -552,13 +488,26 @@ class V2RayEnhancedSurveyBot:
     def run(self):
         """Main bot execution"""
         try:
-            # Initialize browser with V2Ray proxy
+            # Initialize browser
             if not self.initialize_browser():
                 return
             
             # Navigate to surveys
             if not self.navigate_to_surveys():
                 return
+            
+            # Check if logged in
+            if not self.check_login_status():
+                print("Not logged in, attempting to login...")
+                if not self.login_to_qmee():
+                    print("❌ Login failed. Please check your credentials in .env file")
+                    print("Add your Qmee credentials to .env file:")
+                    print("QME_EMAIL=your_email@example.com")
+                    print("QME_PASSWORD=your_password")
+                    return
+                
+                # Navigate back to surveys after login
+                self.navigate_to_surveys()
             
             # Find and start survey
             if not self.find_and_start_survey():
@@ -571,118 +520,169 @@ class V2RayEnhancedSurveyBot:
         except Exception as e:
             print(f"Error in main execution: {e}")
         finally:
-            # Clean up
-            if self.v2ray_manager:
-                self.v2ray_manager.stop_proxy()
             if self.driver:
                 self.driver.quit()
 
     def login_to_qmee(self, email: str = None, password: str = None):
         """Login to Qmee account"""
         try:
-            print("Attempting to login to Qmee...")
+            # Get credentials from environment or use defaults
+            if not email:
+                email = os.getenv("QME_EMAIL", "your_email@example.com")
+            if not password:
+                password = os.getenv("QME_PASSWORD", "your_password")
+            
+            print(f"Attempting to login with email: {email}")
             
             # Navigate to login page
             self.driver.get("https://www.qmee.com/en-us/login")
+            time.sleep(3)
             
-            # Wait for page to load
-            self.wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-            
-            # Check if we need to complete signup first
+            # Handle cookie popup if it appears
             try:
-                # Look for "start earning" button or signup elements
-                start_earning_button = self.driver.find_element(By.XPATH, "//button[contains(text(), 'Start Earning') or contains(text(), 'start earning')]")
-                if start_earning_button:
-                    print("Found 'Start Earning' button. Completing signup process...")
-                    start_earning_button.click()
-                    
-                    # Wait for signup form to load
-                    self.wait.until(EC.presence_of_element_located((By.ID, "email")))
-                    print("Signup form loaded. Please complete the signup process manually.")
-                    print("Press Enter after completing signup...")
-                    input()
-                    
-                    # After signup, try to login
-                    return self._attempt_login(email, password)
-                    
-            except NoSuchElementException:
-                # No signup required, proceed with login
-                pass
+                cookie_buttons = self.wait.until(EC.presence_of_all_elements_located((By.XPATH, "//button[contains(text(), 'Accept All') or contains(text(), 'Accept')]")))
+                if cookie_buttons:
+                    cookie_buttons[0].click()
+                    print("✅ Accepted cookies on login page")
+                    time.sleep(2)
+            except Exception as e:
+                print(f"⚠️  No cookie popup on login page: {e}")
             
-            # Attempt login
-            return self._attempt_login(email, password)
-                
-        except Exception as e:
-            print(f"Login error: {e}")
-            return False
-    
-    def _attempt_login(self, email: str = None, password: str = None):
-        """Attempt to login with provided credentials"""
-        try:
-            # Wait for login form to load
-            self.wait.until(EC.presence_of_element_located((By.ID, "email")))
+            # Try multiple selectors for email field
+            email_selectors = [
+                (By.NAME, "email"),
+                (By.ID, "email"),
+                (By.CSS_SELECTOR, "input[type='email']"),
+                (By.XPATH, "//input[@type='email']"),
+                (By.XPATH, "//input[contains(@placeholder, 'email')]"),
+                (By.XPATH, "//input[contains(@placeholder, 'Email')]")
+            ]
             
-            # If credentials provided, attempt automatic login
-            if email and password:
-                print("Attempting automatic login...")
-                
-                # Find and fill email field
-                email_field = self.driver.find_element(By.ID, "email")
-                email_field.clear()
-                email_field.send_keys(email)
-                
-                # Find and fill password field
-                password_field = self.driver.find_element(By.ID, "password")
-                password_field.clear()
-                password_field.send_keys(password)
-                
-                # Find and click login button
-                login_button = self.driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
-                login_button.click()
-                
-                # Wait for login to complete
+            email_field = None
+            for selector_type, selector in email_selectors:
                 try:
-                    self.wait.until(EC.url_contains("/en-us/dashboard"))
-                    print("Login successful!")
-                    return True
-                except TimeoutException:
-                    print("Login failed - please check credentials")
-                    return False
+                    email_field = self.wait.until(EC.presence_of_element_located((selector_type, selector)))
+                    if email_field:
+                        print(f"✅ Found email field using: {selector_type} = {selector}")
+                        break
+                except:
+                    continue
             
-            else:
-                # Manual login mode
-                print("\n" + "="*50)
-                print("MANUAL LOGIN REQUIRED:")
-                print("Please log in to your Qmee account in the browser window.")
-                print("After successful login, the bot will continue automatically.")
-                print("="*50)
-                
-                # Wait for user to login manually
-                self.wait.until(EC.url_contains("/en-us/dashboard"))
-                print("Login detected! Continuing...")
+            if not email_field:
+                print("❌ Could not find email field")
+                return False
+            
+            # Clear and fill email
+            email_field.clear()
+            email_field.send_keys(email)
+            print("✅ Entered email")
+            
+            # Try multiple selectors for password field
+            password_selectors = [
+                (By.NAME, "password"),
+                (By.ID, "password"),
+                (By.CSS_SELECTOR, "input[type='password']"),
+                (By.XPATH, "//input[@type='password']"),
+                (By.XPATH, "//input[contains(@placeholder, 'password')]"),
+                (By.XPATH, "//input[contains(@placeholder, 'Password')]")
+            ]
+            
+            password_field = None
+            for selector_type, selector in password_selectors:
+                try:
+                    password_field = self.driver.find_element(selector_type, selector)
+                    if password_field:
+                        print(f"✅ Found password field using: {selector_type} = {selector}")
+                        break
+                except:
+                    continue
+            
+            if not password_field:
+                print("❌ Could not find password field")
+                return False
+            
+            # Clear and fill password
+            password_field.clear()
+            password_field.send_keys(password)
+            print("✅ Entered password")
+            
+            # Try multiple selectors for login button
+            login_button_selectors = [
+                "//button[@type='submit']",
+                "//button[contains(text(), 'Log In')]",
+                "//button[contains(text(), 'Sign In')]",
+                "//button[contains(text(), 'Login')]",
+                "//input[@type='submit']",
+                "//button[contains(@class, 'login')]",
+                "//button[contains(@class, 'submit')]"
+            ]
+            
+            login_button = None
+            for selector in login_button_selectors:
+                try:
+                    login_button = self.driver.find_element(By.XPATH, selector)
+                    if login_button:
+                        print(f"✅ Found login button using: {selector}")
+                        break
+                except:
+                    continue
+            
+            if not login_button:
+                print("❌ Could not find login button")
+                return False
+            
+            # Click login button
+            login_button.click()
+            print("✅ Clicked login button")
+            time.sleep(3)
+            
+            # Check if login was successful
+            if "dashboard" in self.driver.current_url or "surveys" in self.driver.current_url:
+                print("✅ Login successful!")
                 return True
+            else:
+                print("❌ Login failed - still on login page")
+                return False
                 
         except Exception as e:
-            print(f"Login attempt error: {e}")
+            print(f"❌ Login error: {e}")
             return False
     
     def check_login_status(self):
         """Check if user is logged in"""
         try:
-            # Check if we're on dashboard or surveys page
-            current_url = self.driver.current_url
-            if "/en-us/dashboard" in current_url or "/en-us/surveys" in current_url:
-                # Check for logout button or user menu
-                logout_elements = self.driver.find_elements(By.CSS_SELECTOR, "[href*='logout'], .user-menu, .account-menu")
-                if logout_elements:
-                    return True
+            # Check for login indicators
+            login_indicators = [
+                "//a[contains(text(), 'Log Out')]",
+                "//a[contains(text(), 'Sign Out')]",
+                "//span[contains(text(), 'Welcome')]",
+                "//div[contains(@class, 'user-menu')]"
+            ]
+            
+            for indicator in login_indicators:
+                try:
+                    element = self.driver.find_element(By.XPATH, indicator)
+                    if element:
+                        print("✅ User is logged in")
+                        return True
+                except:
+                    continue
+            
+            print("❌ User is not logged in")
             return False
-        except:
+            
+        except Exception as e:
+            print(f"Error checking login status: {e}")
             return False
 
 def main():
-    bot = V2RayEnhancedSurveyBot()
+    bot = SeleniumSurveyBot()
     bot.run()
+
+
+# Export list for explicit imports
+__all__ = ["main"]
+
 
 if __name__ == "__main__":
     main()

@@ -32,12 +32,12 @@ class EnhancedPersonalitySystem:
         
     def _find_persona_file(self) -> str:
         """Find the persona.json file in various possible locations."""
+        # Try to load persona from multiple possible locations
         persona_paths = [
-            "../⚙️ Configurations/configs/persona.json",
-            "../../⚙️ Configurations/configs/persona.json",
-            "../../configs/persona.json",
-            "../configs/persona.json",
-            "configs/persona.json"
+            "../Configurations/configs/persona.json",
+            "../../Configurations/configs/persona.json",
+            "configs/persona.json",
+            "persona.json"
         ]
         
         for path in persona_paths:

@@ -3,8 +3,29 @@ from typing import Dict, Any
 from dotenv import load_dotenv
 
 # Load .env file from the configurations directory
-env_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "⚙️ Configurations", ".env")
-load_dotenv(env_path)
+try:
+    # Try multiple possible paths for the .env file
+    possible_paths = [
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "Configurations", ".env"),
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "configs", ".env"),
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"),
+        ".env"
+    ]
+    
+    env_loaded = False
+    for env_path in possible_paths:
+        if os.path.exists(env_path):
+            load_dotenv(env_path)
+            env_loaded = True
+            print(f"✅ Loaded environment from: {env_path}")
+            break
+    
+    if not env_loaded:
+        print("⚠️ No .env file found, using default values")
+        
+except Exception as e:
+    print(f"⚠️ Error loading .env file: {e}")
+    print("Using default configuration values")
 
 class Config:
     """Configuration management for survey automation"""
@@ -29,6 +50,11 @@ class Config:
     # Survey Platform Settings
     SURVEY_PLATFORM = os.getenv("SURVEY_PLATFORM", "qmee")  # qmee, earnhaus, prolific, etc.
     SURVEY_URL = os.getenv("SURVEY_URL", "https://www.qmee.com/en-us/surveys")
+
+    # CPX Research Settings
+    CPX_APP_ID = os.getenv("CPX_APP_ID", "")
+    CPX_EXT_USER_ID = os.getenv("CPX_EXT_USER_ID", "")
+    CPX_BASE_URL = os.getenv("CPX_BASE_URL", "https://offers.cpx-research.com")
     
     # AI Settings
     AI_MODEL = os.getenv("AI_MODEL", "gemini-1.5-flash-latest")
@@ -170,13 +196,13 @@ class Config:
         """Validate the configuration"""
         errors = []
         
-        if not cls.GOOGLE_API_KEY:
+        if not cls.GOOGLE_API_KEY and cls.SURVEY_PLATFORM != "cpx":
             errors.append("GOOGLE_API_KEY not set")
         
         if cls.BROWSER_TYPE not in ["playwright", "selenium", "undetected", "v2ray", "proxychains", "hybrid"]:
             errors.append(f"Invalid BROWSER_TYPE: {cls.BROWSER_TYPE}")
         
-        if cls.SURVEY_PLATFORM not in ["qmee", "earnhaus", "prolific", "mturk"]:
+        if cls.SURVEY_PLATFORM not in ["qmee", "earnhaus", "prolific", "mturk", "cpx"]:
             errors.append(f"Invalid SURVEY_PLATFORM: {cls.SURVEY_PLATFORM}")
         
         if errors:
@@ -199,6 +225,11 @@ class Config:
         print(f"  Proxy Rotation: {cls.ROTATE_PROXY_ON_FAILURE}")
         print(f"  Random Delays: {cls.RANDOM_DELAYS}")
         print(f"  API Key Set: {'Yes' if cls.GOOGLE_API_KEY else 'No'}")
+    
+    @classmethod
+    def get(cls, key: str, default: Any = None) -> Any:
+        """Get configuration value by key with fallback to default"""
+        return getattr(cls, key, default)
 
 # Create a sample .env file if it doesn't exist
 def create_sample_env():

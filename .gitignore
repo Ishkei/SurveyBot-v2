@@ -68,3 +68,5 @@ screenshots/
 # Configuration backups
 *.backup
 *.bak
+# Also ignore hidden virtualenv
+.venv/

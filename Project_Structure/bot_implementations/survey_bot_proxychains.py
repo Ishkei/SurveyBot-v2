@@ -35,12 +35,12 @@ else:
     model = None
 
 try:
-    # Try multiple possible paths for persona.json
+    # Try to load persona from multiple possible locations
     persona_paths = [
-        '../⚙️ Configurations/configs/persona.json',
-        '../../⚙️ Configurations/configs/persona.json',
-        '../../configs/persona.json',
-        '../configs/persona.json'
+        '../Configurations/configs/persona.json',
+        '../../Configurations/configs/persona.json',
+        'configs/persona.json',
+        'persona.json'
     ]
     
     PERSONA = None
@@ -111,16 +111,15 @@ class ProxychainsSurveyBot:
         """Initialize the undetected Chrome browser with proxychains4"""
         try:
             # Load V2Ray proxy configurations
-            config_files = [
-                "../configs/v2ray_proxies.json",
-                "../../⚙️ Configurations/configs/v2ray_proxies.json",
+            proxy_config_paths = [
+                "../../Configurations/configs/v2ray_proxies.json",
+                "../Configurations/configs/v2ray_proxies.json",
                 "configs/v2ray_proxies.json",
-                "v2ray_proxies.json",
-                "sample_v2ray_proxies.json"
+                "v2ray_proxies.json"
             ]
             
             config_loaded = False
-            for config_file in config_files:
+            for config_file in proxy_config_paths:
                 if self.v2ray_manager.load_configs_from_file(config_file):
                     config_loaded = True
                     break

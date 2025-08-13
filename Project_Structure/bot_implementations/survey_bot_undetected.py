@@ -34,12 +34,12 @@ else:
     model = None
 
 try:
-    # Try multiple possible paths for persona.json
+    # Try to load persona from multiple possible locations
     persona_paths = [
-        '../⚙️ Configurations/configs/persona.json',
-        '../../⚙️ Configurations/configs/persona.json',
-        '../../configs/persona.json',
-        '../configs/persona.json'
+        '../Configurations/configs/persona.json',
+        '../../Configurations/configs/persona.json',
+        'configs/persona.json',
+        'persona.json'
     ]
     
     PERSONA = None

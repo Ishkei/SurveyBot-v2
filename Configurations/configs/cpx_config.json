@@ -1,0 +1,81 @@
+{
+    "platform_name": "CPX Research",
+    "base_url": "https://offers.cpx-research.com",
+    "api_base": "https://live-api.cpx-research.com/api",
+    "app_id": "27806",
+    "ext_user_id": "533055960609193994_1246050346233757798",
+    
+    "question_types": {
+        "single_punch": {
+            "description": "Single choice questions with radio buttons",
+            "element_type": "radio",
+            "selection_method": "single"
+        },
+        "multi_punch": {
+            "description": "Multiple choice questions with checkboxes",
+            "element_type": "checkbox", 
+            "selection_method": "multiple",
+            "max_selections": 3
+        },
+        "open_ended": {
+            "description": "Text input questions",
+            "element_type": "text",
+            "min_length": 20,
+            "max_length": 500
+        },
+        "int_open_ended": {
+            "description": "Number input questions",
+            "element_type": "number",
+            "min_value": 1,
+            "max_value": 999999
+        }
+    },
+    
+    "selectors": {
+        "survey_list": "#survey-list",
+        "survey_card": "#survey_card_{survey_id}",
+        "question_title": "#question_title",
+        "question_info": ".info span",
+        "submit_button": "#submitquestion1",
+        "radio_input": "input[type=\"radio\"]",
+        "checkbox_input": "input[type=\"checkbox\"]",
+        "text_input": "input[type=\"text\"], textarea",
+        "number_input": "input[type=\"number\"]",
+        "completion_message": ".message-box.success",
+        "error_message": ".message-box.warning, .message-box.danger"
+    },
+    
+    "api_endpoints": {
+        "get_surveys": "/get-surveys.php",
+        "get_survey_details": "/get-survey-details.php",
+        "submit_answer": "/submit-answer.php",
+        "report_question": "/report-question.php",
+        "rating": "/rating.php"
+    },
+    
+    "timing": {
+        "page_load_timeout": 15000,
+        "question_load_timeout": 10000,
+        "min_delay_between_actions": 1.0,
+        "max_delay_between_actions": 3.0,
+        "min_delay_between_surveys": 10.0,
+        "max_delay_between_surveys": 30.0
+    },
+    
+    "personality_responses": {
+        "default_text_responses": [
+            "I think this is an interesting topic and I wanted to share my perspective.",
+            "This is something I've been thinking about lately and I have some thoughts on it.",
+            "I believe this is important and I'd like to contribute my opinion.",
+            "This caught my attention because it relates to my personal experience.",
+            "I find this topic relevant to my daily life and wanted to participate."
+        ],
+        "best_experience_responses": [
+            "One of my best life experiences was traveling to a new place and meeting amazing people who showed me different perspectives on life. It opened my mind and made me appreciate diversity.",
+            "My best experience was achieving a personal goal I had been working towards for years. The sense of accomplishment and the journey itself taught me so much about perseverance.",
+            "I'd say my best life experience was when I helped someone in need and saw how much it meant to them. It reminded me of the importance of kindness and community.",
+            "My best experience was learning a new skill that I was passionate about. The process of growth and discovery was incredibly fulfilling and boosted my confidence.",
+            "One of the best experiences I've had was spending quality time with family during a difficult period. It showed me the value of relationships and support systems."
+        ]
+    }
+}
