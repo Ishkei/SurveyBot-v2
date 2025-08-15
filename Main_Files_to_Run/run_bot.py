@@ -620,10 +620,10 @@ WEB_INTERFACE_HTML = """
 
 # Enhanced features imports
 try:
-    from enhanced_personality_system import EnhancedPersonalitySystem, generate_enhanced_response
-    from enhanced_bot_integration import EnhancedBotIntegration, SurveyBotEnhancer
-    from typing_simulation import TypingSimulator, type_text_naturally
-    from free_captcha_solver import FreeCaptchaSolver
+    from Project_Structure.enhanced_personality_system import EnhancedPersonalitySystem, generate_enhanced_response
+    from Project_Structure.enhanced_bot_integration import EnhancedBotIntegration, SurveyBotEnhancer
+    from Project_Structure.typing_simulation import TypingSimulator, type_text_naturally
+    from Project_Structure.free_captcha_solver import FreeCaptchaSolver
     ENHANCED_FEATURES_AVAILABLE = True
     print("✅ Enhanced features loaded successfully")
 except ImportError as e:
@@ -702,6 +702,9 @@ class EnhancedSurveyBotRunner:
     async def run_enhanced_bot(self, args):
         """Run the bot with enhanced features"""
         self.session_stats['start_time'] = time.time()
+        # Surface typing prefs for downstream bots
+        self.session_stats['typing_simulation'] = getattr(args, 'typing_simulation', False)
+        self.session_stats['typing_style'] = getattr(args, 'typing_style', 'careful_typer')
         
         print(f"\n🚀 Starting Enhanced Survey Bot")
         print(f"Implementation: {args.implementation}")
@@ -740,7 +743,7 @@ class EnhancedSurveyBotRunner:
     
     async def _run_playwright_bot(self, args):
         """Run Playwright bot with enhancements"""
-        from bot_implementations.survey_bot_playwright import main as playwright_main
+        from Project_Structure.bot_implementations.survey_bot_playwright import main as playwright_main
         
         # Enhance the bot if possible
         if self.bot_enhancer:
@@ -750,7 +753,7 @@ class EnhancedSurveyBotRunner:
     
     async def _run_selenium_bot(self, args):
         """Run Selenium bot with enhancements"""
-        from bot_implementations.survey_bot_selenium import main as selenium_main
+        from Project_Structure.bot_implementations.survey_bot_selenium import main as selenium_main
         
         # Enhance the bot if possible
         if self.bot_enhancer:
@@ -763,7 +766,7 @@ class EnhancedSurveyBotRunner:
     
     async def _run_undetected_bot(self, args):
         """Run Undetected bot with enhancements"""
-        from bot_implementations.survey_bot_undetected import main as undetected_main
+        from Project_Structure.bot_implementations.survey_bot_undetected import main as undetected_main
         
         # Enhance the bot if possible
         if self.bot_enhancer:
@@ -776,7 +779,7 @@ class EnhancedSurveyBotRunner:
     
     async def _run_v2ray_bot(self, args):
         """Run V2Ray bot with enhancements"""
-        from bot_implementations.survey_bot_v2ray import V2RayEnhancedSurveyBot
+        from Project_Structure.bot_implementations.survey_bot_v2ray import V2RayEnhancedSurveyBot
         
         bot = V2RayEnhancedSurveyBot()
         
@@ -788,7 +791,7 @@ class EnhancedSurveyBotRunner:
     
     async def _run_proxychains_bot(self, args):
         """Run Proxychains bot with enhancements"""
-        from bot_implementations.survey_bot_proxychains import ProxychainsSurveyBot
+        from Project_Structure.bot_implementations.survey_bot_proxychains import ProxychainsSurveyBot
         
         bot = ProxychainsSurveyBot()
         
@@ -800,7 +803,7 @@ class EnhancedSurveyBotRunner:
     
     async def _run_hybrid_bot(self, args):
         """Run Hybrid bot with enhancements"""
-        from bot_implementations.survey_bot_hybrid import main as hybrid_main
+        from Project_Structure.bot_implementations.survey_bot_hybrid import main as hybrid_main
         
         # Enhance the bot if possible
         if self.bot_enhancer:
@@ -825,6 +828,10 @@ class EnhancedSurveyBotRunner:
                 app_id=Config.CPX_APP_ID,
                 ext_user_id=Config.CPX_EXT_USER_ID
             )
+            # Propagate typing preferences
+            if hasattr(self, 'session_stats'):
+                if hasattr(cpx_bot, '__dict__'):
+                    cpx_bot.typing_style = self.session_stats.get('typing_style', 'careful_typer')
             
             # Initialize browser
             if not await cpx_bot.initialize_browser():
@@ -1120,6 +1127,12 @@ def main():
         help="Enable human-like typing simulation"
     )
     parser.add_argument(
+        "--typing-style",
+        choices=["fast_typer", "average_typer", "slow_typer", "careful_typer"],
+        default="careful_typer",
+        help="Typing simulation style"
+    )
+    parser.add_argument(
         "--captcha-solving",
         action="store_true",
         help="Enable automatic captcha solving"
@@ -1166,6 +1179,10 @@ def main():
     
     # Create and run enhanced bot runner
     runner = EnhancedSurveyBotRunner()
+    # Pass typing-simulation preference into runner session state
+    if hasattr(runner, 'session_stats'):
+        runner.session_stats['typing_simulation'] = getattr(args, 'typing_simulation', False)
+        runner.session_stats['typing_style'] = getattr(args, 'typing_style', 'careful_typer')
     
     # Check if web interface is requested
     if args.web_interface:
@@ -1230,7 +1247,7 @@ def test_proxies():
     print("Testing proxies...")
     
     try:
-        from proxy_management.proxy_manager_v2ray import V2RayProxyManager
+        from Project_Structure.proxy_management.proxy_manager_v2ray import V2RayProxyManager
         
         manager = V2RayProxyManager(v2ray_path="./v2ray/v2ray")
         
@@ -1252,7 +1269,7 @@ def test_proxies():
         
         if not config_loaded:
             print("No proxy configuration files found. Creating sample configurations...")
-            from proxy_management.proxy_manager_v2ray import create_sample_proxies
+            from Project_Structure.proxy_management.proxy_manager_v2ray import create_sample_proxies
             create_sample_proxies()
             manager.load_configs_from_file("sample_v2ray_proxies.json")
         
@@ -1317,12 +1334,12 @@ def check_dependencies():
     
     # Enhanced features dependencies
     if ENHANCED_FEATURES_AVAILABLE:
-        enhanced_deps = ["opencv-python", "pytesseract", "Pillow", "pyautogui"]
-        for dep in enhanced_deps:
+        enhanced_deps = [("opencv-python", "cv2"), ("pytesseract", "pytesseract"), ("Pillow", "PIL"), ("pyautogui", "pyautogui")]
+        for dep_name, import_name in enhanced_deps:
             try:
-                __import__(dep.replace("-", "_"))
+                __import__(import_name)
             except ImportError:
-                missing_deps.append(dep)
+                missing_deps.append(dep_name)
     
     if missing_deps:
         print(f"Missing dependencies: {', '.join(missing_deps)}")
