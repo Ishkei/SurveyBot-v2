@@ -1,4 +1,4 @@
-# 🤖 SurveyBot - Advanced Survey Automation with V2Ray
+# SurveyBot - Advanced Survey Automation with V2Ray
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![V2ra](https://img.shields.io/badge/V2Ray-5.37.0-green.svg)](https://www.v2fly.org/)
@@ -6,150 +6,150 @@
 
 > **Enterprise-grade survey automation with advanced proxy management, AI-powered solving, anti-detection capabilities, web interface control, enhanced personality system, typing simulation, and multi-platform support.**
 
-## 🎯 Main Files to Run
+## Main Files to Run
 
-### **🚀 Quick Start Commands**
+### **Quick Start Commands**
 ```bash
 # Main entry point (RECOMMENDED)
-python "🎯 Main Files to Run/run_bot.py" --implementation v2ray
+python "Main Files to Run/run_bot.py" --implementation v2ray
 
 # Web Interface (NEW!)
-python "🎯 Main Files to Run/run_bot.py" --web-interface
+python "Main Files to Run/run_bot.py" --web-interface
 
 # Self-Operating Computer mode
-python "🎯 Main Files to Run/run_soc_bot.py"
+python "Main Files to Run/run_soc_bot.py"
 
 # Vision AI mode
-python "🎯 Main Files to Run/run_vision_bot.py"
+python "Main Files to Run/run_vision_bot.py"
 
 # Lightweight mode
-python "🎯 Main Files to Run/run_lightweight_bot.py"
+python "Main Files to Run/run_lightweight_bot.py"
 
 # Enhanced Features Demo
-python "🎯 Main Files to Run/run_bot.py" --demo-enhanced
+python "Main Files to Run/run_bot.py" --demo-enhanced
 
 # CPX Research Platform
-python "🎯 Main Files to Run/run_bot.py" --platform cpx --enhanced-ai
+python "Main Files to Run/run_bot.py" --platform cpx --enhanced-ai
 ```
 
-### **🌐 Web Interface Commands (NEW!)**
+### **Web Interface Commands (NEW!)**
 ```bash
 # Start web interface directly
-python "🎯 Main Files to Run/start_web_interface.py"
+python "Main Files to Run/start_web_interface.py"
 
 # Start web interface via main script
-python "🎯 Main Files to Run/run_bot.py" --web-interface
+python "Main Files to Run/run_bot.py" --web-interface
 
 # Access web interface at: http://localhost:5000
 ```
 
-### **🎭 Enhanced Personality Commands (NEW!)**
+### **Enhanced Personality Commands (NEW!)**
 ```bash
 # Natural conversation mode
-python "🎯 Main Files to Run/run_bot.py" --personality-mode natural_conversation
+python "Main Files to Run/run_bot.py" --personality-mode natural_conversation
 
 # Human writer style
-python "🎯 Main Files to Run/run_bot.py" --personality-mode human_writer
+python "Main Files to Run/run_bot.py" --personality-mode human_writer
 
 # AI team simulation
-python "🎯 Main Files to Run/run_bot.py" --personality-mode ai_team_simulation
+python "Main Files to Run/run_bot.py" --personality-mode ai_team_simulation
 
 # Discord casual style
-python "🎯 Main Files to Run/run_bot.py" --personality-mode discord_casual
+python "Main Files to Run/run_bot.py" --personality-mode discord_casual
 ```
 
-### **⌨️ Typing Simulation Commands (NEW!)**
+### **Typing Simulation Commands (NEW!)**
 ```bash
 # Enable typing simulation
-python "🎯 Main Files to Run/run_bot.py" --typing-simulation
+python "Main Files to Run/run_bot.py" --typing-simulation
 
 # Fast typer style
-python "🎯 Main Files to Run/run_bot.py" --typing-simulation --typing-style fast_typer
+python "Main Files to Run/run_bot.py" --typing-simulation --typing-style fast_typer
 
 # Average typer style
-python "🎯 Main Files to Run/run_bot.py" --typing-simulation --typing-style average_typer
+python "Main Files to Run/run_bot.py" --typing-simulation --typing-style average_typer
 
 # Slow typer style
-python "🎯 Main Files to Run/run_bot.py" --typing-simulation --typing-style slow_typer
+python "Main Files to Run/run_bot.py" --typing-simulation --typing-style slow_typer
 
 # Careful typer style (default)
-python "🎯 Main Files to Run/run_bot.py" --typing-simulation --typing-style careful_typer
+python "Main Files to Run/run_bot.py" --typing-simulation --typing-style careful_typer
 ```
 
-### **🔧 Advanced Feature Commands (NEW!)**
+### **Advanced Feature Commands (NEW!)**
 ```bash
 # Enable automatic captcha solving
-python "🎯 Main Files to Run/run_bot.py" --captcha-solving
+python "Main Files to Run/run_bot.py" --captcha-solving
 
 # Enable enhanced AI responses
-python "🎯 Main Files to Run/run_bot.py" --enhanced-ai
+python "Main Files to Run/run_bot.py" --enhanced-ai
 
 # Test and save working proxies
-python "🎯 Main Files to Run/run_bot.py" --test-proxies
+python "Main Files to Run/run_bot.py" --test-proxies
 
 # Show current configuration
-python "🎯 Main Files to Run/run_bot.py" --config
+python "Main Files to Run/run_bot.py" --config
 
 # Setup environment and dependencies
-python "🎯 Main Files to Run/run_bot.py" --setup
+python "Main Files to Run/run_bot.py" --setup
 ```
 
-### **📱 New Platform Support (NEW!)**
+### **New Platform Support (NEW!)**
 ```bash
 # CPX Research Platform
-python "🎯 Main Files to Run/run_bot.py" --platform cpx --implementation playwright
+python "Main Files to Run/run_bot.py" --platform cpx --implementation playwright
 
 # PureSpectrum Integration
-python "🎯 Main Files to Run/run_bot.py" --platform cpx --enhanced-ai
+python "Main Files to Run/run_bot.py" --platform cpx --enhanced-ai
 
 # Qmee Platform
-python "🎯 Main Files to Run/run_bot.py" --platform qmee --implementation v2ray
+python "Main Files to Run/run_bot.py" --platform qmee --implementation v2ray
 
 # Earnhaus Platform
-python "🎯 Main Files to Run/run_bot.py" --platform earnhaus --implementation playwright
+python "Main Files to Run/run_bot.py" --platform earnhaus --implementation playwright
 
 # Prolific Academic Surveys
-python "🎯 Main Files to Run/run_bot.py" --platform prolific --implementation undetected
+python "Main Files to Run/run_bot.py" --platform prolific --implementation undetected
 
 # Amazon Mechanical Turk
-python "🎯 Main Files to Run/run_bot.py" --platform mturk --implementation selenium
+python "Main Files to Run/run_bot.py" --platform mturk --implementation selenium
 ```
 
-### **🔄 New Implementation Options (NEW!)**
+### **New Implementation Options (NEW!)**
 ```bash
 # Playwright (RECOMMENDED for new users)
-python "🎯 Main Files to Run/run_bot.py" --implementation playwright
+python "Main Files to Run/run_bot.py" --implementation playwright
 
 # Selenium WebDriver
-python "🎯 Main Files to Run/run_bot.py" --implementation selenium
+python "Main Files to Run/run_bot.py" --implementation selenium
 
 # Undetected ChromeDriver
-python "🎯 Main Files to Run/run_bot.py" --implementation undetected
+python "Main Files to Run/run_bot.py" --implementation undetected
 
 # V2Ray Enhanced
-python "🎯 Main Files to Run/run_bot.py" --implementation v2ray
+python "Main Files to Run/run_bot.py" --implementation v2ray
 
 # ProxyChains Integration
-python "🎯 Main Files to Run/run_bot.py" --implementation proxychains
+python "Main Files to Run/run_bot.py" --implementation proxychains
 
 # Hybrid Mode
-python "🎯 Main Files to Run/run_bot.py" --implementation hybrid
+python "Main Files to Run/run_bot.py" --implementation hybrid
 ```
 
-### **🎯 Discord Personality Update (NEW!)**
+### **Discord Personality Update (NEW!)**
 ```bash
 # Update bot to use Discord personality responses
-python "🎯 Main Files to Run/update_discord_personality.py"
+python "Main Files to Run/update_discord_personality.py"
 ```
 
-### **📁 Project Structure**
+### **Project Structure**
 
 ```
 SurveyBot/
-├── 🎯 Main Files to Run/
-│   ├── run_bot.py                    # 🎯 MAIN ENTRY POINT
-│   ├── start_web_interface.py        # 🌐 Web Interface Launcher
-│   ├── update_discord_personality.py # 🎭 Discord Personality Updater
+├── Main Files to Run/
+│   ├── run_bot.py                    # MAIN ENTRY POINT
+│   ├── start_web_interface.py        # Web Interface Launcher
+│   ├── update_discord_personality.py # Discord Personality Updater
 │   ├── run_soc_bot.py                # Self-Operating Computer
 │   ├── run_vision_bot.py             # Vision AI Bot
 │   ├── run_lightweight_bot.py        # Lightweight Bot
@@ -157,7 +157,7 @@ SurveyBot/
 │   ├── README_WEB_INTERFACE.md       # Web Interface Documentation
 │   └── auth.json                     # Web Interface Authentication
 │
-├── 📁 Project Structure/
+├── Project Structure/
 │   ├── config.py                     # Configuration settings
 │   ├── actions.py                    # Core interaction actions
 │   ├── personality_responses.py      # AI personality system
@@ -173,7 +173,7 @@ SurveyBot/
 │   ├── enhanced_bot_integration.py   # Enhanced bot features
 │   └── v2ray_configs/                # V2Ray configurations
 │
-├── ⚙️ Configurations/
+├── Configurations/
 │   ├── requirements.txt               # Main dependencies
 │   ├── requirements_enhanced.txt     # Enhanced features
 │   ├── requirements_lightweight.txt  # Lightweight version
@@ -183,41 +183,41 @@ SurveyBot/
 │   ├── env.example                   # Environment template
 │   └── sample_v2ray_proxies.json    # Sample proxy configs
 │
-├── 🔧 Tools and Scripts/
+├── Tools and Scripts/
 │   ├── scripts/                      # Utility scripts
 │   ├── setup_*.py                    # Setup scripts
 │   ├── test_setup.py                 # Testing utilities
 │   ├── complete_signup.py            # Account creation
 │   └── check_requirements.py         # Dependency checker
 │
-├── 📚 Documentation/
+├── Documentation/
 │   ├── docs/                         # Detailed guides
 │   ├── *.md                          # Documentation files
 │   ├── README_WEB_INTERFACE.md      # Web interface guide
 │   └── AI Survey Club data
 │
-├── 📂 Examples & Demos/
+├── Examples & Demos/
 │   ├── examples/                     # Code examples
 │   ├── cpx_research_demo.py         # CPX Research demo
 │   ├── demo_soc_survey_bot.py       # Self-operating demo
 │   ├── demo_enhanced_personality.py # Enhanced personality demo
 │   └── simple_vision_test.py        # Vision AI test
 │
-├── 🧪 Tests/
+├── Tests/
 │   ├── test_discord_personality.py  # Discord personality tests
 │   ├── test_operate_integration.py  # Self-operating tests
 │   ├── test_soc_integration.py      # SOC integration tests
 │   ├── test_vision_approach.py      # Vision AI tests
 │   └── test_vision_dependencies.py  # Vision dependencies
 │
-└── 🖼️ Assets/
+└── Assets/
     ├── banner.html                   # Web interface banner
     ├── login_page_playwright.html    # Playwright login page
     ├── login_page_selenium.html      # Selenium login page
     └── *.html                        # HTML templates
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### **1. Install Dependencies**
 ```bash
@@ -226,7 +226,7 @@ git clone https://github.com/yourusername/SurveyBot.git
 cd SurveyBot
 
 # Quick setup (RECOMMENDED)
-python "🔧 Tools and Scripts/setup.py"
+python "Tools and Scripts/setup.py"
 
 # OR Manual setup:
 # Create virtual environment
@@ -234,31 +234,31 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r "⚙️ Configurations/requirements.txt"
+pip install -r "Configurations/requirements.txt"
 ```
 
 ### **2. Setup V2Ray System**
 ```bash
 # Install V2Ray and configure proxy servers
-python "🔧 Tools and Scripts/scripts/setup_v2ray.py"
+python "Tools and Scripts/scripts/setup_v2ray.py"
 ```
 
 ### **3. Run the Bot**
 ```bash
 # Run with V2Ray enhanced implementation (RECOMMENDED)
-python "🎯 Main Files to Run/run_bot.py" --implementation v2ray
+python "Main Files to Run/run_bot.py" --implementation v2ray
 
 # Run in headless mode
-python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --headless
+python "Main Files to Run/run_bot.py" --implementation v2ray --headless
 
 # Test different platforms
-python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --platform qmee
-python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --platform earnhaus
+python "Main Files to Run/run_bot.py" --implementation v2ray --platform qmee
+python "Main Files to Run/run_bot.py" --implementation v2ray --platform earnhaus
 ```
 
-## 🌟 Features
+## Features
 
-### **🌐 Web Interface (NEW!)**
+### **Web Interface (NEW!)**
 - **Beautiful Control Panel**: Modern, responsive web interface
 - **Real-Time Monitoring**: Live bot status and activity logs
 - **One-Click Control**: Start/stop bot with simple buttons
@@ -266,7 +266,7 @@ python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --platform ear
 - **WebSocket Updates**: Instant real-time status updates
 - **Mobile Responsive**: Works on desktop and mobile devices
 
-### **🎭 Enhanced Personality System (NEW!)**
+### **Enhanced Personality System (NEW!)**
 - **Natural Conversation**: Human-like conversation style
 - **Human Writer**: Professional writing style
 - **AI Team Simulation**: Multiple AI personalities
@@ -274,33 +274,33 @@ python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --platform ear
 - **Context-Aware**: Understands survey context
 - **Consistent Character**: Maintains personality throughout session
 
-### **⌨️ Typing Simulation (NEW!)**
+### **Typing Simulation (NEW!)**
 - **Human-Like Typing**: Realistic typing patterns
 - **Multiple Styles**: Fast, average, slow, careful typer
 - **Random Pauses**: Natural typing interruptions
 - **Speed Variation**: Realistic typing speed changes
 - **Anti-Detection**: Bypasses typing pattern detection
 
-### **🔒 Anti-Detection**
+### **Anti-Detection**
 - **Undetected Chrome**: Bypasses bot detection
 - **Browser fingerprint spoofing**: Chrome, Firefox, Safari, iOS, Android
 - **Advanced obfuscation**: TLS, WebSocket, HTTP/2, QUIC, REALITY
 - **Geographic distribution**: Multiple countries and servers
 
-### **🤖 AI-Powered**
+### **AI-Powered**
 - **Vision AI**: Screenshot analysis with Gemini
 - **Persona-based responses**: Consistent character answers
 - **DOM analysis**: Interactive element detection
 - **Fallback logic**: Rule-based when AI unavailable
 - **Enhanced AI**: Advanced response generation
 
-### **🔄 Proxy Management**
+### **Proxy Management**
 - **V2Ray Core**: Enterprise-grade proxy platform
 - **Multiple protocols**: VMess, VLESS, Trojan, Shadowsocks
 - **Automatic rotation**: Switch on failure
 - **Performance tracking**: Monitor success rates
 
-### **📊 Survey Platforms**
+### **Survey Platforms**
 - **Qmee**: Primary target platform
 - **Earnhaus**: Alternative platform
 - **CPX Research**: Professional survey platform
@@ -308,14 +308,14 @@ python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --platform ear
 - **Prolific**: Academic surveys
 - **MTurk**: Amazon Mechanical Turk
 
-### **🔧 Advanced Features (NEW!)**
+### **Advanced Features (NEW!)**
 - **Automatic Captcha Solving**: AI-powered captcha resolution
 - **Enhanced Bot Integration**: Advanced bot capabilities
 - **Self-Operating Mode**: Autonomous operation
 - **Hybrid Implementations**: Multiple bot strategies
 - **Performance Analytics**: Detailed success metrics
 
-## 🚀 V2Ray Enhanced Implementation
+## V2Ray Enhanced Implementation
 
 ### **New Platform: CPX Research (NEW!)**
 - **Professional Survey Platform**: High-paying surveys with better rates
@@ -345,7 +345,7 @@ python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --platform ear
 - **Proxy Reliability**: 95% uptime
 - **Performance**: 3x faster than basic proxies
 
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 ### **1. Prerequisites**
 ```bash
@@ -363,22 +363,22 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r "⚙️ Configurations/requirements.txt"
+pip install -r "Configurations/requirements.txt"
 ```
 
 ### **3. V2Ray Setup**
 ```bash
 # Install V2Ray system
-python "🔧 Tools and Scripts/scripts/setup_v2ray.py"
+python "Tools and Scripts/scripts/setup_v2ray.py"
 
 # Convert Telegram servers (optional)
-python "🔧 Tools and Scripts/scripts/telegram_v2ray_servers.py"
+python "Tools and Scripts/scripts/telegram_v2ray_servers.py"
 ```
 
 ### **4. Configuration**
 ```bash
 # Create .env file
-cp "⚙️ Configurations/env.example" .env
+cp "Configurations/env.example" .env
 
 # Edit with your API keys
 nano .env
@@ -387,44 +387,44 @@ nano .env
 ### **5. Web Interface Setup (NEW!)**
 ```bash
 # Install web interface dependencies
-pip install -r "🎯 Main Files to Run/requirements_web.txt"
+pip install -r "Main Files to Run/requirements_web.txt"
 
 # Start web interface
-python "🎯 Main Files to Run/start_web_interface.py"
+python "Main Files to Run/start_web_interface.py"
 
 # Access at: http://localhost:5000
 ```
 
-## 🎯 Usage Examples
+## Usage Examples
 
 ### **Basic Usage**
 ```bash
 # Run with V2Ray enhanced bot
-python "🎯 Main Files to Run/run_bot.py" --implementation v2ray
+python "Main Files to Run/run_bot.py" --implementation v2ray
 
 # Run in headless mode
-python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --headless
+python "Main Files to Run/run_bot.py" --implementation v2ray --headless
 
 # Test proxy manager
-python "📁 Project Structure/proxy_management/proxy_manager_v2ray.py"
+python "Project Structure/proxy_management/proxy_manager_v2ray.py"
 ```
 
 ### **Advanced Usage**
 ```bash
 # Run with specific platform
-python "🎯 Main Files to Run/run_bot.py" --implementation v2ray --platform qmee
+python "Main Files to Run/run_bot.py" --implementation v2ray --platform qmee
 
 # Run with different implementation
-python "🎯 Main Files to Run/run_bot.py" --implementation undetected
+python "Main Files to Run/run_bot.py" --implementation undetected
 
 # Test all implementations
-python "🔧 Tools and Scripts/scripts/test_implementations.py"
+python "Tools and Scripts/scripts/test_implementations.py"
 ```
 
-### **🌐 Web Interface Usage (NEW!)**
+### **Web Interface Usage (NEW!)**
 ```bash
 # Start web interface
-python "🎯 Main Files to Run/run_bot.py" --web-interface
+python "Main Files to Run/run_bot.py" --web-interface
 
 # Access web interface
 # Open browser to: http://localhost:5000
@@ -440,43 +440,43 @@ python "🎯 Main Files to Run/run_bot.py" --web-interface
 ### **Configuration Options**
 ```bash
 # Show current configuration
-python "🎯 Main Files to Run/run_bot.py" --config
+python "Main Files to Run/run_bot.py" --config
 
 # Test proxies
-python "🎯 Main Files to Run/run_bot.py" --test-proxies
+python "Main Files to Run/run_bot.py" --test-proxies
 
 # Setup environment
-python "🎯 Main Files to Run/run_bot.py" --setup
+python "Main Files to Run/run_bot.py" --setup
 
 # Test all components
-python "🧪 Tests/test_setup.py"
+python "Tests/test_setup.py"
 
 # Check requirements
-python "🔧 Tools and Scripts/check_requirements.py"
+python "Tools and Scripts/check_requirements.py"
 ```
 
-### **🎭 Enhanced Features & Personality (NEW!)**
+### **Enhanced Features & Personality (NEW!)**
 ```bash
 # Demo enhanced features
-python "🎯 Main Files to Run/run_bot.py" --demo-enhanced
+python "Main Files to Run/run_bot.py" --demo-enhanced
 
 # Enable enhanced AI responses
-python "🎯 Main Files to Run/run_bot.py" --enhanced-ai
+python "Main Files to Run/run_bot.py" --enhanced-ai
 
 # Set personality mode
-python "🎯 Main Files to Run/run_bot.py" --personality-mode discord_casual
+python "Main Files to Run/run_bot.py" --personality-mode discord_casual
 
 # Enable typing simulation
-python "🎯 Main Files to Run/run_bot.py" --typing-simulation --typing-style careful_typer
+python "Main Files to Run/run_bot.py" --typing-simulation --typing-style careful_typer
 
 # Enable automatic captcha solving
-python "🎯 Main Files to Run/run_bot.py" --captcha-solving
+python "Main Files to Run/run_bot.py" --captcha-solving
 
 # Update Discord personality
-python "🎯 Main Files to Run/update_discord_personality.py"
+python "Main Files to Run/update_discord_personality.py"
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### **Environment Variables (.env)**
 ```env
@@ -486,7 +486,7 @@ SURVEY_PLATFORM=qmee
 HEADLESS=false
 ```
 
-### **🎯 New Platform Configurations (NEW!)**
+### **New Platform Configurations (NEW!)**
 ```env
 # CPX Research Platform
 CPX_APP_ID=your_cpx_app_id
@@ -502,7 +502,7 @@ WEB_INTERFACE_PORT=5000
 WEB_INTERFACE_HOST=0.0.0.0
 ```
 
-### **V2Ray Proxy Configuration (⚙️ Configurations/configs/v2ray_proxies.json)**
+### **V2Ray Proxy Configuration (Configurations/configs/v2ray_proxies.json)**
 ```json
 [
   {
@@ -519,7 +519,7 @@ WEB_INTERFACE_HOST=0.0.0.0
 ]
 ```
 
-## 📊 Performance Comparison
+## Performance Comparison
 
 | Feature | Basic Proxies | V2Ray Enhanced |
 |---------|---------------|----------------|
@@ -532,7 +532,7 @@ WEB_INTERFACE_HOST=0.0.0.0
 | **Documentation** | Extensive | Extensive |
 | **Cost** | Variable | Free |
 
-## 🎯 Expected Results
+## Expected Results
 
 ### **Success Metrics:**
 - **Detection Rate**: 90% reduction
@@ -546,20 +546,20 @@ WEB_INTERFACE_HOST=0.0.0.0
 - **Cost-effective**: Free V2Ray + Telegram servers
 - **Scalable**: Easy to add more servers
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### **Common Issues:**
 
 #### **V2Ray Binary Not Found**
 ```bash
 # Reinstall V2Ray
-python "🔧 Tools and Scripts/scripts/setup_v2ray.py"
+python "Tools and Scripts/scripts/setup_v2ray.py"
 ```
 
 #### **Proxy Connection Failed**
 ```bash
 # Test proxy configuration
-python "📁 Project Structure/proxy_management/proxy_manager_v2ray.py"
+python "Project Structure/proxy_management/proxy_manager_v2ray.py"
 
 # Check proxy server status
 curl -x socks5://127.0.0.1:1080 https://httpbin.org/ip
@@ -574,29 +574,29 @@ curl -x socks5://127.0.0.1:1080 https://httpbin.org/ip
 ### **Debug Mode**
 ```bash
 # Run with verbose logging
-python "📁 Project Structure/bot_implementations/survey_bot_v2ray.py" --debug
+python "Project Structure/bot_implementations/survey_bot_v2ray.py" --debug
 
 # Test all components
-python "🔧 Tools and Scripts/scripts/test_implementations.py"
+python "Tools and Scripts/scripts/test_implementations.py"
 ```
 
-## 📚 Documentation
+## Documentation
 
-### **📖 Detailed Guides:**
-- **[Configuration Guide](📚 Documentation/CONFIGURATION.md)** - Complete setup and configuration
-- **[V2Ray Enhanced Guide](📚 Documentation/docs/README_V2RAY_ENHANCED.md)** - Complete V2Ray implementation
-- **[Alternative Methods](📚 Documentation/docs/README_ALTERNATIVE_METHODS.md)** - Other bot implementations
-- **[Free V2Ray Servers](📚 Documentation/docs/GET_FREE_V2RAY_SERVERS.md)** - Get servers from Telegram
-- **[Success Summary](📚 Documentation/docs/SUCCESS_SUMMARY.md)** - Performance results
-- **[Web Interface Guide](🎯 Main Files to Run/README_WEB_INTERFACE.md)** - Web interface setup and usage
-- **[Enhanced Personality Guide](📁 Project Structure/README_ENHANCED_PERSONALITY.md)** - Advanced AI personality system
+### **Detailed Guides:**
+- **[Configuration Guide](Documentation/CONFIGURATION.md)** - Complete setup and configuration
+- **[V2Ray Enhanced Guide](Documentation/docs/README_V2RAY_ENHANCED.md)** - Complete V2Ray implementation
+- **[Alternative Methods](Documentation/docs/README_ALTERNATIVE_METHODS.md)** - Other bot implementations
+- **[Free V2Ray Servers](Documentation/docs/GET_FREE_V2RAY_SERVERS.md)** - Get servers from Telegram
+- **[Success Summary](Documentation/docs/SUCCESS_SUMMARY.md)** - Performance results
+- **[Web Interface Guide](Main Files to Run/README_WEB_INTERFACE.md)** - Web interface setup and usage
+- **[Enhanced Personality Guide](Project Structure/README_ENHANCED_PERSONALITY.md)** - Advanced AI personality system
 
-### **🔧 Scripts:**
-- **[Setup V2Ray](🔧 Tools and Scripts/scripts/setup_v2ray.py)** - Install V2Ray system
-- **[Convert Servers](🔧 Tools and Scripts/scripts/telegram_v2ray_servers.py)** - Convert Telegram servers
-- **[Test Components](🔧 Tools and Scripts/scripts/test_implementations.py)** - Test all implementations
+### **Scripts:**
+- **[Setup V2Ray](Tools and Scripts/scripts/setup_v2ray.py)** - Install V2Ray system
+- **[Convert Servers](Tools and Scripts/scripts/telegram_v2ray_servers.py)** - Convert Telegram servers
+- **[Test Components](Tools and Scripts/scripts/test_implementations.py)** - Test all implementations
 
-## 🎉 Acknowledgments
+## Acknowledgments
 
 ### **Core Technologies & Libraries**
 - **[V2Ray Core](https://github.com/v2fly/v2ray-core)** - Advanced proxy platform and anti-detection system
@@ -629,9 +629,9 @@ python "🔧 Tools and Scripts/scripts/test_implementations.py"
 - **[Reddit r/beermoney](https://reddit.com/r/beermoney/)** - Survey earning strategies
 - **[GitHub Open Source Community](https://github.com/)** - Code sharing and collaboration
 
-## 🚀 Soon to be Added
+## Soon to be Added
 
-### **📊 Additional Survey Platforms**
+### **Additional Survey Platforms**
 - **[Survey Junkie](https://www.surveyjunkie.com/)** - Popular survey platform
 - **[Pinecone Research](https://pineconeresearch.com/)** - High-paying surveys
 - **[YouGov](https://yougov.com/)** - Political and consumer surveys
@@ -639,49 +639,49 @@ python "🔧 Tools and Scripts/scripts/test_implementations.py"
 - **[InboxDollars](https://www.inboxdollars.com/)** - Cash rewards platform
 - **[MyPoints](https://www.mypoints.com/)** - Points-based rewards
 
-### **🌐 Web Interface Enhancements (NEW!)**
+### **Web Interface Enhancements (NEW!)**
 - **[User Authentication](https://github.com/Flask-Login/flask-login)** - Secure user login system
 - **[Multi-User Support](https://github.com/Flask-SQLAlchemy/Flask-SQLAlchemy)** - Multiple bot instances
 - **[Real-Time Analytics](https://github.com/plotly/plotly.js)** - Interactive performance charts
 - **[Mobile App](https://github.com/react-native/react-native)** - Native mobile application
 - **[API Endpoints](https://github.com/Flask-RESTful/Flask-RESTful)** - RESTful API for external control
 
-### **💻 Cross-Platform Applications**
+### **Cross-Platform Applications**
 - **[Windows Desktop App](https://github.com/electron/electron)** - Native Windows application
 - **[Linux Desktop App](https://github.com/tauri-apps/tauri)** - Native Linux application  
 - **[macOS Desktop App](https://github.com/electron/electron)** - Native macOS application
 - **[Android Mobile App](https://github.com/react-native/react-native)** - Mobile automation
 - **[iOS Mobile App](https://github.com/react-native/react-native)** - iOS automation (if possible)
 
-### **🤖 Enhanced AI Features**
+### **Enhanced AI Features**
 - **[GPT-4 Integration](https://openai.com/)** - Advanced language model for survey responses
 - **[Claude AI Integration](https://claude.ai/)** - Alternative AI for complex reasoning
 - **[Local AI Models](https://github.com/ggerganov/llama.cpp)** - Offline AI processing
 - **[Multi-Modal AI](https://github.com/openai/CLIP)** - Advanced image and text understanding
-- **[Enhanced Personality System](📁 Project Structure/enhanced_personality_system.py)** - Advanced AI personality modes
-- **[Typing Simulation](📁 Project Structure/typing_simulation.py)** - Human-like typing patterns
-- **[Discord Integration](📁 Project Structure/personality_responses.py)** - Discord-style responses
+- **[Enhanced Personality System](Project Structure/enhanced_personality_system.py)** - Advanced AI personality modes
+- **[Typing Simulation](Project Structure/typing_simulation.py)** - Human-like typing patterns
+- **[Discord Integration](Project Structure/personality_responses.py)** - Discord-style responses
 
-### **🔧 Advanced Features**
+### **Advanced Features**
 - **[Docker Containerization](https://docker.com/)** - Easy deployment and scaling
 - **[Kubernetes Orchestration](https://kubernetes.io/)** - Multi-instance management
 - **[Web Dashboard](https://github.com/streamlit/streamlit)** - Real-time monitoring interface
 - **[Telegram Bot Integration](https://core.telegram.org/bots/api)** - Remote control via Telegram
 - **[Discord Bot Integration](https://discord.com/developers/docs/)** - Community management
 
-### **📈 Analytics & Monitoring**
+### **Analytics & Monitoring**
 - **[Grafana Dashboards](https://grafana.com/)** - Performance monitoring
 - **[Prometheus Metrics](https://prometheus.io/)** - System metrics collection
 - **[ELK Stack](https://www.elastic.co/)** - Log analysis and visualization
 - **[Real-time Alerts](https://github.com/prometheus/alertmanager)** - Automated notifications
 
-### **🔒 Security Enhancements**
+### **Security Enhancements**
 - **[OAuth2 Integration](https://oauth.net/)** - Secure authentication
 - **[JWT Tokens](https://jwt.io/)** - Stateless authentication
 - **[Rate Limiting](https://github.com/redis/redis)** - API protection
 - **[Encrypted Storage](https://github.com/cryptography/cryptography)** - Secure credential storage
 
-## 🤝 Contributing
+## Contributing
 
 1. **Fork** the repository
 2. **Create** a feature branch
@@ -689,16 +689,16 @@ python "🔧 Tools and Scripts/scripts/test_implementations.py"
 4. **Test** thoroughly
 5. **Submit** a pull request
 
-## 📄 License
+## License
 
 This project is open source. Please use responsibly and in compliance with platform terms of service.
 
-## ⚠️ Disclaimer
+## Disclaimer
 
 This tool is for educational purposes. Users are responsible for complying with platform terms of service and applicable laws. The authors are not responsible for any misuse.
 
 ---
 
-**🚀 Ready to scale your survey automation to $10k+ monthly! 🎯**
+**Ready to scale your survey automation to $10k+ monthly!**
 
 **Made with ❤️ by the SurveyBot Team**
