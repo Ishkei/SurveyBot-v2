@@ -1,0 +1,29 @@
+# Lightweight Slider CAPTCHA Solver Requirements
+# Essential packages only - no heavy ML libraries
+
+# Core CAPTCHA solving
+opencv-python>=4.8.0
+pillow>=10.0.0
+numpy>=1.24.0
+
+# Mouse control for slider movements
+pynput>=1.7.6
+
+# Web automation (already installed)
+selenium>=4.15.0
+undetected-chromedriver>=3.5.0
+
+# HTTP requests and environment
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Basic OCR (optional, lightweight)
+pytesseract>=0.3.10
+
+# Image processing (lightweight)
+scikit-image>=0.21.0
+scipy>=1.11.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0

@@ -580,8 +580,10 @@ class CPXResearchBot:
             return False
     
     async def handle_cpx_question(self) -> bool:
-        """Handle the current CPX question"""
+        """Handle the current CPX question using multiple methods"""
         try:
+            print("🎯 Handling CPX question with multiple methods...")
+            
             # Wait for question to load with more flexible timing
             await asyncio.sleep(2)
             
@@ -618,50 +620,16 @@ class CPXResearchBot:
                 # Non-fatal; continue with generic detection
                 pass
             
-            # Detect question type
-            question_type = await self.detect_question_type()
+            # Check for completion indicators first
+            try:
+                if await self.page.locator('a#go_to_survey, button:has-text("Start the survey")').count() > 0:
+                    print("🎯 Found 'Start the survey' button - router qualification successful!")
+                    return True
+            except Exception:
+                pass
             
-            if question_type == 'unknown':
-                print("⚠️ Unknown question type, might be loading or transition screen...")
-                # Wait a bit more for content to load
-                await asyncio.sleep(2)
-                
-                # Try to detect question type again after waiting
-                question_type = await self.detect_question_type()
-                if question_type != 'unknown':
-                    print(f"✅ Question type detected after wait: {question_type}")
-                else:
-                    # Check for obvious completion indicators without full completion check
-                    try:
-                        if await self.page.locator('a#go_to_survey, button:has-text("Start the survey")').count() > 0:
-                            print("🎯 Found 'Start the survey' button - router qualification successful!")
-                            return True
-                    except Exception:
-                        pass
-                    
-                    print("⚠️ Still unknown question type, might be loading...")
-                    return False
-            
-            # Get question text and info
-            question_text = await self.get_question_text()
-            info_text = await self.get_question_info()
-            
-            print(f"📝 Question: {question_text[:100]}...")
-            print(f"   Info: {info_text}")
-            print(f"   Type: {question_type}")
-            
-            # Handle different question types
-            if question_type == 'single_punch':
-                return await self.handle_single_choice_question(question_text, info_text)
-            elif question_type == 'multi_punch':
-                return await self.handle_multiple_choice_question(question_text, info_text)
-            elif question_type == 'open_ended':
-                return await self.handle_text_question(question_text, info_text)
-            elif question_type == 'int_open_ended':
-                return await self.handle_number_question(question_text, info_text)
-            else:
-                print(f"⚠️ Unsupported question type: {question_type}")
-                return False
+            # Use the new multi-method approach with retry logic
+            return await self.handle_question_with_multiple_methods(max_retries=3)
                 
         except Exception as e:
             print(f"❌ Error handling CPX question: {e}")
@@ -1800,7 +1768,13 @@ class CPXResearchBot:
                 'a:has-text("Continue")',
                 'a:has-text("Next")',
                 'a:has-text("Submit")',
-                'a.ps-button'
+                'a.ps-button',
+                # Samplicio-specific patterns
+                '#ctl00_Content_btnContinue',
+                '.submit-btn',
+                'input[value="Continue"]',
+                'input[value="Next"]',
+                'input[value="Submit"]'
             ]
             
             for selector in submit_selectors:
@@ -2128,6 +2102,24 @@ class CPXResearchBot:
                     return await self.handle_samplecube_survey()
             except Exception as samplecube_err:
                 print(f"⚠️ Sample-Cube handler error: {samplecube_err}")
+
+            # Special case: Quantilope survey platform
+            try:
+                current_url = self.page.url.lower()
+                if 'quantilope.com' in current_url:
+                    print("🔎 Detected Quantilope survey platform. Using specialized handler...")
+                    return await self.handle_quantilope_survey()
+            except Exception as quantilope_err:
+                print(f"⚠️ Quantilope handler error: {quantilope_err}")
+
+            # Special case: Samplicio survey platform
+            try:
+                current_url = self.page.url.lower()
+                if 'samplicio.us' in current_url or 'samplicio.com' in current_url:
+                    print("🔎 Detected Samplicio survey platform. Using specialized handler...")
+                    return await self.handle_samplicio_survey()
+            except Exception as samplicio_err:
+                print(f"⚠️ Samplicio handler error: {samplicio_err}")
 
             # Special case: Ipsos Interactive landing with "Accept and take the survey"
             try:
@@ -3031,16 +3023,23 @@ class CPXResearchBot:
                 print("✅ Puzzle piece CAPTCHA handled successfully")
                 return True
             
-            # Common slider CAPTCHA selectors
+            # Enhanced slider CAPTCHA selectors including puzzle pieces
             slider_selectors = [
                 '[data-dd-slider]',
                 '.dd-slider',
                 '.slider-container',
                 '[class*="slider"]',
                 '[class*="captcha"]',
+                '[class*="puzzle"]',
+                '[class*="piece"]',
+                '.puzzle-piece',
+                '.captcha-piece',
                 'input[type="range"]',
                 '.dd-range-slider',
-                '[data-dd-action="slider"]'
+                '[data-dd-action="slider"]',
+                '.geetest_slider_button',
+                '.slider-button',
+                '[data-testid="slider"]'
             ]
             
             # Look for slider elements
@@ -3059,7 +3058,12 @@ class CPXResearchBot:
                 # Try to find by text content indicating slider CAPTCHA
                 try:
                     page_text = (await context.locator('body').text_content() or '').lower()
-                    if any(keyword in page_text for keyword in ['slide to verify', 'drag to verify', 'move slider', 'captcha verification']):
+                    captcha_keywords = [
+                        'slide to verify', 'drag to verify', 'move slider', 'captcha verification',
+                        'complete the puzzle', 'slide right', 'verification required', 'puzzle piece',
+                        'jigsaw', 'slide to complete', 'drag to complete'
+                    ]
+                    if any(keyword in page_text for keyword in captcha_keywords):
                         slider_found = True
                         print("🎯 Detected slider CAPTCHA by text content")
                 except Exception:
@@ -3092,16 +3096,20 @@ class CPXResearchBot:
                             
                             # Move mouse to start position
                             await self.page.mouse.move(start_x, center_y)
-                            await asyncio.sleep(0.2)
+                            await asyncio.sleep(random.uniform(0.3, 0.7))
                             
                             # Click and drag to end position
                             await self.page.mouse.down()
-                            await asyncio.sleep(0.1)
+                            await asyncio.sleep(random.uniform(0.1, 0.3))
                             
-                            # Move to end position with human-like motion
-                            steps = 10
+                            # Move to end position with human-like motion using easing
+                            steps = 15  # More steps for smoother movement
                             for i in range(1, steps + 1):
-                                x = start_x + (end_x - start_x) * (i / steps)
+                                # Use easing function for natural movement
+                                progress = i / steps
+                                ease_progress = progress * (2 - progress)  # ease_out_quad
+                                
+                                x = start_x + (end_x - start_x) * ease_progress
                                 # Add slight randomness to y position
                                 y = center_y + random.uniform(-2, 2)
                                 await self.page.mouse.move(x, y)
@@ -3730,98 +3738,45 @@ class CPXResearchBot:
             return {'status': 'error', 'reason': str(e), 'platform': 'sampleeye'}
     
     async def handle_sampleeye_question(self) -> bool:
-        """Handle a single SampleEye survey question"""
+        """Handle a single SampleEye survey question using multiple methods"""
         try:
-            # Wait for question to be visible - SampleEye might need more time
-            await asyncio.sleep(3)
+            print("🎯 Handling SampleEye question with multiple methods...")
             
-            # Look for question text with more comprehensive selectors
-            question_selectors = [
-                'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-                '.question-text',
-                '.survey-question',
-                '[class*="question"]',
-                'p:contains("?")',
-                'div:contains("?")',
-                'label',
-                'span',
-                'div',
-                'p'
-            ]
+            # Wait for Angular app to be fully loaded
+            await self._wait_for_angular_app_ready()
             
-            question_text = ""
-            for selector in question_selectors:
-                try:
-                    question_elem = self.page.locator(selector).first
-                    if await question_elem.count() > 0:
-                        question_text = await question_elem.text_content() or ""
-                        if question_text.strip():
-                            print(f"📝 SampleEye Question: {question_text[:100]}...")
-                            break
-                except Exception:
-                    continue
+            # Use the new multi-method approach with retry logic
+            return await self.handle_question_with_multiple_methods(max_retries=3)
             
-            # If no question found with selectors, try to find any text that looks like a question
-            if not question_text.strip():
-                try:
-                    # Get all text content and look for question-like patterns
-                    page_text = await self.page.text_content('body') or ""
-                    lines = page_text.split('\n')
-                    
-                    for line in lines:
-                        line = line.strip()
-                        if (len(line) > 10 and 
-                            any(qword in line.lower() for qword in ['age', 'years old', 'how old', 'what is', 'please', 'select', 'choose']) and
-                            not any(skip in line.lower() for skip in ['loading', 'please wait', 'error', 'captcha'])):
-                            question_text = line
-                            print(f"📝 SampleEye Question (fallback): {question_text[:100]}...")
-                            break
-                except Exception as e:
-                    print(f"⚠️ Fallback question detection failed: {e}")
-            
-            # Check for different question types
-            if await self.page.locator('input[type="radio"]').count() > 0:
-                print("🎯 SampleEye: Found radio button question")
-                return await self.handle_radio_question_sampleeye(question_text)
-            elif await self.page.locator('input[type="text"]').count() > 0:
-                print("🎯 SampleEye: Found text input question")
-                return await self.handle_text_question_sampleeye(question_text)
-            elif await self.page.locator('input[type="checkbox"]').count() > 0:
-                print("🎯 SampleEye: Found checkbox question")
-                return await self.handle_checkbox_question_sampleeye(question_text)
-            else:
-                print("⚠️ Unknown SampleEye question type - debugging page content...")
-                
-                # Debug: List all input elements on the page
-                try:
-                    all_inputs = await self.page.locator('input, textarea, select').all()
-                    print(f"🔍 SampleEye Debug: Found {len(all_inputs)} input elements")
-                    
-                    for i, inp in enumerate(all_inputs[:10]):  # Show first 10
-                        try:
-                            tag_name = await inp.evaluate('el => el.tagName')
-                            input_type = await inp.get_attribute('type') or 'text'
-                            input_id = await inp.get_attribute('id') or 'no-id'
-                            input_name = await inp.get_attribute('name') or 'no-name'
-                            is_visible = await inp.is_visible()
-                            is_enabled = await inp.is_enabled()
-                            
-                            print(f"   {i}: {tag_name.lower()}[type={input_type}] id='{input_id}' name='{input_name}' visible={is_visible} enabled={is_enabled}")
-                        except Exception as debug_e:
-                            print(f"   {i}: Error getting input info: {debug_e}")
-                    
-                    # Also check for any text that might be a question
-                    page_text = await self.page.text_content('body') or ""
-                    print(f"🔍 SampleEye Debug: Page text preview: {page_text[:200]}...")
-                    
-                except Exception as debug_e:
-                    print(f"🔍 SampleEye Debug error: {debug_e}")
-                
-                return False
-                
         except Exception as e:
             print(f"❌ Error handling SampleEye question: {e}")
             return False
+
+    async def _wait_for_angular_app_ready(self):
+        """Wait for Angular app to be fully loaded and ready"""
+        try:
+            print("⏳ Waiting for Angular app to load...")
+            
+            # Wait for the app-root to have content beyond "Loading..."
+            await self.page.wait_for_function(
+                "() => { const root = document.querySelector('app-root'); return root && root.textContent && root.textContent !== 'Loading...' && root.children.length > 0; }",
+                timeout=30000
+            )
+            
+            # Wait for any loading states to disappear
+            await self.page.wait_for_function(
+                "() => !document.querySelector('[class*=\"loading\"], [class*=\"spinner\"], [class*=\"Loading\"]')",
+                timeout=15000
+            )
+            
+            # Additional wait for dynamic content
+            await asyncio.sleep(3)
+            
+            print("✅ Angular app appears ready")
+            
+        except Exception as e:
+            print(f"⚠️ Angular app wait failed: {e}")
+            # Continue anyway, the app might still work
     
     async def handle_text_question_sampleeye(self, question: str) -> bool:
         """Handle SampleEye text input questions (like age)"""
@@ -4149,96 +4104,194 @@ class CPXResearchBot:
             print(f"❌ Error handling Sample-Cube survey: {e}")
             return {'status': 'error', 'reason': str(e), 'platform': 'samplecube'}
     
-    async def handle_samplecube_question(self) -> bool:
-        """Handle a single Sample-Cube survey question"""
+    async def handle_samplicio_survey(self) -> Dict[str, Any]:
+        """Handle Samplicio survey platform specifically"""
         try:
-            # Wait for question to be visible - Sample-Cube might need more time
+            print("🎯 Detected Samplicio survey platform")
+            
+            # Wait for the survey to load
             await asyncio.sleep(3)
             
-            # Look for question text with comprehensive selectors
-            question_selectors = [
-                'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-                '.question-text',
-                '.survey-question',
-                '[class*="question"]',
-                'p:contains("?")',
-                'div:contains("?")',
-                'label',
-                'span',
-                'div',
-                'p'
+            # Check for CAPTCHAs first
+            if await self.detect_and_handle_captcha():
+                print("✅ CAPTCHA resolved in Samplicio survey")
+                await asyncio.sleep(1)
+            
+            questions_answered = 0
+            max_questions = 50  # Reasonable limit for qualification surveys
+            
+            while questions_answered < max_questions:
+                # Check if survey is complete
+                try:
+                    # Look for completion indicators
+                    completion_indicators = [
+                        'button:has-text("Submit")',
+                        'button:has-text("Finish")',
+                        'button:has-text("Complete")',
+                        '.survey-complete',
+                        '[class*="complete"]',
+                        'text:has("Thank you")',
+                        'text:has("Survey complete")',
+                        'text:has("Qualified")',
+                        'text:has("Congratulations")'
+                    ]
+                    
+                    for indicator in completion_indicators:
+                        if await self.page.locator(indicator).count() > 0:
+                            print("✅ Samplicio survey completed")
+                            return {'status': 'completed', 'platform': 'samplicio'}
+                    
+                except Exception:
+                    pass
+                
+                # Handle current Samplicio question
+                if not await self.handle_samplicio_question():
+                    print("❌ Failed to handle Samplicio question")
+                    break
+                
+                questions_answered += 1
+                print(f"🎯 Samplicio question {questions_answered} answered")
+                
+                # Wait for page update
+                await asyncio.sleep(2)
+            
+            print(f"⚠️ Samplicio survey stopped after {questions_answered} questions")
+            return {'status': 'incomplete', 'questions_answered': questions_answered, 'platform': 'samplicio'}
+            
+        except Exception as e:
+            print(f"❌ Error handling Samplicio survey: {e}")
+            return {'status': 'error', 'reason': str(e), 'platform': 'samplicio'}
+    
+    async def handle_samplicio_question(self) -> bool:
+        """Handle a single Samplicio survey question using multiple methods"""
+        try:
+            print("🎯 Handling Samplicio question with multiple methods...")
+            
+            # Use the new multi-method approach with retry logic
+            return await self.handle_question_with_multiple_methods(max_retries=3)
+            
+        except Exception as e:
+            print(f"❌ Error handling Samplicio question: {e}")
+            return False
+    
+    async def submit_samplicio_question(self) -> bool:
+        """Submit a Samplicio question using their specific button patterns"""
+        try:
+            # Samplicio-specific submit button selectors (prioritized)
+            submit_selectors = [
+                '#ctl00_Content_btnContinue',
+                '.submit-btn',
+                'input[value="Continue"]',
+                'input[value="Next"]',
+                'input[value="Submit"]',
+                'button:has-text("Continue")',
+                'button:has-text("Next")',
+                'button:has-text("Submit")',
+                'button[type="submit"]',
+                'input[type="submit"]',
+                # Additional fallback selectors
+                'input[onclick*="Continue"]',
+                'input[onclick*="Next"]',
+                'input[onclick*="Submit"]',
+                'button[onclick*="Continue"]',
+                'button[onclick*="Next"]',
+                'button[onclick*="Submit"]',
+                'a:has-text("Continue")',
+                'a:has-text("Next")',
+                'a:has-text("Submit")'
             ]
             
-            question_text = ""
-            for selector in question_selectors:
+            print("🔍 Looking for Samplicio submit buttons...")
+            
+            for selector in submit_selectors:
                 try:
-                    question_elem = self.page.locator(selector).first
-                    if await question_elem.count() > 0:
-                        question_text = await question_elem.text_content() or ""
-                        if question_text.strip():
-                            print(f"📝 Sample-Cube Question: {question_text[:100]}...")
-                            break
-                except Exception:
+                    btn = self.page.locator(selector).first
+                    count = await btn.count()
+                    if count == 0:
+                        continue
+                    
+                    print(f"🎯 Found button with selector: {selector}")
+                    
+                    # Wait for button to be visible and enabled
+                    try:
+                        await btn.wait_for(state='visible', timeout=5000)
+                        # Check if button is enabled
+                        is_disabled = await btn.get_attribute('disabled')
+                        if is_disabled:
+                            print(f"⚠️ Button {selector} is disabled, trying next...")
+                            continue
+                        
+                        # Get button text for debugging
+                        try:
+                            button_text = await btn.text_content()
+                            print(f"📝 Button text: {button_text}")
+                        except Exception:
+                            pass
+                        
+                    except Exception as wait_err:
+                        print(f"⚠️ Button wait failed for {selector}: {wait_err}")
+                        continue
+                    
+                    # Click the button
+                    try:
+                        await btn.click()
+                        print(f"✅ Samplicio question submitted via {selector}")
+                        await asyncio.sleep(random.uniform(2, 4))
+                        return True
+                    except Exception as click_err:
+                        print(f"⚠️ Click failed for {selector}: {click_err}")
+                        # Try JavaScript click as fallback
+                        try:
+                            handle = await btn.element_handle()
+                            if handle:
+                                await self.page.evaluate('(el) => { el.scrollIntoView({behavior: "smooth", block: "center"}); el.click(); }', handle)
+                                print(f"✅ Samplicio question submitted via JS click on {selector}")
+                                await asyncio.sleep(random.uniform(2, 4))
+                                return True
+                        except Exception as js_err:
+                            print(f"❌ JS click also failed for {selector}: {js_err}")
+                            continue
+                            
+                except Exception as selector_err:
+                    print(f"⚠️ Selector error for {selector}: {selector_err}")
                     continue
             
-            # If no question found with selectors, try to find any text that looks like a question
-            if not question_text.strip():
-                try:
-                    # Get all text content and look for question-like patterns
-                    page_text = await self.page.text_content('body') or ""
-                    lines = page_text.split('\n')
-                    
-                    for line in lines:
-                        line = line.strip()
-                        if (len(line) > 10 and 
-                            any(qword in line.lower() for qword in ['age', 'years old', 'how old', 'what is', 'please', 'select', 'choose']) and
-                            not any(skip in line.lower() for skip in ['loading', 'please wait', 'error', 'captcha'])):
-                            question_text = line
-                            print(f"📝 Sample-Cube Question (fallback): {question_text[:100]}...")
-                            break
-                except Exception as e:
-                    print(f"⚠️ Fallback question detection failed: {e}")
+            # If no buttons found, try to debug what's on the page
+            print("🔍 Debugging: No submit buttons found, checking page content...")
+            try:
+                # Look for any buttons on the page
+                all_buttons = self.page.locator('button, input[type="submit"], input[type="button"], a[href="#"]')
+                button_count = await all_buttons.count()
+                print(f"🔍 Found {button_count} total buttons/inputs on page")
+                
+                for i in range(min(button_count, 10)):  # Check first 10 buttons
+                    try:
+                        btn = all_buttons.nth(i)
+                        btn_text = await btn.text_content()
+                        btn_id = await btn.get_attribute('id')
+                        btn_class = await btn.get_attribute('class')
+                        btn_type = await btn.get_attribute('type')
+                        print(f"🔍 Button {i+1}: text='{btn_text}', id='{btn_id}', class='{btn_class}', type='{btn_type}'")
+                    except Exception:
+                        pass
+            except Exception as debug_err:
+                print(f"⚠️ Debug error: {debug_err}")
             
-            # Check for different question types
-            if await self.page.locator('input[type="radio"]').count() > 0:
-                print("🎯 Sample-Cube: Found radio button question")
-                return await self.handle_radio_question_samplecube(question_text)
-            elif await self.page.locator('input[type="text"]').count() > 0:
-                print("🎯 Sample-Cube: Found text input question")
-                return await self.handle_text_question_samplecube(question_text)
-            elif await self.page.locator('input[type="checkbox"]').count() > 0:
-                print("🎯 Sample-Cube: Found checkbox question")
-                return await self.handle_checkbox_question_samplecube(question_text)
-            else:
-                print("⚠️ Unknown Sample-Cube question type - debugging page content...")
-                
-                # Debug: List all input elements on the page
-                try:
-                    all_inputs = await self.page.locator('input, textarea, select').all()
-                    print(f"🔍 Sample-Cube Debug: Found {len(all_inputs)} input elements")
-                    
-                    for i, inp in enumerate(all_inputs[:10]):  # Show first 10
-                        try:
-                            tag_name = await inp.evaluate('el => el.tagName')
-                            input_type = await inp.get_attribute('type') or 'text'
-                            input_id = await inp.get_attribute('id') or 'no-id'
-                            input_name = await inp.get_attribute('name') or 'no-name'
-                            is_visible = await inp.is_visible()
-                            is_enabled = await inp.is_enabled()
-                            
-                            print(f"   {i}: {tag_name.lower()}[type={input_type}] id='{input_id}' name='{input_name}' visible={is_visible} enabled={is_enabled}")
-                        except Exception as debug_e:
-                            print(f"   {i}: Error getting input info: {debug_e}")
-                    
-                    # Also check for any text that might be a question
-                    page_text = await self.page.text_content('body') or ""
-                    print(f"🔍 Sample-Cube Debug: Page text preview: {page_text[:200]}...")
-                    
-                except Exception as debug_e:
-                    print(f"🔍 Sample-Cube Debug error: {debug_e}")
-                
-                return False
-                
+            print("❌ No Samplicio submit button found")
+            return False
+            
+        except Exception as e:
+            print(f"❌ Error submitting Samplicio question: {e}")
+            return False
+    
+    async def handle_samplecube_question(self) -> bool:
+        """Handle a single Sample-Cube survey question using multiple methods"""
+        try:
+            print("🎯 Handling Sample-Cube question with multiple methods...")
+            
+            # Use the new multi-method approach with retry logic
+            return await self.handle_question_with_multiple_methods(max_retries=3)
+            
         except Exception as e:
             print(f"❌ Error handling Sample-Cube question: {e}")
             return False
@@ -4315,152 +4368,153 @@ class CPXResearchBot:
             print(f"❌ Error handling Sample-Cube text question: {e}")
             return False
     
-    async def handle_metrixmatrix_question(self) -> bool:
-        """Handle a single MetrixMatrix survey question"""
+    async def handle_textarea_question_samplecube(self, question: str) -> bool:
+        """Handle Sample-Cube textarea questions (open-ended responses)"""
         try:
-            # Wait for question to be visible
-            await asyncio.sleep(1)
+            print(f"📝 Handling Sample-Cube textarea question: {question[:50]}...")
             
-            # Look for question text
-            question_selectors = [
-                '.questionText',
-                '.questionTextContainer .questionText',
-                '[class*="question"]',
-                'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+            # Find the textarea field
+            textarea_selectors = [
+                'textarea',
+                'textarea[type="text"]',
+                'textarea[id*="input"]',
+                'textarea[name*="input"]',
+                'textarea[class*="input"]'
             ]
             
-            question_text = ""
-            for selector in question_selectors:
+            textarea_element = None
+            for selector in textarea_selectors:
                 try:
-                    question_elem = self.page.locator(selector).first
-                    if await question_elem.count() > 0:
-                        question_text = await question_elem.text_content() or ""
-                        if question_text.strip():
-                            print(f"📝 Question: {question_text[:100]}...")
-                            break
-                except Exception:
-                    continue
-            
-            # Look for radio button options
-            radio_selectors = [
-                'input[type="radio"]',
-                '.radioButton input[type="radio"]',
-                '.choice input[type="radio"]'
-            ]
-            
-            options = []
-            for selector in radio_selectors:
-                try:
-                    radio_elements = self.page.locator(selector)
-                    count = await radio_elements.count()
-                    if count > 0:
-                        print(f"🎯 Found {count} radio button options")
-                        
-                        # Get all options with their labels
-                        for i in range(count):
-                            try:
-                                radio = radio_elements.nth(i)
-                                radio_id = await radio.get_attribute('id') or f"radio_{i}"
-                                radio_value = await radio.get_attribute('value') or str(i+1)
-                                
-                                # Find associated label
-                                label = None
-                                try:
-                                    label = self.page.locator(f'label[for="{radio_id}"]').first
-                                    if await label.count() > 0:
-                                        label_text = await label.text_content() or ""
-                                    else:
-                                        label_text = f"Option {i+1}"
-                                except Exception:
-                                    label_text = f"Option {i+1}"
-                                
-                                options.append({
-                                    'id': radio_id,
-                                    'value': radio_value,
-                                    'text': label_text.strip(),
-                                    'element': radio
-                                })
-                                
-                            except Exception as e:
-                                print(f"⚠️ Error processing radio option {i}: {e}")
-                                continue
-                        
+                    textarea = self.page.locator(selector).first
+                    if await textarea.count() > 0 and await textarea.is_visible():
+                        textarea_element = textarea
+                        print(f"✅ Found Sample-Cube textarea: {selector}")
                         break
-                        
                 except Exception:
                     continue
             
-            if not options:
-                print("⚠️ No radio button options found")
+            if not textarea_element:
+                print("❌ No textarea found in Sample-Cube question")
                 return False
             
-            # Select an appropriate option based on persona
-            selected_option = await self.select_metrixmatrix_option(question_text, options)
+            # Generate appropriate response based on the question
+            response = await self.generate_open_ended_response(question)
             
-            if selected_option:
+            # Fill the textarea
+            try:
+                await textarea_element.fill(response)
+                print(f"📝 Sample-Cube textarea response: {response[:50]}...")
+                await asyncio.sleep(1)
+            except Exception as e:
+                print(f"⚠️ Error filling textarea: {e}")
+                return False
+            
+            # Look for Next/Submit button
+            button_selectors = [
+                'button:has-text("Next")',
+                'button:has-text("Submit")',
+                'button:has-text("Continue")',
+                'input[type="submit"]',
+                '.btn-primary',
+                '[class*="btn"]',
+                'button[type="submit"]'
+            ]
+            
+            for selector in button_selectors:
                 try:
-                    # Click the selected radio button
-                    await selected_option['element'].check()
-                    print(f"✅ Selected: {selected_option['text']}")
-                    
-                    # Look for and click the Next button
-                    next_button_selectors = [
-                        '#SurveyNavigationBottomControl_Next_ImageButton',
-                        'input[title="Next"]',
-                        'input[alt="Next"]',
-                        '.nextButton',
-                        'input[src*="next"]',
-                        'button:has-text("Next")',
-                        'input[type="image"][src*="next"]'
-                    ]
-                    
-                    next_clicked = False
-                    for selector in next_button_selectors:
-                        try:
-                            next_btn = self.page.locator(selector).first
-                            if await next_btn.count() > 0:
-                                await next_btn.click()
-                                print("✅ Clicked Next button")
-                                next_clicked = True
-                                break
-                        except Exception:
-                            continue
-                    
-                    if not next_clicked:
-                        # Try JavaScript click as fallback
-                        try:
-                            await self.page.evaluate("""
-                                () => {
-                                    const nextBtn = document.querySelector('#SurveyNavigationBottomControl_Next_ImageButton') || 
-                                                   document.querySelector('input[title="Next"]') ||
-                                                   document.querySelector('.nextButton');
-                                    if (nextBtn) {
-                                        nextBtn.click();
-                                        return true;
-                                    }
-                                    return false;
-                                }
-                            """)
-                            print("✅ Clicked Next button via JavaScript")
-                            next_clicked = True
-                        except Exception:
-                            pass
-                    
-                    if next_clicked:
-                        # Wait for navigation
+                    button = self.page.locator(selector).first
+                    if await button.count() > 0 and await button.is_visible():
+                        await button.click()
+                        print(f"✅ Clicked Sample-Cube button: {selector}")
                         await asyncio.sleep(2)
                         return True
-                    else:
-                        print("⚠️ Could not click Next button")
-                        return False
-                        
-                except Exception as e:
-                    print(f"❌ Error selecting option: {e}")
-                    return False
+                except Exception:
+                    continue
+            
+            print("⚠️ No Next/Submit button found in Sample-Cube textarea question")
+            return False
+            
+        except Exception as e:
+            print(f"❌ Error handling Sample-Cube textarea question: {e}")
+            return False
+    
+    async def generate_open_ended_response(self, question: str) -> str:
+        """Generate an appropriate response for open-ended questions"""
+        try:
+            question_lower = question.lower()
+            
+            # Season-related questions
+            if any(word in question_lower for word in ['season', 'favorite season', 'weather']):
+                seasons = [
+                    "I really enjoy autumn because of the beautiful fall colors and comfortable temperatures. The crisp air and changing leaves create such a peaceful atmosphere.",
+                    "Summer is my favorite season because I love spending time outdoors, going to the beach, and enjoying longer daylight hours.",
+                    "Spring is wonderful with all the new growth and blooming flowers. It feels like a fresh start after winter.",
+                    "Winter has its own charm with cozy evenings by the fire and the beauty of snow-covered landscapes."
+                ]
+                return random.choice(seasons)
+            
+            # Hobby/interest questions
+            elif any(word in question_lower for word in ['hobby', 'interest', 'like to do', 'enjoy']):
+                hobbies = [
+                    "I enjoy reading books, especially science fiction and mystery novels. It's a great way to relax and escape into different worlds.",
+                    "I love cooking and trying new recipes. It's both creative and practical, plus I get to enjoy delicious meals.",
+                    "I'm passionate about photography and capturing beautiful moments. It helps me appreciate the world around me.",
+                    "I enjoy hiking and exploring nature trails. It's great exercise and helps me stay connected to the outdoors."
+                ]
+                return random.choice(hobbies)
+            
+            # Food-related questions
+            elif any(word in question_lower for word in ['food', 'meal', 'dish', 'cuisine']):
+                foods = [
+                    "I love Italian cuisine, especially pasta dishes and pizza. The flavors are so rich and comforting.",
+                    "I enjoy trying different types of Asian food, particularly Thai and Japanese. The variety of flavors is amazing.",
+                    "I'm a big fan of Mexican food - the spices and fresh ingredients create such vibrant flavors.",
+                    "I love home-cooked meals, especially comfort food like roasted chicken and mashed potatoes."
+                ]
+                return random.choice(foods)
+            
+            # Technology questions
+            elif any(word in question_lower for word in ['technology', 'device', 'app', 'software']):
+                tech_responses = [
+                    "I appreciate technology that makes life easier, like smartphones and smart home devices. They help me stay organized and connected.",
+                    "I enjoy using social media to stay in touch with friends and family, and to discover new interests and hobbies.",
+                    "I find streaming services really convenient for entertainment. They offer so much variety and flexibility.",
+                    "I like using productivity apps to help manage my daily tasks and stay on top of my schedule."
+                ]
+                return random.choice(tech_responses)
+            
+            # Travel questions
+            elif any(word in question_lower for word in ['travel', 'vacation', 'destination', 'place']):
+                travel_responses = [
+                    "I love traveling to new places and experiencing different cultures. It's so enriching to see how people live around the world.",
+                    "I enjoy beach vacations for relaxation, but also love exploring cities to learn about history and architecture.",
+                    "I prefer road trips because you can see so much along the way and have the flexibility to stop wherever interests you.",
+                    "I like visiting national parks and natural wonders. There's something awe-inspiring about nature's beauty."
+                ]
+                return random.choice(travel_responses)
+            
+            # Default response for other questions
             else:
-                print("⚠️ No option selected")
-                return False
+                default_responses = [
+                    "I find this topic really interesting and enjoy learning more about it. It's always good to expand your knowledge and understanding.",
+                    "This is something I think about often and have developed my own perspective on over time.",
+                    "I believe this is important to consider carefully, as it can have a significant impact on our daily lives.",
+                    "I appreciate the opportunity to share my thoughts on this subject. It's always good to reflect on these kinds of questions."
+                ]
+                return random.choice(default_responses)
                 
+        except Exception as e:
+            print(f"⚠️ Error generating open-ended response: {e}")
+            return "I find this topic interesting and would like to share my thoughts on it."
+    
+    async def handle_metrixmatrix_question(self) -> bool:
+        """Handle a single MetrixMatrix survey question using multiple methods"""
+        try:
+            print("🎯 Handling MetrixMatrix question with multiple methods...")
+            
+            # Use the new multi-method approach with retry logic
+            return await self.handle_question_with_multiple_methods(max_retries=3)
+            
         except Exception as e:
             print(f"❌ Error handling MetrixMatrix question: {e}")
             return False
@@ -5329,6 +5383,1300 @@ class CPXResearchBot:
         
         # Display question logging statistics
         self.display_question_stats()
+
+    async def handle_question_with_multiple_methods(self, max_retries: int = 3) -> bool:
+        """Handle questions using multiple methods with retry logic"""
+        methods = [
+            self._handle_question_dom_analysis,
+            self._handle_question_html_scan,
+            self._handle_question_vision_based,
+            self._handle_question_generic_fallback
+        ]
+        
+        for attempt in range(max_retries):
+            print(f"🔄 Question handling attempt {attempt + 1}/{max_retries}")
+            
+            for method in methods:
+                try:
+                    print(f"🔍 Trying method: {method.__name__}")
+                    result = await method()
+                    if result:
+                        print(f"✅ Question handled successfully with {method.__name__}")
+                        return True
+                except Exception as e:
+                    print(f"⚠️ Method {method.__name__} failed: {e}")
+                    continue
+            
+            if attempt < max_retries - 1:
+                print(f"⏳ Retrying in {2 ** attempt} seconds...")
+                await asyncio.sleep(2 ** attempt)  # Exponential backoff
+        
+        print("❌ All question handling methods failed")
+        return False
+
+    async def _handle_question_dom_analysis(self) -> bool:
+        """Handle questions using DOM analysis and element detection"""
+        try:
+            print("🔍 Using DOM analysis method...")
+            
+            # Wait for page to be stable
+            await asyncio.sleep(2)
+            
+            # Get page structure
+            page_structure = await self._analyze_page_structure()
+            print(f"📊 Page structure: {page_structure}")
+            
+            # Detect question type based on DOM structure
+            question_type = await self._detect_question_type_from_dom()
+            print(f"🎯 Detected question type: {question_type}")
+            
+            if question_type == 'radio':
+                return await self._handle_radio_question_dom()
+            elif question_type == 'checkbox':
+                return await self._handle_checkbox_question_dom()
+            elif question_type == 'text':
+                return await self._handle_text_question_dom()
+            elif question_type == 'welcome':
+                return await self._handle_welcome_page_dom()
+            else:
+                print(f"⚠️ Unknown question type: {question_type}")
+                return False
+                
+        except Exception as e:
+            print(f"❌ DOM analysis failed: {e}")
+            return False
+
+    async def _handle_question_html_scan(self) -> bool:
+        """Handle questions by scanning HTML content"""
+        try:
+            print("🔍 Using HTML scan method...")
+            
+            # Get page HTML
+            html_content = await self.page.content()
+            
+            # Extract question information from HTML
+            question_info = await self._extract_question_from_html(html_content)
+            print(f"📝 Question info: {question_info}")
+            
+            # Handle based on extracted information
+            if question_info.get('type') == 'radio':
+                return await self._handle_radio_from_html(question_info)
+            elif question_info.get('type') == 'checkbox':
+                return await self._handle_checkbox_from_html(question_info)
+            elif question_info.get('type') == 'text':
+                return await self._handle_text_from_html(question_info)
+            elif question_info.get('type') == 'welcome':
+                return await self._handle_welcome_from_html(question_info)
+            else:
+                print(f"⚠️ Unknown question type from HTML: {question_info.get('type')}")
+                return False
+                
+        except Exception as e:
+            print(f"❌ HTML scan failed: {e}")
+            return False
+
+    async def _handle_question_vision_based(self) -> bool:
+        """Handle questions using vision-based detection (if available)"""
+        try:
+            print("🔍 Using vision-based method...")
+            
+            # Check if vision capabilities are available
+            if not hasattr(self, 'vision_enabled') or not self.vision_enabled:
+                print("⚠️ Vision capabilities not available")
+                return False
+            
+            # Take screenshot and analyze
+            screenshot = await self.page.screenshot()
+            question_elements = await self._detect_question_elements_vision(screenshot)
+            
+            if question_elements:
+                return await self._handle_question_with_vision(question_elements)
+            else:
+                print("⚠️ No question elements detected via vision")
+                return False
+                
+        except Exception as e:
+            print(f"❌ Vision-based method failed: {e}")
+            return False
+
+    async def _handle_question_generic_fallback(self) -> bool:
+        """Generic fallback method for question handling"""
+        try:
+            print("🔍 Using generic fallback method...")
+            
+            # Try to find any interactive elements
+            interactive_selectors = [
+                'input[type="radio"]',
+                'input[type="checkbox"]',
+                'input[type="text"]',
+                'textarea',
+                'button',
+                'a[href="#"]',
+                'input[type="submit"]'
+            ]
+            
+            for selector in interactive_selectors:
+                try:
+                    elements = self.page.locator(selector)
+                    count = await elements.count()
+                    if count > 0:
+                        print(f"🎯 Found {count} elements with selector: {selector}")
+                        
+                        if 'radio' in selector:
+                            # Select random radio button
+                            random_index = random.randint(0, count - 1)
+                            await elements.nth(random_index).click()
+                            print("✅ Random radio button selected")
+                        elif 'checkbox' in selector:
+                            # Select 1-3 random checkboxes
+                            num_to_select = min(random.randint(1, 3), count)
+                            selected_indices = random.sample(range(count), num_to_select)
+                            for idx in selected_indices:
+                                await elements.nth(idx).click()
+                            print(f"✅ {num_to_select} random checkboxes selected")
+                        elif 'text' in selector or 'textarea' in selector:
+                            # Fill text inputs
+                            for i in range(count):
+                                text_input = elements.nth(i)
+                                response = await self.generate_open_ended_response("Generic question")
+                                await text_input.fill(response)
+                            print("✅ Text inputs filled")
+                        
+                        # Try to submit
+                        return await self._submit_with_generic_methods()
+                        
+                except Exception as e:
+                    print(f"⚠️ Selector {selector} failed: {e}")
+                    continue
+            
+            print("⚠️ No interactive elements found")
+            return False
+            
+        except Exception as e:
+            print(f"❌ Generic fallback failed: {e}")
+            return False
+
+    async def _analyze_page_structure(self) -> Dict[str, Any]:
+        """Analyze the current page structure"""
+        try:
+            structure = {
+                'forms': 0,
+                'inputs': 0,
+                'buttons': 0,
+                'questions': 0,
+                'labels': 0
+            }
+            
+            # Count different element types
+            structure['forms'] = await self.page.locator('form').count()
+            structure['inputs'] = await self.page.locator('input').count()
+            structure['buttons'] = await self.page.locator('button').count()
+            structure['questions'] = await self.page.locator('[class*="question"], [id*="question"], h1, h2, h3').count()
+            structure['labels'] = await self.page.locator('label').count()
+            
+            return structure
+            
+        except Exception as e:
+            print(f"⚠️ Page structure analysis failed: {e}")
+            return {}
+
+    async def _detect_question_type_from_dom(self) -> str:
+        """Detect question type based on DOM structure"""
+        try:
+            # Check for radio buttons
+            radio_count = await self.page.locator('input[type="radio"]').count()
+            if radio_count > 0:
+                return 'radio'
+            
+            # Check for checkboxes
+            checkbox_count = await self.page.locator('input[type="checkbox"]').count()
+            if checkbox_count > 0:
+                return 'checkbox'
+            
+            # Check for text inputs (including number inputs and inputs without type)
+            text_count = await self.page.locator('input[type="text"], input[type="number"], input:not([type]), textarea').count()
+            if text_count > 0:
+                return 'text'
+            
+            # Check for welcome/intro pages (no inputs, just text and continue button)
+            button_count = await self.page.locator('button, input[type="submit"]').count()
+            if button_count > 0 and radio_count == 0 and checkbox_count == 0 and text_count == 0:
+                return 'welcome'
+            
+            return 'unknown'
+            
+        except Exception as e:
+            print(f"⚠️ Question type detection failed: {e}")
+            return 'unknown'
+
+    async def _extract_question_from_html(self, html_content: str) -> Dict[str, Any]:
+        """Extract question information from HTML content"""
+        try:
+            import re
+            
+            question_info = {
+                'type': 'unknown',
+                'text': '',
+                'options': [],
+                'inputs': []
+            }
+            
+            # Extract question text
+            question_patterns = [
+                r'<h[1-6][^>]*>(.*?)</h[1-6]>',
+                r'<div[^>]*class="[^"]*question[^"]*"[^>]*>(.*?)</div>',
+                r'<p[^>]*>(.*?\?)</p>'
+            ]
+            
+            for pattern in question_patterns:
+                matches = re.findall(pattern, html_content, re.IGNORECASE | re.DOTALL)
+                if matches:
+                    question_info['text'] = matches[0].strip()
+                    break
+            
+            # Extract input elements
+            input_patterns = [
+                r'<input[^>]*type="radio"[^>]*>',
+                r'<input[^>]*type="checkbox"[^>]*>',
+                r'<input[^>]*type="text"[^>]*>',
+                r'<textarea[^>]*>'
+            ]
+            
+            for pattern in input_patterns:
+                matches = re.findall(pattern, html_content, re.IGNORECASE)
+                if matches:
+                    question_info['inputs'].extend(matches)
+            
+            # Determine type based on inputs
+            if any('type="radio"' in inp for inp in question_info['inputs']):
+                question_info['type'] = 'radio'
+            elif any('type="checkbox"' in inp for inp in question_info['inputs']):
+                question_info['type'] = 'checkbox'
+            elif any('type="text"' in inp or 'textarea' in inp for inp in question_info['inputs']):
+                question_info['type'] = 'text'
+            elif not question_info['inputs']:
+                question_info['type'] = 'welcome'
+            
+            return question_info
+            
+        except Exception as e:
+            print(f"⚠️ HTML extraction failed: {e}")
+            return {'type': 'unknown', 'text': '', 'options': [], 'inputs': []}
+
+    async def _handle_radio_question_dom(self) -> bool:
+        """Handle radio button questions using DOM analysis"""
+        try:
+            print("🎯 Handling radio question via DOM...")
+            
+            # Find all radio buttons
+            radio_buttons = self.page.locator('input[type="radio"]')
+            count = await radio_buttons.count()
+            
+            if count == 0:
+                print("⚠️ No radio buttons found")
+                return False
+            
+            print(f"🎯 Found {count} radio buttons")
+            
+            # Get associated labels
+            labels = self.page.locator('label')
+            label_count = await labels.count()
+            
+            # Select a random radio button
+            random_index = random.randint(0, count - 1)
+            selected_radio = radio_buttons.nth(random_index)
+            
+            # Try to click the radio button directly
+            try:
+                await selected_radio.click()
+                print("✅ Radio button clicked directly")
+            except Exception:
+                # Try clicking associated label
+                try:
+                    radio_id = await selected_radio.get_attribute('id')
+                    if radio_id:
+                        label = self.page.locator(f'label[for="{radio_id}"]')
+                        if await label.count() > 0:
+                            await label.click()
+                            print("✅ Radio button clicked via label")
+                        else:
+                            # Click the radio button with force
+                            await selected_radio.click(force=True)
+                            print("✅ Radio button clicked with force")
+                except Exception as e:
+                    print(f"⚠️ Radio button click failed: {e}")
+                    return False
+            
+            return await self._submit_question()
+            
+        except Exception as e:
+            print(f"❌ Radio question handling failed: {e}")
+            return False
+
+    async def _handle_checkbox_question_dom(self) -> bool:
+        """Handle checkbox questions using DOM analysis"""
+        try:
+            print("🎯 Handling checkbox question via DOM...")
+            
+            # Find all checkboxes
+            checkboxes = self.page.locator('input[type="checkbox"]')
+            count = await checkboxes.count()
+            
+            if count == 0:
+                print("⚠️ No checkboxes found")
+                return False
+            
+            print(f"🎯 Found {count} checkboxes")
+            
+            # Select 1-3 random checkboxes
+            num_to_select = min(random.randint(1, 3), count)
+            selected_indices = random.sample(range(count), num_to_select)
+            
+            for idx in selected_indices:
+                checkbox = checkboxes.nth(idx)
+                try:
+                    await checkbox.click()
+                    print(f"✅ Checkbox {idx + 1} selected")
+                except Exception:
+                    # Try clicking associated label
+                    try:
+                        checkbox_id = await checkbox.get_attribute('id')
+                        if checkbox_id:
+                            label = self.page.locator(f'label[for="{checkbox_id}"]')
+                            if await label.count() > 0:
+                                await label.click()
+                                print(f"✅ Checkbox {idx + 1} selected via label")
+                    except Exception as e:
+                        print(f"⚠️ Checkbox {idx + 1} selection failed: {e}")
+            
+            return await self._submit_question()
+            
+        except Exception as e:
+            print(f"❌ Checkbox question handling failed: {e}")
+            return False
+
+    async def _handle_text_question_dom(self) -> bool:
+        """Handle text input questions using DOM analysis"""
+        try:
+            print("🎯 Handling text question via DOM...")
+            
+            # Find text inputs (including number inputs and inputs without type)
+            text_inputs = self.page.locator('input[type="text"], input[type="number"], input:not([type]), textarea')
+            count = await text_inputs.count()
+            
+            if count == 0:
+                print("⚠️ No text inputs found")
+                return False
+            
+            print(f"🎯 Found {count} text inputs")
+            
+            # Get question text for context
+            question_text = await self._get_question_text()
+            
+            for i in range(count):
+                text_input = text_inputs.nth(i)
+                try:
+                    # Generate appropriate response based on question type
+                    if 'age' in question_text.lower() or 'years old' in question_text.lower():
+                        if self.persona and 'about_you' in self.persona:
+                            age = self.persona['about_you'].get('age', 25)
+                            response = str(age)
+                        else:
+                            response = str(random.randint(25, 55))
+                        print(f"🎂 Age response: {response}")
+                    elif 'email' in question_text.lower():
+                        response = "test@example.com"
+                    elif 'zip' in question_text.lower() or 'postal' in question_text.lower():
+                        response = "90210"
+                    else:
+                        response = await self.generate_open_ended_response(question_text)
+                    
+                    await text_input.fill(response)
+                    print(f"✅ Text input {i + 1} filled: {response[:20]}...")
+                except Exception as e:
+                    print(f"⚠️ Text input {i + 1} filling failed: {e}")
+            
+            return await self._submit_question()
+            
+        except Exception as e:
+            print(f"❌ Text question handling failed: {e}")
+            return False
+
+    async def _handle_welcome_page_dom(self) -> bool:
+        """Handle welcome/intro pages using DOM analysis"""
+        try:
+            print("🎯 Handling welcome page via DOM...")
+            
+            # Look for continue/submit buttons
+            button_selectors = [
+                'button:has-text("Continue")',
+                'button:has-text("Next")',
+                'button:has-text("Start")',
+                'input[value="Continue"]',
+                'input[value="Next"]',
+                'input[value="Start"]',
+                'button[type="submit"]',
+                'input[type="submit"]'
+            ]
+            
+            for selector in button_selectors:
+                try:
+                    button = self.page.locator(selector).first
+                    if await button.count() > 0:
+                        await button.click()
+                        print(f"✅ Welcome page continued via {selector}")
+                        return True
+                except Exception:
+                    continue
+            
+            print("⚠️ No continue button found on welcome page")
+            return False
+            
+        except Exception as e:
+            print(f"❌ Welcome page handling failed: {e}")
+            return False
+
+    async def _submit_question(self) -> bool:
+        """Submit the current question using multiple methods"""
+        try:
+            print("🚀 Submitting question...")
+            
+            # Try multiple submit methods
+            submit_methods = [
+                self._submit_via_button_click,
+                self._submit_via_form_submit,
+                self._submit_via_enter_key,
+                self._submit_via_javascript
+            ]
+            
+            for method in submit_methods:
+                try:
+                    if await method():
+                        return True
+                except Exception as e:
+                    print(f"⚠️ Submit method {method.__name__} failed: {e}")
+                    continue
+            
+            print("❌ All submit methods failed")
+            return False
+            
+        except Exception as e:
+            print(f"❌ Question submission failed: {e}")
+            return False
+
+    async def _submit_via_button_click(self) -> bool:
+        """Submit via button click"""
+        try:
+            button_selectors = [
+                'button:has-text("Continue")',
+                'button:has-text("Next")',
+                'button:has-text("Submit")',
+                'input[value="Continue"]',
+                'input[value="Next"]',
+                'input[value="Submit"]',
+                'button[type="submit"]',
+                'input[type="submit"]'
+            ]
+            
+            for selector in button_selectors:
+                try:
+                    button = self.page.locator(selector).first
+                    if await button.count() > 0:
+                        await button.click()
+                        print(f"✅ Submitted via button: {selector}")
+                        await asyncio.sleep(random.uniform(1, 3))
+                        return True
+                except Exception:
+                    continue
+            
+            return False
+            
+        except Exception as e:
+            print(f"⚠️ Button submit failed: {e}")
+            return False
+
+    async def _submit_via_form_submit(self) -> bool:
+        """Submit via form submission"""
+        try:
+            # Find and submit the form
+            form = self.page.locator('form').first
+            if await form.count() > 0:
+                await form.evaluate('form => form.submit()')
+                print("✅ Submitted via form submission")
+                await asyncio.sleep(random.uniform(1, 3))
+                return True
+            
+            return False
+            
+        except Exception as e:
+            print(f"⚠️ Form submit failed: {e}")
+            return False
+
+    async def _submit_via_enter_key(self) -> bool:
+        """Submit via Enter key press"""
+        try:
+            # Press Enter on the page
+            await self.page.keyboard.press('Enter')
+            print("✅ Submitted via Enter key")
+            await asyncio.sleep(random.uniform(1, 3))
+            return True
+            
+        except Exception as e:
+            print(f"⚠️ Enter key submit failed: {e}")
+            return False
+
+    async def _submit_via_javascript(self) -> bool:
+        """Submit via JavaScript"""
+        try:
+            # Try various JavaScript submit methods
+            js_methods = [
+                'if (typeof SSI_SubmitMe === "function") { SSI_SubmitMe(); return true; }',
+                'if (document.forms && document.forms.length) { document.forms[0].submit(); return true; }',
+                'if (typeof submitForm === "function") { submitForm(); return true; }',
+                'if (typeof nextQuestion === "function") { nextQuestion(); return true; }'
+            ]
+            
+            for js_method in js_methods:
+                try:
+                    result = await self.page.evaluate(js_method)
+                    if result:
+                        print("✅ Submitted via JavaScript")
+                        await asyncio.sleep(random.uniform(1, 3))
+                        return True
+                except Exception:
+                    continue
+            
+            return False
+            
+        except Exception as e:
+            print(f"⚠️ JavaScript submit failed: {e}")
+            return False
+
+    async def _get_question_text(self) -> str:
+        """Get the current question text"""
+        try:
+            question_selectors = [
+                'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+                '.question-text',
+                '.survey-question',
+                '[class*="question"]',
+                'p:contains("?")',
+                'div:contains("?")'
+            ]
+            
+            for selector in question_selectors:
+                try:
+                    element = self.page.locator(selector).first
+                    if await element.count() > 0:
+                        text = await element.text_content()
+                        if text and text.strip():
+                            return text.strip()
+                except Exception:
+                    continue
+            
+            return "Generic question"
+            
+        except Exception as e:
+            print(f"⚠️ Question text extraction failed: {e}")
+            return "Generic question"
+
+    async def _submit_with_generic_methods(self) -> bool:
+        """Submit using generic methods"""
+        try:
+            # Try multiple generic submit approaches
+            methods = [
+                self._submit_via_button_click,
+                self._submit_via_form_submit,
+                self._submit_via_enter_key,
+                self._submit_via_javascript
+            ]
+            
+            for method in methods:
+                try:
+                    if await method():
+                        return True
+                except Exception:
+                    continue
+            
+            return False
+            
+        except Exception as e:
+            print(f"⚠️ Generic submit failed: {e}")
+            return False
+
+    async def _handle_radio_from_html(self, question_info: Dict[str, Any]) -> bool:
+        """Handle radio questions based on HTML analysis"""
+        try:
+            print("🎯 Handling radio question from HTML analysis...")
+            
+            # Find radio buttons using DOM
+            radio_buttons = self.page.locator('input[type="radio"]')
+            count = await radio_buttons.count()
+            
+            if count == 0:
+                print("⚠️ No radio buttons found in DOM")
+                return False
+            
+            # Select random radio button
+            random_index = random.randint(0, count - 1)
+            selected_radio = radio_buttons.nth(random_index)
+            
+            try:
+                await selected_radio.click()
+                print("✅ Radio button selected from HTML analysis")
+            except Exception:
+                # Try clicking associated label
+                try:
+                    radio_id = await selected_radio.get_attribute('id')
+                    if radio_id:
+                        label = self.page.locator(f'label[for="{radio_id}"]')
+                        if await label.count() > 0:
+                            await label.click()
+                            print("✅ Radio button selected via label")
+                except Exception as e:
+                    print(f"⚠️ Radio button selection failed: {e}")
+                    return False
+            
+            return await self._submit_question()
+            
+        except Exception as e:
+            print(f"❌ Radio from HTML failed: {e}")
+            return False
+
+    async def _handle_checkbox_from_html(self, question_info: Dict[str, Any]) -> bool:
+        """Handle checkbox questions based on HTML analysis"""
+        try:
+            print("🎯 Handling checkbox question from HTML analysis...")
+            
+            # Find checkboxes using DOM
+            checkboxes = self.page.locator('input[type="checkbox"]')
+            count = await checkboxes.count()
+            
+            if count == 0:
+                print("⚠️ No checkboxes found in DOM")
+                return False
+            
+            # Select 1-3 random checkboxes
+            num_to_select = min(random.randint(1, 3), count)
+            selected_indices = random.sample(range(count), num_to_select)
+            
+            for idx in selected_indices:
+                checkbox = checkboxes.nth(idx)
+                try:
+                    await checkbox.click()
+                    print(f"✅ Checkbox {idx + 1} selected from HTML analysis")
+                except Exception:
+                    # Try clicking associated label
+                    try:
+                        checkbox_id = await checkbox.get_attribute('id')
+                        if checkbox_id:
+                            label = self.page.locator(f'label[for="{checkbox_id}"]')
+                            if await label.count() > 0:
+                                await label.click()
+                                print(f"✅ Checkbox {idx + 1} selected via label")
+                    except Exception as e:
+                        print(f"⚠️ Checkbox {idx + 1} selection failed: {e}")
+            
+            return await self._submit_question()
+            
+        except Exception as e:
+            print(f"❌ Checkbox from HTML failed: {e}")
+            return False
+
+    async def _handle_text_from_html(self, question_info: Dict[str, Any]) -> bool:
+        """Handle text questions based on HTML analysis"""
+        try:
+            print("🎯 Handling text question from HTML analysis...")
+            
+            # Find text inputs using DOM
+            text_inputs = self.page.locator('input[type="text"], textarea')
+            count = await text_inputs.count()
+            
+            if count == 0:
+                print("⚠️ No text inputs found in DOM")
+                return False
+            
+            # Get question text for context
+            question_text = question_info.get('text', 'Generic question')
+            
+            for i in range(count):
+                text_input = text_inputs.nth(i)
+                try:
+                    # Generate appropriate response
+                    response = await self.generate_open_ended_response(question_text)
+                    await text_input.fill(response)
+                    print(f"✅ Text input {i + 1} filled from HTML analysis: {response[:20]}...")
+                except Exception as e:
+                    print(f"⚠️ Text input {i + 1} filling failed: {e}")
+            
+            return await self._submit_question()
+            
+        except Exception as e:
+            print(f"❌ Text from HTML failed: {e}")
+            return False
+
+    async def _handle_welcome_from_html(self, question_info: Dict[str, Any]) -> bool:
+        """Handle welcome pages based on HTML analysis"""
+        try:
+            print("🎯 Handling welcome page from HTML analysis...")
+            
+            # Look for continue/submit buttons
+            button_selectors = [
+                'button:has-text("Continue")',
+                'button:has-text("Next")',
+                'button:has-text("Start")',
+                'input[value="Continue"]',
+                'input[value="Next"]',
+                'input[value="Start"]',
+                'button[type="submit"]',
+                'input[type="submit"]'
+            ]
+            
+            for selector in button_selectors:
+                try:
+                    button = self.page.locator(selector).first
+                    if await button.count() > 0:
+                        await button.click()
+                        print(f"✅ Welcome page continued from HTML analysis via {selector}")
+                        return True
+                except Exception:
+                    continue
+            
+            print("⚠️ No continue button found on welcome page")
+            return False
+            
+        except Exception as e:
+            print(f"❌ Welcome from HTML failed: {e}")
+            return False
+
+    async def _detect_question_elements_vision(self, screenshot) -> List[Dict[str, Any]]:
+        """Detect question elements using vision (placeholder for future implementation)"""
+        try:
+            # This is a placeholder for vision-based detection
+            # In a real implementation, you would use OCR or computer vision APIs
+            print("🔍 Vision-based detection not implemented yet")
+            return []
+            
+        except Exception as e:
+            print(f"⚠️ Vision detection failed: {e}")
+            return []
+
+    async def _handle_question_with_vision(self, question_elements: List[Dict[str, Any]]) -> bool:
+        """Handle questions using vision-detected elements (placeholder)"""
+        try:
+            print("🔍 Vision-based question handling not implemented yet")
+            return False
+            
+        except Exception as e:
+            print(f"⚠️ Vision-based handling failed: {e}")
+            return False
+
+    async def handle_quantilope_survey(self) -> bool:
+        """Handle Quantilope surveys with dynamic content loading"""
+        try:
+            print("🎯 Handling Quantilope survey...")
+            
+            # Wait for React app to fully load
+            await self._wait_for_react_app_ready()
+            
+            # Use the multi-method approach with Quantilope-specific handling
+            return await self._handle_quantilope_question()
+            
+        except Exception as e:
+            print(f"❌ Error handling Quantilope survey: {e}")
+            return False
+
+    async def _wait_for_react_app_ready(self):
+        """Wait for React app to be fully loaded and ready"""
+        try:
+            print("⏳ Waiting for React app to load...")
+            
+            # Wait for the root div to have content
+            await self.page.wait_for_function(
+                "() => document.getElementById('root') && document.getElementById('root').children.length > 0",
+                timeout=30000
+            )
+            
+            # Wait for any loading states to disappear
+            await self.page.wait_for_function(
+                "() => !document.querySelector('[class*=\"loading\"], [class*=\"spinner\"], [class*=\"Loading\"]')",
+                timeout=15000
+            )
+            
+            # Additional wait for dynamic content
+            await asyncio.sleep(3)
+            
+            print("✅ React app appears ready")
+            
+        except Exception as e:
+            print(f"⚠️ React app wait failed: {e}")
+            # Continue anyway, the app might still work
+
+    async def _handle_quantilope_question(self) -> bool:
+        """Handle Quantilope survey questions"""
+        try:
+            print("🔍 Analyzing Quantilope question...")
+            
+            # Wait for question content to be visible
+            await self.page.wait_for_function(
+                "() => document.querySelector('h1, h2, h3, [class*=\"question\"], [class*=\"Question\"]')",
+                timeout=10000
+            )
+            
+            # Get question text
+            question_text = await self._get_quantilope_question_text()
+            print(f"📝 Question: {question_text[:100]}...")
+            
+            # Detect question type and handle accordingly
+            question_type = await self._detect_quantilope_question_type()
+            print(f"🎯 Question type: {question_type}")
+            
+            if question_type == 'checkbox':
+                return await self._handle_quantilope_checkbox_question()
+            elif question_type == 'radio':
+                return await self._handle_quantilope_radio_question()
+            elif question_type == 'text':
+                return await self._handle_quantilope_text_question()
+            elif question_type == 'slider':
+                return await self._handle_quantilope_slider_question()
+            else:
+                print(f"⚠️ Unknown Quantilope question type: {question_type}")
+                return await self._handle_quantilope_generic_question()
+                
+        except Exception as e:
+            print(f"❌ Quantilope question handling failed: {e}")
+            return False
+
+    async def _get_quantilope_question_text(self) -> str:
+        """Extract question text from Quantilope survey"""
+        try:
+            # Try multiple selectors for question text
+            question_selectors = [
+                'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+                '[class*="question"]',
+                '[class*="Question"]',
+                '[class*="title"]',
+                '[class*="Title"]',
+                '[class*="heading"]',
+                '[class*="Heading"]',
+                'p:contains("?")',
+                'div:contains("?")'
+            ]
+            
+            for selector in question_selectors:
+                try:
+                    element = self.page.locator(selector).first
+                    if await element.count() > 0:
+                        text = await element.text_content()
+                        if text and text.strip() and len(text.strip()) > 5:
+                            return text.strip()
+                except Exception:
+                    continue
+            
+            # Fallback: look for any text that might be a question
+            try:
+                page_text = await self.page.text_content('body')
+                lines = page_text.split('\n')
+                for line in lines:
+                    line = line.strip()
+                    if (len(line) > 10 and 
+                        any(qword in line.lower() for qword in ['select', 'choose', 'please', 'what', 'how', 'which', '?']) and
+                        not any(skip in line.lower() for skip in ['loading', 'please wait', 'error'])):
+                        return line
+            except Exception:
+                pass
+            
+            return "Quantilope question"
+            
+        except Exception as e:
+            print(f"⚠️ Question text extraction failed: {e}")
+            return "Quantilope question"
+
+    async def _detect_quantilope_question_type(self) -> str:
+        """Detect the type of Quantilope question"""
+        try:
+            # Check for checkboxes (multiple choice)
+            if await self.page.locator('input[type="checkbox"], [class*="checkbox"], [class*="Checkbox"]').count() > 0:
+                return 'checkbox'
+            
+            # Check for radio buttons (single choice)
+            if await self.page.locator('input[type="radio"], [class*="radio"], [class*="Radio"]').count() > 0:
+                return 'radio'
+            
+            # Check for text inputs
+            if await self.page.locator('input[type="text"], textarea, [class*="text"], [class*="Text"]').count() > 0:
+                return 'text'
+            
+            # Check for sliders
+            if await self.page.locator('input[type="range"], [class*="slider"], [class*="Slider"]').count() > 0:
+                return 'slider'
+            
+            # Check for custom interactive elements
+            if await self.page.locator('[class*="option"], [class*="Option"], [class*="choice"], [class*="Choice"]').count() > 0:
+                return 'custom'
+            
+            return 'unknown'
+            
+        except Exception as e:
+            print(f"⚠️ Question type detection failed: {e}")
+            return 'unknown'
+
+    async def _handle_quantilope_checkbox_question(self) -> bool:
+        """Handle Quantilope checkbox questions"""
+        try:
+            print("🎯 Handling Quantilope checkbox question...")
+            
+            # Find all checkbox options
+            checkbox_selectors = [
+                'input[type="checkbox"]',
+                '[class*="checkbox"]',
+                '[class*="Checkbox"]',
+                '[class*="option"]',
+                '[class*="Option"]',
+                '[class*="choice"]',
+                '[class*="Choice"]'
+            ]
+            
+            checkboxes = []
+            for selector in checkbox_selectors:
+                try:
+                    elements = self.page.locator(selector)
+                    count = await elements.count()
+                    if count > 0:
+                        checkboxes = elements
+                        print(f"🎯 Found {count} checkbox options")
+                        break
+                except Exception:
+                    continue
+            
+            if not checkboxes:
+                print("⚠️ No checkbox options found")
+                return False
+            
+            # Select 1-3 random checkboxes
+            count = await checkboxes.count()
+            num_to_select = min(random.randint(1, 3), count)
+            selected_indices = random.sample(range(count), num_to_select)
+            
+            for idx in selected_indices:
+                try:
+                    checkbox = checkboxes.nth(idx)
+                    await checkbox.click()
+                    print(f"✅ Checkbox {idx + 1} selected")
+                    await asyncio.sleep(random.uniform(0.5, 1.5))
+                except Exception as e:
+                    print(f"⚠️ Checkbox {idx + 1} selection failed: {e}")
+            
+            return await self._submit_quantilope_question()
+            
+        except Exception as e:
+            print(f"❌ Quantilope checkbox handling failed: {e}")
+            return False
+
+    async def _handle_quantilope_radio_question(self) -> bool:
+        """Handle Quantilope radio button questions"""
+        try:
+            print("🎯 Handling Quantilope radio question...")
+            
+            # Find all radio options
+            radio_selectors = [
+                'input[type="radio"]',
+                '[class*="radio"]',
+                '[class*="Radio"]',
+                '[class*="option"]',
+                '[class*="Option"]',
+                '[class*="choice"]',
+                '[class*="Choice"]'
+            ]
+            
+            radio_buttons = []
+            for selector in radio_selectors:
+                try:
+                    elements = self.page.locator(selector)
+                    count = await elements.count()
+                    if count > 0:
+                        radio_buttons = elements
+                        print(f"🎯 Found {count} radio options")
+                        break
+                except Exception:
+                    continue
+            
+            if not radio_buttons:
+                print("⚠️ No radio options found")
+                return False
+            
+            # Select a random radio button
+            count = await radio_buttons.count()
+            random_index = random.randint(0, count - 1)
+            selected_radio = radio_buttons.nth(random_index)
+            
+            try:
+                await selected_radio.click()
+                print("✅ Radio button selected")
+                await asyncio.sleep(random.uniform(0.5, 1.5))
+            except Exception as e:
+                print(f"⚠️ Radio button selection failed: {e}")
+                return False
+            
+            return await self._submit_quantilope_question()
+            
+        except Exception as e:
+            print(f"❌ Quantilope radio handling failed: {e}")
+            return False
+
+    async def _handle_quantilope_text_question(self) -> bool:
+        """Handle Quantilope text input questions"""
+        try:
+            print("🎯 Handling Quantilope text question...")
+            
+            # Find text inputs
+            text_selectors = [
+                'input[type="text"]',
+                'textarea',
+                '[class*="text"]',
+                '[class*="Text"]',
+                '[class*="input"]',
+                '[class*="Input"]'
+            ]
+            
+            text_inputs = []
+            for selector in text_selectors:
+                try:
+                    elements = self.page.locator(selector)
+                    count = await elements.count()
+                    if count > 0:
+                        text_inputs = elements
+                        print(f"🎯 Found {count} text inputs")
+                        break
+                except Exception:
+                    continue
+            
+            if not text_inputs:
+                print("⚠️ No text inputs found")
+                return False
+            
+            # Get question text for context
+            question_text = await self._get_quantilope_question_text()
+            
+            # Fill all text inputs
+            count = await text_inputs.count()
+            for i in range(count):
+                try:
+                    text_input = text_inputs.nth(i)
+                    response = await self.generate_open_ended_response(question_text)
+                    await text_input.fill(response)
+                    print(f"✅ Text input {i + 1} filled: {response[:20]}...")
+                    await asyncio.sleep(random.uniform(0.5, 1.5))
+                except Exception as e:
+                    print(f"⚠️ Text input {i + 1} filling failed: {e}")
+            
+            return await self._submit_quantilope_question()
+            
+        except Exception as e:
+            print(f"❌ Quantilope text handling failed: {e}")
+            return False
+
+    async def _handle_quantilope_slider_question(self) -> bool:
+        """Handle Quantilope slider questions"""
+        try:
+            print("🎯 Handling Quantilope slider question...")
+            
+            # Find sliders
+            slider_selectors = [
+                'input[type="range"]',
+                '[class*="slider"]',
+                '[class*="Slider"]',
+                '[class*="scale"]',
+                '[class*="Scale"]'
+            ]
+            
+            sliders = []
+            for selector in slider_selectors:
+                try:
+                    elements = self.page.locator(selector)
+                    count = await elements.count()
+                    if count > 0:
+                        sliders = elements
+                        print(f"🎯 Found {count} sliders")
+                        break
+                except Exception:
+                    continue
+            
+            if not sliders:
+                print("⚠️ No sliders found")
+                return False
+            
+            # Move sliders to random positions
+            count = await sliders.count()
+            for i in range(count):
+                try:
+                    slider = sliders.nth(i)
+                    # Get slider range
+                    min_val = await slider.get_attribute('min') or '0'
+                    max_val = await slider.get_attribute('max') or '100'
+                    
+                    # Choose random value
+                    min_val = int(min_val)
+                    max_val = int(max_val)
+                    random_value = random.randint(min_val, max_val)
+                    
+                    # Set slider value
+                    await slider.fill(str(random_value))
+                    print(f"✅ Slider {i + 1} set to {random_value}")
+                    await asyncio.sleep(random.uniform(0.5, 1.5))
+                except Exception as e:
+                    print(f"⚠️ Slider {i + 1} setting failed: {e}")
+            
+            return await self._submit_quantilope_question()
+            
+        except Exception as e:
+            print(f"❌ Quantilope slider handling failed: {e}")
+            return False
+
+    async def _handle_quantilope_generic_question(self) -> bool:
+        """Handle Quantilope questions with unknown type"""
+        try:
+            print("🎯 Handling Quantilope generic question...")
+            
+            # Try to find any clickable elements
+            clickable_selectors = [
+                '[class*="button"]',
+                '[class*="Button"]',
+                '[class*="option"]',
+                '[class*="Option"]',
+                '[class*="choice"]',
+                '[class*="Choice"]',
+                '[class*="item"]',
+                '[class*="Item"]',
+                'button',
+                'a',
+                '[role="button"]'
+            ]
+            
+            for selector in clickable_selectors:
+                try:
+                    elements = self.page.locator(selector)
+                    count = await elements.count()
+                    if count > 0:
+                        print(f"🎯 Found {count} clickable elements with {selector}")
+                        
+                        # Click a random element
+                        random_index = random.randint(0, count - 1)
+                        element = elements.nth(random_index)
+                        await element.click()
+                        print(f"✅ Clicked element {random_index + 1}")
+                        await asyncio.sleep(random.uniform(0.5, 1.5))
+                        break
+                except Exception:
+                    continue
+            
+            return await self._submit_quantilope_question()
+            
+        except Exception as e:
+            print(f"❌ Quantilope generic handling failed: {e}")
+            return False
+
+    async def _submit_quantilope_question(self) -> bool:
+        """Submit Quantilope question using multiple methods"""
+        try:
+            print("🚀 Submitting Quantilope question...")
+            
+            # Try multiple submit methods
+            submit_methods = [
+                self._submit_quantilope_via_button,
+                self._submit_quantilope_via_javascript,
+                self._submit_quantilope_via_enter_key
+            ]
+            
+            for method in submit_methods:
+                try:
+                    if await method():
+                        return True
+                except Exception as e:
+                    print(f"⚠️ Submit method {method.__name__} failed: {e}")
+                    continue
+            
+            print("❌ All Quantilope submit methods failed")
+            return False
+            
+        except Exception as e:
+            print(f"❌ Quantilope submission failed: {e}")
+            return False
+
+    async def _submit_quantilope_via_button(self) -> bool:
+        """Submit via Quantilope-specific buttons"""
+        try:
+            button_selectors = [
+                'button:has-text("Next")',
+                'button:has-text("Continue")',
+                'button:has-text("Submit")',
+                'button:has-text("Proceed")',
+                '[class*="next"]',
+                '[class*="Next"]',
+                '[class*="continue"]',
+                '[class*="Continue"]',
+                '[class*="submit"]',
+                '[class*="Submit"]',
+                '[class*="button"]',
+                '[class*="Button"]'
+            ]
+            
+            for selector in button_selectors:
+                try:
+                    button = self.page.locator(selector).first
+                    if await button.count() > 0:
+                        await button.click()
+                        print(f"✅ Submitted via button: {selector}")
+                        await asyncio.sleep(random.uniform(1, 3))
+                        return True
+                except Exception:
+                    continue
+            
+            return False
+            
+        except Exception as e:
+            print(f"⚠️ Button submit failed: {e}")
+            return False
+
+    async def _submit_quantilope_via_javascript(self) -> bool:
+        """Submit via JavaScript methods"""
+        try:
+            # Try various JavaScript submit methods
+            js_methods = [
+                'if (typeof nextQuestion === "function") { nextQuestion(); return true; }',
+                'if (typeof submitAnswer === "function") { submitAnswer(); return true; }',
+                'if (typeof continueToNext === "function") { continueToNext(); return true; }',
+                'if (document.querySelector("[class*=\"next\"]")) { document.querySelector("[class*=\"next\"]").click(); return true; }',
+                'if (document.querySelector("[class*=\"continue\"]")) { document.querySelector("[class*=\"continue\"]").click(); return true; }'
+            ]
+            
+            for js_method in js_methods:
+                try:
+                    result = await self.page.evaluate(js_method)
+                    if result:
+                        print("✅ Submitted via JavaScript")
+                        await asyncio.sleep(random.uniform(1, 3))
+                        return True
+                except Exception:
+                    continue
+            
+            return False
+            
+        except Exception as e:
+            print(f"⚠️ JavaScript submit failed: {e}")
+            return False
+
+    async def _submit_quantilope_via_enter_key(self) -> bool:
+        """Submit via Enter key press"""
+        try:
+            await self.page.keyboard.press('Enter')
+            print("✅ Submitted via Enter key")
+            await asyncio.sleep(random.uniform(1, 3))
+            return True
+            
+        except Exception as e:
+            print(f"⚠️ Enter key submit failed: {e}")
+            return False
 
 
 async def main():

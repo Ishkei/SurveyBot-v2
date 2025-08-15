@@ -22,6 +22,210 @@
     "language": "English",
     "timezone": "PST"
   },
+  "work": {
+    "employment_status": "Full-time employed",
+    "employment_contract": "Permanent",
+    "company_industry": "Technology",
+    "company_revenue_range": "$10M - $50M",
+    "company_employee_range": "50-199 employees",
+    "company_department": "Engineering",
+    "job_title": "Software Developer",
+    "personal_income_before_taxes": "$50,000 - $75,000",
+    "work_product_purchasing_authority": "Recommendation only",
+    "company_size": "Medium",
+    "industry": "Technology",
+    "company_revenue": "$25M"
+  },
+  "technology": {
+    "smartphone_ownership": "Yes",
+    "primary_mobile_carrier": "T-Mobile",
+    "smartphone_brand": "Samsung",
+    "smartphone_model": "Galaxy S23",
+    "smartphone_operating_system": "Android",
+    "smartphone_operating_system_version": "14",
+    "smartphone_screen_size": "6.1 inches",
+    "smartphone_screen_resolution": "2340 x 1080",
+    "smartphone_screen_technology": "AMOLED",
+    "smartphone_screen_type": "Dynamic AMOLED",
+    "smartphone_screen_protection": "Gorilla Glass",
+    "smartphone_screen_protection_type": "Glass protection",
+    "smartphone_screen_protection_type_details": "Gorilla Glass Victus 2",
+    "smartphone_screen_protection_type_details_details": "Scratch resistant",
+    "smartphone_screen_protection_type_details_details_details": "Drop protection",
+    "owned_electronic_products": ["Samsung Galaxy S23", "MacBook Pro", "iPad Air", "Nintendo Switch", "AirPods"],
+    "early_adopter_of_technology": "Yes",
+    "primary_home_internet_provider": "Spectrum",
+    "home_internet_connection_type": "Cable",
+    "computer_online_frequency": "Daily",
+    "social_media_access_frequency": "Multiple times daily",
+    "mobile_phone_plan_type": "Unlimited"
+  },
+  "gaming": {
+    "plays_video_games": "Yes",
+    "gaming_devices_used": ["PC", "Nintendo Switch", "Mobile"],
+    "weekly_gaming_hours": "10-15 hours",
+    "game_genres_played": ["RPG", "Strategy", "Indie games", "Mobile games"],
+    "online_gaming_habits": "Casual gamer, plays with friends occasionally",
+    "gaming_platforms_used": ["PC", "Nintendo Switch", "Mobile"],
+    "online_multiplayer_gaming": "Yes"
+  },
+  "health": {
+    "smoking_status": "Never smoker",
+    "daily_cigarette_consumption": "0",
+    "smoking_cessation_methods_used": "N/A",
+    "glasses_or_contacts_usage": "Glasses",
+    "hearing_aid_usage": "No",
+    "personal_diagnosed_illnesses": ["Seasonal allergies", "Mild anxiety"],
+    "household_diagnosed_illnesses": ["None"],
+    "diagnosed_ailments_self_or_care_recipient": ["Seasonal allergies"],
+    "neurologic_nervous_conditions_self_care": ["None"],
+    "autoimmune_blood_conditions_self_care": ["None"],
+    "pain_conditions_self_care": ["Occasional back pain from sitting"],
+    "arthritis_joint_ailments_self_care": ["None"],
+    "mental_health_conditions_self_care": ["Mild anxiety"],
+    "diabetes_thyroid_obesity_conditions_self_care": ["None"],
+    "vision_hearing_impairments_self_care": ["Mild nearsightedness"],
+    "allergy_asthma_respiratory_conditions_self_care": ["Seasonal allergies"],
+    "sleep_disorders_self_care": ["Occasional insomnia"],
+    "dental_conditions_self_care": ["None"],
+    "gastric_digestive_urinary_conditions_self_care": ["None"],
+    "male_female_health_conditions_self_care": ["None"],
+    "cardiovascular_heart_conditions_self_care": ["None"],
+    "skin_dermatologic_conditions_self_care": ["None"],
+    "cancer_conditions_self_care": ["None"],
+    "addiction_conditions_self_care": ["None"]
+  },
+  "shopping": {
+    "daily_purchasing_decision_maker": "Primary decision maker",
+    "grocery_purchase_decision_maker": "Solo",
+    "recent_or_intended_purchases": ["New laptop", "Gaming accessories", "Home office equipment", "Workout gear"],
+    "recent_grocery_purchases": ["Protein bars", "Coffee", "Frozen meals", "Snacks", "Energy drinks"]
+  },
+  "food_and_drinks": {
+    "alcohol_consumption": "Occasionally (1-2 times per month)",
+    "beverage_choices": ["Coffee", "Energy drinks", "Water", "Tea", "Protein shakes"],
+    "fast_food_preferences": ["Chipotle", "In-N-Out", "Subway", "Pizza places"]
+  },
+  "leisure": {
+    "hobbies_and_interests": ["Programming", "Gaming", "Reading", "Hiking", "Weightlifting", "Photography"],
+    "sports_participation": ["Weightlifting", "Hiking", "Basketball", "Running"],
+    "weekly_exercise_hours": "4-6 hours",
+    "weekly_tv_hours": "5-8 hours",
+    "weekly_radio_hours": "1-2 hours",
+    "gambling_participation": "Never",
+    "publications_read": ["TechCrunch", "Wired", "The Verge", "Reddit", "Stack Overflow"]
+  },
+  "automotive": {
+    "car_ownership": "Yes",
+    "vehicle_type": "Sedan",
+    "vehicle_condition": "Used",
+    "vehicle_year": "2018",
+    "household_purchase_influence": "Primary decision maker",
+    "future_purchase_plan": "Within 3-5 years",
+    "motorcycle_ownership": "No"
+  },
+  "media": {
+    "movie_theatre_frequency": "1-2 times per month",
+    "movie_genres_watched": ["Action", "Sci-Fi", "Comedy", "Drama", "Documentary"],
+    "home_movie_download_access": "Yes",
+    "home_movie_rental_download_frequency": "Weekly"
+  },
+  "home": {
+    "marital_status": "Single",
+    "children": "0",
+    "children_details": [],
+    "household_size": "1",
+    "living_situation": "Apartment",
+    "home_value": "N/A (renting)",
+    "household_income": "$50,000 - $75,000",
+    "household_income_range": "$50,000 - $75,000",
+    "household_investable_assets": "$10,000 - $49,999",
+    "pets_in_household": ["None"],
+    "household_decision_responsibilities": ["All personal decisions", "Financial planning", "Home maintenance"],
+    "household_decision_responsibilities_details": [
+      {
+        "name": "Financial planning",
+        "description": "Budget, savings, investments, major purchases"
+      },
+      {
+        "name": "Home maintenance",
+        "description": "Cleaning, repairs, furniture, decor"
+      }
+    ]
+  },
+  "travel": {
+    "flown_in_last_12_months": "Yes",
+    "air_travel_purpose": ["Vacation", "Business conference", "Family visit"],
+    "flight_types_taken": ["Domestic"],
+    "international_airlines_flown": ["None"],
+    "domestic_airlines_flown": ["Southwest", "Delta", "American Airlines"],
+    "travel_decision_role": "Primary planner",
+    "countries_visited_last_12_months": ["United States only"],
+    "hotels_stayed_at_last_12_months": ["Marriott", "Holiday Inn", "Airbnb"]
+  },
+  "other_demographics": {
+    "political_affiliation": "Independent",
+    "owned_financial_products": ["Savings account", "Credit cards", "401(k)", "Student loans"],
+    "registered_to_vote": "Yes",
+    "fast_food_restaurants_visited": ["Chipotle", "In-N-Out", "Subway", "McDonald's", "Taco Bell"]
+  },
+  "survey_behavior": {
+    "satisfaction_with_life": "Satisfied",
+    "importance_of_family": "Important",
+    "community_involvement": "Minimally involved",
+    "environmental_concern": "Moderately concerned",
+    "technology_influence_on_life": "Very significant influence",
+    "preferred_shopping_method": "Online",
+    "favorite_brands": ["Apple", "Nike", "Samsung", "Amazon", "Target"],
+    "preferred_payment_method": "Credit card",
+    "interest_in_loyalty_programs": "Yes",
+    "career_goals": "Advance to senior developer, learn new technologies",
+    "personal_goals": "Improve fitness, travel more, learn new skills",
+    "financial_goals": "Pay off student loans, build savings, invest",
+    "product_feedback_general": "Always willing to provide detailed feedback",
+    "service_feedback_general": "Provides feedback for good/bad experiences",
+    "website_experience_general": "Prefers fast, intuitive, mobile-friendly interfaces",
+    "preferred_contact_method": "Email",
+    "frequency_of_communication": "Daily",
+    "interest_in_newsletters": "Yes",
+    "data_privacy_concern": "Moderately concerned",
+    "use_of_two_factor_authentication": "Yes",
+    "password_management": "Password manager",
+    "sharing_personal_information": "Selective, only when necessary"
+  },
+  "survey_participation": {
+    "participation_frequency": "2-3 times per month",
+    "preferred_survey_length": "10-15 minutes",
+    "incentives_for_participation": "Gift cards, sweepstakes entries, charitable donations",
+    "feedback_on_surveys": "Enjoys well-designed surveys, dislikes repetitive questions"
+  },
+  "survey_opt_in": {
+    "opt_in_status": "Yes",
+    "preferred_survey_topics": ["Technology", "Gaming", "Consumer products", "Travel", "Entertainment"],
+    "contact_preferences": {
+      "email": true,
+      "phone": false,
+      "text_message": false
+    }
+  },
+  "data_privacy": {
+    "data_collection_agreement": "I agree to participate in surveys and understand my data will be used for research purposes only",
+    "data_sharing_preferences": {
+      "share_with_third_parties": false,
+      "share_with_marketing_partners": false,
+      "share_with_research_organizations": true
+    },
+    "data_access_rights": "Right to access, correct, and delete personal data",
+    "data_security_measures": "Encryption, secure servers, limited access",
+    "data_retention_policy": "Data retained for research purposes only, anonymized after 1 year",
+    "data_breach_notification": "Immediate notification within 72 hours",
+    "cookies_policy": "Essential cookies only, opt-out for tracking",
+    "tracking_technologies": "Minimal tracking, respect for Do Not Track",
+    "opt_out_options": "Easy opt-out through email or website",
+    "contact_information_for_data_privacy": {
+      "email": "privacy@surveycompany.com"
+    }
+  },
   "survey_preferences": {
     "preferred_topics": ["Technology", "Consumer Products", "Travel", "Entertainment"],
     "avoid_topics": ["Politics", "Religion", "Personal Finance"],

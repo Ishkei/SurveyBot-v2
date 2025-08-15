@@ -1,0 +1,38 @@
+# Slider CAPTCHA Solver Dependencies
+# Core computer vision and AI libraries
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+pillow>=10.0.0
+numpy>=1.24.0
+
+# Mouse control and automation
+pynput>=1.7.6
+
+# Selenium integration (if not already installed)
+selenium>=4.15.0
+undetected-chromedriver>=3.5.0
+
+# Image processing and analysis
+scikit-image>=0.21.0
+scipy>=1.11.0
+
+# Optional: For advanced image processing
+tensorflow>=2.13.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# API integration
+requests>=2.31.0
+
+# Configuration and environment
+python-dotenv>=1.0.0
+
+# Optional: For better OCR capabilities
+pytesseract>=0.3.10
+
+# Optional: For advanced image analysis
+easyocr>=1.7.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0

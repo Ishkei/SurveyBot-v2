@@ -19,7 +19,7 @@ try:
     # Test if operate command is available
     result = subprocess.run(['operate', '--help'], capture_output=True, text=True)
     if result.returncode == 0:
-    SOC_AVAILABLE = True
+        SOC_AVAILABLE = True
         print("✅ Self-Operating Computer framework available")
     else:
         SOC_AVAILABLE = False
@@ -91,8 +91,7 @@ class SelfOperatingSurveyBot:
                 
                 # Test screen capture capabilities
                 await self.test_screen_capture()
-                
-            return True
+                return True
             else:
                 print(f"❌ Operate command test failed")
                 return False
