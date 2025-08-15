@@ -1,0 +1,198 @@
+{
+  "which fast food (quick service) restaurants have you visited ever?": {
+    "original_question": "Which fast food (quick service) restaurants have you visited ever? ...",
+    "type": "multi_punch",
+    "answer": [
+      "A&W Restaurants",
+      "Arby\\'s"
+    ],
+    "context": "No additional info",
+    "timestamp": "2025-08-15T12:57:22.166518",
+    "usage_count": 1
+  },
+  "which of the following categories have you purchased in the past 12 months?": {
+    "original_question": "Which of the following categories have you purchased in the past 12 months?",
+    "type": "multi_punch",
+    "answer": [
+      "Beauty and Cosmetics",
+      "Footwear",
+      "Women\\'s Apparel"
+    ],
+    "context": "No additional info",
+    "timestamp": "2025-08-15T12:57:38.325243",
+    "usage_count": 1
+  },
+  "which of the following best describes your organization?": {
+    "original_question": "Which of the following best describes your organization?",
+    "type": "single_punch",
+    "answer": "None of the above",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T12:57:55.836086",
+    "usage_count": 1
+  },
+  "would you say that in your household you speak…? / ¿diría que en su hogar usted habla…?": {
+    "original_question": "Would you say that in your household you speak…? / ¿Diría que en su hogar usted habla…?",
+    "type": "single_punch",
+    "answer": "Spanish and English equally / Español y inglés por igual",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:13:44.100504",
+    "usage_count": 1
+  },
+  "number of children under 18 in your household:": {
+    "original_question": "Number of children under 18 in your household:",
+    "type": "single_punch",
+    "answer": "0",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:14:01.644400",
+    "usage_count": 1
+  },
+  "which of the following grocery stores do you regularly shop at?": {
+    "original_question": "Which of the following grocery stores do you regularly shop at? ...",
+    "type": "multi_punch",
+    "answer": [
+      "Aldi",
+      "Albertsons"
+    ],
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:14:16.183637",
+    "usage_count": 1
+  },
+  "what device are you currently using?": {
+    "original_question": "What device are you currently using?",
+    "type": "single_punch",
+    "answer": "I cant / dont want to answer this question.",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:14:31.127177",
+    "usage_count": 1
+  },
+  "your sexual orientation?": {
+    "original_question": "What is your sexual orientation? ...",
+    "type": "single_punch",
+    "answer": "Prefer not to answer",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:14:47.781069",
+    "usage_count": 1
+  },
+  "which of the following religions do you most closely identify with?": {
+    "original_question": "Which of the following religions do you most closely identify with? ...",
+    "type": "single_punch",
+    "answer": "Agnostic",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:15:02.934317",
+    "usage_count": 1
+  },
+  "in politics today, do you consider yourself a democrat, republican, or independent?": {
+    "original_question": "In politics today, do you consider yourself a Democrat, Republican, or Independent? ...",
+    "type": "single_punch",
+    "answer": "Prefer not to answer",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:15:17.784395",
+    "usage_count": 1
+  },
+  "the highest level of education you have completed?": {
+    "original_question": "What is the highest level of education you have completed?",
+    "type": "single_punch",
+    "answer": "College Degree (such as B.A., B.S.)",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:15:32.432990",
+    "usage_count": 1
+  },
+  "are you the primary grocery shopper for your household?": {
+    "original_question": "Are you the primary grocery shopper for your household?",
+    "type": "single_punch",
+    "answer": "Share responsibility",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:15:47.084027",
+    "usage_count": 1
+  },
+  "your voter registration status?": {
+    "original_question": "What is your voter registration status? ...",
+    "type": "single_punch",
+    "answer": "Prefer not to answer",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:16:01.725043",
+    "usage_count": 1
+  },
+  "what best describes your current household?": {
+    "original_question": "What best describes your current household? ...",
+    "type": "single_punch",
+    "answer": "I cant / dont want to answer this question.",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:16:16.668671",
+    "usage_count": 1
+  },
+  "do you experience lower back pain?": {
+    "original_question": "Do you experience lower back pain?",
+    "type": "single_punch",
+    "answer": "No",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:16:31.227012",
+    "usage_count": 1
+  },
+  "var question = {\"questionid\":61295,\"questiontext\":\"which of the following social media platforms do you use or actively participate in?\",\"subtext\":\"\",\"templatename\":\"multi\",\"questionoptions\":[{\"display\":\"facebook\",\"precode\":\"1\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"twitter/x\",\"precode\":\"2\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"linkedin\",\"precode\":\"3\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"pinterest\",\"precode\":\"4\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"tumblr\",\"precode\":\"5\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"instagram\",\"precode\":\"6\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"youtube\",\"precode\":\"7\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"snapchat\",\"precode\":\"8\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"whatsapp\",\"precode\":\"9\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"tiktok\",\"precode\":\"10\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"twitch\",\"precode\":\"12\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"qq\",\"precode\":\"13\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"we chat\",\"precode\":\"14\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"facebook messenger \",\"precode\":\"15\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"telegram\",\"precode\":\"16\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"douyin\",\"precode\":\"17\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"sina weibo\",\"precode\":\"18\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"kuaishou\",\"precode\":\"19\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"discord\",\"precode\":\"20\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"reddit\",\"precode\":\"21\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"nextdoor\",\"precode\":\"22\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"bluesky\",\"precode\":\"23\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"other\",\"precode\":\"11\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"none of the above\",\"precode\":\"-3105\",\"ismutuallyexclusive\":true,\"parentitem\":null}],\"subquestions\":null};": {
+    "original_question": "var question = {\"QuestionId\":61295,\"QuestionText\":\"Which of the following social media platforms do you use or actively participate in?\",\"SubText\":\"\",\"TemplateName\":\"MULTI\",\"QuestionOptions\":[{\"Display\":\"Facebook\",\"Precode\":\"1\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Twitter/X\",\"Precode\":\"2\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"LinkedIn\",\"Precode\":\"3\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Pinterest\",\"Precode\":\"4\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Tumblr\",\"Precode\":\"5\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Instagram\",\"Precode\":\"6\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"YouTube\",\"Precode\":\"7\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Snapchat\",\"Precode\":\"8\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Whatsapp\",\"Precode\":\"9\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"TikTok\",\"Precode\":\"10\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Twitch\",\"Precode\":\"12\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"QQ\",\"Precode\":\"13\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"We chat\",\"Precode\":\"14\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Facebook messenger \",\"Precode\":\"15\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Telegram\",\"Precode\":\"16\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Douyin\",\"Precode\":\"17\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Sina Weibo\",\"Precode\":\"18\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Kuaishou\",\"Precode\":\"19\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Discord\",\"Precode\":\"20\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Reddit\",\"Precode\":\"21\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Nextdoor\",\"Precode\":\"22\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Bluesky\",\"Precode\":\"23\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Other\",\"Precode\":\"11\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"None of the above\",\"Precode\":\"-3105\",\"IsMutuallyExclusive\":true,\"ParentItem\":null}],\"SubQuestions\":null};",
+    "type": "multi_punch",
+    "answer": [
+      "Facebook",
+      "Twitter/X"
+    ],
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:18:10.738978",
+    "usage_count": 1
+  },
+  "var question = {\"questionid\":61306,\"questiontext\":\"about how often do you access social media services (facebook, twitter, instagram, pinterest,  youtube, etc.)? \",\"subtext\":\"\",\"templatename\":\"single\",\"questionoptions\":[{\"display\":\"several times a day\",\"precode\":\"1\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"about once a day\",\"precode\":\"2\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"several times a week\",\"precode\":\"3\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"about once a week\",\"precode\":\"4\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"a few times a month\",\"precode\":\"5\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"never\",\"precode\":\"-3105\",\"ismutuallyexclusive\":true,\"parentitem\":null}],\"subquestions\":null};": {
+    "original_question": "var question = {\"QuestionId\":61306,\"QuestionText\":\"About how often do you access social media services (Facebook, Twitter, Instagram, Pinterest,  YouTube, etc.)? \",\"SubText\":\"\",\"TemplateName\":\"SINGLE\",\"QuestionOptions\":[{\"Display\":\"Several times a day\",\"Precode\":\"1\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"About once a day\",\"Precode\":\"2\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Several times a week\",\"Precode\":\"3\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"About once a week\",\"Precode\":\"4\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"A few times a month\",\"Precode\":\"5\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Never\",\"Precode\":\"-3105\",\"IsMutuallyExclusive\":true,\"ParentItem\":null}],\"SubQuestions\":null};",
+    "type": "single_punch",
+    "answer": "Several times a week",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:18:55.308954",
+    "usage_count": 1
+  },
+  "var question = {\"questionid\":184210,\"questiontext\":\"which of the following topics do you regularly follow or read about on social media platforms? (choose all that apply) \\n\",\"subtext\":\"\",\"templatename\":\"multi\",\"questionoptions\":[{\"display\":\"nature and wildlife \",\"precode\":\"14\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"career  \",\"precode\":\"1\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"education\",\"precode\":\"10\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"celebrities \\u0026 entertainment  \",\"precode\":\"2\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"finance\",\"precode\":\"4\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"sports \",\"precode\":\"11\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"quizzes and games \",\"precode\":\"12\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"food \\u0026 travel\",\"precode\":\"6\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"fitness \\u0026 exercise  \",\"precode\":\"5\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"pets and animals \",\"precode\":\"13\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"home \\u0026 garden\",\"precode\":\"7\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"technology\",\"precode\":\"9\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"fashion \\u0026 beauty  \",\"precode\":\"3\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"news\",\"precode\":\"8\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"none of the above / i don\\u0027t use social media\",\"precode\":\"-3105\",\"ismutuallyexclusive\":true,\"parentitem\":null}],\"subquestions\":null};": {
+    "original_question": "var question = {\"QuestionId\":184210,\"QuestionText\":\"Which of the following topics do you regularly follow or read about on social media platforms? (Choose all that apply) \\n\",\"SubText\":\"\",\"TemplateName\":\"MULTI\",\"QuestionOptions\":[{\"Display\":\"Nature and wildlife \",\"Precode\":\"14\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Career  \",\"Precode\":\"1\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Education\",\"Precode\":\"10\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Celebrities \\u0026 Entertainment  \",\"Precode\":\"2\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Finance\",\"Precode\":\"4\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Sports \",\"Precode\":\"11\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Quizzes and games \",\"Precode\":\"12\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Food \\u0026 Travel\",\"Precode\":\"6\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Fitness \\u0026 Exercise  \",\"Precode\":\"5\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Pets and animals \",\"Precode\":\"13\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Home \\u0026 Garden\",\"Precode\":\"7\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Technology\",\"Precode\":\"9\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Fashion \\u0026 Beauty  \",\"Precode\":\"3\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"News\",\"Precode\":\"8\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"None of the above / I don\\u0027t use social media\",\"Precode\":\"-3105\",\"IsMutuallyExclusive\":true,\"ParentItem\":null}],\"SubQuestions\":null};",
+    "type": "multi_punch",
+    "answer": [
+      "Technology",
+      "Nature and wildlife",
+      "Food & Travel"
+    ],
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:19:41.254241",
+    "usage_count": 1
+  },
+  "var question = {\"questionid\":184209,\"questiontext\":\"how often do you see/hear ads related to your interests on a social platform?  \",\"subtext\":\"\",\"templatename\":\"single\",\"questionoptions\":[{\"display\":\"daily\",\"precode\":\"1\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"weekly\",\"precode\":\"2\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"monthly\",\"precode\":\"3\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"rarely\",\"precode\":\"4\",\"ismutuallyexclusive\":false,\"parentitem\":null},{\"display\":\"never\",\"precode\":\"-3105\",\"ismutuallyexclusive\":true,\"parentitem\":null}],\"subquestions\":null};": {
+    "original_question": "var question = {\"QuestionId\":184209,\"QuestionText\":\"How often do you see/hear ads related to your interests on a social platform?  \",\"SubText\":\"\",\"TemplateName\":\"SINGLE\",\"QuestionOptions\":[{\"Display\":\"Daily\",\"Precode\":\"1\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Weekly\",\"Precode\":\"2\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Monthly\",\"Precode\":\"3\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Rarely\",\"Precode\":\"4\",\"IsMutuallyExclusive\":false,\"ParentItem\":null},{\"Display\":\"Never\",\"Precode\":\"-3105\",\"IsMutuallyExclusive\":true,\"ParentItem\":null}],\"SubQuestions\":null};",
+    "type": "single_punch",
+    "answer": "Monthly",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:20:28.712153",
+    "usage_count": 1
+  },
+  "which race/ethnicity do you identify with most (select one)?": {
+    "original_question": "Which race/ethnicity do you identify with MOST (select one)?",
+    "type": "single_punch",
+    "answer": "White/Caucasian",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:25:46.801458",
+    "usage_count": 1
+  },
+  "when at home, do you speak...": {
+    "original_question": "When at home, do you speak... ...",
+    "type": "single_punch",
+    "answer": "English more than half of the time",
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:26:02.518142",
+    "usage_count": 1
+  },
+  "which of the following food services have you used previously?": {
+    "original_question": "Which of the following food services have you used previously? ...",
+    "type": "multi_punch",
+    "answer": [
+      "UberEats",
+      "GrubHub"
+    ],
+    "context": "No additional info",
+    "timestamp": "2025-08-15T13:26:18.404477",
+    "usage_count": 1
+  }
+}
