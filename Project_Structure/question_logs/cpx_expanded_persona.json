@@ -1,0 +1,43 @@
+{
+  "hobbies": {
+    "value": "Reading science fiction",
+    "learned_from": "What is your favorite hobby?",
+    "learned_date": "2025-08-15T01:56:56.316880",
+    "confidence": 1.0,
+    "usage_count": 1
+  },
+  "pattern_open_ended_5": {
+    "question_patterns": [
+      "What is your favorite hobby?"
+    ],
+    "common_answers": [
+      "Reading science fiction"
+    ],
+    "learned_date": "2025-08-15T01:56:56.317321"
+  },
+  "pattern_int_open_ended_8": {
+    "question_patterns": [
+      "How many streaming services do you subscribe to?"
+    ],
+    "common_answers": [
+      3
+    ],
+    "learned_date": "2025-08-15T01:56:56.319394"
+  },
+  "pattern_open_ended_7": {
+    "question_patterns": [
+      "What type of car do you drive?"
+    ],
+    "common_answers": [
+      "Hybrid SUV"
+    ],
+    "learned_date": "2025-08-15T01:56:56.320872"
+  },
+  "shopping_preferences": {
+    "value": "Online",
+    "learned_from": "Do you prefer shopping online or in stores?",
+    "learned_date": "2025-08-15T01:56:56.321990",
+    "confidence": 1.0,
+    "usage_count": 1
+  }
+}

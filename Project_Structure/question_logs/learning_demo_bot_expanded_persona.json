@@ -1,0 +1,66 @@
+{
+  "device_type": {
+    "value": "Desktop",
+    "learned_from": "What is your Device Type?",
+    "learned_date": "2025-08-15T02:03:00.173875",
+    "confidence": 1.0,
+    "usage_count": 1
+  },
+  "pattern_single_punch_5": {
+    "question_patterns": [
+      "What is your Device Type?",
+      "What are your political views?"
+    ],
+    "common_answers": [
+      "Desktop",
+      "Slightly liberal"
+    ],
+    "learned_date": "2025-08-15T02:03:00.174269"
+  },
+  "occupation": {
+    "value": "Information Technology/IT",
+    "learned_from": "Which industry do you work in?",
+    "learned_date": "2025-08-15T02:03:00.174568",
+    "confidence": 1.0,
+    "usage_count": 1
+  },
+  "pattern_single_punch_6": {
+    "question_patterns": [
+      "Which industry do you work in?"
+    ],
+    "common_answers": [
+      "Information Technology/IT"
+    ],
+    "learned_date": "2025-08-15T02:03:00.174757"
+  },
+  "political_views": {
+    "value": "Slightly liberal",
+    "learned_from": "What are your political views?",
+    "learned_date": "2025-08-15T02:03:00.175046",
+    "confidence": 1.0,
+    "usage_count": 1
+  },
+  "hobbies": {
+    "value": "Reading science fiction",
+    "learned_from": "What is your favorite hobby?",
+    "learned_date": "2025-08-15T02:03:00.177893",
+    "confidence": 1.0,
+    "usage_count": 1
+  },
+  "pattern_open_ended_5": {
+    "question_patterns": [
+      "What is your favorite hobby?"
+    ],
+    "common_answers": [
+      "Reading science fiction"
+    ],
+    "learned_date": "2025-08-15T02:03:00.179087"
+  },
+  "media_preferences": {
+    "value": "3",
+    "learned_from": "How many streaming services do you use?",
+    "learned_date": "2025-08-15T02:03:00.180394",
+    "confidence": 1.0,
+    "usage_count": 1
+  }
+}

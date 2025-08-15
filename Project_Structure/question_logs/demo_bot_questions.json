@@ -1,0 +1,117 @@
+{
+  "questions": {
+    "your favorite hobby?": {
+      "original_question": "What is your favorite hobby?",
+      "type": "open_ended",
+      "answer": "Reading science fiction",
+      "context": "Generated answer",
+      "platforms_used": [
+        "demo_bot"
+      ],
+      "first_seen": "2025-08-15T01:57:35.959747",
+      "last_used": "2025-08-15T01:57:35.959751",
+      "usage_count": 1,
+      "learned": true
+    },
+    "what do you enjoy doing in your free time?": {
+      "original_question": "What do you enjoy doing in your free time?",
+      "type": "open_ended",
+      "answer": "Reading science fiction",
+      "context": "Persona suggestion",
+      "platforms_used": [
+        "demo_bot"
+      ],
+      "first_seen": "2025-08-15T01:57:35.960563",
+      "last_used": "2025-08-15T01:57:35.960566",
+      "usage_count": 1,
+      "learned": true
+    },
+    "how many streaming services do you subscribe to?": {
+      "original_question": "How many streaming services do you subscribe to?",
+      "type": "int_open_ended",
+      "answer": 3,
+      "context": "Generated answer",
+      "platforms_used": [
+        "demo_bot"
+      ],
+      "first_seen": "2025-08-15T01:57:35.961441",
+      "last_used": "2025-08-15T01:57:35.961443",
+      "usage_count": 1,
+      "learned": true
+    },
+    "your preferred shopping method?": {
+      "original_question": "What's your preferred shopping method?",
+      "type": "single_punch",
+      "answer": "Online",
+      "context": "Generated answer",
+      "platforms_used": [
+        "demo_bot"
+      ],
+      "first_seen": "2025-08-15T01:57:35.961805",
+      "last_used": "2025-08-15T01:57:35.961807",
+      "usage_count": 1,
+      "learned": true
+    },
+    "which social media platforms do you use?": {
+      "original_question": "Which social media platforms do you use?",
+      "type": "multi_punch",
+      "answer": [
+        "Instagram",
+        "Twitter",
+        "LinkedIn"
+      ],
+      "context": "Generated answer",
+      "platforms_used": [
+        "demo_bot"
+      ],
+      "first_seen": "2025-08-15T01:57:35.968146",
+      "last_used": "2025-08-15T01:57:35.968150",
+      "usage_count": 1,
+      "learned": true
+    },
+    "your birth_year?": {
+      "original_question": "What is your birth year?",
+      "type": "open_ended",
+      "answer": "Reading science fiction",
+      "context": "Persona suggestion",
+      "platforms_used": [
+        "demo_bot"
+      ],
+      "first_seen": "2025-08-15T01:57:35.969985",
+      "last_used": "2025-08-15T01:57:35.969988",
+      "usage_count": 1,
+      "learned": true
+    },
+    "your zipcode?": {
+      "original_question": "What is your zip code?",
+      "type": "open_ended",
+      "answer": "Reading science fiction",
+      "context": "Persona suggestion",
+      "platforms_used": [
+        "demo_bot"
+      ],
+      "first_seen": "2025-08-15T01:57:35.970585",
+      "last_used": "2025-08-15T01:57:35.970588",
+      "usage_count": 1,
+      "learned": true
+    }
+  },
+  "platform_stats": {
+    "demo_bot": {
+      "questions_cached": 7,
+      "cache_hits": 0,
+      "similarity_hits": 1,
+      "cache_misses": 7,
+      "first_seen": "2025-08-15T01:57:35.959615",
+      "last_used": "2025-08-15T01:57:35.970591"
+    }
+  },
+  "learning_stats": {
+    "questions_learned": 7,
+    "persona_expansions": 4,
+    "learning_attempts": 7,
+    "successful_learns": 7
+  },
+  "last_updated": "2025-08-15T01:57:35.970876",
+  "total_questions": 7
+}

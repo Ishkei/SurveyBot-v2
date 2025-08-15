@@ -1,0 +1,127 @@
+{
+  "questions": {
+    "your birth_year?": {
+      "original_question": "What is your birth year?",
+      "type": "open_ended",
+      "answer": "1985",
+      "context": "Demographic survey",
+      "platforms_used": [
+        "cpx"
+      ],
+      "first_seen": "2025-08-15T01:44:36.250685",
+      "last_used": "2025-08-15T01:44:36.250716",
+      "usage_count": 1
+    },
+    "your age?": {
+      "original_question": "What is your age?",
+      "type": "int_open_ended",
+      "answer": 38,
+      "context": "Age verification",
+      "platforms_used": [
+        "cpx"
+      ],
+      "first_seen": "2025-08-15T01:44:36.252696",
+      "last_used": "2025-08-15T01:44:36.252703",
+      "usage_count": 1
+    },
+    "your zipcode?": {
+      "original_question": "What is your zip code?",
+      "type": "open_ended",
+      "answer": "90210",
+      "context": "Location survey",
+      "platforms_used": [
+        "cpx"
+      ],
+      "first_seen": "2025-08-15T01:44:36.256765",
+      "last_used": "2025-08-15T01:44:36.256775",
+      "usage_count": 1
+    },
+    "your favorite hobby?": {
+      "original_question": "What is your favorite hobby?",
+      "type": "open_ended",
+      "answer": "Reading science fiction",
+      "context": "Hobby survey",
+      "platforms_used": [
+        "cpx"
+      ],
+      "first_seen": "2025-08-15T01:56:56.316816",
+      "last_used": "2025-08-15T01:56:56.316847",
+      "usage_count": 1,
+      "learned": true
+    },
+    "how many streaming services do you subscribe to?": {
+      "original_question": "How many streaming services do you subscribe to?",
+      "type": "int_open_ended",
+      "answer": 3,
+      "context": "Media survey",
+      "platforms_used": [
+        "cpx"
+      ],
+      "first_seen": "2025-08-15T01:56:56.319341",
+      "last_used": "2025-08-15T01:56:56.319346",
+      "usage_count": 1,
+      "learned": true
+    },
+    "what type of car do you drive?": {
+      "original_question": "What type of car do you drive?",
+      "type": "open_ended",
+      "answer": "Hybrid SUV",
+      "context": "Automotive survey",
+      "platforms_used": [
+        "cpx"
+      ],
+      "first_seen": "2025-08-15T01:56:56.320838",
+      "last_used": "2025-08-15T01:56:56.320844",
+      "usage_count": 1,
+      "learned": true
+    },
+    "do you prefer shopping online or in stores?": {
+      "original_question": "Do you prefer shopping online or in stores?",
+      "type": "single_punch",
+      "answer": "Online",
+      "context": "Shopping survey",
+      "platforms_used": [
+        "cpx"
+      ],
+      "first_seen": "2025-08-15T01:56:56.321962",
+      "last_used": "2025-08-15T01:56:56.321967",
+      "usage_count": 1,
+      "learned": true
+    },
+    "which social media platforms do you use?": {
+      "original_question": "Which social media platforms do you use?",
+      "type": "multi_punch",
+      "answer": [
+        "Instagram",
+        "Twitter",
+        "LinkedIn"
+      ],
+      "context": "Social media survey",
+      "platforms_used": [
+        "cpx"
+      ],
+      "first_seen": "2025-08-15T01:56:56.323751",
+      "last_used": "2025-08-15T01:56:56.323755",
+      "usage_count": 1,
+      "learned": true
+    }
+  },
+  "platform_stats": {
+    "cpx": {
+      "questions_cached": 8,
+      "cache_hits": 0,
+      "similarity_hits": 0,
+      "cache_misses": 0,
+      "first_seen": "2025-08-15T01:44:36.250721",
+      "last_used": "2025-08-15T01:56:56.323758"
+    }
+  },
+  "learning_stats": {
+    "questions_learned": 5,
+    "persona_expansions": 2,
+    "learning_attempts": 5,
+    "successful_learns": 5
+  },
+  "last_updated": "2025-08-15T01:56:56.323796",
+  "total_questions": 8
+}

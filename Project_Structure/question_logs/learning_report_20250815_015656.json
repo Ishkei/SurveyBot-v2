@@ -1,0 +1,81 @@
+{
+  "report_date": "2025-08-15T01:56:56.325267",
+  "learning_stats": {
+    "questions_learned": 5,
+    "persona_expansions": 2,
+    "learning_attempts": 5,
+    "successful_learns": 5
+  },
+  "expanded_persona": {
+    "hobbies": {
+      "value": "Reading science fiction",
+      "learned_from": "What is your favorite hobby?",
+      "learned_date": "2025-08-15T01:56:56.316880",
+      "confidence": 1.0,
+      "usage_count": 1
+    },
+    "pattern_open_ended_5": {
+      "question_patterns": [
+        "What is your favorite hobby?"
+      ],
+      "common_answers": [
+        "Reading science fiction"
+      ],
+      "learned_date": "2025-08-15T01:56:56.317321"
+    },
+    "pattern_int_open_ended_8": {
+      "question_patterns": [
+        "How many streaming services do you subscribe to?"
+      ],
+      "common_answers": [
+        3
+      ],
+      "learned_date": "2025-08-15T01:56:56.319394"
+    },
+    "pattern_open_ended_7": {
+      "question_patterns": [
+        "What type of car do you drive?"
+      ],
+      "common_answers": [
+        "Hybrid SUV"
+      ],
+      "learned_date": "2025-08-15T01:56:56.320872"
+    },
+    "shopping_preferences": {
+      "value": "Online",
+      "learned_from": "Do you prefer shopping online or in stores?",
+      "learned_date": "2025-08-15T01:56:56.321990",
+      "confidence": 1.0,
+      "usage_count": 1
+    },
+    "pattern_single_punch_8": {
+      "question_patterns": [
+        "Do you prefer shopping online or in stores?"
+      ],
+      "common_answers": [
+        "Online"
+      ],
+      "learned_date": "2025-08-15T01:56:56.322216"
+    },
+    "pattern_multi_punch_7": {
+      "question_patterns": [
+        "Which social media platforms do you use?"
+      ],
+      "common_answers": [
+        [
+          "Instagram",
+          "Twitter",
+          "LinkedIn"
+        ]
+      ],
+      "learned_date": "2025-08-15T01:56:56.323779"
+    }
+  },
+  "question_cache_summary": {
+    "total_questions": 8,
+    "learned_questions": 5,
+    "platforms": [
+      "cpx"
+    ]
+  }
+}

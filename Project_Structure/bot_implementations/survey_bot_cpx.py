@@ -5,61 +5,183 @@ Handles CPX Research surveys with their specific question types and API integrat
 
 import asyncio
 import json
+import os
+import random
 import re
 import time
-import random
-import base64
-import cv2
-import numpy as np
 from datetime import datetime
-from typing import Dict, Any, List, Optional, Tuple
-from urllib.parse import urljoin, urlparse, parse_qs
+from typing import Any, Dict, List, Optional, Tuple
+from urllib.parse import urlparse
 
-from playwright.async_api import async_playwright, Page, BrowserContext
-import requests
-
-# Vision and OCR imports
 try:
-    import pytesseract
-    from PIL import Image
-    import io
-    OCR_AVAILABLE = True
+    from playwright.async_api import async_playwright, Page, Browser, BrowserContext
 except ImportError:
-    OCR_AVAILABLE = False
-    print("⚠️ pytesseract not available, OCR features disabled")
+    print("❌ Playwright not available")
+    async_playwright = None
 
-# Vision model imports
-try:
-    import openai
-    VISION_AVAILABLE = True
-except ImportError:
-    VISION_AVAILABLE = False
-    print("⚠️ openai not available, vision features disabled")
-
-# Import enhanced features (decouple typing from other optional deps)
 try:
     from enhanced_personality_system import EnhancedPersonalitySystem
     ENHANCED_FEATURES_AVAILABLE = True
 except ImportError:
     ENHANCED_FEATURES_AVAILABLE = False
-    print("⚠️ Enhanced personality not available for CPX bot")
+    EnhancedPersonalitySystem = None
 
 try:
-    from typing_simulation import type_text_naturally, TYPING_PRESETS
-    TYPING_SIMULATION_AVAILABLE = True
-except ImportError:
-    TYPING_SIMULATION_AVAILABLE = False
-    print("⚠️ Typing simulation module not available")
-
-try:
-    from Project_Structure.free_captcha_solver import FreeCaptchaSolver
+    from free_captcha_solver import FreeCaptchaSolver
     CAPTCHA_SOLVER_AVAILABLE = True
 except ImportError:
     CAPTCHA_SOLVER_AVAILABLE = False
-    print("⚠️ Free captcha solver not available")
+    FreeCaptchaSolver = None
+
+try:
+    from typing_simulation import type_text_naturally, TYPING_PRESETS, TYPING_SIMULATION_AVAILABLE
+except ImportError:
+    TYPING_SIMULATION_AVAILABLE = False
+    type_text_naturally = None
+    TYPING_PRESETS = {}
+
+try:
+    from vision_utils import VISION_AVAILABLE, OCR_AVAILABLE
+except ImportError:
+    VISION_AVAILABLE = False
+    OCR_AVAILABLE = False
 
 from config import Config
 from personality_responses import generate_personality_response, PersonalityResponseGenerator
+
+
+class QuestionLogger:
+    """System for logging and reusing survey question answers"""
+    
+    def __init__(self, log_file: str = "question_log.json"):
+        self.log_file = log_file
+        self.question_cache = {}
+        self.load_question_log()
+    
+    def load_question_log(self):
+        """Load existing question log from file"""
+        try:
+            if os.path.exists(self.log_file):
+                with open(self.log_file, 'r', encoding='utf-8') as f:
+                    self.question_cache = json.load(f)
+                print(f"✅ Loaded {len(self.question_cache)} cached questions from {self.log_file}")
+            else:
+                print(f"📝 Creating new question log: {self.log_file}")
+        except Exception as e:
+            print(f"⚠️ Error loading question log: {e}")
+            self.question_cache = {}
+    
+    def save_question_log(self):
+        """Save question log to file"""
+        try:
+            with open(self.log_file, 'w', encoding='utf-8') as f:
+                json.dump(self.question_cache, f, indent=2, ensure_ascii=False)
+            print(f"💾 Saved question log with {len(self.question_cache)} questions")
+        except Exception as e:
+            print(f"❌ Error saving question log: {e}")
+    
+    def get_cached_answer(self, question_text: str, question_type: str) -> Optional[Any]:
+        """Get cached answer for a question if it exists"""
+        # Create a normalized key for the question
+        normalized_question = self._normalize_question(question_text)
+        
+        # Check for exact matches first
+        if normalized_question in self.question_cache:
+            cached = self.question_cache[normalized_question]
+            if cached.get('type') == question_type:
+                print(f"🎯 Found cached answer for: {question_text[:50]}...")
+                return cached.get('answer')
+        
+        # Check for similar questions using fuzzy matching
+        for cached_q, cached_data in self.question_cache.items():
+            if self._questions_are_similar(normalized_question, cached_q):
+                if cached_data.get('type') == question_type:
+                    print(f"🎯 Found similar cached answer for: {question_text[:50]}...")
+                    return cached_data.get('answer')
+        
+        return None
+    
+    def cache_question_answer(self, question_text: str, question_type: str, answer: Any, context: str = ""):
+        """Cache a question and its answer for future use"""
+        normalized_question = self._normalize_question(question_text)
+        
+        self.question_cache[normalized_question] = {
+            'original_question': question_text,
+            'type': question_type,
+            'answer': answer,
+            'context': context,
+            'timestamp': datetime.now().isoformat(),
+            'usage_count': 1
+        }
+        
+        print(f"💾 Cached new question: {question_text[:50]}... (Type: {question_type})")
+        self.save_question_log()
+    
+    def _normalize_question(self, question: str) -> str:
+        """Normalize question text for consistent caching"""
+        # Remove common variations and normalize
+        normalized = question.lower().strip()
+        
+        # Remove common prefixes/suffixes
+        normalized = re.sub(r'^(what is|what\'s|please enter|enter your|select your|choose your|indicate your|specify your)\s+', '', normalized)
+        normalized = re.sub(r'\s+(please|required|optional|\.+)$', '', normalized)
+        
+        # Normalize common variations
+        normalized = re.sub(r'\b(age|years old|how old)\b', 'age', normalized)
+        normalized = re.sub(r'\b(birth year|year of birth|born|birthdate|date of birth)\b', 'birth_year', normalized)
+        normalized = re.sub(r'\b(zip code|postal code|zip)\b', 'zipcode', normalized)
+        normalized = re.sub(r'\b(city|town|municipality)\b', 'city', normalized)
+        normalized = re.sub(r'\b(state|province|region)\b', 'state', normalized)
+        
+        return normalized.strip()
+    
+    def _questions_are_similar(self, q1: str, q2: str) -> bool:
+        """Check if two questions are similar enough to use the same answer"""
+        # Simple similarity check - can be enhanced with more sophisticated NLP
+        words1 = set(q1.split())
+        words2 = set(q2.split())
+        
+        # Check for key demographic terms
+        demographic_terms = ['age', 'birth_year', 'zipcode', 'city', 'state', 'income', 'education', 'occupation']
+        
+        for term in demographic_terms:
+            if term in q1 and term in q2:
+                return True
+        
+        # Check word overlap
+        common_words = words1.intersection(words2)
+        if len(common_words) >= 2:  # At least 2 common words
+            return True
+        
+        return False
+    
+    def get_question_stats(self) -> Dict[str, Any]:
+        """Get statistics about cached questions"""
+        stats = {
+            'total_questions': len(self.question_cache),
+            'by_type': {},
+            'recent_questions': [],
+            'most_used': []
+        }
+        
+        # Count by type
+        for q_data in self.question_cache.values():
+            q_type = q_data.get('type', 'unknown')
+            stats['by_type'][q_type] = stats['by_type'].get(q_type, 0) + 1
+        
+        # Get recent questions
+        recent = sorted(self.question_cache.items(), 
+                       key=lambda x: x[1].get('timestamp', ''), 
+                       reverse=True)[:10]
+        stats['recent_questions'] = [q[1]['original_question'][:50] + '...' for q in recent]
+        
+        # Get most used questions
+        most_used = sorted(self.question_cache.items(), 
+                          key=lambda x: x[1].get('usage_count', 0), 
+                          reverse=True)[:10]
+        stats['most_used'] = [f"{q[1]['original_question'][:50]}... (used {q[1].get('usage_count', 0)} times)" for q in most_used]
+        
+        return stats
 
 
 class CPXResearchBot:
@@ -137,6 +259,10 @@ class CPXResearchBot:
             'questions_answered': 0,
             'earnings': 0.0
         }
+        
+        # Initialize question logging system
+        self.question_logger = QuestionLogger("cpx_question_log.json")
+        print("✅ Question logging system initialized")
         
         # Browser and page references
         self.browser = None
@@ -588,11 +714,37 @@ class CPXResearchBot:
             elif await self.page.locator('input[type="checkbox"]').count() > 0:
                 return 'multi_punch'
             elif await self.page.locator('input[type="text"]').count() > 0:
-                # Check if this is an age question (common in qualification surveys)
+                # Enhanced detection for text input questions
                 page_text = await self.page.text_content('body') or ''
-                if any(age_term in page_text.lower() for age_term in ['age', 'years old', 'how old']):
-                    print("🎯 Detected age question with text input - treating as text input")
+                page_text_lower = page_text.lower()
+                
+                # Check for specific text input question patterns
+                text_input_patterns = [
+                    'birth year', 'year of birth', 'born', 'birthdate', 'date of birth',
+                    'age', 'years old', 'how old',
+                    'zip code', 'postal code', 'zip',
+                    'city', 'town', 'municipality',
+                    'state', 'province', 'region',
+                    'email', 'e-mail',
+                    'phone', 'telephone', 'mobile',
+                    'address', 'street',
+                    'occupation', 'job title', 'work',
+                    'income', 'salary', 'earnings',
+                    'education', 'degree', 'school'
+                ]
+                
+                if any(pattern in page_text_lower for pattern in text_input_patterns):
+                    print(f"🎯 Detected text input question: {question_text[:50]}...")
                     return 'open_ended'
+                
+                # Check if question text contains text input indicators
+                if question_text:
+                    question_lower = question_text.lower()
+                    text_indicators = ['enter', 'type', 'write', 'describe', 'explain', 'tell', 'what is', "what's"]
+                    if any(indicator in question_lower for indicator in text_indicators):
+                        print(f"🎯 Detected text input question by indicators: {question_text[:50]}...")
+                        return 'open_ended'
+                
                 return 'open_ended'
             elif await self.page.locator('input[type="number"]').count() > 0:
                 return 'int_open_ended'
@@ -727,6 +879,11 @@ class CPXResearchBot:
             selected_option = await self.select_best_option(question, info, options, 'single')
             
             if selected_option is not None:
+                # Cache the question and selected answer
+                selected_text = selected_option.get('text', '')
+                self.question_logger.cache_question_answer(question, 'single_punch', selected_text, info)
+                print(f"💾 Cached single choice answer: {selected_text}")
+                
                 # Click the label for the selected radio button (not the hidden input)
                 try:
                     radio_element = selected_option['element']
@@ -828,6 +985,15 @@ class CPXResearchBot:
                 selected_options = await self.select_best_option(question, info, options, 'multiple')
             
             if selected_options:
+                # Cache the question and selected answers
+                if isinstance(selected_options, list):
+                    selected_texts = [opt.get('text', '') for opt in selected_options]
+                else:
+                    selected_texts = [selected_options.get('text', '')]
+                
+                self.question_logger.cache_question_answer(question, 'multi_punch', selected_texts, info)
+                print(f"💾 Cached multiple choice answer: {selected_texts}")
+                
                 # Click selected checkboxes with robust fallbacks for hidden inputs (e.g., PureSpectrum Angular)
                 try:
                     async def click_checkbox_option(option_dict):
@@ -1028,11 +1194,20 @@ class CPXResearchBot:
                 
                 return False
             
-            # Generate response
-            response_text = await self.generate_text_response(question, info)
+            # Check for cached answer first
+            cached_answer = self.question_logger.get_cached_answer(question, 'open_ended')
+            if cached_answer:
+                response_text = cached_answer
+                print(f"💬 Using cached response: {response_text[:100]}...")
+            else:
+                # Generate new response
+                response_text = await self.generate_text_response(question, info)
+                if response_text:
+                    print(f"💬 Generated new response: {response_text[:100]}...")
+                    # Cache the question and answer
+                    self.question_logger.cache_question_answer(question, 'open_ended', response_text, info)
             
             if response_text:
-                print(f"💬 Generated response: {response_text[:100]}...")
                 
                 # Type the response naturally if typing simulation available or requested
                 if TYPING_SIMULATION_AVAILABLE:
@@ -1074,12 +1249,20 @@ class CPXResearchBot:
                 print("❌ No number input found")
                 return False
             
-            # Generate numeric response
-            number_response = await self.generate_number_response(question, info)
+            # Check for cached answer first
+            cached_answer = self.question_logger.get_cached_answer(question, 'int_open_ended')
+            if cached_answer:
+                number_response = cached_answer
+                print(f"🔢 Using cached number: {number_response}")
+            else:
+                # Generate new numeric response
+                number_response = await self.generate_number_response(question, info)
+                if number_response is not None:
+                    print(f"🔢 Generated new number: {number_response}")
+                    # Cache the question and answer
+                    self.question_logger.cache_question_answer(question, 'int_open_ended', number_response, info)
             
             if number_response is not None:
-                print(f"🔢 Generated number: {number_response}")
-                
                 await number_input.fill(str(number_response))
                 await asyncio.sleep(random.uniform(1, 2))
                 
@@ -1478,6 +1661,27 @@ class CPXResearchBot:
         try:
             # Check for specific question types
             question_lower = question.lower()
+            
+            # Handle birth year questions specifically
+            if any(term in question_lower for term in ['birth year', 'year of birth', 'born', 'birthdate', 'date of birth']):
+                if self.persona and 'about_you' in self.persona:
+                    birth_year = self.persona['about_you'].get('birth_year', None)
+                    if birth_year:
+                        print(f"🎂 Using persona birth year: {birth_year}")
+                        return str(birth_year)
+                    else:
+                        # Calculate birth year from age if available
+                        age = self.persona['about_you'].get('age', 25)
+                        current_year = datetime.now().year
+                        birth_year = current_year - age
+                        print(f"🎂 Calculated birth year from age: {birth_year}")
+                        return str(birth_year)
+                else:
+                    # Generate realistic birth year (25-45 years old)
+                    current_year = datetime.now().year
+                    birth_year = current_year - random.randint(25, 45)
+                    print(f"🎂 Generated realistic birth year: {birth_year}")
+                    return str(birth_year)
             
             # Handle zip code questions with persona data
             if 'zip' in question_lower and 'code' in question_lower:
@@ -5071,6 +5275,33 @@ class CPXResearchBot:
         except Exception as e:
             print(f"⚠️ Cleanup error: {e}")
     
+    def display_question_stats(self):
+        """Display statistics about cached questions"""
+        try:
+            stats = self.question_logger.get_question_stats()
+            print("==================================================")
+            print("📊 QUESTION LOGGING STATISTICS")
+            print("==================================================")
+            print(f"Total Cached Questions: {stats['total_questions']}")
+            
+            if stats['by_type']:
+                print("Questions by Type:")
+                for q_type, count in stats['by_type'].items():
+                    print(f"  {q_type}: {count}")
+            
+            if stats['recent_questions']:
+                print("\nRecent Questions:")
+                for i, question in enumerate(stats['recent_questions'][:5], 1):
+                    print(f"  {i}. {question}")
+            
+            if stats['most_used']:
+                print("\nMost Used Questions:")
+                for i, question in enumerate(stats['most_used'][:5], 1):
+                    print(f"  {i}. {question}")
+                    
+        except Exception as e:
+            print(f"⚠️ Error displaying question stats: {e}")
+    
     def print_session_summary(self):
         """Print session statistics"""
         print("\n" + "=" * 50)
@@ -5095,6 +5326,9 @@ class CPXResearchBot:
                 print(f"🎯 Total Attempts: {self.session_result['total_attempts']}")
         
         print("=" * 50)
+        
+        # Display question logging statistics
+        self.display_question_stats()
 
 
 async def main():

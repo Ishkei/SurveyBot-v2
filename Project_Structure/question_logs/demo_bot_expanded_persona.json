@@ -1,0 +1,73 @@
+{
+  "hobbies": {
+    "value": "Reading science fiction",
+    "learned_from": "What is your favorite hobby?",
+    "learned_date": "2025-08-15T01:57:35.959771",
+    "confidence": 1.0,
+    "usage_count": 2
+  },
+  "pattern_open_ended_5": {
+    "question_patterns": [
+      "What is your favorite hobby?",
+      "What is your birth year?"
+    ],
+    "common_answers": [
+      "Reading science fiction"
+    ],
+    "learned_date": "2025-08-15T01:57:35.960180"
+  },
+  "pattern_open_ended_9": {
+    "question_patterns": [
+      "What do you enjoy doing in your free time?"
+    ],
+    "common_answers": [
+      "Reading science fiction"
+    ],
+    "learned_date": "2025-08-15T01:57:35.961001"
+  },
+  "pattern_int_open_ended_8": {
+    "question_patterns": [
+      "How many streaming services do you subscribe to?"
+    ],
+    "common_answers": [
+      3
+    ],
+    "learned_date": "2025-08-15T01:57:35.961469"
+  },
+  "shopping_preferences": {
+    "value": "Online",
+    "learned_from": "What's your preferred shopping method?",
+    "learned_date": "2025-08-15T01:57:35.961830",
+    "confidence": 1.0,
+    "usage_count": 1
+  },
+  "pattern_single_punch_6": {
+    "question_patterns": [
+      "What's your preferred shopping method?"
+    ],
+    "common_answers": [
+      "Online"
+    ],
+    "learned_date": "2025-08-15T01:57:35.962047"
+  },
+  "pattern_multi_punch_7": {
+    "question_patterns": [
+      "Which social media platforms do you use?"
+    ],
+    "common_answers": [
+      [
+        "Instagram",
+        "Twitter",
+        "LinkedIn"
+      ]
+    ],
+    "learned_date": "2025-08-15T01:57:35.968178"
+  },
+  "zipcode": {
+    "value": "Reading science fiction",
+    "learned_from": "What is your zip code?",
+    "learned_date": "2025-08-15T01:57:35.970599",
+    "confidence": 1.0,
+    "usage_count": 1
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "platform": "qmee",
+  "export_date": "2025-08-15T01:56:56.326423",
+  "total_questions": 8,
+  "questions": {
+    "your birth_year?": {
+      "original_question": "What is your birth year?",
+      "type": "open_ended",
+      "answer": "1985",
+      "context": "Demographic survey",
+      "platforms_used": [
+        "qmee"
+      ],
+      "first_seen": "2025-08-15T01:44:36.251785",
+      "last_used": "2025-08-15T01:44:36.251791",
+      "usage_count": 1
+    },
+    "your age?": {
+      "original_question": "What is your age?",
+      "type": "int_open_ended",
+      "answer": 38,
+      "context": "Age verification",
+      "platforms_used": [
+        "qmee"
+      ],
+      "first_seen": "2025-08-15T01:44:36.255083",
+      "last_used": "2025-08-15T01:44:36.255088",
+      "usage_count": 1
+    },
+    "your zipcode?": {
+      "original_question": "What is your zip code?",
+      "type": "open_ended",
+      "answer": "90210",
+      "context": "Location survey",
+      "platforms_used": [
+        "qmee"
+      ],
+      "first_seen": "2025-08-15T01:44:36.258441",
+      "last_used": "2025-08-15T01:44:36.258454",
+      "usage_count": 1
+    },
+    "your favorite hobby?": {
+      "original_question": "What is your favorite hobby?",
+      "type": "open_ended",
+      "answer": "Reading science fiction",
+      "context": "Hobby survey",
+      "platforms_used": [
+        "qmee"
+      ],
+      "first_seen": "2025-08-15T01:56:56.318467",
+      "last_used": "2025-08-15T01:56:56.318478",
+      "usage_count": 1,
+      "learned": true
+    },
+    "how many streaming services do you subscribe to?": {
+      "original_question": "How many streaming services do you subscribe to?",
+      "type": "int_open_ended",
+      "answer": 3,
+      "context": "Media survey",
+      "platforms_used": [
+        "qmee"
+      ],
+      "first_seen": "2025-08-15T01:56:56.320441",
+      "last_used": "2025-08-15T01:56:56.320448",
+      "usage_count": 1,
+      "learned": true
+    },
+    "what type of car do you drive?": {
+      "original_question": "What type of car do you drive?",
+      "type": "open_ended",
+      "answer": "Hybrid SUV",
+      "context": "Automotive survey",
+      "platforms_used": [
+        "qmee"
+      ],
+      "first_seen": "2025-08-15T01:56:56.321620",
+      "last_used": "2025-08-15T01:56:56.321625",
+      "usage_count": 1,
+      "learned": true
+    },
+    "do you prefer shopping online or in stores?": {
+      "original_question": "Do you prefer shopping online or in stores?",
+      "type": "single_punch",
+      "answer": "Online",
+      "context": "Shopping survey",
+      "platforms_used": [
+        "qmee"
+      ],
+      "first_seen": "2025-08-15T01:56:56.323196",
+      "last_used": "2025-08-15T01:56:56.323201",
+      "usage_count": 1,
+      "learned": true
+    },
+    "which social media platforms do you use?": {
+      "original_question": "Which social media platforms do you use?",
+      "type": "multi_punch",
+      "answer": [
+        "Instagram",
+        "Twitter",
+        "LinkedIn"
+      ],
+      "context": "Social media survey",
+      "platforms_used": [
+        "qmee"
+      ],
+      "first_seen": "2025-08-15T01:56:56.324532",
+      "last_used": "2025-08-15T01:56:56.324537",
+      "usage_count": 1,
+      "learned": true
+    }
+  }
+}

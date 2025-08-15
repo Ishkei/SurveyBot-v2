@@ -1,0 +1,87 @@
+{
+  "questions": {
+    "your device type?": {
+      "original_question": "What is your Device Type?",
+      "type": "single_punch",
+      "answer": "Desktop",
+      "context": "Successful survey",
+      "platforms_used": [
+        "learning_demo_bot"
+      ],
+      "first_seen": "2025-08-15T02:03:00.173843",
+      "last_used": "2025-08-15T02:03:00.173848",
+      "usage_count": 1,
+      "learned": true
+    },
+    "which industry do you occupation in?": {
+      "original_question": "Which industry do you work in?",
+      "type": "single_punch",
+      "answer": "Information Technology/IT",
+      "context": "Successful survey",
+      "platforms_used": [
+        "learning_demo_bot"
+      ],
+      "first_seen": "2025-08-15T02:03:00.174543",
+      "last_used": "2025-08-15T02:03:00.174547",
+      "usage_count": 1,
+      "learned": true
+    },
+    "what are your political views?": {
+      "original_question": "What are your political views?",
+      "type": "single_punch",
+      "answer": "Slightly liberal",
+      "context": "Successful survey",
+      "platforms_used": [
+        "learning_demo_bot"
+      ],
+      "first_seen": "2025-08-15T02:03:00.175018",
+      "last_used": "2025-08-15T02:03:00.175022",
+      "usage_count": 1,
+      "learned": true
+    },
+    "your favorite hobby?": {
+      "original_question": "What is your favorite hobby?",
+      "type": "open_ended",
+      "answer": "Reading science fiction",
+      "context": "Successful survey",
+      "platforms_used": [
+        "learning_demo_bot"
+      ],
+      "first_seen": "2025-08-15T02:03:00.177692",
+      "last_used": "2025-08-15T02:03:00.177705",
+      "usage_count": 1,
+      "learned": true
+    },
+    "how many streaming services do you use?": {
+      "original_question": "How many streaming services do you use?",
+      "type": "int_open_ended",
+      "answer": 3,
+      "context": "Successful survey",
+      "platforms_used": [
+        "learning_demo_bot"
+      ],
+      "first_seen": "2025-08-15T02:03:00.180336",
+      "last_used": "2025-08-15T02:03:00.180350",
+      "usage_count": 1,
+      "learned": true
+    }
+  },
+  "platform_stats": {
+    "learning_demo_bot": {
+      "questions_cached": 5,
+      "cache_hits": 0,
+      "similarity_hits": 0,
+      "cache_misses": 0,
+      "first_seen": "2025-08-15T02:03:00.173853",
+      "last_used": "2025-08-15T02:03:00.180358"
+    }
+  },
+  "learning_stats": {
+    "questions_learned": 5,
+    "persona_expansions": 5,
+    "learning_attempts": 5,
+    "successful_learns": 5
+  },
+  "last_updated": "2025-08-15T02:03:00.181228",
+  "total_questions": 5
+}
