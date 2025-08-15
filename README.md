@@ -11,34 +11,34 @@
 ### **Quick Start Commands**
 ```bash
 # Main entry point (RECOMMENDED)
-python "Main Files to Run/run_bot.py" --implementation v2ray
+python Main Files to Run/run_bot.py --implementation v2ray
 
 # Web Interface (NEW!)
-python "Main Files to Run/run_bot.py" --web-interface
+python Main Files to Run/run_bot.py --web-interface
 
 # Self-Operating Computer mode
-python "Main Files to Run/run_soc_bot.py"
+python Main Files to Run/run_soc_bot.py
 
 # Vision AI mode
-python "Main Files to Run/run_vision_bot.py"
+python Main Files to Run/run_vision_bot.py
 
 # Lightweight mode
-python "Main Files to Run/run_lightweight_bot.py"
+python Main Files to Run/run_lightweight_bot.py
 
 # Enhanced Features Demo
-python "Main Files to Run/run_bot.py" --demo-enhanced
+python Main Files to Run/run_bot.py --demo-enhanced
 
 # CPX Research Platform
-python "Main Files to Run/run_bot.py" --platform cpx --enhanced-ai
+python Main Files to Run/run_bot.py --platform cpx --enhanced-ai
 ```
 
 ### **Web Interface Commands (NEW!)**
 ```bash
 # Start web interface directly
-python "Main Files to Run/start_web_interface.py"
+python Main Files to Run/start_web_interface.py
 
 # Start web interface via main script
-python "Main Files to Run/run_bot.py" --web-interface
+python Main Files to Run/run_bot.py --web-interface
 
 # Access web interface at: http://localhost:5000
 ```
@@ -46,100 +46,100 @@ python "Main Files to Run/run_bot.py" --web-interface
 ### **Enhanced Personality Commands (NEW!)**
 ```bash
 # Natural conversation mode
-python "Main Files to Run/run_bot.py" --personality-mode natural_conversation
+python Main Files to Run/run_bot.py --personality-mode natural_conversation
 
 # Human writer style
-python "Main Files to Run/run_bot.py" --personality-mode human_writer
+python Main Files to Run/run_bot.py --personality-mode human_writer
 
 # AI team simulation
-python "Main Files to Run/run_bot.py" --personality-mode ai_team_simulation
+python Main Files to Run/run_bot.py --personality-mode ai_team_simulation
 
 # Discord casual style
-python "Main Files to Run/run_bot.py" --personality-mode discord_casual
+python Main Files to Run/run_bot.py --personality-mode discord_casual
 ```
 
 ### **Typing Simulation Commands (NEW!)**
 ```bash
 # Enable typing simulation
-python "Main Files to Run/run_bot.py" --typing-simulation
+python Main Files to Run/run_bot.py --typing-simulation
 
 # Fast typer style
-python "Main Files to Run/run_bot.py" --typing-simulation --typing-style fast_typer
+python Main Files to Run/run_bot.py --typing-simulation --typing-style fast_typer
 
 # Average typer style
-python "Main Files to Run/run_bot.py" --typing-simulation --typing-style average_typer
+python Main Files to Run/run_bot.py --typing-simulation --typing-style average_typer
 
 # Slow typer style
-python "Main Files to Run/run_bot.py" --typing-simulation --typing-style slow_typer
+python Main Files to Run/run_bot.py --typing-simulation --typing-style slow_typer
 
 # Careful typer style (default)
-python "Main Files to Run/run_bot.py" --typing-simulation --typing-style careful_typer
+python Main Files to Run/run_bot.py --typing-simulation --typing-style careful_typer
 ```
 
 ### **Advanced Feature Commands (NEW!)**
 ```bash
 # Enable automatic captcha solving
-python "Main Files to Run/run_bot.py" --captcha-solving
+python Main Files to Run/run_bot.py --captcha-solving
 
 # Enable enhanced AI responses
-python "Main Files to Run/run_bot.py" --enhanced-ai
+python Main Files to Run/run_bot.py --enhanced-ai
 
 # Test and save working proxies
-python "Main Files to Run/run_bot.py" --test-proxies
+python Main Files to Run/run_bot.py --test-proxies
 
 # Show current configuration
-python "Main Files to Run/run_bot.py" --config
+python Main Files to Run/run_bot.py --config
 
 # Setup environment and dependencies
-python "Main Files to Run/run_bot.py" --setup
+python Main Files to Run/run_bot.py --setup
 ```
 
 ### **New Platform Support (NEW!)**
 ```bash
 # CPX Research Platform
-python "Main Files to Run/run_bot.py" --platform cpx --implementation playwright
+python Main Files to Run/run_bot.py --platform cpx --implementation playwright
 
 # PureSpectrum Integration
-python "Main Files to Run/run_bot.py" --platform cpx --enhanced-ai
+python Main Files to Run/run_bot.py --platform cpx --enhanced-ai
 
 # Qmee Platform
-python "Main Files to Run/run_bot.py" --platform qmee --implementation v2ray
+python Main Files to Run/run_bot.py --platform qmee --implementation v2ray
 
 # Earnhaus Platform
-python "Main Files to Run/run_bot.py" --platform earnhaus --implementation playwright
+python Main Files to Run/run_bot.py --platform earnhaus --implementation playwright
 
 # Prolific Academic Surveys
-python "Main Files to Run/run_bot.py" --platform prolific --implementation undetected
+python Main Files to Run/run_bot.py --platform prolific --implementation undetected
 
 # Amazon Mechanical Turk
-python "Main Files to Run/run_bot.py" --platform mturk --implementation selenium
+python Main Files to Run/run_bot.py --platform mturk --implementation selenium
 ```
 
 ### **New Implementation Options (NEW!)**
 ```bash
 # Playwright (RECOMMENDED for new users)
-python "Main Files to Run/run_bot.py" --implementation playwright
+python Main Files to Run/run_bot.py --implementation playwright
 
 # Selenium WebDriver
-python "Main Files to Run/run_bot.py" --implementation selenium
+python Main Files to Run/run_bot.py --implementation selenium
 
 # Undetected ChromeDriver
-python "Main Files to Run/run_bot.py" --implementation undetected
+python Main Files to Run/run_bot.py --implementation undetected
 
 # V2Ray Enhanced
-python "Main Files to Run/run_bot.py" --implementation v2ray
+python Main Files to Run/run_bot.py --implementation v2ray
 
 # ProxyChains Integration
-python "Main Files to Run/run_bot.py" --implementation proxychains
+python Main Files to Run/run_bot.py --implementation proxychains
 
 # Hybrid Mode
-python "Main Files to Run/run_bot.py" --implementation hybrid
+python Main Files to Run/run_bot.py --implementation hybrid
 ```
 
 ### **Discord Personality Update (NEW!)**
 ```bash
 # Update bot to use Discord personality responses
-python "Main Files to Run/update_discord_personality.py"
+python Main Files to Run/update_discord_personality.py
 ```
 
 ### **Project Structure**
@@ -226,7 +226,7 @@ git clone https://github.com/yourusername/SurveyBot.git
 cd SurveyBot
 
 # Quick setup (RECOMMENDED)
-python "Tools and Scripts/setup.py"
+python Tools and Scripts/setup.py
 
 # OR Manual setup:
 # Create virtual environment
@@ -240,20 +240,20 @@ pip install -r "Configurations/requirements.txt"
 ### **2. Setup V2Ray System**
 ```bash
 # Install V2Ray and configure proxy servers
-python "Tools and Scripts/scripts/setup_v2ray.py"
+python Tools and Scripts/scripts/setup_v2ray.py
 ```
 
 ### **3. Run the Bot**
 ```bash
 # Run with V2Ray enhanced implementation (RECOMMENDED)
-python "Main Files to Run/run_bot.py" --implementation v2ray
+python Main Files to Run/run_bot.py --implementation v2ray
 
 # Run in headless mode
-python "Main Files to Run/run_bot.py" --implementation v2ray --headless
+python Main Files to Run/run_bot.py --implementation v2ray --headless
 
 # Test different platforms
-python "Main Files to Run/run_bot.py" --implementation v2ray --platform qmee
-python "Main Files to Run/run_bot.py" --implementation v2ray --platform earnhaus
+python Main Files to Run/run_bot.py --implementation v2ray --platform qmee
+python Main Files to Run/run_bot.py --implementation v2ray --platform earnhaus
 ```
 
 ## Features
@@ -369,10 +369,10 @@ pip install -r "Configurations/requirements.txt"
 ### **3. V2Ray Setup**
 ```bash
 # Install V2Ray system
-python "Tools and Scripts/scripts/setup_v2ray.py"
+python Tools and Scripts/scripts/setup_v2ray.py
 
 # Convert Telegram servers (optional)
-python "Tools and Scripts/scripts/telegram_v2ray_servers.py"
+python Tools and Scripts/scripts/telegram_v2ray_servers.py
 ```
 
 ### **4. Configuration**
@@ -390,7 +390,7 @@ nano .env
 pip install -r "Main Files to Run/requirements_web.txt"
 
 # Start web interface
-python "Main Files to Run/start_web_interface.py"
+python Main Files to Run/start_web_interface.py
 
 # Access at: http://localhost:5000
 ```
@@ -400,31 +400,31 @@ python "Main Files to Run/start_web_interface.py"
 ### **Basic Usage**
 ```bash
 # Run with V2Ray enhanced bot
-python "Main Files to Run/run_bot.py" --implementation v2ray
+python Main Files to Run/run_bot.py --implementation v2ray
 
 # Run in headless mode
-python "Main Files to Run/run_bot.py" --implementation v2ray --headless
+python Main Files to Run/run_bot.py --implementation v2ray --headless
 
 # Test proxy manager
-python "Project Structure/proxy_management/proxy_manager_v2ray.py"
+python Project Structure/proxy_management/proxy_manager_v2ray.py
 ```
 
 ### **Advanced Usage**
 ```bash
 # Run with specific platform
-python "Main Files to Run/run_bot.py" --implementation v2ray --platform qmee
+python Main Files to Run/run_bot.py --implementation v2ray --platform qmee
 
 # Run with different implementation
-python "Main Files to Run/run_bot.py" --implementation undetected
+python Main Files to Run/run_bot.py --implementation undetected
 
 # Test all implementations
-python "Tools and Scripts/scripts/test_implementations.py"
+python Tools and Scripts/scripts/test_implementations.py
 ```
 
 ### **Web Interface Usage (NEW!)**
 ```bash
 # Start web interface
-python "Main Files to Run/run_bot.py" --web-interface
+python Main Files to Run/run_bot.py --web-interface
 
 # Access web interface
 # Open browser to: http://localhost:5000
@@ -440,40 +440,40 @@ python "Main Files to Run/run_bot.py" --web-interface
 ### **Configuration Options**
 ```bash
 # Show current configuration
-python "Main Files to Run/run_bot.py" --config
+python Main Files to Run/run_bot.py --config
 
 # Test proxies
-python "Main Files to Run/run_bot.py" --test-proxies
+python Main Files to Run/run_bot.py --test-proxies
 
 # Setup environment
-python "Main Files to Run/run_bot.py" --setup
+python Main Files to Run/run_bot.py --setup
 
 # Test all components
-python "Tests/test_setup.py"
+python Tests/test_setup.py
 
 # Check requirements
-python "Tools and Scripts/check_requirements.py"
+python Tools and Scripts/check_requirements.py
 ```
 
 ### **Enhanced Features & Personality (NEW!)**
 ```bash
 # Demo enhanced features
-python "Main Files to Run/run_bot.py" --demo-enhanced
+python Main Files to Run/run_bot.py --demo-enhanced
 
 # Enable enhanced AI responses
-python "Main Files to Run/run_bot.py" --enhanced-ai
+python Main Files to Run/run_bot.py --enhanced-ai
 
 # Set personality mode
-python "Main Files to Run/run_bot.py" --personality-mode discord_casual
+python Main Files to Run/run_bot.py --personality-mode discord_casual
 
 # Enable typing simulation
-python "Main Files to Run/run_bot.py" --typing-simulation --typing-style careful_typer
+python Main Files to Run/run_bot.py --typing-simulation --typing-style careful_typer
 
 # Enable automatic captcha solving
-python "Main Files to Run/run_bot.py" --captcha-solving
+python Main Files to Run/run_bot.py --captcha-solving
 
 # Update Discord personality
-python "Main Files to Run/update_discord_personality.py"
+python Main Files to Run/update_discord_personality.py
 ```
 
 ## Configuration
@@ -553,13 +553,13 @@ WEB_INTERFACE_HOST=0.0.0.0
 #### **V2Ray Binary Not Found**
 ```bash
 # Reinstall V2Ray
-python "Tools and Scripts/scripts/setup_v2ray.py"
+python Tools and Scripts/scripts/setup_v2ray.py
 ```
 
 #### **Proxy Connection Failed**
 ```bash
 # Test proxy configuration
-python "Project Structure/proxy_management/proxy_manager_v2ray.py"
+python Project Structure/proxy_management/proxy_manager_v2ray.py
 
 # Check proxy server status
 curl -x socks5://127.0.0.1:1080 https://httpbin.org/ip
@@ -574,10 +574,10 @@ curl -x socks5://127.0.0.1:1080 https://httpbin.org/ip
 ### **Debug Mode**
 ```bash
 # Run with verbose logging
-python "Project Structure/bot_implementations/survey_bot_v2ray.py" --debug
+python Project Structure/bot_implementations/survey_bot_v2ray.py --debug
 
 # Test all components
-python "Tools and Scripts/scripts/test_implementations.py"
+python Tools and Scripts/scripts/test_implementations.py
 ```
 
 ## Documentation

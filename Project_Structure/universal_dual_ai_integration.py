@@ -313,7 +313,7 @@ Please provide your selection (option numbers):
         return options[0] if options else None
     
     def _clean_response(self, response: str) -> str:
-        """Clean and format the AI response"""
+        """Clean and format AI response to appear human-like"""
         
         if not response:
             return ""
@@ -321,22 +321,52 @@ Please provide your selection (option numbers):
         # Clean the response
         cleaned = response.strip()
         
-        # Remove unwanted dashes and formatting
-        cleaned = cleaned.replace('–', ' ')
-        cleaned = cleaned.replace('—', ' ')
-        cleaned = cleaned.replace('-', ' ')
+        # Remove bot detection patterns
+        cleaned = cleaned.replace(';', '')  # Remove semicolons (bot giveaway)
+        cleaned = cleaned.replace('–', ' ')  # Remove en dashes
+        cleaned = cleaned.replace('—', ' ')  # Remove em dashes
+        cleaned = cleaned.replace('-', ' ')  # Remove regular dashes
         
-        # Clean up multiple spaces
-        cleaned = re.sub(r'\s+', ' ', cleaned)
+        # Remove other bot-like patterns
+        cleaned = cleaned.replace('...', '.')  # Replace ellipsis with period
+        cleaned = cleaned.replace('..', '.')   # Replace double dots
+        cleaned = cleaned.replace('  ', ' ')  # Remove double spaces
+        
+        # Clean up multiple spaces and formatting
+        cleaned = re.sub(r'\s+', ' ', cleaned)  # Multiple spaces to single space
         
         # Remove quotes if they wrap the entire response
         cleaned = cleaned.strip('"').strip("'")
+        
+        # Remove bot-like sentence structures
+        cleaned = re.sub(r'^I think\s+', '', cleaned, flags=re.IGNORECASE)  # Remove "I think" at start
+        cleaned = re.sub(r'^I believe\s+', '', cleaned, flags=re.IGNORECASE)  # Remove "I believe" at start
+        cleaned = re.sub(r'^In my opinion\s+', '', cleaned, flags=re.IGNORECASE)  # Remove "In my opinion" at start
+        
+        # Remove bot phrases anywhere in the text
+        cleaned = cleaned.replace('I think ', '')
+        cleaned = cleaned.replace('I believe ', '')
+        cleaned = cleaned.replace('In my opinion ', '')
+        
+        # Fix double periods and spacing issues
+        cleaned = re.sub(r'\.\s*\.', '.', cleaned)  # Remove double periods
+        cleaned = re.sub(r'\s+\.', '.', cleaned)  # Fix spacing before periods
+        
+        # Clean up any remaining double spaces
+        cleaned = re.sub(r'\s+', ' ', cleaned)
         
         # Ensure proper sentence structure
         if cleaned and not cleaned.endswith(('.', '!', '?')):
             cleaned += '.'
         
-        return cleaned.strip()
+        # Capitalize first letter
+        if cleaned:
+            cleaned = cleaned[0].upper() + cleaned[1:]
+        
+        # Final cleanup - remove any leading/trailing spaces
+        cleaned = cleaned.strip()
+        
+        return cleaned
     
     def _generate_static_fallback(self, question: str) -> str:
         """Generate static fallback responses"""
