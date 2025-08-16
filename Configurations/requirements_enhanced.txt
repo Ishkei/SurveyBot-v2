@@ -18,10 +18,7 @@ scrapy>=2.11.0
 scrapegraphai>=0.1.0
 firecrawl>=0.1.0
 
-# Vision and OCR
-pytesseract>=0.3.10
-Pillow>=10.0.0
-opencv-python>=4.8.0
+# Vision and OCR (CAPTCHA dependencies removed)
 
 # Proxy and networking
 aiohttp>=3.9.0
@@ -41,8 +38,7 @@ ollama>=0.1.0
 transformers>=4.35.0
 torch>=2.1.0
 
-# Optional: Advanced features
-pyautogui>=0.9.54
+# Optional: Advanced features (CAPTCHA dependencies removed)
 beautifulsoup4>=4.12.0
 lxml>=4.9.0
 

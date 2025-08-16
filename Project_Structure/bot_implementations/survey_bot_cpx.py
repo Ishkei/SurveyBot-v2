@@ -26,12 +26,9 @@ except ImportError:
     ENHANCED_FEATURES_AVAILABLE = False
     EnhancedPersonalitySystem = None
 
-try:
-    from free_captcha_solver import FreeCaptchaSolver
-    CAPTCHA_SOLVER_AVAILABLE = True
-except ImportError:
-    CAPTCHA_SOLVER_AVAILABLE = False
-    FreeCaptchaSolver = None
+# CAPTCHA handling disabled
+CAPTCHA_SOLVER_AVAILABLE = False
+FreeCaptchaSolver = None
 
 try:
     from typing_simulation import type_text_naturally, TYPING_PRESETS, TYPING_SIMULATION_AVAILABLE
@@ -46,8 +43,8 @@ except ImportError:
     VISION_AVAILABLE = False
     OCR_AVAILABLE = False
 
-from config import Config
-from personality_responses import generate_personality_response, PersonalityResponseGenerator
+from Project_Structure.config import Config
+from Project_Structure.personality_responses import generate_personality_response, PersonalityResponseGenerator
 
 
 class QuestionLogger:
@@ -240,7 +237,6 @@ class CPXResearchBot:
         if ENHANCED_FEATURES_AVAILABLE:
             try:
                 self.personality_system = EnhancedPersonalitySystem()
-                self.captcha_solver = FreeCaptchaSolver()
                 print("✅ Enhanced features initialized for CPX bot")
             except Exception as e:
                 print(f"⚠️ Error initializing enhanced features: {e}")
@@ -1945,12 +1941,7 @@ class CPXResearchBot:
             
             while questions_answered < max_router_questions:
                 # Check for CAPTCHAs before handling router question
-                try:
-                    if await self.detect_and_handle_captcha():
-                        print("✅ CAPTCHA resolved in router, continuing...")
-                        await asyncio.sleep(1)
-                except Exception as captcha_err:
-                    print(f"⚠️ Router CAPTCHA check error: {captcha_err}")
+                # CAPTCHA handling disabled
                 
                 # Handle current router question first
                 question_result = await self.handle_cpx_question()
@@ -2011,13 +2002,7 @@ class CPXResearchBot:
             # Additional wait for dynamic content
             await asyncio.sleep(2)
 
-            # NEW: Check for CAPTCHAs before proceeding with survey
-            try:
-                if await self.detect_and_handle_captcha():
-                    print("✅ CAPTCHA handled successfully, continuing with survey...")
-                    await asyncio.sleep(2)  # Wait for CAPTCHA resolution
-            except Exception as captcha_err:
-                print(f"⚠️ CAPTCHA detection/handling error: {captcha_err}")
+                    # CAPTCHA handling disabled
 
             # Special case: Samplicio.us DataDome verification (RespondentAuthentication.aspx)
             try:
@@ -2412,13 +2397,7 @@ class CPXResearchBot:
                     print(f"❌ Survey failed: {status.get('reason', 'Unknown')}")
                     return status
                 
-                # Check for CAPTCHAs before handling the question
-                try:
-                    if await self.detect_and_handle_captcha():
-                        print("✅ CAPTCHA resolved, continuing with question...")
-                        await asyncio.sleep(1)
-                except Exception as captcha_err:
-                    print(f"⚠️ CAPTCHA check error: {captcha_err}")
+                        # CAPTCHA handling disabled
                 
                 # Handle current survey question
                 if not await self.handle_cpx_question():
@@ -3014,581 +2993,16 @@ class CPXResearchBot:
             print(f"⚠️ Samplicio verification handler error: {e}")
     
     async def handle_slider_captcha(self, context) -> bool:
-        """Handle slider CAPTCHAs specifically for DataDome and similar systems"""
-        try:
-            print("🔍 Looking for slider CAPTCHA elements...")
-            
-            # Check for puzzle piece CAPTCHA first (more complex)
-            if await self.handle_puzzle_piece_captcha(context):
-                print("✅ Puzzle piece CAPTCHA handled successfully")
-                return True
-            
-            # Enhanced slider CAPTCHA selectors including puzzle pieces
-            slider_selectors = [
-                '[data-dd-slider]',
-                '.dd-slider',
-                '.slider-container',
-                '[class*="slider"]',
-                '[class*="captcha"]',
-                '[class*="puzzle"]',
-                '[class*="piece"]',
-                '.puzzle-piece',
-                '.captcha-piece',
-                'input[type="range"]',
-                '.dd-range-slider',
-                '[data-dd-action="slider"]',
-                '.geetest_slider_button',
-                '.slider-button',
-                '[data-testid="slider"]'
-            ]
-            
-            # Look for slider elements
-            slider_found = False
-            for selector in slider_selectors:
-                try:
-                    slider = context.locator(selector).first
-                    if await slider.count() > 0:
-                        slider_found = True
-                        print(f"🎯 Found slider element: {selector}")
-                        break
-                except Exception:
-                    continue
-            
-            if not slider_found:
-                # Try to find by text content indicating slider CAPTCHA
-                try:
-                    page_text = (await context.locator('body').text_content() or '').lower()
-                    captcha_keywords = [
-                        'slide to verify', 'drag to verify', 'move slider', 'captcha verification',
-                        'complete the puzzle', 'slide right', 'verification required', 'puzzle piece',
-                        'jigsaw', 'slide to complete', 'drag to complete'
-                    ]
-                    if any(keyword in page_text for keyword in captcha_keywords):
-                        slider_found = True
-                        print("🎯 Detected slider CAPTCHA by text content")
-                except Exception:
-                    pass
-            
-            if not slider_found:
-                return False
-            
-            # Try multiple approaches to solve the slider
-            print("🔄 Attempting to solve slider CAPTCHA...")
-            
-            # Approach 1: Direct slider interaction
-            for selector in slider_selectors:
-                try:
-                    slider = context.locator(selector).first
-                    if await slider.count() == 0:
-                        continue
-                    
-                    # Get slider dimensions
-                    try:
-                        box = await slider.bounding_box()
-                        if box:
-                            # Calculate target position (usually right side)
-                            start_x = box['x'] + box['width'] * 0.1  # Start at 10%
-                            end_x = box['x'] + box['width'] * 0.9   # End at 90%
-                            center_y = box['y'] + box['height'] * 0.5
-                            
-                            print(f"🎯 Slider dimensions: {box['width']}x{box['height']}")
-                            print(f"🔄 Moving slider from {start_x:.1f} to {end_x:.1f}")
-                            
-                            # Move mouse to start position
-                            await self.page.mouse.move(start_x, center_y)
-                            await asyncio.sleep(random.uniform(0.3, 0.7))
-                            
-                            # Click and drag to end position
-                            await self.page.mouse.down()
-                            await asyncio.sleep(random.uniform(0.1, 0.3))
-                            
-                            # Move to end position with human-like motion using easing
-                            steps = 15  # More steps for smoother movement
-                            for i in range(1, steps + 1):
-                                # Use easing function for natural movement
-                                progress = i / steps
-                                ease_progress = progress * (2 - progress)  # ease_out_quad
-                                
-                                x = start_x + (end_x - start_x) * ease_progress
-                                # Add slight randomness to y position
-                                y = center_y + random.uniform(-2, 2)
-                                await self.page.mouse.move(x, y)
-                                await asyncio.sleep(random.uniform(0.05, 0.15))
-                            
-                            await self.page.mouse.up()
-                            print("✅ Slider moved successfully")
-                            
-                            # Wait for verification
-                            await asyncio.sleep(2)
-                            
-                            # Check if verification succeeded
-                            try:
-                                success_indicators = [
-                                    'button:has-text("Continue")',
-                                    'button:has-text("Verify")',
-                                        'button:has-text("Proceed")',
-                                        '.dd-success',
-                                        '[data-dd-status="success"]'
-                                    ]
-                                    
-                                for indicator in success_indicators:
-                                    success_elem = context.locator(indicator).first
-                                    if await success_elem.count() > 0:
-                                        print("✅ Slider CAPTCHA verification successful")
-                                        return True
-                            except Exception:
-                                pass
-                            
-                            return True  # Assume success if no errors
-                            
-                    except Exception as e:
-                        print(f"⚠️ Error with slider dimensions: {e}")
-                        continue
-                        
-                except Exception as e:
-                    print(f"⚠️ Error with slider selector {selector}: {e}")
-                    continue
-            
-            # Approach 2: JavaScript-based slider manipulation
-            try:
-                js_code = """
-                () => {
-                    // Find slider elements
-                    const sliders = document.querySelectorAll('[data-dd-slider], .dd-slider, .slider-container, input[type="range"]');
-                    if (sliders.length === 0) return false;
-                    
-                    for (const slider of sliders) {
-                        try {
-                            // Try to set value directly
-                            if (slider.type === 'range') {
-                                slider.value = slider.max || 100;
-                                slider.dispatchEvent(new Event('input', { bubbles: true }));
-                                slider.dispatchEvent(new Event('change', { bubbles: true }));
-                            }
-                            
-                            // Try to trigger slider events
-                            const event = new MouseEvent('mousedown', {
-                                bubbles: true,
-                                cancelable: true,
-                                view: window
-                            });
-                            slider.dispatchEvent(event);
-                            
-                            // Simulate drag
-                            const moveEvent = new MouseEvent('mousemove', {
-                                bubbles: true,
-                                cancelable: true,
-                                view: window,
-                                clientX: slider.offsetLeft + slider.offsetWidth
-                            });
-                            slider.dispatchEvent(moveEvent);
-                            
-                            // Release
-                            const upEvent = new MouseEvent('mouseup', {
-                                bubbles: true,
-                                cancelable: true,
-                                view: window
-                            });
-                            slider.dispatchEvent(upEvent);
-                            
-                            return true;
-                        } catch (e) {
-                            console.log('Slider manipulation error:', e);
-                        }
-                    }
-                    return false;
-                }
-                """
-                
-                result = await context.evaluate(js_code)
-                if result:
-                    print("✅ JavaScript slider manipulation attempted")
-                    await asyncio.sleep(2)
-                    return True
-                    
-            except Exception as e:
-                print(f"⚠️ JavaScript slider manipulation failed: {e}")
-            
-            # Approach 3: Try to find and click verification buttons
-            try:
-                verify_buttons = [
-                    'button:has-text("Verify")',
-                    'button:has-text("Continue")',
-                    'button:has-text("Proceed")',
-                    'button:has-text("Submit")',
-                    '.dd-verify-btn',
-                    '[data-dd-action="verify"]'
-                ]
-                
-                for button_selector in verify_buttons:
-                    try:
-                        button = context.locator(button_selector).first
-                        if await button.count() > 0:
-                            await button.click()
-                            print(f"✅ Clicked verification button: {button_selector}")
-                            await asyncio.sleep(2)
-                            return True
-                    except Exception:
-                        continue
-                        
-            except Exception as e:
-                print(f"⚠️ Verification button click failed: {e}")
-            
-            print("⚠️ All slider CAPTCHA approaches failed")
-            return False
-            
-        except Exception as e:
-            print(f"⚠️ Slider CAPTCHA handler error: {e}")
-            return False
-    
+        """CAPTCHA handling disabled - always return False"""
+        return False
+
     async def handle_puzzle_piece_captcha(self, context) -> bool:
-        """Handle puzzle piece CAPTCHAs (drag and drop jigsaw puzzles)"""
-        try:
-            print("🧩 Looking for puzzle piece CAPTCHA...")
-            
-            # Check for puzzle piece CAPTCHA indicators
-            puzzle_indicators = [
-                'text:has("Slide right to complete the puzzle")',
-                'text:has("Verification Required")',
-                'text:has("complete the puzzle")',
-                '[class*="puzzle"]',
-                '[class*="jigsaw"]',
-                '[class*="drag"]',
-                '[class*="drop"]'
-            ]
-            
-            puzzle_found = False
-            for indicator in puzzle_indicators:
-                try:
-                    element = context.locator(indicator).first
-                    if await element.count() > 0:
-                        puzzle_found = True
-                        print(f"🎯 Found puzzle piece CAPTCHA indicator: {indicator}")
-                        break
-                except Exception:
-                    continue
-            
-            # Also check page text for puzzle indicators
-            if not puzzle_found:
-                try:
-                    page_text = (await context.locator('body').text_content() or '').lower()
-                    puzzle_keywords = [
-                        'slide right to complete the puzzle',
-                        'verification required',
-                        'complete the puzzle',
-                        'puzzle piece',
-                        'drag and drop',
-                        'jigsaw'
-                    ]
-                    if any(keyword in page_text for keyword in puzzle_keywords):
-                        puzzle_found = True
-                        print("🎯 Detected puzzle piece CAPTCHA by text content")
-                except Exception:
-                    pass
-            
-            if not puzzle_found:
-                return False
-            
-            print("🧩 Attempting to solve puzzle piece CAPTCHA...")
-            
-            # Look for the puzzle piece (draggable element)
-            puzzle_piece_selectors = [
-                '[draggable="true"]',
-                '[class*="piece"]',
-                '[class*="puzzle"]',
-                '[class*="draggable"]',
-                'img[class*="piece"]',
-                'div[class*="piece"]'
-            ]
-            
-            puzzle_piece = None
-            for selector in puzzle_piece_selectors:
-                try:
-                    piece = context.locator(selector).first
-                    if await piece.count() > 0:
-                        puzzle_piece = piece
-                        print(f"🎯 Found puzzle piece: {selector}")
-                        break
-                except Exception:
-                    continue
-            
-            if not puzzle_piece:
-                # Try to find by looking for elements that might be draggable
-                try:
-                    # Look for elements with specific attributes or classes
-                    potential_pieces = context.locator('*').all()
-                    for i, element in enumerate(potential_pieces[:20]):  # Check first 20 elements
-                        try:
-                            tag_name = await element.evaluate('el => el.tagName')
-                            class_name = await element.get_attribute('class') or ''
-                            style = await element.get_attribute('style') or ''
-                            
-                            # Look for visual indicators of puzzle pieces
-                            if (tag_name in ['IMG', 'DIV', 'SPAN'] and 
-                                any(keyword in class_name.lower() for keyword in ['piece', 'puzzle', 'drag']) or
-                                'position: absolute' in style or 'z-index' in style):
-                                puzzle_piece = element
-                                print(f"🎯 Found potential puzzle piece by attributes")
-                                break
-                        except Exception:
-                            continue
-                except Exception:
-                    pass
-            
-            if not puzzle_piece:
-                print("⚠️ Could not find puzzle piece element")
-                return False
-            
-            # Look for the target area (where the piece should be dropped)
-            target_area_selectors = [
-                '[class*="target"]',
-                '[class*="drop"]',
-                '[class*="zone"]',
-                '[class*="area"]',
-                'div[style*="border"]',
-                'div[style*="outline"]'
-            ]
-            
-            target_area = None
-            for selector in target_area_selectors:
-                try:
-                    area = context.locator(selector).first
-                    if await area.count() > 0:
-                        target_area = area
-                        print(f"🎯 Found target area: {selector}")
-                        break
-                except Exception:
-                    continue
-            
-            # If no specific target area found, try to estimate based on page layout
-            if not target_area:
-                try:
-                    # Look for areas with yellow outline or border (common in puzzle CAPTCHAs)
-                    yellow_elements = context.locator('*').all()
-                    for i, element in enumerate(yellow_elements[:30]):  # Check first 30 elements
-                        try:
-                            style = await element.get_attribute('style') or ''
-                            class_name = await element.get_attribute('class') or ''
-                            
-                            if ('border' in style and 'yellow' in style.lower()) or \
-                               ('outline' in style and 'yellow' in style.lower()) or \
-                               ('background' in style and 'yellow' in style.lower()):
-                                target_area = element
-                                print("🎯 Found target area by yellow styling")
-                                break
-                        except Exception:
-                            continue
-                except Exception:
-                    pass
-            
-            # Get puzzle piece position
-            try:
-                piece_box = await puzzle_piece.bounding_box()
-                if not piece_box:
-                    print("⚠️ Could not get puzzle piece position")
-                    return False
-                
-                piece_center_x = piece_box['x'] + piece_box['width'] / 2
-                piece_center_y = piece_box['y'] + piece_box['height'] / 2
-                
-                print(f"🎯 Puzzle piece position: ({piece_center_x:.1f}, {piece_center_y:.1f})")
-                
-                # Calculate target position
-                if target_area:
-                    target_box = await target_area.bounding_box()
-                    if target_box:
-                        target_x = target_box['x'] + target_box['width'] / 2
-                        target_y = target_box['y'] + target_box['height'] / 2
-                        print(f"🎯 Target area position: ({target_x:.1f}, {target_y:.1f})")
-                    else:
-                        # Estimate target position (usually to the right)
-                        target_x = piece_center_x + 200  # Move 200px to the right
-                        target_y = piece_center_y
-                        print(f"🎯 Estimated target position: ({target_x:.1f}, {target_y:.1f})")
-                else:
-                    # Default: move to the right
-                    target_x = piece_center_x + 200
-                    target_y = piece_center_y
-                    print(f"🎯 Default target position: ({target_x:.1f}, {target_y:.1f})")
-                
-                # Perform the drag and drop
-                print(f"🔄 Dragging puzzle piece from ({piece_center_x:.1f}, {piece_center_y:.1f}) to ({target_x:.1f}, {target_y:.1f})")
-                
-                # Move to puzzle piece
-                await self.page.mouse.move(piece_center_x, piece_center_y)
-                await asyncio.sleep(0.3)
-                
-                # Click and hold
-                await self.page.mouse.down()
-                await asyncio.sleep(0.2)
-                
-                # Drag to target with human-like motion
-                steps = 15
-                for i in range(1, steps + 1):
-                    progress = i / steps
-                    # Use easing function for more natural movement
-                    eased_progress = 1 - (1 - progress) ** 3
-                    
-                    current_x = piece_center_x + (target_x - piece_center_x) * eased_progress
-                    current_y = piece_center_y + (target_y - piece_center_y) * eased_progress
-                    
-                    # Add slight randomness for human-like movement
-                    current_x += random.uniform(-3, 3)
-                    current_y += random.uniform(-2, 2)
-                    
-                    await self.page.mouse.move(current_x, current_y)
-                    await asyncio.sleep(random.uniform(0.05, 0.12))
-                
-                # Release at target
-                await self.page.mouse.up()
-                print("✅ Puzzle piece dragged successfully")
-                
-                # Wait for verification
-                await asyncio.sleep(2)
-                
-                # Check if verification succeeded
-                try:
-                    success_indicators = [
-                        'text:has("Verification successful")',
-                        'text:has("Verification complete")',
-                        'text:has("Success")',
-                        'button:has-text("Continue")',
-                        'button:has-text("Verify")',
-                        'button:has-text("Proceed")',
-                        '[class*="success"]',
-                        '[class*="complete"]'
-                    ]
-                    
-                    for indicator in success_indicators:
-                        success_elem = context.locator(indicator).first
-                        if await success_elem.count() > 0:
-                            print("✅ Puzzle piece CAPTCHA verification successful")
-                            return True
-                except Exception:
-                    pass
-                
-                # Also check if the puzzle piece disappeared or moved
-                try:
-                    new_piece_box = await puzzle_piece.bounding_box()
-                    if not new_piece_box or new_piece_box['x'] != piece_box['x']:
-                        print("✅ Puzzle piece moved successfully")
-                        return True
-                except Exception:
-                    pass
-                
-                return True  # Assume success if no errors
-                
-            except Exception as e:
-                print(f"⚠️ Error during puzzle piece drag: {e}")
-                return False
-            
-        except Exception as e:
-            print(f"⚠️ Puzzle piece CAPTCHA handler error: {e}")
-            return False
+        """CAPTCHA handling disabled - always return False"""
+        return False
     
     async def detect_and_handle_captcha(self) -> bool:
-        """General CAPTCHA detection and handling method"""
-        try:
-            print("🔍 Scanning for CAPTCHA elements...")
-            
-            # Check for various CAPTCHA types
-            captcha_indicators = [
-                # Text-based CAPTCHAs
-                'img[src*="captcha"]',
-                'img[alt*="captcha"]',
-                '.captcha-image',
-                '#captcha',
-                '[class*="captcha"]',
-                
-                # Slider CAPTCHAs
-                '[data-dd-slider]',
-                '.dd-slider',
-                '.slider-container',
-                'input[type="range"]',
-                
-                # Checkbox CAPTCHAs
-                '.recaptcha-checkbox',
-                '[class*="recaptcha"]',
-                'iframe[src*="recaptcha"]',
-                
-                # DataDome specific
-                'iframe[src*="captcha-delivery"]',
-                '.dd-verification',
-                '[data-dd-action]'
-            ]
-            
-            captcha_found = False
-            for selector in captcha_indicators:
-                try:
-                    element = self.page.locator(selector).first
-                    if await element.count() > 0:
-                        captcha_found = True
-                        print(f"🎯 Found CAPTCHA element: {selector}")
-                        break
-                except Exception:
-                    continue
-            
-            # Also check page text for CAPTCHA indicators
-            if not captcha_found:
-                try:
-                    page_text = (await self.page.text_content('body') or '').lower()
-                    captcha_keywords = [
-                        'captcha', 'verification', 'verify', 'robot', 'human',
-                        'slide to verify', 'drag to verify', 'move slider',
-                        'i am not a robot', 'security check'
-                    ]
-                    if any(keyword in page_text for keyword in captcha_keywords):
-                        captcha_found = True
-                        print("🎯 Detected CAPTCHA by text content")
-                except Exception:
-                    pass
-            
-            if not captcha_found:
-                return False
-            
-            print("🔄 CAPTCHA detected, attempting to solve...")
-            
-            # Try different CAPTCHA solving approaches based on type
-            if await self.handle_slider_captcha(self.page):
-                return True
-            
-            # Try OCR-based text CAPTCHA solving if available
-            if hasattr(self, 'captcha_solver') and self.captcha_solver:
-                try:
-                    print("🔍 Attempting OCR-based CAPTCHA solving...")
-                    # This would use the FreeCaptchaSolver for text CAPTCHAs
-                    # Implementation depends on the specific CAPTCHA type
-                    return True
-                except Exception as e:
-                    print(f"⚠️ OCR CAPTCHA solving failed: {e}")
-            
-            # Try to find and click common CAPTCHA completion buttons
-            completion_buttons = [
-                'button:has-text("Verify")',
-                'button:has-text("Continue")',
-                'button:has-text("Submit")',
-                'button:has-text("Proceed")',
-                '.captcha-submit',
-                '[data-captcha-action="submit"]'
-            ]
-            
-            for button_selector in completion_buttons:
-                try:
-                    button = self.page.locator(button_selector).first
-                    if await button.count() > 0:
-                        await button.click()
-                        print(f"✅ Clicked CAPTCHA completion button: {button_selector}")
-                        await asyncio.sleep(2)
-                        return True
-                except Exception:
-                    continue
-            
-            print("⚠️ CAPTCHA solving attempts failed")
-            return False
-            
-        except Exception as e:
-            print(f"⚠️ CAPTCHA detection/handling error: {e}")
-            return False
+        """CAPTCHA handling disabled - always return False"""
+        return False
     
     async def detect_survey_platform(self) -> str:
         """Detect which survey platform we're on"""
@@ -3634,10 +3048,7 @@ class CPXResearchBot:
             # Wait for the survey to load
             await asyncio.sleep(2)
             
-            # Check for CAPTCHAs first
-            if await self.detect_and_handle_captcha():
-                print("✅ CAPTCHA resolved in MetrixMatrix survey")
-                await asyncio.sleep(1)
+                    # CAPTCHA handling disabled
             
             questions_answered = 0
             max_questions = 50  # Reasonable limit for router surveys
@@ -3689,10 +3100,7 @@ class CPXResearchBot:
             # Wait for the survey to load
             await asyncio.sleep(2)
             
-            # Check for CAPTCHAs first
-            if await self.detect_and_handle_captcha():
-                print("✅ CAPTCHA resolved in SampleEye survey")
-                await asyncio.sleep(1)
+                    # CAPTCHA handling disabled
             
             questions_answered = 0
             max_questions = 50  # Reasonable limit for qualification surveys
@@ -4056,10 +3464,7 @@ class CPXResearchBot:
             # Wait for the survey to load
             await asyncio.sleep(3)
             
-            # Check for CAPTCHAs first
-            if await self.detect_and_handle_captcha():
-                print("✅ CAPTCHA resolved in Sample-Cube survey")
-                await asyncio.sleep(1)
+                    # CAPTCHA handling disabled
             
             questions_answered = 0
             max_questions = 50  # Reasonable limit for qualification surveys
@@ -4112,10 +3517,7 @@ class CPXResearchBot:
             # Wait for the survey to load
             await asyncio.sleep(3)
             
-            # Check for CAPTCHAs first
-            if await self.detect_and_handle_captcha():
-                print("✅ CAPTCHA resolved in Samplicio survey")
-                await asyncio.sleep(1)
+                    # CAPTCHA handling disabled
             
             questions_answered = 0
             max_questions = 50  # Reasonable limit for qualification surveys

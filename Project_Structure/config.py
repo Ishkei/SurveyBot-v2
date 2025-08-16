@@ -32,9 +32,7 @@ class Config:
     
     # API Keys
     GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
-    CAPTCHA_API_KEY = os.getenv("CAPTCHA_API_KEY", "")
-    CAPTCHA_API_URL = os.getenv("CAPTCHA_API_URL", "")
-    CAPTCHA_API_SECRET = os.getenv("CAPTCHA_API_SECRET", "")
+    # CAPTCHA handling disabled
     
     # Proxy Settings
     PROXY_HOST = os.getenv("PROXY_HOST", "")
@@ -159,7 +157,7 @@ class Config:
         elif cls.BROWSER_TYPE == "undetected":
             config.update({
                 "undetectable_agent": True,
-                "captcha_api_key": cls.CAPTCHA_API_KEY,
+                # CAPTCHA handling disabled
                 "proxy_config": cls.get_proxy_config()
             })
         
@@ -236,9 +234,7 @@ def create_sample_env():
     """Create a sample .env file with configuration options"""
     env_content = """# API Keys
 GOOGLE_API_KEY=your_google_api_key_here
-CAPTCHA_API_KEY=your_captcha_api_key_here
-CAPTCHA_API_URL=https://api.captcha.com
-CAPTCHA_API_SECRET=your_captcha_secret_here
+# CAPTCHA handling disabled
 
 # Proxy Settings
 PROXY_HOST=

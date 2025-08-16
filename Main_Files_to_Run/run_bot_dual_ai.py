@@ -3,7 +3,7 @@
 # Run: source ../venv/bin/activate && python3 run_bot_dual_ai.py
 """
 Enhanced Main Runner Script for Survey Automation Bot with Universal Dual AI Integration.
-Supports multiple implementations with advanced AI personality, typing simulation, captcha solving,
+Supports multiple implementations with advanced AI personality and typing simulation.
 and intelligent dual AI system (Gemini + OpenAI) for all survey platforms.
 """
 

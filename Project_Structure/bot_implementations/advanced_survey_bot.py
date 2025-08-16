@@ -22,7 +22,7 @@ try:
     VISION_AVAILABLE = True
 except ImportError:
     VISION_AVAILABLE = False
-    print("⚠️ Vision libraries not available. Install: pip install opencv-python pytesseract pillow")
+    print("⚠️ Vision libraries not available - CAPTCHA dependencies removed")
 
 # Browser automation
 try:

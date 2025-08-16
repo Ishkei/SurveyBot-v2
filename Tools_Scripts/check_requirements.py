@@ -54,8 +54,7 @@ def main():
     
     # Optional dependencies
     optional_packages = [
-        ("PIL", "Pillow"),  # For image processing
-        ("cv2", "opencv-python"),  # For computer vision
+            # CAPTCHA dependencies removed
         ("numpy", "numpy"),  # For numerical operations
     ]
     

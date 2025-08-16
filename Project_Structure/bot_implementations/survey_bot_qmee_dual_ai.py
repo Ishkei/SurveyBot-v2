@@ -35,12 +35,9 @@ except ImportError:
     ENHANCED_FEATURES_AVAILABLE = False
     EnhancedPersonalitySystem = None
 
-try:
-    from free_captcha_solver import FreeCaptchaSolver
-    CAPTCHA_SOLVER_AVAILABLE = True
-except ImportError:
-    CAPTCHA_SOLVER_AVAILABLE = False
-    FreeCaptchaSolver = None
+# CAPTCHA handling disabled
+CAPTCHA_SOLVER_AVAILABLE = False
+FreeCaptchaSolver = None
 
 try:
     from typing_simulation import type_text_naturally, TYPING_PRESETS, TYPING_SIMULATION_AVAILABLE
@@ -315,16 +312,8 @@ class QmeeSurveyBotDualAI:
         else:
             self.personality_system = None
         
-        # Initialize captcha solver if available
-        if CAPTCHA_SOLVER_AVAILABLE:
-            try:
-                self.captcha_solver = FreeCaptchaSolver()
-                print("✅ Captcha solver initialized")
-            except Exception as e:
-                print(f"⚠️ Captcha solver failed: {e}")
-                self.captcha_solver = None
-        else:
-            self.captcha_solver = None
+        # CAPTCHA handling disabled
+        self.captcha_solver = None
     
     async def handle_text_question(self, question: str, info: str) -> bool:
         """Handle open-ended text questions using dual AI system"""

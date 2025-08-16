@@ -3,7 +3,7 @@
 # Run: source ../venv/bin/activate && python3 run_bot.py
 """
 Enhanced Main Runner Script for Survey Automation Bot.
-Supports multiple implementations with advanced AI personality, typing simulation, and captcha solving.
+Supports multiple implementations with advanced AI personality and typing simulation.
 """
 
 import sys
@@ -353,14 +353,7 @@ WEB_INTERFACE_HTML = """
                             <option value="standard">Standard HTTP</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="captcha">Captcha Handling:</label>
-                        <select id="captcha">
-                            <option value="auto">Auto-Solve</option>
-                            <option value="manual">Manual</option>
-                            <option value="skip">Skip</option>
-                        </select>
-                    </div>
+                    <!-- CAPTCHA handling disabled -->
                     <div class="form-group">
                         <label for="typing">Typing Simulation:</label>
                         <select id="typing">
@@ -533,7 +526,7 @@ WEB_INTERFACE_HTML = """
                 max_surveys: parseInt(document.getElementById('maxSurveys').value),
                 headless: document.getElementById('headless').value === 'true',
                 proxy: document.getElementById('proxy').value,
-                captcha: document.getElementById('captcha').value,
+                // CAPTCHA handling disabled
                 typing: document.getElementById('typing').value
             };
             
@@ -623,7 +616,8 @@ try:
     from Project_Structure.enhanced_personality_system import EnhancedPersonalitySystem, generate_enhanced_response
     from Project_Structure.enhanced_bot_integration import EnhancedBotIntegration, SurveyBotEnhancer
     from Project_Structure.typing_simulation import TypingSimulator, type_text_naturally
-    from Project_Structure.free_captcha_solver import FreeCaptchaSolver
+    # CAPTCHA handling disabled
+    FreeCaptchaSolver = None
     ENHANCED_FEATURES_AVAILABLE = True
     print("✅ Enhanced features loaded successfully")
 except ImportError as e:
@@ -643,7 +637,6 @@ class EnhancedSurveyBotRunner:
         self.session_stats = {
             'start_time': None,
             'surveys_completed': 0,
-            'captchas_solved': 0,
             'errors_encountered': 0,
             'personality_mode': 'natural_conversation'
         }
@@ -668,9 +661,8 @@ class EnhancedSurveyBotRunner:
             self.typing_simulator = TypingSimulator()
             print(f"✅ Typing simulator initialized")
             
-            # Initialize captcha solver
-            self.captcha_solver = FreeCaptchaSolver()
-            print(f"✅ Free captcha solver initialized")
+            # CAPTCHA handling disabled
+            self.captcha_solver = None
             
             # Initialize enhanced bot integration
             self.enhanced_integration = EnhancedBotIntegration()
@@ -811,240 +803,11 @@ class EnhancedSurveyBotRunner:
         
         await hybrid_main()
     
-    async def _run_slider_captcha_bot(self, args):
-        """Run dedicated slider CAPTCHA bot"""
-        try:
-            from Project_Structure.enhanced_slider_integration import EnhancedSliderBot
-            
-            print("🧩 Starting Enhanced Slider CAPTCHA Bot...")
-            
-            # Create enhanced bot with slider CAPTCHA support
-            bot = EnhancedSliderBot()
-            
-            # Get survey URL from args or use default
-            survey_url = getattr(args, 'url', 'https://your-survey-site.com')
-            
-            # Run survey with automatic CAPTCHA handling
-            bot.run_survey_with_slider_support(survey_url)
-            
-            self.session_stats['surveys_completed'] += 1
-            self.session_stats['captchas_solved'] += 1  # Track CAPTCHA solves
-            
-        except Exception as e:
-            print(f"❌ Error running slider CAPTCHA bot: {e}")
-            raise
+    # CAPTCHA handling disabled - all CAPTCHA methods removed
     
-    async def _run_cpx_bot_with_captcha(self, args):
-        """Run CPX Research bot with slider CAPTCHA support"""
-        try:
-            from Project_Structure.enhanced_slider_integration import CPXSliderBot
-            
-            print("🚀 Starting CPX Research bot with Slider CAPTCHA support...")
-            
-            # Create CPX bot with CAPTCHA support
-            cpx_bot = CPXSliderBot(
-                app_id=Config.CPX_APP_ID,
-                ext_user_id=Config.CPX_EXT_USER_ID
-            )
-            
-            # Propagate typing preferences
-            if hasattr(self, 'session_stats'):
-                if hasattr(cpx_bot, '__dict__'):
-                    cpx_bot.typing_style = self.session_stats.get('typing_style', 'careful_typer')
-            
-            # Initialize browser
-            if not await cpx_bot.initialize_browser():
-                print("❌ Failed to initialize CPX bot browser")
-                return
-            
-            # Load persona if available
-            if hasattr(cpx_bot, "load_persona") and callable(getattr(cpx_bot, "load_persona")):
-                cpx_bot.load_persona()
-            
-            print("🚀 Starting CPX Research session with CAPTCHA support...")
-            
-            # Run the CPX bot with CAPTCHA handling
-            cpx_result = await cpx_bot.run_survey_session(max_surveys=getattr(args, "max_surveys", 5))
-            
-            # Print session summary and cleanup
-            cpx_bot.print_session_summary()
-            await cpx_bot.cleanup()
-            
-        except Exception as e:
-            print(f"❌ Error running CPX bot with CAPTCHA: {e}")
-            import traceback
-            traceback.print_exc()
+
     
-    async def _run_selenium_bot_with_captcha(self, args):
-        """Run Selenium bot with slider CAPTCHA support"""
-        try:
-            from Project_Structure.enhanced_slider_integration import SeleniumSliderBot
-            
-            print("🚀 Starting Selenium bot with Slider CAPTCHA support...")
-            
-            bot = SeleniumSliderBot()
-            
-            # Enhance the bot if possible
-            if self.bot_enhancer:
-                self.bot_enhancer.enhance_response_generation(bot.run)
-            
-            bot.run()
-            
-        except Exception as e:
-            print(f"❌ Error running Selenium bot with CAPTCHA: {e}")
-            raise
-    
-    async def _run_undetected_bot_with_captcha(self, args):
-        """Run Undetected bot with slider CAPTCHA support"""
-        try:
-            from Project_Structure.enhanced_slider_integration import UndetectedSliderBot
-            
-            print("🚀 Starting Undetected bot with Slider CAPTCHA support...")
-            
-            bot = UndetectedSliderBot()
-            
-            # Enhance the bot if possible
-            if self.bot_enhancer:
-                self.bot_enhancer.enhance_response_generation(bot.run)
-            
-            bot.run()
-            
-        except Exception as e:
-            print(f"❌ Error running Undetected bot with CAPTCHA: {e}")
-            raise
-    
-    async def _run_playwright_bot_with_captcha(self, args):
-        """Run Playwright bot with slider CAPTCHA support"""
-        try:
-            from Project_Structure.bot_implementations.survey_bot_playwright import main as playwright_main
-            
-            print("🚀 Starting Playwright bot with Slider CAPTCHA support...")
-            
-            # Note: Playwright bot uses main function, not a class
-            # CAPTCHA integration would need to be done within the main function
-            # For now, we'll run the standard Playwright bot
-            
-            # Enhance the bot if possible
-            if self.bot_enhancer:
-                self.bot_enhancer.enable_enhancement()
-            
-            await playwright_main()
-            
-        except Exception as e:
-            print(f"❌ Error running Playwright bot with CAPTCHA: {e}")
-            raise
-    
-    async def _run_v2ray_bot_with_captcha(self, args):
-        """Run V2Ray bot with slider CAPTCHA support"""
-        try:
-            from Project_Structure.bot_implementations.survey_bot_v2ray import V2RayEnhancedSurveyBot
-            from Project_Structure.enhanced_slider_integration import integrate_slider_solver_to_bot
-            
-            print("🚀 Starting V2Ray bot with Slider CAPTCHA support...")
-            
-            bot = V2RayEnhancedSurveyBot()
-            
-            # Integrate slider CAPTCHA solver
-            integrate_slider_solver_to_bot(bot)
-            
-            # Enhance the bot if possible
-            if self.bot_enhancer:
-                self.bot_enhancer.enhance_response_generation(bot.run)
-            
-            bot.run()
-            
-        except Exception as e:
-            print(f"❌ Error running V2Ray bot with CAPTCHA: {e}")
-            raise
-    
-    async def _run_proxychains_bot_with_captcha(self, args):
-        """Run Proxychains bot with slider CAPTCHA support"""
-        try:
-            from Project_Structure.bot_implementations.survey_bot_proxychains import ProxychainsSurveyBot
-            from Project_Structure.enhanced_slider_integration import integrate_slider_solver_to_bot
-            
-            print("🚀 Starting Proxychains bot with Slider CAPTCHA support...")
-            
-            bot = ProxychainsSurveyBot()
-            
-            # Integrate slider CAPTCHA solver
-            integrate_slider_solver_to_bot(bot)
-            
-            # Enhance the bot if possible
-            if self.bot_enhancer:
-                self.bot_enhancer.enhance_response_generation(bot.run)
-            
-            bot.run()
-            
-        except Exception as e:
-            print(f"❌ Error running Proxychains bot with CAPTCHA: {e}")
-            raise
-    
-    async def _run_hybrid_bot_with_captcha(self, args):
-        """Run Hybrid bot with slider CAPTCHA support"""
-        try:
-            from Project_Structure.bot_implementations.survey_bot_hybrid import main as hybrid_main
-            from Project_Structure.enhanced_slider_integration import integrate_slider_solver_to_bot
-            
-            print("🚀 Starting Hybrid bot with Slider CAPTCHA support...")
-            
-            # Enhance the bot if possible
-            if self.bot_enhancer:
-                self.bot_enhancer.enable_enhancement()
-            
-            await hybrid_main()
-            
-        except Exception as e:
-            print(f"❌ Error running Hybrid bot with CAPTCHA: {e}")
-            raise
-    
-    async def _run_enhanced_bot_with_captcha(self, args):
-        """Run the bot with enhanced features and slider CAPTCHA support"""
-        self.session_stats['start_time'] = time.time()
-        # Surface typing prefs for downstream bots
-        self.session_stats['typing_simulation'] = getattr(args, 'typing_simulation', False)
-        self.session_stats['typing_style'] = getattr(args, 'typing_style', 'careful_typer')
-        
-        print(f"\n🚀 Starting Enhanced Survey Bot with Slider CAPTCHA Support")
-        print(f"Implementation: {args.implementation}")
-        print(f"Platform: {args.platform}")
-        print(f"Personality Mode: {self.session_stats['personality_mode']}")
-        print(f"Enhanced Features: {'✅ Enabled' if ENHANCED_FEATURES_AVAILABLE else '❌ Disabled'}")
-        print(f"Slider CAPTCHA: ✅ Enabled")
-        print("-" * 50)
-        
-        try:
-            # Check if slider CAPTCHA is specifically requested
-            if getattr(args, 'slider_captcha', False):
-                await self._run_slider_captcha_bot(args)
-                return
-            
-            # Check platform first, then implementation
-            if args.platform == "cpx":
-                # CPX Research platform - use CPX-specific bot with CAPTCHA support
-                await self._run_cpx_bot_with_captcha(args)
-            elif args.implementation == "playwright":
-                await self._run_playwright_bot_with_captcha(args)
-            elif args.implementation == "selenium":
-                await self._run_selenium_bot_with_captcha(args)
-            elif args.implementation == "undetected":
-                await self._run_undetected_bot_with_captcha(args)
-            elif args.implementation == "v2ray":
-                await self._run_v2ray_bot_with_captcha(args)
-            elif args.implementation == "proxychains":
-                await self._run_proxychains_bot_with_captcha(args)
-            elif args.implementation == "hybrid":
-                await self._run_hybrid_bot_with_captcha(args)
-            else:
-                print(f"❌ Unknown implementation: {args.implementation}")
-                return
-                
-        except Exception as e:
-            self.session_stats['errors_encountered'] += 1
-            self.logger.error(f"Bot execution failed: {e}")
-            traceback.print_exc()
-        finally:
-            self._print_session_summary()
+    # All remaining CAPTCHA methods removed
     
     async def _run_cpx_bot(self, args):
         """Run CPX Research bot"""
@@ -1100,7 +863,7 @@ class EnhancedSurveyBotRunner:
             print("=" * 50)
             print(f"Duration: {duration:.2f} seconds")
             print(f"Surveys Completed: {self.session_stats['surveys_completed']}")
-            print(f"Captchas Solved: {self.session_stats['captchas_solved']}")
+    
             print(f"Errors Encountered: {self.session_stats['errors_encountered']}")
             print(f"Personality Mode: {self.session_stats['personality_mode']}")
             print("=" * 50)
@@ -1134,12 +897,7 @@ class EnhancedSurveyBotRunner:
             print(f"Variance range: {config['variance_range']}s")
             print(f"Pause probability: {config['pause_probability']}")
         
-        # Demo captcha solver
-        if self.captcha_solver:
-            print("\n🔐 Captcha Solver Demo:")
-            math_question = "What is 15 plus 23?"
-            solution = self.captcha_solver.solve_text_captcha(math_question)
-            print(f"Math captcha: {math_question} = {solution}")
+        # CAPTCHA handling disabled
         
         print("\n✅ Enhanced features demo completed!")
 
@@ -1367,21 +1125,7 @@ def main():
         default="careful_typer",
         help="Typing simulation style"
     )
-    parser.add_argument(
-        "--captcha-solving",
-        action="store_true",
-        help="Enable automatic captcha solving"
-    )
-    parser.add_argument(
-        "--slider-captcha",
-        action="store_true",
-        help="Enable enhanced slider CAPTCHA solving with computer vision"
-    )
-    parser.add_argument(
-        "--url",
-        type=str,
-        help="Survey URL to navigate to (for slider CAPTCHA bot)"
-    )
+    # CAPTCHA handling disabled
     parser.add_argument(
         "--enhanced-ai",
         action="store_true",
@@ -1441,13 +1185,8 @@ def main():
         web_interface.run(host='0.0.0.0', port=5000, debug=False)
         return
     
-    # Run bot normally
-    if args.slider_captcha:
-        print("🧩 Slider CAPTCHA mode enabled - using enhanced CAPTCHA solving")
-        # Modify the run_enhanced_bot method to use CAPTCHA-enabled versions
-        runner.run_enhanced_bot = runner._run_enhanced_bot_with_captcha
-    else:
-        print("🔧 Standard mode - using regular bot implementations")
+    # Run bot normally - CAPTCHA handling disabled
+    print("🔧 Standard mode - using regular bot implementations")
     
     asyncio.run(runner.run_enhanced_bot(args))
 
@@ -1478,10 +1217,8 @@ def setup_environment():
     # Install additional dependencies for enhanced features
     print("Installing enhanced features dependencies...")
     enhanced_deps = [
-        "opencv-python",
-        "pytesseract",
-        "Pillow",
-        "pyautogui",
+        # CAPTCHA dependencies removed
+        # CAPTCHA dependencies removed
         "google-generativeai"
     ]
     
@@ -1586,7 +1323,7 @@ def check_dependencies():
     
     # Enhanced features dependencies
     if ENHANCED_FEATURES_AVAILABLE:
-        enhanced_deps = [("opencv-python", "cv2"), ("pytesseract", "pytesseract"), ("Pillow", "PIL"), ("pyautogui", "pyautogui")]
+        enhanced_deps = []  # CAPTCHA dependencies removed
         for dep_name, import_name in enhanced_deps:
             try:
                 __import__(import_name)

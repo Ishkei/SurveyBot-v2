@@ -78,8 +78,7 @@ python Main Files to Run/run_bot.py --typing-simulation --typing-style careful_t
 
 ### **Advanced Feature Commands (NEW!)**
 ```bash
-# Enable automatic captcha solving
-python Main Files to Run/run_bot.py --captcha-solving
+# CAPTCHA handling disabled
 
 # Enable enhanced AI responses
 python Main Files to Run/run_bot.py --enhanced-ai
@@ -163,7 +162,7 @@ SurveyBot/
 │   ├── personality_responses.py      # AI personality system
 │   ├── enhanced_personality_system.py # Enhanced AI personality
 │   ├── typing_simulation.py          # Human-like typing simulation
-│   ├── free_captcha_solver.py        # Captcha solving
+│   ├── # CAPTCHA handling disabled
 │   ├── bot_implementations/          # All bot implementations
 │   │   ├── survey_bot_playwright.py  # Playwright implementation
 │   │   ├── survey_bot_cpx.py         # CPX Research bot
@@ -309,7 +308,7 @@ python Main Files to Run/run_bot.py --implementation v2ray --platform earnhaus
 - **MTurk**: Amazon Mechanical Turk
 
 ### **Advanced Features (NEW!)**
-- **Automatic Captcha Solving**: AI-powered captcha resolution
+- **CAPTCHA Handling**: Disabled for streamlined operation
 - **Enhanced Bot Integration**: Advanced bot capabilities
 - **Self-Operating Mode**: Autonomous operation
 - **Hybrid Implementations**: Multiple bot strategies
@@ -322,7 +321,7 @@ python Main Files to Run/run_bot.py --implementation v2ray --platform earnhaus
 - **PureSpectrum Integration**: Access to PureSpectrum surveys
 - **Enhanced AI Support**: Advanced AI personality and response generation
 - **Typing Simulation**: Human-like typing patterns for authenticity
-- **Automatic Captcha Solving**: AI-powered captcha resolution
+- **CAPTCHA Handling**: Disabled for streamlined operation
 
 ### **Your V2Ray Servers from Telegram Groups:**
 
@@ -469,8 +468,7 @@ python Main Files to Run/run_bot.py --personality-mode discord_casual
 # Enable typing simulation
 python Main Files to Run/run_bot.py --typing-simulation --typing-style careful_typer
 
-# Enable automatic captcha solving
-python Main Files to Run/run_bot.py --captcha-solving
+# CAPTCHA handling disabled
 
 # Update Discord personality
 python Main Files to Run/update_discord_personality.py

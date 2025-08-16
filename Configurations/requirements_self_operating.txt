@@ -1,21 +1,16 @@
 # Self-Operating Computer Framework Requirements
 # Based on https://github.com/OthersideAI/self-operating-computer
 
-# Core dependencies
+# Core dependencies (CAPTCHA dependencies removed)
 self-operating-computer>=1.0.0
 openai>=1.0.0
-pillow>=10.0.0
-pytesseract>=0.3.10
-opencv-python>=4.8.0
 numpy>=1.24.0
 
 # Browser automation
 playwright>=1.40.0
 selenium>=4.15.0
 
-# Mouse and keyboard control
-pyautogui>=0.9.54
-pynput>=1.7.6
+# Mouse and keyboard control (CAPTCHA dependencies removed)
 
 # AI and vision
 google-generativeai>=0.3.0
@@ -33,7 +28,4 @@ python-dotenv>=1.0.0
 requests>=2.31.0
 asyncio>=3.4.3
 
-# Enhanced features
-hrequests>=0.1.0
-browserforge>=0.1.0
-fingerprint-generator>=0.1.0
+# Enhanced features (CAPTCHA dependencies removed)
