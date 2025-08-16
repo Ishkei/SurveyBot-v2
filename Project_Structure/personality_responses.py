@@ -19,7 +19,9 @@ if USE_GEMINI_API:
         api_key = os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY')
         if api_key:
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel('gemini-pro')
+            # Use environment variable for model or default to gemini-1.5-flash-latest
+            model_name = os.getenv('AI_MODEL', 'gemini-1.5-flash-latest')
+            model = genai.GenerativeModel(model_name)
         else:
             print("⚠️ GEMINI_API_KEY not found in environment variables.")
     except Exception as e:
@@ -114,17 +116,26 @@ Respond as this persona would in a Discord chat about survey automation."""
 
 {style_rules}
 
+IMPORTANT: Write like a real human, not a bot. Avoid:
+- Multiple dashes or hyphens
+- Excessive spaces between words
+- Multiple exclamation marks or question marks
+- Repetitive punctuation
+- Overly formal or robotic language
+
 Question: {question}
 Context: {context}
 
-Generate a natural, conversational response that fits the persona and style. Keep it under 100 words."""
+Generate a natural, conversational response that fits the persona and style. Keep it under 100 words. Write like you're actually talking to someone, not like a survey bot."""
 
             response = await asyncio.to_thread(
                 model.generate_content,
                 full_prompt
             )
             
-            return response.text.strip()
+            # Clean the AI response to remove bot-like patterns
+            cleaned_response = self._clean_response(response.text.strip())
+            return cleaned_response
             
         except Exception as e:
             print(f"⚠️ Error generating response: {e}")
@@ -138,7 +149,7 @@ Generate a natural, conversational response that fits the persona and style. Kee
         persona = self.personality_data.get('about_you', {})
         
         if style == "discord_casual":
-            # Discord-style casual responses using ACTUAL PERSONA DATA (detailed responses, reduced "imo")
+            # Discord-style casual responses using ACTUAL PERSONA DATA (natural, no excessive punctuation)
             if "age" in question_lower:
                 age = persona.get('age', 25)
                 responses = [
@@ -148,117 +159,124 @@ Generate a natural, conversational response that fits the persona and style. Kee
                     f"tbh {age}, been in the game for a while now. started coding early and been working professionally for a few years.",
                     f"mostly {age}, been doing this for a bit. started with web development and branched out into different areas."
                 ]
-            elif "social media" in question_lower or "social" in question_lower:
+            elif "join" in question_lower or "start" in question_lower or "why" in question_lower:
                 responses = [
-                    "i use discord and reddit mostly, twitter sometimes. discord for dev communities and reddit for tech discussions, pretty standard for developers.",
-                    "yeah discord for dev stuff, insta for memes, reddit for tech. mostly use social media for work-related networking and learning.",
-                    "honestly discord like 24/7, reddit for programming, that's about it. not really into other platforms, prefer the tech-focused communities.",
-                    "tbh discord and github are my main social media. github for code sharing and discord for developer communities, keeps me connected to the tech world.",
-                    "mostly reddit for tech, discord for friends, insta for family. reddit has great programming communities and discord is perfect for real-time discussions."
+                    "honestly just looking for ways to make some extra money. i spend a lot of time online anyway, might as well get paid for it.",
+                    "saw an ad and thought why not. always been interested in surveys and market research, plus the extra cash doesn't hurt.",
+                    "friend recommended it to me. been doing surveys for a while now, it's a decent way to earn some side income.",
+                    "just trying to diversify my income streams. i work in tech so i'm comfortable with online platforms and surveys.",
+                    "honestly just curious about how these platforms work. plus earning money while sharing opinions seems like a win-win."
                 ]
-            elif "hobby" in question_lower or "interest" in question_lower:
-                hobbies = persona.get('hobbies', ['Programming', 'Gaming'])
-                interests = persona.get('interests', ['Technology'])
+            elif "technology" in question_lower or "tech" in question_lower:
                 responses = [
-                    f"tbh {', '.join(hobbies[:2]).lower()}, pretty basic dev stuff. also enjoy reading tech blogs and trying out new programming languages.",
-                    f"yeah {', '.join(hobbies[:2]).lower()}, and trying new restaurants. love exploring different cuisines when i'm not coding.",
-                    f"honestly {', '.join(hobbies[:2]).lower()}, reading tech blogs. always trying to stay updated with the latest in technology.",
-                    f"mostly {', '.join(hobbies[:2]).lower()}, and learning new languages. both programming languages and natural languages, keeps the brain active.",
-                    f"tbh {', '.join(hobbies[:2]).lower()}, and trying to stay fit. balance is important, especially when you sit at a computer all day."
+                    "tech is pretty much my life at this point. i work in software development so i'm constantly surrounded by it.",
+                    "love technology honestly. been working with computers since i was a kid, it's just second nature now.",
+                    "tech is awesome. i use it for work, entertainment, pretty much everything. can't imagine life without it.",
+                    "really into technology. i work in the field so i'm always learning about new tools and platforms.",
+                    "tech is great. been working with it professionally for years, always something new to discover."
                 ]
-            elif "experience" in question_lower or "rate" in question_lower:
+            elif "hobbies" in question_lower or "interests" in question_lower:
                 responses = [
-                    "pretty good, 8/10 would recommend. been working in tech for a few years and learned a lot along the way.",
-                    "yeah solid experience, nothing crazy but reliable. been coding professionally for about 3 years, still learning new things every day.",
-                    "honestly 7/10, could be better but gets the job done. experience comes with time and practice, always room for improvement.",
-                    "tbh pretty decent, 8.5/10. been fortunate to work on interesting projects and learn from great developers.",
-                    "mostly good experience, 8/10, no complaints. every project teaches you something new, keeps things interesting."
+                    "mostly coding and gaming. i like building things and solving problems, plus gaming helps me relax.",
+                    "big into programming and automation. love finding ways to make repetitive tasks easier with code.",
+                    "coding is my main hobby honestly. also into reading tech blogs and staying updated with new technologies.",
+                    "programming and gaming mostly. i enjoy creating things and gaming is a good way to unwind.",
+                    "love coding and learning new technologies. also into gaming and reading about tech trends."
                 ]
-            elif "occupation" in question_lower or "job" in question_lower or "work" in question_lower:
-                occupation = persona.get('occupation', 'Software Developer')
+            elif "work" in question_lower or "job" in question_lower:
                 responses = [
-                    f"tbh {occupation.lower()}, been doing it for like 3 years. mostly work on web applications and automation tools.",
-                    f"yeah i'm a {occupation.lower()}, mostly frontend stuff. also do some backend work when needed, full-stack approach.",
-                    f"honestly {occupation.lower()}, working on automation tools. love building things that make life easier for other developers.",
-                    f"mostly {occupation.lower()}, jack of all trades. work on different types of projects, keeps things interesting.",
-                    f"tbh {occupation.lower()}, python and java mostly. enjoy working with different technologies and learning new frameworks."
+                    "i work as a software developer. mostly web development and automation, pretty standard tech job.",
+                    "software developer by day. i build web applications and automate processes, it's interesting work.",
+                    "i'm a dev, work on web apps and automation tools. been doing it for a few years now, still learning.",
+                    "work in software development. mostly web stuff and automation, it's challenging but rewarding.",
+                    "i'm a developer, work on web applications and automation. been in the field for a while now."
                 ]
-            elif "income" in question_lower or "salary" in question_lower or "money" in question_lower:
-                income = persona.get('income', '50000-75000')
+            elif "income" in question_lower or "money" in question_lower or "earn" in question_lower:
                 responses = [
-                    f"tbh {income}, comfortable, not rich but doing okay. can afford what i need and save a bit for the future.",
-                    f"yeah {income}, middle class, can afford what i need. living in a tech hub so the cost of living is high but manageable.",
-                    f"honestly {income}, decent salary, nothing crazy but stable. been working hard to improve my skills and increase my earning potential.",
-                    f"mostly {income}, good income for my age and experience. been fortunate to work in a field that values technical skills.",
-                    f"tbh {income}, comfortable, saving for a house. tech salaries are pretty good, especially with experience."
-                ]
-            elif "education" in question_lower or "degree" in question_lower or "school" in question_lower:
-                education = persona.get('education', 'Bachelor\'s Degree')
-                responses = [
-                    f"tbh {education.lower()}, pretty standard. computer science degree, learned a lot but the real learning happened on the job.",
-                    f"yeah {education.lower()}, learned more from side projects though. school gave me the foundation, but building real projects taught me the most.",
-                    f"honestly {education.lower()}, some online courses too. the tech field moves fast, so continuous learning is essential.",
-                    f"mostly {education.lower()}, but the real learning was on the job. school teaches theory, work teaches practical application.",
-                    f"tbh {education.lower()}, computer science focus. the degree opened doors, but experience is what really matters in tech."
-                ]
-            elif "location" in question_lower or "city" in question_lower or "state" in question_lower:
-                city = persona.get('city', 'Los Angeles')
-                state = persona.get('state', 'California')
-                responses = [
-                    f"tbh {city}, {state}, pretty nice place. great weather and lots of tech opportunities, though it's expensive to live here.",
-                    f"yeah {city}, {state}, good tech scene here. lots of startups and established companies, always something interesting happening.",
-                    f"honestly {city}, {state}, expensive but worth it. the tech community here is amazing, and the opportunities are endless.",
-                    f"mostly {city}, {state}, love the weather. been here for a few years now, great place for a developer to grow their career.",
-                    f"tbh {city}, {state}, great for tech jobs. lots of networking opportunities and meetups, perfect for staying connected to the industry."
-                ]
-            elif "name" in question_lower or "full_name" in question_lower:
-                name = persona.get('full_name', 'Alex Johnson')
-                responses = [
-                    f"tbh {name}, nice to meet you. been using this name professionally for a while now.",
-                    f"yeah {name}, been around for a while. pretty standard name, easy to remember and pronounce.",
-                    f"honestly {name}, that's me. been using it for work and personal stuff, keeps things simple.",
-                    f"mostly {name}, pretty standard name. been using it professionally for a few years now.",
-                    f"tbh {name}, easy to remember. been using this name for work and networking, works well."
-                ]
-            elif "join" in question_lower and "qmee" in question_lower:
-                # Specific responses for why someone joined Qmee
-                responses = [
-                    "heard about it from a friend who was making extra money. seemed like a good way to earn some cash in my free time.",
-                    "saw an ad online and thought why not try it. been looking for ways to make some extra money on the side.",
-                    "friend recommended it as a way to earn gift cards. been using it for a few months now, pretty decent.",
-                    "was looking for survey sites to make some extra cash. qmee seemed more reliable than some others i tried.",
-                    "saw people talking about it on reddit. thought it would be a good way to earn some money while watching tv or commuting.",
-                    "needed some extra income and surveys seemed like an easy way to do it. qmee had good reviews so i gave it a shot.",
-                    "was bored and looking for ways to make money from home. surveys are pretty easy and qmee pays quickly.",
-                    "heard it was one of the better survey sites. been using it for a while now, pretty happy with it.",
-                    "wanted to earn some gift cards for christmas shopping. qmee seemed like the best option for that.",
-                    "friend was making money with it and i thought i'd try too. been working out pretty well so far."
+                    "just looking for some extra cash honestly. every little bit helps, especially with current prices.",
+                    "trying to build up some savings. surveys are a decent way to earn a bit extra without much effort.",
+                    "extra income is always welcome. i work full time but surveys help with discretionary spending.",
+                    "just trying to supplement my income. surveys are flexible and don't require much time investment.",
+                    "looking to earn some extra money. surveys are convenient since i can do them whenever i have time."
                 ]
             else:
-                # Generic but still specific responses (detailed, reduced "imo")
+                # Generic responses for other questions
                 responses = [
-                    "tbh that's a good question, probably something realistic. been thinking about this kind of stuff for a while now.",
-                    "yeah honestly just keeping it simple and believable. learned that being authentic works best in most situations.",
-                    "honestly i'd go with something that sounds natural. been doing this for a while, so i have a good sense of what works.",
-                    "mostly just being myself, nothing too crazy. found that honesty and simplicity usually get the best results.",
-                    "tbh keeping it real, not overthinking it. experience has taught me that natural responses work better than forced ones."
+                    "honestly just trying to be helpful and earn some money. surveys seem like a good way to do both.",
+                    "just looking for ways to make some extra cash. surveys are flexible and don't take much time.",
+                    "trying to diversify my income. surveys are convenient and i can do them on my own schedule.",
+                    "just exploring different ways to earn money. surveys seem like a good option for extra income.",
+                    "honestly just curious about these platforms. plus earning money while sharing opinions is appealing."
                 ]
         else:
-            # Default responses
-            responses = [
-                "I would approach this thoughtfully and consider the context carefully.",
-                "That's an interesting question that requires careful consideration.",
-                "I think the best approach would be to be honest but strategic.",
-                "This seems like something that needs a balanced perspective.",
-                "I'd probably go with something that feels natural and authentic.",
-                "That's a good question that deserves a thoughtful response.",
-                "I think the key is to be genuine while being practical.",
-                "This calls for a response that's both honest and appropriate.",
-                "I'd approach this with care and consideration.",
-                "That's something that needs a measured, thoughtful answer."
-            ]
+            # Default style responses (more formal but still natural)
+            if "join" in question_lower or "start" in question_lower or "why" in question_lower:
+                responses = [
+                    "I joined this platform to earn some extra income. I spend a lot of time online and thought this would be a good way to make money while sharing my opinions.",
+                    "I was looking for ways to supplement my income and this platform seemed like a good opportunity. I enjoy taking surveys and providing feedback.",
+                    "A friend recommended this platform to me. I've been interested in market research and thought this would be a good way to participate while earning money.",
+                    "I joined because I wanted to diversify my income streams. I work in technology and am comfortable with online platforms.",
+                    "I was curious about how these platforms work and wanted to try earning money through surveys. It seemed like a good way to learn and earn."
+                ]
+            elif "technology" in question_lower or "tech" in question_lower:
+                responses = [
+                    "Technology is a big part of my life. I work in software development so I'm constantly surrounded by it and always learning new things.",
+                    "I love technology and have been working with computers since I was young. It's become second nature to me.",
+                    "Technology is fascinating to me. I work in the field and enjoy staying updated with new developments and tools.",
+                    "I'm very comfortable with technology. I use it for work, entertainment, and daily tasks. It's an integral part of my life.",
+                    "Technology is great. I've been working with it professionally for years and there's always something new to discover."
+                ]
+            elif "hobbies" in question_lower or "interests" in question_lower:
+                responses = [
+                    "My main hobbies are programming and gaming. I enjoy building things and solving problems, and gaming helps me relax.",
+                    "I'm really into coding and automation. I love finding ways to make repetitive tasks easier and more efficient.",
+                    "Programming is my primary hobby. I also enjoy reading about technology and staying updated with new developments.",
+                    "I love coding and learning new technologies. Gaming is also a big interest of mine and helps me unwind.",
+                    "My interests are mainly in programming and technology. I enjoy creating things and learning about new tools and platforms."
+                ]
+            else:
+                responses = [
+                    "I joined this platform to earn extra income while sharing my opinions. I find surveys interesting and appreciate the opportunity to provide feedback.",
+                    "I was looking for ways to supplement my income and this platform seemed like a good fit. I enjoy participating in market research.",
+                    "I joined because I wanted to explore different income opportunities. Surveys are convenient and I can do them on my own schedule.",
+                    "I was curious about these platforms and wanted to try earning money through surveys. It seemed like a good way to learn and earn.",
+                    "I joined to diversify my income streams. I work in technology and am comfortable with online platforms and surveys."
+                ]
         
-        return random.choice(responses)
+        # Return a random response and clean it up
+        response = random.choice(responses)
+        return self._clean_response(response)
+    
+    def _clean_response(self, response):
+        """Clean up response to remove bot-like patterns."""
+        # Remove excessive dashes
+        response = response.replace(' - ', ' ')
+        response = response.replace('--', '')
+        response = response.replace(' -', '')
+        response = response.replace('- ', '')
+        
+        # Remove excessive spaces
+        response = ' '.join(response.split())
+        
+        # Remove excessive punctuation
+        response = response.replace('!!!', '!')
+        response = response.replace('??', '?')
+        response = response.replace('...', '.')
+        
+        # Remove unnecessary question marks at the end of statements
+        if response.endswith('?') and not any(word in response.lower() for word in ['what', 'how', 'why', 'when', 'where', 'who', 'which']):
+            response = response.rstrip('?')
+        
+        # Remove excessive exclamation marks
+        response = response.replace('!!', '!')
+        
+        # Clean up spacing around punctuation
+        response = response.replace(' .', '.')
+        response = response.replace(' ,', ',')
+        response = response.replace(' !', '!')
+        response = response.replace(' ?', '?')
+        
+        return response.strip()
 
 # Global instance
 personality_generator = PersonalityResponseGenerator()

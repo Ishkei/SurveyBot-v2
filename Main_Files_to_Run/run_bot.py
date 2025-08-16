@@ -1058,7 +1058,7 @@ class WebInterface:
         sync_thread = threading.Thread(target=status_sync_loop, daemon=True)
         sync_thread.start()
         
-        self.socketio.run(self.app, host=host, port=port, debug=debug)
+        self.socketio.run(self.app, host=host, port=port, debug=debug, allow_unsafe_werkzeug=True)
 
 def main():
     """Main entry point for the enhanced survey bot"""
