@@ -78,3 +78,4 @@ pip install -r Configurations/requirements_enhanced.txt
 4. **Configure AI keys**: Set up your API keys for AI services
 
 Your virtual environment is ready to use! 🎉
+
