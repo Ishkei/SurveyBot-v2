@@ -4,14 +4,18 @@ Handles CPX Research surveys with their specific question types and API integrat
 """
 
 import asyncio
+import datetime
 import json
 import os
 import random
 import re
 import time
+import requests
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import urlparse
+from pathlib import Path
+import logging
 
 try:
     from playwright.async_api import async_playwright, Page, Browser, BrowserContext
@@ -38,13 +42,16 @@ except ImportError:
     TYPING_PRESETS = {}
 
 try:
-    from vision_utils import VISION_AVAILABLE, OCR_AVAILABLE
+    from Project_Structure.enhanced_bot_integration import EnhancedBotIntegration
+    VISION_AVAILABLE, OCR_AVAILABLE = True, True
 except ImportError:
     VISION_AVAILABLE = False
     OCR_AVAILABLE = False
 
 from Project_Structure.config import Config
 from Project_Structure.personality_responses import generate_personality_response, PersonalityResponseGenerator
+from Project_Structure.universal_question_logger import UniversalQuestionLogger
+from Project_Structure.enhanced_bot_integration import EnhancedBotIntegration
 
 
 class QuestionLogger:
@@ -190,39 +197,128 @@ class CPXResearchBot:
     - int_open_ended (number input)
     """
     
-    def __init__(self, app_id: str = None, ext_user_id: str = None):
+    def __init__(self, app_id: str = None, ext_user_id: str = None, config_path: str = None):
         self.app_id = app_id or Config.CPX_APP_ID
         self.ext_user_id = ext_user_id or Config.CPX_EXT_USER_ID
         self.base_url = "https://offers.cpx-research.com"
         self.api_base = "https://live-api.cpx-research.com/api"
         
-        # Try to load CPX-specific configuration
-        config_files = [
-            '../Configurations/configs/cpx_config.json',
-            '../../Configurations/configs/cpx_config.json',
-            'configs/cpx_config.json',
-            'cpx_config.json'
-        ]
+        self.logger = self._setup_logging()
         
+        # Try to load CPX-specific configuration
         self.cpx_config = {}
-        for path in config_files:
+        if config_path and os.path.exists(config_path):
             try:
-                with open(path, 'r') as f:
+                with open(config_path, 'r') as f:
                     self.cpx_config = json.load(f)
-                    print(f"✅ Loaded CPX config from: {path}")
-                    break
-            except FileNotFoundError:
-                continue
+                self.logger.info(f"✅ Loaded CPX config from: {config_path}")
+            except Exception as e:
+                self.logger.error(f"⚠️ Error loading CPX config from {config_path}: {e}")
+        else:
+            config_files = [
+                '../Configurations/configs/cpx_config.json',
+                '../../Configurations/configs/cpx_config.json',
+                'configs/cpx_config.json',
+                'cpx_config.json'
+            ]
+            
+            for path in config_files:
+                if os.path.exists(path):
+                    try:
+                        with open(path, 'r') as f:
+                            self.cpx_config = json.load(f)
+                        self.logger.info(f"✅ Loaded CPX config from: {path}")
+                        break
+                    except Exception as e:
+                        self.logger.error(f"⚠️ Error loading CPX config from {path}: {e}")
         
         if not self.cpx_config:
-            print("⚠️ CPX config file not found, using defaults")
+            self.logger.warning("⚠️ CPX config file not found, using defaults")
+            # Set sensible defaults if config not found
+            self.cpx_config = {
+                "question_types": {
+                    "single_punch": {"element_type": "radio", "selection_method": "single"},
+                    "multi_punch": {"element_type": "checkbox", "selection_method": "multiple", "max_selections": 3},
+                    "open_ended": {"element_type": "text", "min_length": 20, "max_length": 500},
+                    "int_open_ended": {"element_type": "number", "min_value": 1, "max_value": 999999}
+                },
+                "selectors": {
+                    "survey_list": "#survey-list",
+                    "survey_card": "#survey_card_{survey_id}",
+                    "question_title": "#question_title",
+                    "question_info": ".info span",
+                    "submit_button": "#submitquestion1",
+                    "radio_input": "input[type=\"radio\"]",
+                    "checkbox_input": "input[type=\"checkbox\"]",
+                    "text_input": "input[type=\"text\"], textarea",
+                    "number_input": "input[type=\"number\"]",
+                    "completion_message": ".message-box.success",
+                    "error_message": ".message-box.warning, .message-box.danger"
+                },
+                "api_endpoints": {
+                    "get_surveys": "/get-surveys.php",
+                    "get_survey_details": "/get-survey-details.php",
+                    "submit_answer": "/submit-answer.php",
+                    "report_question": "/report-question.php",
+                    "rating": "/rating.php"
+                },
+                "timing": {
+                    "page_load_timeout": 30000,
+                    "question_load_timeout": 10000,
+                    "min_delay_between_actions": 1.0,
+                    "max_delay_between_actions": 3.0,
+                    "min_delay_between_surveys": 10.0,
+                    "max_delay_between_surveys": 30.0
+                },
+                "personality_responses": {
+                    "default_text_responses": [
+                        "I think this is an interesting topic and I wanted to share my perspective.",
+                        "This is something I've been thinking about lately and I have some thoughts on it.",
+                        "I believe this is important and I'd like to contribute my opinion.",
+                        "This caught my attention because it relates to my personal experience.",
+                        "I find this topic relevant to my daily life and wanted to participate."
+                    ],
+                    "best_experience_responses": [
+                        "One of my best life experiences was traveling to a new place and meeting amazing people who showed me different perspectives on life. It opened my mind and made me appreciate diversity.",
+                        "My best experience was achieving a personal goal I had been working towards for years. The sense of accomplishment and the journey itself taught me so much about perseverance.",
+                        "I'd say my best life experience was when I helped someone in need and saw how much it meant to them. It reminded me of the importance of kindness and community.",
+                        "My best experience was learning a new skill that I was passionate about. The process of growth and discovery was incredibly fulfilling and boosted my confidence.",
+                        "One of the best experiences I've had was spending quality time with family during a difficult period. It showed me the value of relationships and support systems."
+                    ]
+                }
+            }
+        
+        self.app_id = self.cpx_config.get("app_id", app_id or Config.CPX_APP_ID)
+        self.ext_user_id = self.cpx_config.get("ext_user_id", ext_user_id or Config.CPX_EXT_USER_ID)
+        self.base_url = self.cpx_config.get("base_url", "https://offers.cpx-research.com")
+        self.api_base = self.cpx_config.get("api_base", "https://live-api.cpx-research.com/api")
+        
+        # Initialize Playwright in __init__ for consistent browser management
+        self.browser = None
+        self.context = None
+        self.page = None
+        
+        self.current_question = None
+        self.persona = {}
+        self.session_stats = {
+            'earnings': 0.0,
+            'questions_answered': 0
+        }
+        self.question_logger = UniversalQuestionLogger()
+        
+        self.personality_system = None # Placeholder, initialized externally
+        self.typing_simulator = None   # Placeholder, initialized externally
+        self.bot_enhancer = None       # Placeholder, initialized externally
+        self.vision_config = {}
+        self.proxy_manager = None
+        self.personality_mode = Config.PERSONALITY_STYLE
+        self._load_vision_config()
         
         # Initialize personality system (always available)
         self.personality_generator = PersonalityResponseGenerator()
         print("✅ Persona system loaded")
         
         # Initialize hybrid vision/DOM capabilities
-        self.vision_config = self.load_vision_config()
         self.use_hybrid_approach = self.vision_config.get('survey_automation', {}).get('HYBRID_HTML_VISION', True)
         self.use_vision_fallback = self.vision_config.get('error_handling', {}).get('FALLBACK_TO_HTML', True)
         
@@ -269,7 +365,22 @@ class CPXResearchBot:
         print(f"   App ID: {self.app_id}")
         print(f"   User ID: {self.ext_user_id}")
     
-    def load_vision_config(self) -> Dict[str, Any]:
+    def _setup_logging(self):
+        """Setup enhanced logging system"""
+        log_dir = Path("logs")
+        log_dir.mkdir(exist_ok=True)
+        
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            handlers=[
+                logging.FileHandler(log_dir / f"survey_bot_{time.strftime('%Y%m%d_%H%M%S')}.log"),
+                logging.StreamHandler()
+            ]
+        )
+        return logging.getLogger(__name__)
+    
+    def _load_vision_config(self):
         """Load vision configuration for hybrid approach"""
         try:
             # Try multiple possible paths for vision config
@@ -286,13 +397,14 @@ class CPXResearchBot:
                         with open(path, 'r', encoding='utf-8') as f:
                             config = json.load(f)
                             print(f"✅ Loaded vision config from: {path}")
-                            return config
+                            self.vision_config = config
+                            return
                 except Exception as e:
                     continue
             
             # Return default vision config if none found
             print("⚠️ No vision config found, using defaults")
-            return {
+            self.vision_config = {
                 'survey_automation': {
                     'HYBRID_HTML_VISION': True,
                     'VISION_BASED_APPROACH': False,
@@ -309,7 +421,7 @@ class CPXResearchBot:
             }
         except Exception as e:
             print(f"❌ Error loading vision config: {e}")
-            return {}
+            self.vision_config = {}
     
     async def initialize_browser(self) -> bool:
         """Initialize Playwright browser"""
@@ -355,6 +467,24 @@ class CPXResearchBot:
         """Get the CPX Research URL with proper parameters"""
         return f"{self.base_url}/index.php?app_id={self.app_id}&ext_user_id={self.ext_user_id}"
     
+    async def _ensure_on_valid_cpx_url(self) -> None:
+        """Ensure we're on CPX with required query params; if missing, navigate to the proper URL."""
+        try:
+            current_url = self.page.url if self.page else ""
+            if (
+                current_url
+                and "offers.cpx-research.com" in current_url
+                and "/index.php" in current_url
+                and ("app_id=" not in current_url or "ext_user_id=" not in current_url)
+            ):
+                fixed_url = self.get_cpx_url()
+                print(f"⚠️ Detected CPX URL without required params. Redirecting to: {fixed_url}")
+                await self.page.goto(fixed_url, wait_until='domcontentloaded')
+                await asyncio.sleep(2)
+        except Exception:
+            # Non-fatal safety check
+            pass
+
     async def navigate_to_cpx(self) -> bool:
         """Navigate to CPX Research platform"""
         try:
@@ -367,7 +497,7 @@ class CPXResearchBot:
             # Wait for the main content to load - the page shows "We are looking for more surveys for you ..."
             try:
                 # First wait for the main content div
-                await self.page.wait_for_selector('#main-content', timeout=15000)
+                await self.page.wait_for_selector('#main-content', timeout=30000)
                 
                 # Wait a bit for the JavaScript to execute and load surveys
                 await asyncio.sleep(5)
@@ -408,6 +538,9 @@ class CPXResearchBot:
             except Exception as debug_e:
                 print(f"⚠️ Debug info failed: {debug_e}")
             
+            # Safety: if a redirect dropped query params, repair
+            await self._ensure_on_valid_cpx_url()
+
             return True
             
         except Exception as e:
@@ -417,6 +550,9 @@ class CPXResearchBot:
     async def get_available_surveys(self) -> List[Dict[str, Any]]:
         """Get available surveys from the page or API"""
         try:
+            # Ensure we're on the correct CPX URL with params
+            await self._ensure_on_valid_cpx_url()
+
             # First try to get surveys from the page DOM (they're loaded via JavaScript)
             print("🔍 Looking for surveys on the page...")
             
@@ -698,10 +834,14 @@ class CPXResearchBot:
                 ]
                 
                 if any(pattern in page_text_lower for pattern in text_input_patterns):
-                    print(f"🎯 Detected text input question: {question_text[:50]}...")
+                    question_text_element = await self.page.query_selector(self.config['selectors']['question_title'])
+                    question_text = await question_text_element.inner_text() if question_text_element else ""
+                    self.logger.info(f"🎯 Detected text input question: {question_text[:50]}...")
                     return 'open_ended'
                 
                 # Check if question text contains text input indicators
+                question_text_element = await self.page.query_selector(self.config['selectors']['question_title'])
+                question_text = await question_text_element.inner_text() if question_text_element else ""
                 if question_text:
                     question_lower = question_text.lower()
                     text_indicators = ['enter', 'type', 'write', 'describe', 'explain', 'tell', 'what is', "what's"]
@@ -1303,13 +1443,11 @@ class CPXResearchBot:
                                 high = int(numbers[1].replace(',', ''))
                                 midpoint = (low + high) / 2
                                 
-                                # Find the option that best matches this income
                                 best_option = None
                                 best_distance = float('inf')
                                 
                                 for option in options:
                                     option_text = option['text']
-                                    # Extract income range from option text
                                     income_match = re.search(r'\$?([\d,]+)(?:\s*to\s*\$?([\d,]+))?', option_text)
                                     if income_match:
                                         opt_low = int(income_match.group(1).replace(',', ''))
@@ -1322,10 +1460,10 @@ class CPXResearchBot:
                                             best_option = option
                                 
                                 if best_option:
-                                    print(f"🎯 Selected income based on persona ({income_range}): {best_option['text']}")
+                                    self.logger.info(f"🎯 Selected income based on persona ({income_range}): {best_option['text']}")
                                     return best_option
                         except Exception as e:
-                            print(f"⚠️ Error parsing income: {e}")
+                            self.logger.error(f"⚠️ Error parsing income: {e}")
             
             # Handle device questions - prefer laptop/desktop for tech professionals
             if 'device' in question_lower and 'using' in question_lower:
@@ -1989,434 +2127,284 @@ class CPXResearchBot:
             # Wait for survey to be fully ready (not just loading screen)
             print("⏳ Ensuring survey is fully loaded...")
             try:
-                # Wait for loading elements to disappear or survey content to appear
-                await self.page.wait_for_function(
-                    "() => { return !document.querySelector('[aria-label=\"loader\"]') || document.querySelector('form') || document.querySelector('input') || document.querySelector('button') }",
-                    timeout=15000
-                )
+                # Wait for any basic interactive element to be attached
+                try:
+                    await self.page.locator("form, input, button").first.wait_for(state="attached", timeout=15000)
+                except Exception:
+                    # Fallback to DOMContentLoaded if no elements are found
+                    await self.page.wait_for_load_state('domcontentloaded', timeout=15000)
                 print("✅ Survey content appears ready")
-            except Exception as wait_err:
-                print(f"⚠️ Survey readiness check timed out: {wait_err}")
-                # Continue anyway, might be ready
-            
-            # Additional wait for dynamic content
-            await asyncio.sleep(2)
+            except Exception as e:
+                print(f"⚠️ Timed out waiting for survey content: {e}")
 
-                    # CAPTCHA handling disabled
+            # Platform-specific handlers
+            url = self.page.url
+            if "sentientdecisionscience" in url:
+                return await self._handle_sentient_survey()
+            elif "spectrumsurveys" in url:
+                return await self._handle_spectrum_survey()
+            elif "marketxcel" in url:
+                return await self._handle_marketxcel_survey()
+            elif "upsiide" in url:
+                return await self._handle_upsiide_survey()
+            else:
+                print("🔄 Detected cpx survey, using generic handler")
+                return await self._handle_generic_cpx_survey()
 
-            # Special case: Samplicio.us DataDome verification (RespondentAuthentication.aspx)
-            try:
-                await self.handle_samplicio_verification()
-            except Exception as dd_err:
-                print(f"⚠️ Samplicio verification handler error: {dd_err}")
-
-            # Special case: Dynata pre-survey page with "BEGIN SURVEY" button
-            try:
-                dynata_begin_selector = 'a#takesurveybtn, a:has-text("BEGIN SURVEY"), button:has-text("BEGIN SURVEY")'
-                if "ssisurveys.com/projects/rex" in self.page.url or await self.page.locator(dynata_begin_selector).count() > 0:
-                    print("🔎 Detected Dynata pre-survey page. Attempting to click 'BEGIN SURVEY'...")
-                    begin_btn = self.page.locator(dynata_begin_selector).first
-                    if await begin_btn.count() > 0:
-                        target_attr = None
-                        try:
-                            target_attr = await begin_btn.get_attribute('target')
-                        except Exception:
-                            pass
-                        new_page = None
-                        if target_attr and target_attr.lower() == '_blank' and hasattr(self, 'context') and self.context:
-                            try:
-                                async with self.context.expect_page() as new_page_info:
-                                    await begin_btn.click()
-                                new_page = await new_page_info.value
-                                await new_page.wait_for_load_state('domcontentloaded')
-                                self.page = new_page
-                                print("✅ Opened Dynata survey in a new tab")
-                            except Exception as dynata_tab_err:
-                                print(f"⚠️ Could not capture new Dynata tab: {dynata_tab_err}")
-                        else:
-                            try:
-                                async with self.page.expect_navigation(wait_until='domcontentloaded', timeout=15000):
-                                    await begin_btn.click()
-                                print("✅ Navigated into Dynata survey")
-                            except Exception as dynata_nav_err:
-                                print(f"⚠️ Dynata navigation wait failed: {dynata_nav_err}; retrying click without wait")
-                                try:
-                                    await begin_btn.click()
-                                    await asyncio.sleep(2)
-                                except Exception as dynata_click_err:
-                                    print(f"❌ Failed to click Dynata 'BEGIN SURVEY': {dynata_click_err}")
-            except Exception as dynata_err:
-                print(f"⚠️ Dynata pre-survey handler error: {dynata_err}")
-
-            # Special case: SurveyGizmo/Alchemer (GetWizer) router pages
-            try:
-                page_text_lower = (await self.page.text_content('body') or '').lower()
-                if (
-                    'surveys.getwizer.com' in self.page.url.lower()
-                    or 'alchemer' in page_text_lower
-                    or 'surveygizmo' in page_text_lower
-                ):
-                    print("🔎 Detected SurveyGizmo/Alchemer (GetWizer) router. Attempting to proceed...")
-                    await self.handle_getwizer_alchemer_router()
-            except Exception as gizmo_err:
-                print(f"⚠️ GetWizer/Alchemer handler error: {gizmo_err}")
-
-            # Special case: MetrixMatrix survey platform
-            try:
-                platform = await self.detect_survey_platform()
-                if platform == 'metrixmatrix':
-                    print("🔎 Detected MetrixMatrix survey platform. Using specialized handler...")
-                    return await self.handle_metrixmatrix_survey()
-            except Exception as metrix_err:
-                print(f"⚠️ MetrixMatrix handler error: {metrix_err}")
-            
-            # Special case: SampleEye survey platform
-            try:
-                current_url = self.page.url.lower()
-                if 'sampleeye.com' in current_url:
-                    print("🔎 Detected SampleEye survey platform. Using specialized handler...")
-                    return await self.handle_sampleeye_survey()
-            except Exception as sampleeye_err:
-                print(f"⚠️ SampleEye handler error: {sampleeye_err}")
-            
-            # Special case: Sample-Cube survey platform
-            try:
-                current_url = self.page.url.lower()
-                if 'sample-cube.com' in current_url:
-                    print("🔎 Detected Sample-Cube survey platform. Using specialized handler...")
-                    return await self.handle_samplecube_survey()
-            except Exception as samplecube_err:
-                print(f"⚠️ Sample-Cube handler error: {samplecube_err}")
-
-            # Special case: Quantilope survey platform
-            try:
-                current_url = self.page.url.lower()
-                if 'quantilope.com' in current_url:
-                    print("🔎 Detected Quantilope survey platform. Using specialized handler...")
-                    return await self.handle_quantilope_survey()
-            except Exception as quantilope_err:
-                print(f"⚠️ Quantilope handler error: {quantilope_err}")
-
-            # Special case: Samplicio survey platform
-            try:
-                current_url = self.page.url.lower()
-                if 'samplicio.us' in current_url or 'samplicio.com' in current_url:
-                    print("🔎 Detected Samplicio survey platform. Using specialized handler...")
-                    return await self.handle_samplicio_survey()
-            except Exception as samplicio_err:
-                print(f"⚠️ Samplicio handler error: {samplicio_err}")
-
-            # Special case: Ipsos Interactive landing with "Accept and take the survey"
-            try:
-                if (
-                    'enter.ipsosinteractive.com/landing' in self.page.url
-                    or await self.page.locator('a#acceptAndTakeSurveyLink7, a[id^="acceptAndTakeSurveyLink"], a:has-text("Accept and take the survey"), button:has-text("Accept and take the survey")').count() > 0
-                ):
-                    print("🔎 Detected Ipsos landing. Clicking 'Accept and take the survey'...")
-                    accept_loc = self.page.locator('a#acceptAndTakeSurveyLink7, a[id^="acceptAndTakeSurveyLink"], a:has-text("Accept and take the survey"), button:has-text("Accept and take the survey")').first
-                    if await accept_loc.count() > 0:
-                        # Ensure visible and try multiple click strategies
-                        try:
-                            handle = await accept_loc.element_handle()
-                            if handle:
-                                await self.page.evaluate('(el) => el.scrollIntoView({behavior: "smooth", block: "center"})', handle)
-                        except Exception:
-                            pass
-                        current_url = self.page.url
-                        try:
-                            async with self.page.expect_navigation(wait_until='domcontentloaded', timeout=15000):
-                                await accept_loc.click()
-                            print("✅ Accepted Ipsos landing (navigation observed)")
-                        except Exception as nav_err:
-                            print(f"⚠️ Accept click without nav wait (will verify): {nav_err}")
-                            try:
-                                await accept_loc.click()
-                                # Wait for either URL change or content change
-                                try:
-                                    await self.page.wait_for_function('(prev) => location.href !== prev', current_url, timeout=12000)
-                                except Exception:
-                                    await self.page.wait_for_load_state('networkidle', timeout=10000)
-                            except Exception as click_f:
-                                # JS fallback
-                                try:
-                                    handle = await accept_loc.element_handle()
-                                    if handle:
-                                        await self.page.evaluate('(el) => el.click()', handle)
-                                        await asyncio.sleep(2)
-                                except Exception as js_f:
-                                    print(f"❌ Ipsos accept JS click failed: {js_f}")
-            except Exception as ipsos_err:
-                print(f"⚠️ Ipsos landing handler error: {ipsos_err}")
-
-            # Special case: SaySo router (ZK framework) with Next button and radio options
-            try:
-                if 'survey.saysoforgood.com' in self.page.url.lower() or await self.page.locator('#next, button:has-text("Next Question")').count() > 0:
-                    print("🔎 Detected SaySo router page. Attempting to answer and proceed...")
-                    await self.handle_sayso_router()
-            except Exception as sayso_err:
-                print(f"⚠️ SaySo router handler error: {sayso_err}")
-
-            # Special case: Samplicio.us consent screen with "Agree and Continue"
-            try:
-                if "rx.samplicio.us/consent" in self.page.url:
-                    print("🔎 Detected Samplicio.us consent page. Handling consent...")
-                    # Wait for loader to disappear
-                    try:
-                        await self.page.wait_for_selector('[aria-label="loader"]', state='detached', timeout=10000)
-                    except Exception:
-                        pass
-                    consent_selectors = [
-                        'button:has-text("Agree and Continue")',
-                        '[data-testid="consent-continue"]',
-                        'button.grx-bg-primary',
-                        'button[type="submit"]:has-text("Agree")'
-                    ]
-                    clicked = False
-                    for selector in consent_selectors:
-                        try:
-                            btn = self.page.locator(selector).first
-                            if await btn.count() == 0:
-                                continue
-                            # Ensure enabled and visible
-                            try:
-                                await btn.wait_for(state='visible', timeout=5000)
-                            except Exception:
-                                pass
-                            # Some frameworks disable the button briefly; wait until not disabled
-                            try:
-                                await self.page.wait_for_function(
-                                    "el => !el.disabled", arg=await btn.element_handle(), timeout=5000
-                                )
-                            except Exception:
-                                pass
-                            try:
-                                async with self.page.expect_navigation(wait_until='domcontentloaded', timeout=15000):
-                                    await btn.click()
-                                print(f"✅ Clicked consent button via selector: {selector}")
-                                clicked = True
-                                # After consent, Samplicio may immediately show DataDome verification
-                                try:
-                                    await asyncio.sleep(1.0)
-                                    await self.handle_samplicio_verification()
-                                except Exception:
-                                    pass
-                                break
-                            except Exception as click_err:
-                                print(f"⚠️ Click failed for {selector}: {click_err}")
-                                # JS fallback
-                                try:
-                                    handle = await btn.element_handle()
-                                    if handle:
-                                        await self.page.evaluate('(b) => { b.click(); }', handle)
-                                        await asyncio.sleep(2)
-                                        clicked = True
-                                        print(f"✅ JS-clicked consent button via selector: {selector}")
-                                        # After consent, Samplicio may immediately show DataDome verification
-                                        try:
-                                            await asyncio.sleep(1.0)
-                                            await self.handle_samplicio_verification()
-                                        except Exception:
-                                            pass
-                                        break
-                                except Exception as js_err:
-                                    print(f"❌ JS click also failed for {selector}: {js_err}")
-                        except Exception as inner_err:
-                            print(f"⚠️ Selector error for {selector}: {inner_err}")
-                    if not clicked:
-                        # Try role-based locator as a robust fallback
-                        try:
-                            role_btn = self.page.get_by_role('button', name='Agree and Continue').first
-                            if await role_btn.count() == 0:
-                                role_btn = self.page.get_by_role('button', name='Agree').first
-                            if await role_btn.count() > 0:
-                                try:
-                                    handle = await role_btn.element_handle()
-                                    if handle:
-                                        await self.page.evaluate('(el) => el.scrollIntoView({behavior: "smooth", block: "center"})', handle)
-                                except Exception:
-                                    pass
-                                try:
-                                    async with self.page.expect_navigation(wait_until='domcontentloaded', timeout=15000):
-                                        await role_btn.click()
-                                    print("✅ Clicked consent button via role locator")
-                                    clicked = True
-                                    try:
-                                        await asyncio.sleep(1.0)
-                                        await self.handle_samplicio_verification()
-                                    except Exception:
-                                        pass
-                                except Exception as role_err:
-                                    print(f"⚠️ Role click failed: {role_err}; trying keyboard submit")
-                                    try:
-                                        await role_btn.focus()
-                                    except Exception:
-                                        pass
-                                    try:
-                                        await self.page.keyboard.press('Enter')
-                                        await asyncio.sleep(2)
-                                        clicked = True
-                                        print("✅ Submitted consent via keyboard Enter")
-                                        try:
-                                            await asyncio.sleep(1.0)
-                                            await self.handle_samplicio_verification()
-                                        except Exception:
-                                            pass
-                                    except Exception as key_err:
-                                        print(f"❌ Keyboard submit failed: {key_err}")
-                        except Exception as role_outer_err:
-                            print(f"⚠️ Role locator error: {role_outer_err}")
-                    if not clicked:
-                        print("⚠️ Could not find or click Samplicio consent button")
-            except Exception as samp_err:
-                print(f"⚠️ Samplicio consent handler error: {samp_err}")
-
-            # Special case: RD Secured text-entry gate (free-text + Submit)
-            try:
-                if "rdsecured.com/landing" in self.page.url:
-                    print("🔎 Detected RD Secured router gate. Filling answer and submitting...")
-                    # Wait for main container or textarea
-                    try:
-                        await self.page.wait_for_selector('#main, textarea#text_element, #submit_entry', timeout=15000)
-                    except Exception:
-                        pass
-                    # Some pages hide main initially then show; give them a moment
-                    await asyncio.sleep(1.5)
-                    text_area = self.page.locator('textarea#text_element').first
-                    submit_btn = self.page.locator('#submit_entry').first
-                    if await text_area.count() > 0:
-                        # Compose a natural answer (avoid flagged language). Use persona when available.
-                        # Read the on-page prompt to tailor the response.
-                        prompt = ""
-                        try:
-                            prompt = (await self.page.locator('#label_text_element').text_content() or '').strip()
-                        except Exception:
-                            prompt = ""
-                        answer = ""
-                        prompt_lower = (prompt or '').lower()
-                        if 'beverage' in prompt_lower or 'drink' in prompt_lower:
-                            answer = (
-                                "I really enjoy iced coffee with a splash of oat milk. "
-                                "It tastes smooth and balanced, and the chill makes it refreshing without being too sweet."
-                            )
-                        elif 'vacation' in prompt_lower or 'holiday' in prompt_lower:
-                            answer = (
-                                "My favorite vacation was a road trip down the Pacific Coast Highway. "
-                                "The ocean views and small coastal towns made it relaxing and memorable."
-                            )
-                        else:
-                            # General-purpose, neutral topic answer in 1–2 sentences
-                            answer = (
-                                "I like spending a quiet weekend hiking local trails. "
-                                "It clears my head and I enjoy discovering small views I would otherwise miss."
-                            )
-                        try:
-                            # Focus and type with human-like delay
-                            await text_area.click()
-                            # Small thinking pause before typing
-                            await asyncio.sleep(random.uniform(0.6, 1.2))
-                            for ch in answer:
-                                await self.page.keyboard.type(ch, delay=random.randint(75, 120))
-                                if ch in ['.', ',', ';']:
-                                    await asyncio.sleep(random.uniform(0.12, 0.25))
-                            # Additional pause to reduce typed-speed heuristics
-                            await asyncio.sleep(random.uniform(1.0, 2.0))
-                        except Exception as type_err:
-                            print(f"⚠️ Typing failed: {type_err}; trying direct fill")
-                            try:
-                                await text_area.fill(answer)
-                                # Ensure Angular or listeners see the change
-                                try:
-                                    handle = await text_area.element_handle()
-                                    if handle:
-                                        await self.page.evaluate(
-                                            '(el) => { el.dispatchEvent(new Event("input", {bubbles: true})); el.dispatchEvent(new Event("change", {bubbles: true})); }',
-                                            handle
-                                        )
-                                except Exception:
-                                    pass
-                                await asyncio.sleep(0.3)
-                            except Exception as fill_err:
-                                print(f"❌ Direct fill also failed: {fill_err}")
-                    else:
-                        print("⚠️ RD Secured textarea not found; continuing")
-                    if await submit_btn.count() > 0:
-                        # Wait until enabled and visible, then click
-                        try:
-                            await submit_btn.wait_for(state='visible', timeout=8000)
-                        except Exception:
-                            pass
-                        try:
-                            await self.page.wait_for_function(
-                                "el => el && !el.disabled && getComputedStyle(el).display !== 'none'",
-                                arg=await submit_btn.element_handle(),
-                                timeout=15000
-                            )
-                        except Exception:
-                            pass
-                        try:
-                            current_url = self.page.url
-                            await submit_btn.click()
-                            # Wait for either URL change, spinner, or content change
-                            try:
-                                await self.page.wait_for_function('(prev) => location.href !== prev', current_url, timeout=15000)
-                            except Exception:
-                                try:
-                                    await self.page.wait_for_load_state('networkidle', timeout=8000)
-                                except Exception:
-                                    await asyncio.sleep(2)
-                            print("✅ Submitted RD Secured gate")
-                        except Exception as click_err:
-                            print(f"⚠️ Submit click failed: {click_err}; trying JS and then keyboard")
-                            try:
-                                handle = await submit_btn.element_handle()
-                                if handle:
-                                    await self.page.evaluate('(b) => b.click()', handle)
-                                    await asyncio.sleep(2)
-                            except Exception:
-                                try:
-                                    await submit_btn.focus()
-                                    await self.page.keyboard.press('Enter')
-                                    await asyncio.sleep(2)
-                                except Exception as key_err:
-                                    print(f"❌ Submit via keyboard failed: {key_err}")
-                    else:
-                        print("⚠️ RD Secured submit button not found; continuing")
-            except Exception as rd_err:
-                print(f"⚠️ RD Secured handler error: {rd_err}")
-            
-            max_questions = 50  # Actual surveys can have many questions
-            questions_answered = 0
-            
-            while questions_answered < max_questions:
-                # Check if survey is complete
-                status = await self.check_survey_completion()
-                if status['status'] == 'completed':
-                    print("✅ Survey completed successfully")
-                    return status
-                elif status['status'] in ['not_qualified', 'router_not_qualified']:
-                    print(f"❌ Survey failed: {status.get('reason', 'Unknown')}")
-                    return status
-                
-                        # CAPTCHA handling disabled
-                
-                # Handle current survey question
-                if not await self.handle_cpx_question():
-                    print("❌ Failed to handle survey question")
-                    break
-                
-                questions_answered += 1
-                print(f"🎯 Survey question {questions_answered} answered")
-                
-                # Wait for page update
-                await asyncio.sleep(2)
-            
-            print(f"⚠️ Survey stopped after {questions_answered} questions")
-            return {'status': 'incomplete', 'questions_answered': questions_answered}
-            
         except Exception as e:
             print(f"❌ Error handling actual survey: {e}")
             return {'status': 'error', 'reason': str(e)}
-    
+
+    async def _handle_generic_cpx_survey(self) -> Dict[str, Any]:
+        """Generic handler for CPX surveys"""
+        questions_answered = 0
+        try:
+            while questions_answered < 50: # safety break
+                await self.page.wait_for_timeout(2000) # Wait for page to settle
+                
+                # Check for completion
+                if "Thank you" in await self.page.content() or "completed" in self.page.url:
+                    self.logger.info("✅ Survey appears to be complete.")
+                    return {'status': 'completed'}
+                
+                handled = await self.handle_cpx_question()
+                if handled:
+                    questions_answered += 1
+                    self.logger.info(f"✅ Question {questions_answered} handled.")
+                else:
+                    self.logger.warning("⚠️ Failed to handle question, stopping survey.")
+                    break
+        except Exception as e:
+            self.logger.error(f"❌ Error in generic survey handler: {e}")
+            return {'status': 'error', 'reason': str(e)}
+
+        self.logger.info(f"⚠️ Survey stopped after {questions_answered} questions")
+        return {'status': 'error', 'reason': 'Survey stopped'}
+
+    async def _handle_sentient_survey(self) -> Dict[str, Any]:
+        """Handle surveys from sentientdecisionscience.com"""
+        try:
+            self.logger.info("🎯 Handling Sentient Decision Science survey")
+            # Welcome page
+            welcome_text = "This survey will take approximately 12 minutes"
+            if welcome_text in await self.page.content():
+                self.logger.info("✅ On Sentient welcome page, clicking next...")
+                await self.page.locator('div#next_button').click()
+                await self.page.wait_for_load_state('networkidle')
+
+            # Age question
+            if "What is your age?" in await self.page.content():
+                self.logger.info("🎯 Answering age question on Sentient survey")
+                age = self.persona.get('personal', {}).get('age', 25)
+                await self.page.locator('input[type="text"]').fill(str(age))
+                await self.page.locator('div#next_button').click()
+                await self.page.wait_for_load_state('networkidle')
+
+            self.logger.info("✅ Successfully handled Sentient survey steps, passing to generic handler")
+            return await self._handle_generic_cpx_survey()
+            
+        except Exception as e:
+            self.logger.error(f"❌ Error handling Sentient survey: {e}")
+            return {'status': 'error', 'reason': 'Sentient handler failed'}
+
+    async def _handle_spectrum_survey(self) -> Dict[str, Any]:
+        """Handle surveys from spectrumsurveys.com"""
+        try:
+            self.logger.info("🎯 Handling PureSpectrum survey")
+            
+            # Date of birth question
+            if "I was born in" in await self.page.content():
+                self.logger.info("🎯 Answering DOB question on PureSpectrum survey")
+                dob = self.persona.get('personal', {}).get('date_of_birth', '01/01/1990')
+                month, day, year = dob.split('/')
+                
+                # Month
+                await self.page.locator('select[ng-model="user.month"]').select_option(label=datetime.date(1900, int(month), 1).strftime('%B'))
+                
+                # Year
+                await self.page.locator('select[ng-model="user.year"]').select_option(value=year)
+
+            self.logger.info("✅ Successfully handled PureSpectrum survey steps, passing to generic handler")
+            return await self._handle_generic_cpx_survey()
+
+        except Exception as e:
+            self.logger.error(f"❌ Error handling PureSpectrum survey: {e}")
+            return {'status': 'error', 'reason': 'PureSpectrum handler failed'}
+
+    async def _handle_marketxcel_survey(self) -> Dict[str, Any]:
+        """Handle surveys from marketxcel.co.in"""
+        try:
+            self.logger.info("🎯 Handling MarketXcel survey")
+
+            html = await self.page.content()
+
+            # 1) Gender question with label-only radios (no input elements)
+            try:
+                if ('Are you' in html or 'Are you...?' in html) and ('class="radio"' in html or 'label class="radio"' in html):
+                    self.logger.info("🎯 MarketXcel: detected gender question")
+                    # Decide gender from persona (default Male)
+                    desired = 'Male'
+                    try:
+                        about = (self.persona or {}).get('about_you') or {}
+                        g = (about.get('gender') or 'male').lower()
+                        if 'female' in g:
+                            desired = 'Female'
+                        else:
+                            desired = 'Male'
+                    except Exception:
+                        pass
+
+                    # Click the label with class .radio and matching text
+                    clicked = False
+                    label_selectors = [
+                        f"label.radio:has-text('{desired}')",
+                        f".container_numbers label.radio:has-text('{desired}')",
+                        f".option_container label.radio:has-text('{desired}')",
+                        f":text('{desired}') >> xpath=ancestor::label[1]",
+                    ]
+                    for sel in label_selectors:
+                        try:
+                            lab = self.page.locator(sel).first
+                            if await lab.count() > 0:
+                                await lab.click()
+                                clicked = True
+                                print(f"🧠 Answer chosen: {desired}")
+                                break
+                        except Exception:
+                            continue
+
+                    # Fallback: click text directly
+                    if not clicked:
+                        try:
+                            tnode = self.page.get_by_text(desired, exact=False).first
+                            if await tnode.count() > 0:
+                                await tnode.click()
+                                clicked = True
+                                print(f"🧠 Answer chosen via text: {desired}")
+                        except Exception:
+                            pass
+
+                    # Submit via buttons - enhanced with CSS analysis
+                    submit_selectors = [
+                        'button.submit',         # Primary from style.css
+                        'button.forward',        # Navigation from style.css
+                        'button:has-text("Submit")',
+                        'button:has-text("Next")',
+                        'button:has-text("Continue")',
+                        'button[name="process"]',
+                        'input[type="submit"]',
+                        '.btn-primary',          # Bootstrap classes
+                        '.btn-success',
+                    ]
+                    for sel in submit_selectors:
+                        try:
+                            btn = self.page.locator(sel).first
+                            if await btn.count() > 0:
+                                await btn.click()
+                                try:
+                                    await self.page.wait_for_load_state('domcontentloaded', timeout=8000)
+                                except Exception:
+                                    await asyncio.sleep(1.0)
+                                break
+                        except Exception:
+                            continue
+
+            except Exception as gerr:
+                print(f"⚠️ MarketXcel gender handler error: {gerr}")
+
+            # 2) Handle SumoSelect dropdowns (from jquery.sumoselect.js analysis)
+            try:
+                sumo_selects = await self.page.locator('.SumoSelect').count()
+                if sumo_selects > 0:
+                    self.logger.info(f"📝 Found {sumo_selects} SumoSelect dropdown(s)")
+                    for i in range(sumo_selects):
+                        try:
+                            sumo_select = self.page.locator('.SumoSelect').nth(i)
+                            await sumo_select.click()
+                            await asyncio.sleep(0.5)
+                            
+                            # Try to select first available option
+                            options = self.page.locator('.SumoSelect .opt')
+                            if await options.count() > 0:
+                                await options.first.click()
+                                self.logger.info(f"🧠 Selected option in SumoSelect dropdown {i+1}")
+                                await asyncio.sleep(0.3)
+                        except Exception as e:
+                            self.logger.warning(f"Could not handle SumoSelect {i+1}: {e}")
+            except Exception as e:
+                self.logger.warning(f"Could not handle SumoSelect dropdowns: {e}")
+
+            # 3) Handle Material Design radio buttons
+            try:
+                mat_radio_buttons = await self.page.locator('.mat-radio-button').count()
+                if mat_radio_buttons > 0:
+                    self.logger.info(f"📝 Found {mat_radio_buttons} Material Design radio button(s)")
+                    # Select first available radio button
+                    first_radio = self.page.locator('.mat-radio-button').first
+                    await first_radio.click()
+                    self.logger.info("🧠 Selected Material Design radio button")
+                    await asyncio.sleep(0.3)
+            except Exception as e:
+                self.logger.warning(f"Could not handle Material Design radio buttons: {e}")
+
+            # 4) Age question
+            if "What is your age?" in html:
+                self.logger.info("🎯 Answering age question on MarketXcel survey")
+                age = self.persona.get('personal', {}).get('age', 25)
+                await self.page.locator('input[type="text"]').fill(str(age))
+                self.logger.info(f"📝 Question: Age input")
+                self.logger.info(f"🧠 Answer typed: {age}")
+                # Click submit with enhanced selectors
+                submit_selectors = [
+                    'button.submit',
+                    'button.forward', 
+                    'button:has-text("Submit")',
+                    'button:has-text("Next")',
+                    'input[type="submit"]',
+                    '.btn-primary'
+                ]
+                for sel in submit_selectors:
+                    try:
+                        btn = self.page.locator(sel).first
+                        if await btn.count() > 0:
+                            await btn.click()
+                            break
+                    except Exception:
+                        continue
+                try:
+                    await self.page.wait_for_load_state('networkidle')
+                except Exception:
+                    await asyncio.sleep(1.0)
+
+            self.logger.info("✅ Successfully handled MarketXcel survey steps, passing to generic handler")
+            return await self._handle_generic_cpx_survey()
+            
+        except Exception as e:
+            self.logger.error(f"❌ Error handling MarketXcel survey: {e}")
+            return {'status': 'error', 'reason': 'MarketXcel handler failed'}
+
+    async def _handle_upsiide_survey(self) -> Dict[str, Any]:
+        """Handle surveys from upsiide.com"""
+        try:
+            self.logger.info("🎯 Handling Upsiide survey")
+
+            # Consent question
+            if "Do you agree to continue?" in await self.page.content():
+                self.logger.info("🎯 Answering consent question on Upsiide survey")
+                await self.page.locator('label:has-text("Yes, I agree")').click()
+                
+                continue_button = self.page.locator('button:has-text("Continue")')
+                await continue_button.wait_for(state='visible', timeout=5000)
+                await continue_button.click()
+                await self.page.wait_for_load_state('networkidle')
+
+            self.logger.info("✅ Successfully handled Upsiide survey steps, passing to generic handler")
+            return await self._handle_generic_cpx_survey()
+
+        except Exception as e:
+            self.logger.error(f"❌ Error handling Upsiide survey: {e}")
+            return {'status': 'error', 'reason': 'Upsiide handler failed'}
+
     async def complete_single_survey(self, survey_id: str) -> Dict[str, Any]:
         """Complete a single survey from start to finish"""
         try:
@@ -2552,11 +2540,12 @@ class CPXResearchBot:
                             # Wait for the survey page to fully load (not just loading screen)
                             print("⏳ Waiting for survey page to fully load...")
                             try:
-                                # Wait for loading spinner to disappear or content to appear
-                                await self.page.wait_for_function(
-                                    "() => { return !document.querySelector('[aria-label=\"loader\"]') || document.querySelector('[data-testid=\"layout-card\"]')?.textContent?.length > 100 }",
-                                    timeout=30000
-                                )
+                                # Wait for any basic interactive element to be attached
+                                try:
+                                    await self.page.locator("form, input, button").first.wait_for(state="attached", timeout=15000)
+                                except Exception:
+                                    # Fallback to DOMContentLoaded if no elements are found
+                                    await self.page.wait_for_load_state('domcontentloaded', timeout=15000)
                                 print("✅ Survey page loaded (loading spinner gone or content visible)")
                             except Exception as wait_err:
                                 print(f"⚠️ Wait for survey load timed out: {wait_err}")
@@ -4350,6 +4339,25 @@ class CPXResearchBot:
                                     return True
                             except Exception:
                                 pass
+                            # Try Bootstrap/Angular dropdown menus (anchors inside ul.dropdown-menu)
+                            try:
+                                dd_opt = self.page.locator(f".dropdown-menu a:has-text('{option_text}')").first
+                                if await dd_opt.count() > 0:
+                                    try:
+                                        await dd_opt.click()
+                                        await asyncio.sleep(0.2)
+                                        return True
+                                    except Exception:
+                                        h = await dd_opt.element_handle()
+                                        if h:
+                                            try:
+                                                await self.page.evaluate('(el) => el.click()', h)
+                                                await asyncio.sleep(0.2)
+                                                return True
+                                            except Exception:
+                                                pass
+                            except Exception:
+                                pass
                             # Try generic text within open dropdowns
                             try:
                                 for oc in ['[role="listbox"]', '.ui-select-choices', '.select2-results']:
@@ -4375,34 +4383,78 @@ class CPXResearchBot:
                             except Exception:
                                 return False
 
-                        # Month
-                        mbox = await open_combo_by_text('Month')
-                        if mbox is not None:
-                            await pick_option(month_text)
-                        else:
-                            # try clicking the inline Month text directly
-                            try:
-                                mtxt = self.page.get_by_text('Month', exact=False).first
-                                if await mtxt.count() > 0:
-                                    await mtxt.click()
+                        # Month (prefer Angular dropdown anchors if present)
+                        try:
+                            month_anchor = self.page.locator("#answerid-234, div.select-dropdown.dropdown:has-text('Month') a[id^='answerid-']").first
+                            if await month_anchor.count() > 0:
+                                try:
+                                    await month_anchor.click()
                                     await asyncio.sleep(0.2)
+                                    if not await pick_option(month_text):
+                                        # Fallback: select within the specific month menu
+                                        mm = self.page.locator("#ans011_234 .dropdown-menu a:has-text('" + month_text + "')").first
+                                        if await mm.count() > 0:
+                                            await mm.click()
+                                except Exception:
+                                    pass
+                            else:
+                                mbox = await open_combo_by_text('Month')
+                                if mbox is not None:
                                     await pick_option(month_text)
-                            except Exception:
-                                pass
+                                else:
+                                    # try clicking the inline Month text directly
+                                    try:
+                                        mtxt = self.page.get_by_text('Month', exact=False).first
+                                        if await mtxt.count() > 0:
+                                            await mtxt.click()
+                                            await asyncio.sleep(0.2)
+                                            await pick_option(month_text)
+                                    except Exception:
+                                        pass
+                        except Exception:
+                            pass
 
-                        # Year
-                        ybox = await open_combo_by_text('Year')
-                        if ybox is not None:
-                            await pick_option(year_text)
-                        else:
-                            try:
-                                ytxt = self.page.get_by_text('Year', exact=False).first
-                                if await ytxt.count() > 0:
-                                    await ytxt.click()
-                                    await asyncio.sleep(0.2)
-                                    await pick_option(year_text)
-                            except Exception:
-                                pass
+                        # Year (use anchor-based dropdown or fall back to <select>)
+                        try:
+                            # Mobile/select fallback first if available
+                            sel_year = self.page.locator('select#answerid-235, select.answerid-235').first
+                            if await sel_year.count() > 0:
+                                try:
+                                    await sel_year.select_option(value=year_text)
+                                except Exception:
+                                    try:
+                                        await sel_year.select_option(label=year_text)
+                                    except Exception:
+                                        pass
+                            else:
+                                year_anchor = self.page.locator("#answerid-235, div.select-dropdown.dropdown:has-text('Year') a[id^='answerid-']").first
+                                if await year_anchor.count() > 0:
+                                    try:
+                                        await year_anchor.click()
+                                        await asyncio.sleep(0.2)
+                                        # Target the menu by aria-labelledby to be precise
+                                        target = self.page.locator("ul[aria-labelledby='answerid-235'] a:has-text('" + year_text + "')").first
+                                        if await target.count() > 0:
+                                            await target.click()
+                                        else:
+                                            await pick_option(year_text)
+                                    except Exception:
+                                        pass
+                                else:
+                                    ybox = await open_combo_by_text('Year')
+                                    if ybox is not None:
+                                        await pick_option(year_text)
+                                    else:
+                                        try:
+                                            ytxt = self.page.get_by_text('Year', exact=False).first
+                                            if await ytxt.count() > 0:
+                                                await ytxt.click()
+                                                await asyncio.sleep(0.2)
+                                                await pick_option(year_text)
+                                        except Exception:
+                                            pass
+                        except Exception:
+                            pass
 
                         # After DOB selection, try continuing
                         for selector in continue_selectors:
@@ -4529,6 +4581,46 @@ class CPXResearchBot:
                                     pass
                 except Exception as pre_err:
                     print(f'⚠️ PureSpectrum pre-screen multipunch handler error: {pre_err}')
+
+                # Handle specific streaming services multipunch (Angular template with checkbox + span text)
+                try:
+                    if await self.page.get_by_text('Which of the following streaming services are you currently subscribed to', exact=False).count() > 0:
+                        desired = ['Netflix', 'Hulu', 'Disney+', 'Amazon Prime Video']
+                        selected_count = 0
+                        for label in desired:
+                            if selected_count >= 2:
+                                break
+                            try:
+                                # Find the span with the label text, then click its associated checkbox
+                                span = self.page.locator(f"span:has-text('{label}')").first
+                                if await span.count() == 0:
+                                    continue
+                                container = span.locator('xpath=ancestor::label[1]')
+                                checkbox = container.locator('input[type="checkbox"]').first
+                                if await checkbox.count() > 0:
+                                    try:
+                                        await checkbox.check()
+                                    except Exception:
+                                        h = await checkbox.element_handle()
+                                        if h:
+                                            await self.page.evaluate('(el) => { el.scrollIntoView({behavior: "smooth", block: "center"}); el.click(); el.dispatchEvent(new Event("input", {bubbles: true})); el.dispatchEvent(new Event("change", {bubbles: true})); }', h)
+                                    selected_count += 1
+                                    await asyncio.sleep(0.2)
+                            except Exception:
+                                continue
+                        # Continue
+                        for selector in continue_selectors:
+                            try:
+                                btn = self.page.locator(selector).first
+                                if await btn.count() == 0:
+                                    continue
+                                await btn.click()
+                                await asyncio.sleep(1.0)
+                                break
+                            except Exception:
+                                continue
+                except Exception:
+                    pass
                 
                 # Now handle the actual survey questions
                 return await self.handle_actual_survey()
@@ -4567,6 +4659,11 @@ class CPXResearchBot:
                 total_attempts += 1
                 print(f"\n🔄 Survey attempt {attempt + 1}/{max_surveys}")
                 
+                # Check for camera question first
+                if await self._handle_camera_question():
+                    self.logger.info("Handled camera-related question, moving to next survey.")
+                    continue
+
                 # Get available surveys
                 surveys = await self.get_available_surveys()
                 if not surveys:
@@ -4578,46 +4675,46 @@ class CPXResearchBot:
                 # Try each survey
                 survey_completed = False
                 for survey in surveys[:3]:  # Try first 3 surveys
-                    survey_id = survey.get('id')
-                    if not survey_id:
-                        continue
-                    
-                    print(f"🎯 Trying survey: {survey_id}")
-                    
                     try:
+                        survey_id = survey.get('id')
+                        if not survey_id:
+                            continue
+                        
+                        self.logger.info(f"🎯 Trying survey: {survey_id}")
+                        
                         result = await self.complete_single_survey(survey_id)
                         
                         if result['status'] == 'completed':
                             surveys_completed += 1
                             survey_completed = True
-                            print(f"✅ Survey {survey_id} completed successfully")
+                            self.logger.info(f"✅ Survey {survey_id} completed successfully")
                             break
                         elif result['status'] == 'router_completed':
                             routers_completed += 1
                             survey_completed = True
-                            print(f"🔄 Router qualification completed for survey {survey_id}")
-                            # Router completion means we're now qualified for more surveys
+                            self.logger.info(f"🔄 Router qualification completed for survey {survey_id}")
                             break
                         elif result['status'] == 'router_not_qualified':
-                            print(f"❌ Router qualification failed for survey {survey_id}")
+                            self.logger.info(f"❌ Router qualification failed for survey {survey_id}")
                             continue
                         elif result['status'] == 'not_qualified':
-                            print(f"❌ Not qualified for survey {survey_id}")
+                            self.logger.info(f"❌ Not qualified for survey {survey_id}")
                             continue
                         else:
-                            print(f"⚠️ Survey {survey_id} failed: {result.get('reason', 'Unknown')}")
+                            self.logger.warning(f"⚠️ Survey {survey_id} failed: {result.get('reason', 'Unknown')}")
                             continue
-                        
                     except Exception as e:
-                        print(f"❌ Error with survey {survey_id}: {e}")
-                        continue
+                        if "Target page, context or browser has been closed" in str(e):
+                            self.logger.error("Browser closed unexpectedly during survey. Ending this attempt.")
+                            break # Exit the inner loop
+                        else:
+                            self.logger.error(f"❌ Error with survey {survey_id}: {e}", exc_info=True)
+                            continue
                 
                 if not survey_completed:
-                    print("❌ No surveys could be completed in this round")
-                    # If we've completed routers, we might have better qualification now
+                    self.logger.info("❌ No surveys could be completed in this round")
                     if routers_completed > 0:
-                        print("🔄 Router qualifications completed - may have better survey access")
-                        # Continue trying more surveys
+                        self.logger.info("🔄 Router qualifications completed - may have better survey access")
                         continue
                     else:
                         break
@@ -4625,7 +4722,7 @@ class CPXResearchBot:
                 # Wait between surveys
                 if attempt < max_surveys - 1:
                     wait_time = random.uniform(10, 30)
-                    print(f"⏳ Waiting {wait_time:.1f}s before next survey...")
+                    self.logger.info(f"⏳ Waiting {wait_time:.1f}s before next survey...")
                     await asyncio.sleep(wait_time)
             
             return {
@@ -4640,7 +4737,6 @@ class CPXResearchBot:
         except Exception as e:
             print(f"❌ Session failed: {e}")
             return {'status': 'error', 'reason': str(e)}
-        
         finally:
             await self.cleanup()
 
@@ -5069,6 +5165,11 @@ class CPXResearchBot:
         """Handle radio button questions using DOM analysis"""
         try:
             print("🎯 Handling radio question via DOM...")
+            try:
+                qt = await self._get_question_text()
+                print(f"📝 Question: {qt}")
+            except Exception:
+                pass
             
             # Find all radio buttons
             radio_buttons = self.page.locator('input[type="radio"]')
@@ -5108,6 +5209,20 @@ class CPXResearchBot:
                 except Exception as e:
                     print(f"⚠️ Radio button click failed: {e}")
                     return False
+
+            # Log selected answer text if available
+            try:
+                radio_id = await selected_radio.get_attribute('id')
+                ans_text = "(unknown)"
+                if radio_id:
+                    lbl = self.page.locator(f'label[for="{radio_id}"]')
+                    if await lbl.count() > 0:
+                        t = await lbl.text_content()
+                        if t:
+                            ans_text = t.strip()
+                print(f"🧠 Answer chosen: {ans_text}")
+            except Exception:
+                pass
             
             return await self._submit_question()
             
@@ -5119,6 +5234,11 @@ class CPXResearchBot:
         """Handle checkbox questions using DOM analysis"""
         try:
             print("🎯 Handling checkbox question via DOM...")
+            try:
+                qt = await self._get_question_text()
+                print(f"📝 Question: {qt}")
+            except Exception:
+                pass
             
             # Find all checkboxes
             checkboxes = self.page.locator('input[type="checkbox"]')
@@ -5134,10 +5254,20 @@ class CPXResearchBot:
             num_to_select = min(random.randint(1, 3), count)
             selected_indices = random.sample(range(count), num_to_select)
             
+            chosen = []
             for idx in selected_indices:
                 checkbox = checkboxes.nth(idx)
                 try:
                     await checkbox.click()
+                    # Capture answer text
+                    try:
+                        cid = await checkbox.get_attribute('id')
+                        lbl = self.page.locator(f'label[for="{cid}"]') if cid else None
+                        txt = await lbl.text_content() if lbl and await lbl.count() > 0 else None
+                        if txt:
+                            chosen.append(txt.strip())
+                    except Exception:
+                        pass
                     print(f"✅ Checkbox {idx + 1} selected")
                 except Exception:
                     # Try clicking associated label
@@ -5147,9 +5277,18 @@ class CPXResearchBot:
                             label = self.page.locator(f'label[for="{checkbox_id}"]')
                             if await label.count() > 0:
                                 await label.click()
+                                try:
+                                    txt = await label.text_content()
+                                    if txt:
+                                        chosen.append(txt.strip())
+                                except Exception:
+                                    pass
                                 print(f"✅ Checkbox {idx + 1} selected via label")
                     except Exception as e:
                         print(f"⚠️ Checkbox {idx + 1} selection failed: {e}")
+
+            if chosen:
+                print(f"🧠 Answers chosen: {chosen}")
             
             return await self._submit_question()
             
@@ -5161,6 +5300,11 @@ class CPXResearchBot:
         """Handle text input questions using DOM analysis"""
         try:
             print("🎯 Handling text question via DOM...")
+            try:
+                qt = await self._get_question_text()
+                print(f"📝 Question: {qt}")
+            except Exception:
+                pass
             
             # Find text inputs (including number inputs and inputs without type)
             text_inputs = self.page.locator('input[type="text"], input[type="number"], input:not([type]), textarea')
@@ -5194,6 +5338,8 @@ class CPXResearchBot:
                         response = await self.generate_open_ended_response(question_text)
                     
                     await text_input.fill(response)
+                    print(f"📝 Question: {question_text}")
+                    print(f"🧠 Answer typed: {response}")
                     print(f"✅ Text input {i + 1} filled: {response[:20]}...")
                 except Exception as e:
                     print(f"⚠️ Text input {i + 1} filling failed: {e}")
@@ -5410,6 +5556,8 @@ class CPXResearchBot:
         """Handle radio questions based on HTML analysis"""
         try:
             print("🎯 Handling radio question from HTML analysis...")
+            if question_info.get('text'):
+                print(f"📝 Question: {question_info.get('text')}")
             
             # Find radio buttons using DOM
             radio_buttons = self.page.locator('input[type="radio"]')
@@ -5435,6 +5583,12 @@ class CPXResearchBot:
                         if await label.count() > 0:
                             await label.click()
                             print("✅ Radio button selected via label")
+                            try:
+                                t = await label.text_content()
+                                if t:
+                                    print(f"🧠 Answer chosen: {t.strip()}")
+                            except Exception:
+                                pass
                 except Exception as e:
                     print(f"⚠️ Radio button selection failed: {e}")
                     return False
@@ -5449,6 +5603,8 @@ class CPXResearchBot:
         """Handle checkbox questions based on HTML analysis"""
         try:
             print("🎯 Handling checkbox question from HTML analysis...")
+            if question_info.get('text'):
+                print(f"📝 Question: {question_info.get('text')}")
             
             # Find checkboxes using DOM
             checkboxes = self.page.locator('input[type="checkbox"]')
@@ -5467,6 +5623,15 @@ class CPXResearchBot:
                 try:
                     await checkbox.click()
                     print(f"✅ Checkbox {idx + 1} selected from HTML analysis")
+                    try:
+                        cid = await checkbox.get_attribute('id')
+                        lbl = self.page.locator(f'label[for="{cid}"]') if cid else None
+                        if lbl and await lbl.count() > 0:
+                            t = await lbl.text_content()
+                            if t:
+                                print(f"🧠 Answer chosen: {t.strip()}")
+                    except Exception:
+                        pass
                 except Exception:
                     # Try clicking associated label
                     try:
@@ -5476,6 +5641,12 @@ class CPXResearchBot:
                             if await label.count() > 0:
                                 await label.click()
                                 print(f"✅ Checkbox {idx + 1} selected via label")
+                                try:
+                                    t = await label.text_content()
+                                    if t:
+                                        print(f"🧠 Answer chosen: {t.strip()}")
+                                except Exception:
+                                    pass
                     except Exception as e:
                         print(f"⚠️ Checkbox {idx + 1} selection failed: {e}")
             
@@ -5489,6 +5660,8 @@ class CPXResearchBot:
         """Handle text questions based on HTML analysis"""
         try:
             print("🎯 Handling text question from HTML analysis...")
+            if question_info.get('text'):
+                print(f"📝 Question: {question_info.get('text')}")
             
             # Find text inputs using DOM
             text_inputs = self.page.locator('input[type="text"], textarea')
@@ -5507,6 +5680,7 @@ class CPXResearchBot:
                     # Generate appropriate response
                     response = await self.generate_open_ended_response(question_text)
                     await text_input.fill(response)
+                    print(f"🧠 Answer typed: {response}")
                     print(f"✅ Text input {i + 1} filled from HTML analysis: {response[:20]}...")
                 except Exception as e:
                     print(f"⚠️ Text input {i + 1} filling failed: {e}")
@@ -6079,6 +6253,141 @@ class CPXResearchBot:
         except Exception as e:
             print(f"⚠️ Enter key submit failed: {e}")
             return False
+
+    async def _handle_camera_question(self) -> bool:
+        """Handle camera-related survey questions"""
+        try:
+            # Define keywords for camera-related questions
+            camera_keywords = ["camera", "webcam", "video", "facial recognition", "face scan"]
+
+            # Check if the current page content or URL contains camera-related keywords
+            page_content = await self.page.content()
+            page_url = self.page.url
+
+            is_camera_question = any(keyword in page_content.lower() for keyword in camera_keywords) or \
+                                 any(keyword in page_url.lower() for keyword in camera_keywords)
+
+            if is_camera_question:
+                self.logger.info("🎯 Detected camera-related survey. Attempting to answer 'No'...")
+                # Find and click the "No" or equivalent button
+                # This might need to be adjusted based on actual survey page structures
+                no_selectors = [
+                    'button:has-text("No")',
+                    'button:has-text("I do not agree")',
+                    'button:has-text("Decline")',
+                    'button:has-text("Opt out")',
+                    'a:has-text("No")',
+                    'a:has-text("I do not agree")',
+                    'a:has-text("Decline")',
+                    'a:has-text("Opt out")',
+                    'input[type="radio"][value*="no" i]',
+                    'input[type="checkbox"][value*="no" i]',
+                    '[role="button"]:has-text("No")',
+                    '[role="button"]:has-text("Decline")'
+                ]
+                for selector in no_selectors:
+                    try:
+                        no_button = self.page.locator(selector).first
+                        if await no_button.is_visible(timeout=5000):
+                            await no_button.click(timeout=5000)
+                            self.logger.info(f"✅ Answered camera-related survey with 'No' using selector: {selector}")
+                            return True
+                    except Exception as e:
+                        if "Target page, context or browser has been closed" in str(e):
+                            self.logger.warning("Browser closed during camera question handling. Ending survey attempt.")
+                            return False # Stop trying if the page is gone
+                        self.logger.debug(f"Selector '{selector}' failed for camera question: {e}")
+
+                self.logger.warning("⚠️ Could not find a 'No' option for camera survey using selectors. Trying text search.")
+                
+                # Fallback to text search if selectors fail
+                try:
+                    no_texts = ["no", "i do not agree", "decline", "opt out", "i do not wish to participate"]
+                    for text in no_texts:
+                        element = self.page.get_by_text(text, exact=False).first
+                        if await element.is_visible(timeout=5000):
+                            await element.click(timeout=5000)
+                            self.logger.info(f"✅ Answered camera-related survey with 'No' using text search for: '{text}'")
+                            return True
+                except Exception as e:
+                    if "Target page, context or browser has been closed" in str(e):
+                        self.logger.warning("Browser closed during camera question text search. Ending survey attempt.")
+                        return False # Stop trying if the page is gone
+                    self.logger.error(f"⚠️ Error during camera question text search: {e}", exc_info=True)
+
+            return False
+        except Exception as e:
+            if "Target page, context or browser has been closed" in str(e):
+                self.logger.warning("Browser closed at the start of camera question handling.")
+            else:
+                self.logger.error(f"⚠️ Error handling camera question: {e}", exc_info=True)
+            return False
+
+    async def _process_current_page(self) -> bool:
+        """Process the current page for survey completion"""
+        try:
+            # Check if we're on the survey page
+            if 'survey' in self.page.url.lower():
+                # Handle the survey questions
+                question_text = await self.get_question_text()
+                question_info = await self.get_question_info()
+                question_type = await self.detect_question_type()
+
+                if question_type == 'single_punch':
+                    answer = await self.handle_single_choice_question(question_text, question_info)
+                elif question_type == 'multi_punch':
+                    answer = await self.handle_multiple_choice_question(question_text, question_info)
+                elif question_type == 'open_ended':
+                    answer = await self.handle_text_question(question_text, question_info)
+                elif question_type == 'int_open_ended':
+                    answer = await self.handle_number_question(question_text, question_info)
+                else:
+                    self.logger.warning("⚠️ Unhandled question type: %s", question_type)
+                    return False
+
+                # Submit the answer
+                if answer:
+                    self.logger.info("✅ Answered survey question: '%s'", question_text)
+                    return True
+            else:
+                self.logger.warning("⚠️ Not on a survey page: %s", self.page.url)
+                return False
+        except Exception as e:
+            self.logger.error(f"⚠️ Error processing current page: {e}", exc_info=True)
+            return False
+
+    async def _random_delay(self, min_delay: float, max_delay: float):
+        """Introduce a random delay between surveys"""
+        try:
+            delay = random.uniform(min_delay, max_delay)
+            self.logger.info("⏳ Waiting for %f seconds before next survey...", delay)
+            await asyncio.sleep(delay)
+        except Exception as e:
+            self.logger.error(f"⚠️ Error introducing delay: {e}", exc_info=True)
+
+    async def _cleanup_browser(self):
+        """Clean up browser resources"""
+        try:
+            if self.page:
+                await self.page.close()
+            if self.context:
+                await self.context.close()
+            if self.browser:
+                await self.browser.close()
+            print("🧹 Browser cleanup completed")
+        except Exception as e:
+            print(f"⚠️ Cleanup error: {e}")
+
+    def _get_session_summary(self) -> Dict[str, Any]:
+        """Generate a summary of the survey session"""
+        return {
+            'status': 'completed' if self.surveys_completed > 0 else 'incomplete',
+            'surveys_completed': self.surveys_completed,
+            'errors_encountered': self.errors_encountered,
+            'total_earnings': self.session_stats['earnings'],
+            'questions_answered': self.session_stats['questions_answered'],
+            'personality_mode': self.personality_mode
+        }
 
 
 async def main():

@@ -1,0 +1,7 @@
+2025-08-16 04:31:59,303 - WARNING - Werkzeug appears to be used in a production deployment. Consider switching to a production web server instead.
+2025-08-16 04:31:59,317 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://100.115.92.200:5000
+2025-08-16 04:31:59,317 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 04:32:09,933 - INFO - 127.0.0.1 - - [16/Aug/2025 04:32:09] "GET / HTTP/1.1" 200 -

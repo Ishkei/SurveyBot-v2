@@ -2,30 +2,7 @@ import os
 from typing import Dict, Any
 from dotenv import load_dotenv
 
-# Load .env file from the configurations directory
-try:
-    # Try multiple possible paths for the .env file
-    possible_paths = [
-        os.path.join(os.path.dirname(os.path.dirname(__file__)), "Configurations", ".env"),
-        os.path.join(os.path.dirname(os.path.dirname(__file__)), "configs", ".env"),
-        os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"),
-        ".env"
-    ]
-    
-    env_loaded = False
-    for env_path in possible_paths:
-        if os.path.exists(env_path):
-            load_dotenv(env_path)
-            env_loaded = True
-            print(f"✅ Loaded environment from: {env_path}")
-            break
-    
-    if not env_loaded:
-        print("⚠️ No .env file found, using default values")
-        
-except Exception as e:
-    print(f"⚠️ Error loading .env file: {e}")
-    print("Using default configuration values")
+# Configuration will be loaded explicitly in the main runner script
 
 class Config:
     """Configuration management for survey automation"""
@@ -190,6 +167,44 @@ class Config:
         return cls.MIN_DELAY
     
     @classmethod
+    def reload(cls):
+        """Reloads all configuration settings from environment variables."""
+        cls.GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
+        cls.PROXY_HOST = os.getenv("PROXY_HOST", "")
+        cls.PROXY_PORT = os.getenv("PROXY_PORT", "")
+        cls.PROXY_USER = os.getenv("PROXY_USER", "")
+        cls.PROXY_PASS = os.getenv("PROXY_PASS", "")
+        cls.BROWSER_TYPE = os.getenv("BROWSER_TYPE", "playwright")
+        cls.HEADLESS = os.getenv("HEADLESS", "false").lower() == "true"
+        cls.SLOW_MO = int(os.getenv("SLOW_MO", "10"))
+        cls.SURVEY_PLATFORM = os.getenv("SURVEY_PLATFORM", "qmee")
+        cls.SURVEY_URL = os.getenv("SURVEY_URL", "https://www.qmee.com/en-us/surveys")
+        cls.CPX_APP_ID = os.getenv("CPX_APP_ID", "")
+        cls.CPX_EXT_USER_ID = os.getenv("CPX_EXT_USER_ID", "")
+        cls.CPX_BASE_URL = os.getenv("CPX_BASE_URL", "https://offers.cpx-research.com")
+        cls.AI_MODEL = os.getenv("AI_MODEL", "gemini-1.5-flash-latest")
+        cls.USE_VISION = os.getenv("USE_VISION", "true").lower() == "true"
+        cls.USE_FALLBACK = os.getenv("USE_FALLBACK", "true").lower() == "true"
+        cls.USE_SELF_OPERATING_COMPUTER = os.getenv("USE_SELF_OPERATING_COMPUTER", "true").lower() == "true"
+        cls.VISION_MODEL = os.getenv("VISION_MODEL", "gpt-4-vision-preview")
+        cls.USE_MOUSE_CONTROL = os.getenv("USE_MOUSE_CONTROL", "true").lower() == "true"
+        cls.SOC_HEADLESS = os.getenv("SOC_HEADLESS", "false").lower() == "true"
+        cls.SOC_DEBUG = os.getenv("SOC_DEBUG", "true").lower() == "true"
+        cls.PERSONALITY_STYLE = os.getenv("PERSONALITY_STYLE", "discord_casual")
+        cls.MAX_SURVEYS = int(os.getenv("MAX_SURVEYS", "10"))
+        cls.DELAY_BETWEEN_ACTIONS = (float(os.getenv("MIN_DELAY", "1.0")), float(os.getenv("MAX_DELAY", "3.0")))
+        cls.PAGE_TIMEOUT = int(os.getenv("PAGE_TIMEOUT", "30000"))
+        cls.ELEMENT_TIMEOUT = int(os.getenv("ELEMENT_TIMEOUT", "10000"))
+        cls.SURVEY_TIMEOUT = int(os.getenv("SURVEY_TIMEOUT", "300000"))
+        cls.MAX_RETRIES = int(os.getenv("MAX_RETRIES", "3"))
+        cls.RETRY_DELAY = int(os.getenv("RETRY_DELAY", "5"))
+        cls.ROTATE_PROXY_ON_FAILURE = os.getenv("ROTATE_PROXY_ON_FAILURE", "true").lower() == "true"
+        cls.PROXY_ROTATION_INTERVAL = int(os.getenv("PROXY_ROTATION_INTERVAL", "10"))
+        cls.RANDOM_DELAYS = os.getenv("RANDOM_DELAYS", "true").lower() == "true"
+        cls.MIN_DELAY = float(os.getenv("MIN_DELAY", "1.0"))
+        cls.MAX_DELAY = float(os.getenv("MAX_DELAY", "3.0"))
+
+    @classmethod
     def validate_config(cls) -> bool:
         """Validate the configuration"""
         errors = []
@@ -251,6 +266,10 @@ SLOW_MO=10
 SURVEY_PLATFORM=qmee
 SURVEY_URL=https://www.qmee.com/en-us/surveys
 
+# CPX Research Settings
+CPX_APP_ID=27806
+CPX_EXT_USER_ID=533055960609193994_1246050346233757798
+
 # AI Settings
 AI_MODEL=gemini-1.5-flash-latest
 USE_VISION=true
@@ -275,10 +294,11 @@ MIN_DELAY=1.0
 MAX_DELAY=3.0
 """
     
-    if not os.path.exists('.env'):
-        with open('.env', 'w') as f:
+    env_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env")
+    if not os.path.exists(env_path):
+        with open(env_path, 'w') as f:
             f.write(env_content)
-        print("Created sample .env file. Please update with your actual values.")
+        print(f"Created sample .env file at: {env_path}. Please update with your actual values.")
 
 if __name__ == "__main__":
     create_sample_env()

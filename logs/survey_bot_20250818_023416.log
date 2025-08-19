@@ -1,0 +1,39 @@
+2025-08-18 02:34:16,286 - WARNING - ⚠️ CPX config file not found, using defaults
+2025-08-18 02:35:15,623 - INFO - 🎯 Detected camera-related survey. Attempting to answer 'No'...
+2025-08-18 02:35:15,885 - WARNING - ⚠️ Could not find a 'No' option for camera survey using selectors. Trying text search.
+2025-08-18 02:35:39,961 - INFO - 🎯 Trying survey: eeRW9EbkJhZGl0aDlFeVB2YnNRNytjUT09
+2025-08-18 02:36:22,024 - INFO - ✅ Question 1 handled.
+2025-08-18 02:37:41,192 - INFO - ✅ Question 2 handled.
+2025-08-18 02:37:51,216 - INFO - ✅ Question 3 handled.
+2025-08-18 02:38:00,395 - INFO - ✅ Question 4 handled.
+2025-08-18 02:38:10,334 - INFO - ✅ Question 5 handled.
+2025-08-18 02:38:20,175 - INFO - ✅ Question 6 handled.
+2025-08-18 02:38:29,722 - INFO - ✅ Question 7 handled.
+2025-08-18 02:38:38,323 - INFO - ✅ Question 8 handled.
+2025-08-18 02:38:47,040 - INFO - ✅ Question 9 handled.
+2025-08-18 02:38:55,242 - INFO - ✅ Question 10 handled.
+2025-08-18 02:39:04,580 - INFO - ✅ Question 11 handled.
+2025-08-18 02:39:13,990 - INFO - ✅ Question 12 handled.
+2025-08-18 02:39:24,101 - INFO - ✅ Question 13 handled.
+2025-08-18 02:39:32,635 - INFO - ✅ Question 14 handled.
+2025-08-18 02:39:51,260 - ERROR - Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed\nCall log:\n  - waiting for locator("input[type=\\"text\\"], input[type=\\"number\\"], input:not([type]), textarea").first\n    - locator resolved to <textarea rows="3" id="moreInfo" class="form-control"></textarea>\n    - fill("I believe this is important to consider carefully, as it can have a significant impact on our daily lives.")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not visible\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not visible\n    - retrying fill action\n      - waiting 100ms\n    15 × waiting for element to be visible, enabled and editable\n       - element is not visible\n     - retrying fill action\n       - waiting 500ms\n')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input[type=\"text\"], input[type=\"number\"], input:not([type]), textarea").first
+    - locator resolved to <textarea rows="3" id="moreInfo" class="form-control"></textarea>
+    - fill("I believe this is important to consider carefully, as it can have a significant impact on our daily lives.")
+  - attempting fill action
+    2 × waiting for element to be visible, enabled and editable
+      - element is not visible
+    - retrying fill action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and editable
+      - element is not visible
+    - retrying fill action
+      - waiting 100ms
+    15 × waiting for element to be visible, enabled and editable
+       - element is not visible
+     - retrying fill action
+       - waiting 500ms
+

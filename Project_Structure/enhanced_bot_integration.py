@@ -294,7 +294,7 @@ async def get_enhanced_bot_response(question: str,
                                    context: str = "", 
                                    mode: Optional[str] = None) -> str:
     """Get enhanced bot response using the integration system."""
-    integration = EnhancedBotIntegration()
+    integration = EnhancedBotIntegration("enhanced_ai_config.json")
     return await integration.get_enhanced_response(question, context, mode)
 
 def get_enhanced_bot_response_sync(question: str, 
@@ -311,7 +311,7 @@ def get_enhanced_bot_response_sync(question: str,
             return asyncio.run(get_enhanced_bot_response(question, context, mode))
     except RuntimeError:
         # Fallback to basic response
-        integration = EnhancedBotIntegration()
+        integration = EnhancedBotIntegration("enhanced_ai_config.json")
         return integration._generate_basic_fallback(question, context)
 
 # Integration with existing survey bot components
@@ -322,7 +322,7 @@ class SurveyBotEnhancer:
     
     def __init__(self, existing_bot_instance=None):
         self.existing_bot = existing_bot_instance
-        self.enhanced_integration = EnhancedBotIntegration()
+        self.enhanced_integration = EnhancedBotIntegration("enhanced_ai_config.json")
         self.enhancement_enabled = True
     
     def enhance_response_generation(self, original_response_func):
@@ -403,7 +403,7 @@ if __name__ == "__main__":
         print("=" * 50)
         
         # Initialize integration
-        integration = EnhancedBotIntegration()
+        integration = EnhancedBotIntegration("enhanced_ai_config.json")
         
         # Test different modes
         modes = integration.get_available_modes()

@@ -16,6 +16,7 @@ from typing import Optional, Dict, Any, List
 from pathlib import Path
 import time
 import traceback
+from dotenv import load_dotenv
 
 # Add current directory to path for imports
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -665,7 +666,7 @@ class EnhancedSurveyBotRunner:
             self.captcha_solver = None
             
             # Initialize enhanced bot integration
-            self.enhanced_integration = EnhancedBotIntegration()
+            self.enhanced_integration = EnhancedBotIntegration("../Project_Structure/enhanced_ai_config.json")
             print(f"✅ Enhanced bot integration initialized")
             
             # Initialize bot enhancer
@@ -824,7 +825,8 @@ class EnhancedSurveyBotRunner:
             # Create CPX bot instance
             cpx_bot = CPXResearchBot(
                 app_id=Config.CPX_APP_ID,
-                ext_user_id=Config.CPX_EXT_USER_ID
+                ext_user_id=Config.CPX_EXT_USER_ID,
+                config_path="../Configurations/configs/cpx_config.json" # Explicitly pass config path
             )
             # Propagate typing preferences
             if hasattr(self, 'session_stats'):
@@ -1139,6 +1141,17 @@ def main():
     
     args = parser.parse_args()
     
+    # Ensure .env is set up correctly
+    setup_environment()
+    # Explicitly load .env from the project root
+    dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
+    load_dotenv(dotenv_path=dotenv_path) 
+    Config.reload() # Reload Config class attributes from updated environment
+
+    # Re-read CPX specific environment variables after .env is loaded
+    Config.CPX_APP_ID = os.getenv("CPX_APP_ID", Config.CPX_APP_ID)
+    Config.CPX_EXT_USER_ID = os.getenv("CPX_EXT_USER_ID", Config.CPX_EXT_USER_ID)
+
     # Update config based on arguments
     Config.BROWSER_TYPE = args.implementation
     Config.SURVEY_PLATFORM = args.platform
@@ -1199,7 +1212,7 @@ def setup_environment():
     
     # Install dependencies
     print("Installing dependencies...")
-    os.system("pip install -r ../Configurations/requirements.txt")
+    os.system("pip install -r ../../Configurations/requirements.txt")
     
     # Install enhanced personality dependencies
     if os.path.exists("../Project_Structure/requirements_enhanced_personality.txt"):

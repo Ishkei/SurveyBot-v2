@@ -40,7 +40,7 @@ class EnhancedPersonalityDemo:
         """Initialize the enhanced personality systems."""
         try:
             self.enhanced_system = EnhancedPersonalitySystem()
-            self.integration = EnhancedBotIntegration()
+            self.integration = EnhancedBotIntegration("enhanced_ai_config.json")
             print("✅ Enhanced personality systems initialized successfully!")
         except Exception as e:
             print(f"⚠️ Failed to initialize enhanced systems: {e}")

@@ -1,0 +1,10 @@
+2025-08-18 00:12:14,488 - WARNING - ⚠️ CPX config file not found, using defaults
+2025-08-18 00:13:12,230 - INFO - 🎯 Detected camera-related survey. Attempting to answer 'No'...
+2025-08-18 00:13:12,556 - WARNING - ⚠️ Could not find a 'No' option for camera survey using selectors. Trying text search.
+2025-08-18 00:13:37,089 - INFO - 🎯 Trying survey: eedEU3SkJCZUozQjU3eFFnbEExRFNHUT09
+2025-08-18 00:21:53,480 - WARNING - ⚠️ Survey eedEU3SkJCZUozQjU3eFFnbEExRFNHUT09 failed: Unknown
+2025-08-18 00:21:53,493 - INFO - 🎯 Trying survey: eed1dlMGtoVmcyR2pXcUZocmFLVUs4UT09
+2025-08-18 00:22:53,624 - WARNING - ⚠️ Survey eed1dlMGtoVmcyR2pXcUZocmFLVUs4UT09 failed: Could not start survey
+2025-08-18 00:22:53,626 - INFO - 🎯 Trying survey: eeSmVBeE1aWDdXcEJTUWRnMjVxSktLUT09
+2025-08-18 00:23:53,688 - WARNING - ⚠️ Survey eeSmVBeE1aWDdXcEJTUWRnMjVxSktLUT09 failed: Could not start survey
+2025-08-18 00:23:53,690 - INFO - ❌ No surveys could be completed in this round
