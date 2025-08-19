@@ -1,0 +1,162 @@
+@use "../../assets/styling/Variables";
+
+.progress-loader-container {
+  text-align: left;
+  padding: 8px 12px 0px;
+  color: Variables.$primary-colour;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  @media (max-width: 600px) {
+    padding: 8px 16px 8px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: white;
+    z-index: 10;
+  }
+  @media (max-width: 340px) and (max-height: 500px) {
+    padding: 10px 15px;
+  }
+}
+
+.mobiworkx-profiler {
+  .progress-loader-container {
+    color: Variables.$title-colour;
+  }
+}
+
+.percent-text {
+  margin: 0;
+  align-self: center;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  @media (max-width: 340px) and (max-height: 500px) {
+    height: 14px;
+    padding: 0px 10px;
+  }
+}
+.progress-container {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.back-button,
+.exit-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 40px;
+  padding: 0px;
+  height: 35px;
+
+  .back-button-fill{
+    fill: #F0F2FF;
+  }
+
+  & > svg {
+    height: 100%;
+    right: 0;
+    top: 0;
+    position: relative;
+    width: 34px;
+  }
+
+  &:active {
+    .back-button-fill{
+      fill: rgba(0, 0, 0, 0.1);
+    }
+    
+  }
+  @media (max-width: 340px) and (max-height: 500px) {
+    height: 16px;
+    padding: 0px;
+    border-radius: 0px;
+  }
+}
+
+.mobiworkx-profiler {
+  .back-button, .exit-button{
+    position: relative;
+    width: 30px;
+    height: 20px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.loader-progress {
+  background: Variables.$profiler-loading-bar-colour;
+  border-radius: 25px;
+  height: 35px;
+  
+  &.thin {
+    height: 10px;
+  }
+
+  .percent-text {
+    color: #fff;
+  }
+  
+  width: 5%;
+  display: flex;
+  overflow: hidden;
+  justify-content: flex-end;
+  transition: all 0.3s;
+  min-width: 65px;
+  @media (max-width: 340px) and (max-height: 500px) {
+    height: 24px;
+  }
+
+  align-items: center;
+
+  .boost-fill {
+    fill: #fff;
+  }
+}
+.loader-bar {
+  background: #EAEAEA;
+  border-radius: 25px;
+  height: 35px;
+  &.thin {
+    height: 10px;
+  }
+  width: 100%;
+  @media (max-width: 340px) and (max-height: 500px) {
+    height: 24px;
+  }
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 1024;
+  & > section {
+    flex: 1;
+    margin: 8px 0;
+  }
+}
+.incremental_info {
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
+
+.sign-up-header {
+  color: #6a6a6a;
+  margin: 0;
+  padding: 0px 16px;
+}
+
+.progress-loader-buttons{
+  display: flex;
+  gap: 10px;
+}

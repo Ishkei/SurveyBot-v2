@@ -1,0 +1,30 @@
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgAutomotive(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 19.228 18.427",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Automotive_Icon",
+    "data-name": "Automotive Icon",
+    transform: "translate(17129.75 -6333.076)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "car",
+    d: "M16.744,3.637A4.015,4.015,0,0,0,12.979,1H6.249A4.015,4.015,0,0,0,2.484,3.637L.32,9.587A5.339,5.339,0,0,0,0,11.415v.8A3.989,3.989,0,0,0,1.6,15.4c0,.006,0,.011,0,.018v1.6a2.4,2.4,0,0,0,4.807,0v-.8h6.409v.8a2.4,2.4,0,0,0,4.807,0V15.4a3.989,3.989,0,0,0,1.6-3.187v-.8a5.331,5.331,0,0,0-.32-1.827ZM3.991,4.185A2.411,2.411,0,0,1,6.249,2.6h6.73a2.411,2.411,0,0,1,2.259,1.582l1.753,4.827H2.236Zm.816,12.839a.8.8,0,0,1-1.6,0v-.881a4.006,4.006,0,0,0,.8.08h.8Zm11.216,0a.8.8,0,0,1-1.6,0v-.8h.8a4.006,4.006,0,0,0,.8-.08Zm1.6-4.807a2.4,2.4,0,0,1-2.4,2.4H4.006a2.4,2.4,0,0,1-2.4-2.4v-.8a3.733,3.733,0,0,1,.1-.8H3.2v.8a.8.8,0,0,0,1.6,0v-.8h9.614v.8a.8.8,0,0,0,1.6,0v-.8h1.505a3.727,3.727,0,0,1,.1.8Z",
+    transform: "translate(-17129.75 6332.076)",
+    className: "icon-primary-fill"
+  }))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgAutomotive);
+export default __webpack_public_path__ + "static/media/automotive.e5c32337127cc759fe8ca88ffc376758.svg";
+export { ForwardRef as ReactComponent };

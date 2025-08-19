@@ -44,7 +44,31 @@ except ImportError:
     MOUSE_AVAILABLE = False
     print("⚠️ PyAutoGUI not available")
 
-from personality_responses import generate_personality_response
+# Enhanced cursor simulation
+try:
+    from Project_Structure.enhanced_cursor_simulation import EnhancedCursorSimulator
+    ENHANCED_CURSOR_AVAILABLE = True
+except ImportError:
+    try:
+        from enhanced_cursor_simulation import EnhancedCursorSimulator
+        ENHANCED_CURSOR_AVAILABLE = True
+    except ImportError:
+        ENHANCED_CURSOR_AVAILABLE = False
+        print("⚠️ Enhanced cursor simulation not available")
+
+try:
+    from personality_responses import generate_personality_response
+except ImportError:
+    # Fallback personality response function
+    def generate_personality_response(question_text: str, context: str = "survey", style: str = "discord_casual") -> str:
+        """Fallback personality response generator."""
+        fallbacks = [
+            "tbh that's a solid question. i'd probably go with something realistic",
+            "honestly just keep it simple and believable",
+            "imo you want something that sounds natural",
+            "yeah that's tricky, but i think the key is consistency"
+        ]
+        return random.choice(fallbacks)
 
 class AdvancedSurveyBot:
     """
@@ -76,10 +100,19 @@ class AdvancedSurveyBot:
         self.scroll_position = 0
         self.page_height = 0
         
+        # Enhanced cursor simulator
+        if ENHANCED_CURSOR_AVAILABLE:
+            self.cursor_simulator = EnhancedCursorSimulator(config)
+            self.use_enhanced_cursor = True
+        else:
+            self.cursor_simulator = None
+            self.use_enhanced_cursor = False
+        
         print(f"🤖 Advanced Survey Bot initialized")
         print(f"   Vision: {'✅' if self.use_vision else '❌'}")
         print(f"   OCR: {'✅' if self.use_ocr else '❌'}")
         print(f"   Mouse Control: {'✅' if self.use_mouse_control else '❌'}")
+        print(f"   Enhanced Cursor: {'✅' if self.use_enhanced_cursor else '❌'}")
 
     async def setup_browser(self):
         """Setup browser with enhanced capabilities."""
@@ -210,12 +243,17 @@ class AdvancedSurveyBot:
             print(f"❌ OCR analysis failed: {e}")
             return {}
 
-    async def smart_scroll(self, direction: str = "down") -> bool:
+    async def smart_scroll(self, direction: str = "down", method: str = "auto") -> bool:
         """
-        Smart scrolling using scrollbar detection.
-        Based on smewknox's scrollbar approach from Discord.
+        Enhanced smart scrolling with multiple methods.
+        Uses HumanCursor when available, falls back to traditional methods.
         """
         try:
+            # Use enhanced cursor simulator if available
+            if self.use_enhanced_cursor and self.cursor_simulator:
+                return await self.cursor_simulator.advanced_scroll(direction, method)
+            
+            # Fallback to original smart scroll method
             if not self.use_mouse_control:
                 # Fallback to JavaScript scrolling
                 if direction == "down":
@@ -351,12 +389,17 @@ class AdvancedSurveyBot:
             print(f"❌ Text element search failed: {e}")
             return None
 
-    async def click_element_human_like(self, coordinates: Tuple[int, int]):
+    async def click_element_human_like(self, coordinates: Tuple[int, int], element_type: str = "generic"):
         """
-        Click element with human-like mouse movement using Bézier curves.
-        Based on erick's approach from Discord.
+        Enhanced click element with human-like mouse movement.
+        Uses HumanCursor when available, falls back to traditional methods.
         """
         try:
+            # Use enhanced cursor simulator if available
+            if self.use_enhanced_cursor and self.cursor_simulator:
+                return await self.cursor_simulator.click_element_human_like(coordinates, element_type)
+            
+            # Fallback to original method
             if not self.use_mouse_control:
                 # Fallback to Playwright click
                 await self.page.click(f"xpath=//*[contains(text(), '{coordinates}')]")
@@ -394,6 +437,11 @@ class AdvancedSurveyBot:
         Generate Bézier curve for human-like mouse movement.
         Based on erick's approach from Discord.
         """
+        # Use enhanced cursor simulator if available
+        if self.use_enhanced_cursor and self.cursor_simulator:
+            return self.cursor_simulator._generate_bezier_path(start, end, num_points)
+        
+        # Fallback to original method
         # Simple linear interpolation for now
         # In practice, you'd want more complex curves with random control points
         points = []
@@ -584,3 +632,119 @@ class AdvancedSurveyBot:
         """Cleanup resources."""
         if self.browser:
             await self.browser.close()
+    
+    # Enhanced cursor simulation methods
+    async def move_mouse_human_like(self, start_pos: Tuple[int, int], 
+                                   end_pos: Tuple[int, int], 
+                                   duration: Optional[float] = None) -> bool:
+        """
+        Move mouse with human-like movement using enhanced cursor simulator.
+        
+        Args:
+            start_pos: Starting coordinates (x, y)
+            end_pos: Target coordinates (x, y)
+            duration: Movement duration (auto-calculated if None)
+        
+        Returns:
+            bool: Success status
+        """
+        try:
+            if self.use_enhanced_cursor and self.cursor_simulator:
+                return await self.cursor_simulator.move_mouse_human_like(start_pos, end_pos, duration)
+            else:
+                # Fallback to basic movement
+                if self.use_mouse_control and PYAUTOGUI_AVAILABLE:
+                    if duration is None:
+                        distance = ((end_pos[0] - start_pos[0])**2 + (end_pos[1] - start_pos[1])**2)**0.5
+                        duration = max(0.5, min(2.0, distance / 200))
+                    pyautogui.moveTo(end_pos[0], end_pos[1], duration=duration)
+                    return True
+                return False
+        except Exception as e:
+            print(f"❌ Mouse movement failed: {e}")
+            return False
+    
+    async def advanced_scroll(self, direction: str = "down", method: str = "auto", 
+                             target_element=None) -> bool:
+        """
+        Advanced scrolling with multiple methods.
+        
+        Args:
+            direction: "up", "down", or "to_element"
+            method: "auto", "scrollbar", "mouse_wheel", "javascript", "smooth"
+            target_element: Element to scroll to (if direction is "to_element")
+        
+        Returns:
+            bool: Success status
+        """
+        try:
+            if self.use_enhanced_cursor and self.cursor_simulator:
+                return await self.cursor_simulator.advanced_scroll(direction, method, target_element)
+            else:
+                # Fallback to smart scroll
+                return await self.smart_scroll(direction)
+        except Exception as e:
+            print(f"❌ Advanced scroll failed: {e}")
+            return await self.smart_scroll(direction)
+    
+    async def drag_and_drop(self, start_pos: Tuple[int, int], 
+                           end_pos: Tuple[int, int]) -> bool:
+        """
+        Perform drag and drop with human-like movement.
+        
+        Args:
+            start_pos: Starting coordinates (x, y)
+            end_pos: Target coordinates (x, y)
+        
+        Returns:
+            bool: Success status
+        """
+        try:
+            if self.use_enhanced_cursor and self.cursor_simulator:
+                return await self.cursor_simulator.drag_and_drop(start_pos, end_pos)
+            else:
+                # Fallback to PyAutoGUI
+                if self.use_mouse_control and PYAUTOGUI_AVAILABLE:
+                    await self.move_mouse_human_like(pyautogui.position(), start_pos)
+                    pyautogui.drag(end_pos[0] - start_pos[0], end_pos[1] - start_pos[1], 
+                                  duration=1.0)
+                    return True
+                return False
+        except Exception as e:
+            print(f"❌ Drag and drop failed: {e}")
+            return False
+    
+    def get_cursor_position(self) -> Tuple[int, int]:
+        """Get current cursor position."""
+        try:
+            if self.use_enhanced_cursor and self.cursor_simulator:
+                return self.cursor_simulator.get_cursor_position()
+            elif self.use_mouse_control and PYAUTOGUI_AVAILABLE:
+                return pyautogui.position()
+            else:
+                return (0, 0)
+        except Exception as e:
+            print(f"❌ Failed to get cursor position: {e}")
+            return (0, 0)
+    
+    async def show_cursor_trail(self, coordinates: List[Tuple[int, int]], 
+                                duration: float = 2.0) -> bool:
+        """
+        Show cursor trail for debugging (optional feature).
+        
+        Args:
+            coordinates: List of coordinates to show in trail
+            duration: How long to show the trail
+        
+        Returns:
+            bool: Success status
+        """
+        try:
+            if self.use_enhanced_cursor and self.cursor_simulator:
+                return await self.cursor_simulator.show_cursor_trail(coordinates, duration)
+            else:
+                print(f"⚠️ Cursor trail visualization not available")
+                return False
+        except Exception as e:
+            print(f"❌ Cursor trail visualization failed: {e}")
+            return False

@@ -1,0 +1,8 @@
+.small-loading-container {
+  .loadingSpinner {
+    height: 25px;
+    width: 25px;
+    border-width: 4px;
+    animation: spinner 1s linear infinite;
+  }
+}

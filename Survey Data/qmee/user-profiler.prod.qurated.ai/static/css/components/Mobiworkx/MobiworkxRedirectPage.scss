@@ -1,0 +1,23 @@
+@use "../../assets/styling/Variables.scss";
+
+.mobiworkx {
+    &.redirectPage{
+        background-color: #fff;
+        color: Variables.$text-colour;
+
+        p{
+            color: Variables.$text-colour;
+        }
+
+        .redirect-header-message{
+            font-weight: 600;
+            font-size: 26px;
+            margin: 10px;
+        }
+
+        .redirect-message{
+            margin: 0;
+            font-weight: 300;
+        }
+    }
+}

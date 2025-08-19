@@ -1,0 +1,9 @@
+@use "./Variables.scss";
+
+.primary-colour-fill {
+  fill: Variables.$primary-colour;
+}
+
+.primary-colour-stroke {
+  stroke: Variables.$primary-colour;
+}

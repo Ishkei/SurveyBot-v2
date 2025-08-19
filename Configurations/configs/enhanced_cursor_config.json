@@ -1,0 +1,85 @@
+{
+  "cursor_simulation": {
+    "ENABLE_CURSOR_TRAIL": true,
+    "SHOW_MOVEMENT_PATH": true,
+    "CURSOR_TRAIL_DURATION": 2.0,
+    "CURSOR_TRAIL_COLOR": "red",
+    "CURSOR_TRAIL_WIDTH": 2,
+    "HIGHLIGHT_CLICK_TARGETS": true,
+    "SHOW_SCROLL_INDICATORS": true
+  },
+  
+  "mouse_movement": {
+    "ENHANCED_BEZIER_CURVES": true,
+    "CONTROL_POINT_RANDOMNESS": 100,
+    "MOVEMENT_SMOOTHNESS": 15,
+    "HUMAN_LIKE_RANDOMNESS": 3,
+    "ACCELERATION_CURVE": "ease_in_out",
+    "MOVEMENT_SPEED": "normal",
+    "BASE_SPEED_PX_PER_SEC": 200,
+    "MIN_MOVEMENT_DURATION": 0.5,
+    "MAX_MOVEMENT_DURATION": 2.0
+  },
+  
+  "scrolling_methods": {
+    "PREFERRED_METHOD": "auto",
+    "ENABLE_SCROLLBAR_DETECTION": true,
+    "ENABLE_MOUSE_WHEEL": true,
+    "ENABLE_SMOOTH_SCROLL": true,
+    "ENABLE_JAVASCRIPT_SCROLL": true,
+    "SCROLL_STEPS": 10,
+    "STEP_DELAY": 0.05,
+    "SCROLL_INCREMENT": 300,
+    "SMOOTH_SCROLL_ENABLED": true
+  },
+  
+  "visual_feedback": {
+    "SHOW_CURSOR_POSITION": true,
+    "HIGHLIGHT_CLICK_TARGETS": true,
+    "SHOW_SCROLL_INDICATORS": true,
+    "CURSOR_HIGHLIGHT_COLOR": "yellow",
+    "TARGET_HIGHLIGHT_COLOR": "green",
+    "SCROLL_INDICATOR_COLOR": "blue",
+    "ENABLE_DEBUG_OVERLAY": false
+  },
+  
+  "human_behavior": {
+    "CLICK_DELAY_MIN": 0.1,
+    "CLICK_DELAY_MAX": 0.3,
+    "MOVEMENT_PAUSE_PROBABILITY": 0.15,
+    "PAUSE_DURATION_MIN": 0.5,
+    "PAUSE_DURATION_MAX": 2.0,
+    "TYPING_INTERVAL_MIN": 0.05,
+    "TYPING_INTERVAL_MAX": 0.1,
+    "RANDOM_MICRO_MOVEMENTS": true,
+    "MICRO_MOVEMENT_RANGE": 2
+  },
+  
+  "fallback_strategies": {
+    "USE_PYAUTOGUI_FALLBACK": true,
+    "USE_JAVASCRIPT_FALLBACK": true,
+    "USE_SELENIUM_FALLBACK": true,
+    "USE_PLAYWRIGHT_FALLBACK": true,
+    "GRACEFUL_DEGRADATION": true,
+    "RETRY_ATTEMPTS": 3,
+    "RETRY_DELAY": 0.5
+  },
+  
+  "performance": {
+    "ENABLE_CURSOR_CACHING": true,
+    "MOVEMENT_PATH_CACHE_SIZE": 100,
+    "SCREENSHOT_CACHE_ENABLED": true,
+    "ASYNC_OPERATIONS": true,
+    "BATCH_OPERATIONS": true,
+    "OPTIMIZE_FOR_SPEED": false
+  },
+  
+  "compatibility": {
+    "SUPPORT_SELENIUM": true,
+    "SUPPORT_PLAYWRIGHT": true,
+    "SUPPORT_PYAUTOGUI": true,
+    "SUPPORT_HUMANCURSOR": true,
+    "CROSS_PLATFORM": true,
+    "HEADLESS_MODE_SUPPORT": true
+  }
+}

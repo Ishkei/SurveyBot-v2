@@ -1,0 +1,19 @@
+.profile-header-text.mobiworkx{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+    align-items: start;
+    h2{
+        text-align: left;
+    }
+
+    @media screen and (max-width: 600px) {
+        margin: 20px;
+        text-align: center;
+        align-items: start;
+        h2{
+            text-align: center; 
+        }
+    }
+}

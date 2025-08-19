@@ -1,0 +1,87 @@
+var _rect, _g, _defs;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgExitHeaderIcon3(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: 66,
+    height: 61,
+    viewBox: "0 0 66 61",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, /*#__PURE__*/React.createElement("mask", {
+    id: "mask0_3316_55366",
+    style: {
+      maskType: "alpha"
+    },
+    maskUnits: "userSpaceOnUse",
+    x: 0,
+    y: 0,
+    width: 66,
+    height: 61
+  }, _rect || (_rect = /*#__PURE__*/React.createElement("rect", {
+    width: 65.2958,
+    height: 61,
+    fill: "#D9D9D9"
+  }))), _g || (_g = /*#__PURE__*/React.createElement("g", {
+    mask: "url(#mask0_3316_55366)"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M28.7327 31.2891L30.7238 35.3228L35.1764 35.9736L31.9546 39.1117L32.7149 43.5449L28.7327 41.4507L24.7505 43.5449L25.5109 39.1117L22.2891 35.9736L26.7416 35.3228L28.7327 31.2891Z",
+    fill: "#DD55FF"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M11.7327 21.2891L13.7238 25.3228L18.1764 25.9736L14.9546 29.1117L15.7149 33.5449L11.7327 31.4507L7.75054 33.5449L8.51089 29.1117L5.28906 25.9736L9.74163 25.3228L11.7327 21.2891Z",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M41.5 44.75L42.6588 47.0975L45.25 47.4763L43.375 49.3025L43.8175 51.8825L41.5 50.6638L39.1825 51.8825L39.625 49.3025L37.75 47.4763L40.3412 47.0975L41.5 44.75Z",
+    fill: "#DD55FF"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M34.2624 25.9283C27.1025 25.9283 21.2983 20.1241 21.2983 12.9641C21.2983 5.80425 27.1025 0 34.2624 0C41.4223 0 47.2266 5.80425 47.2266 12.9641C47.2266 20.1241 41.4223 25.9283 34.2624 25.9283Z",
+    fill: "#DD55FF",
+    fillOpacity: 0.3
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M36.3637 25.5832C30.1183 25.5832 25.0555 20.5204 25.0555 14.275C25.0555 8.02965 30.1183 2.9668 36.3637 2.9668C42.609 2.9668 47.6719 8.02965 47.6719 14.275C47.6719 20.5204 42.609 25.5832 36.3637 25.5832Z",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M36.3637 25.5832C30.1183 25.5832 25.0555 20.5204 25.0555 14.275C25.0555 8.02965 30.1183 2.9668 36.3637 2.9668C42.609 2.9668 47.6719 8.02965 47.6719 14.275C47.6719 20.5204 42.609 25.5832 36.3637 25.5832Z",
+    fill: "#DD55FF"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M34.9214 16.2521C34.6497 16.2521 34.4798 16.1454 34.4798 15.9626V15.8407C34.4968 15.1094 34.5817 14.6828 35.6178 14.0886C36.8408 13.403 37.4183 12.9155 37.4183 12.1385C37.4183 11.3767 36.7898 10.9501 35.8726 10.9501C35.0403 10.9501 34.3949 11.3463 34.3949 12.0471V12.1994C34.4119 12.428 34.293 12.5651 34.0212 12.5651H32.5096C32.2548 12.5651 32.0849 12.4737 32.034 12.2452C32 12.0928 32 11.9404 32 11.8338C32 10.5997 33.2229 9 35.9236 9C38.3015 9 40 10.1731 40 11.9557C40 13.6163 38.4544 14.5609 37.1295 15.3684C37.0106 15.4446 36.6539 15.6884 36.6369 15.9474V16.0388C36.6369 16.1759 36.552 16.2521 36.2803 16.2521H34.9214ZM35.5499 20C34.6157 20 33.9193 19.4363 33.9193 18.6745C33.9193 17.9127 34.6157 17.3186 35.5499 17.3186C36.4501 17.3186 37.1805 17.9127 37.1805 18.6745C37.1805 19.4363 36.4501 20 35.5499 20Z",
+    fill: "white"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M53.599 43.2005C48.8492 43.2005 44.9987 39.3501 44.9987 34.6003C44.9987 29.8505 48.8492 26 53.599 26C58.3487 26 62.1992 29.8505 62.1992 34.6003C62.1992 39.3501 58.3487 43.2005 53.599 43.2005Z",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M53.599 43.2005C48.8492 43.2005 44.9987 39.3501 44.9987 34.6003C44.9987 29.8505 48.8492 26 53.599 26C58.3487 26 62.1992 29.8505 62.1992 34.6003C62.1992 39.3501 58.3487 43.2005 53.599 43.2005Z",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("g", {
+    clipPath: "url(#clip0_3316_55366)"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M49.8696 38.2992V37.4163C49.8696 36.9479 50.0645 36.4988 50.4114 36.1676C50.7584 35.8364 51.2289 35.6504 51.7196 35.6504H55.4195C55.9102 35.6504 56.3807 35.8364 56.7277 36.1676C57.0746 36.4988 57.2695 36.9479 57.2695 37.4163V38.2992",
+    stroke: "white",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M53.5719 33.8834C52.5502 33.8834 51.7219 33.0927 51.7219 32.1175C51.7219 31.1422 52.5502 30.3516 53.5719 30.3516C54.5936 30.3516 55.4219 31.1422 55.4219 32.1175C55.4219 33.0927 54.5936 33.8834 53.5719 33.8834Z",
+    stroke: "white",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })))), _defs || (_defs = /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
+    id: "clip0_3316_55366"
+  }, /*#__PURE__*/React.createElement("rect", {
+    width: 11.0999,
+    height: 10.5954,
+    fill: "white",
+    transform: "matrix(-1 0 0 1 59.1211 29.0273)"
+  })))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgExitHeaderIcon3);
+export default __webpack_public_path__ + "static/media/ExitHeaderIcon3.77a6a4fdeb83991016460ee49efa843f.svg";
+export { ForwardRef as ReactComponent };

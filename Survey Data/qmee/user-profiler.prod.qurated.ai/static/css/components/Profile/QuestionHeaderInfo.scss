@@ -1,0 +1,33 @@
+
+.question-info-container {
+    position: absolute;
+    top: -16px;
+    left: -12px;
+    background: #495867;
+    color: white;
+    border-radius: 16px;
+    font-weight: 600;
+    padding: 6px 16px 6px 12px;
+    font-size: 16px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    z-index: 4;
+  
+    .icon-primary-fill{
+      fill: #fff;
+    }
+  
+    div.boost-icon{
+      padding: 0 4px;
+      right: -7px;
+      svg{
+        height: 9px;
+      }
+    }
+  
+    .question-icon{
+      width: 12px;
+      height: 12px;
+    }
+  }

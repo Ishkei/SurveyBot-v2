@@ -1,0 +1,30 @@
+var _path;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgError(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    id: "Error",
+    width: 19,
+    height: 19,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 3.168 16.776",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _path || (_path = /*#__PURE__*/React.createElement("path", {
+    id: "Path_139",
+    "data-name": "Path 139",
+    d: "M-.768-5.016H.864l.6-11.472H-1.344ZM.024.288a1.6,1.6,0,0,0,1.56-1.632A1.588,1.588,0,0,0,.024-2.9a1.6,1.6,0,0,0-1.608,1.56A1.613,1.613,0,0,0,.024.288Z",
+    transform: "translate(1.584 16.488)",
+    fill: "#ff0112"
+  })));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgError);
+export default __webpack_public_path__ + "static/media/Error.a684eedb54fa846a577051115a23cd04.svg";
+export { ForwardRef as ReactComponent };

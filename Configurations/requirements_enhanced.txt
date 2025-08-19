@@ -20,6 +20,9 @@ firecrawl>=0.1.0
 
 # Vision and OCR (CAPTCHA dependencies removed)
 
+# Enhanced cursor simulation
+humancursor>=1.1.5
+
 # Proxy and networking
 aiohttp>=3.9.0
 websockets>=12.0

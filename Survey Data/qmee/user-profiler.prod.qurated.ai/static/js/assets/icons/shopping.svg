@@ -1,0 +1,71 @@
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgShopping(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 21.471 19.895",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Shopping_Icon",
+    "data-name": "Shopping Icon",
+    transform: "translate(17131.535 -6095.617)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3438",
+    "data-name": "Group 3438",
+    transform: "translate(-18284.498 5175.777)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "Path_777",
+    "data-name": "Path 777",
+    d: "M-3416.214-2716.13h-13.706l-2.838-13.484-2.44-1.027a.767.767,0,0,1-.41-1,.767.767,0,0,1,1-.409l3.181,1.338,2.747,13.053h12.461a.767.767,0,0,1,.767.767A.767.767,0,0,1-3416.214-2716.13Z",
+    transform: "translate(4588.631 3651.956)",
+    className: "icon-primary-fill"
+  }), /*#__PURE__*/React.createElement("path", {
+    id: "Path_778",
+    "data-name": "Path 778",
+    d: "M-2.455,1.534-1.289,7.1h11.72L11.6,1.534H-2.455M-4.344,0H13.486L11.677,8.635H-2.535Z",
+    transform: "translate(1160.949 924.024)",
+    className: "icon-primary-fill"
+  }), /*#__PURE__*/React.createElement("ellipse", {
+    id: "Ellipse_123",
+    "data-name": "Ellipse 123",
+    cx: 1.474,
+    cy: 1.474,
+    rx: 1.474,
+    ry: 1.474,
+    transform: "translate(1167.701 936.787)",
+    className: "icon-primary-fill"
+  }), /*#__PURE__*/React.createElement("ellipse", {
+    id: "Ellipse_124",
+    "data-name": "Ellipse 124",
+    cx: 1.474,
+    cy: 1.474,
+    rx: 1.474,
+    ry: 1.474,
+    transform: "translate(1161.046 936.787)",
+    className: "icon-primary-fill"
+  }), /*#__PURE__*/React.createElement("path", {
+    id: "Line_99",
+    "data-name": "Line 99",
+    d: "M3.166-1.922H-2.461A.539.539,0,0,1-3-2.461.539.539,0,0,1-2.461-3H3.166a.539.539,0,0,1,.539.539A.539.539,0,0,1,3.166-1.922Z",
+    transform: "translate(1165.432 929.519)",
+    className: "icon-primary-fill"
+  }), /*#__PURE__*/React.createElement("path", {
+    id: "Line_100",
+    "data-name": "Line 100",
+    d: "M2.4-1.922H-2.461A.539.539,0,0,1-3-2.461.539.539,0,0,1-2.461-3H2.4a.539.539,0,0,1,.539.539A.539.539,0,0,1,2.4-1.922Z",
+    transform: "translate(1165.818 932.084)",
+    className: "icon-primary-fill"
+  })))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgShopping);
+export default __webpack_public_path__ + "static/media/shopping.826e931566128fb2df8f11b542658a5b.svg";
+export { ForwardRef as ReactComponent };

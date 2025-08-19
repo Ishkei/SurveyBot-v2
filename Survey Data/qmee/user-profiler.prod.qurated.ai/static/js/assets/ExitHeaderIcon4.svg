@@ -1,0 +1,59 @@
+var _path, _path2, _path3, _path4, _path5, _path6, _path7, _path8, _path9;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgExitHeaderIcon4(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: 68,
+    height: 66,
+    viewBox: "0 0 68 66",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M47.9268 39.8496C36.9226 39.8496 28.002 30.929 28.002 19.9248C28.002 8.92064 36.9226 0 47.9268 0C58.9309 0 67.8516 8.92064 67.8516 19.9248C67.8516 30.929 58.9309 39.8496 47.9268 39.8496Z",
+    fill: "#00E2E2"
+  })), _path2 || (_path2 = /*#__PURE__*/React.createElement("path", {
+    d: "M47.9268 39.8496C36.9226 39.8496 28.002 30.929 28.002 19.9248C28.002 8.92064 36.9226 0 47.9268 0C58.9309 0 67.8516 8.92064 67.8516 19.9248C67.8516 30.929 58.9309 39.8496 47.9268 39.8496Z",
+    fill: "#00E2E2"
+  })), _path3 || (_path3 = /*#__PURE__*/React.createElement("path", {
+    d: "M13.0752 47.1465C5.85504 47.1465 0.00195312 41.2934 0.00195312 34.0732C0.00195312 26.8531 5.85504 21 13.0752 21C20.2953 21 26.1484 26.8531 26.1484 34.0732C26.1484 41.2934 20.2953 47.1465 13.0752 47.1465Z",
+    fill: "#00E2E2"
+  })), _path4 || (_path4 = /*#__PURE__*/React.createElement("path", {
+    d: "M13.0752 47.1465C5.85504 47.1465 0.00195312 41.2934 0.00195312 34.0732C0.00195312 26.8531 5.85504 21 13.0752 21C20.2953 21 26.1484 26.8531 26.1484 34.0732C26.1484 41.2934 20.2953 47.1465 13.0752 47.1465Z",
+    fill: "#DD55FF"
+  })), _path5 || (_path5 = /*#__PURE__*/React.createElement("path", {
+    d: "M6 35L10.5 39.5L19 31",
+    stroke: "white",
+    strokeWidth: 3,
+    strokeLinecap: "round"
+  })), _path6 || (_path6 = /*#__PURE__*/React.createElement("path", {
+    d: "M39.1862 28.7266V26.6432C39.1862 25.5382 39.6427 24.4784 40.4554 23.697C41.2681 22.9156 42.3703 22.4766 43.5195 22.4766H52.1862C53.3355 22.4766 54.4377 22.9156 55.2503 23.697C56.063 24.4784 56.5195 25.5382 56.5195 26.6432V28.7266",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), _path7 || (_path7 = /*#__PURE__*/React.createElement("path", {
+    d: "M47.8503 18.3099C45.457 18.3099 43.5169 16.4444 43.5169 14.1432C43.5169 11.842 45.457 9.97656 47.8503 9.97656C50.2435 9.97656 52.1836 11.842 52.1836 14.1432C52.1836 16.4444 50.2435 18.3099 47.8503 18.3099Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), _path8 || (_path8 = /*#__PURE__*/React.createElement("path", {
+    d: "M28.7327 16.2891L30.7238 20.3228L35.1764 20.9736L31.9546 24.1117L32.7149 28.5449L28.7327 26.4507L24.7505 28.5449L25.5109 24.1117L22.2891 20.9736L26.7416 20.3228L28.7327 16.2891Z",
+    fill: "#DD55FF"
+  })), _path9 || (_path9 = /*#__PURE__*/React.createElement("path", {
+    d: "M30.9987 34.834L33.8312 40.5723L40.1654 41.4982L35.582 45.9623L36.6637 52.269L30.9987 49.2898L25.3337 52.269L26.4154 45.9623L21.832 41.4982L28.1662 40.5723L30.9987 34.834Z",
+    fill: "#00E2E2"
+  })));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgExitHeaderIcon4);
+export default __webpack_public_path__ + "static/media/ExitHeaderIcon4.3db77020f1649ca1cef052479508ca8c.svg";
+export { ForwardRef as ReactComponent };

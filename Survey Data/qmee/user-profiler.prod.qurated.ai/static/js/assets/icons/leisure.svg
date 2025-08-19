@@ -1,0 +1,30 @@
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgLeisure(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 17.844 20.393",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Leisure_Icon",
+    "data-name": "Leisure Icon",
+    transform: "translate(17127.152 -6489.175)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "running",
+    d: "M19.844,10.2a.85.85,0,0,1-.85.85H16.555a2.563,2.563,0,0,1-2.183-1.234L13.21,7.883l-1.264,3.078a.85.85,0,0,1-1.573-.644L11.818,6.8H10.171L8.417,11.073a.85.85,0,0,0,.331,1.041l3.9,2.464a.85.85,0,0,1,.4.716v4.249a.85.85,0,0,1-1.7,0v-3.78L7.841,13.554a2.549,2.549,0,0,1-1-3.125L8.334,6.8H6.449a.845.845,0,0,0-.76.469L4.46,9.727a.85.85,0,1,1-1.521-.76L4.169,6.5a2.536,2.536,0,0,1,2.28-1.4h5.628a2.564,2.564,0,0,1,2.185,1.235l1.567,2.6a.855.855,0,0,0,.727.411h2.439A.85.85,0,0,1,19.844,10.2ZM6.992,14.287a.85.85,0,0,0-1.1.473.845.845,0,0,1-.789.534H2.85a.85.85,0,1,0,0,1.7H5.1a2.538,2.538,0,0,0,2.367-1.6.85.85,0,0,0-.473-1.1ZM13.046,4.249a2.124,2.124,0,1,0-2.124-2.124A2.124,2.124,0,0,0,13.046,4.249Z",
+    transform: "translate(-17129.152 6489.175)",
+    className: "icon-primary-fill"
+  }))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgLeisure);
+export default __webpack_public_path__ + "static/media/leisure.98b85396d0e30b2ad27cf8febeb648d6.svg";
+export { ForwardRef as ReactComponent };

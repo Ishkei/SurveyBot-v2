@@ -1,0 +1,63 @@
+var _path, _path2, _path3, _path4, _path5, _path6, _path7, _path8, _path9, _path10;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgExitHeaderIcon2(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: 56,
+    height: 59,
+    viewBox: "0 0 56 59",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M26.0752 26.1465C18.855 26.1465 13.002 20.2934 13.002 13.0732C13.002 5.85309 18.855 0 26.0752 0C33.2953 0 39.1484 5.85309 39.1484 13.0732C39.1484 20.2934 33.2953 26.1465 26.0752 26.1465Z",
+    fill: "#00E2E2"
+  })), _path2 || (_path2 = /*#__PURE__*/React.createElement("path", {
+    d: "M26.0752 26.1465C18.855 26.1465 13.002 20.2934 13.002 13.0732C13.002 5.85309 18.855 0 26.0752 0C33.2953 0 39.1484 5.85309 39.1484 13.0732C39.1484 20.2934 33.2953 26.1465 26.0752 26.1465Z",
+    fill: "#00E2E2"
+  })), _path3 || (_path3 = /*#__PURE__*/React.createElement("path", {
+    d: "M20.4154 18.6945V17.3523C20.4154 16.6404 20.7117 15.9576 21.2391 15.4542C21.7664 14.9508 22.4817 14.668 23.2276 14.668H28.8519C29.5977 14.668 30.313 14.9508 30.8404 15.4542C31.3678 15.9576 31.6641 16.6404 31.6641 17.3523V18.6945",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), _path4 || (_path4 = /*#__PURE__*/React.createElement("path", {
+    d: "M26.0394 11.9839C24.4863 11.9839 23.2272 10.7821 23.2272 9.29958C23.2272 7.81705 24.4863 6.61523 26.0394 6.61523C27.5925 6.61523 28.8516 7.81705 28.8516 9.29958C28.8516 10.7821 27.5925 11.9839 26.0394 11.9839Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), _path5 || (_path5 = /*#__PURE__*/React.createElement("path", {
+    d: "M8.73272 7.28906L10.7238 11.3228L15.1764 11.9736L11.9546 15.1117L12.7149 19.5449L8.73272 17.4507L4.75054 19.5449L5.51089 15.1117L2.28906 11.9736L6.74163 11.3228L8.73272 7.28906Z",
+    fill: "#DD55FF"
+  })), _path6 || (_path6 = /*#__PURE__*/React.createElement("path", {
+    d: "M10.9987 25.834L13.8312 31.5723L20.1654 32.4982L15.582 36.9623L16.6637 43.269L10.9987 40.2898L5.3337 43.269L6.41536 36.9623L1.83203 32.4982L8.1662 31.5723L10.9987 25.834Z",
+    fill: "#00E2E2"
+  })), _path7 || (_path7 = /*#__PURE__*/React.createElement("path", {
+    d: "M35.6595 58.3217C24.8011 58.3217 15.9986 49.5192 15.9986 38.6608C15.9986 27.8025 24.8011 19 35.6595 19C46.5179 19 55.3203 27.8025 55.3203 38.6608C55.3203 49.5192 46.5179 58.3217 35.6595 58.3217Z",
+    fill: "#DD55FF",
+    fillOpacity: 0.3
+  })), _path8 || (_path8 = /*#__PURE__*/React.createElement("path", {
+    d: "M38.8505 57.799C29.3791 57.799 21.701 50.1209 21.701 40.6495C21.701 31.1781 29.3791 23.5 38.8505 23.5C48.3219 23.5 56 31.1781 56 40.6495C56 50.1209 48.3219 57.799 38.8505 57.799Z",
+    fill: "#00E2E2"
+  })), _path9 || (_path9 = /*#__PURE__*/React.createElement("path", {
+    d: "M38.8505 57.799C29.3791 57.799 21.701 50.1209 21.701 40.6495C21.701 31.1781 29.3791 23.5 38.8505 23.5C48.3219 23.5 56 31.1781 56 40.6495C56 50.1209 48.3219 57.799 38.8505 57.799Z",
+    fill: "#DD55FF"
+  })), _path10 || (_path10 = /*#__PURE__*/React.createElement("path", {
+    d: "M30.3711 41.8277L35.7633 46.2975L48.5698 35.6816",
+    stroke: "white",
+    strokeWidth: 1.5,
+    strokeLinecap: "round"
+  })));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgExitHeaderIcon2);
+export default __webpack_public_path__ + "static/media/ExitHeaderIcon2.1573f190ffdfd40b80743363ae5d2043.svg";
+export { ForwardRef as ReactComponent };

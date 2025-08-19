@@ -300,6 +300,8 @@ WEB_INTERFACE_HTML = """
                             <option value="playwright">Playwright (Recommended)</option>
                             <option value="selenium">Selenium</option>
                             <option value="undetected">Undetected Chrome</option>
+                            <option value="enhanced_cursor">Enhanced Cursor Bot (HumanCursor)</option>
+                            <option value="qmee_enhanced">Qmee Enhanced Bot (Real Patterns)</option>
                             <option value="v2ray">V2Ray Proxy</option>
                             <option value="proxychains">Proxychains</option>
                             <option value="hybrid">Hybrid/DOM Model</option>
@@ -325,6 +327,27 @@ WEB_INTERFACE_HTML = """
                     <div class="form-group">
                         <label for="maxSurveys">Max Surveys:</label>
                         <input type="number" id="maxSurveys" value="5" min="1" max="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="cursor_simulation">Cursor Simulation:</label>
+                        <select id="cursor_simulation">
+                            <option value="enabled">Enhanced HumanCursor</option>
+                            <option value="fallback">PyAutoGUI Fallback</option>
+                            <option value="disabled">Disabled</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="scroll_method">Scroll Method:</label>
+                        <select id="scroll_method">
+                            <option value="auto">Auto-Detect</option>
+                            <option value="mouse_wheel">Mouse Wheel</option>
+                            <option value="smooth">Smooth Scrolling</option>
+                            <option value="scrollbar">Scrollbar Detection</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="qmee_url">Qmee Survey URL (for enhanced bot):</label>
+                        <input type="text" id="qmee_url" placeholder="https://user-profiler.prod.qurated.ai/prescreener?token=..." style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
                     </div>
                     <div class="button-group">
                         <button class="btn btn-primary" id="startBtn" onclick="startBot()">
@@ -362,6 +385,23 @@ WEB_INTERFACE_HTML = """
                             <option value="disabled">Disabled</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="cursor_simulation">Cursor Simulation:</label>
+                        <select id="cursor_simulation">
+                            <option value="enabled">Enhanced HumanCursor</option>
+                            <option value="fallback">PyAutoGUI Fallback</option>
+                            <option value="disabled">Disabled</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="scroll_method">Scroll Method:</label>
+                        <select id="scroll_method">
+                            <option value="auto">Auto-Detect</option>
+                            <option value="mouse_wheel">Mouse Wheel</option>
+                            <option value="smooth">Smooth Scrolling</option>
+                            <option value="scrollbar">Scrollbar Detection</option>
+                        </select>
+                    </div>
                     <div class="button-group">
                         <button class="btn btn-secondary" onclick="checkStatus()">
                             🔍 Check Status
@@ -390,6 +430,11 @@ WEB_INTERFACE_HTML = """
                     </div>
                     <div class="status-item">
                         <h4>Personality</h4>
+                    </div>
+                    <div class="status-item">
+                        <h4>Enhanced Cursor</h4>
+                        <div class="value" id="enhancedCursorValue">-</div>
+                    </div>
                         <div class="value" id="personalityValue">-</div>
                     </div>
                 </div>
@@ -482,6 +527,11 @@ WEB_INTERFACE_HTML = """
             }
             
             if (data.personality) {
+            }
+            
+            if (data.enhanced_cursor) {
+                enhancedCursorValue.textContent = data.enhanced_cursor;
+            }
                 personalityValue.textContent = data.personality;
             }
             
@@ -528,7 +578,10 @@ WEB_INTERFACE_HTML = """
                 headless: document.getElementById('headless').value === 'true',
                 proxy: document.getElementById('proxy').value,
                 // CAPTCHA handling disabled
-                typing: document.getElementById('typing').value
+                typing: document.getElementById('typing').value,
+                cursor_simulation: document.getElementById('cursor_simulation').value,
+                scroll_method: document.getElementById('scroll_method').value,
+                qmee_url: document.getElementById('qmee_url').value
             };
             
             addLog('🚀 Starting bot with configuration: ' + JSON.stringify(config));
@@ -614,6 +667,16 @@ WEB_INTERFACE_HTML = """
 
 # Enhanced features imports
 try:
+    # Load environment variables first
+    from dotenv import load_dotenv
+    from pathlib import Path
+    
+    # Load .env file
+    env_file = Path("../.env")
+    if env_file.exists():
+        load_dotenv(env_file)
+        print("✅ Environment variables loaded from .env")
+    
     from Project_Structure.enhanced_personality_system import EnhancedPersonalitySystem, generate_enhanced_response
     from Project_Structure.enhanced_bot_integration import EnhancedBotIntegration, SurveyBotEnhancer
     from Project_Structure.typing_simulation import TypingSimulator, type_text_naturally
@@ -625,6 +688,36 @@ except ImportError as e:
     ENHANCED_FEATURES_AVAILABLE = False
     print(f"⚠️ Some enhanced features not available: {e}")
     print("Basic functionality will still work")
+
+# Enhanced cursor simulation imports
+try:
+    # Load environment variables if not already loaded
+    if 'GEMINI_API_KEY' not in os.environ:
+        from dotenv import load_dotenv
+        from pathlib import Path
+        env_file = Path("../.env")
+        if env_file.exists():
+            load_dotenv(env_file)
+            print("✅ Environment variables loaded for enhanced cursor")
+    
+    from Project_Structure.enhanced_cursor_simulation import EnhancedCursorSimulator
+    from Project_Structure.bot_implementations.advanced_survey_bot import AdvancedSurveyBot
+    ENHANCED_CURSOR_AVAILABLE = True
+    print("✅ Enhanced cursor simulation loaded successfully")
+except ImportError as e:
+    ENHANCED_CURSOR_AVAILABLE = False
+    print(f"⚠️ Enhanced cursor simulation not available: {e}")
+    print("Basic cursor functionality will still work")
+
+# Qmee enhanced bot imports
+try:
+    from Project_Structure.bot_implementations.qmee_bot_enhancements import QmeeIntegratedBot, run_qmee_enhanced_bot
+    QMEE_ENHANCED_AVAILABLE = True
+    print("✅ Qmee enhanced bot loaded successfully")
+except ImportError as e:
+    QMEE_ENHANCED_AVAILABLE = False
+    print(f"⚠️ Qmee enhanced bot not available: {e}")
+    print("Standard qmee functionality will still work")
 
 class EnhancedSurveyBotRunner:
     """Enhanced survey bot runner with advanced features integration"""
@@ -723,6 +816,10 @@ class EnhancedSurveyBotRunner:
                 await self._run_proxychains_bot(args)
             elif args.implementation == "hybrid":
                 await self._run_hybrid_bot(args)
+            elif args.implementation == "enhanced_cursor":
+                await self._run_enhanced_cursor_bot(args)
+            elif args.implementation == "qmee_enhanced":
+                await self._run_qmee_enhanced_bot(args)
             else:
                 print(f"❌ Unknown implementation: {args.implementation}")
                 return
@@ -803,6 +900,61 @@ class EnhancedSurveyBotRunner:
             self.bot_enhancer.enable_enhancement()
         
         await hybrid_main()
+
+    async def _run_enhanced_cursor_bot(self, args):
+        """Run Enhanced Cursor bot with HumanCursor simulation"""
+        if not ENHANCED_CURSOR_AVAILABLE:
+            print("❌ Enhanced cursor simulation not available")
+            return
+        
+        try:
+            # Load enhanced cursor configuration
+            config = self._get_enhanced_cursor_config(args)
+            
+            # Initialize enhanced survey bot
+            bot = AdvancedSurveyBot(config)
+            
+            print(f"🚀 Starting Enhanced Cursor Survey Bot")
+            print(f"   HumanCursor: ✅ Enabled")
+            print("   Scroll Method: " + str(config.get("scrolling_methods", {}).get("PREFERRED_METHOD", "auto")))
+            print(f"   Human-like Movement: ✅ Enabled")
+            
+            # Run the enhanced bot
+            await bot.run()
+            
+        except Exception as e:
+            self.logger.error(f"Enhanced cursor bot failed: {e}")
+            import traceback
+            traceback.print_exc()
+    
+    def _get_enhanced_cursor_config(self, args):
+        """Get enhanced cursor configuration"""
+        return {
+            "DEBUG_MODE": getattr(args, "headless", False),
+            "USE_VISION_MODEL": False,
+            "USE_OCR": False,
+            "USE_MOUSE_CONTROL": True,
+            "SURVEY_URL": getattr(args, "url", "https://example.com"),
+            
+            # Enhanced cursor configuration
+            "cursor_simulation": {
+                "ENABLE_CURSOR_TRAIL": True,
+                "SHOW_MOVEMENT_PATH": True,
+                "HIGHLIGHT_CLICK_TARGETS": True
+            },
+            
+            "mouse_movement": {
+                "ENHANCED_BEZIER_CURVES": True,
+                "HUMAN_LIKE_RANDOMNESS": 3,
+                "MOVEMENT_SPEED": "normal"
+            },
+            
+            "scrolling_methods": {
+                "PREFERRED_METHOD": getattr(args, "scroll_method", "auto"),
+                "ENABLE_MOUSE_WHEEL": True,
+                "ENABLE_SMOOTH_SCROLL": True
+            }
+        }
     
     # CAPTCHA handling disabled - all CAPTCHA methods removed
     
@@ -855,6 +1007,58 @@ class EnhancedSurveyBotRunner:
             print(f"❌ Error running CPX bot: {e}")
             import traceback
             traceback.print_exc()
+    
+    async def _run_qmee_enhanced_bot(self, args):
+        """Run Qmee Enhanced bot with real application patterns"""
+        if not QMEE_ENHANCED_AVAILABLE:
+            print("❌ Qmee enhanced bot not available")
+            return
+        
+        try:
+            # Load qmee enhanced configuration
+            config = self._get_qmee_enhanced_config(args)
+            
+            print(f"🚀 Starting Qmee Enhanced Survey Bot")
+            print(f"   Real Qmee Patterns: ✅ Enabled")
+            print(f"   JWT Token Support: ✅ Enabled")
+            print(f"   Panel Detection: ✅ Enabled")
+            print(f"   Enhanced Cursor: {'✅ Enabled' if ENHANCED_CURSOR_AVAILABLE else '❌ Disabled'}")
+            
+            # Get survey URL from web interface or default
+            survey_url = getattr(args, 'qmee_url', '') or getattr(args, 'url', 'https://user-profiler.prod.qurated.ai/prescreener')
+            
+            # Run the enhanced qmee bot
+            results = await run_qmee_enhanced_bot(survey_url, config)
+            
+            if results:
+                print(f"✅ Qmee bot completed successfully")
+                print(f"   Questions Answered: {results.get('questions_answered', 0)}")
+                print(f"   Completion Status: {results.get('completion_status', 'unknown')}")
+                print(f"   Duration: {results.get('duration', 0):.2f} seconds")
+            else:
+                print("❌ Qmee bot failed to complete")
+            
+        except Exception as e:
+            self.logger.error(f"Qmee enhanced bot failed: {e}")
+            import traceback
+            traceback.print_exc()
+    
+    def _get_qmee_enhanced_config(self, args):
+        """Get qmee enhanced configuration"""
+        return {
+            "enhanced_cursor": ENHANCED_CURSOR_AVAILABLE,
+            "debug_mode": getattr(args, "headless", False),
+            "max_questions": getattr(args, "max_surveys", 50),
+            "human_behavior": {
+                "timing": {
+                    "question_read_time": [2.0, 5.0],
+                    "answer_decision_time": [1.0, 3.0],
+                    "click_delay": [0.1, 0.3],
+                    "between_questions": [1.0, 3.0]
+                }
+            },
+            "qmee_config_path": "../Configurations/configs/qmee_enhanced_config.json"
+        }
     
     def _print_session_summary(self):
         """Print session statistics and summary"""

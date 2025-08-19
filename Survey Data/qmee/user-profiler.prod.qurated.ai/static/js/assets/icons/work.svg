@@ -1,0 +1,30 @@
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgWork(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 18.446 18.446",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Work_Icon",
+    "data-name": "Work Icon",
+    transform: "translate(17129.02 -5859.212)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "briefcase",
+    d: "M14.6,3.074h-.845A3.85,3.85,0,0,0,9.992,0H8.455A3.85,3.85,0,0,0,4.688,3.074H3.843A3.848,3.848,0,0,0,0,6.917V14.6a3.848,3.848,0,0,0,3.843,3.843H14.6A3.848,3.848,0,0,0,18.446,14.6V6.917A3.848,3.848,0,0,0,14.6,3.074ZM8.455,1.537H9.992a2.306,2.306,0,0,1,2.164,1.537H6.29A2.306,2.306,0,0,1,8.455,1.537ZM3.843,4.612H14.6a2.306,2.306,0,0,1,2.306,2.306V9.223H1.537V6.917A2.306,2.306,0,0,1,3.843,4.612Zm10.76,12.3H3.843A2.306,2.306,0,0,1,1.537,14.6V10.76H8.455v.769a.769.769,0,1,0,1.537,0V10.76h6.917V14.6A2.306,2.306,0,0,1,14.6,16.909Z",
+    transform: "translate(-17129.02 5859.212)",
+    className: "icon-primary-fill"
+  }))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgWork);
+export default __webpack_public_path__ + "static/media/work.8a33cd7b6dd3fa1f6f2cb88fc0ac2aea.svg";
+export { ForwardRef as ReactComponent };

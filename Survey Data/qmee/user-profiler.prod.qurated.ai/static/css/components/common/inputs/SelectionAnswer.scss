@@ -1,0 +1,226 @@
+@use "../../../assets/styling/Variables";
+
+.lifepoints-profiler {
+  .radio-answer {
+    align-self: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 16px 38px;
+    height: 100%;
+    flex-grow: 1;
+    margin: 0;
+    min-width: 100%;
+    border-radius: 50px;
+    border: 1px solid Variables.$button-unselected-background-colour;
+    background: Variables.$button-unselected-background-colour;
+    line-break: auto;
+    flex-direction: column;
+    text-align: center;
+
+    & > span {
+      margin: auto;
+    }
+
+    &:not(.selected):hover, &:not(.selected):focus {
+      background-color: #e9ecef;
+    }
+
+    &:not(.selected):active    {
+      background-color: #d0d4d9;
+    }
+
+    &.selected {
+      background: #fff;
+      border: 1px solid Variables.$button-colour;
+      color: #303f9f;
+    }
+
+    &.consent-answer-yes {
+      background-color: Variables.$primary-colour !important;
+      color: white  !important;
+      :hover {
+        background-color: Variables.$primary-colour;
+        color: white !important;
+      }
+  
+      &:not(.selected):hover {
+        background-color: Variables.$primary-colour;
+        color: white;
+      }
+  
+      &:not(.selected):active {
+        background-color: Variables.$primary-colour;
+      }
+    }
+
+    @media (max-width: 780px) {
+      padding: 16px 28px;
+    }
+  }
+
+  .radio-answer-container {
+    input[type="checkbox"]:focus + label.radio-answer:not(.selected) ,
+    input[type="radio"]:focus + label.radio-answer:not(.selected)  {
+      color: black;
+      background-color: #e9ecef;
+    }
+  }
+  input:disabled ~ .radio-answer {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  @media screen and (max-width: 700px) {
+    .radio-answer {
+      padding: 16px 20px;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .radio-answer-container{
+      flex-grow: 1;
+    }
+  }
+}
+
+.mobiworkx-profiler {
+  .radio-answer {
+    align-self: flex-start;
+    border-radius: 8px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 16px 38px;
+    height: 100%;
+    flex-grow: 1;
+    margin: 0;
+    min-width: 100%;
+    background: Variables.$button-unselected-background-colour;
+    border: 0.5px solid  #3C3C3C;
+    background: #FFF;
+    line-break: auto;
+    flex-direction: column;
+  
+    & > span {
+      margin: auto;
+    }
+  
+    &:not(.selected):hover, &:not(.selected):focus {
+      background-color: #e9ecef;
+    }
+  
+    &:not(.selected):active    {
+      background-color: #d0d4d9;
+    }
+  
+    &.selected {
+      color: #3C3C3C;
+      border-radius: 8px;
+      border: 2px solid #A4A4A4;
+      background: #F6F6F6;
+    }
+  
+    &.consent-answer-yes {
+      background-color: Variables.$primary-colour !important;
+      color: white  !important;
+      border: 1px solid Variables.$primary-colour;
+
+      :hover {
+        background-color: Variables.$primary-colour;
+        color: white !important;
+      }
+  
+      &:not(.selected):hover {
+        background-color: Variables.$primary-colour;
+        color: white;
+      }
+  
+      &:not(.selected):active {
+        background-color: Variables.$primary-colour;
+      }
+    }
+
+    &.consent-answer-no {
+      border: 2px solid transparent;
+    }
+  }
+}
+
+.main:not(.lifepoints-profiler, .mobiworkx-profiler), .profile-page:not(.lifepoints-profiler, .mobiworkx-profiler), .question-modal-container:not(.lifepoints-profiler, .mobiworkx-profiler) {
+  .radio-answer-container {
+    min-height: 60px;
+    text-align: center;
+    width: calc(50% - 5px);
+    margin: 0;
+    min-width: 175px;
+    cursor: pointer;
+    height: 100%;
+
+    @media screen and (max-width: 600px) {
+      flex-grow: 1;
+    }
+  }
+
+  .radio-answer {
+    padding: 0 8px 0 8px;
+    align-self: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    min-height: 60px;
+    height: 100%;
+    flex-grow: 1;
+    margin: 0;
+    min-width: 100%;
+    background: white;
+
+    & > span {
+      margin: auto;
+    }
+
+    &:not(.selected):hover {
+      background-color: #e9ecef;
+      color: #000;
+    }
+
+    &:not(.selected):active {
+      background-color: #d0d4d9;
+    }
+
+    &.selected {
+      background-color: Variables.$button-colour;
+      color: white;
+    }
+  }
+
+  .radio-answer-container {
+    input[type="checkbox"]:focus + label.radio-answer,
+    input[type="radio"]:focus + label.radio-answer {
+      color: black;
+      background-color: #e9ecef;
+    }
+
+    input[type="checkbox"]:focus + label.radio-answer.selected,
+    input[type="radio"]:focus + label.radio-answer.selected {
+      color: white;
+      background-color: Variables.$button-colour;
+    }
+  
+  }
+
+  
+}

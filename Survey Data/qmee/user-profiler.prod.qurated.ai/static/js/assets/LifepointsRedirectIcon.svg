@@ -1,0 +1,51 @@
+var _path, _path2, _g, _path3, _path4;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgLifepointsRedirectIcon(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: 74,
+    height: 74,
+    viewBox: "0 0 74 74",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M32.1137 63.5302C48.3071 63.5302 61.4345 50.4028 61.4345 34.2094C61.4345 18.016 48.3071 4.88867 32.1137 4.88867C15.9203 4.88867 2.79297 18.016 2.79297 34.2094C2.79297 50.4028 15.9203 63.5302 32.1137 63.5302Z",
+    fill: "#00E2E2"
+  })), _path2 || (_path2 = /*#__PURE__*/React.createElement("path", {
+    d: "M32.1137 63.5302C48.3071 63.5302 61.4345 50.4028 61.4345 34.2094C61.4345 18.016 48.3071 4.88867 32.1137 4.88867C15.9203 4.88867 2.79297 18.016 2.79297 34.2094C2.79297 50.4028 15.9203 63.5302 32.1137 63.5302Z",
+    fill: "#00E2E2"
+  })), _g || (_g = /*#__PURE__*/React.createElement("g", {
+    opacity: 0.2
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M37 74C57.4345 74 74 57.4345 74 37C74 16.5655 57.4345 0 37 0C16.5655 0 0 16.5655 0 37C0 57.4345 16.5655 74 37 74Z",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M37 74C57.4345 74 74 57.4345 74 37C74 16.5655 57.4345 0 37 0C16.5655 0 0 16.5655 0 37C0 57.4345 16.5655 74 37 74Z",
+    fill: "#00E2E2",
+    fillOpacity: 0.2
+  }))), _path3 || (_path3 = /*#__PURE__*/React.createElement("path", {
+    d: "M42.9176 45.7572V43.0439C42.9176 41.6046 42.3459 40.2243 41.3282 39.2066C40.3105 38.1889 38.9302 37.6172 37.4909 37.6172H26.6376C25.1984 37.6172 23.8181 38.1889 22.8004 39.2066C21.7827 40.2243 21.2109 41.6046 21.2109 43.0439V45.7572",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), _path4 || (_path4 = /*#__PURE__*/React.createElement("path", {
+    d: "M32.0634 32.1912C35.0605 32.1912 37.4901 29.7616 37.4901 26.7646C37.4901 23.7675 35.0605 21.3379 32.0634 21.3379C29.0663 21.3379 26.6367 23.7675 26.6367 26.7646C26.6367 29.7616 29.0663 32.1912 32.0634 32.1912Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgLifepointsRedirectIcon);
+export default __webpack_public_path__ + "static/media/LifepointsRedirectIcon.679de9d9871826557cc36df2cf2522b3.svg";
+export { ForwardRef as ReactComponent };

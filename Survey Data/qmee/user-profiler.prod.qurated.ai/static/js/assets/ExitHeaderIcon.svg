@@ -1,0 +1,115 @@
+var _ellipse, _g, _path, _path2, _path3, _path4, _path5, _path6, _g2, _path7, _path8, _g3, _defs;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgExitHeaderIcon(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: 71,
+    height: 70,
+    viewBox: "0 0 71 70",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _ellipse || (_ellipse = /*#__PURE__*/React.createElement("ellipse", {
+    cx: 9.93138,
+    cy: 9.98311,
+    rx: 9.93138,
+    ry: 9.98311,
+    transform: "matrix(-1 0 0 1 33.8633 0)",
+    fill: "#FFD400",
+    fillOpacity: 0.5
+  })), _g || (_g = /*#__PURE__*/React.createElement("g", {
+    clipPath: "url(#clip0_3316_55474)"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M19.2809 9.96831H21.1271L22.5117 14.1222L25.2809 5.81445L26.6656 9.96831H28.5117",
+    stroke: "white",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }))), _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M-0.000181198 46.9239C-0.000181198 52.5827 4.58719 57.1701 10.246 57.1701C15.9048 57.1701 20.4922 52.5827 20.4922 46.9239C20.4922 41.2651 15.9048 36.6777 10.246 36.6777C4.58719 36.6777 -0.000181198 41.2651 -0.000181198 46.9239Z",
+    fill: "#9FF7DE"
+  })), _path2 || (_path2 = /*#__PURE__*/React.createElement("path", {
+    d: "M12.0573 52.2447C11.7761 52.2447 11.5482 52.0168 11.5482 51.7357C11.5482 51.4545 11.7761 51.2266 12.0573 51.2266C12.3385 51.2266 12.5664 51.4545 12.5664 51.7357C12.5664 52.0168 12.3385 52.2447 12.0573 52.2447Z",
+    stroke: "white",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), _path3 || (_path3 = /*#__PURE__*/React.createElement("path", {
+    d: "M6.45575 52.2467C6.17459 52.2467 5.94666 52.0188 5.94666 51.7376C5.94666 51.4564 6.17459 51.2285 6.45575 51.2285C6.73692 51.2285 6.96484 51.4564 6.96484 51.7376C6.96484 52.0188 6.73692 52.2467 6.45575 52.2467Z",
+    stroke: "white",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), _path4 || (_path4 = /*#__PURE__*/React.createElement("path", {
+    d: "M16.1289 41.5547H14.0925L12.7282 48.3714C12.6816 48.6058 12.5541 48.8164 12.368 48.9662C12.1818 49.1161 11.9489 49.1957 11.71 49.1911H6.76161C6.52269 49.1957 6.28977 49.1161 6.10363 48.9662C5.91748 48.8164 5.78997 48.6058 5.74342 48.3714L4.92887 44.1002H13.5834",
+    stroke: "white",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), _path5 || (_path5 = /*#__PURE__*/React.createElement("path", {
+    d: "M37.2926 59.3054C25.2069 59.3054 15.4094 49.508 15.4094 37.4222C15.4094 25.3365 25.2069 15.5391 37.2926 15.5391C49.3783 15.5391 59.1758 25.3365 59.1758 37.4222C59.1758 49.508 49.3783 59.3054 37.2926 59.3054Z",
+    fill: "#00E2E2"
+  })), _path6 || (_path6 = /*#__PURE__*/React.createElement("path", {
+    d: "M37.2926 59.3054C25.2069 59.3054 15.4094 49.508 15.4094 37.4222C15.4094 25.3365 25.2069 15.5391 37.2926 15.5391C49.3783 15.5391 59.1758 25.3365 59.1758 37.4222C59.1758 49.508 49.3783 59.3054 37.2926 59.3054Z",
+    fill: "#00E2E2"
+  })), _g2 || (_g2 = /*#__PURE__*/React.createElement("g", {
+    opacity: 0.2
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M33.6433 69.1118C18.3923 69.1118 6.02883 56.7484 6.02883 41.4973C6.02883 26.2462 18.3923 13.8828 33.6433 13.8828C48.8944 13.8828 61.2578 26.2462 61.2578 41.4973C61.2578 56.7484 48.8944 69.1118 33.6433 69.1118Z",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M33.6433 69.1118C18.3923 69.1118 6.02883 56.7484 6.02883 41.4973C6.02883 26.2462 18.3923 13.8828 33.6433 13.8828C48.8944 13.8828 61.2578 26.2462 61.2578 41.4973C61.2578 56.7484 48.8944 69.1118 33.6433 69.1118Z",
+    fill: "#00E2E2",
+    fillOpacity: 0.2
+  }))), _path7 || (_path7 = /*#__PURE__*/React.createElement("path", {
+    d: "M26.5501 47.0405V44.7789C26.5501 43.5794 27.0364 42.4289 27.9019 41.5806C28.7675 40.7324 29.9414 40.2559 31.1655 40.2559H40.3963C41.6204 40.2559 42.7943 40.7324 43.6599 41.5806C44.5255 42.4289 45.0117 43.5794 45.0117 44.7789V47.0405",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), _path8 || (_path8 = /*#__PURE__*/React.createElement("path", {
+    d: "M35.783 35.7317C33.234 35.7317 31.1676 33.7067 31.1676 31.2086C31.1676 28.7106 33.234 26.6855 35.783 26.6855C38.3321 26.6855 40.3984 28.7106 40.3984 31.2086C40.3984 33.7067 38.3321 35.7317 35.783 35.7317Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), _g3 || (_g3 = /*#__PURE__*/React.createElement("g", {
+    opacity: 0.2
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M54.0003 53.0487C54.0003 57.4938 57.6038 61.0973 62.049 61.0973C66.4941 61.0973 70.0977 57.4938 70.0977 53.0487C70.0977 48.6035 66.4941 45 62.049 45C57.6038 45 54.0003 48.6035 54.0003 53.0487Z",
+    fill: "#FF67A9"
+  }), /*#__PURE__*/React.createElement("g", {
+    clipPath: "url(#clip1_3316_55474)"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M61.5 55C62.3284 55 63 54.3284 63 53.5C63 52.6716 62.3284 52 61.5 52C60.6716 52 60 52.6716 60 53.5C60 54.3284 60.6716 55 61.5 55Z",
+    stroke: "white",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M63 51.9998V53.8748C63 54.1731 63.1185 54.4593 63.3295 54.6703C63.5405 54.8812 63.8266 54.9998 64.125 54.9998C64.4234 54.9998 64.7095 54.8812 64.9205 54.6703C65.1315 54.4593 65.25 54.1731 65.25 53.8748V53.4998C65.25 52.6534 64.9636 51.8319 64.4375 51.169C63.9114 50.506 63.1765 50.0405 62.3522 49.8481C61.528 49.6558 60.663 49.7479 59.8978 50.1095C59.1325 50.4712 58.5122 51.081 58.1375 51.8399C57.7628 52.5988 57.6559 53.4622 57.8341 54.2896C58.0123 55.117 58.4651 55.8597 59.119 56.3971C59.7729 56.9345 60.5893 57.2349 61.4355 57.2494C62.2818 57.264 63.108 56.9919 63.78 56.4773",
+    stroke: "white",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })))), _defs || (_defs = /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
+    id: "clip0_3316_55474"
+  }, /*#__PURE__*/React.createElement("rect", {
+    width: 11.077,
+    height: 11.077,
+    fill: "white",
+    transform: "matrix(-1 0 0 1 29.4336 4.42969)"
+  })), /*#__PURE__*/React.createElement("clipPath", {
+    id: "clip1_3316_55474"
+  }, /*#__PURE__*/React.createElement("rect", {
+    width: 9,
+    height: 9,
+    fill: "white",
+    transform: "translate(57 49)"
+  })))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgExitHeaderIcon);
+export default __webpack_public_path__ + "static/media/ExitHeaderIcon.435b74107ada4e22ddac5e9cd89142dd.svg";
+export { ForwardRef as ReactComponent };

@@ -1,0 +1,33 @@
+@use "../../../assets/styling/Variables.scss";
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: -10px;
+}
+
+.separator-icon {
+  padding: 0 1rem;
+  margin: 0;
+  svg path {
+    fill: Variables.$primary-colour;
+  }
+}
+
+.line {
+  border-top: 1px dashed gray;
+  flex: 1;
+}
+
+.consent-details {
+  color: gray;
+  font-size: 16px;
+  margin-bottom: 42px;
+  font-weight: 400;
+
+  @media screen and (max-width: 500px){
+    margin-top: 10px;
+  }
+}

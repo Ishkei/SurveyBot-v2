@@ -1,0 +1,37 @@
+@use "../../assets/styling/Variables";
+
+.select-group {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+  
+    input[type="checkbox"],
+    input[type="radio"] {
+      display: inline;
+      visibility: visible;
+      opacity: 0.01;
+      overflow: hidden;
+      position: fixed;
+      height: 0;
+      width: 0;
+    }
+  
+    label {
+      font-size: 16px;
+    }
+
+    &.small {
+      max-width: 360px;
+      & label {
+        min-width: 120px;
+        padding: 0 8px;
+      }
+    }
+  }
+  

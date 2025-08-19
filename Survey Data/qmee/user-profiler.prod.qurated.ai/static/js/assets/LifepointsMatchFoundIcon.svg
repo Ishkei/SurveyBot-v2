@@ -1,0 +1,260 @@
+var _defs, _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgLifepointsMatchFoundIcon(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    viewBox: "74.1816 8.2946 235.051 217.176",
+    xmlns: "http://www.w3.org/2000/svg",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _defs || (_defs = /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
+    id: "clip1_6625_32181"
+  }, /*#__PURE__*/React.createElement("rect", {
+    width: 20,
+    height: 20,
+    fill: "white",
+    transform: "translate(110.051 400)"
+  })), /*#__PURE__*/React.createElement("clipPath", {
+    id: "clip2_6625_32181"
+  }, /*#__PURE__*/React.createElement("rect", {
+    width: 19,
+    height: 19,
+    fill: "white",
+    transform: "translate(298.051 303)"
+  })), /*#__PURE__*/React.createElement("clipPath", {
+    id: "clip3_6625_32181"
+  }, /*#__PURE__*/React.createElement("rect", {
+    width: 19,
+    height: 19,
+    fill: "white",
+    transform: "translate(274.051 403)"
+  })))), _g || (_g = /*#__PURE__*/React.createElement("g", {
+    clipPath: "url(#clip0_6625_32181)",
+    transform: "matrix(1, 0, 0, 1, -12.818381309509277, -229.70541381835938)"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M196 391.002C219.196 391.002 238 372.198 238 349.002C238 325.806 219.196 307.002 196 307.002C172.804 307.002 154 325.806 154 349.002C154 372.198 172.804 391.002 196 391.002Z",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M196 391.002C219.196 391.002 238 372.198 238 349.002C238 325.806 219.196 307.002 196 307.002C172.804 307.002 154 325.806 154 349.002C154 372.198 172.804 391.002 196 391.002Z",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("g", {
+    opacity: 0.2
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M203 406C232.271 406 256 382.271 256 353C256 323.729 232.271 300 203 300C173.729 300 150 323.729 150 353C150 382.271 173.729 406 203 406Z",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M203 406C232.271 406 256 382.271 256 353C256 323.729 232.271 300 203 300C173.729 300 150 323.729 150 353C150 382.271 173.729 406 203 406Z",
+    fill: "#00E2E2",
+    fillOpacity: 0.2
+  })), /*#__PURE__*/React.createElement("path", {
+    d: "M211.48 365.544V361.657C211.48 359.596 210.661 357.618 209.203 356.161C207.746 354.703 205.768 353.884 203.707 353.884H188.16C186.098 353.884 184.121 354.703 182.663 356.161C181.206 357.618 180.387 359.596 180.387 361.657V365.544",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M195.933 346.11C200.227 346.11 203.707 342.63 203.707 338.337C203.707 334.044 200.227 330.563 195.933 330.563C191.64 330.563 188.16 334.044 188.16 338.337C188.16 342.63 191.64 346.11 195.933 346.11Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M120.525 425.138C128.548 425.138 135.051 418.615 135.051 410.569C135.051 402.523 128.548 396 120.525 396C112.503 396 106 402.523 106 410.569C106 418.615 112.503 425.138 120.525 425.138Z",
+    fill: "#F666F9"
+  }), /*#__PURE__*/React.createElement("g", {
+    clipPath: "url(#clip1_6625_32181)"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M128.385 410H125.052L122.552 417.5L117.552 402.5L115.052 410H111.719",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#FFA439"
+  })), /*#__PURE__*/React.createElement("path", {
+    d: "M208.525 267.138C216.548 267.138 223.051 260.615 223.051 252.569C223.051 244.523 216.548 238 208.525 238C200.503 238 194 244.523 194 252.569C194 260.615 200.503 267.138 208.525 267.138Z",
+    fill: "#FFA439"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M206.14 259.307C206.492 259.307 206.777 259.022 206.777 258.671C206.777 258.319 206.492 258.034 206.14 258.034C205.789 258.034 205.504 258.319 205.504 258.671C205.504 259.022 205.789 259.307 206.14 259.307Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#FFA439"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M213.14 259.307C213.492 259.307 213.777 259.022 213.777 258.671C213.777 258.319 213.492 258.034 213.14 258.034C212.789 258.034 212.504 258.319 212.504 258.671C212.504 259.022 212.789 259.307 213.14 259.307Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#FFA439"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M201.051 245.943H203.596L205.302 254.464C205.36 254.757 205.519 255.02 205.752 255.208C205.985 255.395 206.276 255.495 206.574 255.489H212.76C213.059 255.495 213.35 255.395 213.582 255.208C213.815 255.02 213.974 254.757 214.033 254.464L215.051 249.125H204.233",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#FFA439"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M307.525 327.138C315.548 327.138 322.051 320.615 322.051 312.569C322.051 304.523 315.548 298 307.525 298C299.503 298 293 304.523 293 312.569C293 320.615 299.503 327.138 307.525 327.138Z",
+    fill: "#6686F9"
+  }), /*#__PURE__*/React.createElement("g", {
+    clipPath: "url(#clip2_6625_32181)"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M313.885 312.5V320.417H301.219V312.5",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#6686F9"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M315.466 308.542H299.633V312.5H315.466V308.542Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#6686F9"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M307.551 320.417V308.542",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#6686F9"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M307.549 308.541H303.987C303.462 308.541 302.959 308.333 302.587 307.962C302.216 307.59 302.008 307.087 302.008 306.562C302.008 306.037 302.216 305.534 302.587 305.163C302.959 304.792 303.462 304.583 303.987 304.583C306.758 304.583 307.549 308.541 307.549 308.541Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#6686F9"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M307.551 308.541H311.113C311.638 308.541 312.142 308.333 312.513 307.962C312.884 307.59 313.092 307.087 313.092 306.562C313.092 306.037 312.884 305.534 312.513 305.163C312.142 304.792 311.638 304.583 311.113 304.583C308.342 304.583 307.551 308.541 307.551 308.541Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#6686F9"
+  })), /*#__PURE__*/React.createElement("path", {
+    d: "M283.525 427.138C291.548 427.138 298.051 420.615 298.051 412.569C298.051 404.523 291.548 398 283.525 398C275.503 398 269 404.523 269 412.569C269 420.615 275.503 427.138 283.525 427.138Z",
+    fill: "#F966A9"
+  }), /*#__PURE__*/React.createElement("g", {
+    clipPath: "url(#clip3_6625_32181)"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M283.549 420.416C287.922 420.416 291.466 416.872 291.466 412.5C291.466 408.127 287.922 404.583 283.549 404.583C279.177 404.583 275.633 408.127 275.633 412.5C275.633 416.872 279.177 420.416 283.549 420.416Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#F966A9"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M283.549 415.666C285.298 415.666 286.716 414.249 286.716 412.5C286.716 410.751 285.298 409.333 283.549 409.333C281.801 409.333 280.383 410.751 280.383 412.5C280.383 414.249 281.801 415.666 283.549 415.666Z",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "#F966A9"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M290.81 409.333H283.551",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M277.18 407.798L280.813 414.084",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M282.664 420.369L286.29 414.083",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })), /*#__PURE__*/React.createElement("path", {
+    d: "M102 323C110.284 323 117 316.284 117 308C117 299.716 110.284 293 102 293C93.7157 293 87 299.716 87 308C87 316.284 93.7157 323 102 323Z",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M100.628 315.633H97.6641C95.4549 315.633 93.6641 313.842 93.6641 311.633V304.535C93.6641 302.326 95.4549 300.535 97.6641 300.535H105.719C107.928 300.535 109.719 302.326 109.719 304.535V306.943",
+    stroke: "white",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M97.1719 298.833L97.1719 302.661",
+    stroke: "white",
+    strokeLinecap: "round"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M101.641 298.833L101.641 302.661",
+    stroke: "white",
+    strokeLinecap: "round"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M106.102 298.833L106.102 302.661",
+    stroke: "white",
+    strokeLinecap: "round"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 96.9591,
+    cy: 305.957,
+    r: 0.744274,
+    fill: "white"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 96.9591,
+    cy: 308.934,
+    r: 0.744274,
+    fill: "white"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 96.9591,
+    cy: 311.911,
+    r: 0.744274,
+    fill: "white"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 100.045,
+    cy: 305.957,
+    r: 0.744274,
+    fill: "white"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 100.045,
+    cy: 308.934,
+    r: 0.744274,
+    fill: "white"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 100.045,
+    cy: 311.911,
+    r: 0.744274,
+    fill: "white"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 103.127,
+    cy: 305.957,
+    r: 0.744274,
+    fill: "white"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 106.104,
+    cy: 305.957,
+    r: 0.744274,
+    fill: "white"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 106.529,
+    cy: 312.442,
+    r: 3.57197,
+    stroke: "white",
+    strokeWidth: 2,
+    fill: "#00E2E2"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M106.352 311.518V312.786H107.62",
+    stroke: "white",
+    strokeLinecap: "round",
+    fill: "#00E2E2"
+  }))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgLifepointsMatchFoundIcon);
+export default __webpack_public_path__ + "static/media/LifepointsMatchFoundIcon.74cd7eb4aabc5ee2be7fe7e2660b33e2.svg";
+export { ForwardRef as ReactComponent };

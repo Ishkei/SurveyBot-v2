@@ -1,0 +1,189 @@
+var _defs, _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgPopUpHeaderIcon(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    xmlnsXlink: "http://www.w3.org/1999/xlink",
+    width: 110.514,
+    height: 60.002,
+    viewBox: "0 0 110.514 60.002",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _defs || (_defs = /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
+    id: "clip-path"
+  }, /*#__PURE__*/React.createElement("rect", {
+    id: "Rectangle_1089",
+    "data-name": "Rectangle 1089",
+    width: 25.485,
+    height: 34.319,
+    fill: "#ffb100"
+  })))), _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Pop_Up_Hedaer_Icon",
+    "data-name": "Pop Up Hedaer Icon",
+    transform: "translate(-911.243 -172.853)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3529",
+    "data-name": "Group 3529",
+    transform: "translate(68.846 25.598)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3485",
+    "data-name": "Group 3485",
+    transform: "translate(921.397 160.645)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3471",
+    "data-name": "Group 3471",
+    transform: "translate(0)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3470",
+    "data-name": "Group 3470"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Ellipse_130",
+    "data-name": "Ellipse 130",
+    fill: "#fff",
+    className: "primary-colour-stroke",
+    strokeWidth: 3
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: 15.757,
+    cy: 15.757,
+    r: 15.757,
+    stroke: "none"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 15.757,
+    cy: 15.757,
+    r: 14.257,
+    fill: "none"
+  })), /*#__PURE__*/React.createElement("g", {
+    id: "Group_3521",
+    "data-name": "Group 3521",
+    transform: "translate(9.88 6.322)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "user_1_",
+    "data-name": "user (1)",
+    transform: "translate(1.986 0)"
+  }, /*#__PURE__*/React.createElement("ellipse", {
+    id: "Ellipse_136",
+    "data-name": "Ellipse 136",
+    cx: 4.057,
+    cy: 4.057,
+    rx: 4.057,
+    ry: 4.057,
+    transform: "translate(0 0)",
+    fill: "#fff"
+  }), /*#__PURE__*/React.createElement("path", {
+    id: "Ellipse_136_-_Outline",
+    "data-name": "Ellipse 136 - Outline",
+    d: "M4.057,1.218A2.839,2.839,0,1,0,6.9,4.057,2.842,2.842,0,0,0,4.057,1.218M4.057,0A4.057,4.057,0,1,1,0,4.057,4.057,4.057,0,0,1,4.057,0Z",
+    transform: "translate(0 0)",
+    className: "primary-colour-fill"
+  })), /*#__PURE__*/React.createElement("path", {
+    id: "Path_6440",
+    "data-name": "Path 6440",
+    d: "M13.254,7.213H12.035v-4.8a1.7,1.7,0,0,0-1.7-1.7H2.417a1.7,1.7,0,0,0-1.7,1.7v4.8H-.5v-4.8A2.92,2.92,0,0,1,2.417-.5h7.92a2.92,2.92,0,0,1,2.917,2.917Z",
+    transform: "translate(-0.5 9.165)",
+    className: "primary-colour-fill"
+  })))))), /*#__PURE__*/React.createElement("g", {
+    id: "Group_3530",
+    "data-name": "Group 3530",
+    transform: "translate(-10.154 25.598)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3485-2",
+    "data-name": "Group 3485",
+    transform: "translate(921.397 160.645)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3471-2",
+    "data-name": "Group 3471",
+    transform: "translate(0)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3470-2",
+    "data-name": "Group 3470"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Ellipse_130-2",
+    "data-name": "Ellipse 130",
+    fill: "#fff",
+    className: "primary-colour-stroke",
+    strokeWidth: 3
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: 15.757,
+    cy: 15.757,
+    r: 15.757,
+    stroke: "none"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 15.757,
+    cy: 15.757,
+    r: 14.257,
+    fill: "none"
+  })), /*#__PURE__*/React.createElement("g", {
+    id: "Health_Icon",
+    "data-name": "Health Icon",
+    transform: "translate(6.823 8.427)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "pulse",
+    d: "M59.011,65.391a.584.584,0,0,1-.584.584H56.7L55.7,67.467a.584.584,0,0,1-.488.26h-.036a.584.584,0,0,1-.486-.322l-1.3-2.6-.61.915a.584.584,0,0,1-.486.26H50.253a.584.584,0,0,1,0-1.168h1.731l.993-1.492a.576.576,0,0,1,.524-.26.584.584,0,0,1,.486.322l1.3,2.6.61-.915a.584.584,0,0,1,.486-.259h2.044A.584.584,0,0,1,59.011,65.391Z",
+    transform: "translate(-45.703 -56.446)",
+    className: "primary-colour-fill"
+  }), /*#__PURE__*/React.createElement("path", {
+    id: "Path_135",
+    "data-name": "Path 135",
+    d: "M13.02.917A4.762,4.762,0,0,0,8.928,3.372,4.762,4.762,0,0,0,4.835.917,5.06,5.06,0,0,0,0,6.163C0,11.2,8.151,17.026,8.5,17.273l.43.3.43-.3c.347-.246,8.5-6.069,8.5-11.111A5.06,5.06,0,0,0,13.02.917ZM8.928,15.746C6.507,13.938,1.487,9.5,1.487,6.163A3.572,3.572,0,0,1,4.835,2.405,3.572,3.572,0,0,1,8.184,6.163H9.672A3.572,3.572,0,0,1,13.02,2.405a3.572,3.572,0,0,1,3.348,3.758C16.369,9.5,11.348,13.938,8.928,15.746Z",
+    transform: "translate(0.006 -0.917)",
+    className: "primary-colour-fill"
+  })))))), /*#__PURE__*/React.createElement("g", {
+    id: "Group_3499",
+    "data-name": "Group 3499",
+    transform: "translate(15.602 12.208)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3485-3",
+    "data-name": "Group 3485",
+    transform: "translate(921.397 160.645)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3471-3",
+    "data-name": "Group 3471",
+    transform: "translate(0)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3470-3",
+    "data-name": "Group 3470",
+    transform: "translate(0)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Ellipse_130-3",
+    "data-name": "Ellipse 130",
+    fill: "#fff",
+    className: "primary-colour-stroke",
+    strokeWidth: 4
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: 30.001,
+    cy: 30.001,
+    r: 30.001,
+    stroke: "none"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 30.001,
+    cy: 30.001,
+    r: 28.001,
+    fill: "none"
+  })), /*#__PURE__*/React.createElement("g", {
+    id: "Boost_Icon",
+    "data-name": "Boost Icon",
+    transform: "translate(17.258 12.762)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3299",
+    "data-name": "Group 3299",
+    transform: "translate(0 0)",
+    clipPath: "url(#clip-path)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "Path_6341",
+    "data-name": "Path 6341",
+    d: "M19.922.219.3,17.367a.871.871,0,0,0,.573,1.527H6.213a.871.871,0,0,1,.81,1.19L1.891,33.124a.871.871,0,0,0,1.358,1L25.16,16.4a.871.871,0,0,0-.548-1.548H18.447a.871.871,0,0,1-.835-1.117L21.331,1.121a.871.871,0,0,0-1.408-.9",
+    transform: "translate(0 0)",
+    fill: "#ffb100"
+  }))))))))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgPopUpHeaderIcon);
+export default __webpack_public_path__ + "static/media/PopUpHeaderIcon.72997be59483733589198a929764a55e.svg";
+export { ForwardRef as ReactComponent };

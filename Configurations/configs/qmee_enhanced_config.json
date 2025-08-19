@@ -1,0 +1,207 @@
+{
+  "qmee_specific": {
+    "api_endpoints": {
+      "base_urls": {
+        "heroku": "https://profiler-api.qurated.ai",
+        "aws": "https://profiler-api-aws.qurated.ai"
+      },
+      "endpoints": {
+        "profile": "/user/profile",
+        "prescreener": "/user/prescreener", 
+        "answer": "/question/{question_key}/answer/{answer}",
+        "brand_settings": "/provider/brand-settings",
+        "events": "/prescreen/events/{event}",
+        "user_info": "/user/prescreener/info"
+      }
+    },
+    
+    "selectors": {
+      "radio_answer": ".radio-answer",
+      "radio_selected": ".radio-answer.selected", 
+      "confirm_button": ".confirm-button",
+      "text_input": ".text-input",
+      "dropdown": ".dropdown-selection",
+      "loading": ".loading-animation",
+      "survey_container": ".survey-content-container",
+      "progress_loader": ".progress-loader",
+      "next_button": ".confirm-button:not(.disabled)",
+      "question_wrapper": ".survey-question-wrapper",
+      "multi_select": "input[type=\"checkbox\"]",
+      "date_input": ".date-input, input[type=\"date\"]",
+      "address_question": ".address-question, .nested-questions",
+      "children_question": ".children-question",
+      "consent_question": ".accept-question, .consent-question"
+    },
+    
+    "question_types": {
+      "selection": {
+        "identifier": ".radio-answer",
+        "answer_method": "click_random_option",
+        "validation": "wait_for_selection_class"
+      },
+      "multi_punch": {
+        "identifier": "input[type=\"checkbox\"]",
+        "answer_method": "select_multiple_options",
+        "max_selections": 3
+      },
+      "input": {
+        "identifier": ".text-input",
+        "answer_method": "generate_realistic_text",
+        "validation": "blur_and_validate"
+      },
+      "date": {
+        "identifier": ".date-input",
+        "answer_method": "generate_realistic_date",
+        "format": "MM/DD/YYYY"
+      },
+      "address": {
+        "identifier": ".address-question",
+        "answer_method": "handle_nested_questions",
+        "nested": true
+      }
+    },
+    
+    "panel_providers": {
+      "lifepoints": {
+        "css_class": ".lifepoints-profiler",
+        "special_styling": true,
+        "button_style": "rounded"
+      },
+      "mobiworkx": {
+        "css_class": ".mobiworkx-profiler", 
+        "special_styling": true,
+        "button_style": "squared"
+      },
+      "default": {
+        "css_class": ".main",
+        "special_styling": false
+      }
+    }
+  },
+  
+  "response_generation": {
+    "text_responses": {
+      "email": {
+        "domains": ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com"],
+        "username_format": "user{random_number}"
+      },
+      "phone": {
+        "format": "555-{3digit}-{4digit}",
+        "country_codes": ["+1", "+44", "+49"]
+      },
+      "names": {
+        "first_names": ["John", "Jane", "Mike", "Sarah", "David", "Lisa", "Chris", "Amy", "Tom", "Kate"],
+        "last_names": ["Smith", "Johnson", "Brown", "Davis", "Wilson", "Taylor", "Anderson", "White", "Harris", "Martin"]
+      },
+      "demographics": {
+        "age_range": [18, 65],
+        "income_ranges": ["$25,000-$35,000", "$35,000-$50,000", "$50,000-$75,000", "$75,000-$100,000"],
+        "education_levels": ["High School", "Some College", "Bachelor's Degree", "Master's Degree"]
+      }
+    },
+    
+    "selection_strategies": {
+      "random_uniform": {
+        "description": "Completely random selection",
+        "weight": 0.3
+      },
+      "weighted_realistic": {
+        "description": "Weighted towards realistic/common answers",
+        "weight": 0.5,
+        "common_answer_bias": 0.6
+      },
+      "pattern_based": {
+        "description": "Follow consistent patterns based on previous answers",
+        "weight": 0.2,
+        "consistency_factor": 0.7
+      }
+    }
+  },
+  
+  "human_behavior": {
+    "timing": {
+      "question_read_time": [2.0, 5.0],
+      "answer_decision_time": [1.0, 3.0],
+      "click_delay": [0.1, 0.3],
+      "typing_speed": [0.05, 0.15],
+      "between_questions": [1.0, 3.0]
+    },
+    
+    "error_simulation": {
+      "misclick_probability": 0.02,
+      "typo_probability": 0.03,
+      "correction_delay": [1.0, 2.0],
+      "hesitation_probability": 0.05
+    },
+    
+    "interaction_patterns": {
+      "scroll_before_answer": 0.3,
+      "review_answers": 0.2,
+      "change_answer_probability": 0.05,
+      "pause_probability": 0.1
+    }
+  },
+  
+  "detection_avoidance": {
+    "user_agent_rotation": true,
+    "viewport_randomization": true,
+    "cookie_management": true,
+    "session_fingerprint_variation": true,
+    
+    "behavioral_metrics": {
+      "mouse_movement_entropy": "high",
+      "keyboard_dynamics": "natural",
+      "timing_variance": "human_like",
+      "interaction_depth": "engaged"
+    },
+    
+    "anti_detection": {
+      "webdriver_stealth": true,
+      "canvas_fingerprint_spoofing": true,
+      "webgl_fingerprint_spoofing": true,
+      "audio_fingerprint_spoofing": true
+    }
+  },
+  
+  "quality_control": {
+    "answer_validation": {
+      "check_required_fields": true,
+      "validate_format": true,
+      "ensure_logical_consistency": true
+    },
+    
+    "progress_tracking": {
+      "monitor_completion_percentage": true,
+      "track_question_types": true,
+      "log_interaction_metrics": true
+    },
+    
+    "error_handling": {
+      "max_retries": 3,
+      "retry_delay": [2.0, 5.0],
+      "fallback_strategies": ["force_click", "keyboard_navigation", "api_submission"]
+    }
+  },
+  
+  "integration": {
+    "enhanced_cursor": {
+      "enable": true,
+      "movement_style": "qmee_optimized",
+      "click_patterns": "survey_specific"
+    },
+    
+    "ai_assistance": {
+      "gemini_api": true,
+      "openai_fallback": true,
+      "response_generation": true,
+      "context_awareness": true
+    },
+    
+    "logging": {
+      "detailed_interactions": true,
+      "performance_metrics": true,
+      "error_tracking": true,
+      "success_analysis": true
+    }
+  }
+}

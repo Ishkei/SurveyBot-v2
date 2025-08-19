@@ -1,0 +1,30 @@
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgFoodanddrink(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 18.18 18.189",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Food_Drink_icon",
+    "data-name": "Food&Drink icon",
+    transform: "translate(17127.787 -6568.61)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "hamburger-soda",
+    d: "M14.4,9.1H12.421l.409-3.282a2.286,2.286,0,0,0-2.218-2.768h-1.8c.083-.584.033-1.521.859-1.525h2.452a.758.758,0,0,0,0-1.516H9.677A2.274,2.274,0,0,0,7.422,2L7.291,3.046H2.276A2.29,2.29,0,0,0,.047,5.74l1.147,9.138a3.793,3.793,0,0,0,3.758,3.316l9.45-.009A3.789,3.789,0,0,0,18.191,14.4V12.885A3.789,3.789,0,0,0,14.4,9.1Zm2.274,3.789H7.581a2.274,2.274,0,0,1,2.274-2.274H14.4A2.274,2.274,0,0,1,16.676,12.885ZM10.613,4.561a.766.766,0,0,1,.728.994l-.066.51H8.44l.188-1.505Zm-8.925.283a.758.758,0,0,1,.588-.283H7.1l-.189,1.5h-5.3l-.076-.584A.753.753,0,0,1,1.688,4.844ZM2.7,14.69,1.8,7.58h9.282L10.895,9.1H9.855a3.789,3.789,0,0,0-3.789,3.789c-.032,1.238-.076,2.834.785,3.8h-1.9A2.274,2.274,0,0,1,2.7,14.69Zm11.7,1.984H9.855A2.274,2.274,0,0,1,7.581,14.4h2.8c.293.141,2.179,1.6,2.5,1.516.315.089,2.221-1.382,2.5-1.516h1.288A2.274,2.274,0,0,1,14.4,16.674Z",
+    transform: "translate(-17127.799 6568.605)",
+    className: "icon-primary-fill"
+  }))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgFoodanddrink);
+export default __webpack_public_path__ + "static/media/foodanddrink.33bbe1d2272e3165e71bbc320d9b4184.svg";
+export { ForwardRef as ReactComponent };

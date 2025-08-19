@@ -1,0 +1,130 @@
+@use "../../assets/styling/Variables.scss";
+
+.collapsible-category-header,
+.collapsible-category-header-open {
+  .category-banner-container:active {
+    background-color: rgba(229, 229, 229, 0.1);
+  }
+}
+
+.category-banner-container .profile-header-box {
+  min-height: 100px;
+  text-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+
+  @media (max-width: 1100px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.category-banner-container {
+  cursor: pointer;
+  padding: 18px 18px 18px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .category-banner {
+    display: flex;
+    align-items: center;
+  }
+
+  .category-image {
+    margin-right: 10px;
+  }
+
+  .category-percentage {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+  }
+
+  .category-title {
+    padding-left: 45px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #495867;
+  }
+
+  .chevron-container {
+    line-height: 15px;
+  }
+
+  &.large-category{
+    .category-image {
+      margin-right: 2px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .category-title {
+      padding-left: 18px;
+      font-size: 16px;
+    }
+
+    .category-image {
+      margin-right: 4px;
+      width: 20px;
+    }
+  }
+}
+
+.category-info {
+  display: flex;
+  position: relative;
+  background-color: #495867;
+  padding: 8px 21px;
+  align-items: center;
+  color: white;
+  fill: white;
+  border-radius: 21px;
+  width: 103px;
+  height: 43px;
+  transition: background-color 0.4s;
+  transition-delay: 0.3s;
+
+  .boost-icon {
+    border-color: #495867;
+    transition: border-color 0.4s;
+    transition-delay: 0.3s;
+    * {
+      transition: fill 0.4s, stroke 0.4s;
+      transition-delay: 0.3s;
+    }
+  }
+
+  .category-title {
+    transition: color 0.4s;
+    transition-delay: 0.3s;
+  }
+
+  .icon-primary-fill {
+    fill: #fff;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 8px 12px;
+    height: 42px;
+    width: 94px;
+  }
+}
+
+.category-completed {
+  .category-title {
+    color: Variables.$primary-colour;
+  }
+
+  .category-info {
+    background-color: Variables.$primary-colour;
+    .boost-icon {
+      border-color: Variables.$primary-colour;
+      border-width: 2px;
+      .boost-fill {
+        fill: #ffb100;
+      }
+    }
+  }
+}

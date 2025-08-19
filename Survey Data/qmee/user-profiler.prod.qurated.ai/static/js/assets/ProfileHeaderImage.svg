@@ -1,0 +1,286 @@
+var _defs, _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgProfileHeaderImage(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    xmlnsXlink: "http://www.w3.org/1999/xlink",
+    width: 298.982,
+    height: 93.556,
+    viewBox: "0 0 298.982 93.556",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _defs || (_defs = /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
+    id: "clip-path"
+  }, /*#__PURE__*/React.createElement("rect", {
+    id: "Rectangle_1089",
+    "data-name": "Rectangle 1089",
+    width: 30.78,
+    height: 41.45,
+    fill: "#ffb100"
+  })))), _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Header_Image",
+    "data-name": "Header Image",
+    transform: "translate(-814.774 -208)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3485",
+    "data-name": "Group 3485",
+    transform: "translate(0 3)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3471",
+    "data-name": "Group 3471",
+    transform: "translate(45.096 -24.386)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "Path_6436",
+    "data-name": "Path 6436",
+    d: "M116.068,537.043c13.72,0,24.842,1.618,24.842,3.613s-11.123,3.613-24.842,3.613-24.842-1.618-24.842-3.613,11.122-3.613,24.842-3.613",
+    transform: "translate(803.602 -227.932)",
+    opacity: 0.083
+  }), /*#__PURE__*/React.createElement("g", {
+    id: "Group_3470",
+    "data-name": "Group 3470",
+    transform: "translate(795 234.285)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3465",
+    "data-name": "Group 3465",
+    transform: "translate(-19.336 4.345)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "Path_6435",
+    "data-name": "Path 6435",
+    d: "M102.152,537.043c6.034,0,10.926,1,10.926,2.241s-4.892,2.241-10.926,2.241-10.926-1-10.926-2.241,4.892-2.241,10.926-2.241",
+    transform: "translate(-90.608 -507.785)",
+    opacity: 0.083
+  })), /*#__PURE__*/React.createElement("g", {
+    id: "Group_3466",
+    "data-name": "Group 3466",
+    transform: "translate(22.348 11.231)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "Path_6435-2",
+    "data-name": "Path 6435",
+    d: "M108.94,537.043c9.783,0,17.714,1.627,17.714,3.634s-7.931,3.633-17.714,3.633-17.714-1.627-17.714-3.633,7.931-3.634,17.714-3.634",
+    transform: "translate(-90.225 -489.609)",
+    opacity: 0.083
+  }), /*#__PURE__*/React.createElement("g", {
+    id: "Ellipse_134",
+    "data-name": "Ellipse 134",
+    transform: "translate(-5.443 -6.13)",
+    fill: "#fff",
+    className: "primary-colour-stroke",
+    strokeWidth: 3
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: 24,
+    cy: 24,
+    r: 24,
+    stroke: "none"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 24,
+    cy: 24,
+    r: 22.5,
+    fill: "none"
+  })), /*#__PURE__*/React.createElement("g", {
+    id: "Health_Icon",
+    "data-name": "Health Icon",
+    transform: "translate(17134.809 -6012.008)"
+  }, /*#__PURE__*/React.createElement("path", {
+    className: "primary-colour-fill",
+    id: "pulse",
+    d: "M62.78,66.334a.819.819,0,0,1-.819.819h-2.43l-1.393,2.094a.819.819,0,0,1-.684.365H57.4a.819.819,0,0,1-.683-.452L54.893,65.5l-.855,1.284a.819.819,0,0,1-.682.365H50.488a.819.819,0,0,1,0-1.639h2.43l1.393-2.094a.809.809,0,0,1,.735-.365.819.819,0,0,1,.683.452l1.827,3.654.855-1.284a.819.819,0,0,1,.682-.363H61.96A.819.819,0,0,1,62.78,66.334Z",
+    transform: "translate(-17172.586 5966.289)"
+  }), /*#__PURE__*/React.createElement("path", {
+    className: "primary-colour-fill",
+    id: "Path_135",
+    "data-name": "Path 135",
+    d: "M18.275.917a6.683,6.683,0,0,0-5.743,3.446A6.683,6.683,0,0,0,6.788.917,7.1,7.1,0,0,0,0,8.279c0,7.075,11.441,15.246,11.927,15.593l.6.427.6-.427c.487-.345,11.927-8.518,11.927-15.593A7.1,7.1,0,0,0,18.275.917ZM12.531,21.728C9.134,19.19,2.089,12.956,2.089,8.279a5.012,5.012,0,0,1,4.7-5.273,5.012,5.012,0,0,1,4.7,5.273h2.089a5.012,5.012,0,0,1,4.7-5.273,5.012,5.012,0,0,1,4.7,5.273C22.974,12.958,15.928,19.19,12.531,21.728Z",
+    transform: "translate(-17128.477 6019.153)"
+  }))), /*#__PURE__*/React.createElement("g", {
+    id: "Group_3518",
+    "data-name": "Group 3518",
+    transform: "translate(223.039 10.639)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "Path_6435-3",
+    "data-name": "Path 6435",
+    d: "M109.847,537.043c10.284,0,18.621,1.71,18.621,3.82s-8.337,3.82-18.621,3.82-18.621-1.71-18.621-3.82,8.337-3.82,18.621-3.82",
+    transform: "translate(-84.451 -480.735)",
+    opacity: 0.083
+  }), /*#__PURE__*/React.createElement("g", {
+    id: "Ellipse_134-2",
+    "data-name": "Ellipse 134",
+    transform: "translate(0 0)",
+    fill: "#fff",
+    className: "primary-colour-stroke",
+    strokeWidth: 3
+  }, /*#__PURE__*/React.createElement("ellipse", {
+    cx: 25.229,
+    cy: 25.229,
+    rx: 25.229,
+    ry: 25.229,
+    stroke: "none"
+  }), /*#__PURE__*/React.createElement("ellipse", {
+    cx: 25.229,
+    cy: 25.229,
+    rx: 23.729,
+    ry: 23.729,
+    fill: "none"
+  }))), /*#__PURE__*/React.createElement("g", {
+    id: "Group_3522",
+    "data-name": "Group 3522",
+    transform: "translate(177.348 7.231)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "Path_6435-4",
+    "data-name": "Path 6435",
+    d: "M103.868,537.043c6.982,0,12.642,1.161,12.642,2.593s-5.66,2.593-12.642,2.593-12.642-1.161-12.642-2.593,5.66-2.593,12.642-2.593",
+    transform: "translate(-92.07 -504.944)",
+    opacity: 0.083
+  }), /*#__PURE__*/React.createElement("g", {
+    id: "Ellipse_134-3",
+    "data-name": "Ellipse 134",
+    transform: "translate(-5.443 -6.13)",
+    fill: "#fff",
+    className: "primary-colour-stroke",
+    strokeWidth: 2
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: 17.129,
+    cy: 17.129,
+    r: 17.129,
+    stroke: "none"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 17.129,
+    cy: 17.129,
+    r: 16.129,
+    fill: "none"
+  }))), /*#__PURE__*/React.createElement("g", {
+    id: "Ellipse_130",
+    "data-name": "Ellipse 130",
+    transform: "translate(85.904 -4.899)",
+    fill: "#fff",
+    className: "primary-colour-stroke",
+    strokeWidth: 4
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: 38,
+    cy: 38,
+    r: 38,
+    stroke: "none"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 38,
+    cy: 38,
+    r: 36,
+    fill: "none"
+  })), /*#__PURE__*/React.createElement("g", {
+    id: "Boost_Icon",
+    "data-name": "Boost Icon",
+    transform: "translate(108.514 12.878)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Group_3299",
+    "data-name": "Group 3299",
+    transform: "translate(0 0)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "Path_6341",
+    "data-name": "Path 6341",
+    d: "M24.062.265.362,20.976a1.052,1.052,0,0,0,.692,1.844H7.5a1.052,1.052,0,0,1,.979,1.437l-6.2,15.75a1.052,1.052,0,0,0,1.64,1.2l26.464-21.4a1.052,1.052,0,0,0-.661-1.87H22.281a1.052,1.052,0,0,1-1.009-1.349L25.763,1.354a1.052,1.052,0,0,0-1.7-1.09",
+    transform: "translate(0 0)",
+    fill: "#ffb100"
+  }))), /*#__PURE__*/React.createElement("g", {
+    id: "Ellipse_135",
+    "data-name": "Ellipse 135",
+    transform: "translate(-23.096 -0.899)",
+    fill: "#fff",
+    className: "primary-colour-stroke",
+    strokeWidth: 2
+  }, /*#__PURE__*/React.createElement("circle", {
+    cx: 15,
+    cy: 15,
+    r: 15,
+    stroke: "none"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: 15,
+    cy: 15,
+    r: 14,
+    fill: "none"
+  })), /*#__PURE__*/React.createElement("g", {
+    id: "Work_Icon",
+    "data-name": "Work Icon",
+    transform: "translate(17114.178 -5852.138)"
+  }, /*#__PURE__*/React.createElement("path", {
+    className: "primary-colour-fill",
+    id: "briefcase",
+    d: "M11.125,2.342h-.644A2.933,2.933,0,0,0,7.612,0H6.441A2.933,2.933,0,0,0,3.572,2.342H2.928A2.931,2.931,0,0,0,0,5.27v5.855a2.931,2.931,0,0,0,2.928,2.928h8.2a2.931,2.931,0,0,0,2.928-2.928V5.27a2.931,2.931,0,0,0-2.928-2.928ZM6.441,1.171H7.612A1.757,1.757,0,0,1,9.261,2.342H4.792A1.757,1.757,0,0,1,6.441,1.171ZM2.928,3.513h8.2A1.757,1.757,0,0,1,12.882,5.27V7.027H1.171V5.27A1.757,1.757,0,0,1,2.928,3.513Zm8.2,9.369h-8.2a1.757,1.757,0,0,1-1.757-1.757V8.2h5.27v.586a.586.586,0,1,0,1.171,0V8.2h5.27v2.928A1.757,1.757,0,0,1,11.125,12.882Z",
+    transform: "translate(-17129.02 5859.212)"
+  })), /*#__PURE__*/React.createElement("g", {
+    id: "Group_3521",
+    "data-name": "Group 3521",
+    transform: "translate(237.978 21.41)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "user_1_",
+    "data-name": "user (1)",
+    transform: "translate(3.903 0)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "Ellipse_136",
+    "data-name": "Ellipse 136",
+    transform: "translate(0 0)",
+    fill: "#fff",
+    className: "primary-colour-stroke",
+    strokeWidth: 2
+  }, /*#__PURE__*/React.createElement("ellipse", {
+    cx: 6.661,
+    cy: 6.661,
+    rx: 6.661,
+    ry: 6.661,
+    stroke: "none"
+  }), /*#__PURE__*/React.createElement("ellipse", {
+    cx: 6.661,
+    cy: 6.661,
+    rx: 5.661,
+    ry: 5.661,
+    fill: "none"
+  }))), /*#__PURE__*/React.createElement("path", {
+    id: "Path_6440",
+    "data-name": "Path 6440",
+    d: "M.5,12.164V4.289A3.788,3.788,0,0,1,4.289.5h13a3.788,3.788,0,0,1,3.789,3.789v7.875",
+    transform: "translate(-0.5 14.726)",
+    fill: "none",
+    className: "primary-colour-stroke",
+    strokeWidth: 2
+  })), /*#__PURE__*/React.createElement("g", {
+    id: "Gaming_Icon",
+    "data-name": "Gaming Icon",
+    transform: "translate(17309.088 -6245.893)"
+  }, /*#__PURE__*/React.createElement("path", {
+    className: "primary-colour-fill",
+    id: "Path_133",
+    "data-name": "Path 133",
+    d: "M17.517,56.138a3.961,3.961,0,0,0-3.378-1.964H4.713a3.961,3.961,0,0,0-3.378,1.964A10.535,10.535,0,0,0,0,61.244C0,65.564,1.728,69.1,3.928,69.1c1.178,0,2.121-1.1,2.828-3.378a.78.78,0,0,1,.786-.55H11.39a.946.946,0,0,1,.786.55C12.882,68,13.825,69.1,15,69.1c2.2,0,3.928-3.535,3.928-7.855A11.565,11.565,0,0,0,17.517,56.138Zm-2.592,11.39c-.236,0-.786-.628-1.335-2.278a2.356,2.356,0,0,0-2.278-1.65H7.541a2.459,2.459,0,0,0-2.278,1.65c-.55,1.65-1.1,2.278-1.335,2.278-.786,0-2.357-2.435-2.357-6.284a9.287,9.287,0,0,1,1.1-4.32,2.551,2.551,0,0,1,2.042-1.178h9.426a2.551,2.551,0,0,1,2.042,1.178,9.288,9.288,0,0,1,1.1,4.32C17.281,65.093,15.71,67.528,14.925,67.528Z",
+    transform: "translate(-17129.521 6202.358)"
+  }), /*#__PURE__*/React.createElement("path", {
+    id: "Path_134",
+    "data-name": "Path 134",
+    d: "M89.279,150.912H88.49v-.789a.789.789,0,0,0-1.578,0v.789h-.789a.789.789,0,1,0,0,1.578h.789v.789a.789.789,0,0,0,1.578,0v-.789h.789a.789.789,0,0,0,0-1.578Z",
+    transform: "translate(-17211.701 6110.716)",
+    className: "primary-colour-fill"
+  }), /*#__PURE__*/React.createElement("circle", {
+    id: "Ellipse_20",
+    "data-name": "Ellipse 20",
+    cx: 1.183,
+    cy: 1.183,
+    r: 1.183,
+    transform: "translate(-17116.111 6260.05)",
+    className: "primary-colour-fill"
+  }), /*#__PURE__*/React.createElement("circle", {
+    id: "Ellipse_21",
+    "data-name": "Ellipse 21",
+    cx: 1.183,
+    cy: 1.183,
+    r: 1.183,
+    transform: "translate(-17118.479 6262.417)",
+    className: "primary-colour-fill"
+  }))))))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgProfileHeaderImage);
+export default __webpack_public_path__ + "static/media/ProfileHeaderImage.36f45acdbab99de8c557f210129d06fe.svg";
+export { ForwardRef as ReactComponent };

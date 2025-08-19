@@ -1,0 +1,11 @@
+$primary-colour: var(--primary-colour, gray);
+$secondary-colour: var(--secondary-colour);
+$title-colour: var(--title-colour);
+$text-colour: var(--text-colour);
+$question-completed-background-colour: var(--question-completed-background-colour);
+$profiler-loading-bar-colour: var(--profiler-loading-bar-colour, var(--primary-colour, #00E2E2));
+$button-unselected-background-colour: var(--button-unselected-background-colour, #f0f2ff);
+$button-error-background-colour: var(--button-error-background-colour, #ffedf5);
+$button-colour: var(--button-colour, var(--primary-colour));
+$error-colour: var(--error-colour, #ff2584);
+$address-text-colour: var(--address-text-colour, var(--text-colour, #090a0b));

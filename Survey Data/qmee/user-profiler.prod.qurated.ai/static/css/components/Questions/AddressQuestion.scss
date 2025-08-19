@@ -1,0 +1,96 @@
+.address-question-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .text-control-container {
+    width: auto;
+    margin: 10px 0 0;
+
+    .text-input {
+      width: 100%;
+    }
+  }
+
+  .selection-container {
+    margin: 0;
+  }
+
+  .address-error-message {
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  label {
+    color: #555;
+    font-weight: 600;
+  }
+  @media screen and (max-width: 500px) {
+    gap: 10px;
+
+    .selection-container {
+      margin: 5px 0 0;
+    }
+  }
+  
+  .address-consent-subtitle {
+    color: gray;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+}
+
+.row {
+  margin-top: 50px;
+}
+
+.lifepoints-profiler, .mobiworkx-profiler {
+  .address-questions-title {
+    display: none;
+  }
+
+  .address-question-group {
+    margin: 0;
+    .text-control-container {
+      margin: 0;
+    }
+    .selection-container {
+      margin: 0;
+
+      .selection-dropdown {
+        color: #001627;
+        font-family: "Filson Pro", sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+.mobiworkx-profiler {
+  .address-questions-title {
+    display: none;
+  }
+
+  .address-question-group {
+    margin: 0;
+    .text-control-container {
+      margin: 0;
+    }
+    .selection-container {
+      margin: 0;
+
+      .selection-dropdown {
+        color: #001627;
+        font-family: "Filson Pro", sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+  }
+}

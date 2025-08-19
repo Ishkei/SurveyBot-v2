@@ -1,0 +1,55 @@
+@use "../../assets/styling/Variables";
+
+.radio-group {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    display: inline;
+    visibility: visible;
+    opacity: 0.01;
+    overflow: hidden;
+    position: fixed;
+    height: 0;
+    width: 0;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  &.small {
+    max-width: 560px;
+    & label {
+      min-width: 120px;
+    }
+  }
+
+  .radio-answer.consent-answer-yes {
+    background-color: Variables.$primary-colour !important;
+    color: white !important;
+  }
+
+  .radio-answer.consent-answer-no {
+    border: none;
+  }
+}
+
+.main.lifepoints-profiler {
+  .radio-group.small {
+    max-width: 100%;
+  }
+}
+
+.selection-container {
+  margin: 10px 0 0;
+  width: auto;
+}
