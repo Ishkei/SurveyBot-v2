@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html dir="LTR" class="no-js" lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+            <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests;object-src &#39;none&#39;;base-uri &#39;none&#39;;form-action http://t2.ktrmr.com http://ts.ktrmr.com http://nfield-respondent-proxy-prod.azurewebsites.net https: &#39;self&#39;;font-src https: &#39;self&#39;;img-src https: &#39;self&#39; data: blob:;worker-src &#39;self&#39; blob:;script-src https://*.nfieldmr.com https://*.nfieldbeta.com https://*.ktrmr.cn https://*.kantaroperations.com https://multimedia.kantaroperations.com https://*.ktrmr.cn https://*.jwpcdn.com https://*.azureedge.net https://*.nfieldcn.com https://*.googleapis.com https://*.affectiva.com https://*.affdex.com &#39;self&#39;;media-src https: &#39;self&#39; data: blob:;" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <title>
+    Kantar Survey
+</title>
+    <link rel="shortcut icon" href="/Content/favicon-nfield.ico" type="image/x-icon" />
+
+    <!-- referenced template specific stylesheet files -->
+    <link rel="StyleSheet" type="text/css" href="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Content/42c2a610-d042-4257-a537-3d67040fcf29/dist/css/bootstrap.min.css" />
+<link rel="StyleSheet" type="text/css" href="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Content/42c2a610-d042-4257-a537-3d67040fcf29/dist/css/layout.css" />
+<link rel="StyleSheet" type="text/css" href="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Content/42c2a610-d042-4257-a537-3d67040fcf29/dist/css/theme.css" />
+
+    
+    <style>
+        
+    </style>
+
+
+
+    
+    
+    
+        <script id="ErrorMessages" type="application/json">
+            ErrorMessages = { InvalidCategory: 'The chosen answer is not present in the list of available answers.',ExclusiveCategory: 'Answer \&#39;{category}\&#39; cannot be combined with other answers.',TooManyDigitsFraction: 'The answer \&#39;{answer}\&#39; has too many decimal places. The maximum is {maximumDigits}.',AnswerTooLong: 'Answer \&#39;{answer}\&#39; is too long, maximum is {numberOfCharacters}.',MustBeNumeric: 'Answer \&#39;{answer}\&#39; must be a number.',MoreThanMaximum: 'Answer \&#39;{answer}\&#39; is too high, maximum is {maximum}.',LessThanMinimum: 'Answer \&#39;{answer}\&#39; is too low, minimum is {minimum}.',TooManyDigitsInIntegerPart: 'Answer {answer} has too many digits, maximum is {maximum}',NotInRange: 'Answer \&#39;{answer}\&#39; is not in the permitted range, permitted range is \&#39;{range}\&#39;.',AnswerRequired: 'Missing answer(s).',CategoryAnswerRequired: 'Missing answer(s).',ItemAnswerRequired: 'Missing answer(s).',TooManyAnswers: 'Only {maximum} answers are allowed.',TooFewAnswers: 'At least {minimum} answers are required.',InterviewButtonUnavailable: 'Interview button is not available.',DoNotUseBrowserButtonToNavigate: 'You have used the browser buttons, please use the buttons within the survey.',DoNotUseButtonWithOtherAnswer: 'Answer \&#39;{item}\&#39; cannot be combined with other answers.' };
+                                </script>
+
+
+
+    <!-- referenced template specific javascript files -->
+    <script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/nfield/knockout-3.2.0.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/nfield/jquery.nfield-numeric.min.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/nfield/nfield.main.min.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/popper.min.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/panel-details.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/layout.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/custom-layout.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/recordVideo.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/SE/lib/qarts/vendors~main.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/SE/lib/qarts/app_dev.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/SE/SurveyEngineOptions.js"></script>
+<script type="text/javascript" src="https://nfieldam-cdn-storage.nfieldmr.com/templates-content/Scripts/42c2a610-d042-4257-a537-3d67040fcf29/dist/js/SE/SurveyEngine.js"></script>
+
+    <!-- error messages -->
+    
+
+    
+	<script id="projectDetails" type="application/json">		
+	{"projectName":"mysurveyinnfield",
+	"isDebug":"3",
+	"id":"1_999",
+	"serial":1,
+	"isTest":false,
+	"cursorInOpens":"0",
+	"projectVersion":"1",
+	"comp":"Incomplete",
+	"sampleSource":"UnitedStates"}
+	</script>
+		
+
+</head>
+
+<body class="survey-page" role="body">
+    <var id="scriptContent" src="Scripts/"><!--x--></var>
+    <var id="sharedContent" src="Images/"><!--x--></var>
+    <div class="loader">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="container" style="display: none">
+        
+    
+<!-- RenderingOptions - to read *UIOPTIONS from ODIN script-->
+<!-- CustomProperties - to read *PROPERTIES from ODIN script -->
+
+
+
+
+
+
+<form method="post" action="" novalidate>
+    <input id="screenId" name="screenId" type="hidden" value="a61fa1fc-19e8-4474-8d25-57cbb6ea32db" />
+<input data-val="true" data-val-number="The field HistoryOrder must be a number." data-val-required="The HistoryOrder field is required." id="historyOrder" name="historyOrder" type="hidden" value="6" />
+<input name="__RequestVerificationToken" type="hidden" value="9OUBMRpZ86UIewHiYPswEB9A2a-BpUOmjO-l9PN3qN8pCyXQyyAFZUE43f9ygaVeATBVtksVFqqBKlbNMdZ-Jbm9Wdc1" />
+
+            <script id="SEJson" type="application/json"><!--{--><!--"load":"initSurveyEngine();",--><!--"qJSON":[--><!--{"QuestionName": "q.q900092","QuestionFullName": "q.q900092","CustomProps": {"metaType": "jplayer8","Width": "55","devicewidth": "50","controls": false,"autosubmit": false,"ischine": true,"source": "https://multimedia.kantaroperations.com/8016f8b/origin.tns-global.com/multimedia/kap/razor/soundcheck/Acat_audio_12.mp4","cdndomain": "multimedia.kantaroperations.com","pastedetection": true,"projectlink": "https://interviewingam.nfieldmr.com/Interviews/FJ360/2BRyAcVnEZvWYvrAEisr","clicktosubmit": true,"chkcsp": true,"cspcontent": "upgrade-insecure-requests&#59object-src 'none'&#59base-uri 'none'&#59form-action http://t2.ktrmr.com http://ts.ktrmr.com http://nfield-respondent-proxy-prod.azurewebsites.net https: 'self'&#59font-src https: 'self'&#59img-src https: 'self' data: blob:&#59worker-src 'self' blob:&#59script-src https://multimedia.kantaroperations.com https://*.ktrmr.cn https://*.jwpcdn.com https://*.azureedge.net https://*.nfieldcn.com https://*.googleapis.com https://*.affectiva.com https://*.affdex.com 'self'&#59media-src https: 'self' data: blob:&#59","isDebug": false,"surveytitle": "","ShowBackButton": false,},"min": null,"max": null},--><!--{"QuestionName": "q.q980","QuestionFullName": "q.q980","CustomProps": {"metaType": "rowpicker","answertype": "logo","row$displaytitle": true,"hidenext": false,"tabulate": false,"exextrasmallwidth": "20","exsmallwidth": "20","exmediumwidth": "20","exlargewidth": "20","exextralargewidth": "20","pastedetection": true,"projectlink": "https://interviewingam.nfieldmr.com/Interviews/FJ360/2BRyAcVnEZvWYvrAEisr","clicktosubmit": true,"chkcsp": true,"cspcontent": "upgrade-insecure-requests&#59object-src 'none'&#59base-uri 'none'&#59form-action http://t2.ktrmr.com http://ts.ktrmr.com http://nfield-respondent-proxy-prod.azurewebsites.net https: 'self'&#59font-src https: 'self'&#59img-src https: 'self' data: blob:&#59worker-src 'self' blob:&#59script-src https://multimedia.kantaroperations.com https://*.ktrmr.cn https://*.jwpcdn.com https://*.azureedge.net https://*.nfieldcn.com https://*.googleapis.com https://*.affectiva.com https://*.affdex.com 'self'&#59media-src https: 'self' data: blob:&#59","isDebug": false,"surveytitle": "","ShowBackButton": false,},"min": null,"max": null},--><!--]}--></script>
+
+<div class="row" id="questions">
+
+        
+    <fieldset class="questionContainer segment active " questionname="q.q900092"
+        data-surveyid="98efccd4-aace-4516-a542-20562b7f7c79" data-interviewid="" data-metatype="jplayer8" data-width =" 55" data-devicewidth =" 50" data-controls="false" data-autosubmit="false" data-ischine="true" data-source="https://multimedia.kantaroperations.com/8016f8b/origin.tns-global.com/multimedia/kap/razor/soundcheck/Acat_audio_12.mp4" data-cdndomain="multimedia.kantaroperations.com" data-pastedetection="true" data-projectlink="https://interviewingam.nfieldmr.com/Interviews/FJ360/2BRyAcVnEZvWYvrAEisr" data-clicktosubmit="true" data-chkcsp="true" data-cspcontent="upgrade-insecure-requests&#59object-src 'none'&#59base-uri 'none'&#59form-action http://t2.ktrmr.com http://ts.ktrmr.com http://nfield-respondent-proxy-prod.azurewebsites.net https: 'self'&#59font-src https: 'self'&#59img-src https: 'self' data: blob:&#59worker-src 'self' blob:&#59script-src https://multimedia.kantaroperations.com https://*.ktrmr.cn https://*.jwpcdn.com https://*.azureedge.net https://*.nfieldcn.com https://*.googleapis.com https://*.affectiva.com https://*.affdex.com 'self'&#59media-src https: 'self' data: blob:&#59" data-isdebug="false" data-surveytitle="" data-showbackbutton="false">
+        <legend tabindex="0" role="Question Text"
+            class="mrQuestionText col-sm-12 question-text theme-standard-bg-color2 theme-standard-font-color1">
+
+        <span class="style-0"> Play the audio and select what you hear. <br /></span>
+
+
+            <div class="mrInstruct questionTextBottomPadding">
+                <!--x-->
+            </div>
+        </legend>
+        <div class="col-sm-12 question-component z-depth-1">
+                <span>
+
+
+
+		<textarea id="Q900092" autocomplete="off" class="form-control mrEdit open mrEdit required" name="answer-q900092"></textarea>
+
+
+                </span>
+            
+        </div>
+
+    </fieldset>
+        
+    <fieldset class="questionContainer segment active " questionname="q.q980"
+        data-surveyid="98efccd4-aace-4516-a542-20562b7f7c79" data-interviewid="" data-metatype="rowpicker" data- answertype="logo" data- row$displaytitle="true" data-hidenext =" false" data-tabulate =" false" data- exextrasmallwidth =" 20" data- exsmallwidth =" 20" data- exmediumwidth =" 20" data- exlargewidth =" 20" data- exextralargewidth =" 20" data-pastedetection="true" data-projectlink="https://interviewingam.nfieldmr.com/Interviews/FJ360/2BRyAcVnEZvWYvrAEisr" data-clicktosubmit="true" data-chkcsp="true" data-cspcontent="upgrade-insecure-requests&#59object-src 'none'&#59base-uri 'none'&#59form-action http://t2.ktrmr.com http://ts.ktrmr.com http://nfield-respondent-proxy-prod.azurewebsites.net https: 'self'&#59font-src https: 'self'&#59img-src https: 'self' data: blob:&#59worker-src 'self' blob:&#59script-src https://multimedia.kantaroperations.com https://*.ktrmr.cn https://*.jwpcdn.com https://*.azureedge.net https://*.nfieldcn.com https://*.googleapis.com https://*.affectiva.com https://*.affdex.com 'self'&#59media-src https: 'self' data: blob:&#59" data-isdebug="false" data-surveytitle="" data-showbackbutton="false">
+            <div>
+                <span class="validation-message" style="border-color: Red;"><span class="message"></span></span>
+                <span tabindex="0" aria-label="Error Message" class="mrErrorText"
+                style="border-color: Red;">You have used the browser buttons, please use the buttons within the survey.</span>
+                <br />
+            </div>
+        <legend tabindex="0" role="Question Text"
+            class="mrQuestionText col-sm-12 question-text theme-standard-bg-color2 theme-standard-font-color1">
+
+
+
+            <div class="mrInstruct questionTextBottomPadding">
+                <!--x-->
+            </div>
+        </legend>
+        <div class="col-sm-12 question-component z-depth-1">
+                <span>
+
+
+
+<div id="categorylist-q980" class="categorylist categories required " >
+			<input type="hidden" class="answerOrder" name="answer-q980-m" id="categorylist-q980-multi" value="" />
+
+
+<div class="categorygroup mrQuestionTable">
+	<div class='flex-row row'>
+		<span id="Cell.Q980-1" class="category single first " >
+
+<div></div>
+<input type="radio" id="Q980-1" name="answer-q980"
+    value="q980-1" class="mrSingle styled"  />
+    <label role="Input type radio" class="category-label hand cbText" for="Q980-1" tabindex="0">
+        <span class="mrSingleText">
+        <span class="style-0"> Elephant         <img alt= "Concept_ Elephant" src ="https://multimedia.kantaroperations.com/8016f8b/origin.tns-global.com/multimedia/US/VideoTests/Concept_Elephant.jpg"/>
+</span>
+
+        </span>
+    </label>
+
+		</span>
+		<span id="Cell.Q980-2" class="category single  " >
+
+<div></div>
+<input type="radio" id="Q980-2" name="answer-q980"
+    value="q980-2" class="mrSingle styled"  />
+    <label role="Input type radio" class="category-label hand cbText" for="Q980-2" tabindex="0">
+        <span class="mrSingleText">
+        <span class="style-0"> Rooster         <img alt= "Concept_ Rooster" src ="https://multimedia.kantaroperations.com/8016f8b/origin.tns-global.com/multimedia/US/VideoTests/Concept_Rooster.jpg"/>
+</span>
+
+        </span>
+    </label>
+
+		</span>
+		<span id="Cell.Q980-3" class="category single  " >
+
+<div></div>
+<input type="radio" id="Q980-3" name="answer-q980"
+    value="q980-3" class="mrSingle styled"  />
+    <label role="Input type radio" class="category-label hand cbText" for="Q980-3" tabindex="0">
+        <span class="mrSingleText">
+        <span class="style-0"> Dog         <img alt= "Concept_ Dog" src ="https://multimedia.kantaroperations.com/8016f8b/origin.tns-global.com/multimedia/US/VideoTests/Concept_Dog.jpg"/>
+</span>
+
+        </span>
+    </label>
+
+		</span>
+		<span id="Cell.Q980-4" class="category single  " >
+
+<div></div>
+<input type="radio" id="Q980-4" name="answer-q980"
+    value="q980-4" class="mrSingle styled"  />
+    <label role="Input type radio" class="category-label hand cbText" for="Q980-4" tabindex="0">
+        <span class="mrSingleText">
+        <span class="style-0"> Cat         <img alt= "Concept_ Cat" src ="https://multimedia.kantaroperations.com/8016f8b/origin.tns-global.com/multimedia/US/VideoTests/Concept_Cat.jpg"/>
+</span>
+
+        </span>
+    </label>
+
+		</span>
+		<span id="Cell.Q980-998" class="category single  last" >
+
+<div></div>
+<input type="radio" id="Q980-998" name="answer-q980"
+    value="q980-998" class="mrSingle styled"  />
+    <label role="Input type radio" class="category-label hand cbText" for="Q980-998" tabindex="0">
+        <span class="mrSingleText">
+        <span class="style-0"> None of these </span>
+
+        </span>
+    </label>
+
+		</span>
+
+
+	</div>
+</div>		
+</div>
+
+                </span>
+            
+        </div>
+
+    </fieldset>
+</div>
+
+
+
+<div role="navigation" id="surveyButtons" class="row footer1">
+
+
+
+        <input type="submit" name="button-next" value="Next"
+            class="mrButton button mrNext button-next" title="Next"
+            style="width:100%;" />
+</div>
+<div class="row footer2">
+    <div class="tempMenuButtons text-xs-left">
+        <div class="dropup">
+            <a class="menuButton dropdown-toggle" tabindex="0" id="dropdownMenu1" data-toggle="dropdown"
+                aria-haspopup="true" title="Additional links" aria-expanded="false"><i class="fa fa-bars fa-1x"></i></a>
+            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+                <a href="http://uk.mysurvey.com/faq" class="help dropdown-item waves-effect waves-light"
+                    title="Help"><i class="fa fa-question fa-2x"></i></a>
+
+                <a href="http://uk.mysurvey.com/privacy" class="privacy dropdown-item waves-effect waves-light"
+                    title="Privacy"><i class="fa fa-lock fa-2x"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div role="logo" class="logo text-xs-center">
+        <span class="mrBannerText" style="">
+            <img id="sourceLogo" src="" alt="Kantar survey logo" title="">
+        </span>
+    </div>
+
+</div>
+
+</form>
+
+
+    </div>
+    
+	
+
+</body>
+
+</html>

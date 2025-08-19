@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  
+  <head>
+  <meta charset="utf-8">
+  <title>Qubed</title>
+  <link rel="icon" href="https://cdn.qmee.com/favicon-32x32.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Qubed"
+  />
+  <base href="/" />
+  <link rel="stylesheet" href="public/css/main-default.css">
+  <style>
+    .form-card__custom-button {
+        background-color:#2bd675;
+    }
+  </style>
+</head>
+<body style="
+  background-color:#ffffff;
+">
+  <div class="main" style="
+  color:#6a6a6a;
+  "><form method="POST"
+  action="/questions/answer/survey?payload=eyJjbGllbnQiOiJrcHAiLCJwYW5lbCI6InFtZWUiLCJmYWlsdXJlUmVkaXJlY3RVcmwiOiJodHRwczovL3JvdXRlci5xbWVlLmNvbS91c2Vycy9zdXJ2ZXlzLzE0MWY3ZGVjZmM0MjM1ZGJhZGY5NmM5YjU0ODc0ZWQwZTJlODFkZGE_ZW5jPXhiNlRyamFHX2J2VjZVVmZvZDYtaU9rTGg3RV9YbHVFd01Sc3A0ZlhZR0RlNmJsRXhaS3ZwenFhMmh5QnE2bWoxVGZIbXZycC1lLUR2ajBxZWF3X2ZpSTNMTXlRT2lQZGpLdXlrejhqRjBaVXViZkpxbm9CYloweElBMzlrWkZ1NTRXa3d5YVdCbFdEWEZ5Um9EU3F4TmVTbS1hOEY4QnZpSG9CaVctZVJDaTBLVWFvZ01LenllYXVEVVJwSVFnWk5TdGx5R3ZwWDRDQk1ueHQ3V1o2dXJNOW1wWWhMYV9OaTc3a0F6ZWNzX3RFTUQxZjNOQ1RiWXNsUEk4c0R0Y3UwREYxRzFleFNhc2MydERUTm4wU3VJSXJvLTFST3B2VE5oRHl6ZktXSU9wZ1RObDlVV1pOVkFfZUFhb2JBcjBCdWhZVjdCRWRMRURNMFRacEQzVmdFZGxzc0Y5a0U2WDFjQTdqaW82N0t4UHdkOTd3c0ZVTXVDUTVRcVNrdkYzTmJjdVdiT1ZpUTdRTWhoaFNyUWZIdldRVFhlWDNxVU5Gb3hxbWtJeUdUNGpLWGVPUUVnNGZuTW95Wkh2Nzd3aW12MDl3WkV3X0pxUFpkdUk1Z19zLUFaLW9WSGVEQ3ZSeVFWRHJVZVFuN0Y5UHFBRjFSN21SckR5ZXh4WW41WHVQemxXM1Y2Yk9LLUJpWHdjTFNoRFRSX3psa25TRU5GbDRFRzFwYnNqY2IyeUFzT0VMSnFyZ3oxOEpDMDcxQUhzQ2ZFRlE0QzNzTUZRT25rTEZyMEdpU1dmOUNxQXh4VWhjMXFZNHdWa2VHQUlCZ0RZMjAyVW9qZTBEekd5bU0xXzNoRUhRTXk4SHh4dW90cXI3a0NpWm9mQ1VMYnlZbk5QQVFWcVZ3VUFHYUJxSGhqN3NfTnRKVkNVR2dobzBDNVJ6bENpNVhWVkhPTjg5SHhrX3Z2eDFwRFJzV25TWXZLZkpNaWF0d3BPWlVjeWRqa1htSUQwRlItcktINHBUSm1mQmJSRGI2dURSQ0dib1JSNWdmdk9HYWRqOFdweVpTUHVfNFFYUk9jY0pOS2xXMmNSbF9CYUxUa2FwbjRnQ3RrVkY3bXNKWXdnTXZVbTNQUTNvaXZuSEdmc3RlM0V5aXMzOFVGa2tYNjhrUlpWZjdSN0s2Y2pNRUJYZUR2d0FmYzI1Wk9BUk8wM2E1NEpaa2k2ZUxSdmpDTXkwMU0xWk9lQUJRYVpLcGRXdmVkMUYtdU82ZmltaWt2SkFGMW5lcWpWeW81aC1Gd2JQQnRlWjdrSkFUX1Yza0dnWVlKTl92NjQ2eVB6V3dWcUFDQWlaTFJpcFM3NWJsUFpseV9adGEzekl4cHpza3h4RnJCeWxMWWQ0VHF0LTlnSmlvQzBhdzZIZlg0cEttZjR1ZjJfdC1SbzZaQnVhZEsxV0Q2TTM4Mk5vV1FRVmN0RUh1Y1ppSGItMW45QW5aZDZ1LWh5RExtd0lmZGU0UnJRUEpQbHpwZTZwbnZ1RkMtTmh3OXZOQkVHQ1lVNTdpUEt0aERObmg3Q3RSVGUzZnE0S21xaktRMFBoT3A5aUhEOWthREVNVmZzWi1ha19Eb3R5MkZyNVFzbmJyUERCT2k3UTg5N2xuZlc3aGh2UlJRJTNEJTNEXHUwMDI2aXY9dzZjdnZvTDhBaVZKb2RvbDJSZGhzdyUzRCUzRCIsImJyYW5kaW5nIjp7ImxvZ29VcmwiOiJodHRwczovL2Nkbi5xbWVlLmNvbS9Mb2dvLnN2ZyIsImZhdmljb25VcmwiOiJodHRwczovL2Nkbi5xbWVlLmNvbS9mYXZpY29uLTMyeDMyLnBuZyIsImJ1dHRvbkNvbG9yIjoiIzJiZDY3NSIsImJhY2tncm91bmRDb2xvciI6IiNmZmZmZmYiLCJmb250Q29sb3IiOiIjNmE2YTZhIn0sIml2IjoiSExJTUlBZGQ0RXQxNFVsR0hNZko5QT09IiwicHJpdmF0ZSI6IlB5UHBINEkzSTIxUGlhS09YN3o4cDBXbUdlZjVhUW9EM2ZWNVNHYXNxaXd4WmJ6RUZtN3RoeEl1czcyRlB3UmhfMlhRbUlRbDNSRkN1dVhfWlItWkNqb2RrQVkwSmNPeDhoczZBZDY1akFmWE1MSzY3NGVuNUlWcXhtSEd1aktqejJETHJTaEhtbjRZUnNYQW9aU1dJNHhvNlpRQzYyeTE5ZlFYLVZ5aldrcmFoSUhxMWp3WFBoWmZvMUNudzZGc2xZTUNkaG83MENUVDVRVGpXdDVCbVBYR3V0Tm5wUWc0WVJ2R19NUmp1R2tkS0pIbWh6dmx1U2ZHQ3RrTkNXY25YTklHTjVnbjFrU3hHN2xpZXJOXzlxZHZwM29tZF9JVXFOY19IQmR5RmJITVNpeE9IZXBtTmZfbnI1d2l1ZmtuZXlJTUJoUGM5cEZfUkxIeHhZNWk1akVQRXlLODM0T2Fhc1RUMEJpenlNMFFsMkVrMzY2NnpHZzYzZGcwWkhVRFgtODY5bzI4b0FGWHYweklKc2drekhBdUh0WmVtQlpoUDd5QmgyX19kQXd6UzR3R1ZkNm5vYXF4dzBwM3RPTDMwQmxGanMwUWNWV3lla25FeTZrSEdpblFvYVBpaG9KU1l5b2RTRndac1pERU5RZTZzSlZBRmktTnJzbURYUXdWbUtmeVdFWTBmY0ZSVm5oNHNveHhxSEVWUm52N1BkNTVoOTRaRWVWOEZiMlI1eS1Nb1hlV0h6Q0xxeUU2TG1MZGczZW1VTnNDeEF3bXlaTUlfSTQ5S3NFcTdtcXlMMUVWNFZjalBzS0pOQzZMaTlTSTdzbFZBOVFhaVBhMThmNEc0d1VULXJ5Ri04VUFNcVZXSkxud2ROSUUwSk9ncm85WXo4YW5NT0xZNDYzVjlIaHBmV0FkYktiSWlhRWIwUlQyQjJBbGttMm5icWZON0w0c1ZXVjBUeUNHX3pJbHRhT2ZoX1FVVDJtQXNLVHlTeWpVbExJQWdkZXlKZElHUjBuQ2JaMEhNbXZFUEJpTVoyaF9kaUpuN1pWOGdDc2UyTG4wd1M1T0s0SzVoWTFzWFZjbjd0bjNQUjNrdWxrbVNNdUpxc0hjanZVdTlORFRYRXo4X3hyNTlpTHJRc0hHTkhrZTloNzJ3ckJBeklnTjJtUGMxYnJwRHJOS0gyMWNGZHpxWkhHaWVfYmxiQ25wWUUzU0hQU3pBVDZVZmhoR3p6SENOV29XTThfRmdfR3pxeFNrc2R2d215LVFrZ3Q2cGxXQVRGWFhsNEJfd2tLbGV0RmoxNVlXbTJxcWtfVldGcTlsbkRrcm9mMEt4LXM1NERQaGhrRGNkR284cV9MVzVBSFg2a1pjVXNMUUI5NndtWFFKeXlSbVRoU1p6RURkUzREdHZqT1BYdmgtdUFFTWNnOEZLMjBVMkVQaDhfQVBsc2VhTFdMa0pmcmNTNFIzcnQ3MjNrTDc3RWd0WVplS2djWm8wTE5rQVU5M1BtaFd5Z3NCODcwUVluVDJYaGxPRmp2OGMyVlpiT3V0aTcxaHFkVjZsUHMtUHNFcHJqQ21YSVlCa0pYbXpxQUZzVVVHUGp5SGkwZ0wxdi1GMnJFVk9BbnpvVkNQQlZXZGhwc2s5dHZFSWozNFpCSmY2NFEtSDlKWmM2VUMyWnFhYlBLN3owOVh4LTZHXzNDV2VWOEZjbWhaTjZjaVpmYmtYS0w0T2hPTmpOQzNUcjZ2YkVhODNSNFh3bW1mVzAyZHdnMzduMzlGVncyTXl2aEdEZmRka0hNaDltSnp2Mk9IV01KWm1qUTR4NmVjN1JXY0RLMURnOTJSc04wdTlnc1Fob0p0MlduTVRfWkhoVHc2ZXBPSVNMX0pWTC1KOHdaUmlTTURHQ2lSLXRKVjdmcmVJV0M3dlVPMHJ1alpTdERuNHpLSVB0OEZBS2czR1BNQnFBcWE5dlZNNjZIa1NZRmE0NVUxbjNJU2FuVU9kVXlCRVFiN3ZDTmdNZzhHWDM2Z21uUlpaNVljYmV1MXpUczRCV3Q5Z1Vhd3hjd3JaUDdMZEVuWTlnZ2ZwbUExLWRmbV9MUkZJU2pKblVhZmRncTcwdXp0N0xmNG12aWFscXNwYWloWkpwSHEyWWNKenE3Q29QdlNiUUU3NmxZOG1LRnU2MUFrRm5hY0dUWHZXYmRiYlU0ZlhpZEQ4TEVBQVMtMzFoekZxVU4xd2wwVG9KVDdjeXoxcF9yVGx5cllvOHZVSGlSS1RuVGp3Sm50OVZZT2dfQnJJRnlVRGRhTDVvN1ptN1I0YUtKdF82SnR4dEFrSXkyNThVVm1GTEEzdG5LaHltNFpmZ3k0bmtYQlFyQjg0S3ZsQk5IcTF3VEphRDNhMUFSZTJ6bzRCZ01XeFdFLVEtWUN5SW5qYVBXSVdjTHBpZ0NnSXdGeTRLQ0RvZ3JFUXA1MWFnOFJVekl2Sk9CbVpYUndZOWZjQWo2ck9tYVpKQmxWRm8ydnlqczdoQkhmMGRRQktick5rYjhnWnprdml0ZlhSLUFzNDU0aXZNWHQ2UF9IdTNiaWs1M0M0U1hWUkl3OU45a2tQTEhFUkR0YUZyek5XanA0M3NWd25FZWllZ1VjQkpKWmZHV3RMVXFyNk5HU1Z6RFNQUFl6bzZNaXNKRERFa0ZKUDRoX2xqTXdjTzVfR2xJUkZWS2ZGcW1meGs2cTdaQzA5RS1SWmlFbXJyeWNVS0RpeHFZVTBWdk5uV25VUkpmWHBjZ3NBeDRTT2huNDBuNkJXRFk4VUl0SmxCd2ZiNlF5ajdFcyJ9&questionnaire=eyJzZXNzaW9uQ2hlY2tJZCI6ImUyYWJlYmZkLWJhYWYtNDY1Yi1hZDcwLTAwZjFjODM5NmUzMiIsInF1ZXN0aW9uc0xpc3QiOlt7ImlkIjoiMSIsInF1ZXN0aW9uIjoiSW4gYSBmZXcgd29yZHMsIHRlbGwgdXMsIHdoeSBkaWQgeW91IGpvaW4ge3tQYW5lbCBOYW1lfX0/IiwibGFuZ3VhZ2UiOiJlbiIsInR5cGUiOiJyZWdpc3RyYXRpb24iLCJwcmlvcml0eSI6MSwiYW5zd2VyX2xlbmd0aF9ydWxlcyI6W3sicGFuZWwiOiJsaWZlcG9pbnRzIiwiY291bnRyaWVzIjpbIlVTQSJdLCJtaW5fYW5zd2VyX2xlbmd0aCI6MTZ9XSwibWluX2Fuc3dlcl9sZW5ndGgiOjF9XSwiY3VycmVudFF1ZXN0aW9uTnVtYmVyIjowLCJpZ25vcmVJZHMiOnsic3VydmV5IjpbXSwicmVnaXN0cmF0aW9uIjpbXSwiYWxsIjpbXX0sImxhbmd1YWdlIjoiZW4tVVMifQ&#x3D;&#x3D;"
+  id="form-q"
+>
+  <div class="form-card">
+    <div class="form-card__logo-block">
+      <img src="https://cdn.qmee.com/Logo.svg" class="form-card__logo-image">
+    </div>
+    <div class="form-card__label-block">
+      <h1 class="form-card__label-h">In a few words, tell us, why did you join Qmee?</h6>
+    </div>
+    <div class="form-card__input-block">
+      <textarea name="answer" id="answer-input" class="form-card__textarea wrapword" autocomplete="off" maxlength="250"></textarea>
+    </div>
+    <div class="form-card__button-block">
+      <button
+        form="form-q"
+        id="question-form-submit-btn"
+        class="form-card__button form-card__custom-button"
+        disabled="true"
+        type="submit"
+      >Submit</button>
+    </div>
+  </div>
+
+  <input type="hidden" name="question" value="In a few words, tell us, why did you join Qmee?" id="question-input"></input>
+  <input type="hidden" name="question_id" value="1" id="question-id-input"></input>
+  <input type="hidden" name="min_answer_length" value="1" id="min-answer-length"></input>
+  <input type="hidden" name="answer_timings" id="answer-timings"></input>
+  <input type="hidden" name="answer_submit" value="true"></input>
+  <input type="hidden" name="fp_only" value="" id="fp-only-val"></input>
+</form>
+
+<!-- for frontend -->
+<input type="hidden" name="questionnaire" value="eyJzZXNzaW9uQ2hlY2tJZCI6ImUyYWJlYmZkLWJhYWYtNDY1Yi1hZDcwLTAwZjFjODM5NmUzMiIsInF1ZXN0aW9uc0xpc3QiOlt7ImlkIjoiMSIsInF1ZXN0aW9uIjoiSW4gYSBmZXcgd29yZHMsIHRlbGwgdXMsIHdoeSBkaWQgeW91IGpvaW4ge3tQYW5lbCBOYW1lfX0/IiwibGFuZ3VhZ2UiOiJlbiIsInR5cGUiOiJyZWdpc3RyYXRpb24iLCJwcmlvcml0eSI6MSwiYW5zd2VyX2xlbmd0aF9ydWxlcyI6W3sicGFuZWwiOiJsaWZlcG9pbnRzIiwiY291bnRyaWVzIjpbIlVTQSJdLCJtaW5fYW5zd2VyX2xlbmd0aCI6MTZ9XSwibWluX2Fuc3dlcl9sZW5ndGgiOjF9XSwiY3VycmVudFF1ZXN0aW9uTnVtYmVyIjowLCJpZ25vcmVJZHMiOnsic3VydmV5IjpbXSwicmVnaXN0cmF0aW9uIjpbXSwiYWxsIjpbXX0sImxhbmd1YWdlIjoiZW4tVVMifQ&#x3D;&#x3D;" id="questionnaire-val"></input>
+<input type="hidden" name="source" value="survey" id="source-val"></input>
+<!-- !for frontend -->
+</div>
+</body>
+
+  
+  <script src="public/js/main.js"></script>
+
+</html>

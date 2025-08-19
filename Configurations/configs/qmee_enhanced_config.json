@@ -1,207 +1,270 @@
 {
-  "qmee_specific": {
-    "api_endpoints": {
-      "base_urls": {
-        "heroku": "https://profiler-api.qurated.ai",
-        "aws": "https://profiler-api-aws.qurated.ai"
+  "qmee_enhanced_config": {
+    "platform_name": "Qmee Enhanced",
+    "base_url": "https://www.qmee.com",
+    "surveys_url": "https://www.qmee.com/surveys",
+    "graphql_endpoint": "https://gateway.qmee.com/graphql",
+    "login_url": "https://www.qmee.com/account/login",
+    
+    "authentication": {
+      "required": true,
+      "method": "form_login",
+      "session_persistence": true,
+      "auto_login": false
+    },
+    
+    "real_selectors": {
+      "login_form": {
+        "email_input": "#Login-form-email",
+        "password_input": "#Login-form-password",
+        "submit_button": "button:has-text('Log In')",
+        "signup_toggle": ".signUpToggle:has-text('Sign Up')",
+        "login_toggle": ".signUpToggle:has-text('Log In')",
+        "forgot_password": "a:has-text('Forgot your password?')",
+        "form_container": ".SignUpForm_root__q8VCx",
+        "error_message": ".error, .alert-danger"
       },
-      "endpoints": {
-        "profile": "/user/profile",
-        "prescreener": "/user/prescreener", 
-        "answer": "/question/{question_key}/answer/{answer}",
-        "brand_settings": "/provider/brand-settings",
-        "events": "/prescreen/events/{event}",
-        "user_info": "/user/prescreener/info"
+      
+      "survey_page": {
+        "survey_list": "[data-testid='survey-list'], .survey-list",
+        "survey_card": ".survey-item, [data-testid='survey-item']",
+        "survey_title": ".survey-title, h3, h4",
+        "survey_reward": ".reward, .survey-reward, .formatted",
+        "survey_duration": ".duration, .survey-duration, .durationDetails",
+        "start_button": "button:has-text('Start'), .start-button",
+        "survey_status": ".status, .survey-status",
+        "survey_image": ".imageUrl, .survey-image img",
+        "survey_tags": ".tags, .survey-tags"
+      },
+      
+      "filter_controls": {
+        "pii_surveys_toggle": ".filterButton:has-text('PII')",
+        "webcam_surveys_toggle": ".filterButton:has-text('Webcam')", 
+        "filter_enabled": ".enabled",
+        "filter_button_group": ".filterButtonGroup",
+        "filter_tip": ".tip"
+      },
+      
+      "gamification": {
+        "streak_container": ".gamificationStreak, [data-testid='streak']",
+        "streak_length": ".length",
+        "streak_expires": ".expiresAt",
+        "streak_unlocks": ".unlocksAt"
+      },
+      
+      "questions": {
+        "question_container": ".question, .survey-question, [role='group'], .question-wrapper",
+        "question_title": "h1, h2, h3, .question-title, .question-text, .question-header",
+        "question_description": ".question-description, .question-subtitle, p",
+        "radio_group": "[role='radiogroup'], .radio-group",
+        "radio_options": "input[type='radio'], [role='radio']",
+        "radio_labels": "label[for*='radio'], .radio-label",
+        "checkbox_group": "[role='group'], .checkbox-group",
+        "checkbox_options": "input[type='checkbox'], [role='checkbox']",
+        "checkbox_labels": "label[for*='checkbox'], .checkbox-label",
+        "text_input": "input[type='text'], textarea",
+        "number_input": "input[type='number']",
+        "email_input": "input[type='email']",
+        "select_dropdown": "select",
+        "slider_input": "input[type='range'], .slider",
+        "date_input": "input[type='date']",
+        "required_indicator": ".required, [required], .mandatory"
+      },
+      
+      "navigation": {
+        "next_button": "button:has-text('Next'), .next-button, .continue-button",
+        "continue_button": "button:has-text('Continue'), button:has-text('Proceed')",
+        "submit_button": "button[type='submit'], button:has-text('Submit')",
+        "back_button": "button:has-text('Back'), .back-button, .previous-button",
+        "skip_button": "button:has-text('Skip'), .skip-button",
+        "finish_button": "button:has-text('Finish'), button:has-text('Complete')",
+        "progress_bar": ".progress, .progress-bar, .completion-bar"
+      },
+      
+      "completion": {
+        "thank_you_message": ".thank-you, .completion-message, .survey-complete",
+        "completion_title": "h1:has-text('Thank'), h1:has-text('Complete'), h2:has-text('Thank')",
+        "reward_display": ".reward-earned, .earnings, .completion-reward",
+        "completion_details": ".completion-details, .survey-results"
+      },
+      
+      "error_handling": {
+        "error_message": ".error, .warning, .alert-danger, .error-message",
+        "qualification_failed": ".qualification-failed, .screened-out, .not-qualified",
+        "survey_full": ".survey-full, .quota-full, .capacity-reached",
+        "technical_error": ".technical-error, .system-error",
+        "timeout_error": ".timeout, .session-expired"
       }
     },
     
-    "selectors": {
-      "radio_answer": ".radio-answer",
-      "radio_selected": ".radio-answer.selected", 
-      "confirm_button": ".confirm-button",
-      "text_input": ".text-input",
-      "dropdown": ".dropdown-selection",
-      "loading": ".loading-animation",
-      "survey_container": ".survey-content-container",
-      "progress_loader": ".progress-loader",
-      "next_button": ".confirm-button:not(.disabled)",
-      "question_wrapper": ".survey-question-wrapper",
-      "multi_select": "input[type=\"checkbox\"]",
-      "date_input": ".date-input, input[type=\"date\"]",
-      "address_question": ".address-question, .nested-questions",
-      "children_question": ".children-question",
-      "consent_question": ".accept-question, .consent-question"
+    "graphql_queries": {
+      "surveys_query": {
+        "query": "query SurveysQuery($input: FilteredSurveyInput, $first: Int) { surveys(input: $input, first: $first) { id edges { node { id status url title reward { formatted } duration durationDetails { max median min } imageUrl tags } } } }",
+        "variables": {
+          "first": 50,
+          "input": {
+            "historicSurveys": true
+          }
+        }
+      },
+      "user_data_query": {
+        "query": "query UserDataQuery { userData { id roles } gamificationStreak { id length expiresAt unlocksAt } }",
+        "variables": {}
+      }
     },
     
     "question_types": {
-      "selection": {
-        "identifier": ".radio-answer",
-        "answer_method": "click_random_option",
-        "validation": "wait_for_selection_class"
+      "single_choice": {
+        "description": "Radio button questions with single selection",
+        "selectors": ["input[type='radio']", "[role='radio']"],
+        "strategy": "intelligent_selection",
+        "avoid_extremes": true
       },
-      "multi_punch": {
-        "identifier": "input[type=\"checkbox\"]",
-        "answer_method": "select_multiple_options",
-        "max_selections": 3
+      "multiple_choice": {
+        "description": "Checkbox questions with multiple selections",
+        "selectors": ["input[type='checkbox']", "[role='checkbox']"],
+        "strategy": "moderate_selection",
+        "max_selections": 3,
+        "min_selections": 1
       },
-      "input": {
-        "identifier": ".text-input",
-        "answer_method": "generate_realistic_text",
-        "validation": "blur_and_validate"
+      "text_input": {
+        "description": "Text input questions",
+        "selectors": ["input[type='text']", "textarea"],
+        "strategy": "ai_generated_response",
+        "min_length": 10,
+        "max_length": 500,
+        "use_cache": true
       },
-      "date": {
-        "identifier": ".date-input",
-        "answer_method": "generate_realistic_date",
-        "format": "MM/DD/YYYY"
+      "number_input": {
+        "description": "Numeric input questions",
+        "selectors": ["input[type='number']"],
+        "strategy": "contextual_numeric",
+        "age_range": [25, 45],
+        "income_range": [30000, 80000],
+        "hours_range": [1, 40]
       },
-      "address": {
-        "identifier": ".address-question",
-        "answer_method": "handle_nested_questions",
-        "nested": true
+      "dropdown_select": {
+        "description": "Dropdown selection questions",
+        "selectors": ["select"],
+        "strategy": "avoid_first_option",
+        "prefer_middle_options": true
+      },
+      "rating_scale": {
+        "description": "Rating scale questions",
+        "selectors": [".rating-scale", "input[type='range']"],
+        "strategy": "moderate_ratings",
+        "avoid_extremes": true,
+        "prefer_range": [3, 7]
       }
     },
     
-    "panel_providers": {
-      "lifepoints": {
-        "css_class": ".lifepoints-profiler",
-        "special_styling": true,
-        "button_style": "rounded"
+    "behavioral_patterns": {
+      "typing_simulation": {
+        "enabled": true,
+        "base_speed": 0.1,
+        "speed_variation": 0.05,
+        "pause_probability": 0.1,
+        "pause_duration": [0.2, 0.5],
+        "thinking_pauses": true
       },
-      "mobiworkx": {
-        "css_class": ".mobiworkx-profiler", 
-        "special_styling": true,
-        "button_style": "squared"
+      
+      "mouse_movement": {
+        "enabled": true,
+        "human_like_curves": true,
+        "movement_speed": "medium",
+        "click_delay": [0.1, 0.3],
+        "scroll_behavior": "natural"
       },
-      "default": {
-        "css_class": ".main",
-        "special_styling": false
-      }
-    }
-  },
-  
-  "response_generation": {
-    "text_responses": {
-      "email": {
-        "domains": ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com"],
-        "username_format": "user{random_number}"
+      
+      "reading_simulation": {
+        "enabled": true,
+        "question_read_time": [2.0, 5.0],
+        "option_scan_time": [0.5, 1.5],
+        "decision_time": [1.0, 3.0]
       },
-      "phone": {
-        "format": "555-{3digit}-{4digit}",
-        "country_codes": ["+1", "+44", "+49"]
-      },
-      "names": {
-        "first_names": ["John", "Jane", "Mike", "Sarah", "David", "Lisa", "Chris", "Amy", "Tom", "Kate"],
-        "last_names": ["Smith", "Johnson", "Brown", "Davis", "Wilson", "Taylor", "Anderson", "White", "Harris", "Martin"]
-      },
-      "demographics": {
-        "age_range": [18, 65],
-        "income_ranges": ["$25,000-$35,000", "$35,000-$50,000", "$50,000-$75,000", "$75,000-$100,000"],
-        "education_levels": ["High School", "Some College", "Bachelor's Degree", "Master's Degree"]
+      
+      "response_timing": {
+        "between_questions": [1.0, 3.0],
+        "before_submit": [0.5, 1.5],
+        "page_load_wait": [2.0, 4.0],
+        "error_recovery_wait": [3.0, 6.0]
       }
     },
     
-    "selection_strategies": {
-      "random_uniform": {
-        "description": "Completely random selection",
-        "weight": 0.3
+    "question_caching": {
+      "enabled": true,
+      "cache_file": "qmee_question_cache.json",
+      "use_ai_generation": true,
+      "cache_expiry_days": 30,
+      "max_cache_size": 10000,
+      "similarity_threshold": 0.8
+    },
+    
+    "ai_integration": {
+      "primary_provider": "gemini",
+      "fallback_provider": "openai",
+      "models": {
+        "gemini": "gemini-pro",
+        "openai": "gpt-3.5-turbo"
       },
-      "weighted_realistic": {
-        "description": "Weighted towards realistic/common answers",
-        "weight": 0.5,
-        "common_answer_bias": 0.6
+      "response_style": {
+        "tone": "casual",
+        "length": "concise",
+        "authenticity": "high"
       },
-      "pattern_based": {
-        "description": "Follow consistent patterns based on previous answers",
-        "weight": 0.2,
-        "consistency_factor": 0.7
-      }
-    }
-  },
-  
-  "human_behavior": {
-    "timing": {
-      "question_read_time": [2.0, 5.0],
-      "answer_decision_time": [1.0, 3.0],
-      "click_delay": [0.1, 0.3],
-      "typing_speed": [0.05, 0.15],
-      "between_questions": [1.0, 3.0]
+      "fallback_responses": [
+        "I think this is pretty reasonable.",
+        "This seems like a good approach to me.",
+        "I'd say this is fairly accurate.",
+        "This looks about right to me.",
+        "I think this makes sense.",
+        "That's a fair point.",
+        "I can see that being true.",
+        "This feels right to me."
+      ]
     },
     
-    "error_simulation": {
-      "misclick_probability": 0.02,
-      "typo_probability": 0.03,
-      "correction_delay": [1.0, 2.0],
-      "hesitation_probability": 0.05
+    "session_management": {
+      "max_surveys_per_session": 10,
+      "max_questions_per_survey": 50,
+      "session_timeout": 1800,
+      "retry_attempts": 3,
+      "error_threshold": 5,
+      "cooldown_between_sessions": 300
     },
     
-    "interaction_patterns": {
-      "scroll_before_answer": 0.3,
-      "review_answers": 0.2,
-      "change_answer_probability": 0.05,
-      "pause_probability": 0.1
-    }
-  },
-  
-  "detection_avoidance": {
-    "user_agent_rotation": true,
-    "viewport_randomization": true,
-    "cookie_management": true,
-    "session_fingerprint_variation": true,
-    
-    "behavioral_metrics": {
-      "mouse_movement_entropy": "high",
-      "keyboard_dynamics": "natural",
-      "timing_variance": "human_like",
-      "interaction_depth": "engaged"
-    },
-    
-    "anti_detection": {
-      "webdriver_stealth": true,
-      "canvas_fingerprint_spoofing": true,
-      "webgl_fingerprint_spoofing": true,
-      "audio_fingerprint_spoofing": true
-    }
-  },
-  
-  "quality_control": {
-    "answer_validation": {
-      "check_required_fields": true,
-      "validate_format": true,
-      "ensure_logical_consistency": true
-    },
-    
-    "progress_tracking": {
-      "monitor_completion_percentage": true,
-      "track_question_types": true,
-      "log_interaction_metrics": true
-    },
-    
-    "error_handling": {
-      "max_retries": 3,
-      "retry_delay": [2.0, 5.0],
-      "fallback_strategies": ["force_click", "keyboard_navigation", "api_submission"]
-    }
-  },
-  
-  "integration": {
-    "enhanced_cursor": {
-      "enable": true,
-      "movement_style": "qmee_optimized",
-      "click_patterns": "survey_specific"
-    },
-    
-    "ai_assistance": {
-      "gemini_api": true,
-      "openai_fallback": true,
-      "response_generation": true,
-      "context_awareness": true
+    "browser_settings": {
+      "headless": true,
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      "extra_args": [
+        "--no-sandbox",
+        "--disable-blink-features=AutomationControlled",
+        "--disable-dev-shm-usage",
+        "--disable-web-security"
+      ],
+      "stealth_mode": true
     },
     
     "logging": {
-      "detailed_interactions": true,
-      "performance_metrics": true,
-      "error_tracking": true,
-      "success_analysis": true
+      "level": "INFO",
+      "log_file": "qmee_enhanced_bot.log",
+      "log_questions": true,
+      "log_answers": true,
+      "log_timing": true,
+      "log_errors": true
+    },
+    
+    "performance_tracking": {
+      "track_completion_rate": true,
+      "track_earnings": true,
+      "track_response_time": true,
+      "track_cache_efficiency": true,
+      "export_statistics": true,
+      "stats_file": "qmee_session_stats.json"
     }
   }
 }

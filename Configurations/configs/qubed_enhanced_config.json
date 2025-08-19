@@ -1,0 +1,137 @@
+{
+  "qubed_session_checks": {
+    "base_url": "https://qubed-session-checks.prod.qubed.ai",
+    "endpoints": {
+      "fingerprint": "/fingerprint/{source}",
+      "survey": "/questions/answer/survey"
+    },
+    "selectors": {
+      "question_input": "#answer-input",
+      "submit_button": "#question-form-submit-btn",
+      "question_text": ".form-card__label-h",
+      "min_length": "#min-answer-length",
+      "timings_input": "#answer-timings",
+      "question_id": "#question-id-input",
+      "source": "#source-val",
+      "questionnaire": "#questionnaire-val",
+      "form": "#form-q"
+    },
+    "fingerprint_components": {
+      "browser": ["chrome", "firefox", "safari", "edge"],
+      "os": ["windows", "macos", "linux", "android", "ios"],
+      "screen": ["resolution", "color_depth", "pixel_ratio"],
+      "fonts": ["system_fonts", "web_fonts"],
+      "canvas": ["webgl", "2d_context"],
+      "audio": ["audio_context", "oscillator"],
+      "network": ["connection_type", "effective_type"]
+    }
+  },
+  "question_caching": {
+    "enabled": true,
+    "cache_file": "qubed_question_cache.json",
+    "similarity_threshold": 0.7,
+    "max_cache_size": 10000,
+    "cache_expiry_days": 365,
+    "fuzzy_matching": true,
+    "context_weighting": 0.3
+  },
+  "ai_responses": {
+    "enabled": true,
+    "primary_provider": "gemini",
+    "fallback_provider": "openai",
+    "models": {
+      "gemini": "gemini-2.0-flash-exp",
+      "openai": "gpt-3.5-turbo"
+    },
+    "response_templates": {
+      "qmee": {
+        "why_join": [
+          "I joined Qmee to earn extra money in my spare time while helping companies improve their products and services.",
+          "I was looking for a flexible way to make money online and Qmee seemed like a great opportunity.",
+          "I heard great things about Qmee from friends and wanted to try earning rewards for sharing my opinions.",
+          "I enjoy taking surveys and wanted to monetize my time while contributing to market research."
+        ],
+        "general": [
+          "I appreciate the opportunity to share my thoughts and earn rewards.",
+          "This is a great way to make my opinions count while earning some extra income.",
+          "I find these surveys interesting and the rewards are a nice bonus.",
+          "I'm happy to help companies improve their products through my feedback."
+        ]
+      },
+      "lifepoints": {
+        "why_join": [
+          "I joined LifePoints to earn rewards while sharing my valuable opinions on products and services.",
+          "I was attracted to LifePoints because of their reputation and the variety of survey opportunities.",
+          "I wanted to make money from home and LifePoints offered a flexible way to do that.",
+          "I enjoy participating in market research and LifePoints provides great rewards for my time."
+        ]
+      }
+    },
+    "context_patterns": {
+      "registration": ["join", "sign up", "register", "new user"],
+      "feedback": ["opinion", "think", "feel", "experience"],
+      "demographics": ["age", "gender", "income", "location", "education"]
+    }
+  },
+  "typing_simulation": {
+    "enabled": true,
+    "enhanced_cursor": true,
+    "typing_speed": {
+      "min_delay": 50,
+      "max_delay": 150,
+      "variation_factor": 0.3
+    },
+    "human_behavior": {
+      "thinking_pauses": true,
+      "correction_simulation": true,
+      "natural_rhythm": true
+    },
+    "pause_patterns": {
+      "punctuation": 200,
+      "long_words": 150,
+      "thinking": 300,
+      "correction": 500
+    }
+  },
+  "panel_detection": {
+    "enabled": true,
+    "patterns": {
+      "qmee": ["qmee", "qubed", "qurated"],
+      "lifepoints": ["lifepoints", "kantar"],
+      "yougov": ["yougov", "yg"],
+      "swagbucks": ["swagbucks", "sb"]
+    },
+    "url_indicators": {
+      "qmee": ["qmee.com", "qubed.ai", "qurated.ai"],
+      "lifepoints": ["lifepoints.com", "kantar.com"],
+      "yougov": ["yougov.com"],
+      "swagbucks": ["swagbucks.com"]
+    }
+  },
+  "session_management": {
+    "fingerprint_rotation": true,
+    "session_persistence": true,
+    "cookie_handling": true,
+    "local_storage": true,
+    "session_id_generation": true
+  },
+  "error_handling": {
+    "retry_attempts": 3,
+    "retry_delay": 2000,
+    "fallback_strategies": true,
+    "graceful_degradation": true
+  },
+  "logging": {
+    "level": "INFO",
+    "file_logging": true,
+    "log_file": "qubed_bot.log",
+    "performance_tracking": true,
+    "cache_statistics": true
+  },
+  "performance": {
+    "timeout": 30000,
+    "page_load_wait": 5000,
+    "network_idle_wait": 2000,
+    "element_wait": 10000
+  }
+}

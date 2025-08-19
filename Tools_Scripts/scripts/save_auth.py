@@ -1,10 +1,11 @@
 import asyncio
+from pathlib import Path
 from playwright.async_api import async_playwright
 
 async def main():
     async with async_playwright() as p:
-        # We MUST use the same browser type (e.g., firefox) as our main bot.
-        browser = await p.firefox.launch(headless=False)
+        # Use Chromium to match the main Playwright bot
+        browser = await p.chromium.launch(headless=False)
         context = await browser.new_context()
         page = await context.new_page()
 
@@ -18,10 +19,12 @@ async def main():
         
         input() # This pauses the script, waiting for you to press Enter.
 
-        # The magic happens here: we save the browser's state to a file.
-        await context.storage_state(path="auth.json")
+        # Save storage state to the exact path expected by the main bot
+        project_root = Path(__file__).resolve().parents[2]
+        target_path = project_root / "Main_Files_to_Run" / "auth.json"
+        await context.storage_state(path=str(target_path))
         
-        print("\nAuthentication state has been saved to auth.json!")
+        print(f"\nAuthentication state has been saved to: {target_path}")
         await browser.close()
 
 if __name__ == "__main__":

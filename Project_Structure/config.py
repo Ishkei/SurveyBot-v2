@@ -209,10 +209,10 @@ class Config:
         """Validate the configuration"""
         errors = []
         
-        if not cls.GOOGLE_API_KEY and cls.SURVEY_PLATFORM != "cpx":
+        if not cls.GOOGLE_API_KEY and cls.SURVEY_PLATFORM != "cpx" and cls.BROWSER_TYPE != "enhanced_cursor":
             errors.append("GOOGLE_API_KEY not set")
         
-        if cls.BROWSER_TYPE not in ["playwright", "selenium", "undetected", "v2ray", "proxychains", "hybrid"]:
+        if cls.BROWSER_TYPE not in ["playwright", "selenium", "undetected", "v2ray", "proxychains", "hybrid", "enhanced_cursor"]:
             errors.append(f"Invalid BROWSER_TYPE: {cls.BROWSER_TYPE}")
         
         if cls.SURVEY_PLATFORM not in ["qmee", "earnhaus", "prolific", "mturk", "cpx"]:

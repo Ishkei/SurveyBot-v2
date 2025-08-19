@@ -1,0 +1,60 @@
+{
+  "8280879f58900add20947de23032917c": {
+    "question_text": "What is your age group?",
+    "question_type": "radio",
+    "answer": 1,
+    "timestamp": "2025-08-19T04:12:42.608828",
+    "usage_count": 1,
+    "metadata": {
+      "demo": true,
+      "question_index": 1
+    }
+  },
+  "d14f7a090479405c3ec264885deeba8a": {
+    "question_text": "How often do you shop online?",
+    "question_type": "radio",
+    "answer": 1,
+    "timestamp": "2025-08-19T04:12:42.609280",
+    "usage_count": 1,
+    "metadata": {
+      "demo": true,
+      "question_index": 2
+    }
+  },
+  "972390efb9aeedee9a1ef42e1bf12a0c": {
+    "question_text": "Please describe your shopping habits in detail",
+    "question_type": "text",
+    "answer": "I love shopping, it's like my therapy! I tend to browse online stores first, looking for the best deals and sales. I like to compare prices and read reviews before making a purchase. I prefer shopping in-person for clothes and shoes, trying things on is a must for me. I always have a list and budget in mind, but sometimes I can't resist a good impulse buy. Overall, I'd say I'm a pretty savvy shopper!",
+    "timestamp": "2025-08-19T04:12:46.361811",
+    "usage_count": 1,
+    "metadata": {
+      "demo": true,
+      "question_index": 3
+    }
+  },
+  "e39d2a96aee4ad75090314ba37bd7657": {
+    "question_text": "What is your annual household income?",
+    "question_type": "number",
+    "answer": 55000,
+    "timestamp": "2025-08-19T04:12:46.362256",
+    "usage_count": 1,
+    "metadata": {
+      "demo": true,
+      "question_index": 4
+    }
+  },
+  "4f9ea7ef8ab7c89612e3fc2a97069f03": {
+    "question_text": "Which brands do you trust most? (Select all that apply)",
+    "question_type": "checkbox",
+    "answer": [
+      0,
+      2
+    ],
+    "timestamp": "2025-08-19T04:12:46.362923",
+    "usage_count": 1,
+    "metadata": {
+      "demo": true,
+      "question_index": 5
+    }
+  }
+}
