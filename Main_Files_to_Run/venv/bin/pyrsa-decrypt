@@ -1,7 +1,0 @@
-#!/home/soto/SurveyBot-v2-main-python-script/Main_Files_to_Run/venv/bin/python3
-import sys
-from rsa.cli import decrypt
-if __name__ == '__main__':
-    if sys.argv[0].endswith('.exe'):
-        sys.argv[0] = sys.argv[0][:-4]
-    sys.exit(decrypt())
