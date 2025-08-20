@@ -2,7 +2,7 @@
   "about_you": {
     "full_name": "Alex Johnson",
     "email": "lf7gk70m@tressachbekele.anonaddy.com",
-    "date_of_birth": "1990-05-15",
+    "date_of_birth": "1990-05-15, May 15, 1990",
     "age": 33,
     "gender": "Male",
     "state": "California",
@@ -32,6 +32,7 @@
     "job_title": "Software Developer",
     "personal_income_before_taxes": "$50,000 - $75,000",
     "work_product_purchasing_authority": "Recommendation only",
+    "purchasing_authority": ["IT Hardware", "IT Software", "Office supplies"],
     "company_size": "Medium",
     "industry": "Technology",
     "company_revenue": "$25M"
@@ -58,6 +59,7 @@
     "home_internet_connection_type": "Cable",
     "computer_online_frequency": "Daily",
     "social_media_access_frequency": "Multiple times daily",
+    "social_media_platforms": ["Instagram", "YouTube", "Reddit", "Discord", "LinkedIn"],
     "mobile_phone_plan_type": "Unlimited"
   },
   "gaming": {
@@ -65,6 +67,9 @@
     "gaming_devices_used": ["PC", "Nintendo Switch", "Mobile"],
     "weekly_gaming_hours": "10-15 hours",
     "game_genres_played": ["RPG", "Strategy", "Indie games", "Mobile games"],
+    "game_genres_detailed": ["Role Playing Game/RPG (e.g. Final Fantasy)", "Real Time Strategy/RTS (e.g. Command & Conquer)", "3rd Person Adventure (e.g. Super Mario Galaxy)", "Puzzle (e.g. Professor Layton)", "Casual (e.g. Facebook games)"],
+    "monthly_game_purchases": "1 to 2 games",
+    "gaming_play_style": ["Alone", "With others through an Internet connection"],
     "online_gaming_habits": "Casual gamer, plays with friends occasionally",
     "gaming_platforms_used": ["PC", "Nintendo Switch", "Mobile"],
     "online_multiplayer_gaming": "Yes"
@@ -76,6 +81,7 @@
     "glasses_or_contacts_usage": "Glasses",
     "hearing_aid_usage": "No",
     "personal_diagnosed_illnesses": ["Seasonal allergies", "Mild anxiety"],
+    "diagnosed_conditions": ["Allergies (not associated with Hay Fever)", "Mild anxiety", "Occasional back pain"],
     "household_diagnosed_illnesses": ["None"],
     "diagnosed_ailments_self_or_care_recipient": ["Seasonal allergies"],
     "neurologic_nervous_conditions_self_care": ["None"],
@@ -113,11 +119,15 @@
     "weekly_tv_hours": "5-8 hours",
     "weekly_radio_hours": "1-2 hours",
     "gambling_participation": "Never",
-    "publications_read": ["TechCrunch", "Wired", "The Verge", "Reddit", "Stack Overflow"]
+    "publications_read": ["TechCrunch", "Wired", "The Verge", "Reddit", "Stack Overflow"],
+    "morning_routine": "I start every morning by checking my email and reviewing my daily coding tasks while having a cup of coffee."
   },
   "automotive": {
     "car_ownership": "Yes",
-    "vehicle_type": "Sedan",
+    "car_ownership_status": "Owned, Yes",
+    "drivers_license": "Yes",
+    "vehicle_type": "Mid Size",
+    "vehicle_type_details": "Sedan (e.g. Mazda 6)",
     "vehicle_condition": "Used",
     "vehicle_year": "2018",
     "household_purchase_influence": "Primary decision maker",
@@ -135,8 +145,8 @@
     "children": "0",
     "children_details": [],
     "household_size": "1",
-    "living_situation": "Apartment",
-    "home_value": "N/A (renting)",
+    "living_situation": "Apartment, Owned Apartment",
+    "home_value": "$50,000 - $75,000 (renting), $100,000 - $150,000 (owning)",
     "household_income": "$50,000 - $75,000",
     "household_income_range": "$50,000 - $75,000",
     "household_investable_assets": "$10,000 - $49,999",
