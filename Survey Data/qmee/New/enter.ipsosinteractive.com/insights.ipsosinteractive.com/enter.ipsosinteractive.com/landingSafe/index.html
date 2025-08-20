@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:wicket="http://wicket.sourceforge.net/"
+  xmlns:fb="http://www.facebook.com/2008/fbml"
+  xmlns:wb="http://open.weibo.com/wb"
+>
+  <head>
+    <script
+      type="text/javascript"
+      src="//entercdn.ipsosinteractive.com/wicket/resource/org.apache.wicket.resource.JQueryResourceReference/jquery/jquery-3.7.1-ver-1750155335000.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//entercdn.ipsosinteractive.com/wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/res/js/wicket-ajax-jquery-ver-1750155335000.js"
+    ></script>
+    <script type="text/javascript" id="wicket-ajax-base-url">
+      /*<![CDATA[*/
+      Wicket.Ajax.baseUrl =
+        "landingSafe/?p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&amp;rType=350&amp;id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512";
+      /*]]>*/
+    </script>
+
+    <title>Surveys</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="144x144"
+      href="//entercdn.ipsosinteractive.com/assets/ico/apple-touch-icon-144-precomposed.png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="//entercdn.ipsosinteractive.com/assets/ico/favicon.png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="//entercdn.ipsosinteractive.com/assets/ico/favicon.ico"
+    />
+    <link
+      href="//entercdn.ipsosinteractive.com/assets/css/libs.css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      href="//entercdn.ipsosinteractive.com/assets/css/styles072.css"
+      rel="stylesheet"
+      media="screen"
+    />
+
+    <link
+      href="//entercdn.ipsosinteractive.com/assets/css/styleDevelopers007.css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      href="//entercdn.ipsosinteractive.com/assets/css/styleScreening.css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      href="//entercdn.ipsosinteractive.com/assets/css/latin-font.css"
+      rel="stylesheet"
+      media="screen"
+    />
+
+    <!--[if lt IE 9]>
+      <script src="//entercdn.ipsosinteractive.com/assets/js/html5shiv.js"></script>
+    <![endif]-->
+    <!--[if lt IE 10]>
+      <script src="//entercdn.ipsosinteractive.com/assets/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="//entercdn.ipsosinteractive.com/assets/js/modernizr.animations.js"></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/jquery-ui-widgets.min.js"></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/bootstrap.min.js"></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/bootstrap-select.min.js"></script>
+    <script
+      defer=""
+      src="//entercdn.ipsosinteractive.com/assets/js/fontawesome-all.min.js"
+    ></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/masonry.pkgd.min.js"></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/loading.js"></script>
+    <script type="text/javascript">
+      /*<![CDATA[*/
+
+      $(function () {
+        // Avoid problems with input and keyboard on header
+        if (/iPhone|iPod|iPad/i.test(navigator.userAgent)) {
+          $(document).on("focus", "input, textarea", function () {
+            $(".navbar-fixed-top").css("position", "absolute");
+          });
+          $(document).on("blur", "input, textarea", function () {
+            $(".navbar-fixed-top").css("position", "fixed");
+          });
+        }
+      });
+
+      /*]]>*/
+    </script>
+    <script
+      defer=""
+      src="//entercdn.ipsosinteractive.com/assets/js/bowser.min.js"
+    ></script>
+    <script
+      defer=""
+      src="//entercdn.ipsosinteractive.com/assets/js/ie-detection.js"
+    ></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/lottie/lottie-player.js"></script>
+    <script type="text/javascript" id="id17Script">
+      /*<![CDATA[*/
+      var already_submited = false;
+      window.io_global_object_name = "IGLOO";
+      window.IGLOO = {
+        install_flash: false,
+        bb_callback: function (bb, complete) {
+          var blackboxOK = document.getElementById("blackbox");
+          if (blackboxOK) {
+            blackboxOK.value = bb;
+          }
+          var blackboxFull = document.getElementById("blackboxFull");
+          if (blackboxFull) {
+            blackboxFull.value = complete;
+          }
+          if (complete) {
+            if (already_submited == false) {
+              document.getElementById("submitIOV").click();
+              already_submited = true;
+            }
+          }
+        },
+        loader: { tp_host: "https://mpsnare.iesnare.com", version: "general5" },
+      };
+      function iosjNoResponse() {
+        if (already_submited == false) {
+          document.getElementById("submitIOV").click();
+          already_submited = true;
+        }
+      }
+      function doIOV() {
+        setTimeout(iosjNoResponse, 5000);
+      }
+      /*]]>*/
+    </script>
+    <script
+      type="text/javascript"
+      defer="defer"
+      src="//entercdn.ipsosinteractive.com/assets/js/iovation.js"
+    ></script>
+    <script
+      type="text/javascript"
+      defer="defer"
+      src="/assets/js/bowser.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      defer="defer"
+      src="/assets/js/ie-detection.js"
+    ></script>
+    <script type="text/javascript">
+      /*<![CDATA[*/
+      Wicket.Event.add(window, "domready", function (event) {
+        Wicket.Ajax.ajax({
+          u: "./?1-1.0-browserDetectionForm-submitBrowserDetection&p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&rType=350&id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512",
+          m: "POST",
+          c: "submitBrowserDetection",
+          f: "browserDetectionForm",
+          sc: "submitBrowserDetection",
+          e: "click",
+          pd: true,
+        });
+        $(detectAndSubmit);
+        Wicket.Ajax.ajax({
+          u: "./?1-1.0-browserNoIEOrRiskAcceptedForm-submitNoIEOrRiskAccepted&p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&rType=350&id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512",
+          m: "POST",
+          c: "submitNoIEOrRiskAccepted",
+          f: "browserNoIEOrRiskAcceptedForm",
+          sc: "submitNoIEOrRiskAccepted",
+          e: "click",
+          pd: true,
+        });
+        $(
+          detectIEAndSubmit(
+            "You\u2019re using Internet Explorer, which is a web browser we don\u2019t support. Please try another web browser for a better experience!"
+          )
+        );
+        Wicket.Ajax.ajax({
+          u: "./?1-1.0-iovForm-submitIOV&p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&rType=350&id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512",
+          m: "POST",
+          c: "submitIOV",
+          f: "iovForm",
+          sc: "submitIOV",
+          e: "click",
+          pd: true,
+        });
+        $(doIOV);
+        Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
+      });
+      /*]]>*/
+    </script>
+  </head>
+  <body class="screening-body">
+    <div></div>
+    <form
+      id="browserDetectionForm"
+      method="post"
+      action="./?1-1.-browserDetectionForm&amp;p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&amp;rType=350&amp;id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512"
+    >
+      <div id="browserDetectionForm_hf_0" hidden="" class=""></div>
+      <input type="hidden" name="browserName" id="browserName" value="" />
+      <input type="hidden" name="browserType" id="browserType" value="" />
+      <input type="hidden" name="browserMajor" id="browserMajor" value="" />
+      <input type="hidden" name="browserMinor" id="browserMinor" value="" />
+      <input type="hidden" name="browserVersion" id="browserVersion" value="" />
+      <input type="hidden" name="platform" id="platform" value="" />
+      <button
+        id="submitBrowserDetection"
+        type="button"
+        style="display: none"
+      ></button>
+    </form>
+    <form
+      id="browserNoIEOrRiskAcceptedForm"
+      method="post"
+      action="./?1-1.-browserNoIEOrRiskAcceptedForm&amp;p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&amp;rType=350&amp;id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512"
+    >
+      <div id="browserNoIEOrRiskAcceptedForm_hf_0" hidden="" class=""></div>
+      <button
+        id="submitNoIEOrRiskAccepted"
+        type="button"
+        style="display: none"
+      ></button>
+    </form>
+    <form
+      id="iovForm"
+      method="post"
+      action="./?1-1.-iovForm&amp;p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&amp;rType=350&amp;id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512"
+    >
+      <div id="iovForm_hf_0" hidden="" class=""></div>
+      <input type="hidden" name="blackbox" id="blackbox" value="" />
+      <input type="hidden" name="blackboxFull" id="blackboxFull" value="" />
+      <input
+        type="hidden"
+        name="javascriptError"
+        id="javascriptError"
+        value=""
+      />
+      <button id="submitIOV" type="button" style="display: none"></button>
+    </form>
+
+    <div id="header" class="cortex-header">
+      <nav id="navbar" class="navbar" role="navigation"></nav>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-xs-12 col-sm-10 col-md-8 col-lg-7"
+              style="margin: 0 auto; float: none"
+            >
+              <div class="panel panel-default" style="height: 100%">
+                <div class="row">
+                  <div class="col-md-4 text-center padding-right-none">
+                    <img
+                      alt="Survey"
+                      src="/assets/img/animated/loading-survey_panelone_350x350.gif"
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <h1
+                      class="h3 margin-top-sm margin-bottom-xxs padding-top-xs"
+                    >
+                      All set! Ready to start?
+                    </h1>
+                    <p class="text-soft-light margin-top-sm loading-dots">
+                      We would like to ask you some questions that cover a range
+                      of topics to check if you qualify for an available survey.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img
+      id="ajaxLoadingImage"
+      src="//entercdn.ipsosinteractive.com/assets/img/ajax-loader-small.gif"
+      class="ajaxIndicator ajaxIndicatorHidden"
+      style="display: none"
+    />
+    <script type="text/javascript">
+      /*<![CDATA[*/
+
+      var indicator = $("#ajaxLoadingImage");
+      try {
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutationRecord) {
+            if (indicator.css("display") === "none")
+              indicator.addClass("ajaxIndicatorHidden");
+            else indicator.removeClass("ajaxIndicatorHidden");
+          });
+        });
+        observer.observe(indicator[0], {
+          attributes: true,
+          attributeFilter: ["style"],
+        });
+      } catch (ex) {
+        indicator.hide();
+        indicator.removeClass("ajaxIndicatorHidden");
+      }
+
+      /*]]>*/
+    </script>
+
+    <footer id="footer" class="cortex-footer">
+      <hr />
+      <div class="container container-secondary">
+        <div class="row">
+          <div
+            class="col-xs-12 col-sm-10 col-sm-push-2 col-md-11 col-md-push-1"
+          >
+            <div class="row fixed-padding">
+              <ul class="list-inline">
+                <li>
+                  <a
+                    target="_blank"
+                    href="https://cdn.ipsosinteractive.com/deploy/i-say/ppamp/en-us.html"
+                    ><span>Privacy Policy </span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="row fixed-padding"></div>
+          </div>
+          <div
+            class="col-xs-12 col-sm-2 col-sm-pull-10 col-md-1 col-md-pull-11 text-center"
+          ></div>
+        </div>
+      </div>
+    </footer>
+
+    <div></div>
+    <script
+      type="text/javascript"
+      src="//entercdn.ipsosinteractive.com/assets/js/clientCapabilitiesV4.js"
+    ></script>
+    <script type="text/javascript">
+      /*<![CDATA[*/
+
+      var processingDoneIOV = { iov: 0 };
+
+      /*]]>*/
+    </script>
+
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+      integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+      data-cf-beacon='{"rayId":"971fda904f744286","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"0d4ffb79b2134bbdb129c3b006f6ba87"}'
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

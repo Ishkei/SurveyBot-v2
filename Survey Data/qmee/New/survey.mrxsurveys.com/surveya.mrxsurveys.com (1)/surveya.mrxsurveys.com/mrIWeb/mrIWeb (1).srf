@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta http-equiv="Content-Language" content="en-US"/><meta http-equiv="Expires" content="-1"/><meta http-equiv="Pragma" content="no-cache"/><meta name="Robots" content="noindex, nofollow"/><meta name="Generator" content="Interviewer Server HTML Player 1.0.23..101"/><meta name="Template" content="Layout_Template_BV_qs.htm"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<meta http-equiv="cache-control" content="no-store"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+		<meta name="theme-color" content="#3498db"/>
+		<meta name="msapplication-navbutton-color" content="#3498db"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<link rel="shortcut icon" type="image/png" href="https://big-village.imgix.net/2022/06/cropped-Big_Village_Monogram_512x512px.png"/>
+		<!--base id="orcbase" href="https://survey.mrxsurveys.com/" /-->
+		<title>Big Village</title>
+		<link rel="stylesheet" type="text/css" href="https://survey.mrxsurveys.com/orc/bootstrap/css/bootstrap.css"/>
+		<!--  *********************************************font include files*****************************************************  -->
+		<link rel="stylesheet" type="text/css" href="https://survey.mrxsurveys.com/orc/common/fonts/Fixture/stylesheet.css"/>
+		<link rel="stylesheet" type="text/css" href="https://survey.mrxsurveys.com/orc/common/fonts/emojisymbolsfont/font/EmojiOne_stylesheet.css"/>
+		<link rel="stylesheet" type="text/css" href="https://survey.mrxsurveys.com/orc/default/css/font-awesome.css?6a8536?ver=4.4" media="all"/>
+		<!--[if IE 7]><link rel="stylesheet" type="text/css" href="https://survey.mrxsurveys.com/orc/default/css/font-awesome-ie7.css?v4.4" media="screen" /><![endif]-->
+		<!--  *************************************jQuery and jQuery UI include files*********************************************  -->
+		<script type="text/javascript" src="https://survey.mrxsurveys.com/orc/common/javascript/jquery/jquery-3.4.1.min.js"></script>
+		<link rel="stylesheet" href="https://survey.mrxsurveys.com/orc/DimTemplate/CSS/jQueryUI/jquery-ui.min.css"/>
+		<link rel="stylesheet" href="https://survey.mrxsurveys.com/orc/DimTemplate/CSS/jQueryUI/jquery-ui.structure.min.css"/>
+		<link rel="stylesheet" href="https://survey.mrxsurveys.com/orc/DimTemplate/CSS/jQueryUI/jquery-ui.ORCtheme.min.css"/>
+		<script type="text/javascript" src="https://survey.mrxsurveys.com/orc/common/javascript/library/jquery-ui-1.12.1.min.js"> jQuery UI </script>
+		<!--  ****************************************main template include files*************************************************  -->
+		<link rel="stylesheet" type="text/css" href="https://survey.mrxsurveys.com/orc/DimTemplate/CSS/layout.css"/>
+		<link rel="stylesheet" type="text/css" href="https://survey.mrxsurveys.com/orc/DimTemplate/CSS/theme.asp?name=BigVillage"/>
+		<!--  ****************************************any other CSS files for use*************************************************  -->
+		<link rel="stylesheet" type="text/css" href="https://survey.mrxsurveys.com/orc/default/animate/animate.min.css"/>
+		<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
+		<!-- <script src="https://survey.mrxsurveys.com/orc/DimTemplate/JS/modernizr-ORC.js"></script> -->
+	</head>
+	<body style="display:none;">
+		<form name="mrForm" id="mrForm" action="/mrIWeb/mrIWeb.srf" method="post"><input type="hidden" name="I.Engine" value="engine24"/><input type="hidden" name="I.Project" value="US3005468P"/><input type="hidden" name="I.Session" value="xskcepminzre2chtm2jwj26a36sq3aaa"/><input type="hidden" name="I.SavePoint" value="TERM_TEXT"/><input type="hidden" name="I.Renderer" value="HTMLPlayer"/><input type="hidden" name="I.ShowOnly" value="true"/><!-- trying to let page load before showing body. -->
+			<div class="container">
+				<div class=" Top_Banner col-md-12">
+					<div id="header" class="container">
+						<div class="orgLogo"></div>
+						<h1 class="hidden-xs"></h1>
+					</div>
+					<span id="respidxx" style="display:none;"><div></div>
+						<span class="mrBannerText" style="">68a585de-7340-a6ef-e812-67e468ca4498</span>
+						<br/>
+					</span>
+					<span id="projectidx" style="display:none;"><div></div>
+						<span class="mrBannerText" style="">US3005468P</span>
+						<br/>
+					</span>
+				</div>
+				<!--<div id="hiddenprog">
+			 <mrProgressBar ShowCounts="AsPercentage"/>
+			<span id="prevProg"><mrBannerText Name="OldProg"></mrBannerText></span> 
+			
+		</div>-->
+				<!-- <div id="shownprog" class="animated col-md-12">
+			<div class="number-pb">
+				<div class="number-pb-shown"></div>
+				<div class="number-pb-num"></div>
+			</div>
+		</div> -->
+				<div class="col-md-10 col-md-offset-1 col-xs-12" id="surv">
+					<div class="row">
+						<div class="col-md-8 col-xs-12"><span id="lftHeader"> </span></div>
+						<div class="col-md-2 col-xs-6"><span id="cntHeader"> </span></div>
+						<div class="col-md-2 col-xs-6"><span id="rhtHeader"> </span></div>
+					</div>
+					<input type="text" name="SurveyID" id="SurveyID"/>
+					<input type="text" name="PanelistID" id="PanelistID"/>
+					<input type="text" name="ClientID" id="ClientID"/>
+					<div class="row Question">
+						<div class="col-md-12 col-xs-12 QuestionBanner">
+						</div>
+						<div class="col-md-12 col-xs-12 QuestionError">
+						</div>
+						<div class="col-md-12 col-xs-12 QuestionLabel">
+							<div></div>
+							<span class="mrQuestionText" style="">We are sorry, but you are not eligible to participate in this particular study. We appreciate your interest and hope that you will participate in future studies. Thank you!</span>
+						</div>
+						<div class="col-lg-offset-1 col-lg-11  col-md-offset-1 col-md-11 col-xs-12 QuestionControls DefaultControls">
+							<div></div>
+							<span style=""></span>
+						</div>
+					</div>
+					<div class="row" id="navs">
+						<div id="nav-Next" class="NavButtons Nav_Next pull-right col-md-2  col-xs-offset-2 col-xs-5"><span id="orcNext" class="orcButton"><span id="nextText"></span>
+								<span class="fa-chevron-right"></span></span><input type="submit" name="_NNext" class="mrNext" style="background-color: #999999;color: #ffffff;width: 10em;font-size: 10pt;border-style: Double;" value="Next" alt="Next"></input>
+						</div>
+						<div id="nav-Prev" class="NavButtons Nav_Prev pull-left col-md-2 col-xs-5"><span id="orcPrev" class="orcButton" style="display:block;"><span class="fa-chevron-left"></span>
+								<span id="prevText"></span></span></div>
+						<div id="nav-GoTo" class="NavButtons col-md-6 col-xs-2">  </div>
+						<!--<div id="nav-Stop" class="NavButtons Nav_Stop col-md-2  col-xs-5"><mrNavButton Name="Stop" /></div> -->
+					</div>
+				</div>
+				<div class="row" id="foot">
+					<div id="footer" class="col-md-12 col-xs-12">
+						<a href="https://big-village.com/privacy-policy/" onclick="popup('https://big-village.com/privacy-policy/'); return false;">Privacy</a> | 
+				<a href="https://survey.mrxsurveys.com/orc/default/orc_help.htm" onclick="popup('https://survey.mrxsurveys.com/orc/default/orc_help.htm'); return false;">Help</a>
+					</div>
+				</div>
+			</div>
+		</form></body>
+	<script type="text/javascript" src="https://survey.mrxsurveys.com/orc/DimTemplate/JS/Web_Template.js"></script>
+	<!--  ****************************************hacks for old versions of IE************************************************  -->
+	<!--[if lt IE 9]> <script src="https://survey.mrxsurveys.com/orc/DimTemplate/JS/checked-polyfill.min.js"></script> <![endif] -->
+	<!--[if lt IE 9]> <script src="https://survey.mrxsurveys.com/orc/DimTemplate/JS/ie8check.js"></script> <![endif] -->
+	<script type="text/javascript" src="https://survey.mrxsurveys.com/orc/common/javascript/QualityScore/qs_api.js"> QualityScore API</script>
+</html>

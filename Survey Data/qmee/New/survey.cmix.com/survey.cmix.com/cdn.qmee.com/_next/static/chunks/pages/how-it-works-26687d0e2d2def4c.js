@@ -1,0 +1,325 @@
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [1640],
+  {
+    58879: function (e, A, t) {
+      (window.__NEXT_P = window.__NEXT_P || []).push([
+        "/how-it-works",
+        function () {
+          return t(13487);
+        },
+      ]);
+    },
+    13487: function (e, A, t) {
+      "use strict";
+      t.r(A),
+        t.d(A, {
+          default: function () {
+            return D;
+          },
+        });
+      var i = t(85893),
+        n = (t(67294), t(4298)),
+        o = t.n(n),
+        a = t(84646),
+        s = t(39414),
+        r = t(80933),
+        h = t(10026),
+        g = t(20298),
+        m = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_1.f1f121b2.png",
+          height: 931,
+          width: 1160,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAtUlEQVR42mP4z8DAeKfWnfHwwiwmBiDwv1gqanu5SDH7ZC4HAwjsmx8HlIAA9cv5xi1nennjTtbK5u8PY2WAgZRj+aym1ycqT9wwld/jYrmO/bVySwYguFViy8jQdLSG1edWW1Ll7fqC7Fv9PvHn6oRFzmXqZG2NYINov9DNk367qXzDg4Jkh1ttBQxAsHnDWr7rK3chrHC81KzId6klLu5Sh/T/Hf9Zrl4+yvF29Xym/wwMjAD+dUNWKh3//wAAAABJRU5ErkJggg==",
+        },
+        d = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_2.fe9d9f3a.png",
+          height: 1147,
+          width: 1147,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAA3UlEQVR42m3KsUoDURAF0Adq5Rdom8bS1kb/wW+wtrTxAyysLCzUyg/Q0io2lipCYoISRIUFC1eTMC+zb+fN7LvZLGyXC3cYLscddA/Xt4bHe25JsixbcZP85z6n/E9ifBCR27qXzHxGRDuNApBVVQKHAqEsm0ZVePIXLRixBXhhFYs6DT6igjz2n1P/7fVmAT6CSQ2KpMnAMUBN7d9PoGZXDglfrAVepkMM6NN6NKLfME5SygIeuQh0zD/tW356gojO9ffddm/8fm5q3VnBu64NDdxm82y41fqutfscqgmuO5ZDFzoAAAAASUVORK5CYII=",
+        },
+        c = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_2_en-gb.ab7a4b91.png",
+          height: 1147,
+          width: 1147,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAA20lEQVR42m2Kq04DQRiFJwEUb4CtAYfFwDvwDGgcCo3DIBCA4gHAYopBAiFQ2kAaAiSbINiml5n+O/0vO6fbTdb1S87JycnnDtqH65u94z23hCzLVtwo/7vPfT5gkQdmvq1ySURn3vud2gKQlWUCxQJxNqsjqgg+XDRCnywiMCmb6DgGQZn4sfOcOh/vNwvhKxojcJE0GUgirGJEE6jplUPCD2mBl3EPXf9tr77v/+MwKStE9cgJ0LLwtG/56QkErevfu+234ee5iranBe26Bt91G/XYcqtVrzX/HK0trk9pS9LRAAAAAElFTkSuQmCC",
+        },
+        u = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_2_de-de.d4c134a4.png",
+          height: 1090,
+          width: 1147,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAA7ElEQVR42jWOO0pDURiEfxHBStBSrLMCC3sbd+EebO0iCIq4AVsrq5RW6ZUoQYkx3EQMiSHmdXPP+3XP5KTIV3wDwxRDnaxxVhvUb0d8cuyEPhxPx3tEtEWJVvtrmyTL+1orWGudMaZI2VdKjbzz57QGQGa9w5IXkEqhEBxpiOHfsFa9uaoQIjIVNKTTpY+hZEYEBNj37ya6v706AfjRwWJuGFQwYE7AeFsWkiMi3lNyS3iJt7xpP1lv0Vi2B/96ng45WOcuSAAHMX8+xeSyCmD/uvNYeZ193AUfnrgUJ7Sh+0JHtOaBdpN3Nv0KrAm7zFUiilQAAAAASUVORK5CYII=",
+        },
+        l = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_2_fr-fr.ce322e1b.png",
+          height: 1090,
+          width: 1147,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAA7UlEQVR42jXIPUoDURiF4U9EsBK0FOuswMLexl24B1u7CIIibsDWykZLG+2VKEExMUwihtGQhCSTuf/3u3fmZFLkKd4DhzpJ4+g+fbocyPE+K7s7nAy3iGiNKq12a520yPrOWXjv2TmXV9s31g4Ch2NaApBwDJgrAW0MciXBzPj7Tx/qF2c1QolERwsTbBHLWAinIgr49+8mur+9ZwLwY6PHzEnY6CBYwQVf5EaiBK6p6pcKGm9Z03+K3qwxb6cjM/XsGJ75hBSwU2aPhxif1gFsn3dua6+Tj6sY4p3U6oBWui+0R0s3tFl1Y/UvALsBu+IuSjWgAAAAAElFTkSuQmCC",
+        },
+        w = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_3.8064de37.png",
+          height: 944,
+          width: 1098,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAA2klEQVR42k3Lu04CQRiG4T/xAoyJrTegjRdgZSgt7GzobEy0sDAxNCY29vZegAmHiwAqAgUBQgLhTBhm2eUwuzPsMDv7sYSGp35fOrDWZhADchtoRDESLToF4HukOGq8pAeiDx1KFjvP16fBVycYI8+Kuuv3gSgagt2868lFElXpbqLm/yY0mG24iQ2wM0r407f0cW88vYwkyy2DNbj0rDASnlzhp/znPxY+Xilx5obr36bfQ2lV31VEG65w1Wc2w6+y6Qc6gMV56MmUYuJeuyq1cJxbIrokItoDbWiS8dXoMxcAAAAASUVORK5CYII=",
+        },
+        p = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_3_en-gb.f3868c70.png",
+          height: 944,
+          width: 1106,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAA2ElEQVR42k3OP2vCQBzG8R99AV26OnRrx65di9Cx0KFLu5Z2LLQFBUdXX4Gzi+KbMJsiiAgOgsG/8RJjzHl3XnImj4oIfubngS8dJUnyhxSQW6GxS3HQpUsACmPlou1akc1tRFrOUvZ2fznID8QYdacRDTY2sDM2nMxPNLm9I2rR40g5FaMN5iEzqQFiI7mYfr2f7t3X76GYVldiDab8hBsJXwQoWuXwpf77SQdXng5KPTGEFXTiJu/DCz31X8stMrWP53PDtfZlVjn8KV6qrMvYAxHdEBHtAT/fkoqCz+8CAAAAAElFTkSuQmCC",
+        },
+        y = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_3_de-de.832d9f03.png",
+          height: 944,
+          width: 1044,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAA20lEQVR42k3KvWrCUBgG4G/q0qkdO/UCuvYGipQOHUvp3CvoXuiQxdK5iCBugpMKit6AuAmiCAqCoPgXE+JJTI45x3x5TQbBZ34oxcwGGAgOvmYdIQakAm7pDMDfTJromm09EeMkSma3+XIZfifBHLV1W/fdERBxCNvIRnNKUu/heXWwqqwYS7E5xsc4BbEpGABdEw0/fxbSrFt7B5Z02FYCgZYodivqo/FdosSVo9z80J+isxvojhjEQnlhrvXv3ZffspRChJvQDjJy7T2FWz8jXf/x/ev1jojoBBzrnH5iptuWAAAAAElFTkSuQmCC",
+        },
+        f = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_3_fr-fr.e3b0029c.png",
+          height: 944,
+          width: 1044,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAA3ElEQVR42k3KvWrCUBiH8Xfq0qkdu/QOuvUGSikdOpbSuVfQXXDIojiLOOgmOOmg6A3oqEhABEUHRZT4lZyYnOScnJO/ySD4W57loZTW2kAM+IEnoZHiAfBIVwAKS77D0OrLOZsmI9fa6XzeDvmZv0Jz25OmMwGUDnEwcmpFyTR6+dgE+6bkAhtmRVGo4khFYFbVAOieaPyXXXOrdfRs7PlJHwUDlwEqg4b4bWdqlLg7CVYenxfo26bs2WbsCDcsdYvuc/07RykoPIQH/51v3TexS8q815//ryciogsd5px2k5SU6wAAAABJRU5ErkJggg==",
+        },
+        x = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_4.3c33cc19.png",
+          height: 956,
+          width: 1160,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAAvklEQVR42mN499RN7d9zw1CfG60iTrfbUzxutqkxAIHb5RY1t+utzAz//zMwbbmf4+V6p/246622aW532k+43WrzcjvXJOl2s42dAQTUb3dOA+qID2BgEHbbW+sCVLyLAQZ8TzTIeN1vX+a+qiLCm8FczaMyRwOoYIPb8QY2BhDwqMllcr3dHgQ07jxQMBJIHwHy5zMAgdvtdlYGGAAKervebZ/lerutAOgWHQYgANKMEFOe9jIxoAGvZ31gSQB1/U3JlEj4GgAAAABJRU5ErkJggg==",
+        },
+        b = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_5.bb606964.png",
+          height: 958,
+          width: 1160,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAA6klEQVR42mMAAZ7rk3mqrs7jYACCY2fPe3/5/8u7ujg3nYGBwZDx/3M5ZQaGR78Z+ee+vfbEup3/3z9WflbuVdc/vbU/cfHKGobr/2ezMezdwe19rTvu/Y/PP369fPX//bM3/8HgzWs7ZiHhilqT33y7Fj3Q6ukwlnj1g5XZ7icn8/uf505xsL55b8bIMOmmzTS9i9v+Cz9iDZHyeX/2yUOhgx8usfMwcjFk6kfnMDHkqR/5KbIhmoOVaz2XkMJJXgHBS08eXmeQYxR4LczHv4ihc+1uFgYk8P//f+bY/giHIycP6v3//58ZAG01aJ/VB+YIAAAAAElFTkSuQmCC",
+        },
+        E = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_5_en-gb.2e75675e.png",
+          height: 961,
+          width: 1160,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAA6klEQVR42mMAg+uTeaquzuJkAIJjZ855ff7/06e2ND8VyNVn/P9MUYWB4f5vRqEFr689NG/h//+fnZ+NZ9WVty8dTly8vI7h+f9ONoZja7k8r3XEvf/x6efPl6/+v3v2+j8Q/Pv/7q0NM5dwY7XxN5Fdix9o93QYS776wcps94uT5cPPc6c5WF+/M2NpZhA5ME320rcpIg/3vPrA/O7sk0c/D324KMDDyMWQqR89k4khT/3QT9H1kZysXBu5hBTO8AoIXH786DqDLKPAayE+/oUMXWt3szAggf///zPH9Uc6Hjl5UP/////MABYuau8GOPW/AAAAAElFTkSuQmCC",
+        },
+        U = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_5_de-de.9603c111.png",
+          height: 942,
+          width: 1089,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAA8klEQVR4nAHnABj/AeTWeANwARgSRPsa60oTNwDq7/RkMSsq2mJMRzqhtbq6Af/qADoBFQDLr+LBNi77G4oO+PTCAwsWy+j99TjC1tmVAYLO/Qp+4YUdqTc7bVMWP2v66OoA/AsOAA0OCgAA4N4+AYGYxP3UEw7YqxAUOf48Eb7wAPss+f399wPLyRASDBPVAWSxvo4+F9xxARb/7U8NSgag3LwI5fjqBQoEDvx1N2ZeAQD/AAOR0G14IxdOKUsZRAei0q0sxM+6KEQpSN9WNlElAVUA/wFf3oT/CRY4ABj8JwDX3NYMrr+aN3xMguMpKCvcxFJk94ThEAkAAAAASUVORK5CYII=",
+        },
+        k = {
+          src: "https://cdn.qmee.com/_next/static/media/how_it_works_img_5_fr-fr.39268caf.png",
+          height: 942,
+          width: 1089,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAA8klEQVR4nAHnABj/AeTWeANwARgSRPsa60oTNwDq7/RkMSsq2mJMRzqhtbq6Af/qADoBFQDLr+LBNi77G4oO+PTCAwsWy+j99TjC1tmVAYLO/Qp+4YUdqTc7bVMWP2v66OoA/AsOAA0OCgAA4N4+AYGYxP3UEw7YqxAUOf48Eb7wAPss+f399wPLyRASDBPVAWSxvo4+F9xxARb/7U8NSgag3LwI5fjqBQoEDvx1N2ZeAQD/AAOR0G14IxdOKUsZRAei0q0sxM+6KEQpSN9WNlElAVUA/wFf3oT/CRY4ABj8JwDX3NYMrr+aN3xMguMpKCvcxFJk94ThEAkAAAAASUVORK5CYII=",
+        },
+        v = t(80626),
+        R = t(51538),
+        Q = t(81673),
+        C = function () {
+          var e = (0, h.Z)();
+          return (0, i.jsxs)("main", {
+            className: "fadedPageBg",
+            children: [
+              (0, i.jsx)(o(), {
+                type: "text/javascript",
+                src: "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js",
+              }),
+              (0, i.jsx)(v.Z, {
+                mobileColumnOrderSwapped: !0,
+                isFirstRow: !0,
+                leftColumn: (0, i.jsxs)(i.Fragment, {
+                  children: [
+                    (0, i.jsx)(a.Z, {
+                      component: "h1",
+                      children: "How do paid surveys work?",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "h2",
+                      children: "What is a paid survey site?",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "Paid surveys are a fast and convenient side hustle for students, parents, or anyone who wants to add a little extra money into their account!",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "To get started, you just need to answer a few simple questions about yourself - you'll then start being matched with paid surveys that are right for you. After completing surveys, you'll receive cash rewards for the time spent sharing your opinions!",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "It's super easy to get started - you'll be getting your voice heard (whilst topping up your piggy bank!) in no time.",
+                    }),
+                  ],
+                }),
+                rightColumn: (0, i.jsx)(r.Z, {
+                  src: m,
+                  alt: "What is a paid survey site?",
+                }),
+              }),
+              (0, i.jsx)(v.Z, {
+                rightColumn: (0, i.jsxs)(i.Fragment, {
+                  children: [
+                    (0, i.jsx)(a.Z, {
+                      component: "h2",
+                      children: "How to make money online with paid surveys?",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "Qmee is a free browser site and mobile app where you can earn real money for taking paid surveys. With no investment beforehand, you just need to tell us a bit about yourself to start being matched with surveys on Qmee.",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "With the Qmee mobile app, you can take surveys for cash anytime, anywhere - earn cash online from your phone, or make money whilst relaxing at home! Share your opinions with fun and engaging online surveys, and you'll get a cash reward for each one you complete.",
+                    }),
+                  ],
+                }),
+                leftColumn: (0, i.jsx)(r.Z, {
+                  src: e({ global: d, "en-gb": c, "de-de": u, "fr-fr": l }),
+                  alt: "How to make money online with paid surveys?",
+                }),
+              }),
+              (0, i.jsx)(v.Z, {
+                mobileColumnOrderSwapped: !0,
+                leftColumn: (0, i.jsxs)(i.Fragment, {
+                  children: [
+                    (0, i.jsx)(a.Z, {
+                      component: "h2",
+                      children: "Does Qmee have a minimum withdrawal amount?",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "The simple answer? No! There's no minimum withdrawal amount with Qmee.",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "When you complete surveys, Qmee adds your rewards to your piggy bank in real time. One of our top rated features is that you can withdraw your earnings at any time - meaning you're always in control of your rewards!",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "A no minimum cashout amount isn't something that all paid survey sites have, making Qmee one of the best ways to make money online!",
+                    }),
+                  ],
+                }),
+                rightColumn: (0, i.jsx)(r.Z, {
+                  src: e({ global: w, "en-gb": p, "de-de": y, "fr-fr": f }),
+                  alt: "Does Qmee have a minimum withdrawal amount?",
+                }),
+              }),
+              (0, i.jsx)(v.Z, {
+                rightColumn: (0, i.jsxs)(i.Fragment, {
+                  children: [
+                    (0, i.jsx)(a.Z, {
+                      component: "h2",
+                      children: "Is Qmee a legit way to make money online?",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "Sharing your opinion and influencing your favorite brands, by taking paid surveys with Qmee, is one of the best legitimate ways to make money online in 2023. But, you don't have to take our word for it! Read some of our user stories to see what other people think. We're also rated highly on review sites.",
+                    }),
+                    (0, i.jsx)(Q.Z, { showSmallWidget: !0 }),
+                  ],
+                }),
+                leftColumn: (0, i.jsx)(r.Z, {
+                  src: x,
+                  alt: "Is Qmee a legit way to make money online?",
+                }),
+              }),
+              (0, i.jsx)(v.Z, {
+                mobileColumnOrderSwapped: !0,
+                leftColumn: (0, i.jsxs)(i.Fragment, {
+                  children: [
+                    (0, i.jsx)(a.Z, {
+                      component: "h2",
+                      children:
+                        "How can I earn cash without taking paid surveys?",
+                    }),
+                    (0, i.jsxs)(a.Z, {
+                      component: "p",
+                      children: [
+                        "Qmee not only has surveys - earn cash and free gift cards online with our",
+                        " ",
+                        (0, i.jsx)(s.Z, {
+                          to: g.A.path,
+                          children: "cashback offers!",
+                        }),
+                        " Our hand-picked money earners help you earn real cash from home by purchasing things you were going to buy anyway. It's a win-win situation!",
+                      ],
+                    }),
+                    (0, i.jsxs)(a.Z, {
+                      component: "p",
+                      children: [
+                        "With Qmee, you can also make money by ",
+                        (0, i.jsx)(s.Z, {
+                          to: g.dx.path,
+                          children: "playing games online",
+                        }),
+                        ". It's a super easy and fast way to earn money from your phone without paying anything - just download the game and get paid to play!",
+                      ],
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "Earn extra cash when searching online too! Add the Qmee app to your desktop browser to start earning money online when you search for your favorite sites and engage with the hottest brands!",
+                    }),
+                    (0, i.jsx)(a.Z, {
+                      component: "p",
+                      children:
+                        "With no minimum cashout amount, you can start making quick, easy money by signing up today!",
+                    }),
+                  ],
+                }),
+                rightColumn: (0, i.jsx)(r.Z, {
+                  src: e({ global: b, "en-gb": E, "de-de": U, "fr-fr": k }),
+                  alt: "How can I earn cash without taking paid surveys?",
+                }),
+              }),
+              (0, i.jsx)(R.Z, {
+                title: (0, i.jsx)(a.Z, { children: "Survey Tips" }),
+                ctaText: "View Tips",
+                ctaLink: g.UC.path,
+                children:
+                  "Check out some of the handy tips that can help with your survey experience.",
+              }),
+            ],
+          });
+        },
+        D = (0, t(82688).bg)(C, {
+          fullPage: !0,
+          metaData: {
+            title: "How it works",
+            description:
+              "With Qmee you can get rewarded for your opinions, your searches and your purchases. Share, shop & search to earn real cash.",
+          },
+        });
+    },
+  },
+  function (e) {
+    e.O(0, [3862, 4244, 6178, 9774, 2888, 179], function () {
+      return (A = 58879), e((e.s = A));
+      var A;
+    });
+    var A = e.O();
+    _N_E = A;
+  },
+]);
+//# sourceMappingURL=how-it-works-26687d0e2d2def4c.js.map

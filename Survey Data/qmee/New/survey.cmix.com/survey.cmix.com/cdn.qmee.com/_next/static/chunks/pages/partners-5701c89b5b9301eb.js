@@ -1,0 +1,367 @@
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [3195],
+  {
+    63087: function (e, t, a) {
+      (window.__NEXT_P = window.__NEXT_P || []).push([
+        "/partners",
+        function () {
+          return a(16661);
+        },
+      ]);
+    },
+    4542: function (e, t, a) {
+      "use strict";
+      var A = a(85893),
+        n = a(86010),
+        r = a(67294),
+        s = a(11570),
+        o = a.n(s),
+        i = a(39414);
+      function c(e, t, a) {
+        return (
+          t in e
+            ? Object.defineProperty(e, t, {
+                value: a,
+                enumerable: !0,
+                configurable: !0,
+                writable: !0,
+              })
+            : (e[t] = a),
+          e
+        );
+      }
+      function l(e, t) {
+        if (null == e) return {};
+        var a,
+          A,
+          n = (function (e, t) {
+            if (null == e) return {};
+            var a,
+              A,
+              n = {},
+              r = Object.keys(e);
+            for (A = 0; A < r.length; A++)
+              (a = r[A]), t.indexOf(a) >= 0 || (n[a] = e[a]);
+            return n;
+          })(e, t);
+        if (Object.getOwnPropertySymbols) {
+          var r = Object.getOwnPropertySymbols(e);
+          for (A = 0; A < r.length; A++)
+            (a = r[A]),
+              t.indexOf(a) >= 0 ||
+                (Object.prototype.propertyIsEnumerable.call(e, a) &&
+                  (n[a] = e[a]));
+        }
+        return n;
+      }
+      function m(e, t) {
+        var a = e.className,
+          r = e.children,
+          s = e.component,
+          m = e.interactive,
+          d = l(e, ["className", "children", "component", "interactive"]),
+          p = s || "div";
+        return (0, A.jsx)(
+          p,
+          (function (e) {
+            for (var t = 1; t < arguments.length; t++) {
+              var a = null != arguments[t] ? arguments[t] : {},
+                A = Object.keys(a);
+              "function" === typeof Object.getOwnPropertySymbols &&
+                (A = A.concat(
+                  Object.getOwnPropertySymbols(a).filter(function (e) {
+                    return Object.getOwnPropertyDescriptor(a, e).enumerable;
+                  })
+                )),
+                A.forEach(function (t) {
+                  c(e, t, a[t]);
+                });
+            }
+            return e;
+          })(
+            {
+              className: (0, n.Z)(
+                o().root,
+                m || s === i.Z ? o().interactive : o().outlined,
+                a
+              ),
+            },
+            d,
+            { ref: t, children: r }
+          )
+        );
+      }
+      t.Z = r.forwardRef(m);
+    },
+    16661: function (e, t, a) {
+      "use strict";
+      a.r(t),
+        a.d(t, {
+          default: function () {
+            return b;
+          },
+        });
+      var A = a(85893),
+        n = (a(67294), a(27977)),
+        r = a.n(n),
+        s = a(39414),
+        o = a(20298),
+        i = {
+          src: "https://cdn.qmee.com/_next/static/media/awin.ba068909.png",
+          height: 80,
+          width: 177,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAECAYAAACzzX7wAAAAcElEQVR42mP4bKpg/j+DIY0BF3hTonHwk6fibc9YHjEGMX15Q01tRSV1HXllDR1tJQ0dOYa33aprnngaVTLwaflZaurkAyULgDhGWV0nHqiomuHXIimDN7OkzRkYTPk9zbVVgYIKQJ0yQFpSWUNHGQDhcxuv3RTqmgAAAABJRU5ErkJggg==",
+        },
+        c = {
+          src: "https://cdn.qmee.com/_next/static/media/cint.906d563c.png",
+          height: 145,
+          width: 347,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAIAAAAhqtkfAAAAVklEQVR42gFLALT/APHp5v3OvPrTxdzf4PT08/Ly8uHh4dXV1QC0tLT////67+zDwsK9vr3Ly8uurq7Pz88Avb29wsHB0dTVvb290dHR7e3turq6ysrK9hk7f9mzQJkAAAAASUVORK5CYII=",
+        },
+        l = {
+          src: "https://cdn.qmee.com/_next/static/media/cj-affiliate.ce299e6b.png",
+          height: 180,
+          width: 440,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAQAAAAEwYbDAAAANUlEQVR42mNgUGLQZ2ADQhEGVgYWIGYIZ8hlUGewZLBj0GWwYFBiYJBnMGHgBEJmIGRlYAQATiMC2jrJP5sAAAAASUVORK5CYII=",
+        },
+        m = {
+          src: "https://cdn.qmee.com/_next/static/media/dynata-logo.7ba526f1.png",
+          height: 206,
+          width: 614,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAYAAACuyE5IAAAAWklEQVR42mOwDas2to+s82QAAwNmBiiQMAyFsK1DKiP03bOjnWKaTQR0gr2lTCLDJY0j/IA4WdIo3IfBMarB3Ca0OtYlrkWSQcKFX8Y0SgooKQCUFJU0jhAEAHY/E2/8SyWcAAAAAElFTkSuQmCC",
+        },
+        d = {
+          src: "https://cdn.qmee.com/_next/static/media/flexoffers.bd20de5d.png",
+          height: 48,
+          width: 199,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAACCAIAAADq9gq6AAAAPElEQVR42gVAvQqAIBj0/R+pphpbG8MiKAT/ps878RZx2/77J71BsQgcQCMpyS1ruHy9v3GcyBW9w8xITkILLAvSVsWmAAAAAElFTkSuQmCC",
+        },
+        p = {
+          src: "https://cdn.qmee.com/_next/static/media/logo_qurated.c85fe249.png",
+          height: 1096,
+          width: 3623,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAACCAYAAABllJ3tAAAAS0lEQVR4nGPM39qSIcO0/9yU95Me/f7HxcrC+O/P//8M/xgYGFgYGBhZGYU3nAp9+1Pxjfbf59fe/eP7y8L4lwko+YvhPwMzkGYFAPIzG3h2CLoUAAAAAElFTkSuQmCC",
+        },
+        g = {
+          src: "https://cdn.qmee.com/_next/static/media/lucid.4a68751a.png",
+          height: 447,
+          width: 836,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAECAYAAACzzX7wAAAAV0lEQVR42mNQlJVnUAJiRQjWALJDgLQ3kI4B4nAGIEcKiGWAHAkgrQnEDkDMDOQLAXEMA5CjA8QaQKwCxEZAQR8lWQVGRYgCHwY0K3iAOAXID1aCWBMBAEyEEQ1PY5PlAAAAAElFTkSuQmCC",
+        },
+        h = {
+          src: "https://cdn.qmee.com/_next/static/media/maxbounty.7c9eeb42.png",
+          height: 472,
+          width: 610,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAIAAABxZ0isAAAAoUlEQVR42gGWAGn/APz39/7+/v36+v79/PTY2Pno6P////bg3wDncnL11dXsnp7tqKjnd3ftsbHwurnwu7sA6Xt76YaF6Xx76Hl553h388rJ52Ji993dAOyzsuujouyysuiGhvK/vueWlfLf3u63tgCrqqqsrq2urq22tbWcoqG9vbzGysrDxsUArq6urq2tsbCwsbKxp6WlxsbF397e2djYZA9txu+EAaMAAAAASUVORK5CYII=",
+        },
+        u = {
+          src: "https://cdn.qmee.com/_next/static/media/pollfish.b59a634c.png",
+          height: 328,
+          width: 412,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAjUlEQVR42iXNL0rDAQAG0PexX3AiCIJxIGI1inVhRln2GHoMj+BdBoLRC9j9E2YTHKKTb4OFl1/eprOL1jMOk/6ruWRVFliP7k5O76Pfklv8JJa4wVVkPZQ9Ox+aa/onjsIvmm1xjE8Fl/RcpDxNHhcveZ3OBnWWeG+NxL5a4iD6NWAi5qoYq1WIGJOHDZwYMWfxEk6iAAAAAElFTkSuQmCC",
+        },
+        w = {
+          src: "https://cdn.qmee.com/_next/static/media/toluna.3ebda2d9.png",
+          height: 42,
+          width: 156,
+          blurDataURL:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAACCAYAAABllJ3tAAAAQ0lEQVR4nGNUklPIZmBgOAvEv4D4GaOAFM+3S8c+S866oMEqLqcDUlAMlNAG4n9A/JeBgfE/w++vXIxSuueMz+yZBgAkOxKeEb0MMgAAAABJRU5ErkJggg==",
+        },
+        x = a(84646),
+        f = a(80933),
+        v = a(4542),
+        j = function () {
+          return (0, A.jsxs)("div", {
+            className: r().root,
+            children: [
+              (0, A.jsxs)("div", {
+                children: [
+                  (0, A.jsx)(x.Z, {
+                    component: "h1",
+                    className: r().title,
+                    children: "Our Partners",
+                  }),
+                  (0, A.jsxs)(x.Z, {
+                    component: "p",
+                    children: [
+                      "Here are some of the partners we work with, and a link to their respective data policies. See our",
+                      " ",
+                      (0, A.jsx)(x.Z, {
+                        component: s.Z,
+                        to: o.Yk.path,
+                        children: "Privacy Notice",
+                      }),
+                      " ",
+                      "to see how we share your data with our partners.",
+                    ],
+                  }),
+                ],
+              }),
+              (0, A.jsxs)("section", {
+                className: r().partners,
+                children: [
+                  (0, A.jsxs)(v.Z, {
+                    className: r().partnerItem,
+                    component: s.Z,
+                    to: "https://luc.id/legal/privacy-policy/",
+                    children: [
+                      (0, A.jsx)("div", { className: r().overlay }),
+                      (0, A.jsx)(f.Z, {
+                        src: g,
+                        alt: "Lucid Logo",
+                        width: 158,
+                        height: 158,
+                      }),
+                    ],
+                  }),
+                  (0, A.jsxs)(v.Z, {
+                    className: r().partnerItem,
+                    component: s.Z,
+                    to: "https://uk.toluna.com/Privacy",
+                    children: [
+                      (0, A.jsx)("div", { className: r().overlay }),
+                      (0, A.jsx)(f.Z, { src: w, alt: "Toluna Logo" }),
+                    ],
+                  }),
+                  (0, A.jsxs)(v.Z, {
+                    className: r().partnerItem,
+                    component: s.Z,
+                    to: "https://www.cint.com/participant-privacy-notice",
+                    children: [
+                      (0, A.jsx)("div", { className: r().overlay }),
+                      (0, A.jsx)(f.Z, { src: c, alt: "Cint Logo" }),
+                    ],
+                  }),
+                  (0, A.jsxs)(v.Z, {
+                    className: r().partnerItem,
+                    component: s.Z,
+                    to: "https://www.dynata.com/privacy-policy/",
+                    children: [
+                      (0, A.jsx)("div", { className: r().overlay }),
+                      (0, A.jsx)(f.Z, { src: m, alt: "Dynata Logo" }),
+                    ],
+                  }),
+                  (0, A.jsxs)(v.Z, {
+                    className: r().partnerItem,
+                    component: s.Z,
+                    to: "https://www.awin.com/us/terms-and-conditions/publisher-terms-and-conditions-2018",
+                    children: [
+                      (0, A.jsx)("div", { className: r().overlay }),
+                      (0, A.jsx)(f.Z, { src: i, alt: "Awin Logo" }),
+                    ],
+                  }),
+                  (0, A.jsxs)(v.Z, {
+                    className: r().partnerItem,
+                    component: s.Z,
+                    to: "https://www.pollfish.com/terms/respondent",
+                    children: [
+                      (0, A.jsx)("div", { className: r().overlay }),
+                      (0, A.jsx)(f.Z, { src: u, alt: "Pollfish Logo" }),
+                    ],
+                  }),
+                  (0, A.jsxs)(v.Z, {
+                    className: r().partnerItem,
+                    component: s.Z,
+                    to: "https://www.conversantmedia.com/legal/privacy",
+                    children: [
+                      (0, A.jsx)("div", { className: r().overlay }),
+                      (0, A.jsx)(f.Z, { src: l, alt: "Conversant Logo" }),
+                    ],
+                  }),
+                  (0, A.jsxs)(v.Z, {
+                    className: r().partnerItem,
+                    component: s.Z,
+                    to: "https://www.flexoffers.com/privacy-policy/",
+                    children: [
+                      (0, A.jsx)("div", { className: r().overlay }),
+                      (0, A.jsx)(f.Z, { src: d, alt: "Flexoffers Logo" }),
+                    ],
+                  }),
+                  (0, A.jsxs)(v.Z, {
+                    className: r().partnerItem,
+                    component: s.Z,
+                    to: "https://www.maxbounty.com/",
+                    children: [
+                      (0, A.jsx)("div", { className: r().overlay }),
+                      (0, A.jsx)(f.Z, { src: h, alt: "Max Bounty Logo" }),
+                    ],
+                  }),
+                  (0, A.jsxs)(v.Z, {
+                    className: r().partnerItem,
+                    component: s.Z,
+                    to: "https://www.qurated.ai/",
+                    children: [
+                      (0, A.jsx)("div", { className: r().overlay }),
+                      (0, A.jsx)(f.Z, { src: p, alt: "Qurated Logo" }),
+                    ],
+                  }),
+                ],
+              }),
+              (0, A.jsxs)("div", {
+                children: [
+                  (0, A.jsx)(x.Z, {
+                    component: "h2",
+                    className: r().title,
+                    children: "Contact Us",
+                  }),
+                  (0, A.jsxs)(x.Z, {
+                    component: "p",
+                    children: [
+                      "If you are interested in finding out how partnering with Qmee can help your business reach more customers, please contact us at",
+                      " ",
+                      (0, A.jsx)(s.Z, {
+                        className: "email_address",
+                        to: "mailto:partners@qmee.com",
+                        children: "partners@qmee.com",
+                      }),
+                      ".",
+                    ],
+                  }),
+                ],
+              }),
+            ],
+          });
+        },
+        b = (0, a(82688).bg)(j, {
+          metaData: {
+            title: "Partners",
+            description: "Here are some of Qmee's partners.",
+          },
+        });
+    },
+    11570: function (e) {
+      e.exports = {
+        root: "Card_root__qEP3_",
+        interactive: "Card_interactive__f7luR",
+        outlined: "Card_outlined__uy0qq",
+      };
+    },
+    27977: function (e) {
+      e.exports = {
+        root: "Partners_root___ZwiV",
+        title: "Partners_title__okKA8",
+        partners: "Partners_partners__d_9TV",
+        partnerItem: "Partners_partnerItem__6LsB5",
+        overlay: "Partners_overlay___sCX5",
+      };
+    },
+  },
+  function (e) {
+    e.O(0, [3862, 4244, 6178, 9774, 2888, 179], function () {
+      return (t = 63087), e((e.s = t));
+      var t;
+    });
+    var t = e.O();
+    _N_E = t;
+  },
+]);
+//# sourceMappingURL=partners-5701c89b5b9301eb.js.map

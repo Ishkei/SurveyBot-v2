@@ -1,0 +1,133 @@
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [2771],
+  {
+    25845: function (e, r, n) {
+      (window.__NEXT_P = window.__NEXT_P || []).push([
+        "/account/profile",
+        function () {
+          return n(62810);
+        },
+      ]);
+    },
+    73022: function (e, r, n) {
+      "use strict";
+      n.r(r);
+      var i = (function () {
+        var e = [
+          {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "demographicProfileUrl",
+            storageKey: null,
+          },
+        ];
+        return {
+          fragment: {
+            argumentDefinitions: [],
+            kind: "Fragment",
+            metadata: null,
+            name: "DemographicProfileQuery",
+            selections: e,
+            type: "Query",
+            abstractKey: null,
+          },
+          kind: "Request",
+          operation: {
+            argumentDefinitions: [],
+            kind: "Operation",
+            name: "DemographicProfileQuery",
+            selections: e,
+          },
+          params: {
+            cacheID: "02f498082671b301c012458bd1b158d8",
+            id: null,
+            metadata: {},
+            name: "DemographicProfileQuery",
+            operationKind: "query",
+            text: "query DemographicProfileQuery {\n  demographicProfileUrl\n}\n",
+          },
+        };
+      })();
+      (i.hash = "9f4f054239948ea95c46e992e0690851"), (r.default = i);
+    },
+    62810: function (e, r, n) {
+      "use strict";
+      n.r(r),
+        n.d(r, {
+          default: function () {
+            return m;
+          },
+        });
+      var i = n(85893),
+        o = (n(67294), n(22578), n(67912)),
+        t = n(48020),
+        a = n(73818),
+        u = n.n(a),
+        c = n(39414),
+        l = n(84646),
+        s = n(20298),
+        f = n(73022),
+        p = function () {
+          var e = (0, o.useLazyLoadQuery)(f, {
+            fetchPolicy: "store-or-network",
+          });
+          return e.demographicProfileUrl
+            ? (0, i.jsx)("iframe", {
+                className: u().iframe,
+                src: e.demographicProfileUrl,
+                title: "demographic-update-survey",
+              })
+            : (0, i.jsxs)("div", {
+                className: u().errorScreen,
+                children: [
+                  (0, i.jsx)(l.Z, {
+                    component: "p",
+                    children:
+                      "It looks like you haven't signed up for surveys yet. Sign up to surveys to see your survey profile details.",
+                  }),
+                  (0, i.jsx)(t.Z, {
+                    buttonType: "primary",
+                    component: c.Z,
+                    to: s.At.path,
+                    color: "secondary",
+                    className: u().button,
+                    children: (0, i.jsx)(l.Z, {
+                      children: "Sign up to surveys",
+                    }),
+                  }),
+                  (0, i.jsx)(l.Z, {
+                    component: "p",
+                    children:
+                      "If you have signed up for surveys already, we might be having trouble connecting. Please try coming back to this page in a few minutes.",
+                  }),
+                ],
+              });
+        },
+        m = (0, n(82688).bg)(p, {
+          requiresAuthentication: !0,
+          fullPage: !0,
+          metaData: {
+            title: "Survey Profile",
+            description: "Update your Survey Profile details.",
+          },
+        });
+    },
+    73818: function (e) {
+      e.exports = {
+        iframe: "DemographicProfile_iframe__nzBr6",
+        errorScreen: "DemographicProfile_errorScreen__BZSkB",
+        button: "DemographicProfile_button__VLCxU",
+      };
+    },
+  },
+  function (e) {
+    e.O(0, [3862, 4244, 6178, 9774, 2888, 179], function () {
+      return (r = 25845), e((e.s = r));
+      var r;
+    });
+    var r = e.O();
+    _N_E = r;
+  },
+]);
+//# sourceMappingURL=profile-9fd9caf37366fedf.js.map

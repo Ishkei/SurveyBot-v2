@@ -1,0 +1,205 @@
+{
+  "swagbucks_survey_config": {
+    "platform_name": "Swagbucks",
+    "description": "Enhanced configuration for Swagbucks surveys addressing date of birth and navigation issues",
+    "version": "1.0",
+    
+    "date_of_birth_handling": {
+      "description": "Specific handling for date of birth fields that were causing issues",
+      "field_selectors": {
+        "month": [
+          "input[name='date_m']",
+          "input[id='dobMonth']",
+          "input[placeholder='MM']",
+          "select[name='date_m']",
+          "select[id='dobMonth']",
+          "input[type='tel'][placeholder*='MM']"
+        ],
+        "day": [
+          "input[name='date_d']",
+          "input[id='dobDay']",
+          "input[placeholder='DD']",
+          "select[name='date_d']",
+          "select[id='dobDay']",
+          "input[type='tel'][placeholder*='DD']"
+        ],
+        "year": [
+          "input[name='date_y']",
+          "input[id='dobYear']",
+          "input[placeholder='YYYY']",
+          "select[name='date_y']",
+          "select[id='dobYear']",
+          "input[type='text'][placeholder*='YYYY']"
+        ]
+      },
+      "default_values": {
+        "month": "06",
+        "day": "15",
+        "year": "1990"
+      },
+      "filling_strategy": {
+        "clear_first": true,
+        "delay_between_fields": 0.5,
+        "trigger_events": [
+          "change",
+          "input",
+          "blur"
+        ],
+        "validation_wait": 1.0
+      }
+    },
+    
+    "navigation_handling": {
+      "description": "Enhanced navigation handling for disabled continue buttons",
+      "continue_button_selectors": [
+        "button:has-text('Continue')",
+        "button:has-text('Next')",
+        "button:has-text('Submit')",
+        "input[type='submit']",
+        "input[value='Continue']",
+        "input[value='Next']",
+        ".btn-primary",
+        ".btn",
+        "[role='button']",
+        "button.btn-primary",
+        "button.btn"
+      ],
+      "disabled_button_handling": {
+        "remove_disabled_attribute": true,
+        "remove_disabled_class": true,
+        "enable_via_javascript": true,
+        "form_submission_fallback": true
+      },
+      "click_strategies": [
+        "direct_click",
+        "javascript_click",
+        "form_submit",
+        "event_trigger"
+      ]
+    },
+    
+    "form_validation": {
+      "description": "Handle form validation issues that prevent button activation",
+      "required_field_indicators": [
+        "input[required]",
+        "input[aria-required='true']",
+        ".required",
+        "[data-required='true']",
+        "input[data-required='true']"
+      ],
+      "validation_triggers": [
+        "input_event",
+        "change_event",
+        "blur_event",
+        "form_validation"
+      ]
+    },
+    
+    "page_detection": {
+      "description": "Enhanced page type detection for Swagbucks surveys",
+      "date_of_birth_indicators": [
+        "when were you born",
+        "date of birth",
+        "birth date",
+        "month", "day", "year",
+        "dob",
+        "birthday"
+      ],
+      "demographics_indicators": [
+        "demographics",
+        "personal information",
+        "about you",
+        "your profile",
+        "background information",
+        "basic information"
+      ],
+      "prescreen_indicators": [
+        "prescreen",
+        "screening",
+        "qualification",
+        "eligibility"
+      ]
+    },
+    
+    "error_recovery": {
+      "description": "Strategies for recovering from common Swagbucks survey errors",
+      "max_retries": 3,
+      "retry_delay": 2,
+      "fallback_strategies": [
+        "try_alternative_selectors",
+        "use_javascript_events",
+        "form_submission",
+        "page_refresh"
+      ]
+    },
+    
+    "performance_optimizations": {
+      "description": "Performance optimizations for Swagbucks surveys",
+      "timeout_settings": {
+        "page_load": 15000,
+        "element_wait": 10000,
+        "navigation_wait": 5000,
+        "validation_wait": 3000
+      },
+      "delay_settings": {
+        "between_fields": [0.3, 0.7],
+        "after_filling": [0.8, 1.2],
+        "before_click": [0.5, 1.0],
+        "after_click": [1.5, 2.5]
+      }
+    },
+    
+    "specific_issues_fixes": {
+      "description": "Specific fixes for known Swagbucks survey issues",
+      "date_field_issue": {
+        "problem": "Only year field being filled, month and day remain empty",
+        "solution": "Enhanced field detection with multiple selectors and event triggering",
+        "implementation": "Use multiple selector strategies and trigger proper DOM events"
+      },
+      "continue_button_issue": {
+        "problem": "Continue button appears disabled/inactive preventing progression",
+        "solution": "Remove disabled attributes and use multiple click strategies",
+        "implementation": "JavaScript-based button enabling and multiple click methods"
+      },
+      "navigation_issue": {
+        "problem": "Difficulty clicking next button to continue surveys",
+        "solution": "Enhanced navigation with fallback strategies",
+        "implementation": "Multiple selector strategies and JavaScript-based navigation"
+      }
+    },
+    
+    "testing_scenarios": {
+      "description": "Test scenarios for validating Swagbucks handler",
+      "scenarios": [
+        {
+          "name": "Date of Birth Page",
+          "url": "https://www.swagbucks.com/surveys/gold-surveys-prescreen",
+          "expected_behavior": "Fill all three date fields and click continue",
+          "test_data": {
+            "month": "06",
+            "day": "15",
+            "year": "1990"
+          }
+        },
+        {
+          "name": "Disabled Continue Button",
+          "url": "https://www.swagbucks.com/surveys/gold-surveys-prescreen",
+          "expected_behavior": "Enable button and proceed to next page",
+          "test_data": {
+            "button_state": "disabled",
+            "required_fields": ["month", "day", "year"]
+          }
+        },
+        {
+          "name": "Navigation Issues",
+          "url": "https://www.swagbucks.com/surveys/gold-surveys-prescreen",
+          "expected_behavior": "Successfully navigate through survey pages",
+          "test_data": {
+            "navigation_type": "next_button",
+            "fallback_methods": ["javascript_click", "form_submit"]
+          }
+        }
+      ]
+    }
+  }
+}

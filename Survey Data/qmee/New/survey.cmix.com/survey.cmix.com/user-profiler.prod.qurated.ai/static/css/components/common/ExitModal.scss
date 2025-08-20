@@ -1,0 +1,138 @@
+@use "../../assets/styling/Variables";
+
+.exit-modal-background {
+  background-color: rgba(48, 63, 159, 0.6);
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.exit-modal-container {
+  padding: 10px;
+
+  .exit-modal {
+    display: grid;
+    gap: 25px;
+    text-align: center;
+
+    background: #ffffff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
+    max-width: 1000px;
+    min-height: 200px;
+    max-height: calc(100svh - 80px);
+    width: min(100%, 500px);
+    box-sizing: border-box;
+    border-radius: 18px;
+    position: relative;
+    overflow-y: auto;
+    margin: auto;
+    padding: 41px 20px 40px;
+  }
+
+  .exit-header-icon {
+    margin: auto;
+  }
+
+  .exit-title {
+    font-family: "Filson Soft", sans-serif;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    max-width: min(100%, 400px);
+    margin: auto;
+
+    @media screen and (max-width: 600px) {
+      font-size: 23px;
+    }
+  }
+
+  p {
+    max-width: min(100%, 400px);
+    margin: auto;
+
+    color: var(--Text-Colour, #001627);
+    text-align: center;
+    font-family: "Filson Pro", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: normal;
+
+    @media screen and (max-width: 600px) {
+      font-size: 14px;
+    }
+
+    &.bold-text{
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  button.exit-options {
+    margin: auto;
+    display: block;
+    cursor: pointer;
+  }
+
+  .skip-button {
+    color: Variables.$primary-colour;
+    background: none;
+    border: none;
+    outline: none;
+    font-family: "Filson Soft", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    max-width: min(100%, 300px);
+    margin: auto;
+  }
+
+  .confirm-button {
+    @media (max-width: 780px) {
+      padding: 18px 25px;
+      width: 100%;
+      height: auto;
+      font-weight: 400;
+    }
+  }
+
+  .exit-close-button {
+    border-radius: 50%;
+    background: #fff;
+    color: #495867;
+    margin: 0 0 0 auto;
+    display: block;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 18px;
+    position: absolute;
+    z-index: 7;
+    padding: 0px;
+    height: 24px;
+    width: 24px;
+    right: 20px;
+    top: 20px;
+
+    svg {
+      width: 14px;
+      height: 24px;
+    }
+
+    &:hover {
+      background: #eee;
+    }
+
+    &:active {
+      box-shadow: 0px 0px 2px rgba($color: #000000, $alpha: 0.4);
+    }
+  }
+}

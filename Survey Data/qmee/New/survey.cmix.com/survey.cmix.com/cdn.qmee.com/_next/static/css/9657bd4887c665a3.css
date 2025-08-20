@@ -1,0 +1,190 @@
+.BrowserAppHelp_root__Hux16 {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 2rem;
+}
+.BrowserAppHelp_root__Hux16 img {
+  max-width: 75%;
+  height: auto;
+}
+.BrowserAppHelp_tutorial__PchfP h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 3rem;
+}
+.BrowserAppHelp_tutorial__PchfP ol {
+  padding-left: 0;
+}
+.BrowserAppHelp_tutorial__PchfP li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid var(--palette-divider);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+.BrowserAppHelp_tutorial__PchfP li p {
+  width: 100%;
+  padding-right: 0.5rem;
+}
+.BrowserAppHelp_tutorial__PchfP li img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+  border: 1px solid #c8c8c8;
+}
+@media (min-width: 60rem) {
+  .BrowserAppHelp_tutorial__PchfP li {
+    display: flex;
+    flex-direction: row;
+  }
+  .BrowserAppHelp_tutorial__PchfP li:last-child {
+    border-bottom: inherit;
+  }
+  .BrowserAppHelp_tutorial__PchfP li > p {
+    width: 50%;
+    margin-right: 1rem;
+    flex: 1 1;
+  }
+  .BrowserAppHelp_tutorial__PchfP li > span {
+    flex: 2 1;
+  }
+}
+.Tooltip_root__UkGqs {
+  line-height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.Tooltip_root__UkGqs .Tooltip_tip__nOl_j {
+  display: none;
+  visibility: hidden;
+  max-width: 100vw;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--palette-background-secondary);
+  border-radius: 0.25rem;
+  border: 1px solid var(--palette-divider);
+  box-shadow: var(--shadow-default);
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  margin-top: 14px;
+}
+.Tooltip_root__UkGqs .Tooltip_arrow__hZphM {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -0.5rem;
+  border: 0.5rem;
+  border-style: solid;
+  border-color: transparent transparent var(--palette-divider) transparent;
+}
+@media (min-width: 60rem) {
+  .Tooltip_root__UkGqs:hover .Tooltip_tip__nOl_j {
+    color: var(--palette-text-default);
+  }
+  .Tooltip_root__UkGqs:hover .Tooltip_arrow__hZphM,
+  .Tooltip_root__UkGqs:hover .Tooltip_tip__nOl_j {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: var(--animation-duration);
+  }
+}
+.StarRating_root__bI2Oh {
+  padding: 0;
+  margin: 0;
+  align-self: center;
+}
+.StarRating_root__bI2Oh > svg {
+  color: #fecf04;
+  width: 1rem;
+  height: 1rem;
+}
+.StoreLinks_appStoreLinks__rTrY0 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.StoreLinks_appStoreLinks__rTrY0 > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1rem;
+}
+.StoreLinks_appStoreLinks__rTrY0 > a:last-child {
+  margin-right: 0;
+}
+.StoreLinks_rating__KbXmB {
+  padding: 0;
+  margin: 0;
+  align-self: center;
+}
+.BrowserApp_root__5PSim {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  color: var(--palette-text-primary);
+}
+.BrowserApp_title__XWuqo {
+  font-family: Londrina;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: var(--dimensions-font-londrina-size-large);
+}
+.BrowserApp_title__XWuqo span,
+.BrowserApp_title__XWuqo strong {
+  color: var(--palette-secondary-main);
+}
+@media (min-width: 60rem) {
+  .BrowserApp_title__XWuqo {
+    font-size: var(--dimensions-font-londrina-size-xlarge);
+  }
+}
+.BrowserApp_introduction__2z2Ng {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.BrowserApp_introductionText__yyONe {
+  width: 100%;
+}
+.BrowserApp_buttonContainer__i_o9P {
+  padding: 0 0 0 1.5rem;
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+.BrowserApp_disclaimers__BQ1K_ p {
+  margin: 0;
+}
+.BrowserApp_externalLink__yxwvQ {
+  text-decoration: none;
+}
+.BrowserApp_icon__ILfbf {
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  fill: var(--palette-secondary-contrast-text);
+}
+@media (min-width: 60rem) {
+  .BrowserApp_introduction__2z2Ng {
+    flex-direction: row;
+    align-items: center;
+  }
+  .BrowserApp_introductionText__yyONe {
+    width: 60%;
+  }
+  .BrowserApp_buttonContainer__i_o9P {
+    width: 40%;
+  }
+}
+/*# sourceMappingURL=9657bd4887c665a3.css.map*/

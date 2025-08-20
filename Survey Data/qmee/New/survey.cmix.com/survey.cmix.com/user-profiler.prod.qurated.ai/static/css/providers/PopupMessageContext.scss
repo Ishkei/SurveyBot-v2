@@ -1,0 +1,31 @@
+@use "../assets/styling/Variables.scss";
+
+.popup-message {
+  padding: 0.5em 1em;
+  
+  .warn {
+    background-color: #fc9828;
+  }
+  .error {
+    background-color: #ff5050;
+  }
+  .info {
+    background-color: #378FD7;
+  }
+  .success {
+    background-color: #2bd675;
+  }
+  .icon-variant {
+    opacity: 0.9;
+    margin-right: 8px;
+  }
+  .message-content {
+    display: flex;
+    line-height: 1;
+    align-items: center;
+  }
+  .popup-icon {
+    font-size: 20;
+    margin-right: 1rem;
+  }
+}

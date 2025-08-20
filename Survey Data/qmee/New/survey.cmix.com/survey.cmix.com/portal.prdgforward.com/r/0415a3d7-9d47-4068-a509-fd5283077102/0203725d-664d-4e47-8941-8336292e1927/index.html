@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="nopagereadaloud" />
+    <title>SecuredEntry.com</title>
+    <style>
+      body,
+      html {
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: white;
+      }
+
+      .wrapper {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .loader-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .message {
+        font-size: 18px;
+        margin-top: 20px;
+      }
+
+      .circle-loader {
+        width: 80px;
+        aspect-ratio: 2;
+        --_g: no-repeat radial-gradient(circle closest-side, #000 90%, #0000);
+        background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+        background-size: calc(100% / 3) 50%;
+        animation: l3 1s infinite linear;
+      }
+
+      @keyframes l3 {
+        20% {
+          background-position: 0% 0%, 50% 50%, 100% 50%;
+        }
+        40% {
+          background-position: 0% 100%, 50% 0%, 100% 50%;
+        }
+        60% {
+          background-position: 0% 50%, 50% 100%, 100% 0%;
+        }
+        80% {
+          background-position: 0% 50%, 50% 50%, 100% 100%;
+        }
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 20px;
+      }
+
+      img.loader {
+        height: 60px;
+      }
+    </style>
+    <link rel="preload" href="/loading.webp" as="image" />
+    <script type="module" crossorigin src="/assets/index-Dbus2Twz.js"></script>
+    <script type="module">
+      import.meta.url;
+      import("_").catch(() => 1);
+      (async function* () {})().next();
+      if (location.protocol != "file:") {
+        window.__vite_is_modern_browser = true;
+      }
+    </script>
+    <script type="module">
+      !(function () {
+        if (window.__vite_is_modern_browser) return;
+        console.warn(
+          "vite: loading legacy chunks, syntax error above and the same error below should be ignored"
+        );
+        var e = document.getElementById("vite-legacy-polyfill"),
+          n = document.createElement("script");
+        (n.src = e.src),
+          (n.onload = function () {
+            System.import(
+              document
+                .getElementById("vite-legacy-entry")
+                .getAttribute("data-src")
+            );
+          }),
+          document.body.appendChild(n);
+      })();
+    </script>
+    <meta
+      name="csrf-token"
+      content="0203725d-664d-4e47-8941-8336292e1927!sLltzJeC8m4p0iHNnkLFDj6GbR8qv/wmrGH96y8h1p4="
+    />
+  </head>
+  <body>
+    <img
+      id="trkrimg"
+      src="https://trkr.prdgforward.com/v2/0203725d-664d-4e47-8941-8336292e1927"
+      style="display: none"
+    />
+    <img
+      id="trkrimg-h2"
+      src="https://trkr.prdgforward.com:22379/v2/h2/0203725d-664d-4e47-8941-8336292e1927"
+      style="display: none"
+    />
+    <div class="wrapper">
+      <div class="loader-container">
+        <div class="circle-loader"></div>
+        <div class="message" id="countdown"></div>
+      </div>
+      <div class="footer">
+        <img
+          src="https://click.prdgforward.com/image/0203725d-664d-4e47-8941-8336292e1927"
+          id="loader"
+          class="loader"
+        />
+      </div>
+    </div>
+    <span
+      id="config"
+      style="display: none"
+      data-json='{"data":{"mb":"bz"}}'
+    ></span>
+
+    <script>
+      const countdownTranslations = {
+        en: "You will be redirected in $TIME seconds...",
+        zh: "您将在 $TIME 秒钟内被重定向...",
+        es: "Serás redirigido en $TIME segundos...",
+        hi: "$TIME सेकंड में आपको पुनः निर्देशित किया जाएगा...",
+        ar: "سيتم إعادة توجيهك في غضون $TIME ثانية...",
+        bn: "$TIME সেকেন্ডের মধ্যে আপনাকে পুনঃনির্দেশিত করা হবে...",
+        pt: "Você será redirecionado em $TIME segundos...",
+        ru: "Вы будете перенаправлены через $TIME секунд...",
+        ja: "$TIME 秒後にリダイレクトされます...",
+        de: "Sie werden in $TIME Sekunden weitergeleitet...",
+        jv: "Sampeyan bakal dialihaké ing $TIME detik...",
+        ko: "$TIME 초 후에 리디렉션됩니다...",
+        fr: "Vous serez redirigé dans $TIME secondes...",
+        te: "మీరు $TIME సెకన్లలో దారిమారుస్తారు...",
+        mr: "आपण $TIME सेकंदात पुनर्निर्देशित केले जाल...",
+        tr: "$TIME saniye içinde yönlendirileceksiniz...",
+        ta: "$TIME விநாடிகளில் உங்களுக்கு மறுஅடையாளம் காட்டப்படும்...",
+        vi: "Bạn sẽ được chuyển hướng trong $TIME giây...",
+        ur: "آپ کو $TIME سیکنڈ میں دوبارہ بھیج دیا جائے گا...",
+        it: "Verrai reindirizzato tra $TIME secondi...",
+      };
+      const waitTranslations = {
+        en: "Please wait one more moment...",
+        zh: "请再稍等片刻...",
+        es: "Por favor, espera un momento más...",
+        hi: "कृपया एक और क्षण प्रतीक्षा करें...",
+        ar: "يرجى الانتظار لحظة أخرى...",
+        bn: "অনুগ্রহ করে আরেকটু অপেক্ষা করুন...",
+        pt: "Por favor, espere mais um momento...",
+        ru: "Пожалуйста, подождите еще немного...",
+        ja: "もう少しお待ちください...",
+        de: "Bitte warten Sie einen Moment länger...",
+        jv: "Mangga antos sakedhik maneh...",
+        ko: "잠시만 더 기다려 주세요...",
+        fr: "Veuillez patienter un instant de plus...",
+        te: "దయచేసి మరో క్షణం వేచి ఉండండి...",
+        mr: "कृपया आणखी एक क्षण थांबा...",
+        tr: "Lütfen biraz daha bekleyin...",
+        ta: "தயவுசெய்து இன்னும் ஒரு கணம் காத்திருங்கள்...",
+        vi: "Vui lòng đợi thêm một chút...",
+        ur: "براہ کرم ایک لمحہ اور انتظار کریں...",
+        it: "Per favore, aspetta un attimo in più...",
+      };
+      let averageDuration = {
+        US: 5,
+        IN: 6,
+        FR: 3,
+        DE: 4,
+        BR: 6,
+        IT: 4,
+        MX: 5,
+        ES: 3,
+        CA: 4,
+        UK: 3,
+        GB: 3,
+        ID: 7,
+        PH: 7,
+        TR: 4,
+        PL: 3,
+        ZA: 6,
+        NG: 6,
+        RU: 4,
+        CO: 5,
+        PK: 6,
+      };
+
+      let language = "en";
+      let country = "US";
+      try {
+        let locale = (navigator.languages || ["en-US"])[0];
+        if (locale.contains("-")) {
+          language = locale.split("-")[0];
+          country = locale.split("-")[1];
+        }
+      } catch (e) {
+        // do nothing
+      }
+
+      const countdownDiv = document.getElementById("countdown");
+      let countdown = averageDuration[country] || 5;
+
+      function updateText() {
+        countdownDiv.innerText = (
+          countdownTranslations[language] ?? countdownTranslations["en"]
+        ).replace("$TIME", countdown);
+        if (countdown <= 0) {
+          countdownDiv.innerText =
+            waitTranslations[language] ?? waitTranslations["en"];
+        }
+      }
+
+      let interval = setInterval(() => {
+        countdown--;
+        if (countdown < 0) clearInterval(interval);
+        updateText();
+      }, 1000);
+
+      updateText();
+    </script>
+    <noscript
+      ><p>
+        Javascript needs to be enabled in order to evaluate your connection...
+      </p>
+      <img
+        src="https://click.prdgforward.com/v1/results/0203725d-664d-4e47-8941-8336292e1927/nojs"
+    /></noscript>
+    <script nomodule>
+      !(function () {
+        var e = document,
+          t = e.createElement("script");
+        if (!("noModule" in t) && "onbeforeload" in t) {
+          var n = !1;
+          e.addEventListener(
+            "beforeload",
+            function (e) {
+              if (e.target === t) n = !0;
+              else if (!e.target.hasAttribute("nomodule") || !n) return;
+              e.preventDefault();
+            },
+            !0
+          ),
+            (t.type = "module"),
+            (t.src = "."),
+            e.head.appendChild(t),
+            t.remove();
+        }
+      })();
+    </script>
+    <script
+      nomodule
+      crossorigin
+      id="vite-legacy-polyfill"
+      src="/assets/polyfills-legacy-Bc1SPK6z.js"
+    ></script>
+    <script
+      nomodule
+      crossorigin
+      id="vite-legacy-entry"
+      data-src="/assets/index-legacy-BsFR4z7p.js"
+    >
+      System.import(
+        document.getElementById("vite-legacy-entry").getAttribute("data-src")
+      );
+    </script>
+  </body>
+</html>

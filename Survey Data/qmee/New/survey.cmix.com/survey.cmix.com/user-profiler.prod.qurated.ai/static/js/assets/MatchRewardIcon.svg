@@ -1,0 +1,36 @@
+var _path, _path2;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgMatchRewardIcon(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    id: "match_rewar_icon",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 52.563,
+    height: 24.31,
+    viewBox: "0 0 52.563 24.31",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _path || (_path = /*#__PURE__*/React.createElement("path", {
+    id: "Path_138",
+    "data-name": "Path 138",
+    d: "M7.867,19.584,0,11.033,1.963,9.163l5.845,6.353L21.258,0l2.016,1.811Z",
+    transform: "translate(0.63 3.826) rotate(-4)",
+    fill: "#2bd675"
+  })), _path2 || (_path2 = /*#__PURE__*/React.createElement("path", {
+    id: "Union_36",
+    "data-name": "Union 36",
+    d: "M-10504.884,3961.317l3.174-3.483,6.2,5.861,12.274-16.335,3.715,2.895-15.394,20.487Zm2.8-.105,6.916,6.538,12.868-17.123-.56-.438-12.4,16.5-6.349-6Zm43.216,6.9a13,13,0,0,1-7.933.482l.83-3.873a10.832,10.832,0,0,0,5.286-.026l-2.339-4.4c-3.762.915-6.672.933-8.378-2.273-1.605-3.019-.535-6.375,2.6-8.587l-.875-1.642,2.57-1.366.889,1.669a11.4,11.4,0,0,1,6.991-.591l-.548,3.891a10.335,10.335,0,0,0-4.627.116l2.254,4.239c4.184-1.139,7.281-1.258,9.027,2.027,1.719,3.232.624,6.667-3.143,9.043l.888,1.669-2.567,1.368Zm-1.247-8.544,2.083,3.92c1.387-.973,1.719-2.2,1.2-3.182a1.7,1.7,0,0,0-1.7-.952A7.584,7.584,0,0,0-10460.113,3959.569Zm-7.551-4.036c.467.873,1.21,1.123,2.587.9l-1.914-3.6A2.207,2.207,0,0,0-10467.664,3955.532Z",
+    transform: "translate(10504.884 -3946.432)",
+    fill: "#2bd675"
+  })));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgMatchRewardIcon);
+export default __webpack_public_path__ + "static/media/MatchRewardIcon.51c17b5f0683dcd04ab53a5bc693097c.svg";
+export { ForwardRef as ReactComponent };

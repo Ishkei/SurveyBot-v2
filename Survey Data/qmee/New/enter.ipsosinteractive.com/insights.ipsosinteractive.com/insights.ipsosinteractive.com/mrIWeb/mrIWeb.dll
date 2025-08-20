@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta http-equiv="Content-Language" content="en-US"/><meta http-equiv="Expires" content="-1"/><meta http-equiv="Pragma" content="no-cache"/><meta name="Robots" content="noindex, nofollow"/><meta name="Generator" content="Interviewer Server HTML Player 1.0.2300.10784"/><meta name="Template" content="VisualAssets/iis-fish/iis-fish.htm"/><meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Research</title>
+		<div></div>
+		<span class="mrBannerText" style=""><link href="https://cdn.ipsosinteractive.com/deploy/templates/iis-sharky/v3.2/css/style.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="https://cdn.ipsosinteractive.com/deploy/templates/iis-sharky/v3.2/js/jq-1.11.0.and.migrate-1.2.1.min.js"></script></span>
+		<!--[if lt IE 9]>
+		  <script src="https://cdn.ipsosinteractive.com/deploy/templates/iis-sharky/v1.0/js/respond.min.js"></script>
+		<![endif]-->
+		<div></div>
+		<span class="mrBannerText" style=""></span>
+	</head>
+	<body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+		<form name="mrForm" id="mrForm" action="/mrIWeb/mrIWeb.dll" method="post"><input type="hidden" name="I.Engine" value="engine68"/><input type="hidden" name="I.Project" value="S25041132"/><input type="hidden" name="I.Session" value="sd1tisjodblujodj1sxzyyl2gnobeaaa"/><input type="hidden" name="I.SavePoint" value="H_page_age"/><input type="hidden" name="I.Language" value="en-US"/><input type="hidden" name="I.Renderer" value="HTMLPlayer"/><input type="hidden" name="I.EngineInstanceId" value="a3222c29-2f6b-4268-bf33-9da7a54eb611"/><div id="wrapper">
+				<div id="navigation-bar" class="navbar navbar-inverse navbar-fixed-top is-fish-layout">
+					<div class="container">
+						<div class="navbar-header">
+							<div class="navbar-brand">
+								<div></div>
+								<span class="mrBannerText" style=""><img aria-hidden="true" src="https://cdn.ipsosinteractive.com/deploy/templates/iis-fish-template/img/logo/no_logo_small.png" alternate-logo="https://cdn.ipsosinteractive.com/deploy/templates/iis-fish-template/img/logo/no_logo.png"/><style>.progress-percentage{margin-left : 0 !important}  .navbar-brand{ padding-left : 0 !important };</style></span>
+							</div>
+							<div class="progress-bar-container">
+								<div class="progress-percentage">
+									<span class="progress-percentage-invisible-point">.</span>
+								</div>
+								<div class="progress">
+									<div id="progress-bar" class="progress-bar">
+										<table style="height: 100%; width: 100%"><tr><td style="width: 2%; background-color: #49bfbc"/><td class="mrProgressText">2%</td></tr></table></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div id="content" class="panel panel-default invisible">
+						<div></div>
+						<span class="mrBannerText" style=""></span>
+						<div></div>
+						<span class="mrBannerText" style=""></span>
+						<div></div>
+						<span class="mrBannerText" style=""><script type="text/javascript" src="https://cdn.ipsosinteractive.com/deploy/templates/iis-template/js/right-click.js"></script></span>
+						<div></div>
+						<span class="mrBannerText" style=""><span id="AuxiliarFields" style="display:none;">EN</span></span>
+						<div></div>
+						<span class="mrBannerText" style=""></span>
+						<div></div>
+						<span class="mrBannerText" style=""></span>
+						<div></div>
+						<span class="mrBannerText" style=""><script id="StudyJSONProperties" class="StudyJSONProperties">$('body').data('studyJSON',  {"theFilePath":"https://cdn.ipsosinteractive.com/deploy/templates/iis-sharky/v3.2/QuestionTemplates/","StudyProperties":{"GridAlternateColorRow":true,"GridAlternateColorCol":true, "FishVersion":"3.2", "LangCode":"enus", "StickyQuestionTextTypes":['SA','MA','OE','NUM'], "endStudyProperties":""},"ProgressBarVersion":"minimal", "SnifferData":  {"LPSSS_is_wireless_device":false,"LPSSS_is_tablet":false}, "StudyData": {"IDType":"real"} , "endStudyJSON":"", "platform":"live"});</script></span>
+						<div></div>
+						<span class="mrQuestionText" style=""></span>
+						<div></div>
+						<span class="mrQuestionText" style="">What is your date of birth?  </span>
+						<div><br/></div>
+						<div class="question-container">
+							<div></div>
+							<span class="mrBannerText" style=""><script class="customJSONproperties" type="application/json">{ "QType" : "DROPDOWN", "QSubType" : "", "QOrientation" : "", "QTopHeaders" : false, "QSideHeaders" : false,  "QType" : "DROPDOWN", "QSubType" : "", "QOrientation" : "", "QTopHeaders" : false, "QSideHeaders" : false }</script></span>
+							<div id="error-message" class="alert alert-danger show">
+								<div></div>
+								<span class="mrErrorText" style="border-color: Red;">Please provide an answer.</span>
+							</div>
+							<div id="question" class="question">
+								<label for="_Q0_C">
+									<div></div>
+									<span class="mrQuestionText" style="">Year:</span>
+								</label>
+							</div>
+							<div class="row pictureTop">
+							</div>
+							<div class="question-controls-container row">
+								<div class="picture-left pic-xs-12 pic-sm-3">
+								</div>
+								<div class="the-controls col-xs-12  pic-xs-12 pic-sm-9">
+									<div></div>
+									<span style="">
+										<div></div>
+										<select name="_Q_DDynamicPage_QH__page__age_QH__year_C" id="_Q0_C" class="mrDropdown" style="">
+											<option style="" class="mrMultiple" value="">- Please Select -</option>
+											<option style="" class="mrMultiple" value="__2022">2022</option>
+											<option style="" class="mrMultiple" value="__2021">2021</option>
+											<option style="" class="mrMultiple" value="__2020">2020</option>
+											<option style="" class="mrMultiple" value="__2019">2019</option>
+											<option style="" class="mrMultiple" value="__2018">2018</option>
+											<option style="" class="mrMultiple" value="__2017">2017</option>
+											<option style="" class="mrMultiple" value="__2016">2016</option>
+											<option style="" class="mrMultiple" value="__2015">2015</option>
+											<option style="" class="mrMultiple" value="__2014">2014</option>
+											<option style="" class="mrMultiple" value="__2013">2013</option>
+											<option style="" class="mrMultiple" value="__2012">2012</option>
+											<option style="" class="mrMultiple" value="__2011">2011</option>
+											<option style="" class="mrMultiple" value="__2010">2010</option>
+											<option style="" class="mrMultiple" value="__2009">2009</option>
+											<option style="" class="mrMultiple" value="__2008">2008</option>
+											<option style="" class="mrMultiple" value="__2007">2007</option>
+											<option style="" class="mrMultiple" value="__2006">2006</option>
+											<option style="" class="mrMultiple" value="__2005">2005</option>
+											<option style="" class="mrMultiple" value="__2004">2004</option>
+											<option style="" class="mrMultiple" value="__2003">2003</option>
+											<option style="" class="mrMultiple" value="__2002">2002</option>
+											<option style="" class="mrMultiple" value="__2001">2001</option>
+											<option style="" class="mrMultiple" value="__2000">2000</option>
+											<option style="" class="mrMultiple" value="__1999">1999</option>
+											<option style="" class="mrMultiple" value="__1998">1998</option>
+											<option style="" class="mrMultiple" value="__1997">1997</option>
+											<option style="" class="mrMultiple" value="__1996">1996</option>
+											<option style="" class="mrMultiple" value="__1995">1995</option>
+											<option style="" class="mrMultiple" value="__1994">1994</option>
+											<option style="" class="mrMultiple" value="__1993">1993</option>
+											<option style="" class="mrMultiple" value="__1992">1992</option>
+											<option style="" class="mrMultiple" value="__1991">1991</option>
+											<option style="" class="mrMultiple" value="__1990">1990</option>
+											<option style="" class="mrMultiple" value="__1989">1989</option>
+											<option style="" class="mrMultiple" value="__1988">1988</option>
+											<option style="" class="mrMultiple" value="__1987">1987</option>
+											<option style="" class="mrMultiple" value="__1986">1986</option>
+											<option style="" class="mrMultiple" value="__1985">1985</option>
+											<option style="" class="mrMultiple" value="__1984">1984</option>
+											<option style="" class="mrMultiple" value="__1983">1983</option>
+											<option style="" class="mrMultiple" value="__1982">1982</option>
+											<option style="" class="mrMultiple" value="__1981">1981</option>
+											<option style="" class="mrMultiple" value="__1980">1980</option>
+											<option style="" class="mrMultiple" value="__1979">1979</option>
+											<option style="" class="mrMultiple" value="__1978">1978</option>
+											<option style="" class="mrMultiple" value="__1977">1977</option>
+											<option style="" class="mrMultiple" value="__1976">1976</option>
+											<option style="" class="mrMultiple" value="__1975">1975</option>
+											<option style="" class="mrMultiple" value="__1974">1974</option>
+											<option style="" class="mrMultiple" value="__1973">1973</option>
+											<option style="" class="mrMultiple" value="__1972">1972</option>
+											<option style="" class="mrMultiple" value="__1971">1971</option>
+											<option style="" class="mrMultiple" value="__1970">1970</option>
+											<option style="" class="mrMultiple" value="__1969">1969</option>
+											<option style="" class="mrMultiple" value="__1968">1968</option>
+											<option style="" class="mrMultiple" value="__1967">1967</option>
+											<option style="" class="mrMultiple" value="__1966">1966</option>
+											<option style="" class="mrMultiple" value="__1965">1965</option>
+											<option style="" class="mrMultiple" value="__1964">1964</option>
+											<option style="" class="mrMultiple" value="__1963">1963</option>
+											<option style="" class="mrMultiple" value="__1962">1962</option>
+											<option style="" class="mrMultiple" value="__1961">1961</option>
+											<option style="" class="mrMultiple" value="__1960">1960</option>
+											<option style="" class="mrMultiple" value="__1959">1959</option>
+											<option style="" class="mrMultiple" value="__1958">1958</option>
+											<option style="" class="mrMultiple" value="__1957">1957</option>
+											<option style="" class="mrMultiple" value="__1956">1956</option>
+											<option style="" class="mrMultiple" value="__1955">1955</option>
+											<option style="" class="mrMultiple" value="__1954">1954</option>
+											<option style="" class="mrMultiple" value="__1953">1953</option>
+											<option style="" class="mrMultiple" value="__1952">1952</option>
+											<option style="" class="mrMultiple" value="__1951">1951</option>
+											<option style="" class="mrMultiple" value="__1950">1950</option>
+											<option style="" class="mrMultiple" value="__1949">1949</option>
+											<option style="" class="mrMultiple" value="__1948">1948</option>
+											<option style="" class="mrMultiple" value="__1947">1947</option>
+											<option style="" class="mrMultiple" value="__1946">1946</option>
+											<option style="" class="mrMultiple" value="__1945">1945</option>
+											<option style="" class="mrMultiple" value="__1944">1944</option>
+											<option style="" class="mrMultiple" value="__1943">1943</option>
+											<option style="" class="mrMultiple" value="__1942">1942</option>
+											<option style="" class="mrMultiple" value="__1941">1941</option>
+											<option style="" class="mrMultiple" value="__1940">1940</option>
+											<option style="" class="mrMultiple" value="__1939">1939</option>
+											<option style="" class="mrMultiple" value="__1938">1938</option>
+											<option style="" class="mrMultiple" value="__1937">1937</option>
+											<option style="" class="mrMultiple" value="__1936">1936</option>
+											<option style="" class="mrMultiple" value="__1935">1935</option>
+											<option style="" class="mrMultiple" value="__1934">1934</option>
+											<option style="" class="mrMultiple" value="__1933">1933</option>
+											<option style="" class="mrMultiple" value="__1932">1932</option>
+											<option style="" class="mrMultiple" value="__1931">1931</option>
+											<option style="" class="mrMultiple" value="__1930">1930</option>
+											<option style="" class="mrMultiple" value="__1929">1929</option>
+											<option style="" class="mrMultiple" value="__1928">1928</option>
+											<option style="" class="mrMultiple" value="__1927">1927</option>
+											<option style="" class="mrMultiple" value="__1926">1926</option>
+											<option style="" class="mrMultiple" value="__1925">1925</option>
+											<option style="" class="mrMultiple" value="__1924">1924</option>
+											<option style="" class="mrMultiple" value="__1923">1923</option>
+											<option style="" class="mrMultiple" value="__1922">1922</option>
+											<option style="" class="mrMultiple" value="__1921">1921</option>
+											<option style="" class="mrMultiple" value="__1920">1920</option>
+											<option style="" class="mrMultiple" value="__1919">1919</option>
+											<option style="" class="mrMultiple" value="__1918">1918</option>
+											<option style="" class="mrMultiple" value="__1917">1917</option>
+											<option style="" class="mrMultiple" value="__1916">1916</option>
+											<option style="" class="mrMultiple" value="__1915">1915</option>
+											<option style="" class="mrMultiple" value="__1914">1914</option>
+											<option style="" class="mrMultiple" value="__1913">1913</option>
+											<option style="" class="mrMultiple" value="__1912">1912</option>
+											<option style="" class="mrMultiple" value="__1911">1911</option>
+											<option style="" class="mrMultiple" value="__1910">1910</option>
+										</select>
+									</span>
+								</div>
+								<div class="picture-right pic-xs-12 pic-sm-3">
+								</div>
+							</div>
+							<div class="row pictureBottom">
+							</div>
+						</div>
+						<div class="question-container">
+							<div></div>
+							<span class="mrBannerText" style=""><script class="customJSONproperties" type="application/json">{ "QType" : "DROPDOWN", "QSubType" : "", "QOrientation" : "", "QTopHeaders" : false, "QSideHeaders" : false,  "QType" : "DROPDOWN", "QSubType" : "", "QOrientation" : "", "QTopHeaders" : false, "QSideHeaders" : false }</script></span>
+							<div id="error-message" class="alert alert-danger show">
+								<div></div>
+								<span class="mrErrorText" style="border-color: Red;">Please provide an answer.</span>
+							</div>
+							<div id="question" class="question">
+								<label for="_Q1_C">
+									<div></div>
+									<span class="mrQuestionText" style="">Month:</span>
+								</label>
+							</div>
+							<div class="row pictureTop">
+							</div>
+							<div class="question-controls-container row">
+								<div class="picture-left pic-xs-12 pic-sm-3">
+								</div>
+								<div class="the-controls col-xs-12  pic-xs-12 pic-sm-9">
+									<div></div>
+									<span style="">
+										<div></div>
+										<select name="_Q_DDynamicPage_QH__page__age_QH__month_C" id="_Q1_C" class="mrDropdown" style="">
+											<option style="" class="mrMultiple" value="">- Please Select -</option>
+											<option style="" class="mrMultiple" value="__1">January</option>
+											<option style="" class="mrMultiple" value="__2">February</option>
+											<option style="" class="mrMultiple" value="__3">March</option>
+											<option style="" class="mrMultiple" value="__4">April</option>
+											<option style="" class="mrMultiple" value="__5">May</option>
+											<option style="" class="mrMultiple" value="__6">June</option>
+											<option style="" class="mrMultiple" value="__7">July</option>
+											<option style="" class="mrMultiple" value="__8">August</option>
+											<option style="" class="mrMultiple" value="__9">September</option>
+											<option style="" class="mrMultiple" value="__10">October</option>
+											<option style="" class="mrMultiple" value="__11">November</option>
+											<option style="" class="mrMultiple" value="__12">December</option>
+										</select>
+									</span>
+								</div>
+								<div class="picture-right pic-xs-12 pic-sm-3">
+								</div>
+							</div>
+							<div class="row pictureBottom">
+							</div>
+						</div>
+						<div><br/></div>
+						<div></div>
+						<span class="mrQuestionText" style=""></span>
+						<div><br/></div>
+						<div class="DGContainer" style="display:none;height:1px;width:1px;position:relative;left:-1000px">
+							<div class="DGField" style="display:none;height:1px;width:1px;position:relative;left:-1000px">
+								<label for="_Q3">
+									<div></div>
+									<span class="mrQuestionText" style="visibility: hidden;">QuestionId</span>
+								</label>
+								<div></div>
+								<span style="">
+									<div></div>
+									<textarea name="_Q_DDynamicPage_Q__1_QQuestionId" id="_Q3" class="mrEdit" autocomplete="off" style="width: 0px;height: 0px;visibility: hidden;" rows="6" cols="40" maxlength="100"></textarea>
+								</span>
+							</div>
+						</div>
+						<div class="DGField" style="display:none;height:1px;width:1px;position:relative;left:-1000px">
+							<label for="_Q4">
+								<div></div>
+								<span class="mrQuestionText" style="">DGScriptLoad</span>
+							</label>
+							<div></div>
+							<span style="">
+								<div></div>
+								<textarea name="_Q_DDynamicPage_Q__1_QDGScriptLoad" id="_Q4" class="mrEdit" autocomplete="off" style="" rows="6" cols="40" maxlength="100"></textarea>
+							</span>
+						</div>
+						<div><br/></div>
+						<div id="nav-controls" class="btn-container nav-center">
+							<input type="submit" name="_NNext" class="mrNext" style="" value="Next" alt="Next"></input>
+						</div>
+					</div>
+				</div>
+				<footer id="footer" class="footer invisible">
+					<hr/>
+					<div class="container container-secondary">
+						<div class="row">
+							<div></div>
+							<span class="mrBannerText" style=""><div class="col-xs-12 col-sm-10 col-sm-push-2">
+<ul class="list-inline">
+<li>
+<a href="#" onclick="javascript:window.open('https://cdn.ipsosinteractive.com/deploy/i-say/ppamp/en-us.html','Email','top=0, left=0, width=800, height=630, directories=no,status=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=yes' )">Privacy policy</a></li>
+ <li>
+<a href="#" onclick="javascript:window.open('https://enter.ipsosinteractive.com/doNotSellMyData/?p=cmJzHYsdluPOgIlE02vWwmOK6HOkW1boezo%2fGQcorc20zPouF9RUXRgasyo9mR27','Email','top=0, left=0, width=1000, height=630, directories=no,status=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=yes' )">Do not sell my info</a></li>
+</ul>
+</div>
+<div class="col-xs-12 col-sm-10 col-sm-push-2">
+<ul class="list-inline">
+<li>
+ © 2025 Ipsos</li>
+</ul>
+</div>
+</span>
+						</div>
+					</div>
+				</footer>
+			</div>
+			<div></div>
+			<span class="mrBannerText" style=""><script type="text/javascript" src="https://cdn.ipsosinteractive.com/deploy/templates/iis-sharky/v3.2/i18n/i18n.js"></script>
+<script type="text/javascript" src="https://cdn.ipsosinteractive.com/deploy/templates/iis-sharky/v3.2/js/functions.js"></script>
+<script type="text/javascript" src="https://cdn.ipsosinteractive.com/deploy/templates/iis-sharky/v3.2/js/core.js"></script></span>
+		</form><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'971fe8ec1a514217',t:'MTc1NTY3MjEzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"971fe8ec1a514217","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"0d4ffb79b2134bbdb129c3b006f6ba87"}' crossorigin="anonymous"></script>
+</body>
+	<div></div>
+	<span class="mrBannerText" style=""></span>
+	<div></div>
+	<span class="mrBannerText" style=""><script>var hasOE = false;var descriptive = false;var productType = '';var locale = "en-us";var sid = "S25041132";var idtype = "real";var respid = "n3prix8g0/0SBlFHap+nY5jKUXAIMsBJsLDJdqZBPBaUYiJ0fo0WMrocum6Y3oVh";var devicetype = "Laptop/PC";var questiontype = "DROPDOWN#DROPDOWN";var surveyid = "1207795";var rtype = "350";var pA = true;var tS = true;var hP = true;var rF = true;var fR = true;var bW = true;var URLWordsFile = 'https://cdn.ipsosinteractive.com/deploy/templates/iis-template/js/DG/DGwithAPI/v3/words.txt';var URLGibberishFile = 'https://cdn.ipsosinteractive.com/deploy/templates/iis-template/js/DG/DGwithAPI/v3/gib_model.json';var ExclusionURL = 'https://cdn.ipsosinteractive.com/deploy/templates/iis-template/js/DG/DGwithAPI/v3/exclusion.txt';$('textarea[name$="DGScriptLoad"]').val('0');</script><script src="https://cdn.ipsosinteractive.com/deploy/templates/iis-template/js/DG/DGwithAPI/v3/gibberish_asian.js"> //Asia Gibberish </script><script src="https://cdn.ipsosinteractive.com/deploy/templates/iis-template/js/DG/DGwithAPI/v3/BootstrapFront_V2-min.js"> //DG functions </script><script src="https://cdn.ipsosinteractive.com/deploy/templates/iis-template/js/DG/DGwithAPI/v3/BootstrapFrontInit.js"> //DG functions init</script></span>
+</html>

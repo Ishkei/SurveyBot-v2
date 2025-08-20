@@ -1,0 +1,91 @@
+/* Cookie Banner */
+.cookie-outer-container {
+  font-size: 16px;
+  text-shadow: none;
+}
+
+.cookie-outer-container.hide {
+  display: none;
+}
+
+.cookie-banner-shim {
+  height: 5.3em;
+}
+
+.cookie-banner {
+  height: 5.3em;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: #d8d8d8;
+  border-bottom: 2px solid #c3c1c3;
+  z-index: 9999;
+}
+
+.cookie-banner-container {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.cookie-message {
+  color: #4a4a4a;
+  font-size: 0.9em;
+  padding: 1.3em 1em 0px;
+  margin: 0;
+  line-height: 1.2em;
+}
+
+.cookie-actions-container {
+  padding-top: 0.8em;
+  padding-left: 1em;
+}
+
+.cookie-banner-button {
+  color: #4a4a4a;
+  font-size: 0.8em;
+  background-color: #c5c6c7;
+  border: none;
+  width: 4.7em;
+  padding: 0.3em 0;
+}
+
+.cookie-banner-link {
+  color: #3db3e3;
+  margin-left: 1.5em;
+  border-bottom: none;
+  font-size: 0.8em;
+  line-height: 1.7em;
+}
+
+/* Tablets (under 800px wide) */
+@media screen and (max-width: 800px) {
+  .cookie-banner {
+    height: 6.2em;
+  }
+  .cookie-banner-shim {
+    height: 6.2em;
+  }
+  .cookie-message {
+    padding-top: 1em;
+    font-size: 0.85em;
+  }
+}
+
+/* Small Screens (under 600px wide) */
+@media screen and (max-width: 600px) {
+  .cookie-banner-shim {
+    height: 6em;
+  }
+  .cookie-banner {
+    height: 6em;
+  }
+  .cookie-message {
+    padding: 0.4em 0.6em;
+    font-size: 0.8em;
+  }
+  .cookie-actions-container {
+    padding: 0.3em 0.5em;
+  }
+}

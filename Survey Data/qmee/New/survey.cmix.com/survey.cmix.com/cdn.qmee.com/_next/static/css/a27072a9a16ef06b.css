@@ -1,0 +1,61 @@
+.FraudTerminatedMessage_root__THpYJ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.FraudTerminatedMessage_root__THpYJ h1 {
+  font-family: Londrina;
+  font-size: 2.6rem;
+  margin: 0 0 15px;
+  letter-spacing: 0;
+}
+.FraudTerminatedMessage_root__THpYJ h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+.FraudTerminatedMessage_root__THpYJ p {
+  margin-top: 0;
+  line-height: 1.2;
+}
+.FraudTerminatedMessage_root__THpYJ ul {
+  line-height: 1.4;
+  padding: 0 0 0 15px;
+  margin: 0 0 12px;
+  text-align: left;
+}
+.FraudTerminatedMessage_inboxMessageIconVisible__cdU6_ {
+  padding-top: 40px;
+}
+.FraudTerminatedMessage_inboxMessageIcon__42pvw {
+  position: fixed;
+  top: -60px;
+}
+.FraudTerminatedMessage_primaryCtaBtn__Ae8kU {
+  margin: 10px 0 15px;
+  width: 100%;
+}
+.FraudTerminatedMessage_cancelBtn__T_k5j {
+  font-size: 0.8rem;
+}
+.FraudTerminatedMessage_strongMessage__toBSZ {
+  font-weight: 400;
+  background-color: var(--palette-info-background);
+  color: var(--palette-info-main);
+  padding: 12px 10px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  border: 1px dashed var(--palette-info-main);
+  border-radius: 10px;
+}
+.FraudTerminatedMessage_strongMessage__toBSZ a {
+  color: var(--palette-info-main);
+  font-weight: 700;
+}
+.FraudTerminatedMessage_strongMessage__toBSZ a:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=a27072a9a16ef06b.css.map*/

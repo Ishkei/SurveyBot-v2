@@ -1,0 +1,46 @@
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgEditPencil(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 18.165,
+    height: 18.165,
+    viewBox: "0 0 18.165 18.165",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Edit_Pencil",
+    "data-name": "Edit Pencil",
+    transform: "translate(15.027) rotate(45)"
+  }, /*#__PURE__*/React.createElement("rect", {
+    id: "Rectangle_1062",
+    "data-name": "Rectangle 1062",
+    width: 4.437,
+    height: 16.529,
+    transform: "translate(0 0)",
+    fill: "#485866"
+  }), /*#__PURE__*/React.createElement("g", {
+    id: "Polygon_25",
+    "data-name": "Polygon 25",
+    transform: "translate(4.437 21.251) rotate(180)",
+    fill: "#485866"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 3.534155607223511 3.041876554489136 L 0.903206467628479 3.041876554489136 L 2.21868109703064 0.941865086555481 L 3.534155607223511 3.041876554489136 Z",
+    stroke: "none"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M 2.21868109703064 1.883733749389648 L 1.806411743164062 2.541876554489136 L 2.630950450897217 2.541876554489136 L 2.21868109703064 1.883733749389648 M 2.21868109703064 -3.576278686523438e-06 L 4.437361240386963 3.541876554489136 L 9.5367431640625e-07 3.541876554489136 L 2.21868109703064 -3.576278686523438e-06 Z",
+    stroke: "none",
+    fill: "#495867"
+  })))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgEditPencil);
+export default __webpack_public_path__ + "static/media/EditPencil.30635d9e8f0bee8e0a3c5efd48c358bb.svg";
+export { ForwardRef as ReactComponent };

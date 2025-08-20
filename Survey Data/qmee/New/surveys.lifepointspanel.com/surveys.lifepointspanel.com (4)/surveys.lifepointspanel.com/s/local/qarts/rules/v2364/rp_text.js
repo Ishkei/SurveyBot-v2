@@ -1,0 +1,20 @@
+QArts.rules.rp_text = function (a, b) {
+  return [
+    { c: a.aLen <= 8, s: "rp_statement_1c_8.json" },
+    { c: a.mALen <= 12 && a.aLen <= 12, s: "rp_text_7c_12.json" },
+    { c: a.mALen <= 12 && a.aLen <= 18, s: "rp_text_7c_18.json" },
+    { c: a.mALen <= 12 && a.aLen <= 25, s: "rp_text_7c_25.json" },
+    { c: a.mALen <= 12 && a.aLen <= 999, s: "rp_text_7c_999.json" },
+    { c: a.mALen <= 25 && a.aLen <= 12, s: "rp_text_5c_12.json" },
+    { c: a.mALen <= 25 && a.aLen <= 18, s: "rp_text_5c_18.json" },
+    { c: a.mALen <= 25 && a.aLen <= 25, s: "rp_text_5c_25.json" },
+    { c: a.mALen <= 25 && a.aLen <= 9999, s: "rp_text_5c_9999.json" },
+    { c: a.mALen <= 30 && a.aLen <= 12, s: "rp_text_4c_12.json" },
+    { c: a.mALen <= 30 && a.aLen <= 18, s: "rp_text_4c_18.json" },
+    { c: a.mALen <= 30 && a.aLen <= 25, s: "rp_text_4c_25.json" },
+    { c: a.mALen <= 30 && a.aLen <= 999, s: "rp_text_4c_999.json" },
+    { c: a.mALen <= 45 && a.aLen <= 999, s: "rp_statement_2c_999.json" },
+    { c: a.aLen <= 12, s: "rp_statement_1c_12.json" },
+    { c: a.aLen <= 999, s: "rp_statement_1c_999.json" },
+  ];
+};

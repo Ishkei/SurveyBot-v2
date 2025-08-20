@@ -1,0 +1,3066 @@
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [2723],
+  {
+    32960: function (e, n, t) {
+      "use strict";
+      var a,
+        r = t(67294);
+      function l() {
+        return (
+          (l = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          l.apply(this, arguments)
+        );
+      }
+      n.Z = function (e) {
+        return r.createElement(
+          "svg",
+          l(
+            {
+              fill: "#69eda2",
+              viewBox: "0 0 22 18",
+              xmlns: "http://www.w3.org/2000/svg",
+            },
+            e
+          ),
+          a ||
+            (a = r.createElement("path", {
+              d: "M8.424 17.218a1.12 1.12 0 0 1-1.588 0L.494 10.875a1.684 1.684 0 0 1 0-2.382l.794-.795a1.684 1.684 0 0 1 2.382 0l3.96 3.96 10.7-10.7a1.684 1.684 0 0 1 2.382 0l.794.795a1.684 1.684 0 0 1 0 2.382L8.424 17.218Z",
+            }))
+        );
+      };
+    },
+    38677: function (e, n, t) {
+      "use strict";
+      var a,
+        r,
+        l = t(67294);
+      function i() {
+        return (
+          (i = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          i.apply(this, arguments)
+        );
+      }
+      n.Z = function (e) {
+        return l.createElement(
+          "svg",
+          i(
+            {
+              height: 35,
+              viewBox: "0 0 39 35",
+              fill: "none",
+              xmlns: "http://www.w3.org/2000/svg",
+            },
+            e
+          ),
+          a ||
+            (a = l.createElement("path", {
+              d: "M16.036 2c1.54-2.667 5.388-2.667 6.928 0L38.12 28.25c1.54 2.667-.385 6-3.465 6H4.345c-3.08 0-5.004-3.333-3.465-6L16.036 2Z",
+              fill: "#F9E580",
+            })),
+          r ||
+            (r = l.createElement("path", {
+              d: "M21.941 11v6.61c0 .71-.055 1.414-.167 2.115-.112.694-.26 1.403-.443 2.127H18.13a24.793 24.793 0 0 1-.443-2.127 13.41 13.41 0 0 1-.168-2.115V11h4.423ZM17 26.024c0-.278.066-.536.198-.774a2.18 2.18 0 0 1 .565-.625c.244-.177.528-.316.854-.416a3.374 3.374 0 0 1 1.067-.161c.376 0 .727.054 1.052.161.326.1.61.24.855.416.244.178.432.386.564.625.142.238.213.496.213.774 0 .277-.07.54-.213.786-.132.239-.32.447-.564.624a2.886 2.886 0 0 1-.855.416c-.325.1-.676.15-1.052.15-.386 0-.742-.05-1.067-.15-.326-.1-.61-.24-.854-.416a2.18 2.18 0 0 1-.565-.624 1.639 1.639 0 0 1-.198-.786Z",
+              fill: "#FA9917",
+            }))
+        );
+      };
+    },
+    40638: function (e, n, t) {
+      "use strict";
+      var a,
+        r,
+        l = t(67294);
+      function i() {
+        return (
+          (i = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          i.apply(this, arguments)
+        );
+      }
+      n.Z = function (e) {
+        return l.createElement(
+          "svg",
+          i(
+            {
+              height: 46,
+              viewBox: "0 0 46 46",
+              fill: "none",
+              xmlns: "http://www.w3.org/2000/svg",
+            },
+            e
+          ),
+          a ||
+            (a = l.createElement("path", {
+              d: "M45.708 22.105C45.297 21.543 35.505 8.341 23 8.341 10.494 8.34.702 21.543.292 22.105a1.518 1.518 0 0 0 0 1.79C.702 24.457 10.494 37.66 23 37.66c12.505 0 22.297-13.203 22.708-13.765.39-.533.39-1.257 0-1.79ZM23 35.628c-9.212 0-17.932-9.762-20.294-12.627C5.065 20.134 13.768 10.373 23 10.373c9.21 0 18.382 9.762 20.745 12.628C41.386 25.868 32.231 35.628 23 35.628Z",
+              fill: "#1C2451",
+            })),
+          r ||
+            (r = l.createElement("path", {
+              d: "M23 13.901c-5.017 0-9.1 4.082-9.1 9.1 0 5.016 4.083 9.098 9.1 9.098 5.017 0 9.099-4.082 9.099-9.099s-4.082-9.099-9.1-9.099Zm0 15.864c-3.345 0-6.765-3.42-6.765-6.765 0-3.345 3.42-6.764 6.765-6.764 3.345 0 6.765 3.42 6.765 6.764 0 3.345-3.42 6.765-6.765 6.765Z",
+              fill: "#1C2451",
+            }))
+        );
+      };
+    },
+    6017: function (e, n, t) {
+      "use strict";
+      var a,
+        r,
+        l = t(67294);
+      function i() {
+        return (
+          (i = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          i.apply(this, arguments)
+        );
+      }
+      n.Z = function (e) {
+        return l.createElement(
+          "svg",
+          i(
+            {
+              height: 25,
+              viewBox: "0 0 54 25",
+              fill: "none",
+              xmlns: "http://www.w3.org/2000/svg",
+            },
+            e
+          ),
+          a ||
+            (a = l.createElement("path", {
+              d: "m18.145 14.533-1.035 1.324a6.04 6.04 0 0 1-1.46-1.025 3.67 3.67 0 0 1-1.15.72c-.406.154-.889.232-1.448.232-1.112 0-1.948-.314-2.507-.94a2.432 2.432 0 0 1-.651-1.673c0-.573.17-1.09.51-1.547.341-.458.85-.855 1.528-1.193a4.855 4.855 0 0 1-.688-1.035 2.19 2.19 0 0 1-.23-.93c0-.542.215-1 .647-1.377.432-.376 1.048-.564 1.847-.564.77 0 1.373.197 1.807.592.434.394.651.877.651 1.446 0 .362-.107.706-.322 1.032-.215.325-.65.694-1.303 1.104l1.242 1.642c.146-.26.272-.6.377-1.019l1.546.354c-.155.55-.288.951-.402 1.206a3.24 3.24 0 0 1-.365.637c.19.18.437.376.74.59.301.213.524.354.666.424ZM13.49 9.668l.462-.354c.34-.265.511-.527.511-.787a.743.743 0 0 0-.246-.562c-.165-.155-.387-.232-.667-.232-.271 0-.484.068-.638.205a.616.616 0 0 0-.232.473c0 .211.13.468.39.769l.42.488Zm-.67 1.862c-.393.199-.687.439-.882.72-.195.28-.292.567-.292.86 0 .37.12.673.362.907.241.234.565.35.97.35.268 0 .526-.052.773-.158.248-.106.518-.28.81-.525l-1.74-2.154Zm16.338 3.979h1.296c-.406.826-1.028 1.473-1.868 1.941-.961.537-2.134.806-3.517.806-1.339 0-2.495-.227-3.468-.68-.974-.455-1.698-1.124-2.173-2.009a6.019 6.019 0 0 1-.712-2.89c0-1.143.27-2.208.81-3.195.54-.987 1.277-1.727 2.215-2.222.937-.494 2.008-.741 3.212-.741 1.023 0 1.931.199 2.726.598.795.398 1.403.965 1.823 1.7.42.734.63 1.537.63 2.407a4.536 4.536 0 0 1-.956 2.814c-.8 1.058-1.823 1.587-3.073 1.587-.336 0-.59-.059-.76-.177a.855.855 0 0 1-.341-.519c-.479.464-1.03.696-1.655.696-.674 0-1.232-.233-1.676-.699-.445-.466-.667-1.085-.667-1.858 0-.957.268-1.83.803-2.619.65-.96 1.481-1.44 2.495-1.44.722 0 1.256.276 1.6.83l.153-.678h1.606l-.919 4.377a3.572 3.572 0 0 0-.085.537c0 .101.023.178.07.229a.22.22 0 0 0 .167.076c.195 0 .447-.118.755-.354.414-.31.748-.724 1.004-1.245a3.63 3.63 0 0 0 .383-1.618c0-1-.36-1.838-1.083-2.511-.722-.674-1.73-1.01-3.024-1.01-1.1 0-2.031.224-2.796.674a4.278 4.278 0 0 0-1.728 1.898 5.873 5.873 0 0 0-.581 2.548c0 .859.216 1.64.648 2.344a3.77 3.77 0 0 0 1.82 1.541c.78.324 1.673.486 2.68.486.969 0 1.803-.136 2.5-.406.698-.27 1.26-.677 1.686-1.218Zm-6.578-2.508c0 .516.105.897.314 1.14a.981.981 0 0 0 .775.367c.232 0 .449-.057.651-.17.155-.082.307-.21.457-.385.215-.249.4-.61.557-1.087.156-.476.234-.92.234-1.33 0-.46-.107-.813-.32-1.06a1.02 1.02 0 0 0-.806-.369c-.349 0-.671.136-.967.406-.296.27-.52.656-.67 1.157-.15.5-.225.944-.225 1.33Zm8.854.396h-.828v-1.343h1.095l.365-1.8h-1.46V8.905h1.734l.48-2.38h1.364l-.48 2.38h1.344l.468-2.38h1.412l-.487 2.38h.84v1.349h-1.114l-.365 1.8h1.479v1.343h-1.752l-.481 2.38H33.69l.468-2.38h-1.35l-.481 2.38h-1.375l.48-2.38Zm2.001-3.143-.359 1.8h1.351l.353-1.8h-1.345Zm4.533-1.367c0-.802.176-1.396.527-1.783.35-.386.826-.58 1.427-.58.62 0 1.106.193 1.457.577.35.385.526.98.526 1.786 0 .801-.175 1.395-.526 1.782-.35.386-.826.58-1.427.58-.62 0-1.106-.193-1.457-.577-.351-.385-.526-.98-.526-1.785Zm1.333-.012c0 .581.067.972.2 1.171.102.147.242.22.42.22a.489.489 0 0 0 .427-.22c.13-.199.194-.59.194-1.171 0-.582-.065-.971-.194-1.166a.485.485 0 0 0-.426-.226.483.483 0 0 0-.42.22c-.134.199-.2.59-.2 1.172Zm1.923 7.092h-1.266l4.752-9.442h1.23l-4.716 9.442Zm2.762-2.35c0-.802.176-1.396.527-1.782.35-.387.83-.58 1.439-.58.612 0 1.094.193 1.445.58.35.386.526.98.526 1.782 0 .806-.175 1.402-.526 1.788-.351.387-.827.58-1.427.58-.62 0-1.106-.193-1.457-.58-.351-.386-.527-.982-.527-1.788Zm1.333-.006c0 .582.067.97.2 1.166a.48.48 0 0 0 .42.225.474.474 0 0 0 .42-.22c.134-.199.201-.59.201-1.171 0-.582-.065-.973-.195-1.172a.489.489 0 0 0-.425-.22.474.474 0 0 0-.42.22c-.134.2-.201.59-.201 1.172Z",
+              fill: "#1C2451",
+            })),
+          r ||
+            (r = l.createElement("path", {
+              clipRule: "evenodd",
+              d: "M13.232 1.042h31.422c4.588 0 8.308 3.73 8.308 8.333v4.188c0 4.603-3.72 8.334-8.308 8.334H8.468c-.908 0-1.81.149-2.67.442l-3.36 1.144a.5.5 0 0 1-.577-.752l3.063-4.575v-8.78c0-4.603 3.72-8.334 8.308-8.334Z",
+              stroke: "#1C2451",
+              strokeWidth: 2,
+            }))
+        );
+      };
+    },
+    27131: function (e, n, t) {
+      "use strict";
+      var a,
+        r = t(67294);
+      function l() {
+        return (
+          (l = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          l.apply(this, arguments)
+        );
+      }
+      n.Z = function (e) {
+        return r.createElement(
+          "svg",
+          l(
+            {
+              height: 48,
+              viewBox: "0 0 48 48",
+              fill: "none",
+              xmlns: "http://www.w3.org/2000/svg",
+            },
+            e
+          ),
+          a ||
+            (a = r.createElement("path", {
+              d: "M46.633.42a.787.787 0 0 0-.816.262c-5.064 6.19-11.003 6.054-17.284 5.908-1.9-.043-3.856-.079-5.823.053a.714.714 0 0 0-.13.008c-.207.014-.414.022-.621.04a22.806 22.806 0 0 0-8.72 2.597.775.775 0 0 0-.18.094 20.434 20.434 0 0 0-9.878 12.031 19.279 19.279 0 0 0 1.167 13.893c-.247.393-.572.889-1.068 1.634A19.403 19.403 0 0 0 0 46.82c0 .434.352.786.787.786H38.5c.435 0 .5-.352.5-.787 0-.434-.065-.787-.5-.787H2.686l2.592-2.59c.14-.141.223-.33.23-.529.117-1.966.374-3.921.767-5.85 1.52.618 3.148.931 4.79.92a13.775 13.775 0 0 0 11.623-6.467c4.165-6.248 4.301-6.322 7.802-8.251 1.536-.847 3.641-2.006 6.92-4.114 11.316-7.27 9.861-17.652 9.794-18.09a.787.787 0 0 0-.57-.64ZM3.951 42.544l-2.13 2.13a18.6 18.6 0 0 1 2.691-6.745 42.649 42.649 0 0 0-.561 4.615ZM36.558 17.83l-.057.036a5.02 5.02 0 0 1-2.228-.816.787.787 0 0 0-.874 1.31c.402.263.831.482 1.28.652a105.673 105.673 0 0 1-4.949 2.877 14.975 14.975 0 0 0-3.985 2.754 7.878 7.878 0 0 1-4.146-.559.788.788 0 1 0-.708 1.407 8.206 8.206 0 0 0 3.502.773c-.693.926-1.518 2.14-2.612 3.777-1.967.87-4.756 1.588-7.266.336a.787.787 0 0 0-.702 1.408c1.142.564 2.4.853 3.675.841.876-.006 1.748-.12 2.596-.338a11.763 11.763 0 0 1-13.474 3.2c.162-.696.344-1.416.555-2.164 4.48-11.908 9.948-13.534 17.513-15.788a57.769 57.769 0 0 0 13.486-5.446.787.787 0 1 0-.787-1.361 56.493 56.493 0 0 1-13.14 5.301c-7.698 2.29-13.78 4.101-18.534 16.735l-.344.686-.055.11a17.776 17.776 0 0 1-.613-11.696c.022-.07.05-.137.072-.207.196.703.492 1.374.88 1.992a.787.787 0 1 0 1.31-.874 9.751 9.751 0 0 1-1.15-3.734 18.823 18.823 0 0 1 5.538-6.67 13.618 13.618 0 0 0-1.111 5.333.787.787 0 1 0 1.573 0 12.722 12.722 0 0 1 2.248-7.061 21.078 21.078 0 0 1 6.821-2.23c-.417.59-.79 1.21-1.116 1.855a.788.788 0 0 0 1.407.709A12.985 12.985 0 0 1 23.05 8.2c1.819-.108 3.656-.079 5.443-.035.63.015 1.263.029 1.896.036-.19.471-.346.954-.468 1.447a.787.787 0 0 0 1.528.379 8.306 8.306 0 0 1 .674-1.827c4.702-.072 9.392-.841 13.573-5.036-.142 3.16-1.443 9.718-9.14 14.666Z",
+              fill: "#1C2451",
+            }))
+        );
+      };
+    },
+    28334: function (e, n, t) {
+      "use strict";
+      var a,
+        r,
+        l = t(67294);
+      function i() {
+        return (
+          (i = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          i.apply(this, arguments)
+        );
+      }
+      n.Z = function (e) {
+        return l.createElement(
+          "svg",
+          i(
+            {
+              height: 34,
+              viewBox: "0 0 43 34",
+              fill: "none",
+              xmlns: "http://www.w3.org/2000/svg",
+            },
+            e
+          ),
+          a ||
+            (a = l.createElement("path", {
+              d: "M43 3.739a2.525 2.525 0 0 0-2.52-2.525 2.525 2.525 0 0 0-1.252 4.715l-1.71 3.022-2.374-3.104a2.526 2.526 0 0 0-1.384-4.633 2.525 2.525 0 0 0-.445 5.01l2.652 3.465c-1.008.07-2.013.201-3.003.398a18.597 18.597 0 0 0-8.328-8.19A18.568 18.568 0 0 0 12.483.434a.842.842 0 0 0 .363 1.643C20.362.41 28.149 4.172 31.569 11.053a16.502 16.502 0 0 1-8.542 5.358 9.947 9.947 0 0 0-.661-1.952c-1.863-4.061-6.676-5.846-10.73-3.98-3.326 1.533-4.789 5.491-3.26 8.825a5.482 5.482 0 0 0 7.268 2.695 4.528 4.528 0 0 0 2.368-2.56 4.54 4.54 0 0 0-.133-3.489 3.788 3.788 0 0 0-2.139-1.986 3.778 3.778 0 0 0-2.913.112.842.842 0 0 0 .701 1.53 2.112 2.112 0 0 1 1.63-.063c.533.198.957.592 1.195 1.11.32.699.35 1.48.084 2.201a2.857 2.857 0 0 1-1.494 1.616 3.801 3.801 0 0 1-5.04-1.87 4.946 4.946 0 0 1-.145-3.8 4.934 4.934 0 0 1 2.58-2.79c3.211-1.48 7.025-.066 8.501 3.152 1.894 4.128.083 9.03-4.036 10.928a10.4 10.4 0 0 1-8.022.307l-.011-.005-.016-.006a10.427 10.427 0 0 1-5.861-5.456C.393 15.48 1.845 8.984 6.426 5.133c.075-.063-.8-1.525-1.08-1.29-5.159 4.337-6.795 11.652-3.98 17.79a12.089 12.089 0 0 0 5.552 5.783 8.258 8.258 0 0 0-2.336 5.742.84.84 0 0 0 .84.842h15.475c9.686 0 17.567-7.897 17.567-17.603v-5.703L41 6.209c1.141-.24 2-1.257 2-2.47Zm-2.52-.842a.842.842 0 0 1 0 1.683.842.842 0 0 1 0-1.683Zm-6.72 0a.842.842 0 0 1 0 1.683.842.842 0 0 1 0-1.683Zm-12.863 29.42H6.317a6.572 6.572 0 0 1 2.31-4.193 12.12 12.12 0 0 0 3.802.616c1.73 0 3.456-.375 5.076-1.121 3.786-1.744 5.952-5.596 5.753-9.531a18.184 18.184 0 0 0 9.9-6.323c1.193-.245 2.408-.39 3.626-.436v5.068c0 8.778-7.127 15.92-15.887 15.92Z",
+              fill: "#1C2451",
+            })),
+          r ||
+            (r = l.createElement("path", {
+              d: "M9.214 3.09a1.028 1.028 0 0 0 1.024-1.03 1.028 1.028 0 0 0-1.024-1.03A1.028 1.028 0 0 0 8.19 2.06a1.028 1.028 0 0 0 1.024 1.03Z",
+              fill: "#1C2451",
+            }))
+        );
+      };
+    },
+    14480: function (e, n, t) {
+      "use strict";
+      var a = t(85893);
+      t(67294);
+      n.Z = function (e) {
+        var n = e.color,
+          t = e.className;
+        return (0, a.jsx)("svg", {
+          className: t,
+          xmlns: "http://www.w3.org/2000/svg",
+          width: "12",
+          height: "13",
+          viewBox: "0 0 12 22",
+          children: (0, a.jsxs)("g", {
+            fill: "none",
+            fillRule: "evenodd",
+            stroke: n || "currentColor",
+            strokeWidth: "2",
+            transform: "rotate(-180 5.5 10.5)",
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            children: [
+              (0, a.jsx)("polygon", { points: "9.864 10 .197 0" }),
+              (0, a.jsx)("path", { d: "M9.86363636,10 L0.196969697,20" }),
+            ],
+          }),
+        });
+      };
+    },
+    49594: function (e, n, t) {
+      "use strict";
+      var a = t(85893),
+        r = t(86010),
+        l = t(67294),
+        i = t(69926),
+        s = t(14480),
+        o = t(84646),
+        c = t(95832),
+        u = t.n(c);
+      function d(e, n) {
+        (null == n || n > e.length) && (n = e.length);
+        for (var t = 0, a = new Array(n); t < n; t++) a[t] = e[t];
+        return a;
+      }
+      function m(e, n, t) {
+        return (
+          n in e
+            ? Object.defineProperty(e, n, {
+                value: t,
+                enumerable: !0,
+                configurable: !0,
+                writable: !0,
+              })
+            : (e[n] = t),
+          e
+        );
+      }
+      function f(e, n) {
+        if (null == e) return {};
+        var t,
+          a,
+          r = (function (e, n) {
+            if (null == e) return {};
+            var t,
+              a,
+              r = {},
+              l = Object.keys(e);
+            for (a = 0; a < l.length; a++)
+              (t = l[a]), n.indexOf(t) >= 0 || (r[t] = e[t]);
+            return r;
+          })(e, n);
+        if (Object.getOwnPropertySymbols) {
+          var l = Object.getOwnPropertySymbols(e);
+          for (a = 0; a < l.length; a++)
+            (t = l[a]),
+              n.indexOf(t) >= 0 ||
+                (Object.prototype.propertyIsEnumerable.call(e, t) &&
+                  (r[t] = e[t]));
+        }
+        return r;
+      }
+      function p(e, n) {
+        return (
+          (function (e) {
+            if (Array.isArray(e)) return e;
+          })(e) ||
+          (function (e, n) {
+            var t =
+              null == e
+                ? null
+                : ("undefined" !== typeof Symbol && e[Symbol.iterator]) ||
+                  e["@@iterator"];
+            if (null != t) {
+              var a,
+                r,
+                l = [],
+                i = !0,
+                s = !1;
+              try {
+                for (
+                  t = t.call(e);
+                  !(i = (a = t.next()).done) &&
+                  (l.push(a.value), !n || l.length !== n);
+                  i = !0
+                );
+              } catch (o) {
+                (s = !0), (r = o);
+              } finally {
+                try {
+                  i || null == t.return || t.return();
+                } finally {
+                  if (s) throw r;
+                }
+              }
+              return l;
+            }
+          })(e, n) ||
+          (function (e, n) {
+            if (!e) return;
+            if ("string" === typeof e) return d(e, n);
+            var t = Object.prototype.toString.call(e).slice(8, -1);
+            "Object" === t && e.constructor && (t = e.constructor.name);
+            if ("Map" === t || "Set" === t) return Array.from(t);
+            if (
+              "Arguments" === t ||
+              /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)
+            )
+              return d(e, n);
+          })(e, n) ||
+          (function () {
+            throw new TypeError(
+              "Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
+            );
+          })()
+        );
+      }
+      n.Z = function (e) {
+        var n,
+          t,
+          c = e.title,
+          d = e.className,
+          h = e.headerClassName,
+          g = e.contentClassName,
+          y = e.children,
+          v = e.startOpen,
+          k = e.open,
+          b = e.skipTitleTranslation,
+          _ = e.id,
+          S = e.onOpen,
+          w = e.headerIcon,
+          x = f(e, [
+            "title",
+            "className",
+            "headerClassName",
+            "contentClassName",
+            "children",
+            "startOpen",
+            "open",
+            "skipTitleTranslation",
+            "id",
+            "onOpen",
+            "headerIcon",
+          ]),
+          j = l.useRef(null),
+          I = p(l.useState(v || k), 2),
+          E = I[0],
+          O = I[1],
+          Z = p(l.useState(!1), 2),
+          C = Z[0],
+          N = Z[1],
+          A = p(l.useState(!0), 2),
+          F = A[0],
+          L = A[1],
+          T = (0, i.q_)({
+            from: {
+              maxHeight: E
+                ? 0
+                : null === (n = j.current) || void 0 === n
+                ? void 0
+                : n.scrollHeight,
+            },
+            to: {
+              maxHeight: E
+                ? null === (t = j.current) || void 0 === t
+                  ? void 0
+                  : t.scrollHeight
+                : 0,
+            },
+            onRest: function () {
+              return L(!1);
+            },
+          });
+        return (
+          l.useEffect(
+            function () {
+              C && L(!0);
+            },
+            [C]
+          ),
+          l.useEffect(
+            function () {
+              E || C ? (L(!0), N(!0)) : L(!1), void 0 !== k && E !== k && O(k);
+            },
+            [k, E, C]
+          ),
+          (0, a.jsxs)(
+            "div",
+            (function (e) {
+              for (var n = 1; n < arguments.length; n++) {
+                var t = null != arguments[n] ? arguments[n] : {},
+                  a = Object.keys(t);
+                "function" === typeof Object.getOwnPropertySymbols &&
+                  (a = a.concat(
+                    Object.getOwnPropertySymbols(t).filter(function (e) {
+                      return Object.getOwnPropertyDescriptor(t, e).enumerable;
+                    })
+                  )),
+                  a.forEach(function (n) {
+                    m(e, n, t[n]);
+                  });
+              }
+              return e;
+            })({ id: _, className: (0, r.Z)(u().root, d) }, x, {
+              children: [
+                Boolean(c) &&
+                  (0, a.jsxs)("button", {
+                    className: (0, r.Z)(h),
+                    type: "button",
+                    onClick: function () {
+                      S && S(_ || "", !E), void 0 === k && O(!E);
+                    },
+                    children: [
+                      (0, a.jsx)(o.Z, { skipTranslation: b, children: c }),
+                      (0, a.jsx)(s.Z, {
+                        className: (0, r.Z)(
+                          u().icon,
+                          E ? u().iconOpen : u().iconClosed
+                        ),
+                      }),
+                      w,
+                    ],
+                  }),
+                F
+                  ? (0, a.jsx)(i.q.div, {
+                      style: T,
+                      className: (0, r.Z)(u().content, g),
+                      ref: j,
+                      children: y,
+                    })
+                  : (0, a.jsx)("div", {
+                      style: { maxHeight: E ? "auto" : 0 },
+                      className: (0, r.Z)(u().content, E && u().openContent, g),
+                      ref: j,
+                      children: y,
+                    }),
+              ],
+            })
+          )
+        );
+      };
+    },
+    44824: function (e, n, t) {
+      "use strict";
+      var a = t(85893),
+        r = (t(67294), t(86010)),
+        l = t(87794),
+        i = t(31636),
+        s = t.n(i),
+        o = l.Z;
+      n.Z = function (e) {
+        var n = e.className,
+          t = e.children;
+        return e.animate
+          ? (0, a.jsx)(o, {
+              typeName: "ul",
+              className: (0, r.Z)(s().root, n),
+              children: t,
+            })
+          : (0, a.jsx)("ul", { className: (0, r.Z)(s().root, n), children: t });
+      };
+    },
+    5561: function (e, n, t) {
+      "use strict";
+      var a = t(85893),
+        r = (t(67294), t(22578)),
+        l = t(65561),
+        i = t(4572);
+      function s(e) {
+        switch (e) {
+          case "SUCCESS":
+            return "success";
+          case "ERROR":
+            return "error";
+          case "WARNING":
+            return "warning";
+          default:
+            return "info";
+        }
+      }
+      n.Z = function (e) {
+        var n = e.messageRef,
+          t = e.className,
+          o = (0, r.useFragment)(i, n);
+        return (0, a.jsx)(l.Z, {
+          component: "article",
+          title: o.title || void 0,
+          status: s(o.type),
+          message: o.message,
+          className: t,
+        });
+      };
+    },
+    4572: function (e, n, t) {
+      "use strict";
+      t.r(n);
+      var a = {
+        argumentDefinitions: [],
+        kind: "Fragment",
+        metadata: null,
+        name: "Message_message",
+        selections: [
+          {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "id",
+            storageKey: null,
+          },
+          {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "title",
+            storageKey: null,
+          },
+          {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "message",
+            storageKey: null,
+          },
+          {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "type",
+            storageKey: null,
+          },
+        ],
+        type: "Message",
+        abstractKey: null,
+        hash: "58d158b5b038f85229336be759c83157",
+      };
+      n.default = a;
+    },
+    70915: function (e, n, t) {
+      "use strict";
+      t.d(n, {
+        Z: function () {
+          return w;
+        },
+      });
+      var a = t(85893),
+        r = t(67294),
+        l = t(87606),
+        i = t.n(l),
+        s = t(31955);
+      var o;
+      !(function () {
+        var e = s.Z.get("cookie-consent");
+        if (e) {
+          var n = JSON.parse(e);
+          if (n && n.settings.includes("mar")) return !0;
+        }
+      })();
+      function c() {
+        return (
+          (c = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          c.apply(this, arguments)
+        );
+      }
+      var u = function (e) {
+        return r.createElement(
+          "svg",
+          c(
+            {
+              xmlns: "http://www.w3.org/2000/svg",
+              viewBox: "0 0 8.152 14.003",
+            },
+            e
+          ),
+          o ||
+            (o = r.createElement("path", {
+              "data-name": "facebook",
+              d: "M7.652.5H5.7a3.251 3.251 0 0 0-3.25 3.251V5.7H.5v2.6h1.95v5.2h2.6V8.3H7l.65-2.6h-2.6V3.751a.65.65 0 0 1 .65-.65h1.95Z",
+              fill: "rgba(0,0,0,0)",
+              stroke: "#8D92A8",
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+            }))
+        );
+      };
+      function d() {
+        return (
+          (d = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          d.apply(this, arguments)
+        );
+      }
+      var m,
+        f = function (e) {
+          return r.createElement(
+            "svg",
+            d(
+              {
+                xmlns: "http://www.w3.org/2000/svg",
+                viewBox: "0 0 15.1 12.6",
+                style: { enableBackground: "new 0 0 15.1 12.6" },
+                xmlSpace: "preserve",
+              },
+              e
+            ),
+            r.createElement("path", {
+              style: { fill: "none", stroke: "#8d92a8", strokeMiterlimit: 10 },
+              d: "m.9 0 4.8 6.3-4.8 5.2H2L6.2 7l3.3 4.5h3.7l-5-6.7L12.6 0h-1.1L7.7 4.2 4.6 0z",
+              transform: "translate(.5 .548)",
+            })
+          );
+        };
+      function p() {
+        return (
+          (p = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          p.apply(this, arguments)
+        );
+      }
+      var h = function (e) {
+          return r.createElement(
+            "svg",
+            p(
+              {
+                xmlns: "http://www.w3.org/2000/svg",
+                viewBox: "0 0 13.143 13.143",
+              },
+              e
+            ),
+            m ||
+              (m = r.createElement(
+                "g",
+                {
+                  transform: "translate(.5 .5)",
+                  fill: "none",
+                  stroke: "#8D92A8",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                },
+                r.createElement("rect", {
+                  "data-name": "Rectangle 60",
+                  width: 8,
+                  height: 8,
+                  rx: 2,
+                  transform: "translate(4.143 4.143)",
+                }),
+                r.createElement("path", {
+                  "data-name": "Path 287",
+                  d: "M1.843 7.986h-.614A1.229 1.229 0 0 1 0 6.758V1.229A1.229 1.229 0 0 1 1.229 0h5.529a1.229 1.229 0 0 1 1.228 1.229v.614",
+                })
+              ))
+          );
+        },
+        g = t(86010),
+        y = t(354),
+        v = t(95791),
+        k = t(84646),
+        b = function (e, n) {
+          return "I've earned "
+            .concat(n, " with Qmee! You can too - join ")
+            .concat(
+              e,
+              " to get cash rewards when shopping online and answering surveys"
+            );
+        },
+        _ = function (e, n) {
+          return n.paysReward
+            ? "Check out this "
+                .concat(e, " cashback offer! You can earn ")
+                .concat(
+                  n.rewardLabel,
+                  " cashback when you take part in this offer from "
+                )
+                .concat(
+                  n.advertiser.name,
+                  " - have a look at the full offer here."
+                )
+            : "Check out this "
+                .concat(e, " deal for ")
+                .concat(n.advertiser.name, "! ")
+                .concat(n.title, " Have a look at the full deal here.");
+        },
+        S = function (e) {
+          return "I've just earned another ".concat(
+            e,
+            " by sharing my opinion & completing a survey!"
+          );
+        };
+      function w(e) {
+        var n = e.offer,
+          t = e.type,
+          l = e.balance,
+          s = e.surveyComplete,
+          o = e.shareInfo,
+          c = e.className,
+          d = "https://www.qmee.com",
+          m = (0, v.ao)(),
+          p = (0, r.useState)(!1),
+          w = p[0],
+          x = p[1],
+          j = (0, y.Z)(),
+          I = {
+            surveyComplete: {
+              amount: "cash out",
+              url: "https://www.qmee.com/",
+            },
+            offer: {
+              title: "",
+              url: d,
+              paysReward: !0,
+              rewardLabel: "",
+              advertiser: { name: "Qmee" },
+            },
+            shareInfo: {
+              title: "Check Out Qmee",
+              description:
+                "Earn real cash when you search, shop & take surveys",
+              url: d,
+              imageUrl: "oinq.png",
+              ref: d,
+            },
+            balance: "cash",
+          },
+          E = function (e) {
+            return null === (null === e || void 0 === e ? void 0 : e.title)
+              ? ""
+              : "".concat(
+                  (null === e || void 0 === e ? void 0 : e.title)
+                    ? null === e || void 0 === e
+                      ? void 0
+                      : e.title
+                    : I.shareInfo.title,
+                  " - "
+                );
+          };
+        (0, r.useEffect)(
+          function () {
+            m &&
+              ((window.fbAsyncInit = function () {
+                FB.init({
+                  appId: "123775991104422",
+                  xfbml: !0,
+                  version: "v2.7",
+                  channelUrl: "//www.qmee.com/channel.html",
+                  cookie: !0,
+                }),
+                  FB.XFBML.parse();
+              }),
+              (function (e, n, t) {
+                var a,
+                  r = e.getElementsByTagName(n)[0];
+                e.getElementById(t) ||
+                  (((a = e.createElement(n)).id = t),
+                  (a.src = "//connect.facebook.net/en_US/sdk.js"),
+                  r.parentNode.insertBefore(a, r));
+              })(document, "script", "facebook-jssdk"));
+          },
+          [m]
+        );
+        return (0, a.jsxs)("div", {
+          className: (0, g.Z)(i().root, c),
+          children: [
+            w &&
+              (0, a.jsx)("div", {
+                className: i().message,
+                children: (0, a.jsx)(k.Z, {
+                  component: "p",
+                  className: i().messageText,
+                  children: "Copied!",
+                }),
+              }),
+            (0, a.jsx)("button", {
+              type: "button",
+              onClick: function () {
+                var e, a, r, i, c, u;
+                switch (
+                  (j({ type: "share_button_clicked", value: "Facebook" }), t)
+                ) {
+                  case "balance":
+                    (a = "I've earned ".concat(l, " with Qmee!")),
+                      (e = "".concat(b("Qmee", l || I.balance))),
+                      (i = "oinq.png"),
+                      (c = r = d);
+                    break;
+                  case "offer":
+                    (a = "Check out this Qmee cashback Offer!"),
+                      (e = "".concat(_("Qmee", n || I.offer))),
+                      (i = "oinq.png"),
+                      (c = r = n ? n.url : I.offer.url);
+                    break;
+                  case "surveyComplete":
+                    (a = "I just completed another survey on Qmee!"),
+                      (e = S(s ? s.amount : I.surveyComplete.amount)),
+                      (i = "oinq.png"),
+                      (c = r = d);
+                    break;
+                  default:
+                    (a =
+                      (null === o || void 0 === o ? void 0 : o.title) ||
+                      I.shareInfo.title),
+                      (e = o ? o.description : I.shareInfo.description),
+                      (r = o ? o.url : I.shareInfo.url),
+                      (i = o ? o.imageUrl : I.shareInfo.imageUrl),
+                      (c = o ? o.ref : I.shareInfo.ref);
+                }
+                m
+                  ? (function (e) {
+                      var n = e.url,
+                        t = e.title,
+                        a = e.description,
+                        r = e.ref,
+                        l = e.imageUrl,
+                        i = {
+                          method: "share_open_graph",
+                          action_type: "og.shares",
+                          display: "popup",
+                          action_properties: JSON.stringify({
+                            object: {
+                              "og:url": n,
+                              "og:image": l,
+                              "og:title": t,
+                              "og:description": a,
+                              "og:ref": r,
+                            },
+                          }),
+                        };
+                      FB.ui(i, function () {});
+                    })({
+                      url: r,
+                      title: a,
+                      description: e,
+                      imageUrl: i,
+                      ref: c,
+                    })
+                  : window.open(
+                      ((u = r),
+                      "https://www.facebook.com/dialog/share?app_id=123775991104422&display=popup&href="
+                        .concat(
+                          encodeURIComponent(n ? u : I.surveyComplete.url),
+                          "&redirect_uri="
+                        )
+                        .concat(
+                          encodeURIComponent(n ? u : I.surveyComplete.url)
+                        ))
+                    );
+              },
+              className: i().socialButton,
+              children: (0, a.jsx)(u, {
+                alt: "facebook",
+                className: i().socialIcon,
+              }),
+            }),
+            (0, a.jsx)("button", {
+              type: "button",
+              onClick: function () {
+                var e, a;
+                switch (
+                  (j({ type: "share_button_clicked", value: "Twitter" }), t)
+                ) {
+                  case "balance":
+                    (e = b("@Qmee", l || I.balance)), (a = d);
+                    break;
+                  case "offer":
+                    (e = _("@Qmee", n || I.offer)),
+                      (a = n ? n.url : I.offer.url);
+                    break;
+                  case "surveyComplete":
+                    (e = S(s ? s.amount : I.surveyComplete.amount)), (a = d);
+                    break;
+                  default:
+                    var r = E(o);
+                    (e = ""
+                      .concat(r)
+                      .concat(o ? o.description : I.shareInfo.description)
+                      .replaceAll("Qmee", "@Qmee")),
+                      (a = o ? o.url : I.shareInfo.url);
+                }
+                window.open(
+                  "https://twitter.com/intent/tweet?text="
+                    .concat(encodeURIComponent(e), "&url=")
+                    .concat(encodeURIComponent(a)),
+                  "_blank"
+                );
+              },
+              className: i().socialButton,
+              children: (0, a.jsx)(f, {
+                alt: "twitter",
+                className: i().socialIcon,
+              }),
+            }),
+            (0, a.jsx)("button", {
+              type: "button",
+              onClick: function () {
+                switch (
+                  (j({ type: "share_button_clicked", value: "Copy" }), t)
+                ) {
+                  case "balance":
+                    navigator.clipboard.writeText(
+                      "".concat(b("Qmee", l || I.balance), " ").concat(d)
+                    );
+                    break;
+                  case "offer":
+                    navigator.clipboard.writeText(
+                      "".concat(n ? n.url : I.offer.url)
+                    );
+                    break;
+                  case "surveyComplete":
+                    navigator.clipboard.writeText(
+                      ""
+                        .concat(S(s ? s.amount : I.surveyComplete.amount), " ")
+                        .concat(d)
+                    );
+                    break;
+                  default:
+                    var e = E(o);
+                    navigator.clipboard.writeText(
+                      o
+                        ? "".concat(e).concat(o.description, " ").concat(o.url)
+                        : ""
+                            .concat(I.shareInfo.title, " - ")
+                            .concat(I.shareInfo.description, " ")
+                            .concat(I.shareInfo.url)
+                    );
+                }
+                x(!0),
+                  setTimeout(function () {
+                    x(!1);
+                  }, 1500);
+              },
+              className: i().socialButton,
+              children: (0, a.jsx)(h, {
+                alt: "copy",
+                className: i().socialIcon,
+              }),
+            }),
+          ],
+        });
+      }
+    },
+    75477: function (e, n, t) {
+      "use strict";
+      t.d(n, {
+        Z: function () {
+          return $;
+        },
+      });
+      var a,
+        r,
+        l,
+        i = t(85893),
+        s = t(67294);
+      t(22578);
+      function o() {
+        return (
+          (o = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          o.apply(this, arguments)
+        );
+      }
+      var c,
+        u = function (e) {
+          return s.createElement(
+            "svg",
+            o(
+              {
+                viewBox: "0 0 19 18",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+              },
+              e
+            ),
+            a ||
+              (a = s.createElement("path", {
+                d: "m13.38 1.698.105.081.127-.042a5.374 5.374 0 0 0 1.09-.531c.132-.08.254-.159.37-.233.183-.116.35-.223.52-.317.271-.151.494-.236.69-.242.18-.006.366.055.574.263.65.65.608 1.488.392 2.303-.076.284-.167.546-.252.792l-.11.321a3.116 3.116 0 0 0-.12.458c-.02.13-.03.295.044.437a8.75 8.75 0 1 1-15.68.25.703.703 0 0 0 .028-.464 2.45 2.45 0 0 0-.166-.453 13.339 13.339 0 0 0-.242-.495A9.073 9.073 0 0 1 .5 3.291c-.154-.37-.26-.74-.25-1.096.01-.341.127-.681.446-1.006.46-.34.822-.435 1.111-.422.296.013.556.14.806.316.125.088.242.183.36.28l.004.004c.113.092.231.19.347.266.116.078.25.15.399.176.16.028.32-.001.47-.1A8.708 8.708 0 0 1 9.032.25c1.025 0 1.738.08 2.377.296.638.215 1.22.571 1.97 1.152Z",
+                fill: "url(#complete_svg__a)",
+                stroke: "#00990F",
+                strokeWidth: 0.5,
+              })),
+            r ||
+              (r = s.createElement("path", {
+                d: "M30.5 22H30v-2c0-2.206-1.794-4-4-4s-4 1.794-4 4v2h-.5c-.827 0-1.5.673-1.5 1.5v7c0 .827.673 1.5 1.5 1.5h9c.827 0 1.5-.673 1.5-1.5v-7c0-.827-.673-1.5-1.5-1.5Zm-7.167-2A2.67 2.67 0 0 1 26 17.333 2.67 2.67 0 0 1 28.667 20v2h-5.334v-2Zm3.334 7.148v1.519a.667.667 0 1 1-1.334 0v-1.519A1.33 1.33 0 0 1 26 24.667c.735 0 1.333.598 1.333 1.333 0 .491-.27.917-.666 1.148Z",
+                fill: "#fff",
+              })),
+            l ||
+              (l = s.createElement(
+                "defs",
+                null,
+                s.createElement(
+                  "linearGradient",
+                  {
+                    id: "complete_svg__a",
+                    x1: 3.5,
+                    y1: 16,
+                    x2: 18,
+                    y2: 3,
+                    gradientUnits: "userSpaceOnUse",
+                  },
+                  s.createElement("stop", { stopColor: "#2BD675" }),
+                  s.createElement("stop", { offset: 1, stopColor: "#60FFA5" })
+                )
+              ))
+          );
+        };
+      function d() {
+        return (
+          (d = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          d.apply(this, arguments)
+        );
+      }
+      var m,
+        f,
+        p = function (e) {
+          return s.createElement(
+            "svg",
+            d(
+              {
+                viewBox: "0 0 51 49",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+              },
+              e
+            ),
+            c ||
+              (c = s.createElement("path", {
+                d: "m37.78 4.396.212.163.253-.085c1.053-.35 2.007-.873 2.873-1.401.345-.211.67-.417.98-.615.488-.312.944-.602 1.398-.854.732-.407 1.354-.65 1.918-.667.532-.016 1.07.167 1.652.75 1.802 1.802 1.671 4.114 1.089 6.303-.203.762-.449 1.471-.677 2.129-.101.293-.199.575-.288.847-.14.429-.259.838-.316 1.196-.054.34-.069.732.102 1.062A23.397 23.397 0 0 1 49.586 24c0 12.979-10.52 23.5-23.5 23.5-12.978 0-23.5-10.521-23.5-23.5 0-3.618.818-7.043 2.277-10.103.173-.363.146-.767.063-1.128-.084-.367-.246-.768-.433-1.176-.144-.313-.312-.65-.485-.997l-.158-.319c-.23-.462-.46-.942-.667-1.437-.414-.994-.709-2.009-.681-2.991.027-.954.358-1.904 1.247-2.804C5 2.113 6.007 1.841 6.829 1.878c.835.037 1.559.397 2.236.873.34.238.657.498.97.755l.01.007c.303.25.613.503.914.704.302.202.638.38 1 .444a1.52 1.52 0 0 0 1.133-.245A23.388 23.388 0 0 1 26.087.5c2.738 0 4.662.215 6.39.798 1.726.582 3.295 1.544 5.304 3.098Z",
+                fill: "#fff",
+                stroke: "current",
+                strokeWidth: 2,
+              }))
+          );
+        };
+      function h() {
+        return (
+          (h = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          h.apply(this, arguments)
+        );
+      }
+      var g,
+        y,
+        v,
+        k = function (e) {
+          return s.createElement(
+            "svg",
+            h(
+              {
+                viewBox: "0 0 51 49",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+              },
+              e
+            ),
+            m ||
+              (m = s.createElement("path", {
+                d: "m37.78 4.396.212.163.253-.085c1.053-.35 2.007-.873 2.873-1.401.345-.211.67-.417.98-.615.488-.312.944-.602 1.398-.854.732-.407 1.354-.65 1.918-.667.532-.016 1.07.167 1.652.75 1.802 1.802 1.671 4.114 1.089 6.303-.203.762-.449 1.471-.677 2.129-.101.293-.199.575-.288.847-.14.429-.259.838-.316 1.196-.054.34-.069.732.102 1.062A23.397 23.397 0 0 1 49.586 24c0 12.979-10.52 23.5-23.5 23.5-12.978 0-23.5-10.521-23.5-23.5 0-3.618.818-7.043 2.277-10.103.173-.363.146-.767.063-1.128-.084-.367-.246-.768-.433-1.176-.144-.313-.312-.65-.485-.997l-.158-.319c-.23-.462-.46-.942-.667-1.437-.414-.994-.709-2.009-.681-2.991.027-.954.358-1.904 1.247-2.804C5 2.113 6.007 1.841 6.829 1.878c.835.037 1.559.397 2.236.873.34.238.657.498.97.755l.01.007c.303.25.613.503.914.704.302.202.638.38 1 .444a1.52 1.52 0 0 0 1.133-.245A23.388 23.388 0 0 1 26.087.5c2.738 0 4.662.215 6.39.798 1.726.582 3.295 1.544 5.304 3.098Z",
+                fill: "#fff",
+                stroke: "#89969A",
+              })),
+            f ||
+              (f = s.createElement("path", {
+                d: "M30.5 22H30v-2c0-2.206-1.794-4-4-4s-4 1.794-4 4v2h-.5c-.827 0-1.5.673-1.5 1.5v7c0 .827.673 1.5 1.5 1.5h9c.827 0 1.5-.673 1.5-1.5v-7c0-.827-.673-1.5-1.5-1.5Zm-7.167-2A2.67 2.67 0 0 1 26 17.333 2.67 2.67 0 0 1 28.667 20v2h-5.334v-2Zm3.334 7.148v1.519a.667.667 0 1 1-1.334 0v-1.519A1.33 1.33 0 0 1 26 24.667c.735 0 1.333.598 1.333 1.333 0 .491-.27.917-.666 1.148Z",
+                fill: "#89969A",
+              }))
+          );
+        };
+      function b() {
+        return (
+          (b = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          b.apply(this, arguments)
+        );
+      }
+      var _,
+        S = function (e) {
+          return s.createElement(
+            "svg",
+            b(
+              {
+                viewBox: "0 0 51 49",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+              },
+              e
+            ),
+            g ||
+              (g = s.createElement("path", {
+                d: "m37.78 4.396.212.163.253-.085c1.053-.35 2.007-.873 2.873-1.401.345-.211.67-.417.98-.615.488-.312.944-.602 1.398-.854.732-.407 1.354-.65 1.918-.667.532-.016 1.07.167 1.652.75 1.802 1.802 1.671 4.114 1.089 6.303-.203.762-.449 1.471-.677 2.129-.101.293-.199.575-.288.847-.14.429-.259.838-.316 1.196-.054.34-.069.732.102 1.062A23.397 23.397 0 0 1 49.586 24c0 12.979-10.52 23.5-23.5 23.5-12.978 0-23.5-10.521-23.5-23.5 0-3.618.818-7.043 2.277-10.103.173-.363.146-.767.063-1.128-.084-.367-.246-.768-.433-1.176-.144-.313-.312-.65-.485-.997l-.158-.319c-.23-.462-.46-.942-.667-1.437-.414-.994-.709-2.009-.681-2.991.027-.954.358-1.904 1.247-2.804C5 2.113 6.007 1.841 6.829 1.878c.835.037 1.559.397 2.236.873.34.238.657.498.97.755l.01.007c.303.25.613.503.914.704.302.202.638.38 1 .444a1.52 1.52 0 0 0 1.133-.245A23.388 23.388 0 0 1 26.087.5c2.738 0 4.662.215 6.39.798 1.726.582 3.295 1.544 5.304 3.098Z",
+                fill: "url(#disabled_svg__a)",
+                stroke: "#89969A",
+              })),
+            y ||
+              (y = s.createElement("path", {
+                d: "M30.5 22H30v-2c0-2.206-1.794-4-4-4s-4 1.794-4 4v2h-.5c-.827 0-1.5.673-1.5 1.5v7c0 .827.673 1.5 1.5 1.5h9c.827 0 1.5-.673 1.5-1.5v-7c0-.827-.673-1.5-1.5-1.5Zm-7.167-2A2.67 2.67 0 0 1 26 17.333 2.67 2.67 0 0 1 28.667 20v2h-5.334v-2Zm3.334 7.148v1.519a.667.667 0 1 1-1.334 0v-1.519A1.33 1.33 0 0 1 26 24.667c.735 0 1.333.598 1.333 1.333 0 .491-.27.917-.666 1.148Z",
+                fill: "#fff",
+              })),
+            v ||
+              (v = s.createElement(
+                "defs",
+                null,
+                s.createElement(
+                  "linearGradient",
+                  {
+                    id: "disabled_svg__a",
+                    x1: 3.5,
+                    y1: 16,
+                    x2: 18,
+                    y2: 3,
+                    gradientUnits: "userSpaceOnUse",
+                  },
+                  s.createElement("stop", { stopColor: "#89969A" }),
+                  s.createElement("stop", { offset: 1, stopColor: "#a8b0b3" })
+                )
+              ))
+          );
+        };
+      function w() {
+        return (
+          (w = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          w.apply(this, arguments)
+        );
+      }
+      var x,
+        j,
+        I = function (e) {
+          return s.createElement(
+            "svg",
+            w(
+              { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 120 40" },
+              e
+            ),
+            _ ||
+              (_ = s.createElement(
+                "g",
+                {
+                  "data-name": "Component 2 \\u2013 1",
+                  transform: "translate(.5 .5)",
+                },
+                s.createElement("rect", {
+                  "data-name": "Rectangle 61",
+                  width: 119.088,
+                  height: 39,
+                  rx: 6.5,
+                  fill: "#fff",
+                  stroke: "#e4e4e4",
+                }),
+                s.createElement("circle", {
+                  "data-name": "Ellipse 1",
+                  cx: 13,
+                  cy: 13,
+                  r: 13,
+                  transform: "translate(7.5 6.5)",
+                  fill: "#f8f8fa",
+                }),
+                s.createElement(
+                  "text",
+                  {
+                    "data-name": "$1.65",
+                    transform: "translate(44.566 29.005)",
+                    fill: "#2bd675",
+                    fontSize: 11,
+                    fontFamily: "Metropolis-Bold, Metropolis",
+                    fontWeight: 700,
+                  },
+                  s.createElement("tspan", { x: 0, y: 0 }, "$1.65")
+                ),
+                s.createElement(
+                  "text",
+                  {
+                    "data-name": "$1.50",
+                    transform: "translate(44.566 17.005)",
+                    fontSize: 11,
+                    fontFamily: "Metropolis-Bold, Metropolis",
+                    fontWeight: 700,
+                  },
+                  s.createElement("tspan", { x: 0, y: 0 }, "$1.50")
+                ),
+                s.createElement("path", {
+                  "data-name": "Line 4",
+                  fill: "none",
+                  stroke: "red",
+                  d: "m44.066 17.5 31-7",
+                }),
+                s.createElement(
+                  "text",
+                  {
+                    "data-name": "10%",
+                    transform: "translate(81.566 23)",
+                    fill: "#2cda77",
+                    fontSize: 12,
+                    fontFamily: "Metropolis-Bold, Metropolis",
+                    fontWeight: 700,
+                  },
+                  s.createElement("tspan", { x: 0, y: 0 }, "+10%")
+                )
+              ))
+          );
+        };
+      function E() {
+        return (
+          (E = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var n = 1; n < arguments.length; n++) {
+                  var t = arguments[n];
+                  for (var a in t)
+                    Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+                }
+                return e;
+              }),
+          E.apply(this, arguments)
+        );
+      }
+      var O = function (e) {
+          return s.createElement(
+            "svg",
+            E(
+              { viewBox: "0 0 120 40", xmlns: "http://www.w3.org/2000/svg" },
+              e
+            ),
+            x ||
+              (x = s.createElement(
+                "g",
+                {
+                  strokeWidth: 0.5,
+                  stroke: "#00990F",
+                  fill: "url(#Streak_svg__a)",
+                },
+                s.createElement("path", {
+                  d: "m13.38 12.161.105.082.127-.042a5.374 5.374 0 0 0 1.09-.532c.132-.08.254-.158.37-.233.183-.116.35-.222.52-.316.271-.152.494-.237.69-.242.18-.006.366.054.574.262.65.651.608 1.488.392 2.304-.076.283-.167.546-.252.791l-.11.322a3.116 3.116 0 0 0-.12.457c-.02.131-.03.295.044.437a8.75 8.75 0 1 1-15.68.25.703.703 0 0 0 .028-.463 2.449 2.449 0 0 0-.166-.453 13.3 13.3 0 0 0-.242-.495 9.07 9.07 0 0 1-.249-.535c-.154-.37-.26-.74-.25-1.096.01-.341.127-.681.446-1.006.46-.341.822-.436 1.111-.423.296.013.556.141.806.316.125.088.242.184.36.28l.004.004c.113.093.231.19.347.267.116.077.25.15.399.176.16.028.32-.002.47-.101a8.708 8.708 0 0 1 4.838-1.458c1.025 0 1.738.08 2.377.296.638.215 1.22.57 1.97 1.151zM38.812 12.161l.106.082.126-.042a5.374 5.374 0 0 0 1.09-.532c.133-.08.255-.158.371-.233.182-.116.35-.222.519-.316.272-.152.495-.237.69-.242.18-.006.366.054.574.262.651.651.61 1.488.392 2.304-.075.283-.166.546-.251.791l-.11.322a3.116 3.116 0 0 0-.12.457c-.02.131-.03.295.044.437a8.75 8.75 0 1 1-15.68.25.703.703 0 0 0 .028-.463 2.449 2.449 0 0 0-.167-.453 13.3 13.3 0 0 0-.242-.495 9.07 9.07 0 0 1-.248-.535c-.154-.37-.26-.74-.25-1.096.009-.341.126-.681.446-1.006.459-.341.821-.436 1.11-.423.297.013.557.141.806.316.125.088.243.184.36.28l.005.004c.113.093.231.19.347.267.116.077.25.15.399.176.16.028.32-.002.47-.101a8.708 8.708 0 0 1 4.838-1.458c1.024 0 1.738.08 2.377.296.638.215 1.22.57 1.97 1.151zM64.407 12.161l.106.082.126-.042a5.374 5.374 0 0 0 1.09-.532c.133-.08.255-.158.372-.233.181-.116.349-.222.518-.316.272-.152.495-.237.691-.242.18-.006.366.054.573.262.652.651.61 1.488.393 2.304-.076.283-.167.546-.252.791l-.11.322a3.116 3.116 0 0 0-.12.457c-.02.131-.03.295.044.437a8.75 8.75 0 1 1-15.68.25.703.703 0 0 0 .028-.463 2.449 2.449 0 0 0-.167-.453 13.3 13.3 0 0 0-.242-.495 9.07 9.07 0 0 1-.248-.535c-.154-.37-.26-.74-.25-1.096.01-.341.126-.681.446-1.006.46-.341.821-.436 1.11-.423.297.013.557.141.806.316.125.088.243.184.36.28l.005.004c.113.093.231.19.347.267.116.077.25.15.399.176.16.028.32-.002.47-.101a8.708 8.708 0 0 1 4.838-1.458c1.024 0 1.738.08 2.377.296.638.215 1.22.57 1.97 1.151zM89.167 12.161l.105.082.127-.042a5.374 5.374 0 0 0 1.09-.532c.132-.08.254-.158.37-.233.183-.116.35-.222.52-.316.272-.152.494-.237.69-.242.18-.006.366.054.574.262.65.651.609 1.488.392 2.304-.076.283-.167.546-.252.791l-.11.322a3.116 3.116 0 0 0-.12.457c-.02.131-.03.295.044.437a8.75 8.75 0 1 1-15.68.25.703.703 0 0 0 .028-.463 2.449 2.449 0 0 0-.166-.453 13.3 13.3 0 0 0-.242-.495 9.07 9.07 0 0 1-.249-.535c-.154-.37-.26-.74-.25-1.096.01-.341.127-.681.446-1.006.46-.341.822-.436 1.111-.423.296.013.556.141.806.316.125.088.242.184.36.28l.004.004c.113.093.231.19.347.267.116.077.25.15.399.176.16.028.32-.002.47-.101a8.708 8.708 0 0 1 4.838-1.458c1.025 0 1.738.08 2.377.296.638.215 1.22.57 1.97 1.151zM115.435 12.161l.106.082.126-.042a5.374 5.374 0 0 0 1.09-.532c.132-.08.255-.158.371-.233.182-.116.35-.222.519-.316.272-.152.495-.237.69-.242.18-.006.366.054.574.262.651.651.61 1.488.392 2.304-.075.283-.166.546-.251.791l-.11.322a3.116 3.116 0 0 0-.12.457c-.021.131-.03.295.044.437a8.75 8.75 0 1 1-15.68.25.703.703 0 0 0 .028-.463 2.449 2.449 0 0 0-.167-.453 13.3 13.3 0 0 0-.242-.495 9.07 9.07 0 0 1-.248-.535c-.154-.37-.26-.74-.25-1.096.009-.341.126-.681.445-1.006.46-.341.822-.436 1.112-.423.296.013.556.141.805.316.125.088.242.184.36.28l.005.004c.113.093.231.19.347.267.116.077.25.15.399.176.16.028.32-.002.47-.101a8.708 8.708 0 0 1 4.838-1.458c1.024 0 1.738.08 2.377.296.637.215 1.22.57 1.97 1.151z",
+                })
+              )),
+            j ||
+              (j = s.createElement(
+                "defs",
+                null,
+                s.createElement(
+                  "linearGradient",
+                  {
+                    y2: 0.157,
+                    x2: 1.012,
+                    y1: 0.9,
+                    x1: 0.185,
+                    id: "Streak_svg__a",
+                  },
+                  s.createElement("stop", { stopColor: "#2BD675" }),
+                  s.createElement("stop", { stopColor: "#60FFA5", offset: 1 })
+                )
+              ))
+          );
+        },
+        Z = t(13203),
+        C = t(67404),
+        N = t(84646),
+        A = t(70915),
+        F = t(86010),
+        L = t(43508),
+        T = t.n(L),
+        M = t(27484),
+        K = t.n(M),
+        R = t(1646),
+        P = t.n(R),
+        B = {
+          precursorMessage: "Oinqs Expire In",
+          tiers: [
+            { minStreakLength: 1, messages: ["First Oinq Unlocked!"] },
+            {
+              minStreakLength: 2,
+              messages: ["Times A Ticking!", "Get Your Streak On"],
+            },
+            {
+              minStreakLength: 5,
+              messages: ["Don't stop yet!", "Don't stop now!"],
+            },
+            {
+              minStreakLength: 10,
+              messages: ["Times A Ticking!", "Don't Lose Out"],
+            },
+            {
+              minStreakLength: 15,
+              messages: ["Keep 'Em Going!", "Don't Lose Out"],
+            },
+          ],
+        },
+        D = {
+          precursorMessage: "Next Available In",
+          tiers: [
+            { minStreakLength: 1, messages: ["First Oinq Unlocked!"] },
+            { minStreakLength: 2, messages: ["Oinq Unlocked!"] },
+            {
+              minStreakLength: 5,
+              messages: [
+                "Congratulations!",
+                "Bonus Unlocked!",
+                "Unlock Next Oinq",
+              ],
+            },
+            {
+              minStreakLength: 10,
+              messages: ["Looking Good!", "Ya Running Hot!"],
+            },
+            {
+              minStreakLength: 15,
+              messages: ["Super Streaker!", "You're Smoking"],
+            },
+          ],
+        },
+        Q = "HH[h] mm[m]";
+      function U(e, n) {
+        K().extend(P());
+        var t = n ? B : D,
+          a =
+            t.tiers.findIndex(function (n) {
+              return n.minStreakLength > e;
+            }) - 1;
+        -2 == a && (a = t.tiers.length - 1);
+        var r = t.tiers[a].messages[e % t.tiers[a].messages.length];
+        return { precursorMessage: t.precursorMessage, message: r };
+      }
+      function H(e) {
+        var n = K()();
+        if (0 != e.length && e.expiresAt) {
+          if (
+            e.expiresAt === e.unlocksAt ||
+            K()(e.expiresAt).isBefore(e.unlocksAt)
+          ) {
+            var t = K().duration(K()(e.expiresAt).diff(n)).format(Q);
+            return {
+              todaysStatus: "INCOMPLETE",
+              description: U(e.length, !0),
+              time: G(t),
+            };
+          }
+          var a = K().duration(K()(e.unlocksAt).diff(n)).format(Q);
+          return {
+            todaysStatus: "COMPLETE",
+            description: U(e.length, !1),
+            time: G(a),
+          };
+        }
+        return {
+          todaysStatus: "INCOMPLETE",
+          description: { precursorMessage: "Start Streak!", message: [] },
+        };
+      }
+      function G(e) {
+        return "00h 00m" === e
+          ? "0m"
+          : e.replace(/00h /g, "").replace(/^0+/, "");
+      }
+      function q(e, n) {
+        (null == n || n > e.length) && (n = e.length);
+        for (var t = 0, a = new Array(n); t < n; t++) a[t] = e[t];
+        return a;
+      }
+      function V(e, n, t) {
+        return (
+          n in e
+            ? Object.defineProperty(e, n, {
+                value: t,
+                enumerable: !0,
+                configurable: !0,
+                writable: !0,
+              })
+            : (e[n] = t),
+          e
+        );
+      }
+      function W(e, n) {
+        return (
+          (function (e) {
+            if (Array.isArray(e)) return e;
+          })(e) ||
+          (function (e, n) {
+            var t =
+              null == e
+                ? null
+                : ("undefined" !== typeof Symbol && e[Symbol.iterator]) ||
+                  e["@@iterator"];
+            if (null != t) {
+              var a,
+                r,
+                l = [],
+                i = !0,
+                s = !1;
+              try {
+                for (
+                  t = t.call(e);
+                  !(i = (a = t.next()).done) &&
+                  (l.push(a.value), !n || l.length !== n);
+                  i = !0
+                );
+              } catch (o) {
+                (s = !0), (r = o);
+              } finally {
+                try {
+                  i || null == t.return || t.return();
+                } finally {
+                  if (s) throw r;
+                }
+              }
+              return l;
+            }
+          })(e, n) ||
+          (function (e, n) {
+            if (!e) return;
+            if ("string" === typeof e) return q(e, n);
+            var t = Object.prototype.toString.call(e).slice(8, -1);
+            "Object" === t && e.constructor && (t = e.constructor.name);
+            if ("Map" === t || "Set" === t) return Array.from(t);
+            if (
+              "Arguments" === t ||
+              /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)
+            )
+              return q(e, n);
+          })(e, n) ||
+          (function () {
+            throw new TypeError(
+              "Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
+            );
+          })()
+        );
+      }
+      var X = t(95726),
+        $ = function (e) {
+          var n = e.streakRef,
+            t = e.className,
+            a = (0, Z.ZP)(X, n),
+            r = W(
+              s.useState(function () {
+                return H(a);
+              }),
+              2
+            ),
+            l = r[0],
+            o = r[1];
+          s.useEffect(
+            function () {
+              o(H(a));
+              var e = setInterval(function () {
+                o(H(a));
+              }, 2e4);
+              return function () {
+                return clearInterval(e);
+              };
+            },
+            [a]
+          );
+          var c,
+            d,
+            m = a.length < 5 ? a.length : 4,
+            f = Array(5)
+              .fill("DISABLED")
+              .fill("COMPLETE", 0, m)
+              .fill(
+                "COMPLETE" === l.todaysStatus ? "PENDING" : "INCOMPLETE",
+                m,
+                m + 1
+              );
+          l.time
+            ? l.time.length <= 3 && "INCOMPLETE" == l.todaysStatus
+              ? (c = "red")
+              : "INCOMPLETE" == l.todaysStatus
+              ? (c = "amber")
+              : a.length >= 5 && (c = "green")
+            : (c = "grey");
+          var h =
+              (V((d = {}), T().grey, "grey" == c),
+              V(d, T().amber, "amber" == c),
+              V(d, T().red, "red" == c),
+              d),
+            g = (function (e) {
+              for (var n = 1; n < arguments.length; n++) {
+                var t = null != arguments[n] ? arguments[n] : {},
+                  a = Object.keys(t);
+                "function" === typeof Object.getOwnPropertySymbols &&
+                  (a = a.concat(
+                    Object.getOwnPropertySymbols(t).filter(function (e) {
+                      return Object.getOwnPropertyDescriptor(t, e).enumerable;
+                    })
+                  )),
+                  a.forEach(function (n) {
+                    V(e, n, t[n]);
+                  });
+              }
+              return e;
+            })({}, h, V({}, T().green, "green" == c)),
+            y = V({}, T().grey, a.length < 5);
+          return (0, i.jsx)("div", {
+            className: (0, F.Z)(T().streakRootContainer, t),
+            children: (0, i.jsx)(C.Z, {
+              tipClassName: T().tip,
+              tip: (0, i.jsxs)(i.Fragment, {
+                children: [
+                  (0, i.jsx)(N.Z, {
+                    component: "h5",
+                    children:
+                      "Activate all 5 Oinqs and receive a 10% increase in survey rewards while your streak is active!",
+                  }),
+                  (0, i.jsx)(O, { className: T().fullStreak }),
+                  (0, i.jsx)(N.Z, {
+                    component: "h5",
+                    children: "Keep your streak active!",
+                  }),
+                  (0, i.jsxs)(N.Z, {
+                    component: "p",
+                    children: [
+                      "Retain your bonus by completing at least one survey each day or by answering the daily poll.",
+                      (0, i.jsx)(I, { className: T().demoSurvey }),
+                      (0, i.jsx)(N.Z, {
+                        component: "b",
+                        children: "See how long you can maintain your streak!",
+                      }),
+                    ],
+                  }),
+                  (0, i.jsx)("span", { className: T().divider }),
+                  a.length > 0 &&
+                    (0, i.jsxs)(N.Z, {
+                      component: "p",
+                      className: "complete",
+                      children: [
+                        "Share your ",
+                        (0, i.jsx)(N.Z, { component: "b", children: a.length }),
+                        " day streak",
+                      ],
+                    }),
+                  (0, i.jsx)(A.Z, {
+                    type: "noTemplate",
+                    shareInfo: {
+                      title:
+                        a.length > 0
+                          ? "I've got a ".concat(
+                              a.length,
+                              " day streak on Qmee"
+                            )
+                          : "I'm using Qmee",
+                      description:
+                        "I'm earning with Qmee! You can too - join to get cash rewards when shopping online and answering surveys",
+                      url: "https://www.qmee.com",
+                      imageUrl: "",
+                      ref: "",
+                    },
+                  }),
+                ],
+              }),
+              wrapperClassName: T().streakLayoutBox,
+              children: (0, i.jsxs)("div", {
+                className: T().leftSide,
+                children: [
+                  (0, i.jsxs)("div", {
+                    className: T().streakIconsRow,
+                    children: [
+                      Boolean(a.length >= 5) &&
+                        (0, i.jsx)(u, {
+                          className: (0, F.Z)(T().statusIcon, T().fillerStatus),
+                        }),
+                      f.map(function (e, n) {
+                        var t = "".concat(n, "-").concat(e);
+                        switch (e) {
+                          case "COMPLETE":
+                            return (0,
+                            i.jsx)(u, { className: T().statusIcon }, t);
+                          case "INCOMPLETE":
+                            return (0,
+                            i.jsx)(p, { className: (0, F.Z)(g, T().flash, T().statusIcon), stroke: c, floodColor: c }, t);
+                          case "PENDING":
+                            return (0,
+                            i.jsx)(k, { className: T().statusIcon }, t);
+                          case "DISABLED":
+                            return (0,
+                            i.jsx)(S, { className: T().statusIcon }, t);
+                          default:
+                            return null;
+                        }
+                      }),
+                      (0, i.jsxs)(N.Z, {
+                        className: T().rightSideInfo,
+                        children: [
+                          (0, i.jsx)(N.Z, {
+                            component: "span",
+                            className: (0, F.Z)(g, y),
+                            translateOptions: { vars: [a.length] },
+                            children: a.length >= 5 ? "%1s; days" : "Unlock",
+                          }),
+                          (0, i.jsx)(N.Z, {
+                            component: "span",
+                            className: (0, F.Z)(g, y),
+                            skipTranslation: !0,
+                            children: "+10%",
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                  (0, i.jsx)("div", {
+                    className: (0, F.Z)(
+                      V({}, T().central, !l.time),
+                      T().descriptionContainer
+                    ),
+                    children: (0, i.jsx)(N.Z, {
+                      component: "b",
+                      className: (0, F.Z)(h, T().message),
+                      children: l.description.message,
+                    }),
+                  }),
+                  (0, i.jsxs)("div", {
+                    className: (0, F.Z)(
+                      T().descriptionContainer,
+                      V({}, T().fade, a.length > 0)
+                    ),
+                    children: [
+                      (0, i.jsx)(N.Z, {
+                        component: "b",
+                        className: (0, F.Z)(h, T().precursorMessage),
+                        children: l.description.precursorMessage,
+                      }),
+                      l.time
+                        ? (0, i.jsx)(N.Z, {
+                            component: "span",
+                            className: (0, F.Z)(h, T().timer, T().rightMessage),
+                            skipTranslation: !0,
+                            children: l.time,
+                          })
+                        : (0, i.jsx)(N.Z, {
+                            component: "span",
+                            className: (0, F.Z)(T().whatsThis),
+                            children: "(Whats this?)",
+                          }),
+                    ],
+                  }),
+                ],
+              }),
+            }),
+          });
+        };
+    },
+    68484: function (e, n, t) {
+      "use strict";
+      t.r(n);
+      var a = (function () {
+        var e = [{ defaultValue: null, kind: "LocalArgument", name: "id" }],
+          n = [{ kind: "Variable", name: "id", variableName: "id" }];
+        return {
+          fragment: {
+            argumentDefinitions: e,
+            kind: "Fragment",
+            metadata: null,
+            name: "StreakGamificationStreakRefetchQuery",
+            selections: [
+              {
+                alias: null,
+                args: n,
+                concreteType: null,
+                kind: "LinkedField",
+                name: "node",
+                plural: !1,
+                selections: [
+                  { args: null, kind: "FragmentSpread", name: "Streak_streak" },
+                ],
+                storageKey: null,
+              },
+            ],
+            type: "Query",
+            abstractKey: null,
+          },
+          kind: "Request",
+          operation: {
+            argumentDefinitions: e,
+            kind: "Operation",
+            name: "StreakGamificationStreakRefetchQuery",
+            selections: [
+              {
+                alias: null,
+                args: n,
+                concreteType: null,
+                kind: "LinkedField",
+                name: "node",
+                plural: !1,
+                selections: [
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
+                    name: "__typename",
+                    storageKey: null,
+                  },
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
+                    name: "id",
+                    storageKey: null,
+                  },
+                  {
+                    kind: "InlineFragment",
+                    selections: [
+                      {
+                        alias: null,
+                        args: null,
+                        kind: "ScalarField",
+                        name: "expiresAt",
+                        storageKey: null,
+                      },
+                      {
+                        alias: null,
+                        args: null,
+                        kind: "ScalarField",
+                        name: "length",
+                        storageKey: null,
+                      },
+                      {
+                        alias: null,
+                        args: null,
+                        kind: "ScalarField",
+                        name: "unlocksAt",
+                        storageKey: null,
+                      },
+                    ],
+                    type: "GamificationStreak",
+                    abstractKey: null,
+                  },
+                ],
+                storageKey: null,
+              },
+            ],
+          },
+          params: {
+            cacheID: "7a6ae0d745d96c4c7bfee0ce910ea17b",
+            id: null,
+            metadata: {},
+            name: "StreakGamificationStreakRefetchQuery",
+            operationKind: "query",
+            text: "query StreakGamificationStreakRefetchQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...Streak_streak\n    id\n  }\n}\n\nfragment Streak_streak on GamificationStreak {\n  expiresAt\n  length\n  unlocksAt\n  id\n}\n",
+          },
+        };
+      })();
+      (a.hash = "a7033f74b213747c929ef6d533263162"), (n.default = a);
+    },
+    95726: function (e, n, t) {
+      "use strict";
+      t.r(n);
+      var a = {
+        argumentDefinitions: [],
+        kind: "Fragment",
+        metadata: {
+          refetch: {
+            connection: null,
+            fragmentPathInResult: ["node"],
+            operation: t(68484),
+            identifierField: "id",
+          },
+        },
+        name: "Streak_streak",
+        selections: [
+          {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "expiresAt",
+            storageKey: null,
+          },
+          {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "length",
+            storageKey: null,
+          },
+          {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "unlocksAt",
+            storageKey: null,
+          },
+          {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "id",
+            storageKey: null,
+          },
+        ],
+        type: "GamificationStreak",
+        abstractKey: null,
+        hash: "a7033f74b213747c929ef6d533263162",
+      };
+      n.default = a;
+    },
+    41707: function (e, n, t) {
+      "use strict";
+      t.d(n, {
+        Z: function () {
+          return H;
+        },
+      });
+      var a = t(85893),
+        r = t(67294),
+        l = (t(22578), t(5152)),
+        i = t.n(l),
+        s = t(81004),
+        o = t.n(s),
+        c = t(87631),
+        u = t(86010),
+        d = t(27484),
+        m = t.n(d),
+        f = t(67912),
+        p = t(29059),
+        h = t(96278),
+        g = t.n(h),
+        y = t(48020),
+        v = t(20782),
+        k = t(65236),
+        b = t(32960),
+        _ = t(38677),
+        S = t(39414),
+        w = t(49594),
+        x = t(53624),
+        j = t(67404),
+        I = t(84646),
+        E = t(98894),
+        O = t(41068),
+        Z = t(20298),
+        C = { SUCCESS: b.Z, FAIL: k.Z, PENDING: x.Z };
+      var N = function (e) {
+          var n,
+            t = e.surveyRef,
+            l = e.className,
+            i = e.isOpen,
+            s = e.onOpen,
+            o = (0, f.useFragment)(c.nH, t),
+            d = (0, v.Z)(O.E),
+            h = (0, v.Z)("fraud_terms");
+          !(function (e) {
+            var n = (0, p.vR)().showModal,
+              t = (0, r.useState)(!1),
+              a = t[0],
+              l = t[1],
+              i = (0, E.useLastPending)();
+            (0, r.useEffect)(
+              function () {
+                if (
+                  !a &&
+                  "PENDING" === e.status &&
+                  i !== e.id &&
+                  !e.tags.includes("restart_allowed")
+                )
+                  return l(!0), n(p.Ny.SURVEY_FEEDBACK_MODAL, e);
+              },
+              [e, i, a, n]
+            );
+          })(o);
+          var k,
+            b = C[o.status] || null,
+            x = (0, p.vR)().showModal,
+            N = o.fraudType ? O.X[o.fraudType] : null,
+            A = N && (h || d);
+          return (0, a.jsx)(
+            w.Z,
+            {
+              className: (0, u.Z)(g().collapsible, l),
+              open: i,
+              onOpen: s,
+              id: o.id,
+              title: (0, a.jsxs)("div", {
+                className: g().titleContainer,
+                children: [
+                  (0, a.jsxs)("p", {
+                    children: [
+                      o.title,
+                      A && (0, a.jsx)(_.Z, { className: g().warning }),
+                    ],
+                  }),
+                  (0, a.jsxs)("div", {
+                    className: g().titleContent,
+                    children: [
+                      (0, a.jsx)("p", {
+                        children:
+                          (null === (n = o.reward) || void 0 === n
+                            ? void 0
+                            : n.formatted) || "",
+                      }),
+                      (0, a.jsx)("p", {
+                        children:
+                          ((k = o.duration),
+                          k ? "".concat(k, k > 1 ? " mins" : " min") : ""),
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+              headerClassName: (0, u.Z)(g().historyHeader, l),
+              children: (0, a.jsx)("div", {
+                className: (0, u.Z)(g().collapsibleContent, l),
+                children:
+                  o.startedAt &&
+                  (0, a.jsxs)(a.Fragment, {
+                    children: [
+                      (0, a.jsxs)("div", {
+                        className: g().finishedItemRow,
+                        children: [
+                          (0, a.jsxs)("p", { children: ["#", o.supportId] }),
+                          (0, a.jsx)("p", {
+                            children: m()(o.startedAt).format("L - LT"),
+                          }),
+                        ],
+                      }),
+                      (0, a.jsxs)("div", {
+                        className: g().finishedItemRow,
+                        children: [
+                          (0, a.jsxs)("p", {
+                            className: (0, u.Z)(
+                              g().status,
+                              o.status.toLowerCase()
+                            ),
+                            children: [
+                              b && (0, a.jsx)(b, {}),
+                              o.statusDescription,
+                              "\xa0",
+                              A &&
+                                (0, a.jsx)(j.Z, {
+                                  tip: (0, a.jsxs)("div", {
+                                    className: g().fraudTip,
+                                    children: [
+                                      (0, a.jsx)("p", {
+                                        children: N.description,
+                                      }),
+                                      d &&
+                                        (0, a.jsx)(I.Z, {
+                                          component: S.Z,
+                                          to: Z.Y2.path,
+                                          children: "More info",
+                                        }),
+                                    ],
+                                  }),
+                                  children: d
+                                    ? (0, a.jsxs)(S.Z, {
+                                        className: g().term,
+                                        to: d ? Z.Y2.path : "#",
+                                        children: [
+                                          (0, a.jsx)(_.Z, {
+                                            className: g().warning,
+                                          }),
+                                          N.title,
+                                        ],
+                                      })
+                                    : (0, a.jsxs)("div", {
+                                        className: g().term,
+                                        children: [
+                                          (0, a.jsx)(_.Z, {
+                                            className: g().warning,
+                                          }),
+                                          N.title,
+                                        ],
+                                      }),
+                                }),
+                            ],
+                          }),
+                          "PENDING" !== o.status &&
+                            (0, a.jsx)(y.Z, {
+                              buttonType: "tertiary",
+                              color: "accent",
+                              onClick: function () {
+                                return (
+                                  (e = o), void x(p.Ny.SURVEY_FEEDBACK_MODAL, e)
+                                );
+                                var e;
+                              },
+                              children: (0, a.jsx)(I.Z, {
+                                component: "",
+                                children: "Report survey",
+                              }),
+                            }),
+                        ],
+                      }),
+                    ],
+                  }),
+              }),
+            },
+            o.id
+          );
+        },
+        A = t(13203),
+        F = t(8975),
+        L = t(44824);
+      function T(e, n) {
+        (null == n || n > e.length) && (n = e.length);
+        for (var t = 0, a = new Array(n); t < n; t++) a[t] = e[t];
+        return a;
+      }
+      function M(e, n) {
+        return (
+          (function (e) {
+            if (Array.isArray(e)) return e;
+          })(e) ||
+          (function (e, n) {
+            var t =
+              null == e
+                ? null
+                : ("undefined" !== typeof Symbol && e[Symbol.iterator]) ||
+                  e["@@iterator"];
+            if (null != t) {
+              var a,
+                r,
+                l = [],
+                i = !0,
+                s = !1;
+              try {
+                for (
+                  t = t.call(e);
+                  !(i = (a = t.next()).done) &&
+                  (l.push(a.value), !n || l.length !== n);
+                  i = !0
+                );
+              } catch (o) {
+                (s = !0), (r = o);
+              } finally {
+                try {
+                  i || null == t.return || t.return();
+                } finally {
+                  if (s) throw r;
+                }
+              }
+              return l;
+            }
+          })(e, n) ||
+          R(e, n) ||
+          (function () {
+            throw new TypeError(
+              "Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
+            );
+          })()
+        );
+      }
+      function K(e) {
+        return (
+          (function (e) {
+            if (Array.isArray(e)) return T(e);
+          })(e) ||
+          (function (e) {
+            if (
+              ("undefined" !== typeof Symbol && null != e[Symbol.iterator]) ||
+              null != e["@@iterator"]
+            )
+              return Array.from(e);
+          })(e) ||
+          R(e) ||
+          (function () {
+            throw new TypeError(
+              "Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
+            );
+          })()
+        );
+      }
+      function R(e, n) {
+        if (e) {
+          if ("string" === typeof e) return T(e, n);
+          var t = Object.prototype.toString.call(e).slice(8, -1);
+          return (
+            "Object" === t && e.constructor && (t = e.constructor.name),
+            "Map" === t || "Set" === t
+              ? Array.from(t)
+              : "Arguments" === t ||
+                /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)
+              ? T(e, n)
+              : void 0
+          );
+        }
+      }
+      var P = i()(
+          function () {
+            return t.e(8156).then(t.bind(t, 18156));
+          },
+          {
+            loadableGenerated: {
+              webpack: function () {
+                return [18156];
+              },
+            },
+          }
+        ),
+        B = i()(
+          function () {
+            return t.e(2137).then(t.bind(t, 2137));
+          },
+          {
+            loadableGenerated: {
+              webpack: function () {
+                return [2137];
+              },
+            },
+          }
+        ),
+        D = t(29947),
+        Q = r.forwardRef(function (e, n) {
+          var t = e.children;
+          return (0, a.jsx)("li", { ref: n, children: t });
+        }),
+        U = [1e3, 2e3, 4e3],
+        H = function (e) {
+          var n = e.surveysRef,
+            t = e.showFinished,
+            l = e.children,
+            i = M((0, A.Iz)(D, n), 2),
+            s = i[0],
+            u = i[1],
+            d = M(r.useState(""), 2),
+            m = d[0],
+            f = d[1],
+            p = M(r.useState(!1), 2),
+            h = p[0],
+            g = p[1],
+            y = r.useMemo(
+              function () {
+                var e,
+                  n =
+                    (null === (e = s.surveys) || void 0 === e
+                      ? void 0
+                      : e.edges) || [],
+                  t = [],
+                  a = [],
+                  r = !0,
+                  l = !1,
+                  i = void 0;
+                try {
+                  for (
+                    var o, c = n[Symbol.iterator]();
+                    !(r = (o = c.next()).done);
+                    r = !0
+                  ) {
+                    var u = o.value;
+                    "PENDING" === u.node.status && u.node.url
+                      ? t.push(u)
+                      : "AVAILABLE" === u.node.status && a.push(u);
+                  }
+                } catch (d) {
+                  (l = !0), (i = d);
+                } finally {
+                  try {
+                    r || null == c.return || c.return();
+                  } finally {
+                    if (l) throw i;
+                  }
+                }
+                return K(t).concat(K(a));
+              },
+              [s.surveys]
+            ),
+            v = r.useMemo(
+              function () {
+                var e;
+                return (
+                  (null === (e = s.surveys) || void 0 === e
+                    ? void 0
+                    : e.edges.filter(function (e) {
+                        return "AVAILABLE" !== e.node.status && !e.node.url;
+                      })) || []
+                );
+              },
+              [s.surveys]
+            ),
+            k = (0, r.useCallback)(
+              function () {
+                u({}, { fetchPolicy: "store-and-network" });
+              },
+              [u]
+            );
+          (0, F.Z)(k, 6e4);
+          var b = function (e, n) {
+              f(e), g(n);
+            },
+            _ = M(r.useState(U.length), 2),
+            S = _[0],
+            w = _[1];
+          return (
+            r.useEffect(
+              function () {
+                if (!(S <= 0)) {
+                  if (!(y.length > 0)) {
+                    var e = setTimeout(function () {
+                      w(S - 1), k();
+                    }, U[U.length - S] || 4e3);
+                    return function () {
+                      return clearTimeout(e);
+                    };
+                  }
+                  w(0);
+                }
+              },
+              [y.length, S, k]
+            ),
+            (0, a.jsxs)(a.Fragment, {
+              children: [
+                y.length > 0
+                  ? (0, a.jsxs)(L.Z, {
+                      animate: !0,
+                      children: [
+                        y.map(function (e) {
+                          return (0,
+                          a.jsx)(Q, { children: (0, a.jsx)(c.ZP, { className: o().survey, surveyRef: e.node }) }, e.node.id);
+                        }),
+                        l,
+                      ],
+                    })
+                  : S > 0
+                  ? (0, a.jsx)(P, {})
+                  : (0, a.jsx)(B, {}),
+                t && v.length > 0
+                  ? (0, a.jsxs)("div", {
+                      className: o().finishItemContainer,
+                      children: [
+                        (0, a.jsx)(I.Z, {
+                          component: "h3",
+                          children: "Recently Finished",
+                        }),
+                        v.map(function (e, n) {
+                          return (0,
+                          a.jsx)(N, { isOpen: m === e.node.id && h, onOpen: b, className: n % 2 === 0 ? "odd" : "", surveyRef: e.node }, e.node.id);
+                        }),
+                      ],
+                    })
+                  : null,
+              ],
+            })
+          );
+        };
+    },
+    70765: function (e, n, t) {
+      "use strict";
+      t.r(n);
+      var a = (function () {
+        var e = [
+            { defaultValue: null, kind: "LocalArgument", name: "first" },
+            { defaultValue: null, kind: "LocalArgument", name: "input" },
+          ],
+          n = {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "id",
+            storageKey: null,
+          },
+          t = {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "title",
+            storageKey: null,
+          },
+          a = [
+            {
+              alias: null,
+              args: null,
+              kind: "ScalarField",
+              name: "formatted",
+              storageKey: null,
+            },
+          ];
+        return {
+          fragment: {
+            argumentDefinitions: e,
+            kind: "Fragment",
+            metadata: null,
+            name: "SurveyListRefetchQuery",
+            selections: [
+              {
+                args: null,
+                kind: "FragmentSpread",
+                name: "SurveyList_surveys",
+              },
+            ],
+            type: "Query",
+            abstractKey: null,
+          },
+          kind: "Request",
+          operation: {
+            argumentDefinitions: e,
+            kind: "Operation",
+            name: "SurveyListRefetchQuery",
+            selections: [
+              {
+                alias: null,
+                args: [
+                  { kind: "Variable", name: "first", variableName: "first" },
+                  { kind: "Variable", name: "input", variableName: "input" },
+                ],
+                concreteType: "SurveyConnection",
+                kind: "LinkedField",
+                name: "surveys",
+                plural: !1,
+                selections: [
+                  n,
+                  {
+                    alias: null,
+                    args: null,
+                    concreteType: "SurveyEdge",
+                    kind: "LinkedField",
+                    name: "edges",
+                    plural: !0,
+                    selections: [
+                      {
+                        alias: null,
+                        args: null,
+                        concreteType: "Survey",
+                        kind: "LinkedField",
+                        name: "node",
+                        plural: !1,
+                        selections: [
+                          n,
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "status",
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "url",
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "studyId",
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "supportId",
+                            storageKey: null,
+                          },
+                          t,
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "MoneyAmount",
+                            kind: "LinkedField",
+                            name: "reward",
+                            plural: !1,
+                            selections: a,
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "LockedSurveyInfo",
+                            kind: "LinkedField",
+                            name: "lockedInfo",
+                            plural: !1,
+                            selections: [
+                              t,
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "description",
+                                storageKey: null,
+                              },
+                            ],
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "statusDescription",
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "startedAt",
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "MoneyAmount",
+                            kind: "LinkedField",
+                            name: "baseReward",
+                            plural: !1,
+                            selections: a,
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "duration",
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "DurationDetails",
+                            kind: "LinkedField",
+                            name: "durationDetails",
+                            plural: !1,
+                            selections: [
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "max",
+                                storageKey: null,
+                              },
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "median",
+                                storageKey: null,
+                              },
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "min",
+                                storageKey: null,
+                              },
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "providerDuration",
+                                storageKey: null,
+                              },
+                            ],
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "imageUrl",
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "iconUrl",
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "tags",
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            kind: "ScalarField",
+                            name: "fraudType",
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "AdminSurveyData",
+                            kind: "LinkedField",
+                            name: "adminData",
+                            plural: !1,
+                            selections: [
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "surveyGuid",
+                                storageKey: null,
+                              },
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "rankScore",
+                                storageKey: null,
+                              },
+                            ],
+                            storageKey: null,
+                          },
+                        ],
+                        storageKey: null,
+                      },
+                    ],
+                    storageKey: null,
+                  },
+                ],
+                storageKey: null,
+              },
+              {
+                alias: null,
+                args: null,
+                concreteType: "ResponseQuality",
+                kind: "LinkedField",
+                name: "responseQuality",
+                plural: !1,
+                selections: [
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
+                    name: "score",
+                    storageKey: null,
+                  },
+                ],
+                storageKey: null,
+              },
+            ],
+          },
+          params: {
+            cacheID: "05a6abb2497257180ac8ee186c59c312",
+            id: null,
+            metadata: {},
+            name: "SurveyListRefetchQuery",
+            operationKind: "query",
+            text: "query SurveyListRefetchQuery(\n  $first: Int\n  $input: FilteredSurveyInput\n) {\n  ...SurveyList_surveys\n}\n\nfragment SurveyItem_survey on Survey {\n  id\n  studyId\n  supportId\n  title\n  reward {\n    formatted\n  }\n  lockedInfo {\n    title\n    description\n  }\n  status\n  statusDescription\n  startedAt\n  baseReward {\n    formatted\n  }\n  duration\n  durationDetails {\n    max\n    median\n    min\n    providerDuration\n  }\n  url\n  imageUrl\n  iconUrl\n  tags\n  fraudType\n  adminData {\n    surveyGuid\n    rankScore\n  }\n}\n\nfragment SurveyList_surveys on Query {\n  surveys(input: $input, first: $first) {\n    id\n    edges {\n      node {\n        id\n        status\n        url\n        ...SurveyItem_survey\n      }\n    }\n  }\n  responseQuality {\n    score\n  }\n}\n",
+          },
+        };
+      })();
+      (a.hash = "e1b5e3824b04c975793785df9cac456c"), (n.default = a);
+    },
+    29947: function (e, n, t) {
+      "use strict";
+      t.r(n);
+      var a = (function () {
+        var e = {
+          alias: null,
+          args: null,
+          kind: "ScalarField",
+          name: "id",
+          storageKey: null,
+        };
+        return {
+          argumentDefinitions: [
+            { kind: "RootArgument", name: "first" },
+            { kind: "RootArgument", name: "input" },
+          ],
+          kind: "Fragment",
+          metadata: {
+            refetch: {
+              connection: null,
+              fragmentPathInResult: [],
+              operation: t(70765),
+            },
+          },
+          name: "SurveyList_surveys",
+          selections: [
+            {
+              alias: null,
+              args: [
+                { kind: "Variable", name: "first", variableName: "first" },
+                { kind: "Variable", name: "input", variableName: "input" },
+              ],
+              concreteType: "SurveyConnection",
+              kind: "LinkedField",
+              name: "surveys",
+              plural: !1,
+              selections: [
+                e,
+                {
+                  alias: null,
+                  args: null,
+                  concreteType: "SurveyEdge",
+                  kind: "LinkedField",
+                  name: "edges",
+                  plural: !0,
+                  selections: [
+                    {
+                      alias: null,
+                      args: null,
+                      concreteType: "Survey",
+                      kind: "LinkedField",
+                      name: "node",
+                      plural: !1,
+                      selections: [
+                        e,
+                        {
+                          alias: null,
+                          args: null,
+                          kind: "ScalarField",
+                          name: "status",
+                          storageKey: null,
+                        },
+                        {
+                          alias: null,
+                          args: null,
+                          kind: "ScalarField",
+                          name: "url",
+                          storageKey: null,
+                        },
+                        {
+                          args: null,
+                          kind: "FragmentSpread",
+                          name: "SurveyItem_survey",
+                        },
+                      ],
+                      storageKey: null,
+                    },
+                  ],
+                  storageKey: null,
+                },
+              ],
+              storageKey: null,
+            },
+            {
+              alias: null,
+              args: null,
+              concreteType: "ResponseQuality",
+              kind: "LinkedField",
+              name: "responseQuality",
+              plural: !1,
+              selections: [
+                {
+                  alias: null,
+                  args: null,
+                  kind: "ScalarField",
+                  name: "score",
+                  storageKey: null,
+                },
+              ],
+              storageKey: null,
+            },
+          ],
+          type: "Query",
+          abstractKey: null,
+        };
+      })();
+      (a.hash = "e1b5e3824b04c975793785df9cac456c"), (n.default = a);
+    },
+    41068: function (e, n, t) {
+      "use strict";
+      t.d(n, {
+        E: function () {
+          return s;
+        },
+        X: function () {
+          return i;
+        },
+      });
+      var a = t(27131),
+        r = t(28334),
+        l = t(40638),
+        i = {
+          GENERAL: {
+            title: "Quality reasons",
+            description:
+              "Sometimes our providers are not very specific. Follow our tips to prevent these in the future.",
+            icon: t(6017).Z,
+          },
+          TRAP_QUESTION: {
+            title: "Failed attention check",
+            description:
+              "The Survey Provider thought your answers were either inconsistent or they may have placed a trap question in their survey.",
+            icon: l.Z,
+          },
+          OPEN_ENDED: {
+            title: "Illogical answers",
+            description:
+              "The Survey Provider thought you had written gibberish as an answer",
+            icon: a.Z,
+          },
+          SPEEDING: {
+            title: "Speeding",
+            description:
+              "The Survey Provider thought you were speeding through the survey and not paying enough attention",
+            icon: r.Z,
+          },
+          "%future added value": null,
+        },
+        s = "survey_score";
+    },
+    8975: function (e, n, t) {
+      "use strict";
+      t.d(n, {
+        Z: function () {
+          return r;
+        },
+      });
+      var a = t(67294);
+      function r(e, n) {
+        var t = (0, a.useState)(!0),
+          r = t[0],
+          l = t[1],
+          i = (0, a.useCallback)(
+            function () {
+              e(), l(!0);
+            },
+            [e]
+          ),
+          s = function () {
+            l(!1);
+          };
+        (0, a.useEffect)(
+          function () {
+            if (r) {
+              var t = setInterval(function () {
+                e();
+              }, n);
+              return function () {
+                return clearInterval(t);
+              };
+            }
+            return function () {};
+          },
+          [r, e, n]
+        ),
+          (0, a.useEffect)(
+            function () {
+              return (
+                window.addEventListener("focus", i),
+                window.addEventListener("blur", s),
+                function () {
+                  window.removeEventListener("focus", i),
+                    window.removeEventListener("blur", s);
+                }
+              );
+            },
+            [i]
+          );
+      }
+    },
+    56127: function (e, n, t) {
+      "use strict";
+      t.d(n, {
+        Z: function () {
+          return o;
+        },
+      });
+      var a = t(67294),
+        r = t(34838),
+        l = t(86221);
+      function i(e, n) {
+        (null == n || n > e.length) && (n = e.length);
+        for (var t = 0, a = new Array(n); t < n; t++) a[t] = e[t];
+        return a;
+      }
+      function s(e, n) {
+        return (
+          (function (e) {
+            if (Array.isArray(e)) return e;
+          })(e) ||
+          (function (e, n) {
+            var t =
+              null == e
+                ? null
+                : ("undefined" !== typeof Symbol && e[Symbol.iterator]) ||
+                  e["@@iterator"];
+            if (null != t) {
+              var a,
+                r,
+                l = [],
+                i = !0,
+                s = !1;
+              try {
+                for (
+                  t = t.call(e);
+                  !(i = (a = t.next()).done) &&
+                  (l.push(a.value), !n || l.length !== n);
+                  i = !0
+                );
+              } catch (o) {
+                (s = !0), (r = o);
+              } finally {
+                try {
+                  i || null == t.return || t.return();
+                } finally {
+                  if (s) throw r;
+                }
+              }
+              return l;
+            }
+          })(e, n) ||
+          (function (e, n) {
+            if (!e) return;
+            if ("string" === typeof e) return i(e, n);
+            var t = Object.prototype.toString.call(e).slice(8, -1);
+            "Object" === t && e.constructor && (t = e.constructor.name);
+            if ("Map" === t || "Set" === t) return Array.from(t);
+            if (
+              "Arguments" === t ||
+              /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)
+            )
+              return i(e, n);
+          })(e, n) ||
+          (function () {
+            throw new TypeError(
+              "Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
+            );
+          })()
+        );
+      }
+      function o() {
+        var e = s((0, l.Z)("webcamSurveys", !0), 2),
+          n = e[0],
+          t = e[1],
+          i = s((0, l.Z)("PIISurveys", !0), 2),
+          o = i[0],
+          c = i[1],
+          u = s((0, l.Z)("adminSurveys", !1), 2),
+          d = u[0],
+          m = u[1],
+          f = (0, r.Z)() && d;
+        return [
+          a.useMemo(
+            function () {
+              return {
+                webcamSurveys: n,
+                PIISurveys: o,
+                trackingParams: f ? [{ key: "am", value: "true" }] : [],
+              };
+            },
+            [n, o, f]
+          ),
+          a.useMemo(
+            function () {
+              return {
+                setWebcamSurveys: t,
+                setPIISurveys: c,
+                setAdminSurveys: m,
+              };
+            },
+            [t, c, m]
+          ),
+        ];
+      }
+    },
+    95832: function (e) {
+      e.exports = {
+        root: "Collapsible_root__tuLQv",
+        icon: "Collapsible_icon__BIpWp",
+        iconClosed: "Collapsible_iconClosed__WdXD0",
+        iconOpen: "Collapsible_iconOpen__DXH7A",
+        content: "Collapsible_content__UgtIP",
+        openContent: "Collapsible_openContent__Tr0LX",
+      };
+    },
+    31636: function (e) {
+      e.exports = { root: "ItemList_root__jjHJx" };
+    },
+    87606: function (e) {
+      e.exports = {
+        root: "ShareButtons_root__UMWT5",
+        socialButton: "ShareButtons_socialButton__i2drm",
+        socialIcon: "ShareButtons_socialIcon__XzSaQ",
+        shareButton: "ShareButtons_shareButton__Kya9J",
+        message: "ShareButtons_message__peJHa",
+        messageText: "ShareButtons_messageText__A8nSe",
+      };
+    },
+    96278: function (e) {
+      e.exports = {
+        title: "FinishedItem_title__DcXXA",
+        warning: "FinishedItem_warning__GV85p",
+        status: "FinishedItem_status__Xy8qe",
+        success: "FinishedItem_success__JoyCb",
+        fail: "FinishedItem_fail__aQi__",
+        startedAt: "FinishedItem_startedAt__Xfd7e",
+        collapsible: "FinishedItem_collapsible__r6umF",
+        collapsibleContent: "FinishedItem_collapsibleContent__P1YYS",
+        odd: "FinishedItem_odd__Qqeom",
+        historyHeader: "FinishedItem_historyHeader__CNu81",
+        titleContainer: "FinishedItem_titleContainer__51JMo",
+        titleContent: "FinishedItem_titleContent__7TsIb",
+        finishedItemRow: "FinishedItem_finishedItemRow__i7b34",
+        term: "FinishedItem_term__CDvk2",
+        fraudTip: "FinishedItem_fraudTip__3bTIs",
+      };
+    },
+    43508: function (e) {
+      e.exports = {
+        streakRootContainer: "Streak_streakRootContainer__Tq4el",
+        whatsThis: "Streak_whatsThis__AugZg",
+        timer: "Streak_timer__Aa6f7",
+        leftSide: "Streak_leftSide__ie9RL",
+        streakLayoutBox: "Streak_streakLayoutBox__g5aHW",
+        incompleteStatusIcon: "Streak_incompleteStatusIcon__7XFGo",
+        streakIconsRow: "Streak_streakIconsRow__O0Ay6",
+        activeCounter: "Streak_activeCounter__cWN_n",
+        precursorMessage: "Streak_precursorMessage__O1lSv",
+        message: "Streak_message__7ciLm",
+        descriptionContainer: "Streak_descriptionContainer__gqU1M",
+        rightMessage: "Streak_rightMessage__SOpx1",
+        fade: "Streak_fade__X_7B2",
+        fadeOut: "Streak_fadeOut___OauS",
+        demoSurvey: "Streak_demoSurvey__oLieS",
+        rightSideInfo: "Streak_rightSideInfo__gCgV9",
+        statusIcon: "Streak_statusIcon__b_zun",
+        central: "Streak_central__XoGNb",
+        fullStreak: "Streak_fullStreak__u7GkS",
+        tip: "Streak_tip__pJuo2",
+        status: "Streak_status__g_3K3",
+        complete: "Streak_complete__MDzD3",
+        fillerStatus: "Streak_fillerStatus__nH1Rc",
+        divider: "Streak_divider__BcmAO",
+        amber: "Streak_amber__D4TFg",
+        red: "Streak_red__eaNxj",
+        grey: "Streak_grey__9GlES",
+        green: "Streak_green__mFv7a",
+        flash: "Streak_flash__Etb01",
+        pulse: "Streak_pulse__Th0Lf",
+      };
+    },
+    81004: function (e) {
+      e.exports = {
+        survey: "SurveyList_survey__0NlZD",
+        finishItemContainer: "SurveyList_finishItemContainer__Q9xs3",
+      };
+    },
+  },
+]);
+//# sourceMappingURL=2723-271e6db399709b26.js.map

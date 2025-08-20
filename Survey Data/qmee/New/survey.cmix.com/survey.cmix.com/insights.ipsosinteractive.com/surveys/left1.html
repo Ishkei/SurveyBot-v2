@@ -1,0 +1,266 @@
+<!--DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <!--Render in last available IE version-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="144x144"
+      href="img/apple-touch-icon-144-precomposed.png"
+    />
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <title>Research</title>
+
+    <script type="text/javascript">
+      var pattern =
+        "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$";
+      if (window.location.hostname.toString().match(new RegExp(pattern))) {
+        document.domain = window.location.hostname;
+      } else {
+        document.domain = window.location.hostname.substr(
+          window.location.hostname.indexOf(".") + 1
+        );
+      }
+    </script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/dwlmngr.js"></script>
+
+    <script type="text/javascript">
+      var loadedObjects = new Object();
+      var curentLoadingMovie = new Object();
+      var curentMoviesToPlay = "";
+      var percentTag = null,
+        container = null,
+        timeOut = null;
+      var playButtonPushed = false;
+      var isDebug = false;
+      var rm;
+
+      function writeHtml5Loader(playlist, path, subdomain) {
+        "use strict";
+        var i;
+        rm = new DownloadMngrLib({
+          rootDomain: subdomain,
+          protocol: "https:",
+          loadedObjects: loadedObjects,
+        });
+        rm.Init();
+        for (i = 0; i < playlist.length; i++) {
+          rm.Add(path + playlist[i]);
+        }
+      }
+
+      function debug(msg) {
+        if (isDebug) {
+          //instantiate Console object
+          var c = null;
+          //comment below line when live to force browsers not to log info. uncomment if debugging needed
+          try {
+            c = console;
+          } catch (ex) {}
+          c = c || new Object({ log: function (str) {} });
+          var console = c;
+          console.log(msg);
+        }
+      }
+
+      function updateLoader() {
+        var mainFrame = parent.document.getElementById("mainFrame");
+        curentMoviesToPlay = mainFrame.contentWindow.queuedMovies;
+        if (curentMoviesToPlay.length != 0) {
+          placePlayer();
+        } else {
+          clearTimeout(timeOut);
+          timeOut = null;
+        }
+      }
+
+      function comunicate() {
+        //*
+        arguments = arguments[0].split("|");
+        if (arguments.length == 3) {
+          //*/
+          curentLoadingMovie.movieName = arguments[0];
+          curentLoadingMovie.percent = arguments[2];
+          if (loadedObjects[arguments[0]] == null) {
+            loadedObjects[arguments[0]] = new Object();
+            loadedObjects[arguments[0]].index = arguments[1];
+          }
+          loadedObjects[arguments[0]].percent = Math.min(100, arguments[2]);
+          debug(arguments[0] + "=" + arguments[2]);
+        } else {
+          var result = "";
+          for (var i = 0; i < arguments.length; i++) {
+            result += arguments[i] + " | ";
+          }
+          debug(result);
+        }
+      }
+
+      function getFlashMovieObject(movieName) {
+        if (document.embeds[movieName]) {
+          return document.embeds[movieName];
+        }
+        if (window.document[movieName]) {
+          return window.document[movieName];
+        }
+        if (window[movieName]) {
+          return window[movieName];
+        }
+        if (document[movieName]) {
+          return document[movieName];
+        }
+        return null;
+      }
+
+      function insertItemInQueue(arg, index) {
+        var flash = getFlashMovieObject("loader");
+        flash.insertObjectInArray(arg, index); //"img|img|1|jpg"
+        debug("Added movie (" + arg + ") in queue.");
+      }
+
+      function getPercent(movie) {
+        var mainFrame = parent.document.getElementById("mainFrame");
+        if (mainFrame.contentWindow.splitedGroups) {
+          var splitedGroups = mainFrame.contentWindow.splitedGroups;
+          for (var i = 0; i < splitedGroups.length; i++) {
+            if (splitedGroups[i].join().indexOf(movie) >= 0) {
+              var percentTotal = 0;
+              var loadedMovies = 0;
+              for (var j = 0; j < splitedGroups[i].length; j++) {
+                var mv = splitedGroups[i][j];
+                if (splitedGroups[i][j].indexOf("@") > 0) {
+                  mv = splitedGroups[i][j].substr(
+                    0,
+                    splitedGroups[i][j].indexOf("@")
+                  );
+                }
+                if (loadedObjects[mv]) {
+                  loadedMovies++;
+                  var percent = parseInt(loadedObjects[mv].percent, 10);
+                  percentTotal += Math.round(percent / splitedGroups[i].length);
+                  if (percent < 100) {
+                    return percentTotal;
+                    //return Math.ceil((j * 100 + percent) / splitedGroups[i].length);
+                  }
+                }
+              }
+              return loadedMovies < splitedGroups[i].length
+                ? Math.min(percentTotal, 100)
+                : 100;
+            }
+          }
+          return 0;
+        }
+        return parseInt(loadedObjects[movie].percent, 10);
+      }
+
+      function placePlayer() {
+        if (curentMoviesToPlay.length == 0) {
+          return;
+        }
+        var mainFrame = parent.document.getElementById("mainFrame");
+        if (typeof mainFrame.contentWindow.startTime !== "undefined") {
+          if (mainFrame.contentWindow.startTime == null) {
+            mainFrame.contentWindow.startTime = new Date().getTime();
+          }
+        }
+        var pbarlbl;
+        if (navigator.appName != "Microsoft Internet Explorer") {
+          percentTag = mainFrame.contentDocument.getElementById("percent");
+          container = mainFrame.contentDocument.getElementById("playButtonDiv");
+          pbarlbl = mainFrame.contentDocument.getElementById("progress-label");
+        } else {
+          percentTag =
+            mainFrame.contentWindow.document.getElementById("percent");
+          container =
+            mainFrame.contentWindow.document.getElementById("playButtonDiv");
+          pbarlbl =
+            mainFrame.contentWindow.document.getElementById("progress-label");
+        }
+        if (percentTag) {
+          percentTag.style.display = "block";
+          percentTag.style.color =
+            typeof mainFrame.contentWindow.percentColor == "string"
+              ? mainFrame.contentWindow.percentColor
+              : "#000";
+        }
+        var text1 =
+          typeof mainFrame.contentWindow.loaderText == "string"
+            ? mainFrame.contentWindow.loaderText
+            : "";
+        var text2 =
+          typeof mainFrame.contentWindow.waitText == "string"
+            ? mainFrame.contentWindow.waitText
+            : "";
+        var movies = curentMoviesToPlay.split("|");
+        var firstMovie = movies[0].split("@");
+        if (typeof loadedObjects[firstMovie[0]] !== "undefined") {
+          var percent = getPercent(firstMovie[0]);
+          debug(firstMovie[0] + " = " + percent);
+          if (percent === 100) {
+            if (pbarlbl) {
+              pbarlbl.style.display = "none";
+            }
+            if (playButtonPushed) {
+              mainFrame.contentWindow.playButton();
+            } else {
+              container.style.display = "block";
+            }
+            if (percentTag) {
+              percentTag.style.display = "none";
+            }
+            clearTimeout(timeOut);
+            timeOut = null;
+            if (typeof mainFrame.contentWindow.endTime !== "undefined") {
+              mainFrame.contentWindow.endTime = new Date().getTime();
+            }
+          } else if (!isNaN(percent)) {
+            if (typeof mainFrame.contentWindow.SetProgress === "function") {
+              mainFrame.contentWindow.SetProgress(percent);
+            } else {
+              if (percentTag) {
+                percentTag.innerHTML = text1.replace(/%%%/gi, percent + "%");
+              }
+            }
+            timeOut = setTimeout("updateLoader()", 1000);
+          }
+        } else {
+          var str = text2;
+          /*var str = "The movie <span>"+firstMovie[0]+"<\/span> not started to load yet!<br \/><br \/>Please wait...";
+	            str += "<br \/><br \/>" + "Current Movie: <span>"+curentLoadingMovie.movieName + "<\/span> is "+ curentLoadingMovie.percent + "% loaded.";*/
+          if (typeof mainFrame.contentWindow.SetProgress === "function") {
+            mainFrame.contentWindow.SetProgress(-1);
+          } else {
+            if (percentTag) {
+              percentTag.innerHTML = str;
+            }
+          }
+          timeOut = setTimeout("updateLoader()", 1000);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="loaderDiv"></div>
+    <form id="form1" name="form1" method="post" action="">
+      <input type="hidden" />
+    </form>
+    <div id="aditionalDiv"></div>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+      integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+      data-cf-beacon='{"rayId":"971fe722b8f7dc28","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"0d4ffb79b2134bbdb129c3b006f6ba87"}'
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

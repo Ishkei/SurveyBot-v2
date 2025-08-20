@@ -23,6 +23,26 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Project_Structure"))
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
+# Ensure Project_Structure is in the path for imports
+project_structure_path = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Project_Structure"))
+parent_path = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+
+print(f"Current working directory: {os.getcwd()}")
+print(f"Project structure path: {project_structure_path}")
+print(f"Parent path: {parent_path}")
+print(f"Project structure exists: {os.path.exists(project_structure_path)}")
+
+# Add paths to sys.path
+if project_structure_path not in sys.path:
+    sys.path.insert(0, project_structure_path)
+    print(f"Added Project_Structure to Python path: {project_structure_path}")
+
+if parent_path not in sys.path:
+    sys.path.insert(0, parent_path)
+    print(f"Added parent directory to Python path: {parent_path}")
+
+print(f"Python path after modification: {sys.path[:3]}...")
+
 # Web interface imports
 try:
     from flask import Flask, render_template_string, request, jsonify, redirect, url_for
@@ -784,6 +804,23 @@ class EnhancedSurveyBotRunner:
         print(f"Platform: {args.platform}")
         print(f"Personality Mode: {self.session_stats['personality_mode']}")
         print(f"Enhanced Features: {'✅ Enabled' if ENHANCED_FEATURES_AVAILABLE else '❌ Disabled'}")
+        
+        # Check for authentication state
+        auth_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "auth.json")
+        if os.path.exists(auth_file_path):
+            print(f"🔐 Authentication: ✅ Saved session available ({auth_file_path})")
+        else:
+            print("🔐 Authentication: ⚠️ No saved session found")
+            print("   💡 Run 'python3 setup_auth.py' to save your Qmee login session")
+        
+        # Show enhanced router info if using it
+        if args.implementation == "enhanced_router":
+                    print("🔧 Enhanced Router: ✅ Enabled (Improved survey platform detection)")
+        print("   - Swagbucks date of birth handling")
+        print("   - Multi-platform survey routing")
+        print("   - Enhanced error recovery")
+        print("   - Saved authentication state support")
+        
         print("-" * 50)
         
         try:
@@ -805,6 +842,8 @@ class EnhancedSurveyBotRunner:
                 await self._run_hybrid_bot(args)
             elif args.implementation == "enhanced_cursor":
                 await self._run_enhanced_cursor_bot(args)
+            elif args.implementation == "enhanced_router":
+                await self._run_enhanced_router_bot(args)
             elif args.implementation == "qmee_enhanced":
                 await self._run_qmee_enhanced_bot(args)
             elif args.implementation == "qmee_comprehensive":
@@ -821,14 +860,48 @@ class EnhancedSurveyBotRunner:
             self._print_session_summary()
     
     async def _run_playwright_bot(self, args):
-        """Run Playwright bot with enhancements"""
-        from Project_Structure.bot_implementations.survey_bot_playwright import main as playwright_main
-        
-        # Enhance the bot if possible
-        if self.bot_enhancer:
-            self.bot_enhancer.enable_enhancement()
-        
-        await playwright_main()
+        """Run Playwright bot with enhanced router integration"""
+        try:
+            # Check for saved authentication state
+            auth_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "auth.json")
+            use_auth_state = os.path.exists(auth_file_path)
+            
+            if use_auth_state:
+                print(f"🔐 Found saved authentication state: {auth_file_path}")
+                print("   Using saved session - no need to login manually")
+            else:
+                print("⚠️ No saved authentication state found")
+                print("   Run Tools_Scripts/scripts/save_auth.py first to save your login session")
+            
+            # Try to use enhanced router if available
+            try:
+                from Project_Structure.bot_implementations.improved_survey_bot import ImprovedSurveyBot
+                print("🚀 Using enhanced router with Playwright bot")
+                
+                # Initialize enhanced bot
+                bot = ImprovedSurveyBot(
+                    headless=getattr(args, "headless", False),
+                    personality_style=getattr(args, "personality_mode", "natural_conversation"),
+                    auth_state_path=auth_file_path if use_auth_state else None
+                )
+                
+                # Run survey session
+                await bot.run_survey_session()
+                
+            except ImportError:
+                print("⚠️ Enhanced router not available, using standard Playwright bot")
+                from Project_Structure.bot_implementations.survey_bot_playwright import main as playwright_main
+                
+                # Enhance the bot if possible
+                if self.bot_enhancer:
+                    self.bot_enhancer.enable_enhancement()
+                
+                await playwright_main()
+                
+        except Exception as e:
+            self.logger.error(f"Playwright bot failed: {e}")
+            import traceback
+            traceback.print_exc()
     
     async def _run_selenium_bot(self, args):
         """Run Selenium bot with enhancements"""
@@ -881,14 +954,48 @@ class EnhancedSurveyBotRunner:
         bot.run()
     
     async def _run_hybrid_bot(self, args):
-        """Run Hybrid bot with enhancements"""
-        from Project_Structure.bot_implementations.survey_bot_hybrid import main as hybrid_main
-        
-        # Enhance the bot if possible
-        if self.bot_enhancer:
-            self.bot_enhancer.enable_enhancement()
-        
-        await hybrid_main()
+        """Run Hybrid bot with enhanced router integration"""
+        try:
+            # Check for saved authentication state
+            auth_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "auth.json")
+            use_auth_state = os.path.exists(auth_file_path)
+            
+            if use_auth_state:
+                print(f"🔐 Found saved authentication state: {auth_file_path}")
+                print("   Using saved session - no need to login manually")
+            else:
+                print("⚠️ No saved authentication state found")
+                print("   Run Tools_Scripts/scripts/save_auth.py first to save your login session")
+            
+            # Try to use enhanced router if available
+            try:
+                from Project_Structure.bot_implementations.improved_survey_bot import ImprovedSurveyBot
+                print("🚀 Using enhanced router with Hybrid bot")
+                
+                # Initialize enhanced bot
+                bot = ImprovedSurveyBot(
+                    headless=getattr(args, "headless", False),
+                    personality_style=getattr(args, "personality_mode", "natural_conversation"),
+                    auth_state_path=auth_file_path if use_auth_state else None
+                )
+                
+                # Run survey session
+                await bot.run_survey_session()
+                
+            except ImportError:
+                print("⚠️ Enhanced router not available, using standard Hybrid bot")
+                from Project_Structure.bot_implementations.survey_bot_hybrid import main as hybrid_main
+                
+                # Enhance the bot if possible
+                if self.bot_enhancer:
+                    self.bot_enhancer.enable_enhancement()
+                
+                await hybrid_main()
+                
+        except Exception as e:
+            self.logger.error(f"Hybrid bot failed: {e}")
+            import traceback
+            traceback.print_exc()
 
     async def _run_enhanced_cursor_bot(self, args):
         """Run Enhanced Cursor bot with HumanCursor simulation"""
@@ -913,6 +1020,102 @@ class EnhancedSurveyBotRunner:
             
         except Exception as e:
             self.logger.error(f"Enhanced cursor bot failed: {e}")
+            import traceback
+            traceback.print_exc()
+    
+    async def _run_enhanced_router_bot(self, args):
+        """Run Enhanced Router bot with improved survey platform detection"""
+        try:
+            # Check if enhanced router is available
+            try:
+                # Use dynamic import to avoid import path issues
+                import sys
+                import os
+                import importlib.util
+                
+                # Ensure the correct paths are in sys.path
+                project_structure_path = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Project_Structure"))
+                if project_structure_path not in sys.path:
+                    sys.path.insert(0, project_structure_path)
+                
+                # Try dynamic imports
+                try:
+                    # Load enhanced_survey_router using exec
+                    router_file_path = os.path.join(project_structure_path, "bot_implementations", "enhanced_survey_router.py")
+                    with open(router_file_path, 'r') as f:
+                        router_code = f.read()
+                    
+                    # Create a namespace for the module
+                    router_namespace = {}
+                    exec(router_code, router_namespace)
+                    EnhancedSurveyRouter = router_namespace['EnhancedSurveyRouter']
+                    
+                    # Load improved_survey_bot using exec
+                    bot_file_path = os.path.join(project_structure_path, "bot_implementations", "improved_survey_bot.py")
+                    with open(bot_file_path, 'r') as f:
+                        bot_code = f.read()
+                    
+                    # Create a namespace for the module
+                    bot_namespace = {}
+                    exec(bot_code, bot_namespace)
+                    ImprovedSurveyBot = bot_namespace['ImprovedSurveyBot']
+                    
+                    print("✅ Enhanced router components loaded using exec")
+                    
+                except Exception as e:
+                    print(f"❌ Exec import failed: {e}")
+                    # Fallback to regular import
+                    try:
+                        from bot_implementations.enhanced_survey_router import EnhancedSurveyRouter
+                        from bot_implementations.improved_survey_bot import ImprovedSurveyBot
+                        print("✅ Enhanced router components loaded using fallback import")
+                    except ImportError as e2:
+                        print(f"❌ Fallback import also failed: {e2}")
+                        return
+                
+                ENHANCED_ROUTER_AVAILABLE = True
+                print("✅ Enhanced router components imported successfully")
+            except ImportError as e:
+                print(f"❌ Enhanced router not available: {e}")
+                print("Make sure the enhanced_survey_router.py and improved_survey_bot.py files are available")
+                print(f"Current Python path: {sys.path[:3]}...")  # Show first 3 paths
+                return
+            
+            # Load enhanced router configuration
+            config = self._get_enhanced_router_config(args)
+            
+            print(f"🚀 Starting Enhanced Router Survey Bot")
+            print(f"   Platform Detection: ✅ Enabled")
+            print(f"   Swagbucks Handler: ✅ Enabled")
+            print(f"   Multi-Platform Support: ✅ Enabled")
+            print(f"   Enhanced Error Recovery: ✅ Enabled")
+            print(f"   Personality Mode: {config.get('personality_style', 'natural_conversation')}")
+            
+            # Check for saved authentication state
+            auth_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "auth.json")
+            use_auth_state = os.path.exists(auth_file_path)
+            
+            if use_auth_state:
+                print(f"🔐 Found saved authentication state: {auth_file_path}")
+                print("   Using saved session - no need to login manually")
+            else:
+                print("⚠️ No saved authentication state found")
+                print("   Run Tools_Scripts/scripts/save_auth.py first to save your login session")
+            
+            # Initialize the enhanced router bot
+            bot = ImprovedSurveyBot(
+                headless=config.get('headless', False),
+                personality_style=config.get('personality_style', 'natural_conversation'),
+                auth_state_path=auth_file_path if use_auth_state else None
+            )
+            
+            # Run survey session
+            await bot.run_survey_session()
+            
+            print("✅ Enhanced router bot completed successfully")
+            
+        except Exception as e:
+            self.logger.error(f"Enhanced router bot failed: {e}")
             import traceback
             traceback.print_exc()
     
@@ -943,6 +1146,19 @@ class EnhancedSurveyBotRunner:
                 "ENABLE_MOUSE_WHEEL": True,
                 "ENABLE_SMOOTH_SCROLL": True
             }
+        }
+    
+    def _get_enhanced_router_config(self, args):
+        """Get enhanced router configuration"""
+        return {
+            "headless": getattr(args, "headless", False),
+            "personality_style": getattr(args, "personality_mode", "natural_conversation"),
+            "max_surveys_per_session": getattr(args, "max_surveys", 5),
+            "max_failures_per_page": 25,
+            "max_total_attempts": 100,
+            "delay_between_actions": [2, 5],
+            "enhanced_patterns_path": "../Project_Structure/configs/enhanced_survey_patterns.json",
+            "swagbucks_config_path": "../Project_Structure/configs/swagbucks_specific_config.json"
         }
     
     # CAPTCHA handling disabled - all CAPTCHA methods removed
@@ -1335,14 +1551,14 @@ class WebInterface:
         self.socketio.run(self.app, host=host, port=port, debug=debug, allow_unsafe_werkzeug=True)
 
 def main():
-    """Main entry point for the enhanced survey bot"""
-    parser = argparse.ArgumentParser(description="Enhanced Survey Automation Bot")
+    """Main entry point for the enhanced survey bot with improved survey routing"""
+    parser = argparse.ArgumentParser(description="Enhanced Survey Automation Bot with Advanced Survey Router")
     parser.add_argument(
         "--implementation", 
         "-i",
-        choices=["playwright", "selenium", "undetected", "v2ray", "proxychains", "hybrid", "enhanced_cursor"],
+        choices=["playwright", "selenium", "undetected", "v2ray", "proxychains", "hybrid", "enhanced_cursor", "enhanced_router"],
         default=Config.BROWSER_TYPE,
-        help="Choose bot implementation"
+        help="Choose bot implementation (enhanced_router includes improved survey platform detection and Swagbucks handling)"
     )
     parser.add_argument(
         "--platform",
@@ -1489,7 +1705,11 @@ def main():
         return
     
     # Run bot normally - CAPTCHA handling disabled
-    print("🔧 Standard mode - using regular bot implementations")
+    if args.implementation == "enhanced_router":
+        print("🔧 Enhanced Router mode - using improved survey platform detection")
+        print("   This includes better handling of Swagbucks, Ipsos, CMIX, and other survey platforms")
+    else:
+        print("🔧 Standard mode - using regular bot implementations")
     
     asyncio.run(runner.run_enhanced_bot(args))
 
@@ -1504,7 +1724,8 @@ def setup_environment():
     print("Skipping dependency installation (already installed)...")
     
     # Install browser drivers only if needed
-    if Config.BROWSER_TYPE == "playwright":
+    browser_type = Config.BROWSER_TYPE
+    if browser_type in ["playwright", "enhanced_router"]:
         print("Checking Playwright browsers...")
         # Only install if not already present
         if not os.path.exists(os.path.expanduser("~/.cache/ms-playwright")):
@@ -1512,9 +1733,13 @@ def setup_environment():
             os.system("playwright install")
         else:
             print("Playwright browsers already installed")
-    elif Config.BROWSER_TYPE == "selenium":
+    elif browser_type == "selenium":
         print("Note: For Selenium, you may need to install ChromeDriver manually")
         print("Download from: https://chromedriver.chromium.org/")
+    elif browser_type == "enhanced_router":
+        print("Enhanced Router mode - will use Playwright for browser automation")
+    else:
+        print(f"Browser type '{browser_type}' - no specific driver installation needed")
     
     print("Environment setup complete!")
     print("Dependencies are already installed in virtual environment.")

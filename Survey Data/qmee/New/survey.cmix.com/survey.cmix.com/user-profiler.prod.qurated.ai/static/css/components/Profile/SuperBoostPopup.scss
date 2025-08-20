@@ -1,0 +1,131 @@
+.super-boost-container {
+  background: #ffffff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
+  max-width: 1000px;
+  width: 100%;
+  min-height: 200px;
+  max-height: calc(100vh - 60px);
+  padding: 24px 24px 36px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 18px;
+  position: relative;
+  max-width: min(100%, 900px);
+  margin: auto;
+  outline: none;
+}
+
+.mobiworkx-profiler {
+  .super-boost-title {
+    font-weight: 700;
+    font-size: 30px;
+    font-family: "Barlow", "Filson Pro", sans-serif;
+    color: var(--title-colour);
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .super-boost-green-button{
+    min-width: 100%;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 20px auto 0;
+    padding: 16px 20px;
+    height: auto;
+  }
+
+  .super-boost-image {
+    margin: 20px auto;
+  }
+
+  .super-boost-container{
+    border-radius: 8px;
+  }
+
+  &.super-boost.question-modal-container{
+    padding: 10px;
+    background: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    .super-boost-container{
+      padding: 14px 14px 36px;
+    }
+  }
+}
+
+.super-boost-title {
+  font-family: "Londrina Solid";
+  font-weight: 900;
+  font-size: 40px;
+  color: #495867;
+  text-align: center;
+  margin: 5px 0;
+}
+
+.super-boost-image {
+  margin: auto;
+  width: 360px;
+  max-width: 100%;
+  text-align: center;
+}
+
+.super-boost-text {
+    max-width: 500px;
+    text-align: center;
+    color: #495867;
+    font-size: 16px;
+}
+
+.super-boost-close-button {
+    background: white;
+    color: #495867;
+    margin: 0 0 0 auto;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 18px;
+    right: 8px;
+    top: 8px;
+    position: absolute;
+    z-index: 7;
+    padding: 2px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #495867;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg{
+        height: 10px;
+        width: 10px
+    }
+}
+
+.super-boost-green-button {
+  background-color: var(--primary-colour);
+  padding: 10px 20px;
+  margin: 36px auto 0px;
+  border-radius: 23px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 200px;
+  height: 46px;
+  font-size: 16px;
+  font-weight: 800;
+  transition: all 0.2s;
+
+  &:hover{
+    opacity: 0.8;
+  }
+
+  &:active{
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  }
+}

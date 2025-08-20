@@ -1,0 +1,87 @@
+{
+  "s": {
+    "row": {
+      "animtype": "none",
+      "extrasmall": {
+        "displaydescr": true,
+        "txtpaddinglr": "12",
+        "txtpaddingtb": "16",
+        "imgwidth": 100,
+        "border": "surround",
+        "mdfloattype": "focus",
+        "inputheight": 10,
+        "inputsize": 18
+      },
+      "small": {
+        "displaydescr": true,
+        "txtpaddinglr": "12",
+        "txtpaddingtb": "16",
+        "imgwidth": 100,
+        "border": "surround",
+        "mdfloattype": "focus",
+        "inputheight": 10,
+        "inputsize": 18
+      },
+      "medium": {
+        "displaydescr": true,
+        "txtpaddinglr": "12",
+        "txtpaddingtb": "16",
+        "imgwidth": 100,
+        "mdfloattype": "focus",
+        "inputheight": 10,
+        "inputsize": "18"
+      },
+      "large": {
+        "displaydescr": true,
+        "txtpaddinglr": "12",
+        "txtpaddingtb": "16",
+        "imgwidth": 125,
+        "size": "25",
+        "mdfloattype": "focus",
+        "inputheight": 10
+      },
+      "extralarge": {
+        "displaydescr": true,
+        "txtpaddinglr": "12",
+        "txtpaddingtb": "16",
+        "imgwidth": 125,
+        "size": "25",
+        "mdfloattype": "focus",
+        "inputheight": 10
+      }
+    },
+    "grid": {
+      "flexdir": "column",
+      "extrasmall": { "padding": "0" },
+      "small": { "padding": "0" },
+      "medium": { "hgap": "0", "vgap": "0", "width": "100", "padding": 30 },
+      "large": { "hgap": "0", "vgap": "0", "width": "100", "padding": 30 },
+      "extralarge": { "hgap": "0", "vgap": "0", "width": "100", "padding": 30 }
+    },
+    "groupGrid": {
+      "extrasmall": { "padding": 16 },
+      "small": { "padding": 16 },
+      "medium": { "width": 50, "padding": 16 },
+      "large": { "width": 50, "padding": 16 },
+      "extralarge": { "padding": 16 }
+    }
+  },
+  "x": {
+    "open": {
+      "uitype": "mdinput",
+      "extrasmall": { "width": "100" },
+      "small": { "width": "100" },
+      "medium": { "width": "100" },
+      "large": { "width": "100" },
+      "extralarge": { "width": "100" }
+    },
+    "ex": {
+      "uitype": "default",
+      "extrasmall": { "width": "100" },
+      "small": { "width": "100" },
+      "medium": { "width": "100" },
+      "large": { "width": "100" },
+      "extralarge": { "width": "100" }
+    }
+  }
+}

@@ -1,0 +1,146 @@
+@use "../../assets/styling/Variables.scss";
+
+.mobiworkx {
+  .sub-page {
+    max-height: 100svh;
+    max-height: 100dvh;
+    overflow: auto;
+
+    .sub-page-link,
+    .sub-page-primary-button,
+    .sub-page-link,
+    .sub-page-text-container,
+    .mobile-sub-page-header {
+      font-family: "Barlow", sans-serif;
+    }
+
+    .sub-page-header {
+      font-family: "Barlow", sans-serif;
+      color: Variables.$title-colour;
+      font-weight: 600;
+    }
+
+    .sub-page-text-container p {
+      color: Variables.$text-colour;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    .sub-page-primary-button {
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .sub-page-link {
+      color: Variables.$primary-colour;
+      font-weight: 600;
+    }
+  }
+
+  .mobile-sub-page-header {
+    display: block;
+    width: 100%;
+    font-size: 28px;
+    color: #3c3c3c;
+    font-weight: 700;
+  }
+
+  &.exit-modal-background {
+    background-color: rgba(60, 60, 60, 0.6);
+    font-family: "Barlow", sans-serif;
+
+    .exit-modal-container {
+      .exit-modal {
+        border-radius: 8px;
+        p {
+          font-family: "Barlow", sans-serif;
+        }
+        .exit-options.skip-button {
+          font-family: "Barlow", sans-serif;
+          font-weight: 600;
+        }
+        .exit-options.confirm-button {
+          font-family: "Barlow", sans-serif;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .exit-title {
+      font-family: "Barlow", sans-serif;
+      font-weight: 600;
+      color: #3c3c3c;
+    }
+
+    .confirm-button {
+      border-radius: 10px;
+    }
+
+    @media screen and (max-width: 699px) {
+      .exit-title {
+        text-align: start;
+      }
+      p {
+        text-align: start;
+      }
+    }
+  }
+
+  .landing-graphic-container svg {
+    width: 100%;
+    min-height: 200px;
+    margin: 0 auto;
+  }
+
+  .sub-page-info,
+  .landing-graphic-container {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 899px) {
+    .sub-page-info,
+    .landing-graphic-container {
+      height: clamp(150px, 100%, 25svh);
+    }
+
+    .sub-page .sub-page-header {
+      margin: 0px auto auto;
+    }
+
+    .sub-page .sub-page-info {
+      padding: 0;
+    }
+
+    .sub-page-header {
+      font-size: 20px;
+    }
+
+    .mobile-sub-page-header {
+      margin-bottom: 0px;
+    }
+  }
+
+  @media screen and (min-width: 1100px) {
+    .landing-graphic-container svg {
+      min-height: 500px;
+    }
+
+    .mobile-sub-page-header {
+      display: none;
+    }
+
+    .sub-page-info,
+    .landing-graphic-container {
+      flex-grow: 1;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .landing-graphic-container svg {
+      margin: 0;
+      width: 100%;
+      min-height: 100px;
+    }
+  }
+}

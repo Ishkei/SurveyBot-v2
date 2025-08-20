@@ -1,0 +1,198 @@
+/* display=swap, users will see a system font first (like Arial) and then the Inter font will swap in once loaded. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+.loading-text {
+  /* font-family: 'Inter', sans-serif; */
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.fun-fact-wrapper {
+  /* font-family: 'Inter', sans-serif; */
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  z-index: 3;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  background-color: #f8f9ff;
+  width: 50%;
+  padding: 16px;
+  /* margin-top: -30px; */
+}
+
+.fun-fact-wrapper p {
+  margin: 3px;
+}
+
+.fun-fact-text1 {
+  /* font-family: 'Inter', sans-serif; */
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.fun-fact-text2 {
+  /* font-family: 'Inter', sans-serif; */
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #59545c;
+}
+
+.question {
+  width: 100%;
+  margin: 0 0 4px;
+}
+
+.old-loader-gif,
+#vMessage {
+  display: none;
+}
+
+.panel-default {
+  border: 0px !important;
+  background: #e9e9e9;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0) !important;
+  -moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0) !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0) !important;
+}
+
+/* line 7, sass/pages/_loading.scss */
+.loading-page {
+  position: fixed;
+  z-index: 3;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 40%;
+  margin-top: -30px;
+  width: 60px;
+  height: 60px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 3;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 40%;
+  margin-top: -30px;
+  width: 100%;
+  /* height: 60px; */
+}
+
+.loading-animation-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 13, sass/pages/_loading.scss */
+.loading-page .loader-fallback {
+  position: fixed;
+  z-index: 3;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin-top: -30px;
+  width: 60px;
+  height: 60px;
+}
+
+.loading-text {
+  width: 100%;
+  position: relative;
+  bottom: 0px;
+  left: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+/* New Dimensions Landing page loading */
+.dot-loading-container {
+  position: relative;
+  width: 65px;
+  height: 60px;
+  overflow: hidden;
+}
+
+.dots {
+  position: absolute;
+  bottom: 30px;
+  left: 14px;
+  display: flex;
+  gap: 6px;
+  z-index: 1;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #2b53a0;
+  border-radius: 50%;
+  animation: blink 1.4s infinite;
+  opacity: 0.3;
+}
+
+.dot1 {
+  animation-delay: 0s;
+}
+.dot2 {
+  animation-delay: 0.2s;
+}
+.dot3 {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* line 75, sass/pages/_loading.scss */
+html.cssanimations .loading-page .loader {
+  display: block;
+}
+
+/* line 76, sass/pages/_loading.scss */
+html.cssanimations .loading-page .loader-fallback {
+  display: none;
+}
+
+/* line 78, sass/pages/_loading.scss */
+html.no-cssanimations .loading-page .loader {
+  display: none;
+}
+
+/* line 79, sass/pages/_loading.scss */
+html.no-cssanimations .loading-page .loader-fallback {
+  display: block;
+}

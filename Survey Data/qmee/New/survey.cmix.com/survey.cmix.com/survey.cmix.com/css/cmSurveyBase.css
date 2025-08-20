@@ -1,0 +1,294 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+HTML {
+  background-color: initial;
+}
+
+BODY,
+DIV,
+UL,
+OL,
+DL LI,
+DT,
+DD,
+TABLE,
+THEAD,
+TBODY,
+TR,
+TH,
+TD {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+STRONG,
+B {
+  font-weight: bold;
+}
+
+.cm-footer {
+  width: 100%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.cm-header {
+  width: 100%;
+  display: block;
+  margin: 1ex 0 2ex 0;
+}
+
+.textAlignLeft {
+  text-align: left !important;
+}
+.textAlignRight {
+  text-align: right !important;
+}
+.textAlignCenter {
+  text-align: center !important;
+}
+
+TABLE {
+  border-spacing: 0;
+}
+TD {
+  vertical-align: top;
+}
+
+@media print {
+  body {
+    display: none;
+  }
+
+  body.allow-printing {
+    display: block;
+  }
+}
+
+.editor-hover-btn {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  cursor: pointer;
+  display: none;
+}
+
+.editor-content-warning {
+  width: 100%;
+  height: 100%;
+  background-color: lightgreen;
+  font-style: italic;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.content-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+}
+
+.cm-message-container {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.cm-message-container.cm-message {
+  background-color: red;
+  border: 1px solid black;
+  word-break: break-word;
+}
+
+/* Simple Grid – List view styles */
+.cm-simple-grid__mobile-smart {
+}
+
+.cm-simple-grid__mobile-smart .mobile-smart__group_title {
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+.cm-simple-grid__mobile-smart .mobile-smart__group_content {
+  padding-left: 1em;
+  margin-bottom: 1em;
+}
+
+.cm-simple-grid__mobile-smart p.mobile-smart__q-item_title {
+  font-weight: bold;
+  margin-bottom: 0.25em;
+}
+.cm-simple-grid__mobile-smart .mobile-smart__q-item_content {
+  padding-left: 0.5em;
+  margin-bottom: 1em;
+}
+
+.cm-simple-grid__mobile-smart h3.mobile-smart__sub-group_title {
+  font-size: 1.25em;
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+.cm-simple-grid__mobile-smart .mobile-smart__sub-group_content {
+  padding-left: 1em;
+  margin-bottom: 0.75em;
+}
+
+.cm-simple-grid__mobile-smart .mobile-smart__response {
+}
+.cm-simple-grid__mobile-smart .mobile-smart__response label {
+  display: block;
+}
+
+.cm-simple-grid .cm-simple-grid__mobile-smart .cm-grid-cell .cm-other-specify {
+  width: 100%;
+  display: block;
+  margin-top: 0.25em;
+}
+
+.grid-error-helper-mobile .cm-simple-grid__row-header {
+  display: inline-block;
+  margin-left: 0.5em;
+  vertical-align: super;
+}
+
+.grid-error-helper-mobile .cm-simple-grid__row-header .cm-cell-error-num {
+  position: relative;
+  display: inline-block;
+}
+
+.grid-error-helper-mobile
+  .cm-simple-grid__row-header
+  .cm-cell-error-num.has-error-description
+  span {
+  position: relative;
+}
+
+.mobile-smart__response .cm-grid-cell .cm-cell-response-error {
+  position: relative;
+  display: inline-block;
+  vertical-align: super;
+  margin-left: 0.5em;
+}
+
+.mobile-smart__response .cm-grid-cell .cm-cell-response-error span {
+  position: relative;
+}
+
+.mobile-smart__response
+  .cm-grid-cell
+  .cm-cell-response-error.has-error-description:hover:before {
+  position: absolute;
+}
+
+/* Simple Grid – Button View */
+.cm-simple-grid__button-display.horizontal .cm-simple-grid__column-header {
+  display: none;
+}
+
+.cm-simple-grid__button-display.horizontal th.cm-simple-grid__corner {
+  display: block;
+  border-right-width: 0;
+}
+
+.cm-simple-grid__button-display.vertical .cm-simple-grid__corner {
+  display: none;
+}
+
+.cm-simple-grid__button-display.vertical
+  tr
+  td:first-child:not(.cm-simple-grid__row-group-header) {
+  display: none;
+}
+
+.cm-simple-grid__button-display.vertical
+  thead
+  tr
+  .cm-simple-grid__column-group-header:nth-child(2) {
+  border-left-width: 0;
+}
+
+.cm-simple-grid__button-display .cm-simple-grid__row-header {
+  vertical-align: middle;
+  padding-right: 0.25em;
+}
+
+.cm-simple-grid__button-display .cm-simple-grid__cell {
+  height: 1px;
+  padding: 0.5em 0.25em;
+}
+
+.cm-simple-grid__button-display .cm-button-container {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.cm-simple-grid .cm-smart-button {
+  color: initial;
+}
+
+.cm-simple-grid__button-display .cm-smart-button {
+  font-size: 1em;
+  display: table-cell;
+  text-transform: initial;
+}
+
+.cm-simple-grid__mobile-smart .cm-smart-button {
+  font-size: 1em;
+  text-transform: initial;
+}
+
+.cm-smart-button input {
+  color: initial;
+}
+
+.cm-smart-button.cm-selected {
+  background-color: rgb(97, 166, 14);
+  color: white;
+}
+.cm-smart-button:hover {
+  background-color: rgb(218, 241, 189);
+}
+.cm-smart-button.cm-selected:hover {
+  background-color: rgb(73, 128, 8);
+}
+.cm-smart-button.btn {
+  display: block;
+  height: auto;
+}
+.cm-simple-grid .cm-hidden-input {
+  display: none;
+}
+
+.cm-simple-grid__button-display
+  .cm-simple-grid__cell
+  .simple-grid-response-codes
+  + .cm-button-container {
+  /* 
+     When labels are shown in testing mode,
+     make the button height auto so they don't
+     overflow the table cell.
+  */
+  height: auto;
+}
+
+/* Simple Grid – Mobile Smart Media Query */
+.cm-simple-grid__desktop {
+  display: none;
+}
+.cm-simple-grid__desktop.always-show {
+  display: table;
+}
+@media (min-width: 960px) {
+  .cm-simple-grid__desktop {
+    display: table;
+  }
+  .cm-simple-grid__mobile-smart {
+    display: none;
+  }
+}

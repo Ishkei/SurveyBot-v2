@@ -1,0 +1,30 @@
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgHome(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16.394 16.399",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Home_Icon",
+    "data-name": "Home Icon",
+    transform: "translate(17128.18 -5781.996)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "home-location",
+    d: "M14.891,3.809,10.11.582a3.4,3.4,0,0,0-3.825,0L1.5,3.809A3.415,3.415,0,0,0,0,6.64v6.336a3.42,3.42,0,0,0,3.415,3.415h9.563a3.42,3.42,0,0,0,3.415-3.415V6.64A3.415,3.415,0,0,0,14.891,3.809Zm.137,9.168a2.049,2.049,0,0,1-2.049,2.049H3.415a2.049,2.049,0,0,1-2.049-2.049V6.64a2.049,2.049,0,0,1,.9-1.7L7.051,1.714a2.04,2.04,0,0,1,2.292,0l4.782,3.227a2.049,2.049,0,0,1,.9,1.7Z",
+    transform: "translate(-17128.18 5782.003)",
+    className: "icon-primary-fill"
+  }))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgHome);
+export default __webpack_public_path__ + "static/media/home.768295da3e5e7f1a416713c6cca180c8.svg";
+export { ForwardRef as ReactComponent };

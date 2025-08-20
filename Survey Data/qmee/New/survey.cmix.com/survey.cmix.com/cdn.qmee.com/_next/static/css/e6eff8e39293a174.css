@@ -1,0 +1,61 @@
+.DefaultMessage_root__aSd3c {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.DefaultMessage_root__aSd3c h1 {
+  font-family: Londrina;
+  font-size: 2.6rem;
+  margin: 0 0 15px;
+  letter-spacing: 0;
+}
+.DefaultMessage_root__aSd3c h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+.DefaultMessage_root__aSd3c p {
+  margin-top: 0;
+  line-height: 1.2;
+}
+.DefaultMessage_root__aSd3c ul {
+  line-height: 1.4;
+  padding: 0 0 0 15px;
+  margin: 0 0 12px;
+  text-align: left;
+}
+.DefaultMessage_inboxMessageIconVisible___Ma3T {
+  padding-top: 40px;
+}
+.DefaultMessage_inboxMessageIcon__OYALV {
+  position: fixed;
+  top: -60px;
+}
+.DefaultMessage_primaryCtaBtn__8z791 {
+  margin: 10px 0 15px;
+  width: 100%;
+}
+.DefaultMessage_cancelBtn__YAbtL {
+  font-size: 0.8rem;
+}
+.DefaultMessage_strongMessage__7vDLI {
+  font-weight: 400;
+  background-color: var(--palette-info-background);
+  color: var(--palette-info-main);
+  padding: 12px 10px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  border: 1px dashed var(--palette-info-main);
+  border-radius: 10px;
+}
+.DefaultMessage_strongMessage__7vDLI a {
+  color: var(--palette-info-main);
+  font-weight: 700;
+}
+.DefaultMessage_strongMessage__7vDLI a:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=e6eff8e39293a174.css.map*/

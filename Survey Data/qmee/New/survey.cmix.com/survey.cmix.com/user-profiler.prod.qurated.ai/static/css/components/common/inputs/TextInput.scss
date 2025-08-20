@@ -1,0 +1,109 @@
+@use "../../../assets/styling/Variables";
+
+.text-control-container {
+  width: fit-content;
+  position: relative;
+  max-width: 100%;
+}
+
+.main.lifepoints-profiler {
+  .text-control-container {
+    width: auto;
+  }
+
+  .text-input {
+    width: 100%;
+    margin: 0;
+    border-radius: 25px;
+    background-color: Variables.$button-unselected-background-colour;
+    border: 1px solid Variables.$button-unselected-background-colour;
+    outline: none;
+    padding: 22px 30px 10px;
+    color: Variables.$primary-colour;
+    font-family: "Filson Pro";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    transition: background-color 0.3s, border 0.3s;
+
+    &:focus {
+      border: 1px solid Variables.$button-unselected-background-colour;
+      border-radius: 25px;
+      border: 1px solid Variables.$primary-colour;
+      background-color: Variables.$button-unselected-background-colour;
+    }
+
+    &.invalid {
+      border: 1px solid Variables.$error-colour;
+      background-color: Variables.$button-error-background-colour;
+      color: Variables.$error-colour;
+    }
+  }
+}
+
+.main.mobiworkx-profiler {
+  .text-control-container {
+    width: auto;
+  }
+
+  .text-input {
+    width: 100%;
+    margin: 0;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid Variables.$text-colour;
+    outline: none;
+    padding: 22px 30px 10px;
+    color: Variables.$text-colour;
+    font-family: "Filson Pro", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    transition: background-color 0.3s, border 0.3s;
+    
+    &:focus {
+      border: 1px solid Variables.$text-colour;
+      background-color: #fff;
+    }
+
+    &.invalid {
+      border: 1px solid Variables.$error-colour;
+      background-color: Variables.$button-error-background-colour;
+      color: Variables.$error-colour;
+    }
+  }
+}
+
+.main:not(.lifepoints-profiler, .mobiworkx-profiler), .profile-page:not(.lifepoints-profiler, .mobiworkx-profiler), .question-modal-container :not(.lifepoints-profiler, .mobiworkx-profiler) {
+  .text-input {
+    color: #6a6a6a;
+    width: 450px;
+    border: 2px solid #c4c4c4;
+    margin: 0px;
+    outline: none;
+    padding: 20px;
+    font-size: 18px;
+    max-width: 100%;
+    transition: border-color 0.3s;
+    border-radius: 5px;
+    background-color: #fff;
+    box-sizing: border-box;
+
+    &.valid {
+      color: Variables.$primary-colour;
+      border: 2px solid Variables.$primary-colour;
+    }
+
+    &.invalid {
+      color: red;
+      border: 2px solid red;
+    }
+
+    @media screen and (max-width: 500px) {
+      padding: 10px;
+      font-size: 16px;
+    }
+  }
+}

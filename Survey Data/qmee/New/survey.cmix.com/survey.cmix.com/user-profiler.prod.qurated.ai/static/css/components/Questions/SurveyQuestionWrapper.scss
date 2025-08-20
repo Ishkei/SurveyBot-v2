@@ -1,0 +1,173 @@
+@use "../../assets/styling/Variables";
+
+.survey-content-wrapper {
+  position: relative;
+  max-width: 1024;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 5;
+  padding: 8px 0;
+  margin-top: 0;
+  margin-bottom: 250px;
+}
+
+.titles {
+  display: flex;
+  justify-content: column;
+  padding: 0 1.5rem 0 1.5rem;
+}
+
+.survey-title {
+  color: #6a6a6a;
+  flex: 1 1;
+  font-size: 36px;
+  line-height: 1;
+  margin: 0 0 22px;
+  font-weight: 700;
+  font-family: Metropolis, Helvetica Neue, Helvetica, Roboto, Arial-Nova, Arial,
+    sans-serif;
+
+  @media screen and (max-width: 500px) {
+    font-size: 1.2em;
+  }
+
+  &.survey-header-text {
+    left: 0;
+    z-index: 8;
+    padding: 0 1.5rem 1rem 1.5rem;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      #fff 25.5%
+    );
+    margin-bottom: 0;
+  }
+}
+
+.survey-subtitle {
+  color: gray;
+  font-size: 16px;
+  font-weight: 400;
+  // margin-bottom: 42px;
+  margin-bottom: 42px;
+  margin-top: 20px;
+
+  @media screen and (max-width: 500px) {
+    margin-top: 10px;
+    margin-bottom: 22px;
+  }
+}
+
+.mobiworkx-profiler{
+  .survey-title {
+    margin: 0;
+    flex: 1;
+    font-style: normal;
+    line-height: normal;
+    color: #3C3C3C;
+    font-family: "Barlow", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+
+    &.custom {
+      margin-bottom: 0;
+    }
+  
+    &.survey-header-text {
+      padding: 0 1.5rem 1rem 1.5rem;
+      left: 0;
+      z-index: 8;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        #fff 25.5%
+      );
+      margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 500px) {
+      font-size: 23px;
+
+      &.survey-header-text {
+        padding: 0 1.5rem 0rem 1.5rem;
+      }
+      
+    }
+  }
+
+  .survey-subtitle{
+    color: #001627;
+    font-family: "Barlow", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+  }
+}
+
+.lifepoints-profiler{
+  .survey-title {
+    margin: 0;
+    flex: 1;
+    color: #6a6a6a;
+    margin-bottom: 22px;
+    font-size: 42px;
+    line-height: 1;
+  
+    color: Variables.$primary-colour;
+    font-family: "Filson Soft", sans-serif;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  
+    &.custom {
+      margin-bottom: 0;
+    }
+  
+    &.survey-header-text {
+      left: 0;
+      z-index: 8;
+      padding: 0 1.5rem 1rem 1.5rem;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        #fff 25.5%
+      );
+      margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 500px) {
+      font-size: 23px;
+
+      &.survey-header-text {
+        padding: 0 1.5rem 0rem 1.5rem;
+      }
+      
+    }
+  }
+}
+
+.survey-content-container {
+  margin-top: 60px;
+  @media screen and (max-width: 500px) {
+    margin-top: 10px;
+  }
+}
+
+.custom-survey-title-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 350px;
+  gap: 20px;
+  align-items: center;
+}
+
+.survey-content {
+  padding: 0 1.5rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+}

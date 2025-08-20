@@ -1,0 +1,33 @@
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgConfirm(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16.2 18.677",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Confirm",
+    transform: "translate(1.597 1.534)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "Path_138",
+    d: "M318.128,2181.625l5.148,2.746,5.506-13.733",
+    className: "primary-colour-stroke",
+    transform: "translate(104.515 -2191.459) rotate(11)",
+    fill: "none",
+    stroke: "#00db71",
+    strokeLinecap: "round",
+    strokeWidth: 2
+  }))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgConfirm);
+export default __webpack_public_path__ + "static/media/Confirm.a4b7d1f3c979e0e8ee37e7626c68d162.svg";
+export { ForwardRef as ReactComponent };

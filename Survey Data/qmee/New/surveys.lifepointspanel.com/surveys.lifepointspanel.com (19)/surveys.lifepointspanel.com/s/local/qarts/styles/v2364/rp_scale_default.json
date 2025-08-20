@@ -1,0 +1,101 @@
+{
+  "s": {
+    "row": {
+      "animtype": "none",
+      "collapseopen": true,
+      "extrasmall": {
+        "displaydescr": true,
+        "txtpaddinglr": "12",
+        "txtpaddingtb": "16",
+        "imgwidth": 100,
+        "inputheight": 10,
+        "inputsize": 18
+      },
+      "small": {
+        "displaydescr": true,
+        "txtpaddinglr": "12",
+        "txtpaddingtb": "16",
+        "imgwidth": 100,
+        "inputheight": 10,
+        "inputsize": 18
+      },
+      "medium": {
+        "displaydescr": true,
+        "txtpaddinglr": "12",
+        "txtpaddingtb": "16",
+        "imgwidth": 100,
+        "inputheight": 10,
+        "inputsize": "18",
+        "border": "top-bottom"
+      },
+      "large": {
+        "displaydescr": true,
+        "size": "25",
+        "txtpaddinglr": "12",
+        "txtpaddingtb": "16",
+        "imgwidth": 125,
+        "inputheight": 10,
+        "border": "top-bottom"
+      },
+      "extralarge": {
+        "displaydescr": true,
+        "size": "25",
+        "txtpaddinglr": "12",
+        "txtpaddingtb": "16",
+        "imgwidth": 125,
+        "inputheight": 10,
+        "border": "top-bottom"
+      }
+    },
+    "grid": {
+      "extrasmall": { "push": 0, "padding": "0" },
+      "small": { "push": 0, "padding": "0" },
+      "medium": {
+        "width": "80",
+        "push": 0,
+        "padding": 30,
+        "hgap": "0",
+        "vgap": "0"
+      },
+      "large": {
+        "width": "70",
+        "push": 0,
+        "padding": 30,
+        "hgap": "0",
+        "vgap": "0"
+      },
+      "extralarge": {
+        "width": "60",
+        "push": 0,
+        "padding": 30,
+        "hgap": "0",
+        "vgap": "0"
+      }
+    },
+    "groupGrid": {
+      "extrasmall": { "padding": 16 },
+      "small": { "padding": 16 },
+      "medium": { "width": 50, "padding": 16 },
+      "large": { "width": 50, "padding": 16 },
+      "extralarge": { "padding": 16 }
+    }
+  },
+  "x": {
+    "open": {
+      "uitype": "mdinput",
+      "extrasmall": { "width": "100" },
+      "small": { "width": "100" },
+      "medium": { "width": "80" },
+      "large": { "width": "70" },
+      "extralarge": { "width": "60" }
+    },
+    "ex": {
+      "uitype": "default",
+      "extrasmall": { "width": "100" },
+      "small": { "width": "100" },
+      "medium": { "width": "80" },
+      "large": { "width": "70" },
+      "extralarge": { "width": "60" }
+    }
+  }
+}

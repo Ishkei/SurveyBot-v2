@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sample Cube</title>
+    <base href="/" />
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate, max-age=0" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="https://designstoreage.blob.core.windows.net/images/favicon_16x16.png" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <script type="text/javascript">
+      window.ABS_URL = "{ABS_URL}";
+    </script>
+    <script type="text/javascript">
+      /**
+       * detect IE
+       * returns version of IE or 0, if browser is not Internet Explorer
+       */
+      var ieVersion = (function() {
+        var ua = window.navigator.userAgent;
+
+        var msie = ua.indexOf("MSIE ");
+        if (msie > 0) {
+          // IE 10 or older => return version number
+          return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+        }
+
+        var trident = ua.indexOf("Trident/");
+        if (trident > 0) {
+          // IE 11 => return version number
+          var rv = ua.indexOf("rv:");
+          return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+        }
+
+        var edge = ua.indexOf("Edge/");
+        if (edge > 0) {
+          // Edge (IE 12+) => return version number
+          return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+        }
+
+        // other browser
+        return 0;
+      })();
+
+      if (ieVersion && ieVersion < 12) {
+        var alertMsg =
+          "This application uses features to improve your overall experience while browsing it." +
+          "\r\nUnfortunately, you are using IE" +
+          ieVersion +
+          " which is a very old browser which does not support these features." +
+          "\r\n\r\nPlease consider using an updated browser to access our application at full capabilities.";
+        alert(alertMsg);
+        var html = document.getElementsByTagName("html");
+        //debugger;
+        if (html && html.length) {
+          html = html[0];
+          html.style.display = "none";
+        }
+	  }
+
+	</script>
+	<script>
+		(function (w, d, h, e, u) {
+			var r, s;
+			r = new Date().getTime();
+			s = d.createElement(e);
+			s.async = 0;
+			s.src = u +  "?r=" + r;
+			h.appendChild(s);
+		}(window, document, document.head, "script", "config.js"));
+	</script>
+  <link rel="stylesheet" href="styles.9756edf16464437bcec9.css"></head>
+
+  <body>
+    <app-root></app-root>
+  <script type="text/javascript" src="runtime.66ae5a0fe63c5a435019.js"></script><script type="text/javascript" src="polyfills.f40cdcfb531ef3db9fe8.js"></script><script type="text/javascript" src="scripts.806effac119676237f10.js"></script><script type="text/javascript" src="main.e521215d64f9cbc9b6b8.js"></script></body>
+</html>

@@ -1,0 +1,504 @@
+.noScroll .LeagueHeader_header__UIWh8 {
+  margin-top: 0;
+}
+@media (min-width: 37.5rem) {
+  .noScroll .LeagueHeader_header__UIWh8 {
+    margin-top: 0;
+  }
+}
+.scrollingUp .LeagueHeader_header__UIWh8 {
+  margin-top: 0;
+}
+.scrollingDown .LeagueHeader_header__UIWh8 {
+  margin-top: calc((var(--header-nav-height) + 70px) * -1);
+}
+@media (min-width: 37.5rem) {
+  .scrollingDown .LeagueHeader_header__UIWh8 {
+    margin-top: calc((var(--header-nav-height) + 110px) * -1);
+  }
+}
+.LeagueHeader_header__UIWh8 {
+  position: fixed;
+  top: calc(var(--upper-header-height) + 45);
+  border-top: 1rem;
+  background-color: var(--palette-background-secondary);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: var(--shadow-default);
+  width: 100%;
+  transition: all var(--header-transition-duration) ease-in;
+  z-index: 40;
+}
+.LeagueHeader_header__UIWh8 h1 {
+  font-family: Londrina;
+  margin: 1rem 0 0.5rem;
+  letter-spacing: 0;
+  font-size: 1.5rem;
+}
+@media (min-width: 37.5rem) {
+  .LeagueHeader_header__UIWh8 h1 {
+    font-size: 2rem;
+  }
+}
+.LeagueHeader_header__UIWh8 p {
+  margin: 0 0 0.5rem;
+  font-size: 12px;
+}
+.LeagueHeader_leagueIcons__G5T2W {
+  position: relative;
+  transition-duration: 0.5s;
+  transition-property: margin-left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+}
+@media (min-width: 37.5rem) {
+  .LeagueHeader_leagueIcons__G5T2W {
+    gap: 25px;
+  }
+}
+.LeagueHeader_leagueIconsGradient__ZVxYo {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    #f8f8fa,
+    #f8f8fa 10%,
+    rgba(248, 248, 250, 0) 50%,
+    #f8f8fa 95%,
+    #f8f8f8
+  );
+}
+.LeagueHeader_iconContainer__FG1RD {
+  position: relative;
+}
+.LeagueHeader_activeIcon__z20HA {
+  flex-shrink: 0;
+  height: 70px;
+  width: 70px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px);
+  display: block;
+}
+@media (min-width: 37.5rem) {
+  .LeagueHeader_activeIcon__z20HA {
+    height: 115px;
+    width: 115px;
+  }
+}
+.LeagueHeader_inactiveIcon__4AlBq {
+  flex-shrink: 0;
+  position: relative;
+  height: 50px;
+  width: 50px;
+}
+@media (min-width: 37.5rem) {
+  .LeagueHeader_inactiveIcon__4AlBq {
+    height: 70px;
+    width: 70px;
+  }
+}
+.LeagueHeader_promotedIcon__uVs4r {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 25px;
+  left: 21.5px;
+}
+@media (min-width: 37.5rem) {
+  .LeagueHeader_promotedIcon__uVs4r {
+    height: 30px;
+    width: 30px;
+    left: 32px;
+    top: 40px;
+  }
+}
+.Card_root__qEP3_ {
+  border-radius: var(--dimensions-border-radius-card);
+}
+.Card_root__qEP3_.Card_interactive__f7luR:hover {
+  box-shadow: var(--shadow-hover);
+}
+.Card_root__qEP3_.Card_interactive__f7luR {
+  box-shadow: var(--shadow-default);
+}
+.Card_root__qEP3_.Card_outlined__uy0qq {
+  border: 1px solid var(--palette-divider);
+}
+.Card_root__qEP3_.Card_interactive__f7luR:focus {
+  box-shadow: var(--shadow-hover);
+}
+@keyframes LeagueRow_pulse__qBzF2 {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 var(--shadowColor));
+  }
+  15% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 var(--shadowColor));
+  }
+  40% {
+    transform: scale(1.01);
+    filter: drop-shadow(0 0 8px var(--shadowColor));
+  }
+  to {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 var(--shadowColor));
+  }
+}
+.LeagueRow_isSelfSticky__PpuXO {
+  transition: top var(--header-transition-duration) ease-in;
+  position: sticky;
+  top: 160px;
+  bottom: 1rem;
+}
+.scrollingUp .LeagueRow_isSelfSticky__PpuXO {
+  top: 280px;
+}
+@media (min-width: 37.5rem) {
+  .scrollingUp .LeagueRow_isSelfSticky__PpuXO {
+    top: 330px;
+  }
+}
+.LeagueRow_isSelfGreen__wzwFQ {
+  --shadowColor: var(--palette-secondary-main);
+}
+.LeagueRow_isSelfGreen__wzwFQ,
+.LeagueRow_isSelfMain__f1Omg {
+  animation: LeagueRow_pulse__qBzF2 4s infinite;
+  background-color: var(--palette-background-default);
+}
+.LeagueRow_isSelfMain__f1Omg {
+  --shadowColor: #f2f2f2;
+}
+.LeagueRow_isSelfRed__gkEu7 {
+  --shadowColor: var(--palette-error-main);
+  animation: LeagueRow_pulse__qBzF2 4s infinite;
+  background-color: var(--palette-background-default);
+}
+.LeagueRow_leagueRow__H027k {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  color: var(--palette-primary-main);
+  background-color: var(--palette-background-default);
+}
+.LeagueRow_leagueRow__H027k:hover {
+  animation: none;
+  transform: scale(1.01);
+}
+.LeagueRow_leagueRow__H027k.LeagueRow_isSelf__zH2cE {
+  z-index: 1;
+  background-color: var(--palette-background-secondary);
+}
+.LeagueRow_leagueRow__H027k.LeagueRow_isSelf__zH2cE .LeagueRow_username__E2gxr {
+  line-height: 1.3;
+  margin: 0.8rem 0;
+}
+.LeagueRow_leagueRow__H027k .LeagueRow_row__aqwSy {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.LeagueRow_leagueRow__H027k .LeagueRow_row__aqwSy .LeagueRow_position__t_x1x {
+  margin-right: 0.2rem;
+  font-size: large;
+}
+.LeagueRow_leagueRow__H027k .LeagueRow_leagueRowContent___D_AN {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.LeagueRow_leagueRow__H027k .LeagueRow_leagueRowContent___D_AN b {
+  font-size: large;
+  font-weight: 600;
+}
+.LeagueRow_leagueRow__H027k .LeagueRow_leagueRowContent___D_AN span {
+  margin-left: 0.3rem;
+  font-size: small;
+}
+.LeagueRow_topThreeLeagueRow__YsC1p {
+  padding: 1rem;
+  margin: 0.5rem;
+}
+.LeagueRow_topThreeLeagueRow__YsC1p .LeagueRow_leagueRowContent___D_AN {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.LeagueRow_greenHighlight__3ZTtF {
+  color: var(--palette-secondary-main);
+}
+.LeagueRow_redHighlight__VDrTS {
+  color: var(--palette-error-main);
+}
+.LeagueRow_boldUsername__a_7tK {
+  margin: 0.8rem 0;
+  line-height: 1.3;
+}
+.LeagueRow_username__E2gxr {
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 1;
+}
+@media (min-width: 37.5rem) {
+  .LeagueRow_username__E2gxr {
+    max-width: none;
+  }
+}
+.LeagueRow_username__E2gxr > span {
+  font-weight: 400;
+}
+.LeagueRow_avatarIcon__W09BX {
+  margin-right: 0.3rem;
+}
+.LeagueTable_leagueTable__u6FOv {
+  width: 100%;
+  max-width: 1408px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1248px;
+  padding: 10rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 37.5rem) {
+  .LeagueTable_leagueTable__u6FOv {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media (min-width: 60rem) {
+  .LeagueTable_leagueTable__u6FOv {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+@media (min-width: 37.5rem) {
+  .LeagueTable_leagueTable__u6FOv {
+    padding: 14rem 0 3rem;
+  }
+}
+.LeagueTable_promoZoneIndicator__jI3kH {
+  position: relative;
+  left: calc(-50vw + 50%);
+  z-index: -1;
+  background: linear-gradient(0deg, rgba(43, 214, 117, 0.173), transparent);
+  height: 70px;
+  width: 100vw;
+  border-bottom: 2px solid var(--palette-secondary-main);
+  display: flex;
+  justify-content: center;
+  color: var(--palette-secondary-main);
+  margin: 3rem 0;
+}
+.LeagueTable_promoZoneIndicator__jI3kH p {
+  position: absolute;
+  top: -30px;
+}
+.LeagueTable_promoZoneIndicator__jI3kH svg {
+  transform: scale(0.5) translateY(37px);
+}
+.LeagueTable_promoZoneIndicator__jI3kH svg g > path {
+  fill: var(--palette-secondary-main);
+}
+.LeagueTable_demotionZoneIndicator__afSZp {
+  position: relative;
+  left: calc(-50vw + 50%);
+  z-index: -1;
+  background: linear-gradient(rgba(255, 51, 102, 0.153), transparent);
+  height: 70px;
+  width: 100vw;
+  border-top: 2px solid var(--palette-error-main);
+  display: flex;
+  justify-content: center;
+  color: var(--palette-error-main);
+  margin: 3rem 0;
+}
+.LeagueTable_demotionZoneIndicator__afSZp p {
+  position: absolute;
+  top: 45px;
+}
+.LeagueTable_demotionZoneIndicator__afSZp svg {
+  transform: scale(0.5) translateY(-37px);
+}
+.LeagueTable_demotionZoneIndicator__afSZp svg g > path {
+  fill: var(--palette-error-main);
+}
+.NoLeague_noLeague__2OFFw {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.NoLeague_noLeague__2OFFw .NoLeague_noLeagueContent__7psn_ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 16rem;
+  text-align: center;
+}
+.NoLeague_noLeague__2OFFw .NoLeague_noLeagueContent__7psn_ p {
+  margin-top: 3rem;
+}
+.NoLeague_noLeague__2OFFw .NoLeague_noLeagueContent__7psn_ Button {
+  margin-top: 1rem;
+}
+.League_root__av33W {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+.League_inPromotionZone__Zix2J {
+  color: var(--palette-secondary-main);
+}
+.League_inPromotionZone__Zix2J:hover {
+  background-color: #effff4;
+}
+.League_redHighlight__pOdyR {
+  color: var(--palette-error-main);
+}
+.League_redHighlight__pOdyR:hover {
+  background-color: #ffeff2;
+}
+.League_mainHighlight__SI8Gh {
+  color: var(--palette-primary-main);
+}
+.League_mainHighlight__SI8Gh:hover {
+  background-color: #f2f2f2;
+}
+.League_topThreeLeagueRow__19jXG {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.2rem 2rem;
+  margin: 0.5rem;
+}
+.League_topThreeLeagueRow__19jXG:hover {
+  animation: none;
+  transform: scale(1.02);
+}
+.League_topThreeLeagueRow__19jXG .League_topThreeRow___BHcd {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.League_topThreeLeagueRow__19jXG
+  .League_topThreeRow___BHcd
+  .League_position__7amoC {
+  margin-right: 1.5rem;
+  font-size: x-large;
+}
+.League_topThreeLeagueRow__19jXG .League_leagueRowContent__SwNVq {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.League_topThreeLeagueRow__19jXG .League_leagueRowContent__SwNVq b {
+  font-size: x-large;
+  margin-right: 0.3rem;
+}
+.League_topThreeLeagueRow__19jXG .League_leagueRowContent__SwNVq p {
+  margin-top: 1.25rem;
+  font-size: small;
+}
+.League_leagueRow__Bby6h {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  margin: 0.5rem;
+}
+.League_leagueRow__Bby6h:hover {
+  animation: none;
+  transform: scale(1.02);
+}
+.League_leagueRow__Bby6h .League_row__JUgKI {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.League_leagueRow__Bby6h .League_row__JUgKI .League_position__7amoC {
+  margin-right: 1.5rem;
+  font-size: large;
+}
+.League_leagueRow__Bby6h .League_leagueRowContent__SwNVq {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.League_leagueRow__Bby6h .League_leagueRowContent__SwNVq b {
+  font-size: large;
+  margin-right: 0.3rem;
+}
+.League_leagueRow__Bby6h .League_leagueRowContent__SwNVq p {
+  margin-top: 1.25rem;
+  font-size: small;
+}
+.League_demotionZoneIndicator__sxJN_ {
+  position: relative;
+  left: calc(-50vw + 50%);
+  z-index: -1;
+  background: linear-gradient(rgba(255, 51, 102, 0.153), transparent);
+  height: 70px;
+  width: 100vw;
+  border-top: 2px solid var(--palette-error-main);
+  display: flex;
+  justify-content: center;
+  color: var(--palette-error-main);
+  margin: 3rem 0;
+}
+.League_demotionZoneIndicator__sxJN_ p {
+  position: absolute;
+  top: 45px;
+}
+.League_demotionZoneIndicator__sxJN_ svg {
+  transform: scale(0.5) translateY(-37px);
+}
+.League_demotionZoneIndicator__sxJN_ svg g > path {
+  fill: var(--palette-error-main);
+}
+.League_isSelfGreen__JsWnz {
+  --shadowColor: var(--palette-secondary-main);
+  animation: League_pulse__1A2Fh 4s infinite;
+  background-color: #effff4;
+}
+.League_isSelfGreen__JsWnz:hover,
+.League_isSelfGreen__JsWnz:hover:hover {
+  background-color: #effff4;
+}
+.League_inDemotionZone__vaBFQ {
+  color: var(--palette-error-main);
+}
+.League_inDemotionZone__vaBFQ:hover {
+  background-color: #ffeff2;
+}
+.League_inDemotionZone__vaBFQ.League_isSelf__6c8RI {
+  --shadowColor: var(--palette-error-main);
+  background-color: #ffeff2;
+}
+.League_inDemotionZone__vaBFQ.League_isSelf__6c8RI:hover {
+  background-color: #ffeff2;
+}
+.League_icon__Ct_8C {
+  margin-left: -7.5px;
+}
+/*# sourceMappingURL=3f4f17d5c73b34ca.css.map*/

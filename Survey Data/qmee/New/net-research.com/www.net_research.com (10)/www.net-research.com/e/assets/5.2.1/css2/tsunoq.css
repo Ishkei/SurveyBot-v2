@@ -1,0 +1,112 @@
+@charset "utf-8";
+
+div.nishiogi {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 150%;
+  border: #2e8b57 solid 1px;
+  background-color: #f5fffa;
+}
+
+div.kouenji {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 150%;
+  border: #4682b4 solid 1px;
+  background-color: #f0ffff;
+}
+
+div.ogikubo {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 150%;
+  border: #ff0000 solid 1px;
+  background-color: #ffc6b2;
+  text-align: center;
+}
+
+/* 補足文L囲み */
+div.meguro {
+  border-left: 2px solid #000066;
+  border-bottom: 2px solid #000066;
+  font-weight: bold;
+  font-size: 130%;
+  color: #000066;
+  padding-left: 3px;
+  padding: 1px 2px;
+  margin-bottom: 1em;
+}
+
+/* 補足文四角囲み【青】*/
+div.nakameguro {
+  border: 2px solid #003e7b;
+  width: 80%;
+  padding-left: 3px;
+  font-size: 110%;
+  padding: 3px 5px;
+  line-height: 125%;
+  margin-bottom: 1em;
+}
+
+div.mitaka {
+  width: 678px;
+  background-color: #f0f8ff;
+  border: 1px solid #dcdcdc;
+  font-size: 1em;
+  font-weight: normal;
+  text-align: left;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+
+  margin-bottom: 10px;
+}
+
+div.sakaue {
+  width: 674px;
+  background-color: #f0f8ff;
+  border: 3px double #dcdcdc;
+  font-size: 1em;
+  font-weight: normal;
+  text-align: left;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+
+  margin-bottom: 10px;
+}
+
+div.kichijouji {
+  width: 675px;
+  border-top: 1px solid #0000ff;
+  border-bottom: 1px solid #0000ff;
+  border-left: 5px solid #0000ff;
+  font-size: 1em;
+  font-weight: normal;
+  text-align: left;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+
+  margin-bottom: 10px;
+}

@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'EmojiOne';
+  font-style: normal;
+  src: url('./emojione-svg.woff') format('woff');
+  text-decoration: none;
+}

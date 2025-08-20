@@ -1,0 +1,42 @@
+@use "../../assets/styling/Variables.scss";
+
+.edit-question-number {
+  z-index: 6;
+  width: fit-content;
+  background: #495867;
+  color: white;
+  padding: 12px 16px;
+  width: 110px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+
+  .question-icon {
+    margin: 0;
+    height: 20px;
+    width: 24px;
+    .icon-primary-fill {
+      fill: #fff;
+    }
+  }
+  &.completed{
+    background: Variables.$primary-colour;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .edit-question-number {
+    position: relative;
+    margin: 20px 0 0;
+    box-sizing: border-box;
+    top: 0;
+  }
+}

@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+html[lang] * {
+    font-family: Helvetica, Verdana, '宋体', 'Zawgyi-One', 'ＭＳ Ｐゴシック', Osaka, 'ヒラギノ角ゴ Pro W3', sans-serif;
+}
+
+html[lang|=ja] * {
+    font-family:"frutiger linotype","lucida grande",helvetica,arial,"Osaka","ＭＳ Ｐゴシック",sans-serif;
+}
+
+html[lang|=zh] * {
+    font-family: '宋体', Helvetica, Verdana, 'ＭＳ Ｐゴシック', Osaka, 'ヒラギノ角ゴ Pro W3', sans-serif;
+}
+
+html[lang|=my] * {
+    font-family:  sans-serif;
+}
+
+html[lang] .fa-img-close-button {
+    min-width: 4rem;
+    min-height: 2rem;
+}
+
+html[lang|=ja] .fa-img-close-button {
+    min-width: 0;
+    min-height: 0;
+}

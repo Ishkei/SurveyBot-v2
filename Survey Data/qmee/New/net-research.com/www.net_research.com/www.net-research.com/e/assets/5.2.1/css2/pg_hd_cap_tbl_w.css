@@ -1,0 +1,182 @@
+@charset "utf-8";
+
+.condition-table.has-random th.condition-id {
+    width: 4em;
+}
+
+.condition-table.has-random th.condition-desc {
+}
+
+.condition-table.has-random th.condition-criteria {
+    width: 30%;
+}
+
+.condition-table.has-random th.condition-random {
+    width: 40%;
+}
+
+/** ランダム無し */
+.condition-table th.condition-id {
+    width: 4em;
+}
+
+.condition-table th.condition-desc {
+}
+
+.condition-table th.condition-criteria {
+    width: 30%;
+}
+
+.condition-table th.condition-random {
+    width: 40%;
+}
+
+.fa_sumrange {
+    max-width : 200px;
+    word-wrap : break-word;
+}
+
+@media screen
+{
+    div#main div.question-area div.cap table.cap
+    {
+        width : 150%;
+        margin-left : -25%;
+    }
+    div#main div.cap table.cap td.qid
+    {
+        width : 10%;
+    }
+    div#main div.desc_cap_area
+    {
+        display : none;
+    }
+    div#main div.desc_cap_area_expand
+    {
+        display : '';
+    }
+    div#main div.variable_cap_area
+    {
+        display : none;
+    }
+    div#main div.variable_cap_area_expand
+    {
+        display : '';
+    }
+    div#main div.out_of_targets_cap_area
+    {
+        display : none;
+    }
+    div#main div.out_of_targets_cap_area_expand
+    {
+        display : '';
+    }
+    div#main div.sinsa_cell_area
+    {
+        display : none;
+    }
+    div#main div.sinsa_cell_area_expand
+    {
+        display : '';
+    }
+    div#main div.dynamic_cell_area
+    {
+        display : none;
+    }
+    div#main div.dynamic_cell_area_expand
+    {
+        display : '';
+    }
+    div#main .plselectionheader
+    {
+        display : none;
+    }
+    div#main .plselectionheader_expand
+    {
+        display : '';
+    }
+    div#main button.pl_toggle_switch_print
+    {
+        display : none;
+    }
+    div#main div.sinsa_cell_area
+    {
+        display : none;
+    }
+    div#main div.sinsa_cell_area_expand
+    {
+        display : '';
+    }
+}
+@media print
+{
+
+    div#main div.question-area div.cap table.cap
+    {
+        width : '';
+        margin-left : auto;
+        margin-right : auto;
+        overflow:auto;
+        word-wrap : break-word;
+    }
+
+    div#main table.fa_table td 
+    {
+        min-width : 3em;
+        max-width : 100px;
+        word-wrap : break-word;
+    }
+
+    div#main th.condition-random td.condition-random {
+        width : 100px;
+    }
+
+    div#main div.cap table.cap td.qid
+    {
+        width : 84px;
+        overflow:auto;
+    }
+    div#main div.desc_cap_area
+    {
+        display : '';
+        overflow:auto;
+    }
+    div#main div.variable_cap_area
+    {
+        display : '';
+        overflow:auto;
+    }
+    div#main div.out_of_targets_cap_area
+    {
+        display : '';
+        overflow:auto;
+    }
+    div#main div.sinsa_cell_area
+    {
+        display : '';
+        overflow:auto;
+    }
+    div#main div.sinsa_cell_area
+    {
+        display : none;
+    }
+    div#main div.dynamic_cell_area
+    {
+        display : '';
+        overflow:auto;
+    }
+    div#main .plselectionheader
+    {
+        display : table-header-group;
+        overflow:auto;
+    }
+    div#main button.pl_toggle_switch
+    {
+        display : none;
+    }
+    div#main button.pl_toggle_switch_print
+    {
+        display : '';
+    }
+
+}

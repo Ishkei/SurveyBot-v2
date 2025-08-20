@@ -1,0 +1,103 @@
+@import url("https://survey.mrxsurveys.com/orc/common/fonts/bvfonts.css");
+
+/*this is the outer logo container*/
+div.logo-wrap {
+    text-align: center;
+	margin: 0px;
+    padding: 0px;
+    border: 0px;
+    height: auto;
+    width: 100%;
+	/*--background-color:#3498DB;*/
+}
+
+/*this is the inner logo padding container*/
+div.logo-pad {
+    text-align: center;
+	margin-left:auto;
+	margin-right:auto;
+    --border: 1px solid #3498DB;
+    height: auto;
+	background-color: #1b443a;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+/*this is the logo itself*/
+div.logo {
+    text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left:auto;
+	margin-right:auto;
+    padding: 10px;
+    border: 10px;
+    height: auto;
+    width: 100%;
+	background: url("image/BigVillage-White.png") no-repeat; width: 432px; height: 128px; display: block; /*center; width: 432px; height: 128px; display: block;*/
+	background-size: contain;
+	background-position: center;
+	margin-top: 0px;
+	width: 100%;
+ }
+   
+ .readonly {
+	background: #CCCCCC;
+	width: 200px;
+ }
+ 
+#orcform {
+  	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
+}
+ 
+#debugtable {
+  	margin-left:auto;
+	margin-right:auto;
+	text-align: right;
+ }
+ 
+#startmessage {
+	font-family: 'Neue Plak Text Regular', sans-serif;
+	text-align:center;
+  	margin-left:auto;
+	margin-right:auto;
+}
+
+#customtext {
+	text-align:center;
+  	margin-left:auto;
+	margin-right:auto;
+}
+
+
+#thebutton {
+	text-align:center;
+  	margin-left:auto;
+	margin-right:auto;
+}
+
+/* maintenance page */
+.mTitle {
+    text-align: center;
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+.mText {
+    text-align: center;
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}

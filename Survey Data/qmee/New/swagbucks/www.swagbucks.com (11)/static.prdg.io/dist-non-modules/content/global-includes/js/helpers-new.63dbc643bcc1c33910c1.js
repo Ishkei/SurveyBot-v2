@@ -1,0 +1,1056 @@
+window.sbHelpers = (function () {
+  var e,
+    t = "registration",
+    n = {
+      supportTypes: ["localStorage", "sessionStorage"],
+      strComponentTypeBanner: "Banners",
+      strComponentTypeModal: "Modals",
+    },
+    r = "isSticky",
+    s = "." + r,
+    o = "stuck",
+    i = "There was an unexpected error processing your request.",
+    a = { Escape: 27, Enter: 13, Space: 32 },
+    l = "optanon-category-",
+    c = { performance: "C0002", functional: "C0003", targeting: "C0004" };
+  function u(e) {
+    if (
+      "string" != typeof e ||
+      (e !== n.strComponentTypeBanner && e !== n.strComponentTypeModal)
+    )
+      return !1;
+    var t = sbPage["boolOverrideAll" + e];
+    return "boolean" != typeof t || !t;
+  }
+  function d(e, t) {
+    if (!t.parentElement.getElementsByClassName(e).length) {
+      var n = document.createElement("div");
+      n.classList.add("sticky_sentinel", e);
+      var r = t.parentElement;
+      return r.insertBefore(n, r.firstChild);
+    }
+  }
+  function p(e, t) {
+    var n = new CustomEvent("sticky-change", {
+      detail: { stuck: e, target: t },
+    });
+    document.dispatchEvent(n);
+  }
+  function b(e) {
+    e.forEach(m);
+  }
+  function m(e) {
+    var t = e.boundingClientRect,
+      n = e.target.parentElement.querySelector(s),
+      r = e.rootBounds;
+    t.bottom < r.top && p(!0, n),
+      t.bottom >= r.top && t.bottom < r.bottom && p(!1, n);
+  }
+  function f(e, t) {
+    t && e.observe(t);
+  }
+  function g(e) {
+    var t = e.detail.target;
+    if (e.detail.stuck) return void t.classList.add(o);
+    t.classList.remove(o);
+  }
+  function y(e, t) {
+    return e.includes(t);
+  }
+  function h(e, t, n, r) {
+    if (window.sbHelpers.isMember() && n) {
+      var s = n instanceof jQuery ? n[0] : n;
+      if (document.contains(s)) {
+        r && r.disconnect();
+        var o = document.createElement("script");
+        (o.src = e),
+          o.classList.add(l + c.performance + "-" + c.targeting),
+          sbHelpers.isNonEmptyString(t) &&
+            o.setAttribute("data-card-id", "card-impression-pixel" + t),
+          s.append(o);
+      } else if (!r && sbHelpers.isNonEmptyObject(sbGlbl.objCards)) {
+        var i = sbGlbl.objCards.getCardsWrapper()[0];
+        new MutationObserver(w.bind(null, e, t, n)).observe(i, {
+          subtree: !0,
+          childList: !0,
+        });
+      }
+    }
+  }
+  function v(e) {
+    for (
+      var t,
+        n = /<script(?:[^>]*\ssrc=['"]([^'"]*)['"])?[^>]*>(.*?)<\/script>/gimu;
+      null !== (t = n.exec(e.stringifiedHtml));
+
+    ) {
+      var r = t[1],
+        s = t[2];
+      if (e.useOneTrustInsertScript && window.sbHelpers.isNonEmptyString(r))
+        window.OneTrust.InsertScript(
+          r,
+          e.containerId,
+          null,
+          null,
+          e.advertisingGroupId
+        );
+      else {
+        var o = e.container || document.getElementById(e.containerId),
+          i = o && o.querySelector('script[src="' + r + '"]'),
+          a = document.createElement("script");
+        window.sbHelpers.isNonEmptyString(r) && (a.src = r),
+          window.sbHelpers.isNonEmptyString(s) && (a.innerHTML = s),
+          i ? i.parentNode.replaceChild(a, i) : o && o.append(a);
+      }
+    }
+  }
+  function w(e, t, n, r, s) {
+    r && h(e, t, n, s);
+  }
+  function H(e) {
+    var t = new URL(window.location.href);
+    t.hash.replace(/#/u, "") !== e &&
+      ((t.hash = e), window.history.pushState({}, "", t.toString()));
+  }
+  return {
+    injectImpressionScriptTag: h,
+    injectImpressionScriptHtml: function (e) {
+      if (window.sbHelpers.isMember()) {
+        var t,
+          n,
+          r =
+            (e.container instanceof jQuery ? e.container[0] : e.container) ||
+            document.body,
+          s =
+            ((t = e.cardId),
+            (n = "card-impression-pixel"),
+            sbHelpers.isNonEmptyString(t)
+              ? n + t
+              : n + Math.random().toString().substring(2)),
+          o = document.createElement("div");
+        (o.id = s),
+          (o.className = "isPixel"),
+          e.hideWrapper && (o.style.display = "none"),
+          r.append(o),
+          (function (e, t) {
+            if (window.sbHelpers.isString(e))
+              if (
+                window.OneTrust &&
+                window.OneTrust.InsertScript &&
+                window.OneTrust.InsertHtml
+              )
+                window.OneTrust.InsertHtml(e, t, null, null, "4"),
+                  v({
+                    stringifiedHtml: e,
+                    containerId: t,
+                    advertisingGroupId: "4",
+                    useOneTrustInsertScript: !0,
+                  });
+              else {
+                var n = document.getElementById(t);
+                n &&
+                  (n.insertAdjacentHTML("beforeend", e),
+                  v({ stringifiedHtml: e, container: n }));
+              }
+          })(e.stringifiedHtml, s);
+      }
+    },
+    isScriptUrl: function (e) {
+      try {
+        var t = new URL(e);
+        return t.pathname.endsWith(".js") || t.href.startsWith("http");
+      } catch (e) {
+        return !1;
+      }
+    },
+    getAssetFullUrl: function (e) {
+      if (!sbHelpers.isNonEmptyString(e))
+        throw Error("Make sure to pass a non-empty string.");
+      if (e.startsWith("http:") || e.startsWith("https:")) return e;
+      var t =
+        document.querySelector('script[src*="sbglobals"]') ||
+        document.currentScript;
+      if (t) {
+        var n = new URL(t.src).origin;
+        return e.startsWith("/") ? n + e : n + "/" + e;
+      }
+      return e;
+    },
+    handleBannerReady: function (e) {
+      if ("undefined" != typeof banner && sbHelpers.isFunction(banner.create))
+        sbHelpers.isFunction(e) && e();
+      else {
+        var t = document.createElement("link");
+        (t.href = sbHelpers.getAssetFullUrl(
+          "/dist-non-modules/content/components/banner/banner-v2.5e2d5378a2ee0107a5f7.css"
+        )),
+          (t.rel = "stylesheet"),
+          document.head.append(t);
+        var n = document.createElement("script");
+        (n.src = sbHelpers.getAssetFullUrl(
+          "/dist-non-modules/content/components/banner/banner-v2.82348001fed7564198a0.js"
+        )),
+          sbHelpers.isFunction(e) && n.addEventListener("load", e),
+          document.head.append(n);
+      }
+    },
+    getOneTrustCookieCategories: function () {
+      return c;
+    },
+    getOnetrustFunctionalCookieCategoryClassName: function () {
+      return l + c.functional;
+    },
+    openCloseable: function (t) {
+      (e = document.activeElement), t && t.focus();
+    },
+    closeCloseable: function () {
+      e && e.focus();
+    },
+    formatNumbersWithCommas: function (e) {
+      return e ? e.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",") : "";
+    },
+    formattedSBToNumber: function (e) {
+      return (
+        "string" == typeof e &&
+          (e = parseInt(e.replace(/,|SB|\s/g, "").replace("-", "0"))),
+        e
+      );
+    },
+    formatSBNumber: function (e) {
+      return (
+        (0 === (e = sbHelpers.formattedSBToNumber(e))
+          ? "-"
+          : sbHelpers.formatNumbersWithCommas(e)) + " SB"
+      );
+    },
+    formatSBValueWithCommasOptionPerDollar: function (e, t, n) {
+      if (!e) return "";
+      var r = e.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+      return (
+        (15 == t || 16 == t) && n.indexOf("shopredir") >= 0
+          ? (r += " SB per Dollar")
+          : (r += " SB"),
+        r
+      );
+    },
+    encodeHtml: function (e) {
+      return e ? $("<div />").text(e).html() : "";
+    },
+    decodeHtml: function (e) {
+      return e ? $("<div/>").html(e).text() : "";
+    },
+    supports: function (e) {
+      return (
+        !(0 > $.inArray(e, n.supportTypes)) &&
+        ("localStorage" == e
+          ? "localStorage" in window && null !== window.localStorage
+          : "sessionStorage" == e
+          ? "sessionStorage" in window && null !== window.sessionStorage
+          : void 0)
+      );
+    },
+    isMember: function () {
+      return "boolean" == typeof sbGlbl.boolIsMember
+        ? sbGlbl.boolIsMember
+        : (sbGlbl.boolIsMember =
+            "number" == typeof sbGlbMember && 0 !== sbGlbMember);
+    },
+    isMobile: function () {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(
+        navigator.userAgent
+      );
+    },
+    isMobile2: function () {
+      return (
+        this.isMobile() ||
+        /Windows Mobile|iemobile|Puffin|Silk/i.test(navigator.userAgent)
+      );
+    },
+    getMobileOS: function () {
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent)
+        ? 0
+        : /Android/i.test(navigator.userAgent)
+        ? 1
+        : -1;
+    },
+    getMobileDeviceType: function () {
+      return /iPad/i.test(navigator.userAgent)
+        ? 1
+        : (/Android/i.test(navigator.userAgent) &&
+            !/Mobile/i.test(navigator.userAgent)) ||
+          /Xoom/i.test(navigator.userAgent)
+        ? 2
+        : /iPhone|iPod/i.test(navigator.userAgent)
+        ? 3
+        : /Android/i.test(navigator.userAgent) &&
+          /Mobile/i.test(navigator.userAgent)
+        ? 4
+        : -1;
+    },
+    getType: function (e, t) {
+      return "number" === e
+        ? !isNaN(parseFloat(t)) && isFinite(t)
+        : Object.prototype.toString.call(t).slice(8, -1).toLowerCase() ===
+            e.toLowerCase();
+    },
+    isObject: function (e) {
+      return this.getType("object", e);
+    },
+    isArray: function (e) {
+      return this.getType("array", e);
+    },
+    isString: function (e) {
+      return this.getType("string", e);
+    },
+    isNumeric: function (e) {
+      return this.getType("number", e);
+    },
+    isUndefined: function (e) {
+      return this.getType("undefined", e);
+    },
+    isBoolean: function (e) {
+      return sbHelpers.getType("boolean", e);
+    },
+    isFunction: function (e) {
+      return sbHelpers.getType("function", e);
+    },
+    isObjectEmpty: function (e) {
+      if (this.isObject(e)) return 0 === Object.keys(e).length;
+      throw Error("Not an Object");
+    },
+    isNonEmptyObject: function (e) {
+      return !!sbHelpers.isObject(e) && !!Object.getOwnPropertyNames(e).length;
+    },
+    isNonEmptyString: function (e) {
+      return sbHelpers.isString(e) && "" !== e;
+    },
+    isEmptyString: function (e) {
+      return sbHelpers.isString(e) && "" === e;
+    },
+    isNull: function (e) {
+      return this.getType("null", e);
+    },
+    isHTMLElement: function (e) {
+      return e && e.nodeType === Node.ELEMENT_NODE;
+    },
+    isHtmlCollection: function (e) {
+      return this.getType("HTMLCollection", e);
+    },
+    setUpDobFields: function (e) {
+      for (var t = [], n = 0, r = e.order.length; n < r; n++)
+        switch (e.order[n]) {
+          case "d":
+            t.push(e.dayId);
+            break;
+          case "m":
+            t.push(e.monthId);
+            break;
+          case "y":
+            t.push(e.yearId);
+        }
+      $("<span>")
+        .insertBefore($(e.originalOrder[0]))
+        .before($(t[0]))
+        .before($(t[1]))
+        .before($(t[2]))
+        .remove();
+    },
+    debounce: function (e, t, n) {
+      var r;
+      return function () {
+        var s = this,
+          o = arguments,
+          i = n && !r;
+        clearTimeout(r),
+          (r = setTimeout(function () {
+            (r = null), n || e.apply(s, o);
+          }, t)),
+          i && e.apply(s, o);
+      };
+    },
+    toggle: function (e, t, n) {
+      e instanceof jQuery || (e = $(e)),
+        "boolean" == typeof n && n
+          ? e.toggle()
+          : ("boolean" != typeof t && (t = e.prop("hidden")),
+            e.toggle(t).prop("hidden", !t).attr("aria-hidden", !t));
+    },
+    isViewport: function (e, t) {
+      if ("object" == typeof sbPage) {
+        var n = sbPage.strViewport;
+        return (
+          !0 === t && (n = sbPage.strViewportPrevious), n === e || ~e.indexOf(n)
+        );
+      }
+    },
+    truncate: function (e, t, n, r, s) {
+      if (
+        ((s = "boolean" == typeof s && s) || (e = e.not(".truncated")),
+        e.length)
+      ) {
+        void 0 === t && (t = sbPage);
+        var o = typeof n;
+        if (
+          (("undefined" === o || ("string" === o && "" === n)) &&
+            (n = "floatCardHeaderLineHeight"),
+          !t[n])
+        ) {
+          if (
+            !(i =
+              "intCardHeaderLineHeight" === n
+                ? $("#sbTrayListItemHeaderCaptionSizeStandard")
+                : e.first())
+          )
+            return;
+          var i,
+            a = i.css("lineHeight");
+          if (!sbHelpers.isNonEmptyString(a)) return;
+          var l = parseFloat(a.replace("px", ""));
+          "number" != typeof l &&
+            (l = 1.2 * i.css("fontSize").replace("px", "")),
+            (t[n] = Math.ceil(l));
+        }
+        e.each(function () {
+          var e = $(this);
+          e.length &&
+            (s && e.removeData("jquery-truncate"),
+            e
+              .truncate({ lines: r || 2, lineHeight: t[n], ellipsis: "..." })
+              .addClass("truncated"));
+        });
+      }
+    },
+    getCssIntVal: function (e, t) {
+      var n = 0;
+      if (e.length && Array.isArray(t))
+        for (var r, s = 0, o = t.length; s < o; s++)
+          isNaN((r = parseInt(e.css(t[s]).replace("px")))) || (n += r);
+      return n;
+    },
+    toggleState: function (e, t, n, r, s) {
+      e instanceof jQuery && (e = e[0]),
+        e.classList.toggle(t, n),
+        "string" == typeof r && "" !== r && (e.dataset[r] = s);
+    },
+    isState: function (e, t, n) {
+      return (
+        e instanceof jQuery && (e = e[0]),
+        "string" == typeof t &&
+          "" !== t &&
+          "boolean" == typeof n &&
+          e.dataset[t] === "" + n
+      );
+    },
+    isStorageAccessible: function (e) {
+      var t;
+      t = "session" === e ? sessionStorage : localStorage;
+      try {
+        return t.setItem("sb", "sb"), t.removeItem("sb"), !0;
+      } catch (e) {
+        return !1;
+      }
+    },
+    parseKeyValueString: function (e, t) {
+      var n,
+        r,
+        s = {};
+      "boolean" == typeof t && t && (e = e.substring(1)), (n = e.split("&"));
+      for (var o = 0, i = n.length; o < i; o++) {
+        var a = n[o];
+        "" !== a && (s[(r = a.split("="))[0]] = r[1]);
+      }
+      return s;
+    },
+    updateQueryString: function (e, t, n) {
+      var r;
+      if (sbHelpers.isNonEmptyString(e)) {
+        var s,
+          o,
+          i = RegExp("([?&])" + e + "=.*?(&|#|$)(.*)", "gi");
+        if (((r = n || window.location.href), i.test(r)))
+          return null != t
+            ? r.replace(i, "$1" + e + "=" + t + "$2$3")
+            : ((o = (s = r.split("#"))[1]),
+              (r = s[0].replace(i, "$1$3").replace(/(&|\?)$/, "")),
+              null != o && (r += "#" + o),
+              r);
+        if (null != t) {
+          var a = -1 !== r.indexOf("?") ? "&" : "?";
+          (o = (s = r.split("#"))[1]),
+            (r = s[0] + a + e + "=" + t),
+            null != o && (r += "#" + o);
+        }
+        return r;
+      }
+      if (sbHelpers.isObject(e)) {
+        if (
+          ((r = t || window.location.href),
+          !sbHelpers.isObjectEmpty(e) && sbHelpers.isNonEmptyString(r))
+        ) {
+          for (var l = Object.entries(e); l.length; ) {
+            var c = l.shift(),
+              u = c[0],
+              d = c[1];
+            sbHelpers.getType("undefined", d) ||
+              sbHelpers.isNull(d) ||
+              (r = sbHelpers.updateQueryString(u, d, r));
+          }
+          return r;
+        }
+        return "";
+      }
+      throw Error("Unrecognized first parameter type.");
+    },
+    isAllBannersOverrideCleared: function () {
+      return u(n.strComponentTypeBanner);
+    },
+    isAllModalsOverrideCleared: function () {
+      return u(n.strComponentTypeModal);
+    },
+    trackData: function (e) {
+      if (sbHelpers.isObject(e)) {
+        var t = e.hitType;
+        if (void 0 === t) e.hitType = t = "event";
+        else if (
+          ![
+            "event",
+            "pageview",
+            "screenview",
+            "transaction",
+            "item",
+            "social",
+            "exception",
+            "timing",
+          ].includes(t) ||
+          !sbHelpers.isString(t)
+        )
+          return;
+        var n = e.eventCategory,
+          r = e.eventAction;
+        ("event" !== t ||
+          (sbHelpers.isString(n) &&
+            sbHelpers.isString(r) &&
+            "" !== n &&
+            "" !== r)) &&
+          ((e.dimension37 = sbHelpers.isMember() ? "Logged In" : "Logged Out"),
+          "undefined" != typeof ga &&
+            ga(sbGlbl.strGaTrackerPrepend + "send", e));
+      }
+    },
+    getUrlForBrowserExtension: function (e, t) {
+      return { edge: t.edge, firefox: t.firefox, chrome: t.chrome }[e];
+    },
+    onUaSdkLoaded: function (e) {
+      e.isSupported &&
+        e.channel &&
+        e.channel.optedIn &&
+        sbGlbMember &&
+        !e.channel.namedUser.id &&
+        e.channel.namedUser.set(sbGlbMember);
+    },
+    toggleCtaDisableStateWithLoader: function (e) {
+      sbHelpers.stopDualSubmit(e.ctaElement, e.disableCta),
+        sbHelpers.toggleCtaLoader({
+          ctaElement: e.ctaElement,
+          showLoader: e.disableCta,
+        });
+    },
+    handleLoadingOverlay: function (e) {
+      var t = document.getElementById("sbRegFormLoadingOverlay");
+      t && (t.hidden = !e.showOverlay);
+    },
+    hideLoadingOverlay: function () {
+      var e = document.getElementById("sbRegFormLoadingOverlay");
+      e && (e.hidden = !0);
+    },
+    stopDualSubmit: function (e, t) {
+      var n = !1,
+        r = "removeClass";
+      (t = void 0 === t || t) && ((n = !0), (r = "addClass")),
+        window.console.info(
+          "Double-click protection " + (n ? "enabled" : "disabled"),
+          e
+        ),
+        $(e).prop("disabled", n)[r]("disabled");
+    },
+    toggleCtaLoader: function (e) {
+      e.ctaElement &&
+        e.ctaElement.parentElement.classList.toggle(
+          "loaderActive",
+          e.showLoader
+        );
+    },
+    onDomContentLoaded: function (e) {
+      sbHelpers.isFunction(e) &&
+        ("loading" === document.readyState
+          ? document.addEventListener("DOMContentLoaded", e)
+          : e());
+    },
+    xhr: function (e) {
+      var t, n, r, s, o, i;
+      for (o in ((e = sbHelpers.xhrOptions(e)),
+      (t = new XMLHttpRequest()).open(e.method, e.url, e.async),
+      t.setRequestHeader("Accept", e.accept),
+      !1 !== e.contentType && t.setRequestHeader("Content-Type", e.contentType),
+      !0 !== e.ignoreXRequestedWithRequestHeader &&
+        t.setRequestHeader("X-Requested-With", "XMLHttpRequest"),
+      (t.timeout = e.timeout),
+      "function" == typeof e.onTimeout && (t.ontimeout = e.onTimeout),
+      e.headers))
+        e.headers.hasOwnProperty(o) && t.setRequestHeader(o, e.headers[o]);
+      if (
+        ((i = function () {
+          (t.readyState === XMLHttpRequest.DONE || !1 === e.async) &&
+            (200 !== Number(t.status)
+              ? "function" == typeof e.error && e.error(t.responseText, t)
+              : "function" == typeof e.success && e.success(t.responseText, t),
+            "function" == typeof e.complete && e.complete(t.responseText, t));
+        }),
+        !0 === e.async && (t.onreadystatechange = i),
+        (t.withCredentials = e.withCredentials),
+        (s = 0),
+        e.data instanceof FormData)
+      )
+        t.send(e.data);
+      else if (e.contentType.includes("application/json"))
+        t.send(JSON.stringify(e.data));
+      else {
+        for (r in e.data)
+          (n = e.data[r]),
+            e.data.hasOwnProperty(r) &&
+              (s > 0 && (e.dataString += "&"),
+              (e.dataString += r + "=" + n),
+              s++);
+        t.send(e.dataString);
+      }
+      return !1 === e.async && i(), t;
+    },
+    xhrOptions: function (e) {
+      return (
+        ((e = "object" == typeof e ? e : {}).url =
+          "string" == typeof e.url ? e.url : "/"),
+        (e.method = "string" == typeof e.method ? e.method : "GET"),
+        (e.accept =
+          "string" == typeof e.accept
+            ? e.accept
+            : "application/json, text/javascript, */*"),
+        (e.async = "boolean" != typeof e.async || e.async),
+        (e.contentType =
+          "string" == typeof e.contentType || !1 === e.contentType
+            ? e.contentType
+            : "application/x-www-form-urlencoded; charset=UTF-8"),
+        (e.data = "object" == typeof e.data ? e.data : {}),
+        (e.headers = "object" == typeof e.headers ? e.headers : {}),
+        (e.dataString = "string" == typeof e.dataString ? e.dataString : ""),
+        (e.timeout = "number" == typeof e.timeout ? e.timeout : 0),
+        (e.withCredentials =
+          "boolean" == typeof e.withCredentials && e.withCredentials),
+        (e.ignoreXRequestedWithRequestHeader =
+          "boolean" == typeof e.ignoreXRequestedWithRequestHeader &&
+          e.ignoreXRequestedWithRequestHeader),
+        e
+      );
+    },
+    xhrGet: function (e) {
+      return (
+        ((e = "object" == typeof e ? e : {}).method = "GET"), sbHelpers.xhr(e)
+      );
+    },
+    xhrPost: function (e) {
+      return (
+        ((e = "object" == typeof e ? e : {}).method = "POST"), sbHelpers.xhr(e)
+      );
+    },
+    xhrUpdate: function (e) {
+      return (
+        ((e = "object" == typeof e ? e : {}).method = "UPDATE"),
+        sbHelpers.xhr(e)
+      );
+    },
+    xhrDelete: function (e) {
+      return (
+        ((e = "object" == typeof e ? e : {}).method = "DELETE"),
+        sbHelpers.xhr(e)
+      );
+    },
+    hideElements: function (e) {
+      for (
+        var t = e.map(function (e) {
+            return document.getElementById(e);
+          }),
+          n = 0,
+          r = t.length;
+        n < r;
+        n++
+      ) {
+        var s = t[n];
+        s && !0 !== s.hidden && (s.hidden = !0);
+      }
+    },
+    hideNavBarFooterAndAllBanners: function () {
+      sbHelpers.hideElements([
+        "disabledSB",
+        "sbGlobalNav",
+        "sbFooterWrap",
+        "promoTabBannerWrapper",
+        "confirmEmailBarOuter",
+        "newMemberBannerOuter",
+      ]);
+    },
+    sticky: {
+      className: r,
+      init: function (e, t) {
+        e instanceof HTMLElement || (e = sbPage.$$content),
+          sbHelpers.getType("function", t) || (t = g),
+          sbHelpers.sticky.observeChanges(e),
+          document.addEventListener("sticky-change", t);
+      },
+      observeChanges: function (e) {
+        sbHelpers.sticky.observeHeaders(e);
+      },
+      observeHeaders: function (e) {
+        var t,
+          n = new IntersectionObserver(b, { threshold: [0], root: e });
+        ((t = "sticky_sentinel--top"),
+        Array.from(e.querySelectorAll(s)).map(d.bind(null, t))).forEach(
+          f.bind(null, n)
+        );
+      },
+    },
+    wrapTextWithTag: function (e, t, n) {
+      var r = document.createElement(e);
+      return (
+        sbHelpers.isString(n) &&
+          sbHelpers.isNonEmptyString(n) &&
+          r.classList.add(n),
+        (r.textContent = t),
+        r
+      );
+    },
+    backButton: {
+      urlParamName: "bb",
+      urlParamValue: "1",
+      init: function () {
+        var e = window.location.href;
+        if (e.includes("?")) {
+          var t = sbHelpers.parseKeyValueString(e.split("?")[1]),
+            n = sbHelpers.backButton.urlParamName,
+            r = sbHelpers.backButton.urlParamValue;
+          if (n in t && t[n] === r) {
+            var s = document.referrer;
+            sbHelpers.isNonEmptyString(s) &&
+              (history.pushState({ source: s }, ""),
+              history.pushState({ source: s }, ""),
+              window.addEventListener(
+                "popstate",
+                sbHelpers.backButton.handleBrowserHistoryAction
+              ));
+          }
+        }
+      },
+      handleBrowserHistoryAction: function (e) {
+        if (e.state) {
+          var t = e.state.source;
+          window.opener
+            ? ((window.opener.location = t), window.close())
+            : (window.location.href = t);
+        }
+      },
+    },
+    isAppm: function () {
+      return "undefined" != typeof sbGlbl && "isAppm" in sbGlbl
+        ? sbGlbl.isAppm
+        : !!("undefined" != typeof sbPage && "$$html" in sbPage) &&
+            sbPage.$$html.classList.contains("isUsingSBApp");
+    },
+    showErrorMessage: function (e) {
+      var t = sbGlbl.location.domains.helpCenter,
+        n = i;
+      sbHelpers.isNonEmptyString(t) || (t = "help.swagbucks.com/hc/en-us"),
+        sbHelpers.isNonEmptyString(e) && (n = e),
+        banner &&
+          banner.showError(
+            n +
+              ' Please try again or contact <a href="https://' +
+              t +
+              '" target="_blank">Customer Support</a>.'
+          );
+    },
+    handleGenericError: function () {
+      sbHelpers.showErrorMessage(i);
+    },
+    trimText: function (e, t, n) {
+      if (
+        !(sbHelpers.isNonEmptyString(e) && sbHelpers.isNumeric(t)) ||
+        !(e.length > t)
+      )
+        return e;
+      var r = e.lastIndexOf(" ", t);
+      return sbHelpers.isNonEmptyString(n) || (n = "..."), e.substr(0, r) + n;
+    },
+    capitalize: function (e) {
+      return e.charAt(0).toUpperCase() + e.slice(1);
+    },
+    isKey: function (e, t) {
+      if (!e) throw Error("Event undefined for keyName: " + t + ".");
+      if (!this.isNonEmptyString(t))
+        throw Error("keyName parameter not specified.");
+      var n = e.key;
+      if (this.isNonEmptyString(n)) return n === t;
+      var r = e.which || e.keyCode,
+        s = a[t];
+      if (!this.isNumeric(s)) throw Error("Unrecognized keyName.");
+      return r === s;
+    },
+    isElementDescendantOfParent: function (e, t) {
+      for (var n = t.parentNode; null !== n; ) {
+        if (n === e) return !0;
+        n = n.parentNode;
+      }
+      return !1;
+    },
+    getOffset: function (e) {
+      var t = e.getBoundingClientRect(),
+        n = document.documentElement;
+      return {
+        top: t.top + window.pageYOffset - n.clientTop,
+        left: t.left + window.pageXOffset - n.clientLeft,
+      };
+    },
+    scrollTop: function () {
+      var e = document.documentElement;
+      e ? e.scrollTop : document.body.scrollTop;
+    },
+    formatNumber: function (e, t, n) {
+      if (!sbHelpers.isNumeric(e)) return "";
+      var r = {},
+        s = "en",
+        o = "US",
+        i = sbGlbl.location;
+      if (
+        (!sbHelpers.getType("undefined", n) &&
+          sbHelpers.isNonEmptyString(n.countryCode) &&
+          sbHelpers.isNonEmptyString(n.languageCode) &&
+          (i = n),
+        i)
+      ) {
+        var a = i.countryCode,
+          l = i.languageCode;
+        sbHelpers.isNonEmptyString(a) && (o = a),
+          sbHelpers.isNonEmptyString(l) && (s = l);
+      }
+      return (
+        sbHelpers.getType("undefined", t) ||
+          sbHelpers.isObjectEmpty(t) ||
+          (r = t),
+        new Intl.NumberFormat(s + "-" + o, r).format(e)
+      );
+    },
+    formatCurrencyNumber: function (e, t, n) {
+      var r = {},
+        s = { style: "currency", currency: "USD" },
+        o = sbGlbl.location;
+      if (
+        !sbHelpers.getType("undefined", n) &&
+        sbHelpers.isNonEmptyString(n.currencyCode)
+      )
+        s.currency = n.currencyCode;
+      else if (o) {
+        var i = o.currency.code;
+        sbHelpers.isNonEmptyString(i) && (s.currency = i);
+      }
+      return (
+        sbHelpers.isObject(t) && !sbHelpers.isObjectEmpty(t) && (r = t),
+        sbHelpers.isNumeric(r.maximumFractionDigits) &&
+          sbHelpers.isUndefined(r.minimumFractionDigits) &&
+          (r.minimumFractionDigits = r.maximumFractionDigits),
+        sbHelpers.formatNumber(e, Object.assign(s, r), n)
+      );
+    },
+    trackImpression: function (e) {
+      var t = e.id,
+        n = e.trackingId;
+      void 0 !== t &&
+        null != n &&
+        sbHelpers.xhrPost({
+          url: "/?cmd=mp-dis-offer-impression",
+          data: { placementID: t, trkId: n },
+        });
+    },
+    isVisible: function (e) {
+      return !!e && !!e.offsetHeight;
+    },
+    getExternalContentPath: function (e, t) {
+      var n =
+        sbGlobals.EXTERNAL_CONTENT_ROOT + sbGlobals.EXTERNAL_CONTENT_PATHS[e];
+      return t ? n + "/" + t : n;
+    },
+    getViewportWidth: function () {
+      return Math.max(
+        document.documentElement.clientWidth,
+        window.innerWidth || 0
+      );
+    },
+    addUrlVersion: function (e, t) {
+      return sbHelpers.updateQueryString("v", e, t);
+    },
+    getJsonScriptContent: function (e) {
+      if (
+        e &&
+        "application/json" === e.type &&
+        sbHelpers.isNonEmptyString(e.textContent)
+      ) {
+        var t = {};
+        try {
+          t = JSON.parse(e.textContent);
+        } catch (t) {
+          window.console.error(
+            "Could not parse JSON from script tag {error: " +
+              t +
+              "}; {scriptTag:" +
+              e.id +
+              "}; {JSON: " +
+              e.textContent +
+              "}."
+          );
+        }
+        return t;
+      }
+      return {};
+    },
+    getBooleanAttributeValue: function (e) {
+      return e && JSON.parse(e);
+    },
+    getSbHeadData: function () {
+      return sbHelpers.isObject(window.sbGlobals) &&
+        sbHelpers.isNonEmptyObject(window.sbGlobals.sbHeadData)
+        ? window.sbGlobals.sbHeadData
+        : sbHelpers.getJsonScriptContent(document.getElementById("sbHeadData"));
+    },
+    getBalance: function () {
+      return sbHelpers.getSbHeadData().currentSbAmount;
+    },
+    getMemberId: function () {
+      return sbHelpers.getSbHeadData().sbGlbMember;
+    },
+    isTrayMobileViewV2Applicable: function () {
+      return sbHelpers.getSbHeadData().trayMobileViewV2Applicable;
+    },
+    hasAnyClass: function (e, t) {
+      return (
+        !!e &&
+        !!t &&
+        !!t.length &&
+        Array.from(e.classList).some(y.bind(null, t))
+      );
+    },
+    getRegistrationErrorMessageList: function (e) {
+      var t = "/p/login";
+      return (
+        void 0 === e && (e = {}),
+        {
+          EmailAddress_NonEmpty: "Please enter an Email Address",
+          EmailAddress_Length: "Please enter a valid Email Address",
+          EmailAddress_ValidEmail: "Please enter a valid Email Address",
+          EmailAddress_NotExists:
+            'An account already exists with this Email Address. <a class="loginLink" href="' +
+            t +
+            '">Log in</a> to your account',
+          EmailAddress_AlreadyMember:
+            "Great! You're already a member of Swagbucks. Please go ahead and <a href=\"" +
+            t +
+            '">login</a> now and you will be entered into the Giveaway.',
+          EmailAddress_NotBlackList: "This Email Address is not allowed",
+          Password_NonEmpty: "Please enter a password",
+          Password_Length:
+            "Please correct the password (its length should be " +
+            e.minLength +
+            " - " +
+            e.maxLength +
+            " characters)",
+          Password_NonBlacklisted: "Please choose a more secure password",
+          Login_IsValid: "Invalid Login",
+          Login_NotIsBlocked:
+            "Too many failed login attempts. Please try again later",
+          Login_IsDeactivated:
+            'Your account has been suspended. Please contact <button id="openReactivationModal" data-js-open-reactivation-modal>Customer Support</button>',
+          Login_ForcePasswordReset_Success:
+            "You have been sent an email to reset your password.",
+          Login_ForcePasswordReset_Failure:
+            "We're unable to send you an email to reset your password. Please try again later.",
+          SwagCode_IsValid: "Sign Up Code is Invalid",
+          EmailUsername_NonEmpty: "Please enter an Email Address or Swag Name",
+          Password_IsMatch: "Your passwords don't match",
+          Genric_Msg:
+            'Unexpected Error, Please <a href="' +
+            e.sbtbDomain +
+            '/g/contact">Contact Support</a>',
+          Location_AcceptsRegistration:
+            "Swagbucks is not yet available in your country but we are working hard to get there. We will contact you when we launch",
+          IPAddress_NotBlacklisted:
+            "Please contact customer support (Error code C0NR)",
+          Cxid_Not_Match: "Please correct your membership number",
+          SocialMember_NotExists:
+            "An account is already linked to this social network account. Please login",
+          SignatureError:
+            'Unexpected Signature Error, Please <a href="' +
+            e.sbtbDomain +
+            '/g/contact">Contact Support</a>',
+          EmailAddress_NoAccess:
+            "Please provide access to your email address in order to register",
+          Captcha_Fail: "Please retry with captcha checkbox",
+          Failed:
+            'There was an error processing your request, Please <a href="' +
+            e.sbtbDomain +
+            '/g/contact">Contact Support</a>',
+        }
+      );
+    },
+    tryParseJson: function (e) {
+      var t = {};
+      try {
+        t = JSON.parse(e);
+      } catch (t) {
+        sbHelpers.handleGenericError(),
+          window.console.error(
+            "Could not parse JSON {error: " + t + "}; {JSON: " + e + "}."
+          );
+      }
+      return t;
+    },
+    injectStylesheetOnce: function (e, t, n) {
+      if (sbHelpers.isNonEmptyString(t)) {
+        if (document.getElementById(e)) {
+          sbHelpers.isFunction(n) && n();
+          return;
+        }
+        var r = document.createElement("link");
+        (r.id = e),
+          (r.href = t),
+          (r.rel = "stylesheet"),
+          sbHelpers.isFunction(n) && r.addEventListener("load", n),
+          document.head.append(r);
+      }
+    },
+    serializeForm: function (e) {
+      return Object.values(e).reduce(function (e, t) {
+        return sbHelpers.isNonEmptyString(t.name) && (e[t.name] = t.value), e;
+      }, {});
+    },
+    isRegistrationModalRequested: function () {
+      return sbHelpers.isHashInCurrentPageUrl(t);
+    },
+    isHashInCurrentPageUrl: function (e) {
+      return window.location.hash.replace(/#/u, "") === e;
+    },
+    addRegistrationModalUrlHash: function () {
+      sbHelpers.addUrlHash(t);
+    },
+    addUrlHash: function (e) {
+      sbHelpers.isNonEmptyString(e) && H(e);
+    },
+    removeUrlHash: function () {
+      H("");
+    },
+  };
+})();

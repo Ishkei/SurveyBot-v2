@@ -1,0 +1,343 @@
+.mtm .matrix-selection-item--active label .image-overlay:after {
+  background: #0580c5
+    url(/e/assets/5.2.1/std-ui/static/img/31816164e74ee3d7c2ba.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 2;
+}
+.mtm .matrix-selection-item--active label .image-overlay--no-check:after {
+  background: #0580c5;
+  z-index: 1;
+}
+.mtm .matrix-selection-item--disabled .image-overlay {
+  background-color: #eee;
+}
+.mtm .matrix-selection-item--disabled .image-overlay img {
+  opacity: 0.7;
+}
+.checkbox .checkbox__zoom .icon {
+  cursor: default;
+}
+.radio__zoom {
+  cursor: pointer;
+}
+.radio .radio__zoom .icon {
+  cursor: default;
+}
+.mts .selection-item .button__zoom .icon {
+  cursor: default;
+}
+.mts .selection-item label {
+  cursor: pointer;
+}
+label {
+  cursor: pointer;
+}
+.image-overlay--no-check.image-fit {
+  cursor: default;
+  display: inline-block;
+  width: 100%;
+  max-width: 687.5px;
+}
+.mtm .matrix-start-button-layer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+@media print {
+  .mtm .matrix-start-button-layer {
+    display: none;
+  }
+}
+.mtm .matrix-start-button-layer .matrix-start-button {
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  text-align: center;
+  line-height: 60px;
+  position: absolute;
+  left: calc((100% - 230px) / 2);
+  bottom: 0;
+  cursor: pointer;
+  background-color: #0580c5;
+  opacity: 0.7;
+}
+.mtm .matrix-start-button-layer .matrix-start-button .matrix-start-button-bg,
+.mtm .matrix-start-button-layer .matrix-start-button {
+  width: 230px;
+  height: 60px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: none;
+}
+.mtm .matrix-start-button-layer .matrix-start-button .matrix-start-button-bg {
+  position: absolute;
+  display: block;
+  content: "";
+  z-index: -1;
+  animation-name: ring-flare;
+  animation-iteration-count: infinite;
+  animation-duration: 1.3s;
+  animation-delay: 0s;
+  background-color: #fff;
+  border-radius: 50%;
+  animation-fill-mode: both;
+}
+@keyframes ring-flare {
+  0% {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: #fff;
+  }
+  100% {
+    top: -85px;
+    left: 0px;
+    width: 230px;
+    height: 230px;
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+.mtm
+  .matrix-item
+  .matrix-item-body
+  .matrix-selections
+  .matrix-selection-group
+  .matrix-selection-group-items
+  .matrix-selection-item-code,
+.mtm .matrix-item .matrix-item-header .matrix-item-id-code {
+  margin: 0 0.1rem;
+  font-size: 12px;
+  font-weight: bold;
+  color: dimgray;
+  vertical-align: middle;
+}
+.mtm .matrix-area {
+  position: relative;
+}
+.mtm .matrix-area .matrix-item-group {
+  box-sizing: border-box;
+  border-left: 5px solid #ccc;
+  margin-bottom: 1rem;
+}
+.mtm .matrix-area .matrix-item-empty-group {
+  margin-bottom: 1rem;
+}
+.mtm .matrix-item-group-contents {
+  font-size: 0.875rem;
+  background-color: #e6e6fa;
+  padding: 10px;
+  color: #333;
+}
+.mtm .matrix-item .matrix-item-header {
+  background-color: #d7eff9;
+  border: 1px solid #bababa;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  padding: 11px 0;
+  word-wrap: break-word;
+}
+.mtm .matrix-item .matrix-item-header .matrix-item-id {
+  display: flex;
+  align-items: center;
+  margin-left: 0.8rem;
+  margin-right: 0.1rem;
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+.mtm .matrix-item .matrix-item-header .matrix-item-values {
+  flex-grow: 1;
+  width: 0;
+}
+.mtm
+  .matrix-item
+  .matrix-item-header
+  .matrix-item-values
+  div.matrix-item-contents {
+  margin: 0 0.2rem;
+}
+.mtm
+  .matrix-item
+  .matrix-item-header
+  .matrix-item-values
+  div.matrix-item-contents
+  span.matrix-item-value {
+  font-size: 0.875rem;
+}
+.mtm .matrix-item .matrix-item-header .matrix-item-status {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 15px;
+}
+.mtm .matrix-item .matrix-item-header .matrix-item-status .matrix-item-icons {
+  position: relative;
+  margin-top: -0.75rem;
+  min-width: 40px;
+  text-align: right;
+  margin-right: 5px;
+}
+.mtm
+  .matrix-item
+  .matrix-item-header
+  .matrix-item-status
+  .matrix-item-icons
+  .err-mark:after {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+  font-size: 1.1rem;
+  color: red;
+  vertical-align: baseline;
+}
+.mtm
+  .matrix-item
+  .matrix-item-header
+  .matrix-item-status
+  .matrix-item-icons
+  .matrix-item-complete-icon:after {
+  position: relative;
+  top: 6px;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+  font-size: 1.4rem;
+  color: #0580c5;
+  margin-right: 0.1rem;
+  vertical-align: baseline;
+}
+.mtm
+  .matrix-item
+  .matrix-item-header
+  .matrix-item-status
+  div.matrix-item-indicator {
+  white-space: nowrap;
+  color: #999;
+  font-size: 0.7rem;
+  text-align: right;
+}
+.mtm .matrix-item .matrix-item-header .matrix-item-status-bar {
+  position: absolute;
+  right: 15px;
+  bottom: 1px;
+  font-size: 8px;
+  color: #999;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 10rem;
+  overflow: hidden;
+  color: #333;
+}
+.mtm .matrix-item .matrix-item-header .matrix-item-no {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  font-size: 0.62rem;
+  color: #333;
+  white-space: nowrap;
+}
+.mtm .matrix-item .matrix-item-body {
+  overflow-y: hidden;
+  max-height: none;
+  transition: all 0.2s linear 0s;
+  transform: scaleY(1);
+}
+@media screen {
+  .mtm .matrix-item .matrix-item-body--closed {
+    max-height: 0;
+    transition: all 0.2s linear 0s;
+    transform: scaleY(0);
+  }
+}
+.mtm
+  .matrix-item
+  .matrix-item-body
+  .matrix-selections
+  .matrix-selection-group
+  .matrix-selection-group-contents {
+  font-size: 0.875rem;
+  padding: 5px;
+  color: #0580c5;
+  min-height: 36px;
+}
+.mtm .matrix-item .matrix-item-body .matrix-selections .separator {
+  border-bottom: 1px solid #ccc;
+}
+.mtm .matrix-item .matrix-item-body div.matrix-item-closer {
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  color: #515151;
+  width: 40%;
+  margin: 10px auto;
+  padding: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+}
+.mtm
+  .matrix-item
+  .matrix-item-body
+  div.matrix-item-closer
+  span.matrix-item-closer:before {
+  font-family: FontAwesome;
+  content: "";
+  margin-right: 5px;
+}
+.mtm .matrix-selection-item {
+  cursor: pointer;
+  transition-duration: 0.25s;
+}
+.mtm .matrix-selection-item .checkbox > label,
+.mtm .matrix-selection-item .radio > label {
+  display: inline-block;
+  width: 100%;
+}
+.mtm .matrix-selection-item--active {
+  background-color: #0580c5;
+  color: #fff;
+}
+.mtm .matrix-selection-item--disabled {
+  background-color: #eee;
+  color: #999;
+}
+.mtm .matrix-selection-item-number {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+@media screen and (min-width: 766px) {
+  .mtm .matrix-item .matrix-item-header,
+  .mtm .matrix-selection-item .checkbox > label,
+  .mtm .matrix-selection-item .radio > label {
+    padding: 11px 0.3rem;
+  }
+}
+@media screen and (min-width: 766px) {
+  .mtm
+    .matrix-selection-item
+    .checkbox
+    > label
+    .checkbox__group
+    .checkbox__text,
+  .mtm .matrix-selection-item .checkbox > label .radio__group .radio__text,
+  .mtm .matrix-selection-item .radio > label .checkbox__group .checkbox__text,
+  .mtm .matrix-selection-item .radio > label .radio__group .radio__text {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}

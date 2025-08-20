@@ -1,0 +1,1370 @@
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [567],
+  {
+    16642: function (e, a, t) {
+      "use strict";
+      t.d(a, {
+        Z: function () {
+          return ae;
+        },
+      });
+      var n,
+        r = t(67294);
+      function l() {
+        return (
+          (l = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          l.apply(this, arguments)
+        );
+      }
+      var i,
+        c = function (e) {
+          return r.createElement(
+            "svg",
+            l({ xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" }, e),
+            n ||
+              (n = r.createElement(
+                "g",
+                { "data-name": "Hot deal" },
+                r.createElement(
+                  "g",
+                  { "data-name": "Group 2839" },
+                  r.createElement(
+                    "g",
+                    { "data-name": "Group 2740" },
+                    r.createElement("path", {
+                      "data-name": "Path 6080",
+                      d: "m11.113 46.737-.055.768c-.055.764-.11 1.525-.11 2.344a29.337 29.337 0 0 0 29.048 29.549A29.34 29.34 0 0 0 69.051 49.85c0-.559 0-1.119-.035-1.675-.473-16.769-8.6-20.973-8.944-21.143a1.572 1.572 0 0 0-1.462.028 1.654 1.654 0 0 0-.843 1.217c-.012.11-1.505 10.126-8.085 11.552a73.9 73.9 0 0 0-1.663-16.651A41.783 41.783 0 0 0 32.858.906 1.58 1.58 0 0 0 31.184.78a1.659 1.659 0 0 0-.879 1.462c0 7.667-3.794 12.86-8.187 18.881-4.74 6.5-10.118 13.861-11 25.615m38.564 18.884a10.13 10.13 0 0 1-9.686 10.493 10.128 10.128 0 0 1-9.685-10.492c0-.3.02-.587.043-.871a18.852 18.852 0 0 1 4.142-10.249 21.305 21.305 0 0 0 3.317-6.21 16 16 0 0 1 3.27 6.292 33.463 33.463 0 0 1 .613 7.471 1.628 1.628 0 0 0 1.615 1.642 5.912 5.912 0 0 0 5.331-3.924 13.507 13.507 0 0 1 1.02 5.213c.012.221.012.406.008.583Z",
+                      fill: "#ffcf31",
+                      fillRule: "evenodd",
+                    })
+                  )
+                )
+              ))
+          );
+        };
+      function o() {
+        return (
+          (o = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          o.apply(this, arguments)
+        );
+      }
+      var m;
+      function s() {
+        return (
+          (s = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          s.apply(this, arguments)
+        );
+      }
+      var d, p, f;
+      function h() {
+        return (
+          (h = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          h.apply(this, arguments)
+        );
+      }
+      var u;
+      function v() {
+        return (
+          (v = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          v.apply(this, arguments)
+        );
+      }
+      var g,
+        E,
+        w = function (e) {
+          return r.createElement(
+            "svg",
+            v({ xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" }, e),
+            u ||
+              (u = r.createElement(
+                "g",
+                { "data-name": "New offer" },
+                r.createElement(
+                  "g",
+                  { "data-name": "Group 2838" },
+                  r.createElement(
+                    "g",
+                    { "data-name": "Group 2741" },
+                    r.createElement("path", {
+                      "data-name": "Path 6074",
+                      d: "m41.17 2.471 9.624 26a1.258 1.258 0 0 0 .732.737l26 9.616a1.252 1.252 0 0 1 0 2.348l-26 9.616a1.269 1.269 0 0 0-.732.737l-9.624 26a1.25 1.25 0 0 1-2.344 0l-9.62-26a1.243 1.243 0 0 0-.737-.737l-26-9.616a1.253 1.253 0 0 1 0-2.348l26-9.616a1.232 1.232 0 0 0 .737-.737l9.62-26a1.25 1.25 0 0 1 2.344 0",
+                      fill: "#ffcf33",
+                    }),
+                    r.createElement("path", {
+                      "data-name": "Path 6075",
+                      d: "m13.283 3.236 2.706 7.317a.36.36 0 0 0 .208.208l7.317 2.706a.353.353 0 0 1 0 .663l-7.317 2.706a.36.36 0 0 0-.208.208l-2.706 7.317a.352.352 0 0 1-.659 0l-2.706-7.318a.36.36 0 0 0-.208-.208l-7.32-2.706a.355.355 0 0 1 0-.663l7.321-2.706a.36.36 0 0 0 .208-.208l2.706-7.317a.352.352 0 0 1 .659 0",
+                      fill: "#495867",
+                    }),
+                    r.createElement("path", {
+                      "data-name": "Path 6076",
+                      d: "m64.833 9.433 1.742 4.712a.242.242 0 0 0 .134.134l4.712 1.742a.224.224 0 0 1 0 .423l-4.712 1.746a.22.22 0 0 0-.134.134l-1.742 4.708a.224.224 0 0 1-.423 0l-1.746-4.708a.2.2 0 0 0-.134-.134l-4.708-1.746a.224.224 0 0 1 0-.423l4.708-1.742a.22.22 0 0 0 .134-.134l1.746-4.712a.226.226 0 0 1 .423 0",
+                      fill: "#ffcf33",
+                    }),
+                    r.createElement("path", {
+                      "data-name": "Path 6077",
+                      d: "m13.861 58.791 1.738 4.713a.242.242 0 0 0 .134.134l4.712 1.742a.224.224 0 0 1 0 .423l-4.708 1.746a.22.22 0 0 0-.134.134l-1.742 4.708a.224.224 0 0 1-.423 0l-1.746-4.708a.2.2 0 0 0-.134-.134L6.85 65.803a.224.224 0 0 1 0-.423l4.708-1.742a.22.22 0 0 0 .134-.134l1.746-4.712a.226.226 0 0 1 .423 0",
+                      fill: "#ffcf33",
+                    }),
+                    r.createElement("path", {
+                      "data-name": "Path 6078",
+                      d: "m67.881 56.989 2.706 7.317a.36.36 0 0 0 .208.208l7.317 2.706a.353.353 0 0 1 0 .663l-7.317 2.706a.36.36 0 0 0-.208.208l-2.706 7.317a.352.352 0 0 1-.659 0l-2.706-7.318a.36.36 0 0 0-.208-.208l-7.321-2.706a.355.355 0 0 1 0-.663l7.321-2.706a.36.36 0 0 0 .208-.208l2.706-7.317a.352.352 0 0 1 .659 0",
+                      fill: "#495867",
+                    })
+                  )
+                )
+              ))
+          );
+        };
+      function y() {
+        return (
+          (y = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          y.apply(this, arguments)
+        );
+      }
+      var b;
+      function P() {
+        return (
+          (P = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          P.apply(this, arguments)
+        );
+      }
+      var _, O;
+      function M() {
+        return (
+          (M = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          M.apply(this, arguments)
+        );
+      }
+      var x;
+      function j() {
+        return (
+          (j = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          j.apply(this, arguments)
+        );
+      }
+      var G;
+      function Z() {
+        return (
+          (Z = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          Z.apply(this, arguments)
+        );
+      }
+      var k,
+        I = function (e) {
+          return r.createElement(
+            "svg",
+            Z({ xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" }, e),
+            G ||
+              (G = r.createElement(
+                "g",
+                { "data-name": "Group 2837" },
+                r.createElement(
+                  "g",
+                  { "data-name": "Group 2822", fillRule: "evenodd" },
+                  r.createElement("path", {
+                    "data-name": "Path 6069",
+                    d: "m78.332 77.162-4.024-20.7a37.913 37.913 0 0 0 2.858-24.157 38.326 38.326 0 1 0-19.77 41.8Zm-64.9-30.78A27 27 0 1 1 33.54 66.494a27.048 27.048 0 0 1-20.108-20.112",
+                    fill: "#2bd675",
+                  }),
+                  r.createElement("path", {
+                    "data-name": "Path 6070",
+                    d: "m40.67 21.641 3.587 11.043a1 1 0 0 0 .951.688h11.608a1 1 0 0 1 .589 1.808l-9.391 6.825a1 1 0 0 0-.362 1.116l3.583 11.042a1 1 0 0 1-1.536 1.116l-9.391-6.825a1.008 1.008 0 0 0-1.174 0l-9.395 6.825a1 1 0 0 1-1.536-1.116l3.587-11.042a1 1 0 0 0-.362-1.116l-9.391-6.827a1 1 0 0 1 .585-1.808h11.611a.991.991 0 0 0 .947-.688l3.584-11.041a1 1 0 0 1 1.9 0",
+                    fill: "#495867",
+                  }),
+                  r.createElement("path", {
+                    "data-name": "Path 6071",
+                    d: "M72.055 52.733a1.941 1.941 0 0 1 1.919 1.648l4.963 21.3a1.942 1.942 0 0 1-2.236 2.212l-22.97-3.765a1.945 1.945 0 0 1-1.623-1.915Z",
+                    fill: "#2bd675",
+                  })
+                )
+              ))
+          );
+        };
+      function H() {
+        return (
+          (H = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          H.apply(this, arguments)
+        );
+      }
+      var T,
+        B = function (e) {
+          return r.createElement(
+            "svg",
+            H({ xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" }, e),
+            k ||
+              (k = r.createElement(
+                "g",
+                { "data-name": "Expires Soon" },
+                r.createElement(
+                  "g",
+                  { "data-name": "Group 2834" },
+                  r.createElement(
+                    "g",
+                    { "data-name": "Group 2826" },
+                    r.createElement("path", {
+                      "data-name": "Path 6084",
+                      d: "M60.891 51.514a3.928 3.928 0 0 1-1.423-7.593 18.049 18.049 0 1 0-24.565-16.09 3.928 3.928 0 1 1-7.849.321 25.906 25.906 0 1 1 35.253 23.093 3.919 3.919 0 0 1-1.416.269Z",
+                      fill: "#f6145a",
+                    }),
+                    r.createElement("path", {
+                      "data-name": "Line 202",
+                      d: "M51.98 33.185a2.946 2.946 0 0 1-2.95-2.945V19.478a2.946 2.946 0 1 1 5.891 0V30.24a2.946 2.946 0 0 1-2.941 2.945Z",
+                      fill: "#485766",
+                    }),
+                    r.createElement("path", {
+                      "data-name": "Line 203",
+                      d: "M56.448 37.656a2.936 2.936 0 0 1-2.083-.863l-4.473-4.473a2.946 2.946 0 0 1 4.166-4.166l4.473 4.473a2.946 2.946 0 0 1-2.083 5.029Z",
+                      fill: "#485766",
+                    }),
+                    r.createElement("path", {
+                      "data-name": "Path 6085",
+                      d: "M63.019 68.744 37.91 27.15a6.645 6.645 0 0 0-11.418.067L2.073 68.815a6.643 6.643 0 0 0 5.726 10.008h49.533a6.643 6.643 0 0 0 5.687-10.078M31.073 37.782h3.083a2.2 2.2 0 0 1 2.2 2.313l-.917 17.393a2.195 2.195 0 0 1-2.192 2.082h-1.268a2.2 2.2 0 0 1-2.2-2.082l-.906-17.393a2.2 2.2 0 0 1 2.2-2.313m4.371 32.184a3.88 3.88 0 0 1-2.851 1.013 4 4 0 0 1-2.9-.99 4.414 4.414 0 0 1-.024-5.628 4.062 4.062 0 0 1 2.922-.958 3.955 3.955 0 0 1 2.863.978 4.335 4.335 0 0 1-.012 5.585",
+                      fill: "#f6145a",
+                    })
+                  )
+                )
+              ))
+          );
+        };
+      function R() {
+        return (
+          (R = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          R.apply(this, arguments)
+        );
+      }
+      var L, V;
+      function A() {
+        return (
+          (A = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          A.apply(this, arguments)
+        );
+      }
+      var q;
+      function S() {
+        return (
+          (S = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          S.apply(this, arguments)
+        );
+      }
+      var D;
+      function C() {
+        return (
+          (C = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          C.apply(this, arguments)
+        );
+      }
+      var N, z;
+      function F() {
+        return (
+          (F = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          F.apply(this, arguments)
+        );
+      }
+      var Q, U;
+      function W() {
+        return (
+          (W = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          W.apply(this, arguments)
+        );
+      }
+      var Y, X;
+      function J() {
+        return (
+          (J = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          J.apply(this, arguments)
+        );
+      }
+      var K, $;
+      function ee() {
+        return (
+          (ee = Object.assign
+            ? Object.assign.bind()
+            : function (e) {
+                for (var a = 1; a < arguments.length; a++) {
+                  var t = arguments[a];
+                  for (var n in t)
+                    Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+                }
+                return e;
+              }),
+          ee.apply(this, arguments)
+        );
+      }
+      var ae = {
+        survey: {
+          hot: {
+            Icon: c,
+            title: "Hot survey!",
+            description:
+              "This survey is perfect for your profile. Qmee will always find the best surveys for you.",
+            detailedDescription:
+              "Hot Surveys are our pick of the hottest surveys right now! They don't stick around for long, so make sure you watch out for them and take part right away.",
+          },
+          webcam: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                o(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                i ||
+                  (i = r.createElement(
+                    "g",
+                    { "data-name": "Camera Iocn" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2930" },
+                      r.createElement(
+                        "g",
+                        { "data-name": "Group 2920" },
+                        r.createElement("path", {
+                          "data-name": "Union 12",
+                          d: "M6.396 61.63c0-5.2 5.4-9.793 13.671-12.6a26.1 26.1 0 1 1 37.722-.048c8.357 2.8 13.814 7.421 13.814 12.647 0 8.545-14.6 15.472-32.6 15.472S6.396 70.175 6.396 61.63Zm17.757-30.634a14.752 14.752 0 1 0 14.753-14.752 14.77 14.77 0 0 0-14.753 14.752Z",
+                          fill: "#39F",
+                          stroke: "rgba(0,0,0,0)",
+                          strokeMiterlimit: 10,
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Path 6111",
+                          d: "M38.848 22.67a8.215 8.215 0 0 1 7.938 8.467 8.215 8.215 0 0 1-7.938 8.467 8.215 8.215 0 0 1-7.938-8.467 8.215 8.215 0 0 1 7.938-8.467Z",
+                          fill: "#495867",
+                        })
+                      )
+                    )
+                  ))
+              );
+            },
+            title: "Webcam survey",
+            description: "Requires a webcam.",
+            detailedDescription:
+              "Webcam surveys will ask you to use your webcam when participating in the survey. We understand that not everyone will want to use their webcam - you can disable webcam surveys (so you won't be sent any that ask to use your webcam) by clicking the webcam icon on your 'Surveys' tab.",
+          },
+          collects_pii: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                s(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                m ||
+                  (m = r.createElement(
+                    "g",
+                    { "data-name": "PI Icon" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2927" },
+                      r.createElement("ellipse", {
+                        "data-name": "Ellipse 114",
+                        cx: 18.821,
+                        cy: 18.326,
+                        rx: 18.821,
+                        ry: 18.326,
+                        transform: "translate(12.066 3.395)",
+                        fill: "#39F",
+                      }),
+                      r.createElement("path", {
+                        "data-name": "Subtraction 10",
+                        d: "M30.888 76.606c-7.427 0-14.477-1.5-19.851-4.225-5.355-2.715-8.509-6.369-8.883-10.286h-.04c0-.181 0-.349.008-.5-.008-.1-.008-.195-.008-.29a8.316 8.316 0 0 1 .181-1.71 18.024 18.024 0 0 1 1.591-5.193 20.916 20.916 0 0 1 3.172-4.762 28.466 28.466 0 0 1 12.732-8.045 23.1 23.1 0 0 0 11.1 2.728 23.091 23.091 0 0 0 11.099-2.728c.9.29 1.784.618 2.635.975a16.8 16.8 0 0 0-.215 2.681 16.568 16.568 0 0 0 4.423 11.29 16.562 16.562 0 0 0 10.827 5.275v.276h-.035c-.374 3.919-3.53 7.573-8.884 10.288-5.374 2.726-12.426 4.226-19.852 4.226Zm22.194-27.04a3.576 3.576 0 0 1-2.709-.837 4.838 4.838 0 0 1-.979-3.477v-.17a25.748 25.748 0 0 1 5.185 4.4 15.54 15.54 0 0 1-1.497.084Z",
+                        fill: "#39F",
+                      }),
+                      r.createElement("path", {
+                        "data-name": "Subtraction 11",
+                        d: "M62.376 59.098a15.491 15.491 0 0 1-10.951-26.445 15.49 15.49 0 1 1 21.906 21.906 15.394 15.394 0 0 1-10.955 4.539Zm-5.707-16.419a2.684 2.684 0 0 0-1.618 4.83l6.575 4.955 8.611-11.461a2.686 2.686 0 0 0-4.292-3.23l-5.382 7.163-2.283-1.72a2.659 2.659 0 0 0-1.611-.537Z",
+                        fill: "#495867",
+                        stroke: "rgba(0,0,0,0)",
+                        strokeMiterlimit: 10,
+                      })
+                    )
+                  ))
+              );
+            },
+            title: "PII survey",
+            description:
+              "Requires personally identifiable information like name or email.",
+            detailedDescription:
+              "This icon is for surveys that will request Personal Identifiable Information (PII) from you. PII includes your name, email address and phone number. If you're not comfortable sharing this information, you can turn these surveys off by clicking the PII Surveys icon (next to the webcam icon) on your 'Surveys' tab. You should only participate in surveys that ask for your personal information if you are completely comfortable with the collection and usage of this data.",
+          },
+          restart_allowed: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                h(
+                  {
+                    width: 32,
+                    height: 32,
+                    viewBox: "0 0 74 74",
+                    fill: "none",
+                    xmlns: "http://www.w3.org/2000/svg",
+                  },
+                  e
+                ),
+                d ||
+                  (d = r.createElement("circle", {
+                    cx: 35.1,
+                    cy: 38.1,
+                    r: 35.1,
+                    fill: "#2bd675",
+                  })),
+                p ||
+                  (p = r.createElement("path", {
+                    d: "M53.033 20.508a3.908 3.908 0 1 1-5.527 5.527 17.181 17.181 0 1 0 0 24.299 3.908 3.908 0 1 1 5.527 5.527 25 25 0 1 1 0-35.353Z",
+                    fill: "#fff",
+                  })),
+                f ||
+                  (f = r.createElement("path", {
+                    d: "m54.074 28.92-10.861-.27a1.079 1.079 0 0 1-.581-.188 1.113 1.113 0 0 1-.395-.476 1.052 1.052 0 0 1-.073-.601c.035-.2.13-.383.271-.524l10.591-10.59a.977.977 0 0 1 .524-.27c.2-.035.41-.009.6.074.192.084.357.22.475.394.118.173.184.375.19.58l.27 10.86c.005.136-.018.27-.067.396a.964.964 0 0 1-.944.615Z",
+                    fill: "#fff",
+                  }))
+              );
+            },
+            title: "Restartable",
+            description:
+              "This survey can be continued at a later point, it does not need to be completed in one go",
+          },
+          new: {
+            Icon: w,
+            title: "New survey",
+            description:
+              "This is your chance to get in before anyone else does.",
+          },
+          broken: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                y(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                g ||
+                  (g = r.createElement(
+                    "defs",
+                    null,
+                    r.createElement(
+                      "clipPath",
+                      { id: "broken_svg__a" },
+                      r.createElement("path", {
+                        "data-name": "Rectangle 1024",
+                        fill: "#f6145a",
+                        d: "M0 0h72.226v73.536H0z",
+                      })
+                    )
+                  )),
+                E ||
+                  (E = r.createElement(
+                    "g",
+                    { "data-name": "Group 2939" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2938" },
+                      r.createElement(
+                        "g",
+                        { "data-name": "Group 2937" },
+                        r.createElement(
+                          "g",
+                          {
+                            "data-name": "Group 2936",
+                            transform: "translate(3.887 3.129)",
+                            clipPath: "url(#broken_svg__a)",
+                            fill: "#f6145a",
+                          },
+                          r.createElement("path", {
+                            "data-name": "Path 6128",
+                            d: "M62.34 49.357 47.285 34.942 29.67 48.161l-15.686-9.218L0 44.612v19.415c0 5.252 3.782 9.509 8.448 9.509h55.33c4.665 0 8.448-4.257 8.448-9.509V41.439Z",
+                          }),
+                          r.createElement("path", {
+                            "data-name": "Path 6129",
+                            d: "m14.343 31.018 15.025 7.553 18.272-11.73 14.966 12.26 9.62-6.591V9.935a8.3 8.3 0 0 0-8.448-8.134H8.448A8.3 8.3 0 0 0 0 9.935v26.057Z",
+                          })
+                        )
+                      )
+                    )
+                  ))
+              );
+            },
+            title: "Broken survey",
+            description:
+              "We have disabled this survey because it was reported as broken.",
+          },
+          recontact: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                P(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                b ||
+                  (b = r.createElement(
+                    "g",
+                    { "data-name": "Group 2935" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2934" },
+                      r.createElement("path", {
+                        "data-name": "Path 6129",
+                        d: "M10.35 47.998a6.5 6.5 0 0 1-6.5-6.5V12.123h62.433a6.5 6.5 0 0 1 6.5 6.5 6.5 6.5 0 0 1-6.5 6.5H16.85v16.375a6.5 6.5 0 0 1-6.5 6.5Z",
+                        fill: "#39F",
+                      }),
+                      r.createElement("path", {
+                        "data-name": "Path 6130",
+                        d: "M69.65 34.358a6.5 6.5 0 0 1 6.5 6.5v29.141H13.717a6.5 6.5 0 0 1-6.5-6.5 6.5 6.5 0 0 1 6.5-6.5H63.15V40.858a6.5 6.5 0 0 1 6.5-6.5Z",
+                        fill: "#707070",
+                      }),
+                      r.createElement("path", {
+                        "data-name": "Path 6128",
+                        d: "M61.029 32.245a4.982 4.982 0 0 1-3.535-1.465 5 5 0 0 1 0-7.07l5.086-5.088-5.086-5.086a5 5 0 0 1 0-7.07 5 5 0 0 1 7.071 0l12.158 12.156L64.565 30.78a4.983 4.983 0 0 1-3.536 1.465Z",
+                        fill: "#39F",
+                      }),
+                      r.createElement("path", {
+                        "data-name": "Path 6131",
+                        d: "M18.971 49.878a4.984 4.984 0 0 1 3.536 1.464 5 5 0 0 1 0 7.071l-5.087 5.088 5.087 5.085a5 5 0 0 1 0 7.071 5 5 0 0 1-7.071 0L3.278 63.501l12.158-12.158a4.985 4.985 0 0 1 3.535-1.465Z",
+                        fill: "#707070",
+                      })
+                    )
+                  ))
+              );
+            },
+            title: "Recontact survey",
+            description:
+              "This is a follow up survey for one of your previously completed surveys.",
+            detailedDescription:
+              "Recontact surveys are follow-up surveys to one that you previously successfully completed.",
+          },
+          explicit: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                M(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                _ ||
+                  (_ = r.createElement(
+                    "defs",
+                    null,
+                    r.createElement(
+                      "clipPath",
+                      { id: "explicit_svg__a" },
+                      r.createElement("rect", {
+                        "data-name": "Rectangle 1016",
+                        transform: "translate(1277 744)",
+                        fill: "#fff",
+                        stroke: "#707070",
+                      })
+                    )
+                  )),
+                O ||
+                  (O = r.createElement(
+                    "g",
+                    {
+                      "data-name": "Mask Group 1571",
+                      transform: "translate(-1277 -744)",
+                      clipPath: "url(#explicit_svg__a)",
+                    },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2926" },
+                      r.createElement("path", {
+                        "data-name": "Union 18",
+                        d: "M1312.36 820.998a37.221 37.221 0 0 1-33.1-40.867 37.232 37.232 0 0 1 40.872-33.1 5.815 5.815 0 0 1 5.174 6.393 5.811 5.811 0 0 1-6.388 5.174 25.591 25.591 0 0 0-28.1 22.748 25.59 25.59 0 0 0 22.753 28.092 25.59 25.59 0 0 0 28.092-22.748 5.815 5.815 0 0 1 6.388-5.174 5.807 5.807 0 0 1 5.174 6.387 37.242 37.242 0 0 1-36.95 33.3 37.451 37.451 0 0 1-3.915-.205Zm24.64-48.473v-5h-5a3.5 3.5 0 0 1-3.5-3.5 3.5 3.5 0 0 1 3.5-3.5h5v-5a3.5 3.5 0 0 1 3.5-3.5 3.505 3.505 0 0 1 3.5 3.5v5h5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5h-5v5a3.5 3.5 0 0 1-3.5 3.5 3.5 3.5 0 0 1-3.497-3.499Z",
+                        fill: "#f6145a",
+                      }),
+                      r.createElement("path", {
+                        "data-name": "Path 6112",
+                        d: "M1305.74 795.349h4.884v-22.671h-3.894l-6.8 4.554 1.947 3.432 3.861-2.409Zm17.717.4c4.983 0 9.108-2.343 9.108-6.468 0-2.607-1.782-4.587-4.455-5.643 2.277-.99 3.894-2.64 3.894-5.181 0-3.894-4.026-6.171-8.547-6.171-4.422 0-8.514 2.178-8.514 6.171 0 2.574 1.617 4.224 3.861 5.181-2.607.99-4.455 2.97-4.455 5.643.008 4.088 4.096 6.468 9.108 6.468Zm0-13.794c-1.782-.132-3.663-1.122-3.663-2.871 0-1.551 1.485-2.706 3.663-2.706s3.7 1.155 3.7 2.706c0 1.679-1.914 2.735-3.7 2.865Zm0 9.7c-2.409 0-4.158-1.188-4.158-2.9 0-1.782 2.211-2.9 4.158-2.97 1.951.064 4.2 1.182 4.2 2.964 0 1.716-1.787 2.9-4.2 2.9Z",
+                        fill: "#485766",
+                      })
+                    )
+                  ))
+              );
+            },
+            title: "Explicit survey",
+            description:
+              "This survey contains explicit content that may be uncomfortable for some people. Please only take part in this survey if you are happy with this. User discretion is advised.",
+          },
+          sensitive: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                j(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                x ||
+                  (x = r.createElement(
+                    "g",
+                    { "data-name": "Sensitive Content Icon", fill: "#f6145a" },
+                    r.createElement("path", {
+                      "data-name": "Path 786",
+                      d: "m67.053 13.058-8.137 7.845C53.361 16.68 46.909 13.492 40 13.492c-20.675 0-37.435 28.38-37.435 28.38a86.234 86.234 0 0 0 15.433 18.465l-8.234 7.935 3.785 3.926 57.289-55.216ZM27.187 41.872a12.8 12.8 0 0 1 20.552-10.2L29.527 49.227a12.7 12.7 0 0 1-2.339-7.355Z",
+                    }),
+                    r.createElement("path", {
+                      "data-name": "Path 787",
+                      d: "M64.416 25.621 52.048 37.542a12.8 12.8 0 0 1-16.824 16.216L23.781 64.787c4.907 3.223 10.408 5.466 16.22 5.466 20.675 0 37.433-28.38 37.433-28.38a87.53 87.53 0 0 0-13.018-16.252Z",
+                    })
+                  ))
+              );
+            },
+            title: "Sensitive survey",
+            description:
+              "This survey contains content that may be uncomfortable for some people. User discretion is advised.",
+          },
+        },
+        cashback: {
+          hot: {
+            Icon: c,
+            title: "Hot offer!",
+            description:
+              "This means that it's one of our top picks - check it out!",
+          },
+          new: {
+            Icon: w,
+            title: "New offer",
+            description: "Brand new offer - check it out!",
+          },
+          exclusive: {
+            Icon: I,
+            title: "Qmee exclusive!",
+            description: "This is an offer exclusive to Qmee - take a look!",
+          },
+          limited_time: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                S(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                q ||
+                  (q = r.createElement(
+                    "g",
+                    { "data-name": "Group 2940" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2854" },
+                      r.createElement(
+                        "g",
+                        { "data-name": "Group 2823" },
+                        r.createElement("path", {
+                          "data-name": "Path 6072",
+                          d: "M43.403 75.494a5.517 5.517 0 0 1 0-11.034A24.253 24.253 0 1 0 19.15 40.207a5.517 5.517 0 1 1-11.034 0 35.289 35.289 0 1 1 35.287 35.288Z",
+                          fill: "#ffcf33",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Path 6073",
+                          d: "M12.585 48.077 1.593 37.087a1.483 1.483 0 0 1 1.05-2.534h21.984a1.485 1.485 0 0 1 1.048 2.534l-10.99 10.99a1.476 1.476 0 0 1-2.1 0",
+                          fill: "#ffcf33",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Line 200",
+                          d: "M43.405 46.463a3.678 3.678 0 0 1-3.678-3.675V25.641a3.678 3.678 0 1 1 7.356 0v17.147a3.678 3.678 0 0 1-3.678 3.675Z",
+                          fill: "#495867",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Line 201",
+                          d: "M50.526 53.592a3.667 3.667 0 0 1-2.6-1.081l-7.123-7.121a3.678 3.678 0 0 1 5.2-5.2l7.123 7.121a3.678 3.678 0 0 1-2.6 6.279Z",
+                          fill: "#495867",
+                        })
+                      )
+                    )
+                  ))
+              );
+            },
+            title: "Limited time!",
+            description:
+              "This offer will only be here for a limited time - tick tock!",
+          },
+          increased_reward: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                F(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                N ||
+                  (N = r.createElement(
+                    "g",
+                    { "data-name": "Group 2935" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2934", fill: "#2bd675" },
+                      r.createElement("path", {
+                        "data-name": "Path 6129",
+                        d: "M75.761 71.381a6.835 6.835 0 0 1-6.836 6.834l-52.648-.591V18.977a6.834 6.834 0 0 1 6.834-6.834 6.834 6.834 0 0 1 6.834 6.834v44.978l38.98.591a6.835 6.835 0 0 1 6.836 6.835Z",
+                      }),
+                      r.createElement("path", {
+                        "data-name": "Path 6128",
+                        d: "M41.982 25.287a6.9 6.9 0 0 1-2.031 4.9 6.924 6.924 0 0 1-9.793 0l-7.049-7.047-7.045 7.046a6.924 6.924 0 0 1-9.793 0 6.923 6.923 0 0 1 0-9.8L23.109 3.543l16.842 16.842a6.9 6.9 0 0 1 2.031 4.902Z",
+                      })
+                    )
+                  )),
+                z ||
+                  (z = r.createElement("path", {
+                    "data-name": "Path 6130",
+                    d: "M52.08 45.864h-6.768q.48 5.664 3.5 8.592a12.969 12.969 0 0 0 8.4 3.312v4.08h2.832v-4.08a14.944 14.944 0 0 0 5.9-1.44 12.711 12.711 0 0 0 3.68-2.736 8.981 8.981 0 0 0 1.896-3.144 8.908 8.908 0 0 0 .528-2.664 25.459 25.459 0 0 0-.168-2.736 7.631 7.631 0 0 0-1.08-3.072 10.369 10.369 0 0 0-2.832-2.952 16.591 16.591 0 0 0-5.468-2.376q-.672-.192-1.272-.336t-1.176-.288v-8.5a3.543 3.543 0 0 1 2.784 1.344 5.048 5.048 0 0 1 1.2 3.264h6.816a11 11 0 0 0-1.056-4.32 9.541 9.541 0 0 0-2.356-3.044 10.9 10.9 0 0 0-3.34-1.92 17.257 17.257 0 0 0-4.056-.936v-3.7h-2.832v3.7a16 16 0 0 0-4.176.84 11.284 11.284 0 0 0-3.552 1.968 9.6 9.6 0 0 0-2.472 3.144 9.537 9.537 0 0 0-.936 4.32 8.807 8.807 0 0 0 .816 4.008 7.972 7.972 0 0 0 2.188 2.688 11.44 11.44 0 0 0 3.1 1.728q1.728.648 3.5 1.128.48.1.888.216t.648.216V52.2a6.7 6.7 0 0 1-3.7-2.016 5.9 5.9 0 0 1-1.436-4.32Zm7.968 6.336v-9.216a11.592 11.592 0 0 1 4.008 1.7 3.372 3.372 0 0 1 1.176 2.816 3.949 3.949 0 0 1-.48 1.992 4.75 4.75 0 0 1-1.224 1.408 5.627 5.627 0 0 1-1.68.888 8.762 8.762 0 0 1-1.8.412Zm-2.832-24.672v7.824A7.88 7.88 0 0 1 53.9 33.96a3.049 3.049 0 0 1-1-2.448 3.982 3.982 0 0 1 .36-1.752 3.593 3.593 0 0 1 .984-1.248 4.18 4.18 0 0 1 1.392-.744 5.28 5.28 0 0 1 1.58-.24Z",
+                    fill: "#495867",
+                  }))
+              );
+            },
+            title: "Higher payout!",
+            description: "This reward amount has been increased - ka-ching!",
+          },
+          fast_paying: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                C(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                D ||
+                  (D = r.createElement(
+                    "g",
+                    { "data-name": "Rapid Reward" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2835" },
+                      r.createElement(
+                        "g",
+                        { "data-name": "Group 2824" },
+                        r.createElement("path", {
+                          "data-name": "Path 6058",
+                          d: "M12.42 23.066v2.3c.76-.116 1.14-.508 1.14-1.179a.865.865 0 0 0-.268-.636 2.464 2.464 0 0 0-.873-.489",
+                          fill: "#ffcf33",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Path 6059",
+                          d: "M10.617 19.718a1.058 1.058 0 0 0 .206.687 1.974 1.974 0 0 0 .776.493v-2.091c-.655.077-.981.38-.981.911",
+                          fill: "#ffcf33",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Path 6060",
+                          d: "M12.005 14.044a8.2 8.2 0 1 0 8.2 8.2 8.2 8.2 0 0 0-8.2-8.2m3.242 11.24a2.93 2.93 0 0 1-1.133 1.059 4.24 4.24 0 0 1-1.7.485v1.483h-.82v-1.46a4.627 4.627 0 0 1-2.335-.609 1.665 1.665 0 0 1-.842-1.47.829.829 0 0 1 .388-.725 2.023 2.023 0 0 1 1.109-.279 1.711 1.711 0 0 0 .5 1.113 1.942 1.942 0 0 0 1.179.5v-2.583l-.027-.012a5.58 5.58 0 0 1-2.288-1.121 2.3 2.3 0 0 1-.729-1.753 2.226 2.226 0 0 1 .807-1.792 3.8 3.8 0 0 1 2.238-.787v-1.322h.822v1.327a3.716 3.716 0 0 1 1.97.694 3.1 3.1 0 0 1 1.14 1.621 2.034 2.034 0 0 1-.624.4 1.757 1.757 0 0 1-.7.171.6.6 0 0 1-.368-.1 1.143 1.143 0 0 1-.279-.376 2 2 0 0 0-.477-.652 1.372 1.372 0 0 0-.659-.291v2.4a13.712 13.712 0 0 1 1.986.787 2.639 2.639 0 0 1 .966.78 1.86 1.86 0 0 1 .275 1.039 2.81 2.81 0 0 1-.4 1.478",
+                          fill: "#ffcf33",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Path 6061",
+                          d: "M42.436 19.971v4.534q2.24-.338 2.242-2.319a1.706 1.706 0 0 0-.524-1.253 4.821 4.821 0 0 0-1.718-.962",
+                          fill: "#495867",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Path 6062",
+                          d: "M38.895 13.378a2.086 2.086 0 0 0 .4 1.354 3.944 3.944 0 0 0 1.524.966v-4.114q-1.926.233-1.928 1.8",
+                          fill: "#495867",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Path 6063",
+                          d: "M39.869 28.213v-.159a9.439 9.439 0 0 1-4.713-1.225 3.369 3.369 0 0 1-1.7-2.963 1.687 1.687 0 0 1 .787-1.47 4.085 4.085 0 0 1 2.234-.559 3.463 3.463 0 0 0 1.012 2.242 3.911 3.911 0 0 0 2.377 1.016v-5.209l-.054-.027a11.08 11.08 0 0 1-4.619-2.257 4.631 4.631 0 0 1-1.47-3.537 4.511 4.511 0 0 1 1.629-3.619 7.7 7.7 0 0 1 4.515-1.586V6.188h1.656V8.86a7.575 7.575 0 0 1 3.979 1.4 6.256 6.256 0 0 1 2.3 3.27 4.036 4.036 0 0 1-1.257.8 3.606 3.606 0 0 1-1.416.345 1.245 1.245 0 0 1-.749-.2 2.328 2.328 0 0 1-.558-.764 4.086 4.086 0 0 0-.962-1.307 2.7 2.7 0 0 0-1.334-.586v4.833a26.487 26.487 0 0 1 4.006 1.59 5.189 5.189 0 0 1 1.947 1.575 3.675 3.675 0 0 1 .562 2.094 5.62 5.62 0 0 1-.8 2.979 4.683 4.683 0 0 1-.431.531 25.218 25.218 0 0 1 6.756-.935c.861 0 1.707.047 2.544.128a16.516 16.516 0 1 0-31.947-5.868 16.433 16.433 0 0 0 3.006 9.467Z",
+                          fill: "#495867",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Path 6064",
+                          d: "M54.362 54.812v7.187q3.549-.541 3.549-3.677a2.7 2.7 0 0 0-.826-1.982 7.66 7.66 0 0 0-2.723-1.528",
+                          fill: "#ffcf33",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Path 6065",
+                          d: "M48.746 44.371a3.312 3.312 0 0 0 .64 2.145 6.2 6.2 0 0 0 2.416 1.528v-6.52q-3.06.372-3.056 2.847",
+                          fill: "#ffcf33",
+                        }),
+                        r.createElement("path", {
+                          "data-name": "Path 6066",
+                          d: "M53.082 26.677a25.413 25.413 0 0 0-13.4 3.824H22.539a3.879 3.879 0 0 0 0 7.757H31.7a25.339 25.339 0 0 0-2.478 4.883H4.272a2.909 2.909 0 0 0 0 5.818H27.76a25.351 25.351 0 0 0-.233 3.273 25.828 25.828 0 0 0 .229 3.262H4.272a2.909 2.909 0 0 0 0 5.818h24.944a25.256 25.256 0 0 0 2.54 4.988H16.524a3.879 3.879 0 0 0 0 7.757c22.355 0 22.666-.109 22.988-.2a25.546 25.546 0 1 0 13.57-47.18m10.111 35.05a9.188 9.188 0 0 1-3.529 3.3 13.118 13.118 0 0 1-5.306 1.509v4.619h-2.556v-4.538a14.623 14.623 0 0 1-7.288-1.9 5.209 5.209 0 0 1-2.622-4.581 2.6 2.6 0 0 1 1.218-2.269 6.326 6.326 0 0 1 3.448-.869 5.376 5.376 0 0 0 1.567 3.467 6.042 6.042 0 0 0 3.677 1.571v-8.049l-.081-.043a17.221 17.221 0 0 1-7.144-3.491 7.151 7.151 0 0 1-2.269-5.465 6.97 6.97 0 0 1 2.517-5.6 11.928 11.928 0 0 1 6.977-2.455v-4.127h2.556v4.127a11.763 11.763 0 0 1 6.151 2.168 9.64 9.64 0 0 1 3.549 5.054 6.127 6.127 0 0 1-1.939 1.241 5.637 5.637 0 0 1-2.187.535 1.87 1.87 0 0 1-1.156-.31 3.513 3.513 0 0 1-.865-1.175 6.314 6.314 0 0 0-1.485-2.021 4.171 4.171 0 0 0-2.067-.908v7.47a41.3 41.3 0 0 1 6.194 2.455 8.036 8.036 0 0 1 3.013 2.445 5.71 5.71 0 0 1 .865 3.239 8.71 8.71 0 0 1-1.237 4.6",
+                          fill: "#ffcf33",
+                        })
+                      )
+                    )
+                  ))
+              );
+            },
+            title: "Rapid reward!",
+            description: "This offer pays out faster than normal offers - wow!",
+          },
+          expires: {
+            Icon: B,
+            title: "Expires soon!",
+            description: "This offer will expire soon - time's ticking!",
+          },
+          with_deal: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                R(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                T ||
+                  (T = r.createElement(
+                    "g",
+                    { "data-name": "Earn and Save Icon" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Earn and save" },
+                      r.createElement(
+                        "g",
+                        { "data-name": "Group 2833" },
+                        r.createElement(
+                          "g",
+                          { "data-name": "Group 2827" },
+                          r.createElement("path", {
+                            "data-name": "Path 6086",
+                            d: "M63.268 62.154v3.365q1.665-.25 1.665-1.721a1.267 1.267 0 0 0-.389-.928 3.547 3.547 0 0 0-1.277-.718",
+                            fill: "#495867",
+                          }),
+                          r.createElement("path", {
+                            "data-name": "Path 6087",
+                            d: "M60.635 57.257a1.541 1.541 0 0 0 .3 1.007 2.927 2.927 0 0 0 1.13.718v-3.061q-1.433.178-1.431 1.336",
+                            fill: "#495867",
+                          }),
+                          r.createElement("path", {
+                            "data-name": "Path 6088",
+                            d: "m71.42 47.245-6.8 6.8a5.139 5.139 0 0 1 1.534.738 4.542 4.542 0 0 1 1.665 2.371 2.85 2.85 0 0 1-.908.583 2.658 2.658 0 0 1-1.027.25.9.9 0 0 1-.543-.143 1.717 1.717 0 0 1-.4-.555 3 3 0 0 0-.7-.948 1.949 1.949 0 0 0-.967-.424v3.505a19.506 19.506 0 0 1 2.9 1.15 3.826 3.826 0 0 1 1.416 1.142 2.692 2.692 0 0 1 .4 1.519 4.11 4.11 0 0 1-.579 2.161 4.31 4.31 0 0 1-1.657 1.546 6.13 6.13 0 0 1-2.486.71v2.165h-1.2v-2.129a6.859 6.859 0 0 1-3.418-.888 2.452 2.452 0 0 1-1.229-2.149 1.226 1.226 0 0 1 .571-1.067 2.972 2.972 0 0 1 1.618-.4 2.5 2.5 0 0 0 .737 1.626 2.805 2.805 0 0 0 1.721.733V61.77l-.04-.02a8.037 8.037 0 0 1-3.346-1.634.844.844 0 0 1-.052-.075l-9.544 9.544A16.049 16.049 0 1 0 71.421 47.25",
+                            fill: "#495867",
+                          }),
+                          r.createElement("path", {
+                            "data-name": "Path 6089",
+                            d: "M42.709 24.624a2.93 2.93 0 0 0 .571 1.911 5.543 5.543 0 0 0 2.149 1.36v-5.809q-2.718.333-2.72 2.538",
+                            fill: "#2bd675",
+                          }),
+                          r.createElement("path", {
+                            "data-name": "Path 6090",
+                            d: "M47.709 33.926v6.4q3.164-.476 3.164-3.271a2.4 2.4 0 0 0-.737-1.764 6.863 6.863 0 0 0-2.427-1.36",
+                            fill: "#2bd675",
+                          }),
+                          r.createElement("path", {
+                            "data-name": "Path 6091",
+                            d: "M77.252 29.921 50.083 2.747a5.267 5.267 0 0 0-7.426 0L2.745 42.657a5.27 5.27 0 0 0 0 7.423l8.79 8.791a6.9 6.9 0 0 1 9.758 9.758l8.624 8.628a5.27 5.27 0 0 0 7.423 0L77.252 37.34a5.258 5.258 0 0 0 0-7.419m-57.56 13.6-5.515-5.88 2.894-2.712 5.511 5.884Zm11.024 11.761-5.515-5.88 2.89-2.712 5.515 5.884Zm11.025 11.765-5.511-5.88 2.886-2.72 5.515 5.884Zm13.834-26.959a8.227 8.227 0 0 1-3.144 2.942 11.689 11.689 0 0 1-4.722 1.34v4.116h-2.28v-4.04a13.026 13.026 0 0 1-6.491-1.693 4.646 4.646 0 0 1-2.335-4.08 2.325 2.325 0 0 1 1.086-2.022 5.622 5.622 0 0 1 3.069-.773 4.8 4.8 0 0 0 1.4 3.089 5.385 5.385 0 0 0 3.275 1.4v-7.169l-.075-.036a15.383 15.383 0 0 1-6.36-3.1 6.38 6.38 0 0 1-2.022-4.873 6.212 6.212 0 0 1 2.24-4.994 10.612 10.612 0 0 1 6.213-2.189V14.33h2.28v3.676a10.487 10.487 0 0 1 5.48 1.931 8.636 8.636 0 0 1 3.16 4.5 5.463 5.463 0 0 1-1.733 1.11 5.03 5.03 0 0 1-1.951.476 1.67 1.67 0 0 1-1.023-.274 3.082 3.082 0 0 1-.777-1.051 5.644 5.644 0 0 0-1.324-1.8 3.711 3.711 0 0 0-1.836-.809v6.658a36.316 36.316 0 0 1 5.511 2.181 7.092 7.092 0 0 1 2.684 2.169 5.056 5.056 0 0 1 .773 2.887 7.737 7.737 0 0 1-1.1 4.1",
+                            fill: "#2bd675",
+                          })
+                        )
+                      )
+                    )
+                  ))
+              );
+            },
+            title: "Earn & save!",
+            description:
+              "You can use a coupon code with this cashback offer - yay!",
+          },
+          easy: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                A(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                L ||
+                  (L = r.createElement("path", {
+                    "data-name": "Path 6067",
+                    d: "M40.005 12.954A27.045 27.045 0 1 1 12.96 39.999a27.072 27.072 0 0 1 27.045-27.045m0-11.591A38.636 38.636 0 1 0 78.64 39.999 38.635 38.635 0 0 0 40.005 1.363",
+                    fill: "#2bd675",
+                  })),
+                V ||
+                  (V = r.createElement("path", {
+                    "data-name": "Path 6068",
+                    d: "M38.375 58.162 24.187 47.479a5.8 5.8 0 1 1 6.972-9.26l4.921 3.7 11.614-15.454a5.8 5.8 0 1 1 9.266 6.964Z",
+                    fill: "#495867",
+                  }))
+              );
+            },
+            title: "Easy offer!",
+            description: "This offer is super easy to complete - have a peek!",
+          },
+          game_easy: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                W(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                Q ||
+                  (Q = r.createElement(
+                    "defs",
+                    null,
+                    r.createElement(
+                      "clipPath",
+                      { id: "game_easy_svg__a" },
+                      r.createElement("path", {
+                        "data-name": "Rectangle 853",
+                        fill: "#495867",
+                        d: "M0 0h33.738v51.274H0z",
+                      })
+                    ),
+                    r.createElement(
+                      "clipPath",
+                      { id: "game_easy_svg__b" },
+                      r.createElement("path", {
+                        "data-name": "Rectangle 854",
+                        fill: "#495867",
+                        d: "M0 0h59.821v21.511H0z",
+                      })
+                    )
+                  )),
+                U ||
+                  (U = r.createElement(
+                    "g",
+                    { "data-name": "Gaming diff-easy" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2848" },
+                      r.createElement(
+                        "g",
+                        { "data-name": "Group 2831" },
+                        r.createElement(
+                          "g",
+                          { "data-name": "Group 2820" },
+                          r.createElement(
+                            "g",
+                            { "data-name": "Group 2736" },
+                            r.createElement(
+                              "g",
+                              { "data-name": "Group 2735" },
+                              r.createElement(
+                                "g",
+                                {
+                                  "data-name": "Group 2734",
+                                  clipPath: "url(#game_easy_svg__a)",
+                                  transform: "translate(44.462 3.093)",
+                                },
+                                r.createElement("path", {
+                                  "data-name": "Path 6081",
+                                  d: "M-.001 9.493a1.863 1.863 0 0 0 1.508 1.805 26.637 26.637 0 0 1 21.058 26 26.207 26.207 0 0 1-1.177 7.731 1.853 1.853 0 0 0 .823 2.179l6.6 3.809a1.877 1.877 0 0 0 2.7-.937 37.634 37.634 0 0 0 2.228-12.782A37.842 37.842 0 0 0 2.139.023a1.873 1.873 0 0 0-2.14 1.866Z",
+                                  fill: "#495867",
+                                })
+                              )
+                            )
+                          ),
+                          r.createElement("path", {
+                            "data-name": "Path 6082",
+                            d: "M14.492 51.278a1.851 1.851 0 0 0 .766-2.213 26.57 26.57 0 0 1 20.2-34.807 1.855 1.855 0 0 0 1.55-1.813V4.893a1.876 1.876 0 0 0-2.11-1.874A37.832 37.832 0 0 0 2.624 40.39a37.357 37.357 0 0 0 2.7 13.936 1.867 1.867 0 0 0 2.7.861Z",
+                            fill: "#00d77b",
+                          }),
+                          r.createElement(
+                            "g",
+                            { "data-name": "Group 2739" },
+                            r.createElement(
+                              "g",
+                              { "data-name": "Group 2738" },
+                              r.createElement(
+                                "g",
+                                {
+                                  "data-name": "Group 2737",
+                                  clipPath: "url(#game_easy_svg__b)",
+                                  transform: "translate(10.881 56.668)",
+                                },
+                                r.createElement("path", {
+                                  "data-name": "Path 6083",
+                                  d: "M52.341.244a1.852 1.852 0 0 0-2.365.461 26.512 26.512 0 0 1-40.264.735 1.864 1.864 0 0 0-2.358-.389L.921 4.936a1.875 1.875 0 0 0-.514 2.773 37.675 37.675 0 0 0 59.044-.948 1.878 1.878 0 0 0-.583-2.746Z",
+                                  fill: "#495867",
+                                })
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  ))
+              );
+            },
+            title: "Difficulty - Easy",
+            description:
+              "No sweat! You can complete this offer with minimal effort.",
+          },
+          game_medium: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                J(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                Y ||
+                  (Y = r.createElement(
+                    "defs",
+                    null,
+                    r.createElement(
+                      "clipPath",
+                      { id: "game_medium_svg__a" },
+                      r.createElement("path", {
+                        "data-name": "Rectangle 853",
+                        fill: "#ffcf33",
+                        d: "M0 0h33.738v51.274H0z",
+                      })
+                    ),
+                    r.createElement(
+                      "clipPath",
+                      { id: "game_medium_svg__b" },
+                      r.createElement("path", {
+                        "data-name": "Rectangle 854",
+                        fill: "#495867",
+                        d: "M0 0h59.821v21.511H0z",
+                      })
+                    )
+                  )),
+                X ||
+                  (X = r.createElement(
+                    "g",
+                    { "data-name": "Gaming diff-medium" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2830" },
+                      r.createElement(
+                        "g",
+                        { "data-name": "Group 2819" },
+                        r.createElement(
+                          "g",
+                          { "data-name": "Group 2736" },
+                          r.createElement(
+                            "g",
+                            { "data-name": "Group 2735" },
+                            r.createElement(
+                              "g",
+                              {
+                                "data-name": "Group 2734",
+                                clipPath: "url(#game_medium_svg__a)",
+                                transform: "translate(44.05 3.093)",
+                              },
+                              r.createElement("path", {
+                                "data-name": "Path 6081",
+                                d: "M-.001 9.493a1.863 1.863 0 0 0 1.508 1.805 26.637 26.637 0 0 1 21.058 26 26.207 26.207 0 0 1-1.177 7.731 1.853 1.853 0 0 0 .823 2.179l6.6 3.809a1.877 1.877 0 0 0 2.7-.937 37.634 37.634 0 0 0 2.228-12.782A37.842 37.842 0 0 0 2.139.023a1.873 1.873 0 0 0-2.14 1.866Z",
+                                fill: "#ffcf33",
+                              })
+                            )
+                          )
+                        ),
+                        r.createElement("path", {
+                          "data-name": "Path 6082",
+                          d: "M14.08 51.278a1.851 1.851 0 0 0 .766-2.213 26.57 26.57 0 0 1 20.2-34.807 1.855 1.855 0 0 0 1.55-1.813V4.893a1.876 1.876 0 0 0-2.11-1.874A37.832 37.832 0 0 0 2.212 40.39a37.357 37.357 0 0 0 2.7 13.936 1.867 1.867 0 0 0 2.7.861Z",
+                          fill: "#ffcf33",
+                        }),
+                        r.createElement(
+                          "g",
+                          { "data-name": "Group 2739" },
+                          r.createElement(
+                            "g",
+                            { "data-name": "Group 2738" },
+                            r.createElement(
+                              "g",
+                              {
+                                "data-name": "Group 2737",
+                                clipPath: "url(#game_medium_svg__b)",
+                                transform: "translate(10.469 56.668)",
+                              },
+                              r.createElement("path", {
+                                "data-name": "Path 6083",
+                                d: "M52.341.244a1.852 1.852 0 0 0-2.365.461 26.512 26.512 0 0 1-40.264.735 1.864 1.864 0 0 0-2.358-.389L.921 4.936a1.875 1.875 0 0 0-.514 2.773 37.675 37.675 0 0 0 59.044-.948 1.878 1.878 0 0 0-.583-2.746Z",
+                                fill: "#495867",
+                              })
+                            )
+                          )
+                        )
+                      )
+                    )
+                  ))
+              );
+            },
+            title: "Difficulty - Medium",
+            description:
+              "Challenge yourself! This offer may take a bit of effort to complete.",
+          },
+          game_hard: {
+            Icon: function (e) {
+              return r.createElement(
+                "svg",
+                ee(
+                  { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 80 80" },
+                  e
+                ),
+                K ||
+                  (K = r.createElement(
+                    "defs",
+                    null,
+                    r.createElement(
+                      "clipPath",
+                      { id: "game_hard_svg__a" },
+                      r.createElement("path", {
+                        "data-name": "Rectangle 853",
+                        fill: "#f6145a",
+                        d: "M0 0h33.738v51.274H0z",
+                      })
+                    ),
+                    r.createElement(
+                      "clipPath",
+                      { id: "game_hard_svg__b" },
+                      r.createElement("path", {
+                        "data-name": "Rectangle 854",
+                        fill: "#f6145a",
+                        d: "M0 0h59.821v21.511H0z",
+                      })
+                    )
+                  )),
+                $ ||
+                  ($ = r.createElement(
+                    "g",
+                    { "data-name": "Gaming diff-hard" },
+                    r.createElement(
+                      "g",
+                      { "data-name": "Group 2829" },
+                      r.createElement(
+                        "g",
+                        { "data-name": "Group 2821" },
+                        r.createElement(
+                          "g",
+                          { "data-name": "Group 2736" },
+                          r.createElement(
+                            "g",
+                            { "data-name": "Group 2735" },
+                            r.createElement(
+                              "g",
+                              {
+                                "data-name": "Group 2734",
+                                clipPath: "url(#game_hard_svg__a)",
+                                transform: "translate(44.462 3.093)",
+                              },
+                              r.createElement("path", {
+                                "data-name": "Path 6081",
+                                d: "M-.001 9.493a1.863 1.863 0 0 0 1.508 1.805 26.637 26.637 0 0 1 21.058 26 26.207 26.207 0 0 1-1.177 7.731 1.853 1.853 0 0 0 .823 2.179l6.6 3.809a1.877 1.877 0 0 0 2.7-.937 37.634 37.634 0 0 0 2.228-12.782A37.842 37.842 0 0 0 2.139.023a1.873 1.873 0 0 0-2.14 1.866Z",
+                                fill: "#f6145a",
+                              })
+                            )
+                          )
+                        ),
+                        r.createElement("path", {
+                          "data-name": "Path 6082",
+                          d: "M14.492 51.278a1.851 1.851 0 0 0 .766-2.213 26.57 26.57 0 0 1 20.2-34.807 1.855 1.855 0 0 0 1.55-1.813V4.893a1.876 1.876 0 0 0-2.11-1.874A37.832 37.832 0 0 0 2.624 40.39a37.357 37.357 0 0 0 2.7 13.936 1.867 1.867 0 0 0 2.7.861Z",
+                          fill: "#f6145a",
+                        }),
+                        r.createElement(
+                          "g",
+                          { "data-name": "Group 2739" },
+                          r.createElement(
+                            "g",
+                            { "data-name": "Group 2738" },
+                            r.createElement(
+                              "g",
+                              {
+                                "data-name": "Group 2737",
+                                clipPath: "url(#game_hard_svg__b)",
+                                transform: "translate(10.881 56.668)",
+                              },
+                              r.createElement("path", {
+                                "data-name": "Path 6083",
+                                d: "M52.341.244a1.852 1.852 0 0 0-2.365.461 26.512 26.512 0 0 1-40.264.735 1.864 1.864 0 0 0-2.358-.389L.921 4.936a1.875 1.875 0 0 0-.514 2.773 37.675 37.675 0 0 0 59.044-.948 1.878 1.878 0 0 0-.583-2.746Z",
+                                fill: "#f6145a",
+                              })
+                            )
+                          )
+                        )
+                      )
+                    )
+                  ))
+              );
+            },
+            title: "Difficulty - Hard",
+            description:
+              "No game, no gain! This offer needs a fair amount of effort to complete.",
+          },
+        },
+        deal: {
+          hot: {
+            Icon: c,
+            title: "Hot deal!",
+            description:
+              "This means that it's one of our top picks - check it out!",
+          },
+          new: {
+            Icon: w,
+            title: "New deal",
+            description: "Brand new deal - check it out!",
+          },
+          expires: {
+            Icon: B,
+            title: "Expires soon!",
+            description: "This deal will expire soon - time's ticking!",
+          },
+          exclusive: {
+            Icon: I,
+            title: "Qmee exclusive!",
+            description: "This is a deal exclusive to Qmee - take a look!",
+          },
+        },
+      };
+    },
+    13717: function (e) {
+      e.exports = {
+        tip: "Tag_tip__yu2iV",
+        icon: "Tag_icon__eXdRU",
+        tagContent: "Tag_tagContent__sjVhs",
+        tagDescription: "Tag_tagDescription__jPSuS",
+      };
+    },
+  },
+]);
+//# sourceMappingURL=567-776ce5f2b2b7da1d.js.map

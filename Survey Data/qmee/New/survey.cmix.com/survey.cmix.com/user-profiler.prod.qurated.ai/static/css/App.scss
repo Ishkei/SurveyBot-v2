@@ -1,0 +1,211 @@
+@use "fonts";
+@use "./assets/styling/Variables.scss";
+
+body {
+  margin: 0;
+  font-family: "Metropolis", "Helvetica Neue", Helvetica, Roboto, "Arial-Nova",
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  min-height: 100dvh;
+  min-height: 100vh;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+.loading-icon {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.loading-page {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  justify-content: center;
+  background: white;
+}
+
+.close-page-x-button {
+  border-radius: 15px;
+  height: 30px;
+  width: 30px;
+  padding: 2px;
+  border-width: 0px;
+  cursor: pointer;
+
+  .mdiv {
+    height: 15px;
+    width: 2px;
+    margin-left: 12px;
+    background-color: #aeaeae;
+    transform: rotate(45deg);
+    z-index: 1;
+  }
+
+  .md {
+    height: 15px;
+    width: 2px;
+    background-color: #aeaeae;
+    transform: rotate(90deg);
+    z-index: 2;
+  }
+}
+
+.floating-label {
+  display: none;
+}
+
+.floating-label-selection-placeholder {
+  display: block;
+}
+
+.lifepoints-profiler, .mobiworkx-profiler {
+  .floating-label-selection-placeholder {
+    display: none;
+  }
+
+  .floating-label-group {
+    position: relative;
+
+    .floating-label {
+      display: block;
+      position: absolute;
+      pointer-events: none;
+      top: 17px;
+      left: 32px;
+      transition: all 0.1s ease;
+
+      color: Variables.$primary-colour;
+      font-family: "Filson Pro", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      opacity: 0.8;
+      line-height: normal;
+
+      .bold-text {
+        font-weight: 600;
+      }
+
+      @media screen and (max-width: 600px) {
+        left: 22px;
+      }
+    }
+
+    input.text-input,
+    input.text-input:-webkit-autofill {
+      color: #001627;
+      font-family: "Filson Pro", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      padding: 22px 30px 10px;
+    }
+
+    input:not(:focus)::placeholder {
+      opacity: 0;
+    }
+
+    input:focus ~ .floating-label,
+    input:not(:focus):valid ~ .floating-label,
+    input:not(:focus).invalid ~ .floating-label,
+    select:focus ~ .floating-label,
+    select:not(:focus):valid ~ .floating-label,
+    input:-webkit-autofill ~ .floating-label,
+    select:-webkit-autofill ~ .floating-label {
+      top: 4px;
+      bottom: 0px;
+      left: 0px;
+      left: 28px;
+      font-size: 11px;
+      opacity: 1;
+      color: Variables.$primary-colour;
+      font-family: "Filson Pro", sans-serif;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+  }
+}
+
+
+.mobiworkx-profiler {
+  .floating-label-group {
+    position: relative;
+
+    .floating-label {
+      color: Variables.$text-colour;
+      font-family: "Barlow", "Filson Pro", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      opacity: 0.8;
+      line-height: normal;
+
+      .bold-text {
+        font-weight: 600;
+      }
+
+      @media screen and (max-width: 600px) {
+        left: 22px;
+      }
+    }
+
+    input.text-input,
+    input.text-input:-webkit-autofill {
+      color: #001627;
+      font-family: "Barlow", "Filson Pro", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      padding: 22px 30px 10px;
+    }
+
+    input:not(:focus)::placeholder {
+      opacity: 0;
+    }
+
+    input:focus ~ .floating-label,
+    input:not(:focus):valid ~ .floating-label,
+    input:not(:focus).invalid ~ .floating-label,
+    select:focus ~ .floating-label,
+    select:not(:focus):valid ~ .floating-label,
+    input:-webkit-autofill ~ .floating-label,
+    select:-webkit-autofill ~ .floating-label {
+      top: 4px;
+      bottom: 0px;
+      left: 0px;
+      left: 28px;
+      font-size: 11px;
+      opacity: 1;
+      color: Variables.$text-colour;
+      font-family: "Filson Pro", sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+  }
+}

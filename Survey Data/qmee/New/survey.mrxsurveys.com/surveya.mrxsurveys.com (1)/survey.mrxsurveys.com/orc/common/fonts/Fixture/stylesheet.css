@@ -1,0 +1,33 @@
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'Fixture-Condensed-Medium';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./Fixture-CondensedMedium.eot');
+	src: url('./Fixture-CondensedMedium.eot?#iefix') format('embedded-opentype'),
+		url('./Fixture-CondensedMedium.woff') format('woff'),
+		url('./Fixture-CondensedMedium.ttf') format('truetype'),
+		url('./Fixture-CondensedMedium.svg#Fixture-Condensed-Medium') format('svg');
+}
+/* End Custom Fonts CSS */
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'Fixture-Regular-Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./Fixture-Bold.eot');
+	src: url('./Fixture-Bold.eot?#iefix') format('embedded-opentype'),
+		url('./Fixture-Bold.woff') format('woff'),
+		url('./Fixture-Bold.ttf') format('truetype'),
+		url('./Fixture-Bold.svg#Fixture-Regular-Bold') format('svg');
+}
+/* End Custom Fonts CSS */
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'Fixture-Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./Fixture-Regular.eot');
+	src: url('./Fixture-Regular.eot?#iefix') format('embedded-opentype'),
+		url('./Fixture-Regular.woff') format('woff'),
+		url('./Fixture-Regular.ttf') format('truetype'),
+		url('./Fixture-Regular.svg#Fixture-Regular') format('svg');
+}
+/* End Custom Fonts CSS */

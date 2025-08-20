@@ -1,0 +1,777 @@
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [4718],
+  {
+    503: function (n, e, t) {
+      (window.__NEXT_P = window.__NEXT_P || []).push([
+        "/account/settings",
+        function () {
+          return t(366);
+        },
+      ]);
+    },
+    78229: function (n, e, t) {
+      "use strict";
+      t.r(e);
+      var l = (function () {
+        var n = [{ defaultValue: null, kind: "LocalArgument", name: "input" }],
+          e = [{ kind: "Variable", name: "input", variableName: "input" }],
+          t = {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "id",
+            storageKey: null,
+          },
+          l = {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "label",
+            storageKey: null,
+          };
+        return {
+          fragment: {
+            argumentDefinitions: n,
+            kind: "Fragment",
+            metadata: null,
+            name: "ConsentSettingMutation",
+            selections: [
+              {
+                alias: null,
+                args: e,
+                concreteType: "ConsentSettingsConnection",
+                kind: "LinkedField",
+                name: "changeConsentSetting",
+                plural: !1,
+                selections: [
+                  {
+                    args: null,
+                    kind: "FragmentSpread",
+                    name: "ConsentSettings_consentSettings",
+                  },
+                ],
+                storageKey: null,
+              },
+            ],
+            type: "Mutation",
+            abstractKey: null,
+          },
+          kind: "Request",
+          operation: {
+            argumentDefinitions: n,
+            kind: "Operation",
+            name: "ConsentSettingMutation",
+            selections: [
+              {
+                alias: null,
+                args: e,
+                concreteType: "ConsentSettingsConnection",
+                kind: "LinkedField",
+                name: "changeConsentSetting",
+                plural: !1,
+                selections: [
+                  {
+                    alias: null,
+                    args: null,
+                    concreteType: "ConsentSettingEdge",
+                    kind: "LinkedField",
+                    name: "edges",
+                    plural: !0,
+                    selections: [
+                      {
+                        alias: null,
+                        args: null,
+                        concreteType: "ConsentSetting",
+                        kind: "LinkedField",
+                        name: "node",
+                        plural: !1,
+                        selections: [
+                          t,
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "QuestionDescription",
+                            kind: "LinkedField",
+                            name: "description",
+                            plural: !1,
+                            selections: [
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "title",
+                                storageKey: null,
+                              },
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "subtitle",
+                                storageKey: null,
+                              },
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "details",
+                                storageKey: null,
+                              },
+                            ],
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "SelectionQuestionAnswers",
+                            kind: "LinkedField",
+                            name: "possibleAnswers",
+                            plural: !1,
+                            selections: [
+                              {
+                                alias: null,
+                                args: null,
+                                concreteType: "SelectionQuestionAnswer",
+                                kind: "LinkedField",
+                                name: "answers",
+                                plural: !0,
+                                selections: [
+                                  {
+                                    alias: null,
+                                    args: null,
+                                    kind: "ScalarField",
+                                    name: "answerKey",
+                                    storageKey: null,
+                                  },
+                                  l,
+                                ],
+                                storageKey: null,
+                              },
+                            ],
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "UserQuestionResponse",
+                            kind: "LinkedField",
+                            name: "userResponse",
+                            plural: !1,
+                            selections: [
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "answerKeys",
+                                storageKey: null,
+                              },
+                              l,
+                              t,
+                            ],
+                            storageKey: null,
+                          },
+                        ],
+                        storageKey: null,
+                      },
+                    ],
+                    storageKey: null,
+                  },
+                ],
+                storageKey: null,
+              },
+            ],
+          },
+          params: {
+            cacheID: "2af294d4c222e0ed49c4a74c05ae13c8",
+            id: null,
+            metadata: {},
+            name: "ConsentSettingMutation",
+            operationKind: "mutation",
+            text: "mutation ConsentSettingMutation(\n  $input: ChangeConsentSettingInput!\n) {\n  changeConsentSetting(input: $input) {\n    ...ConsentSettings_consentSettings\n  }\n}\n\nfragment ConsentSetting_consentSetting on ConsentSetting {\n  id\n  description {\n    title\n    subtitle\n    details\n  }\n  possibleAnswers {\n    answers {\n      answerKey\n      label\n    }\n  }\n  userResponse {\n    answerKeys\n    label\n    id\n  }\n}\n\nfragment ConsentSettings_consentSettings on ConsentSettingsConnection {\n  edges {\n    node {\n      id\n      ...ConsentSetting_consentSetting\n    }\n  }\n}\n",
+          },
+        };
+      })();
+      (l.hash = "dc36bde0d2074571e4be89f105683a0f"), (e.default = l);
+    },
+    83741: function (n, e, t) {
+      "use strict";
+      t.r(e);
+      var l = (function () {
+        var n = {
+          alias: null,
+          args: null,
+          kind: "ScalarField",
+          name: "label",
+          storageKey: null,
+        };
+        return {
+          argumentDefinitions: [],
+          kind: "Fragment",
+          metadata: null,
+          name: "ConsentSetting_consentSetting",
+          selections: [
+            {
+              alias: null,
+              args: null,
+              kind: "ScalarField",
+              name: "id",
+              storageKey: null,
+            },
+            {
+              alias: null,
+              args: null,
+              concreteType: "QuestionDescription",
+              kind: "LinkedField",
+              name: "description",
+              plural: !1,
+              selections: [
+                {
+                  alias: null,
+                  args: null,
+                  kind: "ScalarField",
+                  name: "title",
+                  storageKey: null,
+                },
+                {
+                  alias: null,
+                  args: null,
+                  kind: "ScalarField",
+                  name: "subtitle",
+                  storageKey: null,
+                },
+                {
+                  alias: null,
+                  args: null,
+                  kind: "ScalarField",
+                  name: "details",
+                  storageKey: null,
+                },
+              ],
+              storageKey: null,
+            },
+            {
+              alias: null,
+              args: null,
+              concreteType: "SelectionQuestionAnswers",
+              kind: "LinkedField",
+              name: "possibleAnswers",
+              plural: !1,
+              selections: [
+                {
+                  alias: null,
+                  args: null,
+                  concreteType: "SelectionQuestionAnswer",
+                  kind: "LinkedField",
+                  name: "answers",
+                  plural: !0,
+                  selections: [
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "answerKey",
+                      storageKey: null,
+                    },
+                    n,
+                  ],
+                  storageKey: null,
+                },
+              ],
+              storageKey: null,
+            },
+            {
+              alias: null,
+              args: null,
+              concreteType: "UserQuestionResponse",
+              kind: "LinkedField",
+              name: "userResponse",
+              plural: !1,
+              selections: [
+                {
+                  alias: null,
+                  args: null,
+                  kind: "ScalarField",
+                  name: "answerKeys",
+                  storageKey: null,
+                },
+                n,
+              ],
+              storageKey: null,
+            },
+          ],
+          type: "ConsentSetting",
+          abstractKey: null,
+        };
+      })();
+      (l.hash = "9300dfeb8e5e76392af87941054df1b7"), (e.default = l);
+    },
+    20120: function (n, e, t) {
+      "use strict";
+      t.r(e);
+      var l = {
+        argumentDefinitions: [],
+        kind: "Fragment",
+        metadata: null,
+        name: "ConsentSettings_consentSettings",
+        selections: [
+          {
+            alias: null,
+            args: null,
+            concreteType: "ConsentSettingEdge",
+            kind: "LinkedField",
+            name: "edges",
+            plural: !0,
+            selections: [
+              {
+                alias: null,
+                args: null,
+                concreteType: "ConsentSetting",
+                kind: "LinkedField",
+                name: "node",
+                plural: !1,
+                selections: [
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
+                    name: "id",
+                    storageKey: null,
+                  },
+                  {
+                    args: null,
+                    kind: "FragmentSpread",
+                    name: "ConsentSetting_consentSetting",
+                  },
+                ],
+                storageKey: null,
+              },
+            ],
+            storageKey: null,
+          },
+        ],
+        type: "ConsentSettingsConnection",
+        abstractKey: null,
+        hash: "9c248324f470ed8b62d237448e9edfa5",
+      };
+      e.default = l;
+    },
+    82547: function (n, e, t) {
+      "use strict";
+      t.r(e);
+      var l = (function () {
+        var n = {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "id",
+            storageKey: null,
+          },
+          e = {
+            alias: null,
+            args: null,
+            kind: "ScalarField",
+            name: "label",
+            storageKey: null,
+          };
+        return {
+          fragment: {
+            argumentDefinitions: [],
+            kind: "Fragment",
+            metadata: null,
+            name: "SettingsQuery",
+            selections: [
+              {
+                alias: null,
+                args: null,
+                concreteType: "ConsentSettingsConnection",
+                kind: "LinkedField",
+                name: "consentSettings",
+                plural: !1,
+                selections: [
+                  {
+                    args: null,
+                    kind: "FragmentSpread",
+                    name: "ConsentSettings_consentSettings",
+                  },
+                ],
+                storageKey: null,
+              },
+            ],
+            type: "Query",
+            abstractKey: null,
+          },
+          kind: "Request",
+          operation: {
+            argumentDefinitions: [],
+            kind: "Operation",
+            name: "SettingsQuery",
+            selections: [
+              {
+                alias: null,
+                args: null,
+                concreteType: "ConsentSettingsConnection",
+                kind: "LinkedField",
+                name: "consentSettings",
+                plural: !1,
+                selections: [
+                  {
+                    alias: null,
+                    args: null,
+                    concreteType: "ConsentSettingEdge",
+                    kind: "LinkedField",
+                    name: "edges",
+                    plural: !0,
+                    selections: [
+                      {
+                        alias: null,
+                        args: null,
+                        concreteType: "ConsentSetting",
+                        kind: "LinkedField",
+                        name: "node",
+                        plural: !1,
+                        selections: [
+                          n,
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "QuestionDescription",
+                            kind: "LinkedField",
+                            name: "description",
+                            plural: !1,
+                            selections: [
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "title",
+                                storageKey: null,
+                              },
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "subtitle",
+                                storageKey: null,
+                              },
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "details",
+                                storageKey: null,
+                              },
+                            ],
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "SelectionQuestionAnswers",
+                            kind: "LinkedField",
+                            name: "possibleAnswers",
+                            plural: !1,
+                            selections: [
+                              {
+                                alias: null,
+                                args: null,
+                                concreteType: "SelectionQuestionAnswer",
+                                kind: "LinkedField",
+                                name: "answers",
+                                plural: !0,
+                                selections: [
+                                  {
+                                    alias: null,
+                                    args: null,
+                                    kind: "ScalarField",
+                                    name: "answerKey",
+                                    storageKey: null,
+                                  },
+                                  e,
+                                ],
+                                storageKey: null,
+                              },
+                            ],
+                            storageKey: null,
+                          },
+                          {
+                            alias: null,
+                            args: null,
+                            concreteType: "UserQuestionResponse",
+                            kind: "LinkedField",
+                            name: "userResponse",
+                            plural: !1,
+                            selections: [
+                              {
+                                alias: null,
+                                args: null,
+                                kind: "ScalarField",
+                                name: "answerKeys",
+                                storageKey: null,
+                              },
+                              e,
+                              n,
+                            ],
+                            storageKey: null,
+                          },
+                        ],
+                        storageKey: null,
+                      },
+                    ],
+                    storageKey: null,
+                  },
+                ],
+                storageKey: null,
+              },
+            ],
+          },
+          params: {
+            cacheID: "6ad08294810ac0a0168fb915caa49099",
+            id: null,
+            metadata: {},
+            name: "SettingsQuery",
+            operationKind: "query",
+            text: "query SettingsQuery {\n  consentSettings {\n    ...ConsentSettings_consentSettings\n  }\n}\n\nfragment ConsentSetting_consentSetting on ConsentSetting {\n  id\n  description {\n    title\n    subtitle\n    details\n  }\n  possibleAnswers {\n    answers {\n      answerKey\n      label\n    }\n  }\n  userResponse {\n    answerKeys\n    label\n    id\n  }\n}\n\nfragment ConsentSettings_consentSettings on ConsentSettingsConnection {\n  edges {\n    node {\n      id\n      ...ConsentSetting_consentSetting\n    }\n  }\n}\n",
+          },
+        };
+      })();
+      (l.hash = "b59241c3c79afb10273aa8b78bce7368"), (e.default = l);
+    },
+    366: function (n, e, t) {
+      "use strict";
+      t.r(e),
+        t.d(e, {
+          default: function () {
+            return b;
+          },
+        });
+      var l = t(85893),
+        a = t(67294),
+        i = t(67912),
+        s = (t(22578), t(64705)),
+        r = t.n(s),
+        o = t(39351);
+      function u(n, e) {
+        (null == e || e > n.length) && (e = n.length);
+        for (var t = 0, l = new Array(e); t < e; t++) l[t] = n[t];
+        return l;
+      }
+      function c(n, e) {
+        return (
+          (function (n) {
+            if (Array.isArray(n)) return n;
+          })(n) ||
+          (function (n, e) {
+            var t =
+              null == n
+                ? null
+                : ("undefined" !== typeof Symbol && n[Symbol.iterator]) ||
+                  n["@@iterator"];
+            if (null != t) {
+              var l,
+                a,
+                i = [],
+                s = !0,
+                r = !1;
+              try {
+                for (
+                  t = t.call(n);
+                  !(s = (l = t.next()).done) &&
+                  (i.push(l.value), !e || i.length !== e);
+                  s = !0
+                );
+              } catch (o) {
+                (r = !0), (a = o);
+              } finally {
+                try {
+                  s || null == t.return || t.return();
+                } finally {
+                  if (r) throw a;
+                }
+              }
+              return i;
+            }
+          })(n, e) ||
+          (function (n, e) {
+            if (!n) return;
+            if ("string" === typeof n) return u(n, e);
+            var t = Object.prototype.toString.call(n).slice(8, -1);
+            "Object" === t && n.constructor && (t = n.constructor.name);
+            if ("Map" === t || "Set" === t) return Array.from(t);
+            if (
+              "Arguments" === t ||
+              /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)
+            )
+              return u(n, e);
+          })(n, e) ||
+          (function () {
+            throw new TypeError(
+              "Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
+            );
+          })()
+        );
+      }
+      var d = t(83741),
+        g = t(78229),
+        m = function (n) {
+          var e = n.consentSettingRef,
+            t = (0, i.useFragment)(d, e),
+            s = c(a.useState(!1), 2),
+            r = s[0],
+            u = s[1],
+            m = c((0, i.useMutation)(g), 2),
+            p = m[0],
+            y = m[1];
+          return (
+            a.useEffect(
+              function () {
+                var n;
+                "Yes" ===
+                (null === t ||
+                void 0 === t ||
+                null === (n = t.userResponse) ||
+                void 0 === n
+                  ? void 0
+                  : n.label)
+                  ? u(!0)
+                  : u(!1);
+              },
+              [t]
+            ),
+            (0, l.jsx)(o.C, {
+              checked: r,
+              disabled: y,
+              title: t.description.title,
+              description: t.description.subtitle || void 0,
+              details: t.description.details || void 0,
+              id: t.id,
+              onCheckedChange: function () {
+                p({ variables: { input: { id: t.id, answer: !r } } });
+              },
+            })
+          );
+        },
+        p = t(95791),
+        y = t(60258),
+        S = t(84646),
+        k = t(13179),
+        f = t(20120),
+        C = function (n) {
+          var e = n.consentSettingsRef,
+            t = a.useMemo(function () {
+              return (0, p.Hc)();
+            }, []),
+            s =
+              null === t || void 0 === t ? void 0 : t.settings.includes("set"),
+            u =
+              null === t || void 0 === t ? void 0 : t.settings.includes("tra"),
+            c =
+              null === t || void 0 === t ? void 0 : t.settings.includes("mar"),
+            d =
+              null === t || void 0 === t ? void 0 : t.settings.includes("soc"),
+            g = (0, i.useFragment)(f, e),
+            C = function (n) {
+              var e = { settings: n, consentDate: Date.now() };
+              (0, p.zV)(e), window.location.reload();
+            };
+          return (0, l.jsxs)("section", {
+            className: r().root,
+            children: [
+              (0, l.jsx)(S.Z, {
+                component: "h1",
+                className: r().title,
+                children: "Privacy Settings",
+              }),
+              g
+                ? (0, l.jsx)(o.Z, {
+                    children: g.edges.map(function (n) {
+                      return (0,
+                      l.jsx)(m, { consentSettingRef: n.node }, n.node.id);
+                    }),
+                  })
+                : (0, l.jsx)(k.Z, {
+                    errorDescription:
+                      "We can't load your settings right now - please check back in a few minutes.",
+                  }),
+              (0, l.jsx)(S.Z, {
+                component: "h2",
+                className: r().title,
+                children: "Cookie Settings",
+              }),
+              (0, l.jsx)(y.Z, {
+                handleToggleSettingCookie: function (n) {
+                  var e = [
+                    n ? "set" : null,
+                    u && "tra",
+                    c && "mar",
+                    d && "soc",
+                  ].filter(Boolean);
+                  C(e);
+                },
+                handleToggleMarketingCookie: function (n) {
+                  var e = [
+                    n ? "mar" : null,
+                    u && "tra",
+                    s && "set",
+                    d && "soc",
+                  ].filter(Boolean);
+                  C(e);
+                },
+                handleToggleTrackingCookie: function (n) {
+                  var e = [
+                    n ? "tra" : null,
+                    c && "mar",
+                    s && "set",
+                    d && "soc",
+                  ].filter(Boolean);
+                  C(e);
+                },
+                handleToggleSocialCookie: function (n) {
+                  var e = [
+                    n ? "soc" : null,
+                    c && "mar",
+                    s && "set",
+                    u && "tra",
+                  ].filter(Boolean);
+                  C(e);
+                },
+                settingCookie: s,
+                trackingCookie: u,
+                marketingCookie: c,
+                socialCookie: d,
+              }),
+            ],
+          });
+        },
+        K = t(82547),
+        F = function () {
+          var n = (0, i.useLazyLoadQuery)(K, {
+            fetchPolicy: "store-or-network",
+          });
+          return (0, l.jsx)(l.Fragment, {
+            children:
+              !!n.consentSettings &&
+              (0, l.jsx)(C, { consentSettingsRef: n.consentSettings }),
+          });
+        },
+        b = (0, t(82688).bg)(F, {
+          requiresAuthentication: !0,
+          metaData: { title: "Settings", description: "Account settings" },
+        });
+    },
+    64705: function (n) {
+      n.exports = {
+        root: "ConsentSettings_root__Wnhoj",
+        error: "ConsentSettings_error__QBhEL",
+        title: "ConsentSettings_title__pYG7H",
+      };
+    },
+  },
+  function (n) {
+    n.O(0, [3862, 9926, 1925, 4244, 6178, 258, 9774, 2888, 179], function () {
+      return (e = 503), n((n.s = e));
+      var e;
+    });
+    var e = n.O();
+    _N_E = e;
+  },
+]);
+//# sourceMappingURL=settings-d64470b6292f834d.js.map

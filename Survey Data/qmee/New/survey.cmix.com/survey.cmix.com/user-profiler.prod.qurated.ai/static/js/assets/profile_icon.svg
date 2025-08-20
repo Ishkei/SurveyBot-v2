@@ -1,0 +1,39 @@
+var _path, _path2, _path3;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgProfileIcon(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: 64,
+    height: 59,
+    viewBox: "0 0 64 59",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _path || (_path = /*#__PURE__*/React.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M3.91789 40.8905C6.42647 38.382 9.82883 36.9727 13.3765 36.9727H33.2854C36.8331 36.9727 40.2354 38.382 42.744 40.8905C45.2526 43.3991 46.6619 46.8015 46.6619 50.3492V56.0374C46.6619 57.142 45.7665 58.0374 44.6619 58.0374C43.5573 58.0374 42.6619 57.142 42.6619 56.0374V50.3492C42.6619 47.8624 41.674 45.4774 39.9156 43.719C38.1571 41.9605 35.7722 40.9727 33.2854 40.9727H13.3765C10.8897 40.9727 8.50475 41.9605 6.74631 43.719C4.98788 45.4774 4 47.8624 4 50.3492V56.0374C4 57.142 3.10457 58.0374 2 58.0374C0.89543 58.0374 0 57.142 0 56.0374V50.3492C0 46.8015 1.40931 43.3991 3.91789 40.8905Z",
+    fill: "#3C3C3C"
+  })), _path2 || (_path2 = /*#__PURE__*/React.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M21.9107 4C16.7322 4 12.5342 8.198 12.5342 13.3765C12.5342 18.555 16.7322 22.753 21.9107 22.753C27.0892 22.753 31.2872 18.555 31.2872 13.3765C31.2872 8.198 27.0892 4 21.9107 4ZM8.53418 13.3765C8.53418 5.98886 14.523 0 21.9107 0C29.2983 0 35.2872 5.98886 35.2872 13.3765C35.2872 20.7641 29.2983 26.753 21.9107 26.753C14.523 26.753 8.53418 20.7641 8.53418 13.3765Z",
+    fill: "#3C3C3C"
+  })), _path3 || (_path3 = /*#__PURE__*/React.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M63.1421 17.6502C63.9231 18.4313 63.9231 19.6976 63.1421 20.4787L51.7656 31.8552C51.3905 32.2302 50.8818 32.441 50.3513 32.441C49.8209 32.441 49.3122 32.2302 48.9371 31.8552L43.2489 26.1669C42.4678 25.3859 42.4678 24.1195 43.2489 23.3385C44.0299 22.5574 45.2963 22.5574 46.0773 23.3385L50.3513 27.6125L60.3136 17.6502C61.0947 16.8692 62.361 16.8692 63.1421 17.6502Z",
+    fill: "#FF4E00"
+  })));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgProfileIcon);
+export default __webpack_public_path__ + "static/media/profile_icon.59ae3beddf0f9e246cfe150b4864b483.svg";
+export { ForwardRef as ReactComponent };

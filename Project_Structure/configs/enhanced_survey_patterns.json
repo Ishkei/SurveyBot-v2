@@ -1,0 +1,336 @@
+{
+  "survey_platforms": {
+    "ipsos_interactive": {
+      "name": "Ipsos Interactive",
+      "domains": [
+        "enter.ipsosinteractive.com",
+        "insights.ipsosinteractive.com",
+        "entercdn.ipsosinteractive.com"
+      ],
+      "identifiers": {
+        "html_patterns": [
+          "ipsos",
+          "market research company",
+          "share your opinions",
+          "accept and take the survey",
+          "wicket.ajax",
+          "wicket.sourceforge.net"
+        ],
+        "css_classes": [
+          "cortex-header",
+          "cortex-footer",
+          "bigger-inputs",
+          "wcag"
+        ],
+        "button_selectors": [
+          "#acceptAndTakeSurveyLink1",
+          "button.btn-primary",
+          "a.btn-primary",
+          "button:has-text('Accept and take the survey')"
+        ]
+      },
+      "handling_strategy": "consent_first",
+      "expected_flow": [
+        "consent_page",
+        "demographics",
+        "main_survey",
+        "completion"
+      ]
+    },
+    "cmix": {
+      "name": "Critical Mix (CMIX)",
+      "domains": [
+        "survey.cmix.com",
+        "cdn.cmix.com"
+      ],
+      "identifiers": {
+        "html_patterns": [
+          "cmix",
+          "criticalmix",
+          "materialize",
+          "jquery-ui",
+          "cm-survey-navigation",
+          "cm-NextButton"
+        ],
+        "css_classes": [
+          "cm-survey-navigation",
+          "cm-navigation-next-button",
+          "cm-progress-bar",
+          "cm-survey-footer"
+        ],
+        "button_selectors": [
+          "#cm-NextButton",
+          ".cm-navigation-next-button",
+          "button:has-text('Next')",
+          ".waves-effect.waves-light.btn"
+        ]
+      },
+      "handling_strategy": "navigation_focused",
+      "expected_flow": [
+        "welcome",
+        "questions",
+        "navigation",
+        "completion"
+      ]
+    },
+    "lifepointspanel": {
+      "name": "LifePoints Panel",
+      "domains": [
+        "surveys.lifepointspanel.com"
+      ],
+      "identifiers": {
+        "html_patterns": [
+          "lifepointspanel",
+          "respview",
+          "selfserve",
+          "jquery-ui",
+          "font-awesome"
+        ],
+        "css_classes": [
+          "respview",
+          "selfserve",
+          "survey-container"
+        ],
+        "button_selectors": [
+          "button:has-text('Continue')",
+          "button:has-text('Next')",
+          ".btn-primary",
+          "input[type='submit']"
+        ]
+      },
+      "handling_strategy": "standard_navigation",
+      "expected_flow": [
+        "welcome",
+        "questions",
+        "navigation",
+        "completion"
+      ]
+    },
+    "samplicio": {
+      "name": "Samplicio",
+      "domains": [
+        "samplicio.us",
+        "www.samplicio.us",
+        "rx.samplicio.us",
+        "usersync.samplicio.us"
+      ],
+      "identifiers": {
+        "html_patterns": [
+          "samplicio",
+          "samplicio.us"
+        ],
+        "css_classes": [],
+        "button_selectors": [
+          "button:has-text('Continue')",
+          "button:has-text('Next')",
+          ".btn"
+        ]
+      },
+      "handling_strategy": "standard_navigation",
+      "expected_flow": [
+        "welcome",
+        "questions",
+        "navigation",
+        "completion"
+      ]
+    },
+    "qualtrics": {
+      "name": "Qualtrics",
+      "domains": [
+        "qualtrics.com",
+        "sbushsu.syd1.qualtrics.com"
+      ],
+      "identifiers": {
+        "html_patterns": [
+          "qualtrics",
+          "Qualtrics"
+        ],
+        "css_classes": [
+          "Skin",
+          "QuestionBody",
+          "NextButton"
+        ],
+        "button_selectors": [
+          ".NextButton",
+          "button:has-text('Next')",
+          "button:has-text('Continue')"
+        ]
+      },
+      "handling_strategy": "qualtrics_specific",
+      "expected_flow": [
+        "welcome",
+        "questions",
+        "navigation",
+        "completion"
+      ]
+    },
+    "swagbucks": {
+      "name": "Swagbucks",
+      "domains": [
+        "swagbucks.com",
+        "www.swagbucks.com"
+      ],
+      "identifiers": {
+        "html_patterns": [
+          "swagbucks",
+          "gold surveys",
+          "prescreen"
+        ],
+        "css_classes": [],
+        "button_selectors": [
+          "button:has-text('Continue')",
+          "button:has-text('Next')",
+          ".btn-primary"
+        ]
+      },
+      "handling_strategy": "standard_navigation",
+      "expected_flow": [
+        "prescreen",
+        "questions",
+        "navigation",
+        "completion"
+      ]
+    }
+  },
+  "survey_router_patterns": {
+    "disqualification": {
+      "text_patterns": [
+        "dang it!",
+        "you've been declined by the survey provider",
+        "this could be due to one of these reasons:",
+        "speeding through the survey",
+        "not paying attention",
+        "dishonest survey responses",
+        "not answering clearly & coherently",
+        "use of offensive language",
+        "a vpn was detected"
+      ],
+      "button_patterns": [
+        "View Tips",
+        "I'm okay, thanks"
+      ],
+      "action": "return_to_qmee"
+    },
+    "completion": {
+      "text_patterns": [
+        "you have completed the survey",
+        "survey has been completed",
+        "thank you for completing",
+        "survey submission successful",
+        "your responses have been recorded",
+        "survey complete!",
+        "congratulations! you have finished",
+        "thank you for your participation",
+        "survey finished"
+      ],
+      "action": "mark_completed"
+    },
+    "redirect": {
+      "text_patterns": [
+        "redirecting",
+        "finding another survey",
+        "looking for surveys",
+        "matching you with surveys",
+        "no more questions",
+        "survey ended",
+        "quota full"
+      ],
+      "button_patterns": [
+        "Continue",
+        "Find More Surveys",
+        "Next"
+      ],
+      "action": "follow_redirect"
+    }
+  },
+  "common_elements": {
+    "navigation_buttons": [
+      "button:has-text('Next')",
+      "button:has-text('Continue')",
+      "button:has-text('Submit')",
+      "button:has-text('Start')",
+      "input[type='submit']",
+      ".btn-primary",
+      ".btn",
+      "[role='button']"
+    ],
+    "form_inputs": [
+      "input[type='text']",
+      "input[type='email']",
+      "input[type='tel']",
+      "input[type='number']",
+      "select",
+      "textarea"
+    ],
+    "radio_buttons": [
+      "input[type='radio']",
+      ".radio",
+      "[role='radio']"
+    ],
+    "checkboxes": [
+      "input[type='checkbox']",
+      ".checkbox",
+      "[role='checkbox']"
+    ]
+  },
+  "handling_strategies": {
+    "consent_first": {
+      "description": "Handle consent page first, then proceed with survey",
+      "steps": [
+        "detect_consent_page",
+        "click_consent_button",
+        "wait_for_redirect",
+        "handle_main_survey"
+      ]
+    },
+    "navigation_focused": {
+      "description": "Focus on navigation elements to progress through survey",
+      "steps": [
+        "find_navigation_buttons",
+        "click_next_button",
+        "wait_for_page_load",
+        "repeat"
+      ]
+    },
+    "standard_navigation": {
+      "description": "Standard survey navigation pattern",
+      "steps": [
+        "detect_question_type",
+        "answer_question",
+        "find_next_button",
+        "click_next_button"
+      ]
+    },
+    "qualtrics_specific": {
+      "description": "Qualtrics-specific handling patterns",
+      "steps": [
+        "detect_qualtrics_elements",
+        "handle_question_format",
+        "use_qualtrics_navigation",
+        "progress_through_survey"
+      ]
+    }
+  },
+  "error_handling": {
+    "max_retries": 3,
+    "retry_delay": 2,
+    "fallback_strategies": [
+      "try_alternative_selectors",
+      "use_text_based_search",
+      "fallback_to_generic_handling",
+      "return_to_previous_page"
+    ]
+  },
+  "performance_optimizations": {
+    "timeout_settings": {
+      "page_load": 15000,
+      "element_wait": 10000,
+      "navigation_wait": 5000
+    },
+    "delay_settings": {
+      "between_actions": [2, 5],
+      "between_pages": [3, 7],
+      "between_surveys": [5, 10]
+    }
+  }
+}

@@ -1,0 +1,1260 @@
+@keyframes blend {
+    from { background-color: #8EC2ED; }
+    to   { background-color: #EAFF22; }
+}
+/* Firefox < 16 */
+@-moz-keyframes blend {
+    from { background-color: #8EC2ED; }
+    to   { background-color: #EAFF22; }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes blend {
+    from { background-color: #8EC2ED; }
+    to   { background-color: #EAFF22; }
+}
+/* Internet Explorer */
+@-ms-keyframes blend {
+    from { background-color: #8EC2ED; }
+    to   { background-color: #EAFF22; }
+}
+/* Opera < 12.1 */
+@-o-keyframes blend {
+    from { background-color: #8EC2ED; }
+    to   { background-color: #EAFF22; }
+}
+@keyframes input_blend {
+    from { color: #8EC2ED; }
+    to   { color: #EAFF22; }
+}
+/* Firefox < 16 */
+@-moz-keyframes input_blend {
+    from { color: #8EC2ED; }
+    to   { color: #EAFF22; }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes input_blend {
+    from { color: #8EC2ED; }
+    to   { color: #EAFF22; }
+}
+/* Internet Explorer */
+@-ms-keyframes input_blend {
+    from { color: #8EC2ED; }
+    to   { color: #EAFF22; }
+}
+/* Opera < 12.1 */
+@-o-keyframes input_blend {
+    from { color: #8EC2ED; }
+    to   { color: #EAFF22; }
+}
+
+/* ================ Page layout styles ===================================== */
+html {
+	min-height: 100%;
+	height: 1px;
+}
+body{
+	color: #000005; /* Engine Black */
+	font-family: 'Inter-Regular', sans-serif;
+	height: 100%;
+}
+body .Question, div#surv > span.mrQuestionText {
+	font-size: 18px;
+}
+form {
+	height: 100%;
+}
+form > .container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	min-height: 100%;
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+form > .container > #surv {
+	flex-grow: 2;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+form > .container > #foot {
+	display: flex;
+	flex-basis: 79px;
+	justify-content: flex-end;
+}
+form > .container > #foot > #footer {
+	margin-bottom: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+form > .container .row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.ui-widget {
+	font-family: 'Inter-Regular', sans-serif;
+}
+
+.Top_Banner {
+	background: #014638 none repeat scroll 0 0;
+	color: #FFFFFF;
+}
+
+.Top_Banner_Img{
+
+}
+.Top_Banner #header {
+	border: none;
+	background-color: transparent;
+	display: none;
+}
+
+.Top_Banner .orgLogo {
+	display: none;
+}
+
+.Top_Banner h1 {
+	display: none;
+}
+
+.Question{
+	background-color: #ffffff;
+	border: 1px solid #ffffff;
+	border-radius: 8px;
+}
+
+#footer {
+	background: url(https://survey.mrxsurveys.com/orc/common/images/BV_Logo_Main_RGB_DrkGrn.svg) no-repeat;
+	background-position-x: 99%;
+	background-position-y: 100%;
+	background-size: 200px;
+	border-bottom: 10px #D89664 solid;
+	COLOR: rgb(189, 189, 189);
+	font-size: 16px;
+	height: 79px;
+}
+
+#footer.noLogo {
+	background: #ffffff;
+	/*border-top: 1px #cccccc solid;*/
+}
+
+#footer A {
+	COLOR: rgb(189, 189, 189);
+}
+
+#footer A:hover {
+	COLOR: rgb(189, 189, 189);
+}
+
+span.mrQuestionTable > span[id^='Cell']:hover,
+table.mrQuestionTable:not(.GridTable) td[id^='Cell']:hover { /* shade response text on hover */
+	/*background-color: #f9f9f9;*/
+}
+
+span.tip {
+	color: #e74128;
+}
+/* ========================================================================= */
+/* ========================  progress bar ================================== */
+.number-pb {
+  position: relative;
+  height: 3px;
+  background-color: #B7BCBF;
+  width:100%;
+  /*margin: 40px 0;*/
+}
+.animated > .number-pb {
+	width: 94%;
+}
+.none > .number-pb {
+	display: none;
+}
+
+.number-pb .number-pb-shown {
+  position: absolute;
+  background-color: #000005;
+  /*background-image: linear-gradient(to right, #D89664, #818689);*/
+  background-image: linear-gradient(to right, #D89664, #D89664);
+  top: -1px;
+  left: 0;
+  height: 5px;
+  /*-moz-box-shadow:    0 0 3px 0 #818689;
+  -webkit-box-shadow: 0 0 3px 0 #818689;
+  box-shadow:         0 0 3px 0 #818689;*/
+}
+
+.number-pb .number-pb-num {
+  position: absolute;
+  background-color: #fff;
+  left: 0;
+  top: -0.8em;
+  padding: 0 10px;
+  min-height: 22px !important;
+  min-width: 48px !important;
+  border: solid 2px #D89664; /*#16A085*/
+  color:#000005;
+  border-radius: 5px;
+  height:22px;
+  font-size: 13px;
+}
+
+#shownprog:not(.animated):not(.thinline):not(.none) .number-pb-num {
+	left: 98%;
+}
+
+.thinline .number-pb .number-pb-num {
+	display: none;
+}
+
+.number-pb-shown.dream {
+  background-image: linear-gradient(to right, #0e153a, #1d2b64, #f8cdda);
+  -moz-box-shadow:    0 0 3px 0 #f8cdda;
+  -webkit-box-shadow: 0 0 3px 0 #f8cdda;
+  box-shadow:         0 0 3px 0 #f8cdda;
+}
+
+.number-pb-shown.sun {
+  background-image: linear-gradient(to right, #0f1b58, #e0a681, #e5e9bf);
+  -moz-box-shadow:    0 0 3px 0 #e5e9bf;
+  -webkit-box-shadow: 0 0 3px 0 #e5e9bf;
+  box-shadow:         0 0 3px 0 #e5e9bf;
+}
+/* ========================================================================= */
+
+/* ================ Grid question styles =================================== */
+.GridTable > thead > tr > th,
+.GridTable > tbody > tr > th,
+.GridTable > tfoot > tr > th,
+.GridTable > thead > tr > td,
+.GridTable > tbody > tr > td,
+.GridTable > tfoot > tr > td {
+	border-top: 1px solid #B7BCBF;
+	border-right: 1px solid #B7BCBF;
+}
+
+.GridTable > tbody > tr:first-child > td {
+	border-top: none;
+	width: 5%;
+}
+
+.GridTable > tbody > tr:first-child > td:first-child {
+	width: 30%;
+}
+
+.GridTable > tbody > tr:last-child > td {
+	border-bottom: 1px solid #B7BCBF;
+}
+
+.GridTable:not(.swipeTable):not(.matrix):not(.SRR) > tbody > tr:first-child > td:last-child {
+	/*border-right: 1px solid #e74128*/
+}
+
+.GridTable:not(.swipeTable):not(.tablesaw):not(.maxDiff) .mrGridQuestionText,
+.swipeTable .mrGridCategoryText {
+	background-color: #014638;
+	
+	border-bottom: 1px solid #014638;
+	border-top: none;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #ffffff;
+	color: #ffffff;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.GridTable > tbody > tr:nth-of-type(even) { /* alternating row colors */
+  background-color: #ffffff;
+}
+
+.GridTable > tbody > tr:first-child:hover {
+	background-color: #ffffff;	
+    cursor:default;
+}
+.GridTable > tbody > tr:hover {
+	background-color: #f9f9f9;	
+    cursor:pointer;
+}
+
+.mrQuestionText:hover{
+	cursor:default;
+}
+
+.mrGridCategoryText:hover {
+	cursor:default;
+}
+
+/* ================ Tablesaw Grid ================== */
+.tablesaw > thead > tr > th,
+.tablesaw > tbody > tr > th,
+.tablesaw > tfoot > tr > th,
+.tablesaw > thead > tr > td,
+.tablesaw > tbody > tr > td,
+.tablesaw > tfoot > tr > td {
+	border-top: none;
+	border-right: 1px solid #B7BCBF;
+	border-left: 1px solid #B7BCBF;
+}
+.tablesaw > thead > tr > th {
+	border-top: none;
+}
+.tablesaw > thead > tr > th:first-child {
+	border-top: none;
+}
+.tablesaw > tbody > tr > td:first-child.rowHeader {
+	background-color: rgb(0, 0, 0);
+	color: #fff;
+	vertical-align: middle;
+	padding: 5px;
+}
+.tablesaw > tbody > tr > td:first-child.rowHeader:hover {
+	background-color: rgb(0, 0, 0) !important;
+}
+.tablesaw > tbody > tr > td:first-child,
+.tablesaw > tbody > tr > td.treat1st {
+	background-color: #014638;
+	color: #ffffff;
+	vertical-align: middle;
+	border: 1px solid #B7BCBF;
+	padding: 15px;
+}
+.tablesaw > tbody > tr > td:first-child:hover {
+	background-color: #014638 !important;
+}
+.tablesaw > tbody > tr:last-child > td {
+	border-bottom: none;
+}
+.tablesaw:not(.swipeTable) td .mrQuestionText {
+	display: table-cell;
+}
+.tablesaw:not(.swipeTable) td span[class^='fa-chevron'] {
+	display: table-cell;
+	padding-right: 10px;
+}
+.tablesaw:not(.swipeTable) th.mrGridQuestionText,
+.tablesaw:not(.swipeTable) th.mrGridCategoryText {
+	background-color: #014638;
+	border-bottom: 1px solid #014638;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #ffffff;
+	color: #ffffff;
+	text-align: center;
+	vertical-align: middle;
+}
+.tablesaw:not(.swipeTable) > thead >tr th.mrGridQuestionText:last-child {
+	border-right: 1px solid #014638;
+}
+.swipeTable .mrGridQuestionText {
+	border-bottom: 1px solid #B7BCBF;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #B7BCBF;
+	vertical-align: middle;
+}
+
+.tablesaw:not(.swipeTable) > thead > tr:first-child > th:last-child {
+	border-right: 1px solid #014638;
+}
+.tablesaw > thead> tr:hover {
+	background-color: #ffffff;	
+    cursor:default;
+}
+.tablesaw > tbody > tr:hover {
+	background-color: #f9f9f9;	
+    cursor:pointer;
+}
+.tablesaw:not(.swipeTable) > tbody > tr:first-child > td:last-child {
+	border-right: 1px solid #B7BCBF;
+}
+.tablesaw:not(.swipeTable) > tbody > tr:first-child > td {
+	border-top: none;
+	width: 100%;
+}
+.tablesaw:not(.swipeTable) > tbody > tr:first-child > td:first-child {
+	width:100%;
+}
+.tablesaw > tbody > tr > td.shownCell {
+
+}
+.tablesaw > tbody > tr > td.hiddenCell {
+	display: none;
+}
+.tablesaw > tbody > tr > td.mrGridCategoryText > div.accordianResp {
+		display: block;
+		font-size: 10px;
+		font-style: italic;
+}
+
+/* Swipe stuff to overwrite the tablesaw stack code */
+.Question .tablesaw-btn {
+	border: 1px solid #014638;
+}
+.Question .tablesaw-advance a.tablesaw-nav-btn {
+	background-color: #014638;
+}
+.Question .tablesaw-advance a.tablesaw-nav-btn.left::before {
+	border-right: 5px solid white;
+}
+.Question .tablesaw-advance a.tablesaw-nav-btn.right::before {
+	border-left: 5px solid white;
+}
+
+.DefaultControls .swipeTable label {
+	display: inline;
+}
+
+.tablesaw.swipeTable > tbody > tr > td:first-child {
+	background-color: inherit;
+	color: inherit;
+	vertical-align: middle;
+	padding: 15px;
+}
+
+.Question .swipeTable .tablesaw-swipe-cellpersist {
+	border-right: 1px solid #B7BCBF;
+}
+.Question .swipeTable > thead .tablesaw-swipe-cellpersist {
+	border-right: 1px solid #014638;
+}
+	.swipeTable > thead > tr > th,
+	.swipeTable > tbody > tr > th,
+	.swipeTable > tfoot > tr > th,
+	.swipeTable > thead > tr > td,
+	.swipeTable > tbody > tr > td,
+	.swipeTable > tfoot > tr > td {
+		border-top: 1px solid #B7BCBF;
+		border-right: 1px solid #B7BCBF;
+		border-left: none;
+	}
+	.swipeTable > thead > tr > th {
+		width: 5%;
+	}
+	.swipeTable > thead > tr:first-child > th:first-child {
+		width: 30%;
+	}
+	.swipeTable > tbody > tr > td:first-child {
+		background: none;
+		color: inherit;
+		vertical-align: inherit;
+		border-left: none;
+	}
+	.swipeTable > tbody > tr > td:first-child:hover {
+		background-color: #f9f9f9 !important;
+	}
+	.swipeTable > tbody > tr:last-child > td {
+		border-bottom: 1px solid #B7BCBF;
+	}
+	.swipeTable > tbody > tr:first-child > td {
+		width: 5%;
+	}
+	.swipeTable > tbody > tr:first-child > td:first-child {
+		width: 30%;
+	}
+
+@media (min-width: 40em) {
+ 	/* This code applies to the standard grid */
+	
+	.tablesaw:not(.swipeTable):not(.accordion) > tbody > tr:first-child > td {
+		width: inherit;
+	}
+	.tablesaw.SRR:not(.swipeTable):not(.accordion) > tbody > tr:first-child > td {
+		width: auto;
+	}
+	.tablesaw:not(.swipeTable):not(.accordion) > tbody > tr:first-child > td:first-child {
+		width:inherit;
+	}
+	
+	.tablesaw:not(.accordion) > thead > tr > th,
+	.tablesaw:not(.accordion) > tbody > tr > th,
+	.tablesaw:not(.accordion) > tfoot > tr > th,
+	.tablesaw:not(.accordion) > thead > tr > td,
+	.tablesaw:not(.accordion) > tbody > tr > td,
+	.tablesaw:not(.accordion) > tfoot > tr > td {
+		border-top: 1px solid #B7BCBF;
+		border-right: 1px solid #B7BCBF;
+		border-left: none;
+	}
+	.tablesaw:not(.accordion) > thead > tr > th {
+		width: 5%;
+	}
+	.tablesaw:not(.accordion) > thead > tr:first-child > th:first-child {
+		border-top: none;
+		width: 30%;
+	}
+	.tablesaw:not(.accordion) > tbody > tr > td:first-child.rowHeader,
+	.tablesaw:not(.accordion) > tbody > tr > td:first-child,
+	.tablesaw:not(.accordion) > tbody > tr > td.treat1st	{
+		background: none;
+		color: inherit;
+		vertical-align: inherit;
+		border-left: none;
+	}
+	.tablesaw:not(.accordion) > tbody > tr > td:first-child.rowHeader:hover,
+	.tablesaw:not(.accordion) > tbody > tr > td:first-child:hover {
+		background-color: #f9f9f9 !important;
+	}
+	.tablesaw:not(.accordion) > thead > tr > th {
+		display: table-cell !important;
+	}
+	.tablesaw:not(.accordion) > tbody > tr > td {
+		display: table-cell !important;
+	}
+	.tablesaw:not(.accordion) > tbody > tr > td.hiddenCell {
+		display: table-cell;
+	}
+	.tablesaw:not(.swipeTable):not(.accordion) td span[class^='fa-chevron'] {
+		display: none;
+		padding-right: 0px;
+	}
+	.tablesaw:not(.accordion) > tbody > tr > td.mrGridCategoryText > div.accordianResp {
+		display: none !important;
+	}
+	.tablesaw:not(.accordion) > tbody > tr:last-child > td {
+		border-bottom: 1px solid #B7BCBF;
+	}
+	.tablesaw:not(.accordion) > tbody > tr:first-child > td {
+		width: 5%;
+	}
+	.tablesaw:not(.accordion) > tbody > tr:first-child > td:first-child {
+		width: 30%;
+	}
+ 
+}
+/* ========================================================================= */
+
+/* ================ Radio button and checkbox styles ======================= */
+.DefaultControls .Remove_Input + label,
+.Theme_Full .Remove_Input + label,
+.Theme_Empty .Remove_Input + label,
+.Theme_Dot .Remove_Input + label {
+	color: #B7BCBF;
+}
+
+.DefaultControls .Remove_Input:hover + label,
+.Theme_Full .Remove_Input:hover + label,
+.Theme_Empty .Remove_Input:hover + label,
+.Theme_Dot .Remove_Input:hover + label,
+.GridTable:not(.sliders) > tbody > tr > td:hover .Remove_Input + label  {
+	color: #EAFF22;
+}
+
+.DefaultControls .Remove_Input:checked + label,
+.Theme_Full .Remove_Input:checked + label,
+.Theme_Empty .Remove_Input:checked + label,
+.Theme_Dot .Remove_Input:checked + label {
+	color: #8EC2ED;
+}
+.DefaultControls .Radio_Button.checked:before ,
+.DefaultControls .Check_Box.checked:before ,
+.Theme_Full .Radio_Button.checked:before ,
+.Theme_Full .Check_Box.checked:before ,
+.Theme_Empty .Radio_Button.checked:before ,
+.Theme_Empty .Check_Box.checked:before ,
+.Theme_Dot .Radio_Button.checked:before ,
+.Theme_Dot .Check_Box.checked:before  { /* IE6-8 hack */
+		color: #8EC2ED;
+}
+
+.line {
+	background: #8EC2ED;
+	color: #000;
+}
+.line:hover {
+	background: #EAFF22;
+	-webkit-animation: blend 0.5s ease;
+	animation: blend 0.5s ease;
+}
+
+.line > .Check_Box:before,
+.line > .Radio_Button:before{
+	color: #8EC2ED;
+}
+
+.line:hover .Check_Box:before,
+.line:hover .Radio_Button:before {
+	color: #EAFF22;
+	-webkit-animation: input_blend 0.5s ease;
+	animation: input_blend 0.5s ease;
+}
+
+.DefaultControls .line .Remove_Input:checked + .Check_Box:before,
+.DefaultControls .line .Remove_Input:checked + .Radio_Button:before {
+	color: #000;
+}
+.DefaultControls .line .Radio_Button.checked:before ,
+.DefaultControls .line .Check_Box.checked:before  { /* IE6-8 hack */
+	color: #000;
+}
+
+/* ========================================================================= */
+
+/* ============ Radio button and checkbox mobile styles ==================== */
+	@media screen and (min-width : 320px) {
+		.DefaultControls span.ui-controlgroup span:first-child {
+			border-top-left-radius: 0.3125em;
+			border-top-right-radius: 0.3125em;
+		}
+		.DefaultControls span.ui-controlgroup span:last-child {
+			border-bottom-left-radius: 0.3125em;
+			border-bottom-right-radius: 0.3125em;
+		}
+		.DefaultControls span.ui-controlgroup,
+		.Theme_Full span.ui-controlgroup,
+		.Theme_Empty span.ui-controlgroup,
+		.Theme_Dot span.ui-controlgroup {
+			border-radius: 0.3125em;
+			border-width: 2px;
+			border-style: solid;
+			border-color: #404040;
+			border-image: initial;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default,
+		.Theme_Full span.ui-controlgroup div.default,
+		.Theme_Empty span.ui-controlgroup div.default,
+		.Theme_Dot span.ui-controlgroup div.default {
+			background-color: #f6f6f6;
+			border: 1px solid #404040;
+			border-radius: inherit;
+		}
+	}
+
+	/* Extra Small Devices, Phones */ 
+	@media screen and (min-width : 480px) {
+		.DefaultControls span.ui-controlgroup span:first-child {
+			border-top-left-radius: 0.3125em;
+			border-top-right-radius: 0.3125em;
+		}
+		.DefaultControls span.ui-controlgroup span:last-child {
+			border-bottom-left-radius: 0.3125em;
+			border-bottom-right-radius: 0.3125em;
+		}
+		.DefaultControls span.ui-controlgroup,
+		.Theme_Full span.ui-controlgroup,
+		.Theme_Empty span.ui-controlgroup,
+		.Theme_Dot span.ui-controlgroup {
+			border-radius: 0.3125em;
+			border-width: 2px;
+			border-style: solid;
+			border-color:#404040;
+			border-image: initial;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default,
+		.Theme_Full span.ui-controlgroup div.default,
+		.Theme_Empty span.ui-controlgroup div.default,
+		.Theme_Dot span.ui-controlgroup div.default {
+			background-color: #f6f6f6;
+			border: 1px solid #404040;
+			border-radius: inherit;
+		}
+		
+	}
+
+	/* Small Devices, Tablets */
+	@media screen and (min-width : 768px) {
+		.DefaultControls span.ui-controlgroup span:first-child {
+			border-top-left-radius: 0.3125em;
+			border-top-right-radius: 0.3125em;
+		}
+		.DefaultControls span.ui-controlgroup span:last-child {
+			border-bottom-left-radius: 0.3125em;
+			border-bottom-right-radius: 0.3125em;
+		}
+		.DefaultControls span.ui-controlgroup,
+		.Theme_Full span.ui-controlgroup,
+		.Theme_Empty span.ui-controlgroup,
+		.Theme_Dot span.ui-controlgroup {
+			border-radius: 0.3125em;
+			border-width: 2px;
+			border-style: solid;
+			border-color: #404040;
+			border-image: initial;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default,
+		.Theme_Full span.ui-controlgroup div.default,
+		.Theme_Empty span.ui-controlgroup div.default,
+		.Theme_Dot span.ui-controlgroup div.default {
+			background-color: #f6f6f6;
+			border: 1px solid #404040;
+			border-radius: inherit;
+		}
+	}
+
+	/* Medium Devices, Desktops */
+	@media screen and (min-width : 992px) {
+		.DefaultControls span.ui-controlgroup span:first-child {
+			border-top-left-radius: inherit;
+			border-top-right-radius: inherit;
+		}
+		.DefaultControls span.ui-controlgroup span:last-child {
+			border-bottom-left-radius: inherit;
+			border-bottom-right-radius: inherit;
+		}
+		.DefaultControls span.ui-controlgroup,
+		.Theme_Full span.ui-controlgroup,
+		.Theme_Empty span.ui-controlgroup,
+		.Theme_Dot span.ui-controlgroup {
+			border-radius: 0em;
+			border-width: inherit;
+			border-style: inherit;
+			border-color: inherit;
+			border-image: inherit;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default,
+		.Theme_Full span.ui-controlgroup div.default,
+		.Theme_Empty span.ui-controlgroup div.default,
+		.Theme_Dot span.ui-controlgroup div.default {
+			background-color: transparent;
+			border: none;
+			border-radius: inherit;
+		}
+	}
+		
+	/* Large Devices, Wide Screens */
+	@media screen and (min-width : 1200px) {
+		.DefaultControls span.ui-controlgroup span:first-child {
+			border-top-left-radius: inherit;
+			border-top-right-radius: inherit;
+		}
+		.DefaultControls span.ui-controlgroup span:last-child {
+			border-bottom-left-radius: inherit;
+			border-bottom-right-radius: inherit;
+		}
+		.DefaultControls span.ui-controlgroup,
+		.Theme_Full span.ui-controlgroup,
+		.Theme_Empty span.ui-controlgroup,
+		.Theme_Dot span.ui-controlgroup {
+			border-radius: 0em;
+			border-width: inherit;
+			border-style: inherit;
+			border-color: inherit;
+			border-image: inherit;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default,
+		.Theme_Full span.ui-controlgroup div.default,
+		.Theme_Empty span.ui-controlgroup div.default,
+		.Theme_Dot span.ui-controlgroup div.default {
+			background-color: transparent;
+			border: none;
+			border-radius: inherit;
+		}
+	}
+/* ========================================================================= */
+
+/* ================ Navigation button styles =============================== */
+.NavButtons span.orcButton{ /* copy of bootstrap .btn  */
+	font-family: 'Inter-Regular', sans-serif;
+}
+
+.Nav_Next , 
+.Nav_Prev , 
+.Nav_Stop {
+	color: #000;
+	background-color: #8EC2ED;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.Nav_Next:hover,
+.Nav_Next:focus,
+.Nav_Next:active,
+.Nav_Prev:hover,
+.Nav_Prev:focus,
+.Nav_Prev:active,
+.Nav_Stop:hover,
+.Nav_Stop:focus,
+.Nav_Stop:active{
+	color:#000;
+	background-color: #EAFF22;
+	-webkit-animation: blend 1s ease;
+	animation: blend 0.5s ease;
+}
+/* ========================================================================= */
+
+/* ================ Barrating.js styles ==================================== */
+	/* Vertbar */
+.br-theme-bars-1to10 .br-widget a {
+	background-color: #e3e3e3;
+}
+.br-theme-bars-1to10 .br-widget a.br-active,
+.br-theme-bars-1to10 .br-widget a.br-selected {
+    background-color: #8EC2ED;
+}
+.br-theme-bars-1to10 .br-widget .br-current-rating {
+	color: #646464;
+}
+.br-theme-bars-1to10 .br-readonly a.br-active,
+.br-theme-bars-1to10 .br-readonly a.br-selected {
+  background-color: #f2cd95;
+}
+.br-theme-bars-1to10 .br-readonly .br-current-rating {
+  color: #f2cd95;
+}
+	/* Horizbar */
+.br-theme-bars-movie .br-widget a {
+	background-color: #e3e3e3;
+}
+.br-theme-bars-movie .br-widget a.br-active,
+.br-theme-bars-movie .br-widget a.br-selected {
+    background-color: #8EC2ED;
+}
+.br-theme-bars-movie .br-widget .br-current-rating {
+	color: #646464;
+}
+	/* Stars */
+.br-theme-fontawesome-stars .br-widget a:after {
+	color: #d2d2d2;
+}
+.br-theme-fontawesome-stars .br-widget a.NA-rating:after {
+  color: #d2d2d2;
+}
+.br-theme-fontawesome-stars .br-widget a.DK-rating:after {
+  color: #d2d2d2;
+}
+.br-theme-fontawesome-stars .br-widget a.br-active:after,
+.br-theme-fontawesome-stars .br-widget a.DK-rating.br-active:after,
+.br-theme-fontawesome-stars .br-widget a.NA-rating.br-active:after  {
+  color: #EDB867;
+}
+.br-theme-fontawesome-stars .br-widget a.br-selected:after,
+.br-theme-fontawesome-stars .br-widget a.DK-rating.br-selected:after ,
+.br-theme-fontawesome-stars .br-widget a.NA-rating.br-selected:after  {
+  color: #EDB867;
+}
+
+.br-theme-fontawesome-stars .br-widget .br-current-rating {
+  color: #646464;
+}
+	/* Icons */
+.br-theme-icons .br-widget a:after {
+  color: #d2d2d2;
+}
+.br-theme-icons .br-widget a.br-active:hover:after,
+.br-theme-icons.br-widget a.DK-rating.br-active:after,
+.br-theme-icons .br-widget a.NA-rating.br-active:after  {
+  color: #8EC2ED;
+}
+.br-theme-icons .br-widget a.br-current:after,
+.br-theme-icons .br-widget a.DK-rating.br-current:after ,
+.br-theme-icons .br-widget a.NA-rating.br-current:after  {
+  color: #8EC2ED;
+}
+	/* Thumbs */
+.br-theme-thumbs .br-widget a:after {
+  color: #d2d2d2;
+}
+.br-theme-thumbs .br-widget a.NA-rating:after {
+  color: #d2d2d2;
+}
+.br-theme-thumbs .br-widget a.DK-rating:after {
+  color: #d2d2d2;
+}
+.br-theme-thumbs .br-widget a.br-active:after {
+  color: #8EC2ED;
+}
+.br-theme-thumbs .br-widget a.DK-rating.br-active:after,
+.br-theme-thumbs .br-widget a.NA-rating.br-active:after  {
+  color: #8EC2ED;
+}
+.br-theme-thumbs .br-widget a.br-selected:after {
+  color: #8EC2ED;
+}
+.br-theme-thumbs .br-widget a.DK-rating.br-selected:after ,
+.br-theme-thumbs .br-widget a.NA-rating.br-selected:after  {
+  color: #8EC2ED;
+}
+
+/* ----------- SQUARE BAR ---------------- */
+.Question .br-theme-bars-square .br-widget a {
+	border-color: #B7BCBF;
+	color: #000;
+}
+div.QuestionControls.bar .br-theme-bars-square .br-widget a.br-active,
+div.QuestionControls.bar .br-theme-bars-square .br-widget a.br-selected {
+	background-color: #8EC2ED;
+	border: 1px solid #8EC2ED;
+	color: #000;
+}
+div.QuestionControls.bar .br-theme-bars-square .br-widget .br-current-rating {
+	color: #646464;	
+}
+div.QuestionControls.bar .br-theme-bars-square .br-widget a.br-active:hover,
+div.QuestionControls.bar .br-theme-bars-square .br-widget a.br-selected.br-current {
+	background-color: #8EC2ED;
+	border: 1px solid #8EC2ED;
+	color: #000;
+}
+div.QuestionControls.bar .br-theme-bars-square .br-widget .br-current-rating {
+	color: #646464;	
+}
+div.QuestionControls:not(.bar) .br-theme-bars-square .br-widget a.br-active:hover {
+	background-color: #EAFF22;
+	border: 1px solid #EAFF22;
+	color: #000;
+}
+div.QuestionControls:not(.bar) .br-theme-bars-square .br-widget a.br-selected.br-current {
+	background-color: #8EC2ED;
+	border: 1px solid #8EC2ED;
+	color: #000;
+}
+div.QuestionControls:not(.bar) .br-theme-bars-square .br-widget .br-current-rating {
+	color: #646464;	
+    float: left;
+    line-height: 2.5;
+	overflow: hidden;
+    padding: 0 20px 0 20px;
+}
+/* ----------- SQUARE BAR ---------------- */
+/* ----------- CIRCLE BAR ---------------- */
+div.QuestionControls.bar .br-theme-bars-circle .br-widget a.br-active,
+div.QuestionControls.bar .br-theme-bars-circle .br-widget a.br-selected {
+	background-color: #8EC2ED;
+	border: 1px solid #8EC2ED;
+	color: #000;
+}
+div.QuestionControls.bar .br-theme-bars-circle .br-widget .br-current-rating {
+	color: #646464;	
+    float: left;
+    line-height: 2.5;
+	overflow: hidden;
+    padding: 0 20px 0 20px;
+}
+div.QuestionControls:not(.bar) .br-theme-bars-circle .br-widget a.br-active:hover {
+	background-color: #EAFF22;
+	border: 1px solid #EAFF22;
+	color: #000;
+}
+div.QuestionControls:not(.bar) .br-theme-bars-circle .br-widget a.br-selected.br-current {
+	background-color: #8EC2ED;
+	border: 1px solid #8EC2ED;
+	color: #000;
+}
+div.QuestionControls:not(.bar) .br-theme-bars-circle .br-widget .br-current-rating {
+	color: #646464;	
+    float: left;
+    line-height: 2.5;
+	overflow: hidden;
+    padding: 0 20px 0 20px;
+}
+/* ----------- CIRCLE BAR ---------------- */
+/* ----------- PILL BAR ------------------ */
+.br-theme-bars-pill .br-widget a {
+  background-color: #B7BCBF;
+  color: #000005;
+}
+.br-theme-bars-pill .br-widget a.br-active:hover {
+  background-color: #EAFF22;
+  color: #000;
+}
+.br-theme-bars-pill .br-widget a.br-selected.br-current {
+  background-color: #8EC2ED;
+  color: #000;
+}
+/* ----------- PILL BAR ------------------ */
+	
+/* ========================================================================= */
+
+/* =============== Ranking widget styles =================================== */
+li.ui-state-default.ui-draggable.ui-draggable-handle:hover ,
+.ranked:hover{
+	background: #8EC2ED;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	background: #8EC2ED;
+    border: 1px solid #77d5f7;
+    color: #000;
+    font-weight: normal;
+}
+/* ========================================================================= */
+
+/* =============== Calendar widget styles ================================== */
+.ui-datepicker-trigger {
+	color: #8EC2ED;
+}
+
+div#ui-datepicker-div.ui-widget {
+	background: #8EC2ED none repeat scroll 0 0;
+}
+
+div#ui-datepicker-div .ui-widget-header {
+	color: #ffffff;
+}
+.ui-datepicker .ui-datepicker-title {
+	color: #ffffff;
+}
+
+.ui-datepicker th {
+	color: #ffffff;
+	border-top: 0px solid #3a414d;
+}
+
+.ui-datepicker td {
+	color: #000000;
+	background: #f7f7f7 !important;
+}
+
+.ui-datepicker .ui-datepicker-next span,
+.ui-datepicker .ui-datepicker-prev span {
+	background-image: url(../jQueryUI/images/ui-icons_FFFFFF_256x240.png);
+}
+div#ui-datepicker-div .ui-state-disabled .ui-state-default {
+	color: #d4d4d4 !important;
+	background: #fafafa !important;
+}
+div#ui-datepicker-div td .ui-state-active,
+div#ui-datepicker-div td .ui-state-hover {
+	background: #e1e1e1 none repeat scroll 0 0 !important;
+	color: #000000 !important;
+}
+div#ui-datepicker-div .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    background: #eeeeee none repeat scroll 0 0 !important;
+    font-family: 'Inter-Regular',sans-serif;
+}
+div#ui-datepicker-div .ui-widget-header .ui-state-hover {
+	background: #e74128 !important;
+}
+/* ========================================================================= */
+
+/* =============== Text Select widget styles =============================== */
+span#wordGrid span.mrMultipleText span.selected {
+	background-color: #8EC2ED;
+	color: #000
+}
+span#wordGrid span.mrMultipleText span {
+	background-color: #f1f1f1;
+}
+
+span.mrQuestionTable span.mrSingleText > span {
+	color: #646464;
+	font-family: 'Inter-Regular',sans-serif;
+}
+/* ========================================================================= */
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+	color: #000005;
+}
+
+/* ================== Combobox widget styles =============================== */
+body.combobox .ui-autocomplete .ui-menu-item-wrapper:hover, 
+body.combobox .ui-autocomplete .ui-menu-item-wrapper.ui-state-active {
+	background: #EAFF22 !important;
+	color: #000 !important;
+}
+body.combobox .ui-widget-shadow {
+	margin: -8px 0 0 -8px;
+	padding: 8px;
+	background-color: #D89664 !important;
+	color: #fff;
+	border-radius: 4px !important;
+}
+/* ========================================================================= */
+
+/* =================== Matrix widget styles ================================ */
+#leftArrow {
+	color: #D89664;
+}
+#rightArrow {
+	color: #D89664;
+}
+
+.Question:not(.NumMatrix) table.matrix .answer {
+	background: #D89664 !important;
+	color: #000 !important;
+}
+.Question.NumMatrix table.matrix .answer {
+	background: #8EC2ED !important;
+	color: #000 !important;
+}
+.Question table.GridTable.matrix td.mrGridQuestionText {
+	background: #8EC2ED;
+	color: #000;
+}
+
+@media (pointer: fine) {
+	table.GridTable.matrix td.mrGridQuestionText:hover {
+		background: #EAFF22;
+		color: #000
+	}
+	.NumMatrix table.GridTable.mrQuestionTable td.mrGridQuestionText:hover {
+		background: #EAFF22;
+		color: #000;
+	}
+}
+
+.NumMatrix table.GridTable.mrQuestionTable td.mrGridQuestionText.othParent {
+	background: #eeeeee;
+}
+.NumMatrix table.GridTable.mrQuestionTable td.mrGridQuestionText.othParent .othDK {
+	color: #B7BCB$;
+}
+.NumMatrix table.GridTable.mrQuestionTable td.mrGridQuestionText.othParent:hover .othDK {
+	color: #000;
+}
+.NumMatrix .inactive {
+	color: #d1d1d1 !important;
+	cursor: default !important;
+}
+
+.NumMatrix table.GridTable.mrQuestionTable td.mrGridQuestionText.answer {
+	background: #1b557a;
+	color: #fff;
+}
+.NumMatrix table.GridTable.mrQuestionTable td.mrGridQuestionText {
+	background: #fff;
+	border: 1px solid #ccc;
+	color: #b6b6b6;
+}
+/* ========================================================================= */
+
+/* =================== NumSlider widget styles ============================= */
+.sliders .ui-slider {
+    background: #ebedef none repeat scroll 0 0;
+}
+.Question .sliders .ui-slider-handle {
+    background-color: #8EC2ED;
+}
+.sliders .ui-slider-handle:hover, .ui-slider-handle:focus {
+    background-color: #EAFF22;
+}
+.sliders .ui-slider-handle:active {
+    background-color: #EAFF22;
+}
+.sliders .ui-slider-range {
+    background-color: #1abc9c;
+}
+.sliders .ui-slider-segment {
+    background-color: #d9dbdd;
+}
+.sliders .ui-slider-float .ui-slider-tip::before, .ui-slider-float .ui-slider-pip .ui-slider-tip-label::before {
+	border-color: #EAFF22 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+	color: #000;
+}
+.sliders .ui-slider-float .ui-slider-tip::after, .ui-slider-float .ui-slider-pip .ui-slider-tip-label::after {
+	border-color: #EAFF22 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0)
+}
+.sliders .ui-slider-float .ui-slider-tip, .ui-slider-float .ui-slider-tip-label {
+	background: #EAFF22 none repeat scroll 0 0;
+	border: 1px solid #EAFF22;
+	color: #000;
+}
+/* ========================================================================= */
+
+/* =================== NumSlider widget styles ============================= */
+.catslider .ui-slider .ui-slider-handle {
+	background: none repeat scroll 0 0 #8EC2ED;
+}
+.catslider .ui-state-default {
+	border-color: #8EC2ED !important;
+}
+
+@media (max-width: 39.9375em) {
+	table.sliders.catslider {
+		border-collapse: separate;
+		border-spacing: 15px;
+	}
+	.sliders.catslider.GridTable > thead > tr > th,
+	.sliders.catslider.GridTable > tbody > tr > th,
+	.sliders.catslider.GridTable > tfoot > tr > th,
+	.sliders.catslider.GridTable > thead > tr > td,
+	.sliders.catslider.GridTable > tbody > tr > td,
+	.sliders.catslider.GridTable > tfoot > tr > td {
+		border-bottom: 1px solid #B7BCBF;
+		border-top: none;
+		border-left: 1px solid #B7BCBF;
+		border-right: 1px solid #B7BCBF;
+	}
+	.sliders.catslider.GridTable > tbody > tr:last-child > td.mrGridCategoryText {
+		border-bottom: none;
+	}
+	.sliders.catslider.GridTable > tbody > tr:first-child {
+		display: none;
+	}
+	.sliders.catslider.GridTable td.mrGridCategoryText {
+		background-color: #e74128;
+		border-left: 1px solid #B7BCBF;
+		border-right: 1px solid #B7BCBF;
+		color: #FFF;
+		padding-bottom: 5px;
+		padding-top: 10px;
+		text-align: center !important;
+	}
+}
+/* ========================================================================= */
+
+/* =================== MaxDiff   widget styles ============================= */
+.Question div.most {
+	background-color: rgba(1,70,56,0.8);
+}
+.Question div.most-icon.selected::after {
+	color: rgba(1,70,56);
+}
+.Question div.least {
+	background-color: rgba(216,150,100,0.8);
+}
+.Question div.least-icon.selected::after {
+	color: rgba(216,150,100);
+}
+.Question table.mrQuestionTable.maxDiff td.mrGridQuestionText {
+	-webkit-box-shadow: inset 0px 0px 18px -8px rgba(142,194,237,1);
+	-moz-box-shadow: inset 0px 0px 18px -8px rgba(142,194,237,1);
+	box-shadow: inset 0px 0px 18px -8px rgba(142,194,237,1);
+}
+.Question table.mrQuestionTable.maxDiff td.mrGridQuestionText.most {
+	background-color: rgba(1,70,56,0.2);
+}
+.Question table.mrQuestionTable.maxDiff td.mrGridQuestionText.most::after {
+	color: rgba(1,70,56);
+}
+.Question table.mrQuestionTable.maxDiff td.mrGridQuestionText.least::after {
+	color: rgba(216,150,100);
+}
+.Question table.mrQuestionTable.maxDiff td.mrGridQuestionText.least {
+	background-color: rgba(216,150,100,0.2);
+}
+
+	@media screen and (min-width : 320px) {
+		form > .container .Top_Banner {
+			height: auto;
+		}
+	}
+
+	/* Extra Small Devices, Phones */ 
+	@media screen and (min-width : 480px) {
+		form > .container .Top_Banner {
+			height: auto;
+		}
+	}
+
+	/* Small Devices, Tablets */
+	@media screen and (min-width : 768px) {
+		form > .container .Top_Banner {
+			height: 30px;
+		}
+	}
+
+	/* Medium Devices, Desktops */
+	@media screen and (min-width : 992px) {
+		form > .container .Top_Banner {
+			height: 50px;
+		}
+	}
+		
+	/* Large Devices, Wide Screens */
+	@media screen and (min-width : 1200px) {
+		form > .container .Top_Banner {
+			height: 50px;
+		}
+	}

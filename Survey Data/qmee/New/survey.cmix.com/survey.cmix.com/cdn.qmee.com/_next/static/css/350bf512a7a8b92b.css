@@ -1,0 +1,55 @@
+.CompanyInfoPage_root__uxSNq h2 {
+  font-size: var(--dimensions-font-size-large);
+}
+@media (min-width: 60rem) {
+  .CompanyInfoPage_root__uxSNq h2 {
+    font-size: var(--dimensions-font-size-xlarge);
+  }
+}
+.CompanyInfoPage_root__uxSNq h3 {
+  font-size: var(--dimensions-font-size-normal);
+}
+@media (min-width: 60rem) {
+  .CompanyInfoPage_root__uxSNq h3 {
+    font-size: var(--dimensions-font-size-large);
+  }
+}
+.CompanyInfoPage_root__uxSNq ol,
+.CompanyInfoPage_root__uxSNq ul {
+  line-height: 1.4;
+  padding-left: 20px;
+}
+.Table_root__nNNbE {
+  border: 1px solid var(--palette-divider);
+  border-collapse: collapse;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+.Table_root__nNNbE tr {
+  border-bottom: 1px solid #e6e6e6;
+}
+.Table_root__nNNbE tr:nth-child(2n) {
+  background: var(--palette-background-secondary);
+}
+.Table_root__nNNbE th {
+  padding: 10px;
+  vertical-align: top;
+}
+.Table_root__nNNbE td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  vertical-align: top;
+}
+.Table_root__nNNbE td:first-child {
+  padding-left: 15px;
+}
+.Table_horizontalScroll__JOmcD {
+  max-width: 100%;
+  overflow-x: scroll;
+}
+.Table_horizontalScroll__JOmcD::-webkit-scrollbar {
+  display: none;
+}
+/*# sourceMappingURL=350bf512a7a8b92b.css.map*/

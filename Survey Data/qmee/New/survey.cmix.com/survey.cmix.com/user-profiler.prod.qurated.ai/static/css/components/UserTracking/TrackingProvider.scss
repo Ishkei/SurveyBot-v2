@@ -1,0 +1,151 @@
+@use '../../assets/styling/Variables.scss';
+
+.cookie-dialog {
+  border: #ccc 1px solid;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  justify-content: center;
+  display: flex;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 20px;
+  background: white;
+  max-height: 100vh;
+  overflow: auto;
+}
+
+.cookie-container {
+  position: relative;
+  padding: 16px 24px;
+  width: 100%;
+  max-width: 550px;
+  display: flex;
+  flex-wrap: wrap;
+  @media (max-width: 540px) {
+    padding: "16px 7px";
+  }
+}
+
+.cookie-question {
+  max-width: 750px;
+  color: #6a6a6a;
+  line-height: 25px;
+}
+
+.question-header {
+  font-weight: bold;
+  color: #6a6a6a;
+  font-size: 1.5em;
+}
+
+.cookie-buttons {
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.accept-button {
+  margin: 5px 0px 16px;
+  width: 100%;
+  background: Variables.$primary-colour;
+  border-radius: 90px;
+  cursor: pointer;
+  height: 54px;
+  border-width: 0px;
+  padding: 2px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+
+  color: white;
+  font-family: Lato, 'Helvetica Neue', Helvetica, Roboto, "Arial-Nova", Arial, sans-serif;
+
+  &.disabled {
+    background-color: grey;
+    pointer-events: none;
+  }
+}
+
+.reject-button {
+  background: transparent;
+  border: 1px solid rgb(53, 53, 53);
+  border-radius: 90px;
+  cursor: pointer;
+  height: 48px;
+  max-width: 300px;
+  padding: 2px;
+  width: 100%;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  margin: auto;
+  color: rgb(53, 53, 53);
+  font-family: Lato, 'Helvetica Neue', Helvetica, Roboto, "Arial-Nova", Arial, sans-serif;
+  border: none;
+  color: #6a6a6a;
+
+  &.disabled {
+    background-color: grey;
+    pointer-events: none;
+  }
+}
+
+.cookie-banner-popup {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  z-index: 999;
+
+  p {
+    padding: 10px 20px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .close-modal-content {
+    text-align: center;
+    display: grid;
+    align-content: center;
+    height: auto;
+    width: auto;
+    min-height: auto;
+    height: auto;
+    background: none;
+  }
+
+  .close-page-x-button {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+
+    @media screen and (max-width:540px) {
+      right: 10px;
+      top: 10px;
+    }
+  }
+
+  @media (max-height: 600px) and (max-width: 600px){
+    .exit-modal-button{
+      margin: 10px auto;
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    p{
+      padding: 5px;
+      font-size: 16px;
+    }
+  }
+}

@@ -1,0 +1,185 @@
+@media screen and (max-device-width: 780px) {
+  /* line 34, sass/pages/_landing.scss */
+  .landing-page body {
+    background: url("../assets/img/landing/cover.jpg") #000 no-repeat center
+      center fixed;
+    font-family: "Inter", Arial, sans-serif !important;
+  }
+}
+
+body.screening-body {
+  padding-top: 65px !important;
+  font-family: "Inter", Arial, sans-serif !important;
+}
+
+@media (min-width: 768px) {
+  body.screening-body {
+    padding-top: 85px !important;
+    font-family: "Inter", Arial, sans-serif !important;
+  }
+}
+
+.panel-poll-body .btn.twitter,
+.panel-poll-body .btn.contactEmail,
+.panel-poll- .btn.recommend,
+.panel-poll-body .btn.facebook {
+  border-radius: 60px;
+  padding: 4px 10px;
+}
+
+/* Screening ThankYouCompletePanel */
+
+.thank-you-complete .fix-link small.text-soft-light {
+  color: #5c6ac1 !important;
+}
+
+.intro-page .fix-link small.text-soft-light {
+  color: #5c6ac1 !important;
+}
+
+.thank-you-out-quotal .fix-link small.text-soft-light {
+  color: #5c6ac1 !important;
+}
+
+/*Screening registration*/
+body.recruitment-landing,
+body.screening-body {
+  background: #fff !important;
+  font-size: 16px !important;
+  font-family: "Inter", Arial, sans-serif !important;
+  padding-top: 10px !important;
+  color: #666 !important;
+}
+
+.recruitment-landing a.links strong,
+.screening-body p a,
+.visitor a,
+.thank-you-complete a,
+.thank-you-complete-external a,
+.thank-you-out-quotal a,
+.intro-page a,
+.container-secondary a,
+.screening-body a {
+  color: #5c6ac1 !important;
+  font-weight: 700 !important;
+  font-family: "Inter", Arial, sans-serif !important;
+}
+
+.thank-you-complete h1,
+.thank-you-complete span,
+.thank-you-complete p,
+.thank-you-complete-external h1,
+.thank-you-complete-external span,
+.thank-you-complete-external h1 {
+  font-family: "Inter", Arial, sans-serif !important;
+  font-weight: 400;
+}
+
+.bigger-inputs .btn-default:hover,
+.bigger-inputs .btn-default:active,
+.bigger-inputs .btn-default,
+.bigger-inputs .open .dropdown-toggle.btn-default,
+.bigger-inputs .btn-default .caret,
+.bigger-inputs .dropdown-menu li a:hover,
+.bigger-inputs .dropdown-menu li a:focus,
+.screening-body .btn-default:hover,
+.screening-body .btn-default:active,
+.screening-body .btn-default,
+.screening-body .open .dropdown-toggle.btn-default,
+.screening-body .btn-default .caret,
+.screening-body .dropdown-menu li a:hover,
+.screening-body .dropdown-menu li a:focus {
+  color: #5c6ac1;
+  background-color: #f4f4f4;
+  border: 1px solid #d5d5d5;
+}
+
+.bigger-inputs .dropdown-menu li a:hover {
+  background-color: #5c6ac1;
+  color: #fff !important;
+}
+
+.recruitment-landing .btn-primary,
+.recruitment-landing .block-primary,
+.recruitment-message-page .btn-primary,
+.screening-body .btn-primary,
+.intro-page .btn-primary,
+.thank-you-complete-external .btn-primary,
+.visitor .btn-primary,
+.thank-you-complete .btn-primary {
+  background-color: #5c6ac1 !important;
+  border-color: #5c6ac1 !important;
+  border-radius: 6px !important;
+  color: #fff !important;
+}
+
+/*do-not-seel-my-data*/
+
+.do-not-sell-my-data h1 {
+  font-weight: 700 !important;
+  color: #000;
+}
+
+.do-not-sell-my-data a.btn-outline {
+  padding: 10px 40px !important;
+  color: #d53b3d !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  border: 2px solid #d53b3d !important;
+  border-radius: 6px !important;
+}
+
+.panel-default {
+  border-radius: 12px;
+  border-color: #d4d4d4;
+}
+
+.btn {
+  padding: 11px 23px 10px 23px;
+  font-size: 16px;
+  font-weight: light;
+  font-size: 16px;
+}
+
+.h1,
+h1,
+.h2,
+h2,
+.h3,
+h3,
+.h4,
+.h5,
+.h6,
+h4,
+h5,
+h6,
+strong {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 700 !important;
+  color: #000;
+}
+
+.text-soft-light,
+.help-block {
+  color: #666666 !important;
+  font-family: "Inter", Arial, sans-serif !important;
+  font-size: 14px !important;
+}
+
+.thank-you-complete a,
+.thank-you-complete .btn-default,
+.thank-you-complete .block-default,
+.thank-you-complete span .font-size-sm {
+  color: #5c6ac1 !important;
+  font-weight: 700 !important;
+}
+
+.text-warning {
+  color: #ffca28;
+}
+
+.non-complete-profiling .h1 {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 700 !important;
+  color: #000;
+}

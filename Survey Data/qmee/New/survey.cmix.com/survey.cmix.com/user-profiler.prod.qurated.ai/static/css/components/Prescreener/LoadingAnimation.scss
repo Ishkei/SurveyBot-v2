@@ -1,0 +1,66 @@
+@use "../../assets/styling/Variables.scss";
+
+.loadingSpinner {
+  border: 10px solid #eaf0f6;
+  border-radius: 50%;
+  border-top: 10px solid Variables.$primary-colour;
+  transition: border-color 0.3s;
+  width: 150px;
+  height: 150px;
+  animation: spinner 1.5s linear infinite;
+
+  @media screen and (max-width: 800px) {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.spinner-icon {
+  transition: border-color 0.3s;
+  width: 150px;
+  height: 150px;
+  animation: spinner 3s linear infinite;
+
+  @media screen and (max-width: 800px) {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingContainer {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  z-index: 0;
+
+  & > div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  p{
+    font-size: 36px;
+    text-align: center;
+    font-weight: 600;
+    color: Variables.$title-colour;
+  }
+}

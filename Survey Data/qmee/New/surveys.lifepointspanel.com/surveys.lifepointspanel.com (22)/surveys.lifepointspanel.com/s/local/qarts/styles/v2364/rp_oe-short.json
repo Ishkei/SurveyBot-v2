@@ -1,0 +1,238 @@
+{
+  "s": {
+    "row": {
+      "uitype": "mdinput",
+      "inputonly": true,
+      "extrasmall": {
+        "displaydescr": true,
+        "txtpaddinglr": "6",
+        "txtpaddingtb": "6",
+        "imgwidth": "100",
+        "mdfloattype": "focus",
+        "inputheight": "10",
+        "inputsize": "18"
+      },
+      "small": {
+        "displaydescr": true,
+        "txtpaddinglr": "6",
+        "txtpaddingtb": "6",
+        "imgwidth": 100,
+        "mdfloattype": "focus",
+        "inputheight": 10,
+        "inputsize": 18
+      },
+      "medium": {
+        "displaydescr": true,
+        "border": "top-bottom",
+        "txtpaddinglr": "6",
+        "txtpaddingtb": "6",
+        "imgwidth": 100,
+        "mdfloattype": "focus",
+        "inputheight": 10,
+        "inputsize": "18"
+      },
+      "large": {
+        "displaydescr": true,
+        "border": "top-bottom",
+        "txtpaddinglr": "6",
+        "txtpaddingtb": "6",
+        "imgwidth": 125,
+        "mdfloattype": "focus",
+        "size": "25",
+        "inputheight": 10
+      },
+      "extralarge": {
+        "displaydescr": true,
+        "border": "top-bottom",
+        "txtpaddinglr": "6",
+        "txtpaddingtb": "6",
+        "imgwidth": 125,
+        "mdfloattype": "focus",
+        "size": "25",
+        "inputheight": 10
+      },
+      "animtype": "none"
+    },
+    "grid": {
+      "extrasmall": { "padding": "0", "containwidth": "90" },
+      "small": { "padding": "0", "containwidth": "50" },
+      "medium": {
+        "hgap": "0",
+        "vgap": "0",
+        "width": "100",
+        "padding": 30,
+        "containwidth": "40"
+      },
+      "large": {
+        "hgap": "0",
+        "vgap": "0",
+        "width": "100",
+        "padding": 30,
+        "containwidth": "35"
+      },
+      "extralarge": {
+        "hgap": "0",
+        "vgap": "0",
+        "width": "100",
+        "padding": 30,
+        "containwidth": "30"
+      }
+    },
+    "groupGrid": {
+      "extrasmall": { "padding": 16, "imgpadding": "15", "descrsize": "16" },
+      "small": { "padding": 16, "imgpadding": 15, "descrsize": 16 },
+      "medium": {
+        "width": 50,
+        "padding": 16,
+        "imgpadding": 15,
+        "imgheight": 125,
+        "descrsize": 16
+      },
+      "large": {
+        "width": 50,
+        "padding": 16,
+        "imgpadding": 15,
+        "imgheight": 125,
+        "descrsize": 16
+      },
+      "extralarge": {
+        "padding": 16,
+        "imgpadding": 15,
+        "imgheight": 125,
+        "descrsize": 16
+      }
+    }
+  },
+  "x": {
+    "ex": {
+      "uitype": "default",
+      "extrasmall": { "width": "100" },
+      "small": { "width": "100" },
+      "medium": { "width": "100" },
+      "large": { "width": "100" },
+      "extralarge": { "width": "100" }
+    },
+    "open": {
+      "uitype": "mdinput",
+      "enableripple": true,
+      "inputonly": true,
+      "inputnumeric": false,
+      "extrasmall": {
+        "displayimg": false,
+        "displaydescr": true,
+        "center": false,
+        "border": "top-bottom",
+        "imgdir": "row",
+        "txtpaddinglr": "6",
+        "txtpaddingtb": "6",
+        "imgpadding": "5",
+        "imgwidth": "100",
+        "imgheight": "85",
+        "titlesize": "18",
+        "subtitlesize": "16",
+        "descrsize": "14",
+        "titleweight": "500",
+        "stamppos": "center",
+        "mdfloattype": "focus",
+        "size": "20",
+        "inputheight": "10",
+        "inputsize": "18",
+        "stampsize": "30"
+      },
+      "small": {
+        "displayimg": false,
+        "displaydescr": true,
+        "center": false,
+        "border": "top-bottom",
+        "imgdir": "row",
+        "txtpaddinglr": "6",
+        "txtpaddingtb": "6",
+        "imgpadding": 5,
+        "imgwidth": 100,
+        "imgheight": 85,
+        "titlesize": "18",
+        "subtitlesize": "16",
+        "descrsize": "14",
+        "titleweight": "500",
+        "stamppos": "center",
+        "mdfloattype": "focus",
+        "size": 20,
+        "inputheight": 10,
+        "inputsize": 18,
+        "stampsize": 30
+      },
+      "medium": {
+        "displayimg": false,
+        "displaydescr": true,
+        "center": false,
+        "border": "top-bottom",
+        "imgdir": "column",
+        "txtpaddinglr": "6",
+        "txtpaddingtb": "6",
+        "imgpadding": 5,
+        "imgwidth": 100,
+        "imgheight": 100,
+        "titlesize": "18",
+        "subtitlesize": "16",
+        "descrsize": 14,
+        "titleweight": "500",
+        "stamppos": "center",
+        "mdfloattype": "focus",
+        "size": 25,
+        "inputheight": 10,
+        "inputsize": "18",
+        "stampsize": 30
+      },
+      "large": {
+        "displayimg": false,
+        "displaydescr": true,
+        "center": false,
+        "border": "top-bottom",
+        "imgdir": "column",
+        "txtpaddinglr": "6",
+        "txtpaddingtb": "6",
+        "imgpadding": 5,
+        "imgwidth": 125,
+        "imgheight": 150,
+        "titlesize": "18",
+        "subtitlesize": 16,
+        "descrsize": "14",
+        "titleweight": "500",
+        "stamppos": "center",
+        "mdfloattype": "focus",
+        "size": "25",
+        "inputheight": 10,
+        "inputsize": "18",
+        "stampsize": "30"
+      },
+      "extralarge": {
+        "displayimg": false,
+        "displaydescr": true,
+        "center": false,
+        "border": "top-bottom",
+        "imgdir": "column",
+        "txtpaddinglr": "6",
+        "txtpaddingtb": "6",
+        "imgpadding": 5,
+        "imgwidth": 125,
+        "imgheight": 150,
+        "titlesize": "18",
+        "subtitlesize": 16,
+        "descrsize": "14",
+        "titleweight": "500",
+        "stamppos": "center",
+        "mdfloattype": "focus",
+        "size": "25",
+        "inputheight": 10,
+        "inputsize": 18,
+        "stampsize": "30"
+      },
+      "delayanim": false,
+      "enablezoom": false,
+      "animtype": "none",
+      "titledowncolor": "#212121",
+      "subtitledowncolor": "#757575",
+      "descrdowncolor": "#757575"
+    }
+  }
+}

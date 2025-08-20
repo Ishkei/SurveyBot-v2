@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.sourceforge.net/"
+xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:wb="http://open.weibo.com/wb">
+<head><script type="text/javascript" src="//entercdn.ipsosinteractive.com/wicket/resource/org.apache.wicket.resource.JQueryResourceReference/jquery/jquery-3.7.1-ver-1750155335000.js"></script>
+<script type="text/javascript" src="//entercdn.ipsosinteractive.com/wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/res/js/wicket-ajax-jquery-ver-1750155335000.js"></script>
+<script type="text/javascript" id="wicket-ajax-base-url">
+/*<![CDATA[*/
+Wicket.Ajax.baseUrl="question/?p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&amp;rType=350&amp;id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512&amp;token=Ky8RvBkOQvQW-dv7B9bLDA8Cw6SHnVULeeD6EM1mcbrqG9DIp0wp0qF3AxDIlHi6UO1mrtO-MdQyktJTV0K3aZGlIBrtVPz0HgwJjGGK4kJW%2BuOTD5agYCLuKpOwbCL7gk1MwrGj3qHjKwAKgNe%2BUvo-X8kumYjjO2MdSfiWAKlDiHHjb2qfUVBTOKypZpUv";
+/*]]>*/
+</script>
+<script type="text/javascript" defer="defer" src="//entercdn.ipsosinteractive.com/assets/js/jquery.scrollTo-min.js"></script>
+
+<title>Surveys</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="//entercdn.ipsosinteractive.com/assets/ico/apple-touch-icon-144-precomposed.png"/>
+<link rel="shortcut icon" type="image/png" href="//entercdn.ipsosinteractive.com/assets/ico/favicon.png"/>
+<link rel="shortcut icon" type="image/x-icon" href="//entercdn.ipsosinteractive.com/assets/ico/favicon.ico"/>
+<link href="//entercdn.ipsosinteractive.com/assets/css/libs.css" rel="stylesheet" media="screen"/>
+<link href="//entercdn.ipsosinteractive.com/assets/css/styles072.css" rel="stylesheet" media="screen"/>
+
+<link href="//entercdn.ipsosinteractive.com/assets/css/styleDevelopers007.css" rel="stylesheet" media="screen"/>
+<link href="//entercdn.ipsosinteractive.com/assets/css/styleScreening.css" rel="stylesheet" media="screen"/>
+<link href="//entercdn.ipsosinteractive.com/assets/css/latin-font.css" rel="stylesheet" media="screen"/>
+
+
+<!--[if lt IE 9]> <script src="//entercdn.ipsosinteractive.com/assets/js/html5shiv.js"></script> <![endif]-->
+<!--[if lt IE 10]> <script src="//entercdn.ipsosinteractive.com/assets/js/respond.min.js"></script> <![endif]-->
+<script src="//entercdn.ipsosinteractive.com/assets/js/modernizr.animations.js"></script>
+<script src="//entercdn.ipsosinteractive.com/assets/js/jquery-ui-widgets.min.js"></script>
+<script src="//entercdn.ipsosinteractive.com/assets/js/bootstrap.min.js"></script>
+<script src="//entercdn.ipsosinteractive.com/assets/js/bootstrap-select.min.js"></script>
+<script defer="" src="//entercdn.ipsosinteractive.com/assets/js/fontawesome-all.min.js"></script>
+<script src="//entercdn.ipsosinteractive.com/assets/js/masonry.pkgd.min.js"></script>
+<script src="//entercdn.ipsosinteractive.com/assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="//entercdn.ipsosinteractive.com/assets/js/loading.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+$(function() {
+// Avoid problems with input and keyboard on header
+if( /iPhone|iPod|iPad/i.test(navigator.userAgent) ) {
+$(document).on('focus', 'input, textarea', function(){
+$('.navbar-fixed-top').css("position", 'absolute');
+});
+$(document).on('blur', 'input, textarea', function(){
+$('.navbar-fixed-top').css("position", 'fixed');
+});
+}
+});
+
+/*]]>*/
+</script>
+<script defer="" src="//entercdn.ipsosinteractive.com/assets/js/bowser.min.js"></script>
+<script defer="" src="//entercdn.ipsosinteractive.com/assets/js/ie-detection.js"></script>
+<script src="//entercdn.ipsosinteractive.com/assets/lottie/lottie-player.js"></script>
+<script type="text/javascript" defer="defer" src="//entercdn.ipsosinteractive.com/assets/js/js-copy.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+Wicket.Event.add(window, "domready", function(event) { 
+Wicket.Ajax.ajax({"u":"./?6-1.0-content-questionForm-questionContainer-submit&p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&rType=350&id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512&token=Ky8RvBkOQvQW-dv7B9bLDA8Cw6SHnVULeeD6EM1mcbrqG9DIp0wp0qF3AxDIlHi6UO1mrtO-MdQyktJTV0K3aZGlIBrtVPz0HgwJjGGK4kJW%2BuOTD5agYCLuKpOwbCL7gk1MwrGj3qHjKwAKgNe%2BUvo-X8kumYjjO2MdSfiWAKlDiHHjb2qfUVBTOKypZpUv","m":"POST","c":"submitQuestion","f":"questionForm1c","sc":"questionContainer:submit","bh":[function(attrs){if(isIE9OrLower()) { $('#submitQuestion').addClass('disabled');
+$('#loadingSpin1d').show()} else {$('#submitQuestion').addClass('m-progress disabled')}}],"e":"click","pd":true});;
+$('#checkGroup1b input:checkbox').change(function(e){if($(this).prop('checked')){if($(this).hasClass('logic')){if($(this).hasClass('all')){$('#checkGroup1b').find(':checkbox').not('.logic').prop('checked', true);
+$('#checkGroup1b').find('.exclusive').not($(this)).prop('checked', false)}else{$('#checkGroup1b').find(':checkbox').not($(this)).prop('checked', false)}}else{$('#checkGroup1b').find('.exclusive').prop('checked', false)}}else{$('#checkGroup1b').find('.all').prop('checked', false)}});
+Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
+;});
+/*]]>*/
+</script>
+</head>
+<body class="screening-body">
+
+
+<div id="header" class="cortex-header">
+<nav id="navbar" class="navbar" role="navigation">
+
+</nav>
+</div>
+
+
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-10 col-md-8 col-lg-7" style="margin: 0 auto; float:none">
+<div id="pointsContainer1e" hidden="" data-wicket-placeholder=""></div>
+<div id="questionContent" class="panel panel-default" style="height:100%;">
+<div>
+
+<form role="form" id="questionForm1c" method="post" action="./?6-1.-content-questionForm&amp;p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&amp;rType=350&amp;id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512&amp;token=Ky8RvBkOQvQW-dv7B9bLDA8Cw6SHnVULeeD6EM1mcbrqG9DIp0wp0qF3AxDIlHi6UO1mrtO-MdQyktJTV0K3aZGlIBrtVPz0HgwJjGGK4kJW%2BuOTD5agYCLuKpOwbCL7gk1MwrGj3qHjKwAKgNe%2BUvo-X8kumYjjO2MdSfiWAKlDiHHjb2qfUVBTOKypZpUv"><div id="questionForm1c_hf_0" hidden="" class=""></div>
+<div id="questionContainer1f">
+<div class="question-preview-options" id="optionsPanel20">
+<div style="position:relative;display:block; top:-50px" id="scrollTo"></div>
+<div>
+
+<h3 class="question-title-frontend">Which of the following activities have you personally done in the past 4 weeks?</h3>
+<p></p>
+<div id="actualQuestionPanel21">
+<div class="row">
+<div class="col-md-12" role="tablist" aria-multiselectable="true" id="checkGroup1b">
+<div class="panel" style="padding:0px;">
+
+<div id="content22">
+<span class="multipleChoice-checkbox">
+
+<div class="checkbox">
+<label>
+<input type="checkbox" id="check23" name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup" value="check0"/>
+<span class="font-weight-light text-hard-light">Learned Korean</span>
+</label>
+
+</div>
+
+</span><span class="multipleChoice-checkbox">
+
+<div class="checkbox">
+<label>
+<input type="checkbox" id="check24" name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup" value="check1"/>
+<span class="font-weight-light text-hard-light">Played the harp</span>
+</label>
+
+</div>
+
+</span><span class="multipleChoice-checkbox">
+
+<div class="checkbox">
+<label>
+<input type="checkbox" id="check25" name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup" value="check2"/>
+<span class="font-weight-light text-hard-light">Read a book or magazine</span>
+</label>
+
+</div>
+
+</span><span class="multipleChoice-checkbox">
+
+<div class="checkbox">
+<label>
+<input type="checkbox" id="check26" name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup" value="check3"/>
+<span class="font-weight-light text-hard-light">Gardened</span>
+</label>
+
+</div>
+
+</span><span class="multipleChoice-checkbox">
+
+<div class="checkbox">
+<label>
+<input type="checkbox" id="check27" name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup" value="check4"/>
+<span class="font-weight-light text-hard-light">Went Skydiving</span>
+</label>
+
+</div>
+
+</span><span class="multipleChoice-checkbox">
+
+<div class="checkbox">
+<label>
+<input type="checkbox" id="check28" name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup" value="check5"/>
+<span class="font-weight-light text-hard-light">Listened to music</span>
+</label>
+
+</div>
+
+</span><span class="multipleChoice-checkbox">
+
+<div class="checkbox">
+<label>
+<input type="checkbox" id="check29" name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup" value="check6" class="logic exclusive"/>
+<span class="font-weight-light text-hard-light">None of these</span>
+</label>
+
+</div>
+
+</span>
+</div>
+</div>
+</div>
+</div>
+<div id="checkGroupFeedback2a" hidden="" data-wicket-placeholder=""></div>
+</div>
+</div>
+</div>
+<div class="btn-container fixed-margin-top">
+<a href="#" id="submitQuestion" class="btn btn-primary btn-dyn">
+<span id="submitLabel2b">Next</span>
+</a>
+<img style="display:none" class="margin-left-xxs" src="../assets/img/loading-spin.gif" alt="Loading.." id="loadingSpin1d"/>
+</div>
+</div>
+</form>
+</div>
+<img id="ajaxLoadingImage" src="//entercdn.ipsosinteractive.com/assets/img/ajax-loader-small.gif" class="ajaxIndicator ajaxIndicatorHidden" alt="" style="display: none"/>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+var indicator = $('#ajaxLoadingImage');
+try {
+var observer = new MutationObserver(function(mutations) {
+mutations.forEach(function(mutationRecord) {
+if (indicator.css('display') === 'none') indicator.addClass('ajaxIndicatorHidden');
+else indicator.removeClass('ajaxIndicatorHidden');
+});
+});
+observer.observe(indicator[0], {
+attributes: true,
+attributeFilter: ['style']
+});
+} catch (ex) {
+indicator.hide();
+indicator.removeClass('ajaxIndicatorHidden');
+}
+
+/*]]>*/
+</script>
+</div>
+</div>
+</div>
+</div>
+
+<img id="ajaxLoadingImage" src="//entercdn.ipsosinteractive.com/assets/img/ajax-loader-small.gif" class="ajaxIndicator ajaxIndicatorHidden" style="display: none"/>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+var indicator = $('#ajaxLoadingImage');
+try {
+var observer = new MutationObserver(function(mutations) {
+mutations.forEach(function(mutationRecord) {
+if (indicator.css('display') === 'none')
+indicator.addClass('ajaxIndicatorHidden');
+else
+indicator.removeClass('ajaxIndicatorHidden');
+});
+});
+observer.observe(indicator[0], { attributes : true, attributeFilter : ['style'] });
+} catch (ex) {
+indicator.hide();
+indicator.removeClass('ajaxIndicatorHidden');
+}
+
+/*]]>*/
+</script>
+
+<footer id="footer" class="cortex-footer">
+<hr>
+<div class="container container-secondary">
+<div class="row">
+<div class="col-xs-12 col-sm-10 col-sm-push-2 col-md-11 col-md-push-1">
+<div class="row fixed-padding">
+<ul class="list-inline">
+
+
+<li><a target="_blank" href="https://cdn.ipsosinteractive.com/deploy/i-say/ppamp/en-us.html"><span>Privacy Policy </span></a></li>
+
+<li id="doNotSellMyDataContainer2c"><a target="_blank" href="./?6-1.-footer-doNotSellMyDataContainer-doNotSellMyDataLink&amp;p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&amp;rType=350&amp;id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512&amp;token=Ky8RvBkOQvQW-dv7B9bLDA8Cw6SHnVULeeD6EM1mcbrqG9DIp0wp0qF3AxDIlHi6UO1mrtO-MdQyktJTV0K3aZGlIBrtVPz0HgwJjGGK4kJW%2BuOTD5agYCLuKpOwbCL7gk1MwrGj3qHjKwAKgNe%2BUvo-X8kumYjjO2MdSfiWAKlDiHHjb2qfUVBTOKypZpUv"><span>Do not sell my data</span></a></li>
+
+</ul>
+</div>
+<div class="row fixed-padding">
+
+</div>
+</div>
+<div class="col-xs-12 col-sm-2 col-sm-pull-10 col-md-1 col-md-pull-11 text-center">
+
+</div>
+</div>
+</div>
+</footer>
+
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'971fdabede26aa39',t:'MTc1NTY3MTU1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

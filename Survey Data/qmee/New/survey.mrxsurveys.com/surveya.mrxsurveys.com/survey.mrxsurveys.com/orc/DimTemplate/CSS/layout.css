@@ -1,0 +1,1474 @@
+@keyframes icon-beat {  
+	0% {
+		-webkit-transform: scale(1.5);
+		-ms-transform: scale(1.5);
+		transform: scale(1.5);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+span.theme, span.widget {
+	display: none;
+}
+
+body{
+	font-size: 1em;
+	font-weight: normal;
+}
+
+.col-lg-offset-1.QuestionControls {
+	margin-left: 3.3333%;
+}
+.col-lg-11.QuestionControls {
+	width: 96.6667%;
+}
+.col-md-offset-1.QuestionControls {
+	margin-left: 2%;
+}
+.col-md-11.QuestionControls {
+	width: 98%;
+}
+
+table.mrQuestionTable > thead > tr > .collapsedCell,
+table.mrQuestionTable > tbody > tr > .collapsedCell {
+	display: none !important;
+}
+
+table.mrQuestionTable.sliders  {
+	display: table !important;
+}
+
+.emoji, .emoji-small, .emoji-big
+{
+	font-family: EmojiOne, sans-serif !important;
+}
+.emoji { font-size: 3em; }
+.emoji-small { font-size: 2em; }
+.emoji-big { font-size: 4em; }
+
+.mrEdit {
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	color: #646464;
+	font-weight: normal;
+    margin: 8px;
+	padding: 5px;
+	position: relative;
+    /*width: 100%;*/
+	z-index: 999;
+}
+
+.mrEdit:focus {
+	border-color: rgba(41, 92, 161, 0.4);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
+	color: #333;
+	outline: 0 none;
+}
+
+.mrEdit.number {
+	/*max-width: 200px;*/
+}
+
+.speech-bubble { 
+	position: relative;
+    padding: 5px 20px;
+    margin-bottom: 40px;
+    color: #000;
+    background: #c7e1f3;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#e7f2fa), to(#c7e1f3));
+    background: -moz-linear-gradient(#e7f2fa, #c7e1f3);
+    background: -o-linear-gradient(#e7f2fa, #c7e1f3);
+    background: linear-gradient(#e7f2fa, #c7e1f3);
+    -webkit-border-top-left-radius: 25px 50px;
+    -webkit-border-top-right-radius: 25px 50px;
+    -webkit-border-bottom-right-radius: 25px 50px;
+    -webkit-border-bottom-left-radius: 25px 50px;
+    -moz-border-radius: 25px / 50px;
+    border-radius: 25px / 50px;
+	border-color: transparent;
+} 
+.speech-bubble::before {
+    content: "";
+    position: absolute;
+    bottom: -29px;
+    /*right: 80px;*/
+    border-width: 0 0 30px 50px;
+    border-style: solid;
+    border-color: transparent #c7e1f3;
+    display: block;
+    width: 0;
+}
+.speech-bubble:after { 
+	content: "";
+	position: absolute;
+	bottom: -30px;
+	border-width: 0 0 30px 20px;
+	border-style: solid;
+	border-color: transparent #fff;
+	display: block;
+	width: 0;
+}
+.speech-bubble .mrEdit {
+	background: transparent;
+	border: 1px solid transparent;
+	box-sizing: border-box;
+	color: #646464;
+	font-weight: normal;
+    margin: 8px;
+	overflow: hidden;
+	padding: 5px;
+	position: relative;
+    /*width: 100%;*/
+	z-index: 999;
+}
+
+.mrNext, .mrPrev, .mrStop {
+	border: 0;
+	font-size: 0;
+	height: 0px !important;
+	padding: 0;
+	position: absolute;
+	width: 0px !important;
+}
+
+.NavButtons{
+	margin-top: 15px;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.Top_Banner {
+	width: 100%;
+	margin-bottom:20px;
+	height: 80px;
+	padding-top: 10px;
+}
+
+.Top_Banner_Img{
+
+}
+
+#footer {
+	font-size:12px;
+	height: 60px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	min-height: 70px;
+	padding-top: 10px;
+	text-align: left;
+}
+
+#hiddenprog {
+	display: none;
+}
+
+#shownprog {
+	margin-top: -20px;
+}
+
+.NavButtons span.orcButton{ 
+	font-family: Roboto, sans-serif;
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	  touch-action: manipulation;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 15px;
+	font-size: 16px;
+	line-height: 1.42857143;
+	width: 100% !important;
+}
+
+.ProgBar{
+	padding:0px;
+	font-size: 15px;
+	border: 3px solid black;
+	border-radius : 10px
+}
+
+.ProgBar table{
+	height: initial !Important;
+	border-radius : 8px;
+}
+
+.ProgBar td{
+	border-radius : 8px;
+}
+
+.ProgBar table>tbody>tr>td:nth-of-type(1) {
+	background-color: #65cbf3 !important;
+}
+
+
+.Question, div#surv > span.mrQuestionText {
+	font-size: 15px;
+	margin-top:5px;
+	min-height: 20px;
+	/*padding: 19px;*/
+	margin-bottom: 20px;
+}
+
+textarea{
+	width:98%;
+}
+
+textarea[name="_QHASHING_QHASH_QHASHDATA"] {
+	display: none;
+}
+
+.mrQuestionTable > span{
+	display:block;
+}
+
+.mrDropdown {
+	font-size: 14px;
+	padding: 5px; /* If you add too much padding here, the options won't show in IE */
+	background: #ffffff;
+	height: 34px;
+	width: 240px;
+}
+
+.tooltip_templates { 
+	display: none; 
+}
+
+@media screen and (max-width: 600px) {
+	.NavButtons{
+		font-size: 13px;
+	}
+	.Question{
+		/*font-size: 12px;*/
+		margin: 1px;
+		padding: 1px;
+	}
+	.container{
+		padding-left:2px;
+		padding-right:2px;
+	}
+	
+	.col-xs-12{
+		padding-left:15px;
+		padding-right:15px;
+	}
+	.row{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+}
+
+
+
+/* Begin Double Control Columns Controls */
+@media screen and (min-width: 992px) {  /* copied from bootstrap col-md-6 */
+	.DoubleColumn .mrQuestionTable>span {
+		position: relative;
+		min-height: 1px;
+		padding-left: 15px;
+		padding-right: 15px;
+		float: left;
+		width: 50%;
+	}
+	.TripleColumn .mrQuestionTable>span {
+		position: relative;
+		min-height: 1px;
+		padding-left: 15px;
+		padding-right: 15px;
+		float: left;
+		width: 33.33333333%;
+	}
+	div.vDoubleColumn {
+		position: relative;
+		min-height: 1px;
+		padding-left: 15px;
+		padding-right: 15px;
+		float: left;
+		width: 50%;
+	}
+	div.vTripleColumn {
+		position: relative;
+		min-height: 1px;
+		padding-left: 15px;
+		padding-right: 15px;
+		float: left;
+		width: 33.33333333%;
+	}
+}
+/* End Double Control Columns Controls */
+
+.QuestionBanner{
+	font-size: 20px;
+	font-style: bold;
+}
+
+
+.QuestionError{
+	
+}
+
+.QuestionLabel{
+	font-weight: normal;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-bottom: 3px;
+}
+.QuestionLabel.sticky {
+     position: fixed;
+	 transform: translate3d(0,0,0);
+     top: 0;
+	 background-color: #fff;
+	 margin-left: -20px;
+	 width: 100%;
+	 z-index:999;
+  }
+
+/* .QuestionLabel label{
+	font-weight: bold;			
+} */
+
+label{
+	font-weight:normal;
+}
+
+.QuestionControls{
+	font-weight: normal;
+}
+
+.mrQuestionTable{
+	display: inline-block;
+}
+
+.mrQuestionTable>span{
+	display: inline;
+}
+
+.mrQuestionTable div.show {
+	display: inherit;
+}
+
+.GridTable{
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 20px;
+}
+.GridTable:not(.tablesaw):not(.maxDiff):not(.sliders):not(.matrix):not([class*="RatingTable"]){
+	border-collapse: collapse;
+	border-spacing: 0;
+	min-width: 65%;
+	width: auto;
+	max-width: 100%;
+	margin-bottom: 20px;
+}
+
+@media (max-width: 39.9375em) {
+	.GridTable.sliders > tbody > tr:first-child > td:not(:first-child),
+	.GridTable.sliders > tbody > tr:first-child > td:first-child,
+	.GridTable.sliders > tbody > tr:not(:first-child) > td {
+		display: block;
+		float: left;
+		clear: left;
+		width: 100%;
+	}
+	
+	.GridTable.sliders > tbody > tr {
+		border-top: solid #ccc 1px;
+	}
+}
+
+@media (min-width: 40em) {
+	.GridTable.sliders > tbody > tr:first-child > td:first-child {
+		display: table-cell;
+		width: 30%;
+	}
+	.GridTable.sliders > tbody > tr:first-child > td:not(:first-child) {
+		display: table-cell;
+		width: 70%;
+	}
+	
+	.GridTable.sliders > tbody > tr:not(:first-child) > td {
+		display: table-cell;
+		width: auto;
+	}
+}
+
+.GridTable > thead > tr > th,
+.GridTable > tbody > tr > th,
+.GridTable > tfoot > tr > th,
+.GridTable > thead > tr > td,
+.GridTable > tbody > tr > td,
+.GridTable > tfoot > tr > td {
+	padding:8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+}
+
+@media screen and (max-width: 500px) {
+	.GridTable > thead > tr > th,
+	.GridTable > tbody > tr > th,
+	.GridTable > tfoot > tr > th,
+	.GridTable > thead > tr > td,
+	.GridTable > tbody > tr > td,
+	.GridTable > tfoot > tr > td {
+		padding:0px;
+	}
+}
+
+.GridTable:not(.leftRight) > tbody > tr:first-child > td:first-child {
+	width: 30%;
+}
+
+.GridTable.leftRight > tbody > tr > td:nth-child(2) {
+	text-align: center !important;
+}
+
+.DefaultControls .GridTable.leftRight label {
+	display: inline;
+}
+@media screen and (min-width: 320px) {
+	.DefaultControls .GridTable.leftRight label {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.GridTable.leftRight > tbody > tr:first-child > td:first-child,
+	.GridTable.leftRight > tbody > tr:first-child > td:nth-child(3) {
+		width: 30%;
+	}
+	.GridTable.leftRight > tbody > tr:first-child > td:nth-child(2) {
+		width: 30%;
+	}
+}
+@media screen and (min-width: 480px) {
+	.DefaultControls .GridTable.leftRight label {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.GridTable.leftRight > tbody > tr:first-child > td:first-child,
+	.GridTable.leftRight > tbody > tr:first-child > td:nth-child(3) {
+		width: 30%;
+	}
+	.GridTable.leftRight > tbody > tr:first-child > td:nth-child(2) {
+		width: 30%;
+	}
+}
+@media screen and (min-width: 768px) {
+	.DefaultControls .GridTable.leftRight label {
+		padding-left: 6px;
+		padding-right: 8px;
+	}
+	.GridTable.leftRight > tbody > tr:first-child > td:first-child,
+	.GridTable.leftRight > tbody > tr:first-child > td:nth-child(3) {
+		width: 15%;
+	}
+	.GridTable.leftRight > tbody > tr:first-child > td:nth-child(2) {
+		width: 30%;
+	}
+}
+@media screen and (min-width: 992px) {
+.DefaultControls .GridTable.leftRight label {
+		padding-left: 6px;
+		padding-right: 8px;
+	}
+	.GridTable.leftRight > tbody > tr:first-child > td:first-child,
+	.GridTable.leftRight > tbody > tr:first-child > td:nth-child(3) {
+		width: 15%;
+	}
+	.GridTable.leftRight > tbody > tr:first-child > td:nth-child(2) {
+		width: 30%;
+	}
+}
+
+.Question .tablesaw-advance-dots li i {
+	height: 0.55em;
+	width: 0.55em;
+}
+
+
+/* Begin Default Controls */
+.DefaultControls  label,
+.Theme_Full  label,
+.Theme_Empty  label,
+.Theme_Dot label{
+	display: inline;
+	padding-top: 0px;
+	padding-left: 6px;
+	margin-bottom: 0px;
+	padding-right:8px;
+	height:100%;
+	cursor: pointer;
+	-webkit-transition: all 0.25s linear;
+}
+
+.DefaultControls .Remove_Input,
+.Theme_Full .Remove_Input,
+.Theme_Empty .Remove_Input,
+.Theme_Dot .Remove_Input {
+	position: absolute;
+	/*visibility: hidden;
+	display:none;*/
+	opacity:0;
+	filter:Alpha(opacity=0);
+}
+
+.DefaultControls .Remove_Input + label:before,
+.Theme_Full .Remove_Input + label:before,
+.Theme_Empty .Remove_Input + label:before,
+.Theme_Dot .Remove_Input + label:before {
+	font-family: 'FontAwesome';
+	font-size: 28px;
+	height: 25px;
+	width: 25px;
+	/*display: inline-block;*/
+}
+
+.DefaultControls .Remove_Input[disabled] + label:before,
+.Theme_Full .Remove_Input[disabled] + label:before,
+.Theme_Empty .Remove_Input[disabled] + label:before,
+.Theme_Dot .Remove_Input[disabled] + label:before {
+	opacity: 0.35;
+}
+
+.DefaultControls .Remove_Input + label,
+.Theme_Full .Remove_Input + label,
+.Theme_Empty .Remove_Input + label,
+.Theme_Dot .Remove_Input + label {
+	font-family: 'FontAwesome';
+	position: relative;
+}
+
+/* Begin Check_Box_Specials */
+.Check_Box:before{
+	content: "\f096"; /* fa-square-o */
+}
+
+.DefaultControls .Remove_Input:checked + .Check_Box:before {
+	content: "\f14a"; /* fa-check-square */
+	-webkit-animation: icon-beat 0.1s ease;
+	animation: icon-beat 0.1s ease;
+}
+.Theme_Full .Remove_Input:checked + .Check_Box:before {
+	content: "\f0c8"; /* fa-square */
+	-webkit-animation: icon-beat 0.1s ease;
+	animation: icon-beat 0.1s ease;
+}
+.Theme_Empty .Remove_Input:checked + .Check_Box:before {
+	content: "\f046"; /* fa-check-square-o */
+	-webkit-animation: icon-beat 0.1s ease;
+	animation: icon-beat 0.1s ease;
+}
+.Theme_Dot .Remove_Input:checked + .Check_Box:before {
+	content: "\f196"; /* fa-plus-square-o */
+	-webkit-animation: icon-beat 0.1s ease;
+	animation: icon-beat 0.1s ease;
+}
+/* IE6-8 hacks */
+.DefaultControls .Check_Box.checked:before ,
+.Theme_Full .Check_Box.checked:before,
+.Theme_Empty .Check_Box.checked:before,
+.Theme_Dot .Check_Box.checked:before
+{
+	content: "\f14a"; /* fa-check-square */
+}
+.Theme_Full .Check_Box.checked:before {
+	content: "\f0c8"; /* fa-square */
+}
+.Theme_Empty .Check_Box.checked:before {
+	content: "\f046"; /* fa-check-square-o */
+}
+.Theme_Dot .Check_Box.checked:before {
+	content: "\f196"; /* fa-plus-square-o */
+}
+/***************/
+
+/* End Check_Box_Specials */
+
+/* Begin Radio_Button_Specials */
+.Radio_Button:before{
+	content: "\f1db"; /* circle-thin */
+}
+
+.DefaultControls .Remove_Input:checked + .Radio_Button:before {
+	content: "\f058"; /* check-circle */
+	-webkit-animation: icon-beat 0.1s ease;
+	animation: icon-beat 0.1s ease;
+}
+.Theme_Full .Remove_Input:checked + .Radio_Button:before {
+	content: "\f111"; /* fa-circle */
+}
+.Theme_Empty .Remove_Input:checked + .Radio_Button:before {
+	content: "\f05d"; /* fa-check-circle-o */
+}
+.Theme_Dot .Remove_Input:checked + .Radio_Button:before {
+	content: "\f192"; /* fa-dot-circle-o */
+}
+
+/* IE6-8 hacks */
+.Radio_Button.checked:before {
+	content: "\f058"; /* check-circle */
+}
+.Theme_Full .Radio_Button.checked:before {
+	content: "\f111"; /* fa-circle */
+}
+.Theme_Empty .Radio_Button.checked:before {
+	content: "\f05d"; /* fa-check-circle-o */
+}
+.Theme_Dot .Radio_Button.checked:before {
+	content: "\f192"; /* fa-dot-circle-o */
+}
+/***************/
+
+	@media screen and (min-width : 320px) {
+		.QuestionControls .ui-controlgroup div.default > label > span > input.mrEdit {
+			margin: 8px 0;
+		}
+		
+		.DefaultControls .Remove_Input + label:before,
+		.Theme_Full .Remove_Input + label:before,
+		.Theme_Empty .Remove_Input + label:before,
+		.Theme_Dot .Remove_Input + label:before {
+			display: table-cell;
+		}
+	}
+
+	/* Extra Small Devices, Phones */ 
+	@media screen and (min-width : 480px) {
+		.QuestionControls .ui-controlgroup div.default > label > span > input.mrEdit {
+			margin: 8px 0;
+		}
+	}
+
+	/* Small Devices, Tablets */
+	@media screen and (min-width : 768px) {
+		.QuestionControls .ui-controlgroup div.default > label > span > input.mrEdit {
+			margin: 8px 0;
+		}
+		
+		.DefaultControls .Remove_Input + label:before,
+		.Theme_Full .Remove_Input + label:before,
+		.Theme_Empty .Remove_Input + label:before,
+		.Theme_Dot .Remove_Input + label:before {
+			display: inline-block;
+		}
+	}
+
+	/* Medium Devices, Desktops */
+	@media screen and (min-width : 992px) {
+		.QuestionControls .ui-controlgroup div.default > label > span > input.mrEdit {
+			margin: -5px 0;
+		}
+		
+		.DefaultControls .Remove_Input + label:before,
+		.Theme_Full .Remove_Input + label:before,
+		.Theme_Empty .Remove_Input + label:before,
+		.Theme_Dot .Remove_Input + label:before {
+			display: inline-block;
+		}
+	}
+		
+	/* Large Devices, Wide Screens */
+	@media screen and (min-width : 1200px) {
+		.QuestionControls .ui-controlgroup div.default > label > span > input.mrEdit {
+			margin: -5px 0;
+		}
+		
+		.DefaultControls .Remove_Input + label:before,
+		.Theme_Full .Remove_Input + label:before,
+		.Theme_Empty .Remove_Input + label:before,
+		.Theme_Dot .Remove_Input + label:before {
+			display: inline-block;
+		}
+	}
+
+/* End Radio_Button_Specials */
+
+/* ------------- Text Buttons (a.k.a. 'line') Theme ------------- */
+
+.line {
+	border-radius: 5px;
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	margin: 6px;
+	/* width: 100%; */
+}
+.DefaultControls .line label{
+	display: table-cell;
+}
+
+.DefaultControls .line label {
+	/*margin-top:8px;*/
+}
+
+.DefaultControls .line label.Radio_Button,
+.DefaultControls .line label.Check_Box {
+	margin-top:0;
+}
+
+.line > label:not(.Radio_Button):not(.Check_Box) {
+	/* width: 100%; */
+  -webkit-box-flex: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 1;
+  width: 100%;            /* For old syntax, otherwise collapses. */
+  -webkit-flex: 1;       /* Safari 6.1+. iOS 7.1+, BB10 */
+  -ms-flex: 1;           /* IE 10 */
+  flex: 1;               /* NEW, Spec - Firefox, Chrome, Opera */
+}
+
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    /* Safari only override */
+    ::i-block-chrome,.line > label:not(.Radio_Button):not(.Check_Box) {
+			display: block;
+    } 
+}
+.line > .Check_Box:before,
+.line > .Radio_Button:before{
+	content: "\f111";
+}
+
+.DefaultControls .line .Remove_Input:checked + .Check_Box:before,
+.DefaultControls .line .Remove_Input:checked + .Radio_Button:before {
+	content: "\f00c";
+}
+.line .Check_Box.checked:before,
+.line .Radio_Button.checked:before { /* IE6-8 hack */
+	content: "\f00c";
+}
+
+.Theme_Line table.mrQuestionTable label.Check_Box,
+.Theme_Line table.mrQuestionTable label.Radio_Button{
+	vertical-align: middle;
+}
+
+.Theme_Line table.mrQuestionTable td {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.Theme_Line span.mrQuestionTable{
+	display: table !important;
+}
+
+.Question .Theme_Line.Tags span.mrQuestionTable {
+	display: flex !important;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.Question .Theme_Line.Tags span.mrQuestionTable > span {
+	/*float:left;*/
+	padding: 3px;
+}
+.Theme_Line.Tags span.mrQuestionTable > span:hover {
+	background-color: transparent;
+}
+
+/* Custom, iPhone Retina */ 
+	@media screen and (min-width : 320px) {
+		.DefaultControls span.ui-controlgroup,
+		.Theme_Full span.ui-controlgroup,
+		.Theme_Empty span.ui-controlgroup,
+		.Theme_Dot span.ui-controlgroup {
+			width: 100%;
+			-webkit-margin-start: 1px;
+			-webkit-margin-end: 2px;
+			-webkit-padding-before: 0.35em;
+			-webkit-padding-start: 0.75em;
+			-webkit-padding-end: 0.75em;
+			-webkit-padding-after: 0.625em;
+			min-width: -webkit-min-content;
+			padding: 0;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default,
+		.Theme_Full span.ui-controlgroup div.default,
+		.Theme_Empty span.ui-controlgroup div.default,
+		.Theme_Dot span.ui-controlgroup div.default {
+			display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+			display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+			display: -ms-flexbox;      /* TWEENER - IE 10 */
+			display: -webkit-flex;     /* NEW - Chrome */
+			display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+			justify-content: flex-start;
+			align-items: center;
+		}
+		.DefaultControls span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Full span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Empty span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Dot span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box) {
+			-webkit-box-flex: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+			-moz-box-flex: 1;
+			/*width: 100%;            /* For old syntax, otherwise collapses. */
+			-webkit-flex: 1;       /* Safari 6.1+. iOS 7.1+, BB10 */
+			-ms-flex: 1;           /* IE 10 */
+			flex: 1;               /* NEW, Spec - Firefox, Chrome, Opera */
+			padding-bottom: 6.5px;
+			padding-top: 6.5px;
+		}
+		
+		.line {
+			align-items: center;
+			padding-bottom: 5px;
+			padding-top: 5px;
+		}
+	}
+
+	/* Extra Small Devices, Phones */ 
+	@media screen and (min-width : 480px) {
+		.DefaultControls span.ui-controlgroup,
+		.Theme_Full span.ui-controlgroup,
+		.Theme_Empty span.ui-controlgroup,
+		.Theme_Dot span.ui-controlgroup {
+			width: 100%;
+			-webkit-margin-start: 2px;
+			-webkit-margin-end: 1px;
+			-webkit-padding-before: 0.35em;
+			-webkit-padding-start: 0.75em;
+			-webkit-padding-end: 0.75em;
+			-webkit-padding-after: 0.625em;
+			min-width: -webkit-min-content;
+			padding: 0;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default,
+		.Theme_Full span.ui-controlgroup div.default,
+		.Theme_Empty span.ui-controlgroup div.default,
+		.Theme_Dot span.ui-controlgroup div.default {
+			display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+			display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+			display: -ms-flexbox;      /* TWEENER - IE 10 */
+			display: -webkit-flex;     /* NEW - Chrome */
+			display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+			-webkit-box-pack: start;
+			-ms-flex-pack: start;
+			justify-content: flex-start;
+			-ms-flex-line-pack: start;
+			align-content: flex-start;
+			align-items: center;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Full span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Empty span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Dot span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box) {
+			-webkit-box-flex: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+			-moz-box-flex: 1;
+			/*width: 100%;            /* For old syntax, otherwise collapses. */
+			-webkit-flex: 1;       /* Safari 6.1+. iOS 7.1+, BB10 */
+			-ms-flex: 1;           /* IE 10 */
+			flex: 1;               /* NEW, Spec - Firefox, Chrome, Opera */
+			padding-top: 13px;
+		}
+		
+		.line {
+			align-items: center;
+			padding-bottom: 5px;
+			padding-top: 5px;
+		}
+	}
+
+	/* Small Devices, Tablets */
+	@media screen and (min-width : 768px) {
+		.DefaultControls span.ui-controlgroup,
+		.Theme_Full span.ui-controlgroup,
+		.Theme_Empty span.ui-controlgroup,
+		.Theme_Dot span.ui-controlgroup {
+			width: 100%;
+			-webkit-margin-start: 1px;
+			-webkit-margin-end: 2px;
+			-webkit-padding-before: 0.35em;
+			-webkit-padding-start: 0.75em;
+			-webkit-padding-end: 0.75em;
+			-webkit-padding-after: 0.625em;
+			min-width: -webkit-min-content;
+			padding: 0;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default,
+		.Theme_Full span.ui-controlgroup div.default,
+		.Theme_Empty span.ui-controlgroup div.default,
+		.Theme_Dot span.ui-controlgroup div.default {
+			display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+			display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+			display: -ms-flexbox;      /* TWEENER - IE 10 */
+			display: -webkit-flex;     /* NEW - Chrome */
+			display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+			-webkit-box-pack: start;
+			-ms-flex-pack: start;
+			justify-content: flex-start;
+			-ms-flex-line-pack: start;
+			align-content: flex-start;
+			align-items: normal;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Full span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Empty span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Dot span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box) {
+			-webkit-box-flex: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+			-moz-box-flex: 1;
+			/*width: 100%;            /* For old syntax, otherwise collapses. */
+			-webkit-flex: 1;       /* Safari 6.1+. iOS 7.1+, BB10 */
+			-ms-flex: 1;           /* IE 10 */
+			flex: 1;               /* NEW, Spec - Firefox, Chrome, Opera */
+			padding-bottom: 6.5px;
+			padding-top: 6.5px;
+		}
+		
+		.line {
+			align-items: normal;
+			padding-bottom: 8px;
+			padding-top: 8px;
+		}
+	}
+
+	/* Medium Devices, Desktops */
+	@media screen and (min-width : 992px) {
+		.DefaultControls span.ui-controlgroup,
+		.Theme_Full span.ui-controlgroup,
+		.Theme_Empty span.ui-controlgroup,
+		.Theme_Dot span.ui-controlgroup {
+			/*width: inherit;
+			-webkit-margin-start: inherit;
+			-webkit-margin-end: inherit;
+			-webkit-padding-before: inherit;
+			-webkit-padding-start: inherit;
+			-webkit-padding-end: inherit;
+			-webkit-padding-after: inherit;
+			min-width: inherit;
+			padding: inherit;*/
+			width: 100%;
+			-webkit-margin-start: 1px;
+			-webkit-margin-end: 2px;
+			-webkit-padding-before: 0.35em;
+			-webkit-padding-start: 0.75em;
+			-webkit-padding-end: 0.75em;
+			-webkit-padding-after: 0.625em;
+			min-width: -webkit-min-content;
+			padding: 0;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default,
+		.Theme_Full span.ui-controlgroup div.default,
+		.Theme_Empty span.ui-controlgroup div.default,
+		.Theme_Dot span.ui-controlgroup div.default {
+			/*display: inline;*/
+			display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+			display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+			display: -ms-flexbox;      /* TWEENER - IE 10 */
+			display: -webkit-flex;     /* NEW - Chrome */
+			display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+			-webkit-box-pack: start;
+			-ms-flex-pack: start;
+			justify-content: flex-start;
+			-ms-flex-line-pack: start;
+			align-content: flex-start;
+			align-items: center;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Full span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Empty span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Dot span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box) {
+			-webkit-box-flex: 0;   /* OLD - iOS 6-, Safari 3.1-6 */
+			-moz-box-flex: 0;
+			/*width: 100%;            /* For old syntax, otherwise collapses. */
+			-webkit-flex: 0 1 auto;       /* Safari 6.1+. iOS 7.1+, BB10 */
+			-ms-flex: 0 1 auto;           /* IE 10 */
+			flex: 0 1 auto;               /* NEW, Spec - Firefox, Chrome, Opera */
+			padding-bottom: 0;
+			padding-top: 0;
+			margin-top: 12px;
+			margin-bottom: 0px;
+		}
+		
+		.line {
+			align-items: normal;
+			padding-bottom: 8px;
+			padding-top: 8px;
+		}
+	}
+		
+	/* Large Devices, Wide Screens */
+	@media screen and (min-width : 1200px) {
+		.DefaultControls span.ui-controlgroup,
+		.Theme_Full span.ui-controlgroup,
+		.Theme_Empty span.ui-controlgroup,
+		.Theme_Dot span.ui-controlgroup {
+			/*width: inherit;
+			-webkit-margin-start: inherit;
+			-webkit-margin-end: inherit;
+			-webkit-padding-before: inherit;
+			-webkit-padding-start: inherit;
+			-webkit-padding-end: inherit;
+			-webkit-padding-after: inherit;
+			min-width: inherit;
+			padding: inherit;*/
+			width: 100%;
+			-webkit-margin-start: 1px;
+			-webkit-margin-end: 2px;
+			-webkit-padding-before: 0.35em;
+			-webkit-padding-start: 0.75em;
+			-webkit-padding-end: 0.75em;
+			-webkit-padding-after: 0.625em;
+			min-width: -webkit-min-content;
+			padding: 0;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default,
+		.Theme_Full span.ui-controlgroup div.default,
+		.Theme_Empty span.ui-controlgroup div.default,
+		.Theme_Dot span.ui-controlgroup div.default {
+			/*display: inline;*/
+			display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+			display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+			display: -ms-flexbox;      /* TWEENER - IE 10 */
+			display: -webkit-flex;     /* NEW - Chrome */
+			display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+			-webkit-box-pack: start;
+			-ms-flex-pack: start;
+			justify-content: flex-start;
+			-ms-flex-line-pack: start;
+			align-content: flex-start;
+			align-items: center;
+		}
+		
+		.DefaultControls span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Full span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Empty span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box),
+		.Theme_Dot span.ui-controlgroup div.default > label:not(.Radio_Button):not(.Check_Box) {
+			-webkit-box-flex: 0;   /* OLD - iOS 6-, Safari 3.1-6 */
+			-moz-box-flex: 0;
+			/*width: 100%;            /* For old syntax, otherwise collapses. */
+			-webkit-flex: 0 1 auto;       /* Safari 6.1+. iOS 7.1+, BB10 */
+			-ms-flex: 0 1 auto;           /* IE 10 */
+			flex: 0 1 auto;               /* NEW, Spec - Firefox, Chrome, Opera */
+			padding-bottom: 0;
+			padding-top: 0;
+			margin-top: 12px;
+			margin-bottom: 0px;
+		}
+		
+		.line {
+			align-items: normal;
+			padding-bottom: 8px;
+			padding-top: 8px;
+		}
+	}
+
+/* -------------------------------------------------------------- */
+
+
+
+
+.br-widget a {
+	outline: 0;
+}
+
+.tooltipster-base {
+	font-family: Roboto, sans-serif;
+	font-size: 15px;
+}
+
+
+/* jQueryUI classes */
+
+ .ui-widget {
+	font-family: Roboto, sans-serif;
+	color: #646464;
+	/*font-size:1.0em;*/
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+ 	font-family: Roboto, sans-serif;
+    font-size:0.9em;
+	color: #646464;	
+}
+/* Autocomplete - Combobox */
+.ui-widget input   {
+	width: 250px;
+	font-size:0.9em;
+	padding:5px;
+}
+/* ====================================================================================== */
+
+iframe.imgUpload {
+	border: solid 1px #DDD;
+	border-radius: 10px;
+	height: 120px;
+	width: 100%;
+}
+
+/* ====================================================================================== */
+
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td:first-child {
+			width: auto;
+			display: none !important;
+		}
+		.tablesaw.SRR:not(.swipeTable) > thead > tr:first-child > th:first-child {
+			width: auto;
+			display: none !important;
+		}
+		
+		div.tablesaw-all-cols-visible > div.tablesaw-advance {
+			display: none !important;
+		}
+
+/* Media Queries section for custom responsive CSS */
+	/* Custom, iPhone Retina */ 
+	@media screen and (min-width : 320px) {
+		.Top_Banner {
+			height: auto;
+		}
+		
+		.DefaultControls label {
+			display: table-cell;
+		}
+		
+		.DefaultControls.Theme_Line .Remove_Input + label:before {
+			font-size: 15px;
+			height: 15px;
+			width: 15px;
+			margin-top: 0;
+		}
+		
+		.DefaultControls.Theme_Line {
+			margin-left: 0;
+			padding-left: 0;
+			padding-right: 0;
+			width: 100%;
+		}
+		
+		.Desktop {
+			display: none;
+		}
+		
+		table.tablesaw.tablesaw-stack td.shownCell {
+			text-align: left !important;
+		}
+		
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td {
+			border-top: none;
+			width: 100%;
+		}
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td:last-child {
+			border-bottom: 1px solid #dddddd;
+		}
+		.tablesaw.SRR:not(.swipeTable) > thead > tr:first-child > th:first-child {
+			width: auto;
+			display: none;
+		}
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td:first-child {
+			width: auto;
+			display: none !important;
+		}
+		.tablesaw.SRR > thead > tr > th,
+		.tablesaw.SRR > tbody > tr > th,
+		.tablesaw.SRR > tfoot > tr > th,
+		.tablesaw.SRR > thead > tr > td,
+		.tablesaw.SRR > tbody > tr > td,
+		.tablesaw.SRR > tfoot > tr > td {
+			border-top: 1px solid #dddddd;
+			border-right: 1px solid #dddddd;
+			border-left: 1px solid #dddddd;
+		}
+		
+		div.tablesaw-bar {
+			visibility: visible;
+		}
+	}
+
+	/* Extra Small Devices, Phones */ 
+	@media screen and (min-width : 480px) {
+		.Top_Banner {
+			height: auto;
+		}
+		
+		.DefaultControls label {
+			display: table-cell;
+		}
+		
+		.DefaultControls.Theme_Line .Remove_Input + label:before {
+			font-size: 20px;
+			height: 15px;
+			width: 20px;
+			margin-top: 0;
+		}
+		
+		.DefaultControls.Theme_Line {
+			margin-left: 0;
+			padding-left: 0;
+			padding-right: 0;
+			width: 100%;
+		}
+		
+		.Desktop {
+			display: none;
+		}
+		
+		table.tablesaw.tablesaw-stack td.shownCell {
+			text-align: left !important;
+		}
+		
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td {
+			border-top: none;
+			width: 100%;
+		}
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td:last-child {
+			border-bottom: 1px solid #dddddd;
+		}
+		.tablesaw.SRR:not(.swipeTable) > thead > tr:first-child > th:first-child {
+			width: auto;
+			display: none;
+		}
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td:first-child {
+			width: auto;
+			display: none !important;
+		}
+		.tablesaw.SRR > thead > tr > th,
+		.tablesaw.SRR > tbody > tr > th,
+		.tablesaw.SRR > tfoot > tr > th,
+		.tablesaw.SRR > thead > tr > td,
+		.tablesaw.SRR > tbody > tr > td,
+		.tablesaw.SRR > tfoot > tr > td {
+			border-top: 1px solid #dddddd;
+			border-right: 1px solid #dddddd;
+			border-left: 1px solid #dddddd;
+		}
+		
+		div.tablesaw-bar {
+			visibility: visible;
+		}
+	}
+
+	/* Small Devices, Tablets */
+	@media screen and (min-width : 768px) {
+		.Top_Banner {
+			height: 50px;
+		}
+		
+		.DefaultControls label {
+			display: inline;
+		}
+		
+		.DefaultControls.Theme_Line {
+			margin-left: 2%;
+			padding-left: 15px;
+			padding-right: 15px;
+			width: 98%;
+		}
+		
+		.DefaultControls.Theme_Line .Remove_Input + label:before {
+			font-size: 28px;
+			height: 25px;
+			width: 25px;
+			margin-top: -10px;
+		}
+		
+		.Desktop {
+			display: none;
+		}
+		
+		table.tablesaw.tablesaw-stack:not(.accordion) td.shownCell {
+			text-align: center !important;
+		}
+
+		.Question table.mrQuestionTable.GridTable.numberRatingTable.tablesaw.tablesaw-stack td.shownCell {
+			text-align: left !important;
+		}
+		
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td {
+			border-top: none;
+			width: auto;
+		}
+		.tablesaw.SRR:not(.swipeTable) > thead > tr:first-child > th:first-child {
+			width: auto;
+			display: none;
+		}
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td:first-child {
+			width: auto;
+			display: none !important;
+		}
+		.tablesaw.SRR > thead > tr > th,
+		.tablesaw.SRR > tbody > tr > th,
+		.tablesaw.SRR > tfoot > tr > th,
+		.tablesaw.SRR > thead > tr > td,
+		.tablesaw.SRR > tbody > tr > td,
+		.tablesaw.SRR > tfoot > tr > td {
+			border-top: 1px solid #dddddd;
+			border-right: 1px solid #dddddd;
+			border-left: 1px solid #dddddd;
+		}
+		
+		div.tablesaw-bar {
+			visibility: visible;
+		}
+	}
+
+	/* Medium Devices, Desktops */
+	@media screen and (min-width : 992px) {
+		.Top_Banner {
+			height: 80px;
+		}
+		
+		.DefaultControls label {
+			display: inline;
+		}
+		
+		.DefaultControls.Theme_Line {
+			margin-left: 2%;
+			padding-left: 15px;
+			padding-right: 15px;
+			width: 98%;
+		}
+		
+		.DefaultControls.Theme_Line .Remove_Input + label:before {
+			font-size: 28px;
+			height: 25px;
+			width: 25px;
+			margin-top: -10px;
+		}
+		
+		.Desktop {
+			display: block;
+		}
+		
+		table.tablesaw.tablesaw-stack:not(.accordion) td.shownCell {
+			text-align: center !important;
+		}
+		
+		.Question table.mrQuestionTable.GridTable.numberRatingTable.tablesaw.tablesaw-stack td.shownCell {
+			text-align: left !important;
+		}
+		
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td {
+			border-top: none;
+			width: auto;
+		}
+		.tablesaw.SRR:not(.swipeTable) > thead > tr:first-child > th:first-child {
+			width: auto;
+			display: none;
+		}
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td:first-child {
+			width: auto;
+			display: none !important;
+		}
+		.tablesaw.SRR > thead > tr > th,
+		.tablesaw.SRR > tbody > tr > th,
+		.tablesaw.SRR > tfoot > tr > th,
+		.tablesaw.SRR > thead > tr > td,
+		.tablesaw.SRR > tbody > tr > td,
+		.tablesaw.SRR > tfoot > tr > td {
+			border-top: 1px solid #dddddd;
+			border-right: 1px solid #dddddd;
+			border-left: 1px solid #dddddd;
+		}
+		
+		div.tablesaw-bar {
+			visibility: hidden;
+		}
+	}
+		
+	/* Large Devices, Wide Screens */
+	@media screen and (min-width : 1200px) {
+		.Top_Banner {
+			height: 80px;
+		}
+		
+		.DefaultControls label {
+			display: inline;
+		}
+		
+		.DefaultControls.Theme_Line .Remove_Input + label:before {
+			font-size: 28px;
+			height: 25px;
+			width: 25px;
+		}
+		
+		.DefaultControls.Theme_Line {
+			margin-left: 2%;
+			padding-left: 15px;
+			padding-right: 15px;
+			width: 98%;
+		}
+		
+		.Desktop {
+			display: block;
+		}
+		
+		table.tablesaw.tablesaw-stack:not(.accordion) td.shownCell {
+			text-align: center !important;
+		}
+		.Question table.mrQuestionTable.GridTable.numberRatingTable.tablesaw.tablesaw-stack td.shownCell {
+			text-align: left !important;
+		}
+		
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td {
+			border-top: none;
+			width: auto;
+		}
+		.tablesaw.SRR:not(.swipeTable) > thead > tr:first-child > th:first-child {
+			width: auto;
+			display: none !important;
+		}
+		.tablesaw.SRR:not(.swipeTable) > tbody > tr:first-child > td:first-child {
+			width: auto;
+			display: none !important;
+		}
+		.tablesaw.SRR > thead > tr > th,
+		.tablesaw.SRR > tbody > tr > th,
+		.tablesaw.SRR > tfoot > tr > th,
+		.tablesaw.SRR > thead > tr > td,
+		.tablesaw.SRR > tbody > tr > td,
+		.tablesaw.SRR > tfoot > tr > td {
+			border-top: 1px solid #dddddd;
+			border-right: 1px solid #dddddd;
+			border-left: 1px solid #dddddd;
+		}
+		
+		div.tablesaw-bar {
+			visibility: hidden;
+		}
+	}
+
+span.ORCTooltip {
+	-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+	-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+	-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+}

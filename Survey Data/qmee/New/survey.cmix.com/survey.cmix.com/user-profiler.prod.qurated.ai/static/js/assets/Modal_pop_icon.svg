@@ -1,0 +1,52 @@
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+function SvgModalPopIcon(_ref, svgRef) {
+  let {
+    title,
+    titleId,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 18,
+    height: 20,
+    viewBox: "0 0 20.678 20.762",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? /*#__PURE__*/React.createElement("title", {
+    id: titleId
+  }, title) : null, _g || (_g = /*#__PURE__*/React.createElement("g", {
+    id: "Modal_pop_icon",
+    transform: "translate(-908.566 -859.158)"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "Path_6353",
+    "data-name": "Path 6353",
+    d: "M17.333,9.917v4.517a2.9,2.9,0,0,1-2.9,2.9H5.4a2.9,2.9,0,0,1-2.9-2.9V5.4A2.9,2.9,0,0,1,5.4,2.5H9.917",
+    transform: "translate(907.066 861.587)",
+    fill: "none",
+    stroke: "#495867",
+    strokeMiterlimit: 10,
+    strokeWidth: 2
+  }), /*#__PURE__*/React.createElement("line", {
+    id: "Line_222",
+    "data-name": "Line 222",
+    y1: 8.708,
+    x2: 8.708,
+    transform: "translate(915.974 863.894)",
+    fill: "none",
+    stroke: "#495867",
+    strokeWidth: 2
+  }), /*#__PURE__*/React.createElement("path", {
+    id: "Path_6354",
+    "data-name": "Path 6354",
+    d: "M0,4.261,4.261,0,8.521,4.261",
+    transform: "translate(921.719 860.658) rotate(45)",
+    fill: "none",
+    stroke: "#495867",
+    strokeWidth: 2
+  }))));
+}
+const ForwardRef = /*#__PURE__*/React.forwardRef(SvgModalPopIcon);
+export default __webpack_public_path__ + "static/media/Modal_pop_icon.aa2af449c31b15a68b960923c139374f.svg";
+export { ForwardRef as ReactComponent };

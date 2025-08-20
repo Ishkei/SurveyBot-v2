@@ -1,0 +1,238 @@
+@use "../../assets/styling/Variables.scss";
+
+.question-edit-button{
+  border: none;
+  cursor: auto;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  border-radius: 10px;
+  position: relative;
+  overflow: visible;
+  height: 100%;
+  width: 100%;
+  background: none;
+  padding: 5px 0px 5px 48px;
+}
+
+.question-container {
+  display: flex;
+  position: relative;
+  border: none;
+  cursor: auto;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  background: #f5f5f5;
+  border-radius: 10px;
+  min-height: 90px;
+  position: relative;
+  overflow: visible;
+  margin: 0 5px 0 0;
+
+  @media (max-width: 400px) {
+    font-size: 14px;
+    min-height: fit-content;
+  }
+
+  &.question-answered {
+    background-color: Variables.$question-completed-background-colour;
+  }
+
+  &.question-completed {
+    background-color: Variables.$question-completed-background-colour;
+
+    .question-info-container {
+      background-color: Variables.$primary-colour;
+    }
+
+    .boost-icon {
+      border-style: solid;
+      border-width: 2px;
+      border-color: Variables.$primary-colour;
+      .boost-fill {
+        fill: #ffb100;
+      }
+    }
+  }
+
+  .question-hidden-info {
+    visibility: hidden;
+    z-index: 3;
+    opacity: 0;
+    transition: 0.5s;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    font-size: 16px;
+    color: #495867;
+
+    span {
+      font-size: 16px;
+      .icon-primary-fill {
+        fill: #495867;
+      }
+      @media screen and (max-width: 600px) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &:hover .question-hidden-info,
+  &:active .question-hidden-info {
+    visibility: visible;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  &.question-hidden {
+    opacity: 0.5;
+    &:hover,
+    &:active {
+      opacity: 1;
+      .question-hidden-info {
+        visibility: visible;
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.question-text-container {
+  display: block;
+  width: fit-content;
+  padding: 8px 0;
+  z-index: 2;
+  text-align: left;
+
+  @media screen and (max-width: 1100px) {
+    padding: 14px 5px 10px;
+  }
+}
+
+.question-title {
+  width: 100%;
+  line-height: 1.3em;
+  color: #495867;
+  font-weight: 500;
+}
+
+.question-edit-background {
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
+  transition: all 0.2s;
+  border-left: 1px solid white;
+  position: absolute;
+  border-radius: 10px;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  &:hover:not(:disabled) {
+    background: rgba(100, 100, 100, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media screen and (max-width:600px) {
+    z-index: 3;
+  }
+}
+
+.question-container {
+  &:hover {
+    .question-edit-button:not(:disabled) {
+      .question-edit-background {
+        background: rgba(100, 100, 100, 0.1);
+      }
+    }
+  }
+}
+
+.question-edit-icon {
+  background: none;
+  outline: none;
+  border: none;
+  height: 100%;
+  width: 60px;
+  transition: all 0.2s;
+  border-left: 1px solid white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  z-index: 2;
+  pointer-events: none;
+  &.disabled {
+    opacity: 0.5;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 0 10px;
+    width: auto;
+  }
+}
+
+.question-modal-icon {
+  position: absolute;
+  right: 20px;
+}
+
+.question-container {
+  .contact-support-message {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: white;
+    transition: opacity 0.5s;
+    z-index: 3;
+
+    p {
+      z-index: 2;
+      padding: 10px;
+    }
+  }
+
+  &:hover .contact-support-message {
+    opacity: 0.9;
+    cursor: not-allowed;
+    
+    visibility: visible;
+    text-align: center;
+
+    color: #495867;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.hidden-cateogry-text{
+  font-weight: 800;
+}

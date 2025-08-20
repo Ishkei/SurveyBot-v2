@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:wicket="http://wicket.sourceforge.net/"
+  xmlns:fb="http://www.facebook.com/2008/fbml"
+  xmlns:wb="http://open.weibo.com/wb"
+>
+  <head>
+    <script
+      type="text/javascript"
+      src="//entercdn.ipsosinteractive.com/wicket/resource/org.apache.wicket.resource.JQueryResourceReference/jquery/jquery-3.7.1-ver-1750155335000.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//entercdn.ipsosinteractive.com/wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/res/js/wicket-ajax-jquery-ver-1750155335000.js"
+    ></script>
+    <script type="text/javascript" id="wicket-ajax-base-url">
+      /*<![CDATA[*/
+      Wicket.Ajax.baseUrl =
+        "question/?p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&amp;rType=350&amp;id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512&amp;token=Ky8RvBkOQvQW-dv7B9bLDA8Cw6SHnVULeeD6EM1mcbrqG9DIp0wp0qF3AxDIlHi6UO1mrtO-MdQyktJTV0K3aakP6LjU0q-V5Q4hTcn3Kdcb%2BFlVQzPJvstj64JDt0zewDqGeEBh59wf7fsAyNDsMircU1SlOasYztL3Mc4PryawftWUwbbcdctHbVUCwIFn";
+      /*]]>*/
+    </script>
+    <script
+      type="text/javascript"
+      defer="defer"
+      src="//entercdn.ipsosinteractive.com/assets/js/jquery.scrollTo-min.js"
+    ></script>
+
+    <title>Surveys</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="144x144"
+      href="//entercdn.ipsosinteractive.com/assets/ico/apple-touch-icon-144-precomposed.png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="//entercdn.ipsosinteractive.com/assets/ico/favicon.png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="//entercdn.ipsosinteractive.com/assets/ico/favicon.ico"
+    />
+    <link
+      href="//entercdn.ipsosinteractive.com/assets/css/libs.css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      href="//entercdn.ipsosinteractive.com/assets/css/styles072.css"
+      rel="stylesheet"
+      media="screen"
+    />
+
+    <link
+      href="//entercdn.ipsosinteractive.com/assets/css/styleDevelopers007.css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      href="//entercdn.ipsosinteractive.com/assets/css/styleScreening.css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      href="//entercdn.ipsosinteractive.com/assets/css/latin-font.css"
+      rel="stylesheet"
+      media="screen"
+    />
+
+    <!--[if lt IE 9]>
+      <script src="//entercdn.ipsosinteractive.com/assets/js/html5shiv.js"></script>
+    <![endif]-->
+    <!--[if lt IE 10]>
+      <script src="//entercdn.ipsosinteractive.com/assets/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="//entercdn.ipsosinteractive.com/assets/js/modernizr.animations.js"></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/jquery-ui-widgets.min.js"></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/bootstrap.min.js"></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/bootstrap-select.min.js"></script>
+    <script
+      defer=""
+      src="//entercdn.ipsosinteractive.com/assets/js/fontawesome-all.min.js"
+    ></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/masonry.pkgd.min.js"></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/js/loading.js"></script>
+    <script type="text/javascript">
+      /*<![CDATA[*/
+
+      $(function () {
+        // Avoid problems with input and keyboard on header
+        if (/iPhone|iPod|iPad/i.test(navigator.userAgent)) {
+          $(document).on("focus", "input, textarea", function () {
+            $(".navbar-fixed-top").css("position", "absolute");
+          });
+          $(document).on("blur", "input, textarea", function () {
+            $(".navbar-fixed-top").css("position", "fixed");
+          });
+        }
+      });
+
+      /*]]>*/
+    </script>
+    <script
+      defer=""
+      src="//entercdn.ipsosinteractive.com/assets/js/bowser.min.js"
+    ></script>
+    <script
+      defer=""
+      src="//entercdn.ipsosinteractive.com/assets/js/ie-detection.js"
+    ></script>
+    <script src="//entercdn.ipsosinteractive.com/assets/lottie/lottie-player.js"></script>
+    <script
+      type="text/javascript"
+      defer="defer"
+      src="//entercdn.ipsosinteractive.com/assets/js/js-copy.js"
+    ></script>
+    <script type="text/javascript">
+      /*<![CDATA[*/
+      Wicket.Event.add(window, "domready", function (event) {
+        Wicket.Ajax.ajax({
+          u: "./?3-1.0-content-questionForm-questionContainer-submit&p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&rType=350&id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512&token=Ky8RvBkOQvQW-dv7B9bLDA8Cw6SHnVULeeD6EM1mcbrqG9DIp0wp0qF3AxDIlHi6UO1mrtO-MdQyktJTV0K3aakP6LjU0q-V5Q4hTcn3Kdcb%2BFlVQzPJvstj64JDt0zewDqGeEBh59wf7fsAyNDsMircU1SlOasYztL3Mc4PryawftWUwbbcdctHbVUCwIFn",
+          m: "POST",
+          c: "submitQuestion",
+          f: "questionForma",
+          sc: "questionContainer:submit",
+          bh: [
+            function (attrs) {
+              if (isIE9OrLower()) {
+                $("#submitQuestion").addClass("disabled");
+                $("#loadingSpinb").show();
+              } else {
+                $("#submitQuestion").addClass("m-progress disabled");
+              }
+            },
+          ],
+          e: "click",
+          pd: true,
+        });
+        $("#checkGroup9 input:checkbox").change(function (e) {
+          if ($(this).prop("checked")) {
+            if ($(this).hasClass("logic")) {
+              if ($(this).hasClass("all")) {
+                $("#checkGroup9")
+                  .find(":checkbox")
+                  .not(".logic")
+                  .prop("checked", true);
+                $("#checkGroup9")
+                  .find(".exclusive")
+                  .not($(this))
+                  .prop("checked", false);
+              } else {
+                $("#checkGroup9")
+                  .find(":checkbox")
+                  .not($(this))
+                  .prop("checked", false);
+              }
+            } else {
+              $("#checkGroup9").find(".exclusive").prop("checked", false);
+            }
+          } else {
+            $("#checkGroup9").find(".all").prop("checked", false);
+          }
+        });
+        Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
+      });
+      /*]]>*/
+    </script>
+  </head>
+  <body class="screening-body">
+    <div id="header" class="cortex-header">
+      <nav id="navbar" class="navbar" role="navigation"></nav>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-xs-12 col-sm-10 col-md-8 col-lg-7"
+          style="margin: 0 auto; float: none"
+        >
+          <div id="pointsContainerc" hidden="" data-wicket-placeholder=""></div>
+          <div
+            id="questionContent"
+            class="panel panel-default"
+            style="height: 100%"
+          >
+            <div>
+              <form
+                role="form"
+                id="questionForma"
+                method="post"
+                action="./?3-1.-content-questionForm&amp;p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&amp;rType=350&amp;id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512&amp;token=Ky8RvBkOQvQW-dv7B9bLDA8Cw6SHnVULeeD6EM1mcbrqG9DIp0wp0qF3AxDIlHi6UO1mrtO-MdQyktJTV0K3aakP6LjU0q-V5Q4hTcn3Kdcb%2BFlVQzPJvstj64JDt0zewDqGeEBh59wf7fsAyNDsMircU1SlOasYztL3Mc4PryawftWUwbbcdctHbVUCwIFn"
+              >
+                <div id="questionForma_hf_0" hidden="" class=""></div>
+                <div id="questionContainerd">
+                  <div class="question-preview-options" id="optionsPanele">
+                    <div
+                      style="position: relative; display: block; top: -50px"
+                      id="scrollTo"
+                    ></div>
+                    <div>
+                      <h3 class="question-title-frontend">
+                        Which of the following statements apply to you? (select
+                        all that apply)
+                      </h3>
+                      <p></p>
+                      <div id="actualQuestionPanelf">
+                        <div class="row">
+                          <div
+                            class="col-md-12"
+                            role="tablist"
+                            aria-multiselectable="true"
+                            id="checkGroup9"
+                          >
+                            <div class="panel" style="padding: 0px">
+                              <div id="content10">
+                                <span class="multipleChoice-checkbox">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input
+                                        type="checkbox"
+                                        id="check11"
+                                        name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup"
+                                        value="check0"
+                                      />
+                                      <span
+                                        class="font-weight-light text-hard-light"
+                                        >I have taken a flight to Norway in the
+                                        past month</span
+                                      >
+                                    </label>
+                                  </div> </span
+                                ><span class="multipleChoice-checkbox">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input
+                                        type="checkbox"
+                                        id="check12"
+                                        name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup"
+                                        value="check1"
+                                      />
+                                      <span
+                                        class="font-weight-light text-hard-light"
+                                        >I have a driver’s license</span
+                                      >
+                                    </label>
+                                  </div> </span
+                                ><span class="multipleChoice-checkbox">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input
+                                        type="checkbox"
+                                        id="check13"
+                                        name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup"
+                                        value="check2"
+                                      />
+                                      <span
+                                        class="font-weight-light text-hard-light"
+                                        >I have watched videos on Youtube,
+                                        TikTok or Facebook in the past
+                                        month</span
+                                      >
+                                    </label>
+                                  </div> </span
+                                ><span class="multipleChoice-checkbox">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input
+                                        type="checkbox"
+                                        id="check14"
+                                        name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup"
+                                        value="check3"
+                                      />
+                                      <span
+                                        class="font-weight-light text-hard-light"
+                                        >I have bought vitamins or supplements
+                                        for my personal use in the past
+                                        year</span
+                                      >
+                                    </label>
+                                  </div> </span
+                                ><span class="multipleChoice-checkbox">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input
+                                        type="checkbox"
+                                        id="check15"
+                                        name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup"
+                                        value="check4"
+                                      />
+                                      <span
+                                        class="font-weight-light text-hard-light"
+                                        >I have had lasik/laser eye surgery in
+                                        the past month</span
+                                      >
+                                    </label>
+                                  </div> </span
+                                ><span class="multipleChoice-checkbox">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input
+                                        type="checkbox"
+                                        id="check16"
+                                        name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup"
+                                        value="check5"
+                                      />
+                                      <span
+                                        class="font-weight-light text-hard-light"
+                                        >I have taken an international flight in
+                                        the past week</span
+                                      >
+                                    </label>
+                                  </div> </span
+                                ><span class="multipleChoice-checkbox">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input
+                                        type="checkbox"
+                                        id="check17"
+                                        name="questionContainer:optionsPanel:question:0:actualQuestionPanel:checkGroup"
+                                        value="check6"
+                                        class="logic exclusive"
+                                      />
+                                      <span
+                                        class="font-weight-light text-hard-light"
+                                        >None of these</span
+                                      >
+                                    </label>
+                                  </div>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          id="checkGroupFeedback18"
+                          hidden=""
+                          data-wicket-placeholder=""
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="btn-container fixed-margin-top">
+                    <a
+                      href="#"
+                      id="submitQuestion"
+                      class="btn btn-primary btn-dyn"
+                    >
+                      <span id="submitLabel19">Next</span>
+                    </a>
+                    <img
+                      style="display: none"
+                      class="margin-left-xxs"
+                      src="../assets/img/loading-spin.gif"
+                      alt="Loading.."
+                      id="loadingSpinb"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <img
+              id="ajaxLoadingImage"
+              src="//entercdn.ipsosinteractive.com/assets/img/ajax-loader-small.gif"
+              class="ajaxIndicator ajaxIndicatorHidden"
+              alt=""
+              style="display: none"
+            />
+            <script type="text/javascript">
+              /*<![CDATA[*/
+
+              var indicator = $("#ajaxLoadingImage");
+              try {
+                var observer = new MutationObserver(function (mutations) {
+                  mutations.forEach(function (mutationRecord) {
+                    if (indicator.css("display") === "none")
+                      indicator.addClass("ajaxIndicatorHidden");
+                    else indicator.removeClass("ajaxIndicatorHidden");
+                  });
+                });
+                observer.observe(indicator[0], {
+                  attributes: true,
+                  attributeFilter: ["style"],
+                });
+              } catch (ex) {
+                indicator.hide();
+                indicator.removeClass("ajaxIndicatorHidden");
+              }
+
+              /*]]>*/
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img
+      id="ajaxLoadingImage"
+      src="//entercdn.ipsosinteractive.com/assets/img/ajax-loader-small.gif"
+      class="ajaxIndicator ajaxIndicatorHidden"
+      style="display: none"
+    />
+    <script type="text/javascript">
+      /*<![CDATA[*/
+
+      var indicator = $("#ajaxLoadingImage");
+      try {
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutationRecord) {
+            if (indicator.css("display") === "none")
+              indicator.addClass("ajaxIndicatorHidden");
+            else indicator.removeClass("ajaxIndicatorHidden");
+          });
+        });
+        observer.observe(indicator[0], {
+          attributes: true,
+          attributeFilter: ["style"],
+        });
+      } catch (ex) {
+        indicator.hide();
+        indicator.removeClass("ajaxIndicatorHidden");
+      }
+
+      /*]]>*/
+    </script>
+
+    <footer id="footer" class="cortex-footer">
+      <hr />
+      <div class="container container-secondary">
+        <div class="row">
+          <div
+            class="col-xs-12 col-sm-10 col-sm-push-2 col-md-11 col-md-push-1"
+          >
+            <div class="row fixed-padding">
+              <ul class="list-inline">
+                <li>
+                  <a
+                    target="_blank"
+                    href="https://cdn.ipsosinteractive.com/deploy/i-say/ppamp/en-us.html"
+                    ><span>Privacy Policy </span></a
+                  >
+                </li>
+
+                <li id="doNotSellMyDataContainer1a">
+                  <a
+                    target="_blank"
+                    href="./?3-1.-footer-doNotSellMyDataContainer-doNotSellMyDataLink&amp;p=7ihVeY5oLO13I9pG3PN3LkBMkLkDbU7WhBFOs5z9NfKcL/j8TLwpl2bzBLqEYwex0/acAZfQUuZxS42G9cXL/EP7bHjx/e7QWeV38yUrlwA%3D&amp;rType=350&amp;id=68a569b8-3c36-bfdb-1cd3-d09b7ec4e512&amp;token=Ky8RvBkOQvQW-dv7B9bLDA8Cw6SHnVULeeD6EM1mcbrqG9DIp0wp0qF3AxDIlHi6UO1mrtO-MdQyktJTV0K3aakP6LjU0q-V5Q4hTcn3Kdcb%2BFlVQzPJvstj64JDt0zewDqGeEBh59wf7fsAyNDsMircU1SlOasYztL3Mc4PryawftWUwbbcdctHbVUCwIFn"
+                    ><span>Do not sell my data</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="row fixed-padding"></div>
+          </div>
+          <div
+            class="col-xs-12 col-sm-2 col-sm-pull-10 col-md-1 col-md-pull-11 text-center"
+          ></div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+      integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+      data-cf-beacon='{"rayId":"971fdab5ec6e4286","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"0d4ffb79b2134bbdb129c3b006f6ba87"}'
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

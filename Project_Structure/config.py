@@ -18,7 +18,7 @@ class Config:
     PROXY_PASS = os.getenv("PROXY_PASS", "")
     
     # Browser Settings
-    BROWSER_TYPE = os.getenv("BROWSER_TYPE", "playwright")  # playwright, selenium, undetected, hybrid
+    BROWSER_TYPE = os.getenv("BROWSER_TYPE", "playwright")  # playwright, selenium, undetected, hybrid, enhanced_router
     HEADLESS = os.getenv("HEADLESS", "false").lower() == "true"
     SLOW_MO = int(os.getenv("SLOW_MO", "10"))
     
@@ -212,7 +212,7 @@ class Config:
         if not cls.GOOGLE_API_KEY and cls.SURVEY_PLATFORM != "cpx" and cls.BROWSER_TYPE != "enhanced_cursor":
             errors.append("GOOGLE_API_KEY not set")
         
-        if cls.BROWSER_TYPE not in ["playwright", "selenium", "undetected", "v2ray", "proxychains", "hybrid", "enhanced_cursor"]:
+        if cls.BROWSER_TYPE not in ["playwright", "selenium", "undetected", "v2ray", "proxychains", "hybrid", "enhanced_cursor", "enhanced_router"]:
             errors.append(f"Invalid BROWSER_TYPE: {cls.BROWSER_TYPE}")
         
         if cls.SURVEY_PLATFORM not in ["qmee", "earnhaus", "prolific", "mturk", "cpx"]:
@@ -258,7 +258,7 @@ PROXY_USER=
 PROXY_PASS=
 
 # Browser Settings
-BROWSER_TYPE=playwright
+BROWSER_TYPE=playwright  # playwright, selenium, undetected, hybrid, enhanced_router
 HEADLESS=false
 SLOW_MO=10
 
