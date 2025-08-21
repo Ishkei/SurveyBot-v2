@@ -1,0 +1,93 @@
+{
+  "cookies": [
+    {
+      "name": "cookie-consent",
+      "value": "{%22settings%22:[]%2C%22consentDate%22:1755424537454}",
+      "domain": "www.qmee.com",
+      "path": "/",
+      "expires": 1786960538,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "qm_extension",
+      "value": "your_qm_extension_token_here",
+      "domain": ".qmee.com",
+      "path": "/",
+      "expires": 1757844220,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "refresh_token",
+      "value": "your_refresh_token_here",
+      "domain": "auth.qmee.com",
+      "path": "/",
+      "expires": 1757844220,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "access_token",
+      "value": "your_access_token_here",
+      "domain": ".qmee.com",
+      "path": "/",
+      "expires": 1755426820,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "logged_in",
+      "value": "true",
+      "domain": ".qmee.com",
+      "path": "/",
+      "expires": 1757844220,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "qmee_user_locale",
+      "value": "en-us",
+      "domain": ".qmee.com",
+      "path": "/",
+      "expires": 1757844220,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "refresh_token_www",
+      "value": "your_refresh_token_www_here",
+      "domain": "auth.qmee.com",
+      "path": "/",
+      "expires": 1757844220,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.qmee.com",
+      "localStorage": [
+        {
+          "name": "user-source-data",
+          "value": "{\"inviteToken\":null,\"utmSource\":null,\"utmMedium\":null,\"utmCampaign\":null,\"utmContent\":null}"
+        },
+        {
+          "name": "oldBalance",
+          "value": "0"
+        },
+        {
+          "name": "qmee.tokens",
+          "value": "{\"refreshToken\":\"your_refresh_token_here\",\"accessToken\":\"your_access_token_here\"}"
+        }
+      ]
+    }
+  ]
+}

@@ -130,6 +130,11 @@ logs/
 
 # Config files with sensitive data
 auth.json
+.env
+.env.clean
+Main_Files_to_Run/.env
+Main_Files_to_Run/.env.clean
+Main_Files_to_Run/auth.json
 configs/*.json
 !configs/example*.json
 
