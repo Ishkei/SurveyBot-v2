@@ -288,6 +288,33 @@ Avoid clicking on general navigation links. Always prioritize progressing throug
             
             if not filled_email or not filled_pass:
                 print("❌ Could not locate login fields on Qmee")
+                print("🔍 Debugging: Checking page content...")
+                
+                # Try to find any input fields
+                try:
+                    all_inputs = await page.locator('input').all()
+                    print(f"   Found {len(all_inputs)} input fields on page")
+                    for i, inp in enumerate(all_inputs[:5]):  # Show first 5
+                        try:
+                            input_type = await inp.get_attribute('type') or 'text'
+                            input_name = await inp.get_attribute('name') or 'no-name'
+                            input_id = await inp.get_attribute('id') or 'no-id'
+                            input_placeholder = await inp.get_attribute('placeholder') or 'no-placeholder'
+                            print(f"   Input {i+1}: type={input_type}, name={input_name}, id={input_id}, placeholder={input_placeholder}")
+                        except Exception:
+                            print(f"   Input {i+1}: Could not read attributes")
+                except Exception as e:
+                    print(f"   Error reading inputs: {e}")
+                
+                # Check page title and URL
+                try:
+                    page_title = await page.title()
+                    page_url = page.url
+                    print(f"   Page title: {page_title}")
+                    print(f"   Page URL: {page_url}")
+                except Exception as e:
+                    print(f"   Error reading page info: {e}")
+                
                 return False
             
             # Click submit across contexts
@@ -332,19 +359,61 @@ Avoid clicking on general navigation links. Always prioritize progressing throug
         """Navigate to the surveys page"""
         try:
             print("📋 Navigating to surveys page...")
-            await page.goto("https://www.qmee.com/en-us/surveys", timeout=45000)
-            await page.wait_for_load_state('domcontentloaded')
-            # Optional: click Surveys nav if visible
-            try:
-                nav_sel = 'a[href*="/surveys"], a:has-text("Surveys")'
-                if await page.locator(nav_sel).count() > 0:
-                    await page.locator(nav_sel).first.click()
-                    await page.wait_for_load_state('domcontentloaded')
-            except Exception:
-                pass
-            # give time for dynamic content
+            
+            # Try multiple approaches to get to surveys
+            survey_urls = [
+                "https://www.qmee.com/en-us/surveys",
+                "https://www.qmee.com/surveys",
+                "https://www.qmee.com/en-us/dashboard",
+                "https://www.qmee.com/dashboard"
+            ]
+            
+            for url in survey_urls:
+                try:
+                    print(f"   Trying: {url}")
+                    await page.goto(url, timeout=45000, wait_until='domcontentloaded')
+                    
+                    # Check if we're on a surveys page or can navigate to it
+                    if "surveys" in url:
+                        # We're already on surveys page
+                        break
+                    else:
+                        # Try to click Surveys navigation
+                        nav_selectors = [
+                            'a[href*="/surveys"]',
+                            'a:has-text("Surveys")',
+                            'a:has-text("Take Surveys")',
+                            'a:has-text("Earn Money")',
+                            'a:has-text("Start Earning")'
+                        ]
+                        
+                        for nav_sel in nav_selectors:
+                            try:
+                                if await page.locator(nav_sel).count() > 0:
+                                    print(f"   Clicking navigation: {nav_sel}")
+                                    await page.locator(nav_sel).first.click()
+                                    await page.wait_for_load_state('domcontentloaded', timeout=30000)
+                                    break
+                            except Exception:
+                                continue
+                        break
+                        
+                except Exception as e:
+                    print(f"   Failed to navigate to {url}: {e}")
+                    continue
+            
+            # Give time for dynamic content
             await asyncio.sleep(4)
-            return True
+            
+            # Verify we're on a surveys page
+            current_url = page.url
+            if "surveys" in current_url or "dashboard" in current_url:
+                print(f"✅ Successfully navigated to: {current_url}")
+                return True
+            else:
+                print(f"⚠️ Navigation may have failed. Current URL: {current_url}")
+                return True  # Continue anyway, might still work
+                
         except Exception as e:
             print(f"❌ Error navigating to surveys: {e}")
             return False
@@ -518,36 +587,62 @@ Avoid clicking on general navigation links. Always prioritize progressing throug
                 # Login to Qmee (skip if using saved authentication state)
                 if self.auth_state_path and os.path.exists(self.auth_state_path):
                     print("🔐 Using saved authentication state - skipping login process")
-                    # Verify we're logged in by checking the page
-                    await page.goto("https://www.qmee.com/en-us/surveys", timeout=30000)
-                    await page.wait_for_load_state('domcontentloaded')
-                    await asyncio.sleep(3)  # Give time for dynamic content
                     
-                    # Check if we're actually logged in with multiple indicators
-                    logged_in = False
-                    login_indicators = [
-                        'a[href*="/logout"]',
-                        '.user-menu',
-                        '[data-testid*="user"]',
-                        '[data-testid*="profile"]',
-                        '.user-profile',
-                        '.account-menu',
-                        'a:has-text("Account")',
-                        'a:has-text("Profile")',
-                        'a:has-text("Dashboard")'
-                    ]
-                    
-                    for indicator in login_indicators:
-                        try:
-                            if await page.locator(indicator).count() > 0:
-                                print(f"✅ Successfully authenticated using saved session (found: {indicator})")
-                                logged_in = True
-                                break
-                        except Exception:
-                            continue
-                    
-                    if not logged_in:
-                        print("⚠️ Saved session may have expired, attempting login...")
+                    # Try to verify login status without navigation first
+                    try:
+                        # Check current page for login indicators
+                        logged_in = False
+                        login_indicators = [
+                            'a[href*="/logout"]',
+                            '.user-menu',
+                            '[data-testid*="user"]',
+                            '[data-testid*="profile"]',
+                            '.user-profile',
+                            '.account-menu',
+                            'a:has-text("Account")',
+                            'a:has-text("Profile")',
+                            'a:has-text("Dashboard")'
+                        ]
+                        
+                        for indicator in login_indicators:
+                            try:
+                                if await page.locator(indicator).count() > 0:
+                                    print(f"✅ Successfully authenticated using saved session (found: {indicator})")
+                                    logged_in = True
+                                    break
+                            except Exception:
+                                continue
+                        
+                        if not logged_in:
+                            print("⚠️ No login indicators found on current page, attempting navigation...")
+                            # Try gentle navigation
+                            try:
+                                await page.goto("https://www.qmee.com/en-us/surveys", timeout=30000, wait_until='domcontentloaded')
+                                await asyncio.sleep(3)
+                                
+                                # Check again after navigation
+                                for indicator in login_indicators:
+                                    try:
+                                        if await page.locator(indicator).count() > 0:
+                                            print(f"✅ Successfully authenticated after navigation (found: {indicator})")
+                                            logged_in = True
+                                            break
+                                    except Exception:
+                                        continue
+                                        
+                            except Exception as nav_error:
+                                print(f"⚠️ Navigation failed: {nav_error}")
+                                print("   Attempting to continue with current page...")
+                        
+                        if not logged_in:
+                            print("⚠️ Saved session may have expired, attempting login...")
+                            if not await self.login_to_qmee(page):
+                                print("❌ Failed to login. Exiting.")
+                                return
+                                
+                    except Exception as e:
+                        print(f"⚠️ Error checking authentication status: {e}")
+                        print("   Attempting normal login process...")
                         if not await self.login_to_qmee(page):
                             print("❌ Failed to login. Exiting.")
                             return

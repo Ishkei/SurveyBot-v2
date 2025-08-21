@@ -9,6 +9,8 @@ class Config:
     
     # API Keys
     GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
     # CAPTCHA handling disabled
     
     # Proxy Settings
@@ -30,6 +32,11 @@ class Config:
     CPX_APP_ID = os.getenv("CPX_APP_ID", "")
     CPX_EXT_USER_ID = os.getenv("CPX_EXT_USER_ID", "")
     CPX_BASE_URL = os.getenv("CPX_BASE_URL", "https://offers.cpx-research.com")
+    
+    # LifePoints Settings
+    LIFEPOINTS_EMAIL = os.getenv("LIFEPOINTS_EMAIL", "")
+    LIFEPOINTS_PASSWORD = os.getenv("LIFEPOINTS_PASSWORD", "")
+    LIFEPOINTS_BASE_URL = os.getenv("LIFEPOINTS_BASE_URL", "https://app.lifepointspanel.com")
     
     # AI Settings
     AI_MODEL = os.getenv("AI_MODEL", "gemini-1.5-flash-latest")
@@ -215,7 +222,7 @@ class Config:
         if cls.BROWSER_TYPE not in ["playwright", "selenium", "undetected", "v2ray", "proxychains", "hybrid", "enhanced_cursor", "enhanced_router"]:
             errors.append(f"Invalid BROWSER_TYPE: {cls.BROWSER_TYPE}")
         
-        if cls.SURVEY_PLATFORM not in ["qmee", "earnhaus", "prolific", "mturk", "cpx"]:
+        if cls.SURVEY_PLATFORM not in ["qmee", "earnhaus", "prolific", "mturk", "cpx", "lifepoints"]:
             errors.append(f"Invalid SURVEY_PLATFORM: {cls.SURVEY_PLATFORM}")
         
         if errors:
@@ -237,7 +244,17 @@ class Config:
         print(f"  Use Fallback: {cls.USE_FALLBACK}")
         print(f"  Proxy Rotation: {cls.ROTATE_PROXY_ON_FAILURE}")
         print(f"  Random Delays: {cls.RANDOM_DELAYS}")
-        print(f"  API Key Set: {'Yes' if cls.GOOGLE_API_KEY else 'No'}")
+        print(f"  Google API Key: {'Yes' if cls.GOOGLE_API_KEY else 'No'}")
+        print(f"  Gemini API Key: {'Yes' if cls.GEMINI_API_KEY else 'No'}")
+        print(f"  OpenAI API Key: {'Yes' if cls.OPENAI_API_KEY else 'No'}")
+        
+        # Show platform-specific configuration
+        if cls.SURVEY_PLATFORM == "lifepoints":
+            print(f"  LifePoints Email: {'Set' if cls.LIFEPOINTS_EMAIL else 'Not set'}")
+            print(f"  LifePoints Password: {'Set' if cls.LIFEPOINTS_PASSWORD else 'Not set'}")
+        elif cls.SURVEY_PLATFORM == "cpx":
+            print(f"  CPX App ID: {'Set' if cls.CPX_APP_ID else 'Not set'}")
+            print(f"  CPX Ext User ID: {'Set' if cls.CPX_EXT_USER_ID else 'Not set'}")
     
     @classmethod
     def get(cls, key: str, default: Any = None) -> Any:
@@ -249,6 +266,8 @@ def create_sample_env():
     """Create a sample .env file with configuration options"""
     env_content = """# API Keys
 GOOGLE_API_KEY=your_google_api_key_here
+GEMINI_API_KEY=your_gemini_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
 # CAPTCHA handling disabled
 
 # Proxy Settings
@@ -263,12 +282,16 @@ HEADLESS=false
 SLOW_MO=10
 
 # Survey Platform Settings
-SURVEY_PLATFORM=qmee
+SURVEY_PLATFORM=qmee  # qmee, earnhaus, prolific, mturk, cpx, lifepoints
 SURVEY_URL=https://www.qmee.com/en-us/surveys
 
 # CPX Research Settings
 CPX_APP_ID=27806
 CPX_EXT_USER_ID=533055960609193994_1246050346233757798
+
+# LifePoints Settings
+LIFEPOINTS_EMAIL=your_lifepoints_email@example.com
+LIFEPOINTS_PASSWORD=your_lifepoints_password_here
 
 # AI Settings
 AI_MODEL=gemini-1.5-flash-latest

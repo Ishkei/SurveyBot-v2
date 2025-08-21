@@ -40,7 +40,23 @@ class EnhancedBotIntegration:
     Provides seamless enhancement while maintaining backward compatibility.
     """
     
-    def __init__(self, config_file: str = "enhanced_ai_config.json"):
+    def __init__(self, config_file: str = None):
+        if config_file is None:
+            # Try to find the config file in common locations
+            import os
+            possible_paths = [
+                "enhanced_ai_config.json",
+                "../Project_Structure/enhanced_ai_config.json",
+                "Project_Structure/enhanced_ai_config.json",
+                os.path.join(os.path.dirname(__file__), "enhanced_ai_config.json")
+            ]
+            
+            for path in possible_paths:
+                if os.path.exists(path):
+                    config_file = path
+                    break
+            else:
+                config_file = os.path.join(os.path.dirname(__file__), "enhanced_ai_config.json")
         self.config_file = config_file
         self.config = self._load_config()
         self.enhanced_system = None

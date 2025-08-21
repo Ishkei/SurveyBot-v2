@@ -252,11 +252,14 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         all_elements = buttons + inputs + textareas + selects + links + labels
         print(f"Found {len(all_elements)} total interactive elements")
         
-        # Build a simple DOM tree from these elements
+        # Build a comprehensive DOM tree from these elements
         dom_tree_text = ""
+        dom_tree_structured = []
+        
         for i, element in enumerate(all_elements):
             try:
                 tag = await element.evaluate('node => node.tagName.toLowerCase()')
+                element_info = {"id": i, "tag": tag, "element": element}
                 
                 if tag == 'input':
                     input_type = await element.get_attribute('type') or 'text'
@@ -264,23 +267,120 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                     value = await element.get_attribute('value') or ''
                     name = await element.get_attribute('name') or ''
                     id_attr = await element.get_attribute('id') or ''
-                    text = f"Input (type: {input_type}, placeholder: {placeholder}, value: {value}, name: {name}, id: {id_attr})"
+                    aria_label = await element.get_attribute('aria-label') or ''
+                    required = await element.get_attribute('required') or ''
+                    
+                    element_info.update({
+                        "type": input_type,
+                        "placeholder": placeholder,
+                        "value": value,
+                        "name": name,
+                        "id_attr": id_attr,
+                        "aria_label": aria_label,
+                        "required": bool(required)
+                    })
+                    
+                    text = f"Input (type: {input_type}, placeholder: {placeholder}, value: {value}, name: {name}, id: {id_attr}, required: {bool(required)})"
+                    
                 elif tag == 'textarea':
                     placeholder = await element.get_attribute('placeholder') or ''
                     value = await element.get_attribute('value') or ''
                     name = await element.get_attribute('name') or ''
                     id_attr = await element.get_attribute('id') or ''
-                    text = f"Textarea (placeholder: {placeholder}, value: {value}, name: {name}, id: {id_attr})"
+                    rows = await element.get_attribute('rows') or ''
+                    cols = await element.get_attribute('cols') or ''
+                    aria_label = await element.get_attribute('aria-label') or ''
+                    
+                    element_info.update({
+                        "placeholder": placeholder,
+                        "value": value,
+                        "name": name,
+                        "id_attr": id_attr,
+                        "rows": rows,
+                        "cols": cols,
+                        "aria_label": aria_label
+                    })
+                    
+                    text = f"Textarea (placeholder: {placeholder}, value: {value}, name: {name}, id: {id_attr}, rows: {rows})"
+                    
                 elif tag == 'button':
-                    text = await element.inner_text() or await element.get_attribute('name') or 'Button'
+                    button_text = await element.inner_text() or await element.get_attribute('name') or 'Button'
+                    button_type = await element.get_attribute('type') or 'button'
+                    aria_label = await element.get_attribute('aria-label') or ''
+                    disabled = await element.get_attribute('disabled') or ''
+                    
+                    element_info.update({
+                        "text": button_text,
+                        "button_type": button_type,
+                        "aria_label": aria_label,
+                        "disabled": bool(disabled)
+                    })
+                    
+                    text = f"Button (text: {button_text}, type: {button_type}, disabled: {bool(disabled)})"
+                    
                 elif tag == 'select':
-                    text = await element.inner_text() or 'Dropdown'
+                    select_text = await element.inner_text() or 'Dropdown'
+                    name = await element.get_attribute('name') or ''
+                    id_attr = await element.get_attribute('id') or ''
+                    multiple = await element.get_attribute('multiple') or ''
+                    
+                    # Get options
+                    options = []
+                    try:
+                        option_elements = await element.locator('option').all()
+                        for opt in option_elements:
+                            opt_value = await opt.get_attribute('value') or ''
+                            opt_text = await opt.inner_text() or ''
+                            options.append({"value": opt_value, "text": opt_text})
+                    except:
+                        pass
+                    
+                    element_info.update({
+                        "text": select_text,
+                        "name": name,
+                        "id_attr": id_attr,
+                        "multiple": bool(multiple),
+                        "options": options
+                    })
+                    
+                    text = f"Select (text: {select_text}, name: {name}, options: {len(options)})"
+                    
                 elif tag == 'a':
-                    text = await element.inner_text() or await element.get_attribute('href') or 'Link'
+                    link_text = await element.inner_text() or await element.get_attribute('href') or 'Link'
+                    href = await element.get_attribute('href') or ''
+                    aria_label = await element.get_attribute('aria-label') or ''
+                    
+                    element_info.update({
+                        "text": link_text,
+                        "href": href,
+                        "aria_label": aria_label
+                    })
+                    
+                    text = f"Link (text: {link_text}, href: {href})"
+                    
                 elif tag == 'label':
-                    text = await element.inner_text() or 'Label'
+                    label_text = await element.inner_text() or 'Label'
+                    for_attr = await element.get_attribute('for') or ''
+                    aria_label = await element.get_attribute('aria-label') or ''
+                    
+                    element_info.update({
+                        "text": label_text,
+                        "for": for_attr,
+                        "aria_label": aria_label
+                    })
+                    
+                    text = f"Label (text: {label_text}, for: {for_attr})"
+                    
                 else:
-                    text = await element.inner_text() or tag
+                    element_text = await element.inner_text() or tag
+                    aria_label = await element.get_attribute('aria-label') or ''
+                    
+                    element_info.update({
+                        "text": element_text,
+                        "aria_label": aria_label
+                    })
+                    
+                    text = f"{tag.capitalize()} (text: {element_text})"
                 
                 # Clean up text
                 text = text.strip().split('\n')[0][:100]  # Limit length
@@ -288,6 +388,7 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
                 if text and len(text) > 1:
                     element_map[i] = element
                     dom_tree_text += f"[{i}] <{tag}> \"{text}\"\n"
+                    dom_tree_structured.append(element_info)
                     print(f"Added element [{i}]: <{tag}> '{text}'")
                     
             except Exception as e:
@@ -296,12 +397,15 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         
         print(f"Built DOM tree with {len(element_map)} elements")
         
+        # Get page context and question analysis
+        page_context = await self._analyze_page_context(context)
+        
         tools_prompt = """
         You have these tools:
         1. `click_element(element_id)`: Use for buttons, links, radio buttons, or checkboxes.
         2. `fill_textbox(element_id, text_to_fill)`: Use for text fields (input type="text", "email", "password" or textarea).
 
-        Based on the user's persona, the screenshot, and the DOM tree, decide the single best action to progress through the survey.
+        Based on the user's persona, the screenshot, the DOM tree, and page context analysis, decide the single best action to progress through the survey.
         When specifying 'element_id', you MUST use the NUMERIC ID (e.g., 15) provided in the DOM tree, NOT its text label.
         You MUST respond in a valid JSON format with "tool" and "args" keys.
         Example for clicking a "Next" button with ID 15: `{"tool": "click_element", "args": {"element_id": 15}}`
@@ -318,15 +422,26 @@ async def solve_page_with_hybrid_vision_dom(context, main_page):
         - For open-ended questions (why, how, what, tell, describe, explain), use fill_textbox with any placeholder text - the system will generate a personality-driven response
         - PRIORITY: If you see a text input field (input type="text" or textarea) and a submit button, ALWAYS fill the text field first, then click the submit button
         - For text input pages, look for the largest or most prominent text input field to fill
+        - Consider the page context and question type when making decisions
         """
+        
+        # Create enhanced prompt with structured DOM data
         prompt = f"""
         {PERSONA_PROMPT}
         {tools_prompt}
-        Here is the structured DOM tree of the webpage:
-        ---
+        
+        PAGE CONTEXT ANALYSIS:
+        {page_context}
+        
+        STRUCTURED DOM TREE:
+        {json.dumps(dom_tree_structured, indent=2, default=str)}
+        
+        TEXT DOM TREE:
         {dom_tree_text}
-        ---
-        Analyze the screenshot AND the DOM tree, then choose the tool to use. Respond with only the JSON object.
+        
+        Analyze the screenshot, page context, and both DOM representations to choose the best action.
+        The structured DOM tree provides detailed element attributes, while the text tree gives a quick overview.
+        Respond with only the JSON object.
         """
         
         if model is None:

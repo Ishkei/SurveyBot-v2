@@ -98,6 +98,9 @@ python Main Files to Run/run_bot.py --setup
 # CPX Research Platform
 python Main Files to Run/run_bot.py --platform cpx --implementation playwright
 
+# LifePoints Panel Platform
+python Main Files to Run/run_bot.py --platform lifepoints --typing-simulation
+
 # PureSpectrum Integration
 python Main Files to Run/run_bot.py --platform cpx --enhanced-ai
 
