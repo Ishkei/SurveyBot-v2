@@ -186,6 +186,29 @@ WEB_INTERFACE_HTML = """
             cursor: not-allowed;
             transform: none;
         }
+        
+        /* Platform-specific configuration styling */
+        .platform-config {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .platform-config label {
+            color: #1976d2;
+            font-weight: 600;
+        }
+        
+        .platform-config input {
+            border-color: #2196f3;
+        }
+        
+        .platform-config input:focus {
+            border-color: #1565c0;
+            box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+        }
         .status-panel {
             background: #f8f9fa;
             padding: 25px;
@@ -337,7 +360,11 @@ WEB_INTERFACE_HTML = """
                             <option value="qmee">Qmee</option>
                             <option value="cpx">CPX Research</option>
                             <option value="pure">PureSpectrum</option>
+                            <option value="lifepoints">LifePoints Panel</option>
                         </select>
+                        <small style="color: #666; font-size: 12px; margin-top: 5px; display: block;">
+                            Select LifePoints Panel to automate surveys and earn points
+                        </small>
                     </div>
                     <div class="form-group">
                         <label for="personality">Personality:</label>
@@ -372,6 +399,16 @@ WEB_INTERFACE_HTML = """
                     <div class="form-group">
                         <label for="qmee_url">Qmee Survey URL (for enhanced bot):</label>
                         <input type="text" id="qmee_url" placeholder="https://user-profiler.prod.qurated.ai/prescreener?token=..." style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <!-- LifePoints Configuration -->
+                    <div class="form-group platform-config" id="lifepointsConfig" style="display: none;">
+                        <label for="lifepoints_email">LifePoints Email:</label>
+                        <input type="email" id="lifepoints_email" placeholder="your_email@example.com" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    <div class="form-group platform-config" id="lifepointsConfig2" style="display: none;">
+                        <label for="lifepoints_password">LifePoints Password:</label>
+                        <input type="password" id="lifepoints_password" placeholder="your_password" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
                     </div>
                     <div class="button-group">
                         <button class="btn btn-primary" id="startBtn" onclick="startBot()">
@@ -566,6 +603,23 @@ WEB_INTERFACE_HTML = """
                 return;
             }
             
+            // Validate platform-specific requirements
+            const platform = document.getElementById('platform').value;
+            if (platform === 'lifepoints') {
+                const email = document.getElementById('lifepoints_email').value.trim();
+                const password = document.getElementById('lifepoints_password').value.trim();
+                
+                if (!email || !password) {
+                    addLog('❌ LifePoints requires both email and password');
+                    return;
+                }
+                
+                if (!email.includes('@')) {
+                    addLog('❌ Please enter a valid email address for LifePoints');
+                    return;
+                }
+            }
+            
             const config = {
                 implementation: document.getElementById('implementation').value,
                 platform: document.getElementById('platform').value,
@@ -577,7 +631,9 @@ WEB_INTERFACE_HTML = """
                 typing: document.getElementById('typing').value,
                 cursor_simulation: document.getElementById('cursor_simulation').value,
                 scroll_method: document.getElementById('scroll_method').value,
-                qmee_url: document.getElementById('qmee_url').value
+                qmee_url: document.getElementById('qmee_url').value,
+                lifepoints_email: document.getElementById('lifepoints_email').value,
+                lifepoints_password: document.getElementById('lifepoints_password').value
             };
             
             addLog('🚀 Starting bot with configuration: ' + JSON.stringify(config));
@@ -651,9 +707,40 @@ WEB_INTERFACE_HTML = """
                 .catch(err => addLog('❌ Status error: ' + err));
         }
 
+        // Platform change handler
+        function handlePlatformChange() {
+            const platform = document.getElementById('platform').value;
+            const lifepointsConfig = document.getElementById('lifepointsConfig');
+            const lifepointsConfig2 = document.getElementById('lifepointsConfig2');
+            const qmeeUrlConfig = document.getElementById('qmee_url').parentElement;
+            
+            // Hide all platform-specific configs first
+            lifepointsConfig.style.display = 'none';
+            lifepointsConfig2.style.display = 'none';
+            qmeeUrlConfig.style.display = 'none';
+            
+            // Show relevant config based on platform
+            if (platform === 'lifepoints') {
+                lifepointsConfig.style.display = 'block';
+                lifepointsConfig2.style.display = 'block';
+                addLog('🎯 LifePoints Panel selected - Enter your credentials below');
+            } else if (platform === 'qmee') {
+                qmeeUrlConfig.style.display = 'block';
+                addLog('🎯 Qmee selected - Enter survey URL if needed');
+            } else {
+                addLog('🎯 Platform changed to: ' + platform);
+            }
+        }
+        
         // Initialize connection
         document.addEventListener('DOMContentLoaded', function() {
             connectWebSocket();
+            
+            // Add platform change listener
+            document.getElementById('platform').addEventListener('change', handlePlatformChange);
+            
+            // Initialize platform-specific configs
+            handlePlatformChange();
             
             // Request status every 10 seconds as backup
             setInterval(requestStatus, 10000);
@@ -717,14 +804,53 @@ except ImportError as e:
     print(f"⚠️ Qmee enhanced bot not available: {e}")
     print("Standard qmee functionality will still work")
 
-# New comprehensive Qmee Enhanced Survey Bot imports
-try:
-    from Project_Structure.bot_implementations.qmee_enhanced_survey_bot import QmeeEnhancedSurveyBot
-    QMEE_COMPREHENSIVE_AVAILABLE = True
-    print("✅ Qmee Enhanced Survey Bot (Comprehensive) available")
-except ImportError as e:
-    QMEE_COMPREHENSIVE_AVAILABLE = False
-    print(f"⚠️ Qmee Enhanced Survey Bot (Comprehensive) not available: {e}")
+# Platform-specific bot imports - only load when needed
+QMEE_COMPREHENSIVE_AVAILABLE = False
+LIFEPOINTS_AVAILABLE = False
+
+def load_platform_bots(platform):
+    """Load platform-specific bots only when needed"""
+    global QMEE_COMPREHENSIVE_AVAILABLE, LIFEPOINTS_AVAILABLE, QmeeEnhancedSurveyBot, LifePointsEnhancedBot
+    
+    # Initialize bot classes as None
+    QmeeEnhancedSurveyBot = None
+    LifePointsEnhancedBot = None
+    
+    if platform == "qmee":
+        try:
+            from Project_Structure.bot_implementations.qmee_enhanced_survey_bot import QmeeEnhancedSurveyBot
+            QMEE_COMPREHENSIVE_AVAILABLE = True
+            print("✅ Qmee Enhanced Survey Bot (Comprehensive) available")
+        except ImportError as e:
+            QMEE_COMPREHENSIVE_AVAILABLE = False
+            print(f"⚠️ Qmee Enhanced Survey Bot (Comprehensive) not available: {e}")
+    
+    elif platform == "lifepoints":
+        try:
+            from Project_Structure.bot_implementations.lifepoints_enhanced_bot import LifePointsEnhancedBot
+            LIFEPOINTS_AVAILABLE = True
+            print("✅ LifePoints Enhanced Survey Bot available")
+        except ImportError as e:
+            LIFEPOINTS_AVAILABLE = False
+            print(f"⚠️ LifePoints Enhanced Survey Bot not available: {e}")
+    
+    # Load all bots for enhanced router (needs all platforms)
+    elif platform == "enhanced_router":
+        try:
+            from Project_Structure.bot_implementations.qmee_enhanced_survey_bot import QmeeEnhancedSurveyBot
+            QMEE_COMPREHENSIVE_AVAILABLE = True
+            print("✅ Qmee Enhanced Survey Bot (Comprehensive) available")
+        except ImportError as e:
+            QMEE_COMPREHENSIVE_AVAILABLE = False
+            print(f"⚠️ Qmee Enhanced Survey Bot (Comprehensive) not available: {e}")
+        
+        try:
+            from Project_Structure.bot_implementations.lifepoints_enhanced_bot import LifePointsEnhancedBot
+            LIFEPOINTS_AVAILABLE = True
+            print("✅ LifePoints Enhanced Survey Bot available")
+        except ImportError as e:
+            LIFEPOINTS_AVAILABLE = False
+            print(f"⚠️ LifePoints Enhanced Survey Bot not available: {e}")
 
 class EnhancedSurveyBotRunner:
     """Enhanced survey bot runner with advanced features integration"""
@@ -766,7 +892,8 @@ class EnhancedSurveyBotRunner:
             self.captcha_solver = None
             
             # Initialize enhanced bot integration
-            self.enhanced_integration = EnhancedBotIntegration("../Project_Structure/enhanced_ai_config.json")
+            config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Project_Structure", "enhanced_ai_config.json")
+            self.enhanced_integration = EnhancedBotIntegration(config_path)
             print(f"✅ Enhanced bot integration initialized")
             
             # Initialize bot enhancer
@@ -828,6 +955,9 @@ class EnhancedSurveyBotRunner:
             if args.platform == "cpx":
                 # CPX Research platform - use CPX-specific bot
                 await self._run_cpx_bot(args)
+            elif args.platform == "lifepoints":
+                # LifePoints platform - use LifePoints-specific bot
+                await self._run_lifepoints_bot(args)
             elif args.implementation == "playwright":
                 await self._run_playwright_bot(args)
             elif args.implementation == "selenium":
@@ -1213,6 +1343,118 @@ class EnhancedSurveyBotRunner:
             import traceback
             traceback.print_exc()
     
+    async def _run_lifepoints_bot(self, args):
+        """Run LifePoints Enhanced bot"""
+        if not LIFEPOINTS_AVAILABLE:
+            print("❌ LifePoints enhanced bot not available")
+            return
+        
+        try:
+            print("🚀 Starting LifePoints Enhanced Survey Bot")
+            print(f"   Platform: LifePoints Panel")
+            print(f"   Enhanced Features: {'✅ Enabled' if ENHANCED_FEATURES_AVAILABLE else '❌ Disabled'}")
+            print(f"   Typing Simulation: {'✅ Enabled' if getattr(args, 'typing_simulation', False) else '❌ Disabled'}")
+            print(f"   Typing Style: {getattr(args, 'typing_style', 'careful_typer')}")
+            
+            # Check for authentication credentials
+            email = os.getenv("LIFEPOINTS_EMAIL")
+            password = os.getenv("LIFEPOINTS_PASSWORD")
+            
+            if not email or not password:
+                print("❌ LifePoints credentials not found in environment variables")
+                print("   Please set LIFEPOINTS_EMAIL and LIFEPOINTS_PASSWORD in your .env file")
+                return
+            
+            # Create LifePoints bot instance
+            lifepoints_bot = LifePointsEnhancedBot(
+                headless=getattr(args, "headless", False),
+                proxy=getattr(args, "proxy", False)
+            )
+            
+            # Propagate typing preferences
+            if hasattr(self, 'session_stats'):
+                if hasattr(lifepoints_bot, 'typing_simulator'):
+                    # Set typing style from session stats
+                    typing_style = self.session_stats.get('typing_style', 'careful_typer')
+                    if hasattr(lifepoints_bot.typing_simulator, 'set_typing_style'):
+                        lifepoints_bot.typing_simulator.set_typing_style(typing_style)
+                    print(f"   Typing Style Applied: {typing_style}")
+            
+            try:
+                # Check for saved authentication state
+                auth_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "auth.json")
+                use_auth_state = os.path.exists(auth_file_path)
+                
+                if use_auth_state:
+                    print(f"🔐 Found saved authentication state: {auth_file_path}")
+                    print("   Using saved session - no need to login manually")
+                else:
+                    print("⚠️ No saved authentication state found")
+                    print("   Run 'python3 Tools_Scripts/save_lifepoints_auth.py' to save your login session")
+                    print("   Or run 'python3 Tools_Scripts/setup_lifepoints_credentials.py' to set up credentials first")
+                
+                # Start browser with authentication state if available
+                if not await lifepoints_bot.start_browser(auth_file_path if use_auth_state else None):
+                    print("❌ Failed to start LifePoints bot browser")
+                    return
+                
+                # Login to LifePoints (will use saved session if available)
+                print("🔐 Logging into LifePoints...")
+                if not await lifepoints_bot.login(email, password, auth_file_path if use_auth_state else None):
+                    print("❌ Failed to login to LifePoints")
+                    return
+                
+                print("✅ Successfully logged into LifePoints")
+                
+                # Get available surveys
+                surveys = await lifepoints_bot.get_available_surveys()
+                if not surveys:
+                    print("❌ No surveys available")
+                    return
+                
+                print(f"📊 Found {len(surveys)} available surveys")
+                
+                # Show survey information
+                for i, survey in enumerate(surveys[:5]):  # Show first 5 surveys
+                    print(f"   {i}: {survey['title']} - {survey['points']} points ({survey['duration']})")
+                
+                # Take surveys up to max_surveys
+                max_surveys = getattr(args, "max_surveys", 5)
+                surveys_taken = 0
+                
+                for i in range(min(len(surveys), max_surveys)):
+                    if not surveys[i]['available']:
+                        continue
+                    
+                    print(f"\n🚀 Taking survey {i+1}/{max_surveys}: {surveys[i]['title']}")
+                    
+                    if await lifepoints_bot.take_survey(i):
+                        surveys_taken += 1
+                        print(f"✅ Survey {i+1} completed successfully")
+                    else:
+                        print(f"❌ Survey {i+1} failed")
+                    
+                    # Small delay between surveys
+                    await asyncio.sleep(2)
+                
+                # Show final statistics
+                stats = await lifepoints_bot.get_session_stats()
+                print(f"\n📈 Session Summary:")
+                print(f"   Surveys Completed: {stats['surveys_completed']}")
+                print(f"   Points Earned: {stats['points_earned']}")
+                print(f"   Session Duration: {stats['session_duration']}")
+                print(f"   Surveys per Hour: {stats['surveys_per_hour']:.2f}")
+                
+            finally:
+                # Cleanup
+                await lifepoints_bot.close()
+                print("🧹 LifePoints bot cleanup completed")
+            
+        except Exception as e:
+            self.logger.error(f"LifePoints bot failed: {e}")
+            import traceback
+            traceback.print_exc()
+    
     async def _run_qmee_enhanced_bot(self, args):
         """Run Qmee Enhanced bot with real application patterns"""
         if not QMEE_ENHANCED_AVAILABLE:
@@ -1476,6 +1718,13 @@ class WebInterface:
                 def __init__(self, config):
                     for key, value in config.items():
                         setattr(self, key, value)
+                    
+                    # Set LifePoints credentials as environment variables if provided
+                    if config.get('platform') == 'lifepoints':
+                        if config.get('lifepoints_email'):
+                            os.environ['LIFEPOINTS_EMAIL'] = config['lifepoints_email']
+                        if config.get('lifepoints_password'):
+                            os.environ['LIFEPOINTS_PASSWORD'] = config['lifepoints_password']
             
             args = MockArgs(config)
             
@@ -1563,7 +1812,7 @@ def main():
     parser.add_argument(
         "--platform",
         "-p", 
-        choices=["qmee", "earnhaus", "prolific", "mturk", "cpx"],
+        choices=["qmee", "earnhaus", "prolific", "mturk", "cpx", "lifepoints"],
         default=Config.SURVEY_PLATFORM,
         help="Choose survey platform"
     )
@@ -1648,19 +1897,47 @@ def main():
     
     # Ensure .env is set up correctly
     setup_environment()
-    # Explicitly load .env from the project root
-    dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
-    load_dotenv(dotenv_path=dotenv_path) 
+    # Explicitly load .env from the current directory first, then project root
+    current_env_path = os.path.join(os.path.dirname(__file__), '.env')
+    root_env_path = os.path.join(os.path.dirname(__file__), '..', '.env')
+    
+    # Try current directory first, then project root
+    if os.path.exists(current_env_path):
+        load_dotenv(dotenv_path=current_env_path)
+        print(f"✅ Loaded .env from: {current_env_path}")
+    elif os.path.exists(root_env_path):
+        load_dotenv(dotenv_path=root_env_path)
+        print(f"✅ Loaded .env from: {root_env_path}")
+    else:
+        print("⚠️ No .env file found in current or parent directory") 
     Config.reload() # Reload Config class attributes from updated environment
 
     # Re-read CPX specific environment variables after .env is loaded
     Config.CPX_APP_ID = os.getenv("CPX_APP_ID", Config.CPX_APP_ID)
     Config.CPX_EXT_USER_ID = os.getenv("CPX_EXT_USER_ID", Config.CPX_EXT_USER_ID)
+    
+    # Re-read LifePoints specific environment variables after .env is loaded
+    Config.LIFEPOINTS_EMAIL = os.getenv("LIFEPOINTS_EMAIL", Config.LIFEPOINTS_EMAIL)
+    Config.LIFEPOINTS_PASSWORD = os.getenv("LIFEPOINTS_PASSWORD", Config.LIFEPOINTS_PASSWORD)
+    
+    # Also load API keys for enhanced features
+    Config.GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", Config.GEMINI_API_KEY)
+    Config.OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", Config.OPENAI_API_KEY)
+    
+    # Debug: Show what was loaded
+    print(f"🔍 Environment Variables Loaded:")
+    print(f"  LifePoints Email: {'✅' if Config.LIFEPOINTS_EMAIL else '❌'}")
+    print(f"  LifePoints Password: {'✅' if Config.LIFEPOINTS_PASSWORD else '❌'}")
+    print(f"  Gemini API Key: {'✅' if Config.GEMINI_API_KEY else '❌'}")
+    print(f"  OpenAI API Key: {'✅' if Config.OPENAI_API_KEY else '❌'}")
 
     # Update config based on arguments
     Config.BROWSER_TYPE = args.implementation
     Config.SURVEY_PLATFORM = args.platform
     Config.HEADLESS = args.headless
+    
+    # Load platform-specific bots only when needed
+    load_platform_bots(args.platform)
     
     if args.config:
         Config.print_config()
